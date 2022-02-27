@@ -1,4 +1,4 @@
-export const flightInfo = {
+const data = {
   name: 'Air Asia',
   flightNumber: 'G8-113',
   price: '2600',
@@ -8,4 +8,9 @@ export const flightInfo = {
   destination: 'BOM',
   flightDuration: '1h 50 mins',
   stops: 'Non stop',
+};
+
+export default {
+  departFlightList: [{flightInfo: data}],
+  returnFlightList: [{flightInfo: data}],
 };

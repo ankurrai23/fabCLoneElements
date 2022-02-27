@@ -1,10 +1,8 @@
 import React from 'react';
 import {View, Dimensions} from 'react-native';
 import {PanGestureHandler, State, FlatList} from 'react-native-gesture-handler';
-import PropTypes from 'prop-types';
-import FlightCard from '../flightCard';
+import FlightPreferenceCard from '../flightPreferenceCard';
 import Styles from './Styles';
-import {Data} from './data';
 import {DP} from '../../../utils/Dimen';
 import Animated, {Extrapolate, Value, Easing} from 'react-native-reanimated';
 import {shadowObj} from '../../../utils/Utils';
@@ -13,7 +11,10 @@ const {width} = Dimensions.get('window');
 let offset = 0;
 const animatedValue = new Value(0);
 
-const FlightOptions = (props) => {
+export default function FlightPreferenceList({
+  departFlightList,
+  returnFlightList,
+}) {
   const handlePanGestureChange = (e) => {
     if (e.nativeEvent.state === State.END) {
       offset = e.nativeEvent.translationX < -50 ? -100 : 0;
@@ -91,8 +92,8 @@ const FlightOptions = (props) => {
         onHandlerStateChange={handlePanGestureChange}>
         <View style={Styles.container}>
           <FlatList
-            data={props.departFlightList}
-            renderItem={() => (
+            data={departFlightList}
+            renderItem={({item}) => (
               <Animated.View
                 style={{
                   paddingBottom: DP._8,
@@ -100,21 +101,23 @@ const FlightOptions = (props) => {
                   paddingLeft: cardPaddingLeft,
                   paddingRight: DP._4,
                 }}>
-                <FlightCard
+                <FlightPreferenceCard
                   height={cardHeight}
                   width={cardWidth}
                   opacity={opacity}
                   preference={3}
+                  flightInfo={item.flightInfo}
                   onPress={() => handleOnPressAnimation(0)}
                 />
               </Animated.View>
             )}
             keyExtractor={(_, index) => `abc${index}`}
             showsVerticalScrollIndicator={false}
+            listKey={'onboardFlightList'}
           />
           <FlatList
-            data={props.departFlightList}
-            renderItem={({index}) => (
+            data={returnFlightList}
+            renderItem={({item, index}) => (
               <Animated.View
                 style={{
                   paddingRight: cardPaddingRight,
@@ -122,32 +125,22 @@ const FlightOptions = (props) => {
                   ...shadowObj,
                   paddingLeft: DP._4,
                 }}>
-                <FlightCard
+                <FlightPreferenceCard
                   height={cardHeight_2}
                   width={cardWidth_2}
                   opacity={opacity_2}
                   onPress={() => handleOnPressAnimation(-100)}
                   onTapPrefrences={() => console.log(index, 'return')}
+                  flightInfo={item.flightInfo}
                 />
               </Animated.View>
             )}
             keyExtractor={(_, index) => `abc${index}`}
             showsVerticalScrollIndicator={false}
+            listKey={'returnFlightList'}
           />
         </View>
       </PanGestureHandler>
     </>
   );
-};
-
-export default FlightOptions;
-
-FlightOptions.propTypes = {
-  departFlightList: PropTypes.array,
-  returnFlightList: PropTypes.array,
-};
-
-FlightOptions.defaultProps = {
-  departFlightList: Data.departFlightList,
-  returnFlightList: Data.returnFlightList,
-};
+}

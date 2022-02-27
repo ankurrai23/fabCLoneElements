@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Dimensions} from 'react-native';
-import PropTypes from 'prop-types';
+import {View} from 'react-native';
 import Styles from './Styles';
 import Animated from 'react-native-reanimated';
 import FText from '../../../common/rn/FText';
@@ -10,13 +9,11 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {flightInfo as flightDetails} from './data';
-
 const AnimatedMaterialCommunityIcon = Animated.createAnimatedComponent(
   MaterialCommunityIcons,
 );
-const deviceWidth = Dimensions.get('window').width;
-const FlightCard = ({
+
+export default function FlightPreferenceCard({
   width,
   height,
   opacity,
@@ -24,7 +21,7 @@ const FlightCard = ({
   preference,
   onTapToSetPreferences,
   flightInfo,
-}) => {
+}) {
   return (
     <Animated.View style={[Styles.container, {width: width, height: height}]}>
       <FTouchableOpacity onPress={onPress}>
@@ -111,30 +108,4 @@ const FlightCard = ({
       </FTouchableOpacity>
     </Animated.View>
   );
-};
-
-export default FlightCard;
-
-FlightCard.propTypes = {
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.object,
-  ]),
-  height: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.object,
-  ]),
-  onPress: PropTypes.func,
-  flightInfo: PropTypes.object,
-  onTapToSetPreferences: PropTypes.func,
-};
-
-FlightCard.defaultProps = {
-  width: deviceWidth,
-  height: DP._186,
-  flightInfo: flightDetails,
-  onPress: () => console.log('Card pressed'),
-  onTapToSetPreferences: () => console.log('Preference selected'),
-};
+}

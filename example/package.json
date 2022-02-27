@@ -6,8 +6,7 @@
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "pods": "pod-install --quiet"
+    "ios": "react-native run-ios"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.11",
@@ -22,13 +21,13 @@
     "react-native-screens": "3.10.2",
     "react-native-vector-icons": "8.1.0",
     "@react-native-community/blur": "3.6.0",
-    "react-native-webview": "11.4.3"
+    "react-native-webview": "11.4.3",
+    "react-native-fab-elements": "file:../"
   },
   "devDependencies": {
     "@babel/core": "7.14.8",
     "@babel/runtime": "7.14.8",
     "babel-plugin-module-resolver": "4.0.0",
-    "metro-react-native-babel-preset": "0.66.2",
-    "pod-install": "^0.1.0"
+    "metro-react-native-babel-preset": "0.66.2"
   }
 }

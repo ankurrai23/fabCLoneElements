@@ -1,7 +1,24 @@
 import React from 'react';
-import {FlightCard, FlightOptions} from 'react-native-fab-elements';
+
+import {
+  data,
+  FlightPreferenceCard,
+  FlightPreferenceList,
+  HotelDetailCard,
+} from 'react-native-fab-elements';
 
 export default [
-  {name: 'FlightCard', component: <FlightCard />},
-  {name: 'FlightOptions', component: <FlightOptions />},
+  {name: 'Trips'},
+  {
+    name: 'FlightPreferenceCard',
+    component: <FlightPreferenceCard {...data.flightCardProps} />,
+  },
+  {
+    name: 'FlightPreferenceList',
+    component: <FlightPreferenceList {...data.flightOptionsProps} />,
+  },
+  {
+    name: 'HotelDetailCard',
+    component: <HotelDetailCard {...data.hotelDetailCardProps} />,
+  },
 ];

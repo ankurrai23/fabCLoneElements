@@ -1,22 +1,35 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
-
 import ComponentList from './ComponentList';
+import {FlatList} from 'react-native-gesture-handler';
+import CustomDrawer from './CustomDrawer';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
-        {ComponentList.map((item, index) => (
-          <Drawer.Screen name={item.name} key={`abc${index}`}>
-            {() => <View style={styles.container}>{item.component}</View>}
-          </Drawer.Screen>
-        ))}
+      <Drawer.Navigator
+        drawerContent={(props) => <CustomDrawer {...props} />}
+        screenOptions={{drawerStyle: {width: 250}}}
+        detachInactiveScreens={true}>
+        {ComponentList.map((item, index) => {
+          if (item.component)
+            return (
+              <Drawer.Screen name={item.name} key={`abc${index}`}>
+                {() => (
+                  <FlatList
+                    contentContainerStyle={styles.container}
+                    showsVerticalScrollIndicator={false}
+                    ListHeaderComponent={item.component}
+                  />
+                )}
+              </Drawer.Screen>
+            );
+        })}
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -24,6 +37,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 16,
   },
 });
