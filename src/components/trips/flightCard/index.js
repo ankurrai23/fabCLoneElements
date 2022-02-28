@@ -30,6 +30,7 @@ const FlightCard = ({
   showInfo,
   preferenceSelected,
   processed = true,
+  greyed = true,
 }) => {
   const ActionsInItinerary = () => (
     <>
@@ -70,14 +71,18 @@ const FlightCard = ({
         <View>
           <FImage
             style={Styles.icon}
-            source={ImageConst.flightIconWithBorder}
+            source={
+              greyed
+                ? ImageConst.grayFlightIconWithBorder
+                : ImageConst.flightIconWithBorder
+            }
           />
           {showLine && (
             <View style={Styles.dashedLineContainer}>
               <DashedLine
                 dashSize={3}
                 dashWidth={1}
-                dashColor={Color.DODGER_BLUE}
+                dashColor={greyed ? Color.LIGHT_BLUEY_GREY : Color.DODGER_BLUE}
               />
             </View>
           )}

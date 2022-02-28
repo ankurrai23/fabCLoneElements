@@ -30,6 +30,7 @@ const HotelCard = ({
   preferenceSelected,
   onDirectionPress,
   processed = false,
+  greyed = true,
 }) => {
   const ActionsInItinerary = () => (
     <>
@@ -69,13 +70,20 @@ const HotelCard = ({
     <View style={[Styles.flexRow, style]}>
       {itineraryView && (
         <View>
-          <FImage style={Styles.icon} source={ImageConst.hotelIconWithBorder} />
+          <FImage
+            style={Styles.icon}
+            source={
+              greyed
+                ? ImageConst.grayHotelIconWithBorder
+                : ImageConst.hotelIconWithBorder
+            }
+          />
           {showLine && (
             <View style={Styles.dashedLineContainer}>
               <DashedLine
                 dashSize={3}
                 dashWidth={1}
-                dashColor={Color.DODGER_BLUE}
+                dashColor={greyed ? Color.LIGHT_BLUEY_GREY : Color.DODGER_BLUE}
               />
             </View>
           )}
