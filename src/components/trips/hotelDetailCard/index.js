@@ -19,7 +19,7 @@ export default function HotelDetailCard({
   onDirectionPress,
 }) {
   const CheckInInfo = ({title, date, time}) => (
-    <View style={Styles.alignCenter}>
+    <View>
       <FText style={Styles.sectionTitle}>{title}</FText>
       <FText type="medium">{date}</FText>
       <FText style={Styles.checkInTIme}>{time}</FText>
@@ -55,12 +55,12 @@ export default function HotelDetailCard({
             <FImage style={Styles.hotelImage} />
             <FontAwesome5
               name="search-plus"
-              style={{position: 'absolute', bottom: DP._4, right: DP._4}}
+              style={Styles.searchIcon}
               size={DP._18}
               color={Color.WHITE}
             />
           </View>
-          <View style={{marginLeft: DP._8, flex: 1}}>
+          <View style={Styles.bookingDetailsContainer}>
             <FText>
               Booking ID{' '}
               <FText type="bold" style={{paddingLeft: DP._8}}>
@@ -88,14 +88,12 @@ export default function HotelDetailCard({
           <FTouchableOpacity
             style={[Styles.flexRowWithAlignCenter]}
             onPress={onDirectionPress}>
-            <View>
-              <MaterialCommunityIcons
-                name="navigation"
-                size={DP._18}
-                color={Color.DODGER_BLUE}
-                style={Styles.directionIcon}
-              />
-            </View>
+            <MaterialCommunityIcons
+              name="navigation"
+              size={DP._18}
+              color={Color.DODGER_BLUE}
+              style={Styles.directionIcon}
+            />
             <FText
               style={{
                 fontSize: DP._12,
@@ -132,7 +130,8 @@ export default function HotelDetailCard({
         <Separator style={Styles.separator} />
         <FText style={Styles.sectionTitle}>Inclusions</FText>
         {data.inclusions.map((item, index) => {
-          if (index < 3) return <Inclusions text={item.detail} />;
+          if (index < 3)
+            return <Inclusions key={`ab${index}cd`} text={item.detail} />;
         })}
         {data.inclusions.length > 3 && (
           <FTouchableOpacity onPress={onMorePress}>
@@ -143,15 +142,15 @@ export default function HotelDetailCard({
         )}
         <Separator style={Styles.separator} />
         <FText style={Styles.sectionTitle}>Co-travellers</FText>
-        {data.coTravellers.map((item) => (
-          <CoTraveller name={item} />
+        {data.coTravellers.map((item, index) => (
+          <CoTraveller name={item} key={`abc${index}def`} />
         ))}
         <Separator style={Styles.separator} />
         <FText style={[Styles.sectionTitle, {marginTop: DP._8}]}>
           Payment mode
         </FText>
         <View style={Styles.paymentModeContainer}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={Styles.flexRow}>
             <Feather
               name="credit-card"
               size={DP._15}
@@ -161,7 +160,7 @@ export default function HotelDetailCard({
               Bill to company
             </FText>
           </View>
-          <View style={{alignItems: 'center', lineHeight: DP._16}}>
+          <View style={Styles.paymentStatusContainer}>
             <FText style={{fontSize: DP._10}}>payment pending</FText>
           </View>
         </View>

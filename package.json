@@ -14,6 +14,7 @@
   "scripts": {
     "test": "jest",
     "typescript": "tsc",
+    "prerelease": "tsc",
     "release": "release-it",
     "setup": "npm i && cd example && npm i && npx pod-install --quiet",
     "start": "cd example && npm start",

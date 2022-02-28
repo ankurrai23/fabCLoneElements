@@ -7,8 +7,4 @@ function Separator({style, ...props}) {
   return <View style={[Styles.container, style]} {...props} />;
 }
 
-Separator.propTypes = {};
-
-Separator.defaultProps = {};
-
 export default Separator;

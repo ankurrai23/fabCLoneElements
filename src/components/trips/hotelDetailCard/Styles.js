@@ -99,4 +99,8 @@ export default StyleSheet.create({
     backgroundColor: Color.GREY_PURPLE + '1a',
   },
   directionIcon: {transform: [{rotateZ: '45deg'}], bottom: 2, right: 2},
+  searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
+  bookingDetailsContainer: {marginLeft: DP._8, flex: 1},
+  flexRow: {flexDirection: 'row'},
+  paymentStatusContainer: {alignItems: 'center', lineHeight: DP._16},
 });

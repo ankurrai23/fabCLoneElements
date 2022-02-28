@@ -60,8 +60,15 @@
     "PERIWINKLE": "#8186e7",
     "TIFFANY_BLUE": "#85e0e8",
     "POWDER_BLUE": "#b5d9ff",
+    "DARK_60": "#10121760",
     "DARK_SLATE_BLUE": "#202c60",
     "SILVER" :"#d2d1d7",
-    "LIGHT_BLUEY_GREY":"#c3c6cd",
-    "GREYISH_PURPLE": "#7b7988"
+    "VERY_LIGHT_BLUE": "#e3f0ff",
+    "GREYISH_PURPLE": "#7b7988",
+    "LIGHT_BLUEY_GREY": "#c3c6cd",
+    "PALE_GREY_TWO": "#e8ecff",
+    "SHAMROCK_31": "#00b16b4f",
+    "ICE": "#ddf3ea",
+    "PALE_TURQUOISE_76": "#b3e6d1c2",
+    "WARM_BLUE": "#3b5cdf"
 }

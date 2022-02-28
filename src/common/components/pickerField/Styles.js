@@ -1,0 +1,51 @@
+import {StyleSheet} from 'react-native';
+
+import {DP} from '../../../utils/Dimen';
+import {Color} from '../../../utils/color';
+
+export default StyleSheet.create({
+  container: (error) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    borderWidth: DP._1,
+    borderColor: error ? Color.DARK_CORAL : Color.PALE_GREY_THREE,
+    borderRadius: DP._4,
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._16,
+    marginTop: DP._16,
+  }),
+  floatLabel: (error) => ({
+    color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
+    position: 'absolute',
+    backgroundColor: Color.WHITE,
+    paddingHorizontal: DP._4,
+    fontSize: DP._12,
+    top: DP.minus_6,
+    left: DP._12,
+  }),
+  placeholder: (error) => ({
+    flex: 1,
+    color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
+    fontSize: DP._14,
+  }),
+  value: {
+    flex: 1,
+    fontSize: DP._14,
+    color: Color.DARK,
+  },
+  iconContainer: {
+    alignSelf: 'center',
+    height: DP._20,
+    width: DP._20,
+    overflow: 'hidden',
+    marginHorizontal: DP._4,
+  },
+  helperText: (error) => ({
+    color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
+    fontSize: DP._12,
+    minHeight: DP._16,
+    lineHeight: DP._16,
+    marginLeft: DP._16,
+  }),
+});

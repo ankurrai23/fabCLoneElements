@@ -7,6 +7,7 @@ import FImage from '../../../common/rn/FImage';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
+import {shadowObj} from '../../../utils/Utils';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const AnimatedMaterialCommunityIcon = Animated.createAnimatedComponent(
@@ -23,8 +24,8 @@ export default function FlightPreferenceCard({
   flightInfo,
 }) {
   return (
-    <Animated.View style={[Styles.container, {width: width, height: height}]}>
-      <FTouchableOpacity onPress={onPress}>
+    <FTouchableOpacity onPress={onPress} style={{...shadowObj}}>
+      <Animated.View style={[Styles.container, {width: width, height: height}]}>
         <View style={Styles.flightLogoAndNameContainer}>
           <FImage
             style={{
@@ -105,7 +106,7 @@ export default function FlightPreferenceCard({
             </View>
           </FTouchableOpacity>
         </Animated.View>
-      </FTouchableOpacity>
-    </Animated.View>
+      </Animated.View>
+    </FTouchableOpacity>
   );
 }

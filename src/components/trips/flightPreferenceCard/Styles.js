@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {shadowObj} from '../../../utils/Utils';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 
@@ -9,7 +8,6 @@ export default StyleSheet.create({
     borderRadius: DP._4,
     overflow: 'hidden',
     padding: DP._16,
-    ...shadowObj,
   },
   flightLogoAndNameContainer: {
     flexDirection: 'row',
