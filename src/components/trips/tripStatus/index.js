@@ -11,7 +11,7 @@ const TripStatus = ({statusObj}) => {
   const transX = useRef(new Animated.Value(-100)).current;
 
   useEffect(() => {
-    if (statusObj?.type === 'IN_SHORTLISTING') {
+    if (statusObj?.key === 'IN_SHORTLISTING') {
       Animated.loop(
         Animated.sequence([
           Animated.timing(transX, {
@@ -45,7 +45,7 @@ const TripStatus = ({statusObj}) => {
 
   return (
     <View style={Styles.alignCenter}>
-      {statusObj?.type === 'IN_SHORTLISTING' ? (
+      {statusObj?.key === 'IN_SHORTLISTING' ? (
         <View style={Styles.shimmerContainer}>
           <Gradient />
           <FText style={Styles.text(Color.DARK_SEA_FOAM)}>
@@ -55,10 +55,10 @@ const TripStatus = ({statusObj}) => {
       ) : (
         <FText
           style={[
-            Styles.container(statusObj.color),
-            Styles.text(statusObj.color),
+            Styles.container(statusObj.bgColor),
+            Styles.text(statusObj.textColor),
           ]}>
-          {statusObj.text}
+          {statusObj.value}
         </FText>
       )}
     </View>

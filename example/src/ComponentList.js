@@ -17,6 +17,7 @@ import {
   EmptyScreen,
   ItineraryHeader,
   TripListingCard,
+  SubmittedTripCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -66,6 +67,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'TripListingCard',
     component: <TripListingCard {...data.tripListingCardProps} />,
+  },
+  {
+    name: 'SubmittedTripCard',
+    component: <SubmittedTripCard {...data.submittedTripCardProps} />,
   },
 ];
 

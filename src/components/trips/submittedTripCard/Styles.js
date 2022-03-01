@@ -94,10 +94,10 @@ export default StyleSheet.create({
     marginRight: DP._4,
     resizeMode: 'contain',
   },
-  action: {
+  action: (type) => ({
     fontSize: DP._12,
-    color: Color.DODGER_BLUE,
-  },
+    color: type === 'MODIFY_OR_CANCEL' ? Color.PASTEL_RED : Color.DODGER_BLUE,
+  }),
   rescheduleIcon: {
     width: DP._18,
     height: DP._18,
@@ -112,4 +112,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginVertical: DP._20,
   },
+  bell: {width: DP._24, height: DP._24, resizeMode: 'contain'},
+  justifyBetween: {justifyContent: 'space-between'},
 });

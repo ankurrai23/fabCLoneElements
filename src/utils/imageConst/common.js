@@ -11,4 +11,5 @@ export default {
     'itinerary-flight-border-grey.png'),
   hotelIcon: require(TRIP_DIRECTORY + 'itinerary-hotel-icon.png'),
   flightIcon: require(TRIP_DIRECTORY + 'itinerary-flight-icon.png'),
+  bellIcon: require(TRIP_DIRECTORY + 'bell-icon.png'),
 };

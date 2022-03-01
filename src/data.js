@@ -13,7 +13,7 @@ import coTravellersDetailProps from './components/trips/coTravellersDetail/data'
 import emptyScreenProps from './common/components/emptyScreen/data';
 import itineraryHeaderProps from './components/trips/itineraryHeader/data';
 import tripListingCardProps from './components/trips/tripListingCard/data';
-
+import submittedTripCardProps from './components/trips/submittedTripCard/data';
 export {
   buttonProps,
   textFieldProps,
@@ -30,4 +30,5 @@ export {
   emptyScreenProps,
   itineraryHeaderProps,
   tripListingCardProps,
+  submittedTripCardProps,
 };

@@ -20,7 +20,7 @@ export default StyleSheet.create({
     overflow: 'hidden',
   },
   container: (color) => ({
-    backgroundColor: color + '26',
+    backgroundColor: color,
     borderRadius: DP._11,
     overflow: 'hidden',
   }),

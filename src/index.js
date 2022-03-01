@@ -23,6 +23,7 @@ import CoTravellerDetails from './components/trips/coTravellersDetail';
 import EmptyScreen from './common/components/emptyScreen';
 import ItineraryHeader from './components/trips/itineraryHeader';
 import TripListingCard from './components/trips/tripListingCard';
+import SubmittedTripCard from './components/trips/submittedTripCard';
 
 export {
   data,
@@ -50,4 +51,5 @@ export {
   EmptyScreen,
   ItineraryHeader,
   TripListingCard,
+  SubmittedTripCard,
 };

@@ -159,7 +159,7 @@ const DialogBox = (props) => {
             setIsAnimating(false);
           });
         }}
-        onRequestClose={onRequestClose}>
+        onRequestClose={onClose}>
         <FTouchableOpacity style={Styles.absolute} onPress={() => onClose()}>
           <BlurView
             style={Styles.absolute}

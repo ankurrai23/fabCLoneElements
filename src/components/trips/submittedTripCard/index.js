@@ -7,8 +7,9 @@ import {Color} from '../../../utils/color';
 import {ImageConst} from '../../../utils/imageConst';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
+import TripStatus from '../tripStatus';
 
-const TripListingCard = ({item, onCardPress}) => {
+const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
 
   const tripIcons = (requestType) => {
@@ -22,6 +23,14 @@ const TripListingCard = ({item, onCardPress}) => {
     return <FText style={{fontSize: DP._16}}>{coTravelerName}</FText>;
   };
 
+  const _onActionPress = (actionType) => {
+    const data = {
+      ['masterTripId']: item.masterTripId,
+      ['type']: actionType,
+    };
+    onActionPress(data);
+  };
+
   return (
     <>
       <FTouchableOpacity
@@ -33,15 +42,7 @@ const TripListingCard = ({item, onCardPress}) => {
               <FImage source={asset} style={Styles.imageStyle} />
             ))}
           </View>
-          {item.isProcessing && (
-            <View style={Styles.flexRowAndAlignCenter}>
-              <FImage
-                source={ImageConst.rescheduleIcon}
-                style={Styles.rescheduleIcon}
-              />
-              <FText style={Styles.tripId}>Processsing</FText>
-            </View>
-          )}
+          <TripStatus statusObj={item.status} />
         </View>
         <View style={Styles.flexRow}>
           <FText numberOfLines={1} style={Styles.destination} type="medium">
@@ -54,18 +55,28 @@ const TripListingCard = ({item, onCardPress}) => {
               Styles.date
             }>{`${item.tripStartDate} - ${item.tripEndDate}`}</FText>
         </View>
-        <View style={Styles.flexRow}>
-          <FText style={{color: Color.GREYISH_PURPLE}}>Co-traveler(s): </FText>
-          <FTouchableOpacity
-            onPress={() =>
-              item.coTravellers.length > 1 && setSheetVisible(true)
-            }>
-            <FText>
-              {item.coTravellers[0]}
-              {item.coTravellers.length > 1 &&
-                ` +${item.coTravellers.length - 1}`}
+        <View style={[Styles.flexRow, Styles.justifyBetween]}>
+          <View style={Styles.flexDirectionRow}>
+            <FText style={{color: Color.GREYISH_PURPLE}}>
+              Co-traveler(s):{' '}
             </FText>
-          </FTouchableOpacity>
+            <FTouchableOpacity
+              onPress={() =>
+                item.coTravellers.length > 1 && setSheetVisible(true)
+              }>
+              <FText>
+                {item.coTravellers[0]}
+                {item.coTravellers.length > 1 &&
+                  ` +${item.coTravellers.length - 1}`}
+              </FText>
+            </FTouchableOpacity>
+          </View>
+          {item.actions?.[1]?.type === 'SEND_REMINDER' && (
+            <FTouchableOpacity
+              onPress={() => _onActionPress(item.actions?.[1]?.type)}>
+              <FImage source={ImageConst.bellIcon} style={Styles.bell} />
+            </FTouchableOpacity>
+          )}
         </View>
         {item.isCancelled && (
           <View style={Styles.flexRow}>
@@ -74,21 +85,29 @@ const TripListingCard = ({item, onCardPress}) => {
           </View>
         )}
         <View style={Styles.footer}>
-          <FText style={Styles.action}>View Details</FText>
+          <FTouchableOpacity
+            onPress={() => _onActionPress(item.actions[0].type)}>
+            <FText style={Styles.action(item.actions?.[0]?.type)}>
+              {item.actions?.[0].name}
+            </FText>
+          </FTouchableOpacity>
         </View>
       </FTouchableOpacity>
       <DialogBox
         modalVisible={sheetVisible}
         onClose={() => setSheetVisible(false)}
         ContentModal={
-          <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>Co-Travelers</FText>
+          <View style={{paddingBottom: DP._48, paddingHorizontal: DP._24}}>
+            <FText style={Styles.modalHeading}>Co-travelers</FText>
             <FlatList
               data={item.coTravellers}
               renderItem={renderItem}
               ItemSeparatorComponent={() => (
                 <Separator
-                  style={{marginVertical: DP._5, backgroundColor: Color.SILVER}}
+                  style={{
+                    marginVertical: DP._16,
+                    backgroundColor: Color.SILVER,
+                  }}
                 />
               )}
               keyExtractor={(_) => _}
@@ -100,4 +119,4 @@ const TripListingCard = ({item, onCardPress}) => {
   );
 };
 
-export default TripListingCard;
+export default SubmittedTripCard;
