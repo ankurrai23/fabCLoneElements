@@ -11,6 +11,7 @@ import hotelCardProps from './components/trips/hotelCard/data';
 import remarksContainerProps from './components/trips/remarksContainer/data';
 import coTravellersDetailProps from './components/trips/coTravellersDetail/data';
 import emptyScreenProps from './common/components/emptyScreen/data';
+import itineraryHeaderProps from './components/trips/itineraryHeader/data';
 export {
   buttonProps,
   textFieldProps,
@@ -25,4 +26,5 @@ export {
   remarksContainerProps,
   coTravellersDetailProps,
   emptyScreenProps,
+  itineraryHeaderProps,
 };

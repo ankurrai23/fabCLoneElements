@@ -21,6 +21,7 @@ import HotelCard from './components/trips/hotelCard';
 import RemarksContainer from './components/trips/remarksContainer';
 import CoTravellerDetails from './components/trips/coTravellersDetail';
 import EmptyScreen from './common/components/emptyScreen';
+import ItineraryHeader from './components/trips/itineraryHeader';
 
 export {
   data,
@@ -46,4 +47,5 @@ export {
   RemarksContainer,
   CoTravellerDetails,
   EmptyScreen,
+  ItineraryHeader,
 };

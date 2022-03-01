@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {View, Animated, Easing} from 'react-native';
+import {View, Animated} from 'react-native';
 import {Color} from '../../../utils/color';
 import FText from '../../../common/rn/FText';
 import Styles from './Styles';
@@ -13,12 +13,19 @@ const TripStatus = ({statusObj}) => {
   useEffect(() => {
     if (statusObj?.type === 'IN_SHORTLISTING') {
       Animated.loop(
-        Animated.timing(transX, {
-          toValue: 80,
-          duration: 1000,
-          useNativeDriver: true,
-          easing: Easing.linear,
-        }),
+        Animated.sequence([
+          Animated.timing(transX, {
+            toValue: 100,
+            duration: 1000,
+            useNativeDriver: true,
+          }),
+          Animated.timing(transX, {
+            toValue: -50,
+            duration: 0,
+            delay: 0,
+            useNativeDriver: true,
+          }),
+        ]),
       ).start();
     }
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
