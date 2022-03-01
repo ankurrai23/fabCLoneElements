@@ -16,6 +16,7 @@ import {
   CoTravellerDetails,
   EmptyScreen,
   ItineraryHeader,
+  TripListingCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -61,6 +62,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'ItineraryHeader',
     component: <ItineraryHeader {...data.itineraryHeaderProps} />,
+  },
+  {
+    name: 'TripListingCard',
+    component: <TripListingCard {...data.tripListingCardProps} />,
   },
 ];
 
