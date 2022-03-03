@@ -13,6 +13,7 @@ import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
 import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
+import {TripStatus} from '../../../index';
 /*
 TODO:
 1. Cancelled state prop
@@ -28,6 +29,7 @@ const FlightItineraryCard = ({
   showInfo,
   preferenceSelected,
   timelineGreyed,
+  processed,
 }) => {
   const ActionsInItinerary = () => (
     <>
@@ -89,16 +91,18 @@ const FlightItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {!item.pnr ? (
-              <FText type={'medium'} style={Styles.slotDetail}>
-                {item.slotDetail}
-              </FText>
-            ) : (
+            {item.status.key === 'CANCELLED' ? (
+              <TripStatus statusObj={item.status} />
+            ) : processed ? (
               <Feather
                 name="chevron-right"
                 size={DP._18}
                 color={Color.BATTLESHIP_GREY_TWO}
               />
+            ) : (
+              <FText type={'medium'} style={Styles.slotDetail}>
+                {item.slotDetail}
+              </FText>
             )}
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>

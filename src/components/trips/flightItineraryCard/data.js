@@ -14,6 +14,12 @@ const flightItineraryCardProps = {
     duration: '1h 50min',
     airline: 'Indigo',
     actionDisabled: false,
+    status: {
+      key: 'PROCESSED',
+      value: 'Processed',
+      textColor: '#d65656',
+      bgColor: '#d656561a',
+    },
     actions: [
       {
         type: 'RESCHEDULE',
@@ -32,6 +38,7 @@ const flightItineraryCardProps = {
   showInfo: false,
   preferenceSelected: true,
   timelineGreyed: false,
+  processed: true,
 };
 
 export default flightItineraryCardProps;

@@ -6,9 +6,10 @@ const hotelItineraryCardProps = {
     location: 'Andheri East',
     checkInTime: '1AM',
     status: {
-      type: 'CANCELLED',
-      text: 'Cancelled',
-      color: '#000000',
+      key: 'CANCELLED',
+      value: 'Cancelled',
+      textColor: '#d65656',
+      bgColor: '#d656561a',
     },
     actionsDisabled: false,
     actions: [
@@ -33,6 +34,7 @@ const hotelItineraryCardProps = {
   showInfo: false,
   preferenceSelected: false,
   processed: true,
+  timelineGreyed: false,
 };
 
 export default hotelItineraryCardProps;

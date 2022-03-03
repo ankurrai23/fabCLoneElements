@@ -13,6 +13,7 @@ import {
   FImage,
   FText,
   FTouchableOpacity,
+  TripStatus,
 } from '../../..';
 import Styles from './Styles';
 import InfoBox from '../components/infoBox';
@@ -85,12 +86,16 @@ const HotelItineraryCard = ({
               </FText>
               <FText style={Styles.month}> {item.month}</FText>
             </FText>
-            {processed && (
-              <Feather
-                name="chevron-right"
-                size={DP._18}
-                color={Color.BATTLESHIP_GREY_TWO}
-              />
+            {item.status.key === 'CANCELLED' ? (
+              <TripStatus statusObj={item.status} />
+            ) : (
+              processed && (
+                <Feather
+                  name="chevron-right"
+                  size={DP._18}
+                  color={Color.BATTLESHIP_GREY_TWO}
+                />
+              )
             )}
           </View>
           <View style={{paddingHorizontal: DP._16}}>
