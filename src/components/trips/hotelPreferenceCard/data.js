@@ -1,15 +1,28 @@
 const hotelPreferenceCardProps = {
   item: {
+    preferredBy: 'TravelPlus',
+    hotelImages: [
+      'https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/10/18/Photos/Processed/fabhotels-kgmE--621x414@LiveMint.jpg',
+      'https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/10/18/Photos/Processed/fabhotels-kgmE--621x414@LiveMint.jpg',
+      'https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/10/18/Photos/Processed/fabhotels-kgmE--621x414@LiveMint.jpg',
+      'https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/10/18/Photos/Processed/fabhotels-kgmE--621x414@LiveMint.jpg',
+    ],
+    starRating: 2,
     hotelName: 'Lemon Tree Premier',
     hotelAddress:
       'Andheri - Kurla Rd, opposite Mittal Industrial Estate, Gamdevi, Marol, …',
-    stars: 3,
-    cost: 2609,
-    rating: 65,
-    preference: 2,
+    distanceToProperty: '220 m from Marol naka Metro Station',
+    cost: '₹260923',
+    ratingScore: 80,
+    reviewsCount: '4.5/5 (134 reviews)',
+    colleaguesCount: 22,
+    colleaguesRatingAvg: 4.2,
+    googleMapUrl: 'https://www.google.com',
+    preference: 5,
   },
   onTapToSetPreferences: () => console.log('preferences tapped'),
-  offline: true,
+  onViewMapPress: (item) => console.log(item),
+  offline: false,
 };
 
 export default hotelPreferenceCardProps;
