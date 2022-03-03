@@ -14,7 +14,7 @@ import Separator from '../../../common/components/separator';
 import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
 /*
-TODO: 
+TODO:
 1. Cancelled state prop
 2. Actions in non itinerary view
 */
@@ -89,7 +89,7 @@ const FlightItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item.slotDetail ? (
+            {!item.pnr ? (
               <FText type={'medium'} style={Styles.slotDetail}>
                 {item.slotDetail}
               </FText>
@@ -133,11 +133,8 @@ const FlightItineraryCard = ({
           {item.pnr && (
             <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
               <View>
-                <FText style={Styles.portName}>{item.carrier}</FText>
-                <FText
-                  style={
-                    Styles.time
-                  }>{`${item.airline} ${item.flightNumber}`}</FText>
+                <FText style={Styles.portName}>{item.airline}</FText>
+                <FText style={Styles.time}>{item.flightNumber}</FText>
               </View>
               <View style={Styles.alignItem_flexEnd}>
                 <FText style={Styles.portName}>PNR</FText>
