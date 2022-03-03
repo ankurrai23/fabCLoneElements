@@ -4,13 +4,13 @@ const hotelItineraryCardProps = {
     month: 'Nov',
     title: 'Mumbai',
     location: 'Andheri East',
-    // checkInTime: '1AM',
-    // status: {
-    //   type: 'PROCESSED',
-    //   text: 'Processed',
-    //   color: '#000000',
-    // },
-    actionsDisabled: true,
+    checkInTime: '1AM',
+    status: {
+      type: 'CANCELLED',
+      text: 'Cancelled',
+      color: '#000000',
+    },
+    actionsDisabled: false,
     actions: [
       {
         type: 'MODIFY',
@@ -20,14 +20,19 @@ const hotelItineraryCardProps = {
         type: 'CANCEL',
         name: 'Cancel',
       },
+      {
+        type: 'DIRECTION',
+        name: 'Directions',
+      },
     ],
   },
-  onActionPress: () => console.log('Action Pressed'),
+  onActionPress: (action) => console.log('Action Pressed'),
   onCardPress: () => console.log('Card Pressed'),
   onInfoPress: () => console.log('Info Pressed'),
   showLine: true,
   showInfo: false,
   preferenceSelected: false,
+  processed: true,
 };
 
 export default hotelItineraryCardProps;

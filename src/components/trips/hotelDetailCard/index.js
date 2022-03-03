@@ -141,7 +141,7 @@ export default function HotelDetailCard({
           </FTouchableOpacity>
         )}
         <Separator style={Styles.separator} />
-        <FText style={Styles.sectionTitle}>Co-travellers</FText>
+        <FText style={Styles.sectionTitle}>Co-travelers</FText>
         {data.coTravellers.map((item, index) => (
           <CoTraveller name={item} key={`abc${index}def`} />
         ))}

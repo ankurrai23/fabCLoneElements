@@ -27,7 +27,6 @@ const HotelItineraryCard = ({
   showLine,
   showInfo,
   preferenceSelected,
-  onDirectionPress,
   processed,
   timelineGreyed,
 }) => {
@@ -102,23 +101,29 @@ const HotelItineraryCard = ({
                 <FText style={Styles.checkIn}>
                   Check-in {item.checkInTime}
                 </FText>
-                <FTouchableOpacity
-                  style={[Styles.flexRowWithAlignCenter]}
-                  onPress={onDirectionPress}>
-                  <MaterialCommunityIcons
-                    name="navigation"
-                    size={DP._18}
-                    color={Color.DODGER_BLUE}
-                    style={Styles.directionIcon}
-                  />
-                  <FText
-                    style={{
-                      fontSize: DP._12,
-                      color: Color.DODGER_BLUE,
-                    }}>
-                    Directions
-                  </FText>
-                </FTouchableOpacity>
+                {item.actions.find((i) => i.type === 'DIRECTION') && (
+                  <FTouchableOpacity
+                    style={[Styles.flexRowWithAlignCenter]}
+                    onPress={() =>
+                      onActionPress(
+                        item.actions.find((i) => i.type === 'DIRECTION'),
+                      )
+                    }>
+                    <MaterialCommunityIcons
+                      name="navigation"
+                      size={DP._18}
+                      color={Color.DODGER_BLUE}
+                      style={Styles.directionIcon}
+                    />
+                    <FText
+                      style={{
+                        fontSize: DP._12,
+                        color: Color.DODGER_BLUE,
+                      }}>
+                      Directions
+                    </FText>
+                  </FTouchableOpacity>
+                )}
               </View>
             )}
           </View>
