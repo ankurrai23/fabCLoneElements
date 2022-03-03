@@ -18,6 +18,7 @@ import {
   TripListingCard,
   SubmittedTripCard,
   HotelPreferenceCard,
+  ManagerActions,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -74,6 +75,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'HotelPreferenceCard',
     component: <HotelPreferenceCard {...data.hotelPreferenceCardProps} />,
+  },
+  {
+    name: 'ManagerActions',
+    component: <ManagerActions {...data.managerActionsProps} />,
   },
 ];
 

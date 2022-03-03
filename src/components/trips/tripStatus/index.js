@@ -49,7 +49,7 @@ const TripStatus = ({statusObj}) => {
         <View style={Styles.shimmerContainer}>
           <Gradient />
           <FText style={Styles.text(Color.DARK_SEA_FOAM)}>
-            In Shortlisting
+            {statusObj.value}
           </FText>
         </View>
       ) : (
