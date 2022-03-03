@@ -16,8 +16,16 @@ export default StyleSheet.create({
   datesContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._34,
+    marginLeft: DP._50,
     marginTop: DP._12,
+  },
+  cancelMessage: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: DP._50,
+    marginTop: DP._20,
+    fontSize: DP._14,
+    color: Color.DARK,
   },
   dates: {
     fontSize: DP._12,

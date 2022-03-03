@@ -23,6 +23,9 @@ function ItineraryHeader(props) {
         <FText style={Styles.tripId}>{props.tripId}</FText>
         <TripStatus statusObj={props.status} />
       </View>
+      {props.cancelledMessage && (
+        <FText style={Styles.cancelMessage}>{props.cancelledMessage}</FText>
+      )}
       {props.tripRequesterInfo && (
         <View style={Styles.subContainer}>
           <View style={Styles.detailsContainer}>

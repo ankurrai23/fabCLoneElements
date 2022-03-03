@@ -5,6 +5,7 @@ const itineraryHeaderProps = {
   itinerary: 'Delhi to Mumbai',
   itineraryDates: 'Sun, 24 Nov - Thu 28 Nov',
   tripId: 'Trip ID: 12345',
+  cancelledMessage: 'You cancelled this trip on 22 Jan 2022',
   status: {
     key: 'IN_SHORTLISTING',
     text: 'Processed',
