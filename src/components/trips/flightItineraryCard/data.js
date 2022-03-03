@@ -4,16 +4,15 @@ const flightItineraryCardProps = {
     month: 'Nov',
     slotDetail: 'Slot: 6PM - 9PM',
     source: 'Delhi',
-    sourceAirportCode: 'BOM - T3',
     destination: 'Mumbai',
+    sourceAirportCode: 'BOM - T3',
     destinationAirportCode: 'BLR - T2',
     departureTime: '18:30',
     arrivalTime: '22:30',
-    airline: 'SG',
     flightNumber: '717',
     pnr: 'GBLP6Q',
     duration: '1h 50min',
-    carrier: 'Indigo',
+    airline: 'Indigo',
     actionDisabled: false,
     actions: [
       {
