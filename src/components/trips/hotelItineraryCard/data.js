@@ -1,19 +1,20 @@
-const hotelCardProps = {
+const hotelItineraryCardProps = {
   item: {
     date: '22-25',
     month: 'Nov',
-    title: 'Taj Continental',
-    location: 'Lower Parel',
-    checkInTime: '1AM',
-    status: {
-      type: 'PROCESSED',
-      text: 'Processed',
-      color: '#000000',
-    },
+    title: 'Mumbai',
+    location: 'Andheri East',
+    // checkInTime: '1AM',
+    // status: {
+    //   type: 'PROCESSED',
+    //   text: 'Processed',
+    //   color: '#000000',
+    // },
+    actionsDisabled: true,
     actions: [
       {
-        type: 'RESCHEDULE',
-        name: 'Reschedule',
+        type: 'MODIFY',
+        name: 'Modify',
       },
       {
         type: 'CANCEL',
@@ -24,10 +25,9 @@ const hotelCardProps = {
   onActionPress: () => console.log('Action Pressed'),
   onCardPress: () => console.log('Card Pressed'),
   onInfoPress: () => console.log('Info Pressed'),
-  itineraryView: true,
   showLine: true,
   showInfo: false,
   preferenceSelected: false,
 };
 
-export default hotelCardProps;
+export default hotelItineraryCardProps;

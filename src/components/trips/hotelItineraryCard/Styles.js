@@ -87,15 +87,15 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  actionContainer: (processed) => ({
+  actionContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: processed ? DP._10 : DP._13,
+    paddingVertical: DP._13,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
-  }),
+  },
   flexRowAndAlignCenter: {flexDirection: 'row', alignItems: 'center'},
   cancel: {
     color: Color.PASTEL_RED,

@@ -6,7 +6,7 @@ const itineraryHeaderProps = {
   itineraryDates: 'Sun, 24 Nov - Thu 28 Nov',
   tripId: 'Trip ID: 12345',
   status: {
-    type: 'IN_SHORTLISTING',
+    key: 'IN_SHORTLISTING',
     text: 'Processed',
     color: Color.DARK_SEA_FOAM,
   },

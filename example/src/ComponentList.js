@@ -7,17 +7,17 @@ import {
   DashedLine,
   PickerField,
   FlightPreferenceCard,
-  FlightPreferenceList,
   HotelDetailCard,
   TripStatus,
-  FlightCard,
-  HotelCard,
+  FlightItineraryCard,
+  HotelItineraryCard,
   RemarksContainer,
   CoTravellerDetails,
   EmptyScreen,
   ItineraryHeader,
   TripListingCard,
   SubmittedTripCard,
+  HotelPreferenceCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -36,10 +36,6 @@ const TRIP_COMPONENTS = [
     component: <FlightPreferenceCard {...data.flightPreferenceCardProps} />,
   },
   {
-    name: 'FlightPreferenceList',
-    component: <FlightPreferenceList {...data.flightOptionsProps} />,
-  },
-  {
     name: 'HotelDetailCard',
     component: <HotelDetailCard {...data.hotelDetailCardProps} />,
   },
@@ -48,10 +44,13 @@ const TRIP_COMPONENTS = [
     component: <TripStatus {...data.tripStatusProps} />,
   },
   {
-    name: 'FlightCard',
-    component: <FlightCard {...data.flightCardProps} />,
+    name: 'FlightItineraryCard',
+    component: <FlightItineraryCard {...data.flightItineraryCardProps} />,
   },
-  {name: 'HotelCard', component: <HotelCard {...data.hotelCardProps} />},
+  {
+    name: 'HotelItineraryCard',
+    component: <HotelItineraryCard {...data.hotelItineraryCardProps} />,
+  },
   {
     name: 'RemarksContainer',
     component: <RemarksContainer {...data.remarksContainerProps} />,
@@ -71,6 +70,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'SubmittedTripCard',
     component: <SubmittedTripCard {...data.submittedTripCardProps} />,
+  },
+  {
+    name: 'HotelPreferenceCard',
+    component: <HotelPreferenceCard {...data.hotelPreferenceCardProps} />,
   },
 ];
 

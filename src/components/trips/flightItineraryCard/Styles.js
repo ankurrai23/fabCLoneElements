@@ -9,15 +9,15 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
   },
-  actionContainer: (processed) => ({
+  actionContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: processed ? DP._10 : DP._13,
+    paddingVertical: DP._13,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
-  }),
+  },
   cancel: {
     color: Color.PASTEL_RED,
     marginLeft: DP._4,
@@ -37,12 +37,13 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   time: {
+    marginTop: DP._4,
     fontSize: DP._16,
   },
   date: {
     fontSize: DP._18,
   },
-  flightName: {
+  slotDetail: {
     fontSize: DP._12,
     color: Color.TWILIGHT_BLUE,
   },
@@ -54,13 +55,13 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'baseline'},
-  card: (modified) => ({padding: DP._16, opacity: modified ? 0.4 : 1}),
+  card: {padding: DP._16},
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },
   icon: {
-    width: 30,
-    height: 30,
+    width: DP._30,
+    height: DP._30,
     marginRight: DP._8,
   },
   dashedLineContainer: {

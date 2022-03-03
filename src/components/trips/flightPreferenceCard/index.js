@@ -19,7 +19,6 @@ export default function FlightPreferenceCard({
   height,
   opacity,
   onPress,
-  preference,
   onTapToSetPreferences,
   flightInfo,
 }) {
@@ -34,10 +33,10 @@ export default function FlightPreferenceCard({
               backgroundColor: Color.DARK,
             }}
           />
-          <FText style={Styles.flightName}>{flightInfo.name}</FText>
+          <FText style={Styles.flightName}>{flightInfo.carrier}</FText>
           <FText style={Styles.flightNumber}>
             {' '}
-            | {flightInfo.flightNumber}
+            | {flightInfo.airline}-{flightInfo.flightNumber}
           </FText>
           <View style={Styles.flexGrow_1} />
           <Animated.Text style={{opacity: opacity, fontFamily: 'Rubik-Bold'}}>
@@ -46,7 +45,7 @@ export default function FlightPreferenceCard({
         </View>
         <View style={Styles.flightTimeContainer}>
           <FText style={Styles.flightTimeTextStyle}>
-            {flightInfo.boardingTime}
+            {flightInfo.departureTime}
           </FText>
           <Animated.View style={[Styles.dot, {opacity: opacity}]} />
           <Animated.View style={[Styles.line, {opacity: opacity}]} />
@@ -65,14 +64,14 @@ export default function FlightPreferenceCard({
         </View>
         <View style={Styles.flightDurationContainer}>
           <View style={Styles.nameAndDurationContainer}>
-            <FText type="medium">{flightInfo.boardingLocation}</FText>
+            <FText type="medium">{flightInfo.sourceAirportCode}</FText>
             <Animated.Text
               style={{
                 fontSize: DP._12,
                 color: Color.GREYISH_PURPLE,
                 opacity: opacity,
               }}>
-              {flightInfo.flightDuration}
+              {flightInfo.duration}
             </Animated.Text>
           </View>
           <View style={Styles.dot_two} />
@@ -83,25 +82,25 @@ export default function FlightPreferenceCard({
                 color: Color.GREYISH_PURPLE,
                 opacity: opacity,
               }}>
-              {flightInfo.stops}
+              {flightInfo.journeyType}
             </Animated.Text>
             <Animated.Text
               type="medium"
               style={{opacity: opacity, fontFamily: 'Rubik-Medium'}}>
-              {flightInfo.destination}
+              {flightInfo.destinationAirportCode}
             </Animated.Text>
           </View>
         </View>
         <Animated.View style={{opacity: opacity}}>
           <FTouchableOpacity
             onPress={onTapToSetPreferences}
-            style={Styles.buttonStyle(preference)}>
+            style={Styles.buttonStyle(flightInfo.preference)}>
             <FText type="medium" style={{color: Color.TWILIGHT_BLUE}}>
-              Tap to set preference
+              Tap to {flightInfo.preference ? 'reset' : 'set'} preference
             </FText>
             <View style={Styles.preferenceContainer}>
               <FText type="medium" style={{fontSize: DP._18}}>
-                {preference}
+                {flightInfo.preference}
               </FText>
             </View>
           </FTouchableOpacity>

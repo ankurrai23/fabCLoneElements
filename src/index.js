@@ -13,18 +13,17 @@ import DashedLine from './common/components/dashedLine';
 import PickerField from './common/components/pickerField';
 
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
-import FlightPreferenceList from './components/trips/flightPreferenceList';
 import HotelDetailCard from './components/trips/hotelDetailCard';
 import TripStatus from './components/trips/tripStatus';
-import FlightCard from './components/trips/flightCard';
-import HotelCard from './components/trips/hotelCard';
+import FlightItineraryCard from './components/trips/flightItineraryCard';
+import HotelItineraryCard from './components/trips/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';
 import CoTravellerDetails from './components/trips/coTravellersDetail';
 import EmptyScreen from './common/components/emptyScreen';
 import ItineraryHeader from './components/trips/itineraryHeader';
 import TripListingCard from './components/trips/tripListingCard';
 import SubmittedTripCard from './components/trips/submittedTripCard';
-
+import HotelPreferenceCard from './components/trips/hotelPreferenceCard';
 export {
   data,
   //RN Components
@@ -41,15 +40,15 @@ export {
   PickerField,
   // Trips components
   FlightPreferenceCard,
-  FlightPreferenceList,
   HotelDetailCard,
   TripStatus,
-  FlightCard,
-  HotelCard,
+  FlightItineraryCard,
+  HotelItineraryCard,
   RemarksContainer,
   CoTravellerDetails,
   EmptyScreen,
   ItineraryHeader,
   TripListingCard,
   SubmittedTripCard,
+  HotelPreferenceCard,
 };
