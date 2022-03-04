@@ -25,6 +25,7 @@ const HotelItineraryCard = ({
   onInfoPress,
   style,
   itineraryView,
+  hideIcon,
   showLine,
   showInfo,
   preferenceSelected,
@@ -57,14 +58,16 @@ const HotelItineraryCard = ({
   return (
     <View style={[Styles.flexRow, style]}>
       <View>
-        <FImage
-          style={Styles.icon}
-          source={
-            timelineGreyed
-              ? ImageConst.grayHotelIconWithBorder
-              : ImageConst.hotelIconWithBorder
-          }
-        />
+        {!hideIcon && (
+          <FImage
+            style={Styles.icon}
+            source={
+              timelineGreyed
+                ? ImageConst.grayHotelIconWithBorder
+                : ImageConst.hotelIconWithBorder
+            }
+          />
+        )}
         {showLine && (
           <View style={Styles.dashedLineContainer}>
             <DashedLine
