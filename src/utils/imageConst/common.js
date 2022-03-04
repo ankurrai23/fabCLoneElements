@@ -12,4 +12,5 @@ export default {
   hotelIcon: require(TRIP_DIRECTORY + 'itinerary-hotel-icon.png'),
   flightIcon: require(TRIP_DIRECTORY + 'itinerary-flight-icon.png'),
   bellIcon: require(TRIP_DIRECTORY + 'bell-icon.png'),
+  editIcon: require(TRIP_DIRECTORY + 'edit.png'),
 };

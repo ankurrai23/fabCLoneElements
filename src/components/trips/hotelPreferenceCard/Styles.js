@@ -6,7 +6,7 @@ import {shadowObj} from '../../../utils/Utils';
 export default StyleSheet.create({
   container: (offline) => ({
     backgroundColor: Color.WHITE,
-    padding: !offline && DP._16,
+    padding: offline && DP._16,
     borderRadius: DP._4,
     ...shadowObj,
   }),
@@ -36,16 +36,21 @@ export default StyleSheet.create({
   },
   hotelName: (offline) => ({
     color: Color.DARK_BLUE_GREY_TWO,
-    marginBottom: offline ? DP._4 : DP._8,
+    marginBottom: offline ? DP._8 : DP._4,
   }),
   flexRow: {flexDirection: 'row'},
-  hotelAddress: {flex: 0.5, fontSize: DP._10, color: Color.GREYISH_PURPLE},
-  costOfHotel: (offline) => ({
-    // flex: 0.5,
+  hotelAddress: {
+    flex: 0.5,
+    paddingTop: DP._2,
+    fontSize: DP._10,
+    color: Color.GREYISH_PURPLE,
+  },
+  costOfHotel: {
+    flex: 0.5,
     fontSize: DP._20,
     textAlign: 'right',
     color: Color.CHARCOAL_GREY_TWO,
-  }),
+  },
   mapAndCostInfoContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -57,7 +62,7 @@ export default StyleSheet.create({
   marginBottom_16: {marginBottom: DP._16},
   hotelStar: (offline) => ({
     fontSize: DP._12,
-    color: offline ? Color.MANGO : Color.DARK_SLATE_BLUE,
+    color: offline ? Color.DARK_SLATE_BLUE : Color.MANGO,
   }),
   preferenceText: {fontSize: DP._18},
   setAndResetPreferenceText: {color: Color.TWILIGHT_BLUE},
