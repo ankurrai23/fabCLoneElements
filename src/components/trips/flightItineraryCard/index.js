@@ -25,6 +25,7 @@ const FlightItineraryCard = ({
   onCardPress,
   onInfoPress,
   style,
+  hideIcon,
   showLine,
   showInfo,
   preferenceSelected,
@@ -56,14 +57,16 @@ const FlightItineraryCard = ({
   return (
     <View style={[Styles.flexRow, style]}>
       <View>
-        <FImage
-          style={Styles.icon}
-          source={
-            timelineGreyed
-              ? ImageConst.grayFlightIconWithBorder
-              : ImageConst.flightIconWithBorder
-          }
-        />
+        {!hideIcon && (
+          <FImage
+            style={Styles.icon}
+            source={
+              timelineGreyed
+                ? ImageConst.grayFlightIconWithBorder
+                : ImageConst.flightIconWithBorder
+            }
+          />
+        )}
         {showLine && (
           <View style={Styles.dashedLineContainer}>
             <DashedLine
