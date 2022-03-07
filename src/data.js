@@ -13,6 +13,7 @@ import emptyScreenProps from './common/components/emptyScreen/data';
 import itineraryHeaderProps from './components/trips/itineraryHeader/data';
 import tripListingCardProps from './components/trips/tripListingCard/data';
 import submittedTripCardProps from './components/trips/submittedTripCard/data';
+import receivedTripCardProps from './components/trips/receivedTripCard/data';
 import hotelPreferenceCardProps from './components/trips/hotelPreferenceCard/data';
 import managerActionsProps from './components/trips/managerActions/data';
 
@@ -32,6 +33,7 @@ export {
   itineraryHeaderProps,
   tripListingCardProps,
   submittedTripCardProps,
+  receivedTripCardProps,
   hotelPreferenceCardProps,
   managerActionsProps,
 };
