@@ -78,12 +78,6 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               </FText>
             </FTouchableOpacity>
           </View>
-          {item.actions?.[1]?.type === 'SEND_REMINDER' && (
-            <FTouchableOpacity
-              onPress={() => _onActionPress(item.actions?.[1]?.type)}>
-              <FImage source={ImageConst.bellIcon} style={Styles.bell} />
-            </FTouchableOpacity>
-          )}
         </View>
         {item.isCancelled && (
           <View style={Styles.flexRow}>

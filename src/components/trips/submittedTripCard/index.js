@@ -75,9 +75,8 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
               </FText>
             </FTouchableOpacity>
           </View>
-          {item.actions?.[1]?.type === 'SEND_REMINDER' && (
-            <FTouchableOpacity
-              onPress={() => _onActionPress(item.actions?.[1]?.type)}>
+          {item.actions?.find((e) => e.type === 'SEND_REMINDER') && (
+            <FTouchableOpacity onPress={() => _onActionPress('SEND_REMINDER')}>
               <FImage source={ImageConst.bellIcon} style={Styles.bell} />
             </FTouchableOpacity>
           )}
@@ -89,12 +88,13 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
           </View>
         )}
         <View style={Styles.footer}>
-          <FTouchableOpacity
-            onPress={() => _onActionPress(item.actions[0].type)}>
-            <FText style={Styles.action(item.actions?.[0]?.type)}>
-              {item.actions?.[0].name}
-            </FText>
-          </FTouchableOpacity>
+          {item.actions
+            .filter((e) => e.type !== 'SEND_REMINDER')
+            .map((e) => (
+              <FTouchableOpacity onPress={() => _onActionPress(e.type)}>
+                <FText style={Styles.action(e.type)}>{e.name}</FText>
+              </FTouchableOpacity>
+            ))}
         </View>
       </FTouchableOpacity>
       <DialogBox

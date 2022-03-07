@@ -19,12 +19,12 @@ const submittedTripCardProps = {
     },
     actions: [
       {
-        type: 'VIEW_OPTIONS',
-        name: 'View options',
-      },
-      {
         type: 'SEND_REMINDER',
         name: 'Send Reminder',
+      },
+      {
+        type: 'VIEW_OPTIONS',
+        name: 'View options',
       },
     ],
   },
