@@ -25,6 +25,7 @@ const FlightItineraryCard = ({
   onCardPress,
   onInfoPress,
   style,
+  hideIcon,
   showLine,
   showInfo,
   preferenceSelected,
@@ -56,14 +57,16 @@ const FlightItineraryCard = ({
   return (
     <View style={[Styles.flexRow, style]}>
       <View>
-        <FImage
-          style={Styles.icon}
-          source={
-            timelineGreyed
-              ? ImageConst.grayFlightIconWithBorder
-              : ImageConst.flightIconWithBorder
-          }
-        />
+        {!hideIcon && (
+          <FImage
+            style={Styles.icon}
+            source={
+              timelineGreyed
+                ? ImageConst.grayFlightIconWithBorder
+                : ImageConst.flightIconWithBorder
+            }
+          />
+        )}
         {showLine && (
           <View style={Styles.dashedLineContainer}>
             <DashedLine
@@ -77,9 +80,7 @@ const FlightItineraryCard = ({
         )}
       </View>
       <View style={Styles.container}>
-        <FTouchableOpacity
-          style={Styles.card}
-          onPress={() => onCardPress(item)}>
+        <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>
               <FText type={'medium'} style={Styles.date}>

@@ -11,6 +11,7 @@ export default {
     duration: '1h 50 mins',
     journeyType: 'Non stop',
     preference: 1,
+    disablePref: false,
   },
   onPress: () => console.log('Card Pressed'),
   onTapToSetPreferences: () => console.log('Preference button pressed'),

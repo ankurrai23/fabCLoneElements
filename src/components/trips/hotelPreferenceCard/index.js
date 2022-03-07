@@ -3,7 +3,6 @@ import React from 'react';
 import {FText, FTouchableOpacity, Separator, FImage} from '../../..';
 import Styles from './Styles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import {FlatList} from 'react-native-gesture-handler';
@@ -13,12 +12,18 @@ const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
     <Separator style={Styles.marginBottom_16} />
     <FTouchableOpacity
       onPress={onTapToSetPreferences}
-      style={Styles.buttonStyle(item.preference)}>
-      <FText type="medium" style={Styles.setAndResetPreferenceText}>
+      disabled={item.disablePref}
+      style={Styles.buttonStyle(item.disablePref, item.preference)}>
+      <FText
+        type="medium"
+        style={Styles.setAndResetPreferenceText(
+          item.disablePref,
+          item.preference,
+        )}>
         Tap to {item.preference ? 'reset' : 'set'} preference
       </FText>
       <View style={Styles.preferenceContainer}>
-        <FText type="medium" style={Styles.preferenceText}>
+        <FText type="medium" style={Styles.preferenceText(item.disablePref)}>
           {item.preference}
         </FText>
       </View>
@@ -31,8 +36,9 @@ const NonRichHotelView = ({
   item,
   onTapToSetPreferences,
   onViewMapPress,
+  onCardPress,
 }) => (
-  <View style={Styles.container(offline)}>
+  <FTouchableOpacity style={Styles.container(offline)} onPress={onCardPress}>
     <View style={Styles.starContainer}>
       <Stars item={item} />
       <FText style={Styles.hotelStar}>{item.starRating} star hotel</FText>
@@ -58,7 +64,7 @@ const NonRichHotelView = ({
       onTapToSetPreferences={onTapToSetPreferences}
       item={item}
     />
-  </View>
+  </FTouchableOpacity>
 );
 
 const Stars = ({item}) => {
@@ -73,16 +79,13 @@ const Stars = ({item}) => {
   ));
 };
 
-const RichHotelView = ({offline, item, onTapToSetPreferences}) => (
-  <View style={Styles.container(offline)}>
+const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
+  <FTouchableOpacity style={Styles.container(offline)} onPress={onCardPress}>
     <View>
       <FlatList
         data={item.hotelImages}
         renderItem={({item: imageObj}) => (
-          <FImage
-            source={{uri: imageObj}}
-            style={{width: DP._250, height: DP._150, marginRight: DP._1}}
-          />
+          <FImage source={{uri: imageObj}} style={Styles.hotelImageStyle} />
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -123,19 +126,18 @@ const RichHotelView = ({offline, item, onTapToSetPreferences}) => (
       </FText>
       <View style={Styles.amountContainer}>
         <View style={[Styles.flexRow, {paddingTop: DP._1}]}>
-          <Feather name="check" size={DP._16} color={Color.DARK_SEA_FOAM} />
-          <FText type="medium" style={Styles.inclusions}>
-            Free breakfast
-          </FText>
+          {item.includesBreakfast && (
+            <FText type="medium" style={Styles.inclusions}>
+              Includes breakfast
+            </FText>
+          )}
         </View>
         <FText type={'bold'} style={Styles.costOfHotel}>
           {item.cost}
         </FText>
       </View>
       <View style={Styles.cancellationInfoContainer}>
-        <FText style={Styles.cancellationText}>
-          Free cancellation before 12 nov
-        </FText>
+        <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
         <FText style={Styles.priceDetail}>price/night (Ex GST)</FText>
       </View>
       <View style={Styles.buttonContainer}>
@@ -145,19 +147,24 @@ const RichHotelView = ({offline, item, onTapToSetPreferences}) => (
         />
       </View>
     </View>
-  </View>
+  </FTouchableOpacity>
 );
 
 const ratingsArray = (value) => {
   let filledBars = parseInt(value / 20, 10);
   let partialFilled = ((value % 20) / 20) * 100;
-  let arr = [...Array(filledBars).fill('100%'), partialFilled + '%'];
+  let arr = [...Array(filledBars).fill('100%')];
+  if (filledBars === 5) {
+    return arr;
+  }
+  arr.push(`${partialFilled}%`);
   return [...arr, ...Array(5 - arr.length).fill('0%')];
 };
 
 export default function HotelPreferenceCard({
   item,
   onTapToSetPreferences,
+  onCardPress,
   offline,
   onViewMapPress,
 }) {
@@ -166,6 +173,7 @@ export default function HotelPreferenceCard({
       {offline ? (
         <NonRichHotelView
           item={item}
+          onCardPress={onCardPress}
           onTapToSetPreferences={onTapToSetPreferences}
           onViewMapPress={onViewMapPress}
           offline={offline}
@@ -173,6 +181,7 @@ export default function HotelPreferenceCard({
       ) : (
         <RichHotelView
           item={item}
+          onCardPress={onCardPress}
           offline={offline}
           onTapToSetPreferences={onTapToSetPreferences}
         />

@@ -1,8 +1,8 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import {shadowObj} from '../../../utils/Utils';
-
+const {width} = Dimensions.get('window');
 export default StyleSheet.create({
   container: (offline) => ({
     backgroundColor: Color.WHITE,
@@ -10,13 +10,21 @@ export default StyleSheet.create({
     borderRadius: DP._4,
     ...shadowObj,
   }),
-  buttonStyle: (preference) => ({
+  buttonStyle: (disablePref, preference) => ({
     borderWidth: 1,
     padding: DP._10,
     borderRadius: DP._18,
-    borderColor: preference ? Color.SUN_YELLOW : Color.TWILIGHT_BLUE,
+    borderColor: disablePref
+      ? Color.LIGHT_BLUEY_GREY
+      : preference
+      ? Color.SUN_YELLOW
+      : Color.TWILIGHT_BLUE,
     alignItems: 'center',
-    backgroundColor: preference ? Color.SUN_YELLOW : 'transparent',
+    backgroundColor: disablePref
+      ? Color.LIGHT_BLUEY_GREY
+      : preference
+      ? Color.SUN_YELLOW
+      : 'transparent',
   }),
   preferenceContainer: {
     position: 'absolute',
@@ -64,8 +72,17 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: offline ? Color.DARK_SLATE_BLUE : Color.MANGO,
   }),
-  preferenceText: {fontSize: DP._18},
-  setAndResetPreferenceText: {color: Color.TWILIGHT_BLUE},
+  preferenceText: (disablePref) => ({
+    fontSize: DP._18,
+    color: disablePref ? Color.LIGHT_BLUEY_GREY : Color.DARK,
+  }),
+  setAndResetPreferenceText: (disablePref, preference) => ({
+    color: disablePref
+      ? Color.WHITE
+      : preference
+      ? Color.DARK
+      : Color.TWILIGHT_BLUE,
+  }),
   icon: {marginRight: DP._4},
   companyPreferred: {
     position: 'absolute',
@@ -131,11 +148,11 @@ export default StyleSheet.create({
   inclusions: {
     fontSize: DP._12,
     color: Color.DARK_SEA_FOAM,
-    marginLeft: DP._4,
   },
   secondaryAddr: {
     fontSize: DP._11,
     color: Color.CHARCOAL_GREY_TWO,
     marginBottom: DP._12,
   },
+  hotelImageStyle: {width: 0.7 * width, height: DP._146, marginRight: DP._1},
 });

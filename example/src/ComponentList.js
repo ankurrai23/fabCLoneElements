@@ -20,6 +20,8 @@ import {
   ReceivedTripCard,
   HotelPreferenceCard,
   ManagerActions,
+  TripCardLoadingState,
+  ItineraryViewLoadingState,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -84,6 +86,14 @@ const TRIP_COMPONENTS = [
   {
     name: 'ManagerActions',
     component: <ManagerActions {...data.managerActionsProps} />,
+  },
+  {
+    name: 'TripCardLoadingState',
+    component: <TripCardLoadingState />,
+  },
+  {
+    name: 'ItineraryViewLoadingState',
+    component: <ItineraryViewLoadingState />,
   },
 ];
 

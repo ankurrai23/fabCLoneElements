@@ -1,13 +1,14 @@
 import {StyleSheet} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
+import {shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
     borderRadius: DP._4,
-    overflow: 'hidden',
     padding: DP._16,
+    ...shadowObj,
   },
   flightLogoAndNameContainer: {
     flexDirection: 'row',
@@ -62,13 +63,21 @@ export default StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
   },
-  buttonStyle: (preference) => ({
+  buttonStyle: (disablePref, preference) => ({
     borderWidth: 1,
     padding: DP._10,
     borderRadius: DP._18,
-    borderColor: preference ? Color.SUN_YELLOW : Color.TWILIGHT_BLUE,
+    borderColor: disablePref
+      ? Color.LIGHT_BLUEY_GREY
+      : preference
+      ? Color.SUN_YELLOW
+      : Color.TWILIGHT_BLUE,
     alignItems: 'center',
-    backgroundColor: preference ? Color.SUN_YELLOW : 'transparent',
+    backgroundColor: disablePref
+      ? Color.LIGHT_BLUEY_GREY
+      : preference
+      ? Color.SUN_YELLOW
+      : 'transparent',
   }),
   dot_two: {
     padding: DP._3,

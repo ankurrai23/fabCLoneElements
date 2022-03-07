@@ -140,6 +140,7 @@ export const DP = {
   _143: calculateDimen(143),
   _144: calculateDimen(144),
   _145: calculateDimen(145),
+  _146: calculateDimen(146),
   _148: calculateDimen(148),
   _150: calculateDimen(150),
   _151: calculateDimen(151),

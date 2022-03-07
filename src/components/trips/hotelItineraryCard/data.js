@@ -30,6 +30,7 @@ const hotelItineraryCardProps = {
   onActionPress: (action) => console.log('Action Pressed'),
   onCardPress: () => console.log('Card Pressed'),
   onInfoPress: () => console.log('Info Pressed'),
+  hideIcon: false,
   showLine: true,
   showInfo: false,
   preferenceSelected: false,
