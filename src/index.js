@@ -25,6 +25,7 @@ import TripListingCard from './components/trips/tripListingCard';
 import SubmittedTripCard from './components/trips/submittedTripCard';
 import HotelPreferenceCard from './components/trips/hotelPreferenceCard';
 import ManagerActions from './components/trips/managerActions';
+import ReceivedTripCard from './components/trips/receivedTripCard';
 
 export {
   data,
@@ -52,6 +53,7 @@ export {
   ItineraryHeader,
   TripListingCard,
   SubmittedTripCard,
+  ReceivedTripCard,
   HotelPreferenceCard,
   ManagerActions,
 };

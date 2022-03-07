@@ -17,6 +17,7 @@ import {
   ItineraryHeader,
   TripListingCard,
   SubmittedTripCard,
+  ReceivedTripCard,
   HotelPreferenceCard,
   ManagerActions,
 } from 'react-native-fab-elements';
@@ -71,6 +72,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'SubmittedTripCard',
     component: <SubmittedTripCard {...data.submittedTripCardProps} />,
+  },
+  {
+    name: 'ReceivedTripCard',
+    component: <ReceivedTripCard {...data.receivedTripCardProps} />,
   },
   {
     name: 'HotelPreferenceCard',
