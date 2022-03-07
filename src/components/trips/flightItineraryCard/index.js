@@ -77,9 +77,7 @@ const FlightItineraryCard = ({
         )}
       </View>
       <View style={Styles.container}>
-        <FTouchableOpacity
-          style={Styles.card}
-          onPress={() => onCardPress(item)}>
+        <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>
               <FText type={'medium'} style={Styles.date}>

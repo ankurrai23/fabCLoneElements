@@ -23,8 +23,8 @@ export default function FlightPreferenceCard({
   flightInfo,
 }) {
   return (
-    <FTouchableOpacity onPress={onPress} style={{...shadowObj}}>
-      <Animated.View style={[Styles.container, {width: width, height: height}]}>
+    <FTouchableOpacity onPress={onPress} style={Styles.container}>
+      <Animated.View style={{width: width, height: height, overflow: 'hidden'}}>
         <View style={Styles.flightLogoAndNameContainer}>
           <FImage
             style={{
@@ -94,12 +94,31 @@ export default function FlightPreferenceCard({
         <Animated.View style={{opacity: opacity}}>
           <FTouchableOpacity
             onPress={onTapToSetPreferences}
-            style={Styles.buttonStyle(flightInfo.preference)}>
-            <FText type="medium" style={{color: Color.TWILIGHT_BLUE}}>
+            disabled={flightInfo.disablePref}
+            style={Styles.buttonStyle(
+              flightInfo.disablePref,
+              flightInfo.preference,
+            )}>
+            <FText
+              type="medium"
+              style={{
+                color: flightInfo.disablePref
+                  ? Color.WHITE
+                  : flightInfo.preference
+                  ? Color.DARK
+                  : Color.TWILIGHT_BLUE,
+              }}>
               Tap to {flightInfo.preference ? 'reset' : 'set'} preference
             </FText>
             <View style={Styles.preferenceContainer}>
-              <FText type="medium" style={{fontSize: DP._18}}>
+              <FText
+                type="medium"
+                style={{
+                  fontSize: DP._18,
+                  color: flightInfo.disablePref
+                    ? Color.LIGHT_BLUEY_GREY
+                    : Color.DARK,
+                }}>
                 {flightInfo.preference}
               </FText>
             </View>

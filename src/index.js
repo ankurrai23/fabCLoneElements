@@ -25,6 +25,8 @@ import TripListingCard from './components/trips/tripListingCard';
 import SubmittedTripCard from './components/trips/submittedTripCard';
 import HotelPreferenceCard from './components/trips/hotelPreferenceCard';
 import ManagerActions from './components/trips/managerActions';
+import TripCardLoadingState from './components/trips/tripCardLoadingState';
+import ItineraryViewLoadingState from './components/trips/itineraryViewLoadingState';
 
 export {
   data,
@@ -54,4 +56,6 @@ export {
   SubmittedTripCard,
   HotelPreferenceCard,
   ManagerActions,
+  TripCardLoadingState,
+  ItineraryViewLoadingState,
 };

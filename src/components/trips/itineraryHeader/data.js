@@ -8,7 +8,7 @@ const itineraryHeaderProps = {
   cancelledMessage: 'You cancelled this trip on 22 Jan 2022',
   status: {
     key: 'IN_SHORTLISTING',
-    text: 'Processed',
+    value: 'Processed',
     color: Color.DARK_SEA_FOAM,
   },
   tripRequesterInfo: {

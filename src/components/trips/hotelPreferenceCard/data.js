@@ -19,10 +19,14 @@ const hotelPreferenceCardProps = {
     colleaguesRatingAvg: 4.2,
     googleMapUrl: 'https://www.google.com',
     preference: 5,
+    includesBreakfast: true,
+    cancellationText: 'Free cancellation before 12 Nov',
+    disablePref: true,
   },
   onTapToSetPreferences: () => console.log('preferences tapped'),
   onViewMapPress: (item) => console.log(item),
-  offline: false,
+  onCardPress: (item) => console.log('Card pressed'),
+  offline: true,
 };
 
 export default hotelPreferenceCardProps;
