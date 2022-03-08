@@ -48,7 +48,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
         <View style={Styles.flexRow}>
           <FText style={{color: Color.GREYISH_PURPLE}}>Request by: </FText>
           <FText numberOfLines={1} style={Styles.destination} type="medium">
-            {item.requestBy}
+            {item.requestedBy}
           </FText>
         </View>
         <View style={Styles.flexRow}>
@@ -62,23 +62,25 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               Styles.date
             }>{`${item.tripStartDate} - ${item.tripEndDate}`}</FText>
         </View>
-        <View style={[Styles.flexRow, Styles.justifyBetween]}>
-          <View style={Styles.flexDirectionRow}>
-            <FText style={{color: Color.GREYISH_PURPLE}}>
-              Co-traveler(s):{' '}
-            </FText>
-            <FTouchableOpacity
-              onPress={() =>
-                item.coTravellers.length > 1 && setSheetVisible(true)
-              }>
-              <FText>
-                {item.coTravellers[0]}
-                {item.coTravellers.length > 1 &&
-                  ` +${item.coTravellers.length - 1}`}
+        {item.coTravellers?.length > 0 && (
+          <View style={[Styles.flexRow, Styles.justifyBetween]}>
+            <View style={Styles.flexDirectionRow}>
+              <FText style={{color: Color.GREYISH_PURPLE}}>
+                Co-traveler(s):{' '}
               </FText>
-            </FTouchableOpacity>
+              <FTouchableOpacity
+                onPress={() =>
+                  item.coTravellers.length > 1 && setSheetVisible(true)
+                }>
+                <FText>
+                  {item.coTravellers[0]}
+                  {item.coTravellers.length > 1 &&
+                    ` +${item.coTravellers.length - 1}`}
+                </FText>
+              </FTouchableOpacity>
+            </View>
           </View>
-        </View>
+        )}
         {item.isCancelled && (
           <View style={Styles.flexRow}>
             <View style={Styles.cancelledDot} />

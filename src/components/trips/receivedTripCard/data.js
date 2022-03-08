@@ -1,11 +1,11 @@
 const receivedTripCardProps = {
   item: {
     masterTripId: 'TP962KDG',
-    requestBy: 'Rohan Srivasatava',
+    requestedBy: 'Rohan Srivasatava',
     requestType: 'FLIGHT_AND_HOTEL',
     title: 'Delhi to Mumbai',
     isProcessing: true,
-    coTravellers: ['Rahul Gupta', 'Abhi Gupta'],
+    coTravellers: [],
     tripStartDate: 'Thu, 22 Nov',
     tripEndDate: 'Thu, 23 Nov',
     bookingStatus: 'CONFIRMED',

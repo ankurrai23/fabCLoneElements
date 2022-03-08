@@ -65,7 +65,7 @@ export default StyleSheet.create({
     width: DP._14,
   },
   destination: {
-    fontSize: DP._18,
+    fontSize: DP._14,
     color: Color.DARK,
   },
   date: {
