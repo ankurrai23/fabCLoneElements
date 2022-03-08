@@ -7,7 +7,6 @@ export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
     borderRadius: DP._4,
-    padding: DP._16,
     ...shadowObj,
   },
   flightLogoAndNameContainer: {
