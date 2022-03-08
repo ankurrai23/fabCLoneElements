@@ -36,21 +36,31 @@ const FlightItineraryCard = ({
     <>
       <Separator style={{marginHorizontal: DP._16}} />
       <View style={Styles.actionContainer}>
-        <FTouchableOpacity
-          onPress={() => onActionPress(item.actions[1])}
-          style={Styles.flexRowAndAlignCenter}>
-          <AntDesign name="close" size={DP._18} color={Color.PASTEL_RED} />
-          <FText style={Styles.cancel}>{item.actions?.[1]?.name}</FText>
-        </FTouchableOpacity>
-        <FTouchableOpacity
-          onPress={() => onActionPress(item.actions[0])}
-          style={Styles.primaryButtonStyle}>
-          <FImage
-            style={Styles.rescheduleIcon}
-            source={ImageConst.rescheduleIcon}
-          />
-          <FText style={Styles.reschedule}>{item.actions?.[0]?.name}</FText>
-        </FTouchableOpacity>
+        {item.actions?.[0]?.type === 'VIEW_REMARKS' ? (
+          <FTouchableOpacity
+            onPress={() => onActionPress(item.actions[0])}
+            style={Styles.flexRowAndAlignCenter}>
+            <FText style={Styles.reschedule}>{item.actions?.[0]?.name}</FText>
+          </FTouchableOpacity>
+        ) : (
+          <>
+            <FTouchableOpacity
+              onPress={() => onActionPress(item.actions[1])}
+              style={Styles.flexRowAndAlignCenter}>
+              <AntDesign name="close" size={DP._18} color={Color.PASTEL_RED} />
+              <FText style={Styles.cancel}>{item.actions?.[1]?.name}</FText>
+            </FTouchableOpacity>
+            <FTouchableOpacity
+              onPress={() => onActionPress(item.actions[0])}
+              style={Styles.primaryButtonStyle}>
+              <FImage
+                style={Styles.rescheduleIcon}
+                source={ImageConst.rescheduleIcon}
+              />
+              <FText style={Styles.reschedule}>{item.actions?.[0]?.name}</FText>
+            </FTouchableOpacity>
+          </>
+        )}
       </View>
     </>
   );
