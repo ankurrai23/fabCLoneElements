@@ -7,6 +7,7 @@ export default StyleSheet.create({
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
     paddingVertical: DP._24,
+    flexGrow: 1,
   },
   rejectButtonStyle: {
     flex: 1,

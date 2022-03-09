@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     borderRadius: 5,
     justifyContent: 'space-between',
-    backgroundColor: selected ? '#379aff1a' : 'transaprent',
+    backgroundColor: selected ? '#379aff1a' : 'transparent',
   }),
   titleText: {fontSize: 20, marginVertical: 5},
   componentName: (selected) => ({
