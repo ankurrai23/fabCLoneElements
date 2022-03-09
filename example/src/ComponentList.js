@@ -22,6 +22,15 @@ import {
   ManagerActions,
   TripCardLoadingState,
   ItineraryViewLoadingState,
+  ComingSoon,
+  RequestType,
+  BasicTravelDetails,
+  HotelDetails,
+  FlightDetails,
+  OtherTravelDetails,
+  ApprovalManager,
+  AddFlightDetails,
+  AddHotelDetails,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -59,10 +68,10 @@ const TRIP_COMPONENTS = [
     name: 'RemarksContainer',
     component: <RemarksContainer {...data.remarksContainerProps} />,
   },
-  {
-    name: 'CoTravellersDetail',
-    component: <CoTravellerDetails {...data.coTravellersDetailProps} />,
-  },
+  // {
+  //   name: 'CoTravellersDetail',
+  //   component: <CoTravellerDetails {...data.coTravellersDetailProps} />,
+  // },
   {
     name: 'ItineraryHeader',
     component: <ItineraryHeader {...data.itineraryHeaderProps} />,
@@ -97,4 +106,48 @@ const TRIP_COMPONENTS = [
   },
 ];
 
-export default [...COMMON_COMPONENTS, ...TRIP_COMPONENTS];
+const TRIP_CREATION = [
+  {name: 'Trips Creation'},
+  {
+    name: 'CoTravellersDetail',
+    component: <CoTravellerDetails {...data.coTravellersDetailProps} />,
+  },
+  {
+    name: 'Coming Soon',
+    component: <ComingSoon {...data.comingSoonProps} />,
+  },
+  {
+    name: 'Request Type',
+    component: <RequestType {...data.requestTypeProps} />,
+  },
+  {
+    name: 'Basic Travel Details',
+    component: <BasicTravelDetails {...data.basicTravelDetailsProps} />,
+  },
+  {
+    name: 'Hotel Details',
+    component: <HotelDetails {...data.hotelDetailsProps} />,
+  },
+  {
+    name: 'Flight Details',
+    component: <FlightDetails {...data.flightDetailsProps} />,
+  },
+  {
+    name: 'Other Travel Details',
+    component: <OtherTravelDetails {...data.otherTravelDetailsProps} />,
+  },
+  {
+    name: 'Approval Manager',
+    component: <ApprovalManager {...data.approvalManagerProps} />,
+  },
+  {
+    name: 'Add flight Details',
+    component: <AddFlightDetails {...data.addFlightDetailsProps} />,
+  },
+  {
+    name: 'Add hotel Details',
+    component: <AddHotelDetails {...data.addHotelDetailsProps} />,
+  },
+];
+
+export default [...COMMON_COMPONENTS, ...TRIP_COMPONENTS, ...TRIP_CREATION];
