@@ -18,7 +18,7 @@ import TripStatus from './components/trips/tripStatus';
 import FlightItineraryCard from './components/trips/flightItineraryCard';
 import HotelItineraryCard from './components/trips/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';
-import CoTravellerDetails from './components/trips/coTravellersDetail';
+import CoTravellerDetails from './components/trips/tripCreation/coTravelersDetails';
 import EmptyScreen from './common/components/emptyScreen';
 import ItineraryHeader from './components/trips/itineraryHeader';
 import TripListingCard from './components/trips/tripListingCard';
@@ -27,6 +27,15 @@ import HotelPreferenceCard from './components/trips/hotelPreferenceCard';
 import ManagerActions from './components/trips/managerActions';
 import TripCardLoadingState from './components/trips/tripCardLoadingState';
 import ItineraryViewLoadingState from './components/trips/itineraryViewLoadingState';
+import ComingSoon from './components/trips/tripCreation/comingSoon';
+import RequestType from './components/trips/tripCreation/requestType';
+import BasicTravelDetails from './components/trips/tripCreation/basicTravelDetails';
+import HotelDetails from './components/trips/tripCreation/hotelDetails';
+import FlightDetails from './components/trips/tripCreation/flightDetails';
+import OtherTravelDetails from './components/trips/tripCreation/otherTravelDetails';
+import ApprovalManager from './components/trips/tripCreation/approvalManager';
+import AddFlightDetails from './components/trips/tripCreation/addFlightDetails';
+import AddHotelDetails from './components/trips/tripCreation/addHotelDetails';
 
 export {
   data,
@@ -49,7 +58,6 @@ export {
   FlightItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
-  CoTravellerDetails,
   EmptyScreen,
   ItineraryHeader,
   TripListingCard,
@@ -58,4 +66,15 @@ export {
   ManagerActions,
   TripCardLoadingState,
   ItineraryViewLoadingState,
+  // Trip Creation
+  ComingSoon,
+  RequestType,
+  BasicTravelDetails,
+  HotelDetails,
+  FlightDetails,
+  OtherTravelDetails,
+  CoTravellerDetails,
+  ApprovalManager,
+  AddFlightDetails,
+  AddHotelDetails,
 };

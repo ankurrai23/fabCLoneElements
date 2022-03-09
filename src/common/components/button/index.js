@@ -30,7 +30,7 @@ function Button({
           style={[
             Styles.textStyle(type, disabled),
             textStyle,
-            selected && {color: Color.WHITE},
+            selected && {color: Color.DODGER_BLUE},
           ]}>
           {children}
         </FText>

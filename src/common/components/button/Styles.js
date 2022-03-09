@@ -9,10 +9,11 @@ export default StyleSheet.create({
     paddingVertical: DP._12,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: type === 'PRIMARY' ? Color.SUN_YELLOW : Color.ICE_BLUE,
+    backgroundColor: type === 'PRIMARY' ? Color.SUN_YELLOW : Color.WHITE_3,
     ...(selected && {
-      backgroundColor:
-        type === 'PRIMARY' ? Color.SUN_YELLOW : Color.DODGER_BLUE,
+      backgroundColor: type === 'SECONDARY' ? Color.ICE_BLUE : Color.SUN_YELLOW,
+      borderColor: Color.DODGER_BLUE,
+      borderWidth: type === 'SECONDARY' ? 0.5 : 0,
     }),
     ...(disabled && {
       backgroundColor: Color.BLUEY_GREY,
