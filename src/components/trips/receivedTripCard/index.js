@@ -62,25 +62,23 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               Styles.date
             }>{`${item.tripStartDate} - ${item.tripEndDate}`}</FText>
         </View>
-        {item.coTravellers?.length > 0 && (
-          <View style={[Styles.flexRow, Styles.justifyBetween]}>
-            <View style={Styles.flexDirectionRow}>
-              <FText style={{color: Color.GREYISH_PURPLE}}>
-                Co-traveler(s):{' '}
+        <View style={[Styles.flexRow, Styles.justifyBetween]}>
+          <View style={Styles.flexDirectionRow}>
+            <FText style={{color: Color.GREYISH_PURPLE}}>
+              {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
+            </FText>
+            <FTouchableOpacity
+              onPress={() =>
+                item.coTravellers.length > 1 && setSheetVisible(true)
+              }>
+              <FText>
+                {item.coTravellers[0]}
+                {item.coTravellers.length > 1 &&
+                  ` +${item.coTravellers.length - 1}`}
               </FText>
-              <FTouchableOpacity
-                onPress={() =>
-                  item.coTravellers.length > 1 && setSheetVisible(true)
-                }>
-                <FText>
-                  {item.coTravellers[0]}
-                  {item.coTravellers.length > 1 &&
-                    ` +${item.coTravellers.length - 1}`}
-                </FText>
-              </FTouchableOpacity>
-            </View>
+            </FTouchableOpacity>
           </View>
-        )}
+        </View>
         {item.isCancelled && (
           <View style={Styles.flexRow}>
             <View style={Styles.cancelledDot} />
