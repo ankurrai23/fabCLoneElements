@@ -8,8 +8,9 @@ import {ImageConst} from '../../../utils/imageConst';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import TripStatus from '../tripStatus';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
+const ReceivedCard = ({item, onCardPress, onActionPress}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
 
   const tripIcons = (requestType) => {
@@ -38,15 +39,17 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
         style={[Styles.container, {borderRadius: DP._12}]}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
-            {tripIcons(item.requestType).map((asset, index) => (
-              <FImage
-                source={asset}
-                style={Styles.imageStyle}
-                key={`abc${index}`}
-              />
+            {tripIcons(item.requestType).map((asset) => (
+              <FImage source={asset} style={Styles.imageStyle} />
             ))}
           </View>
           <TripStatus statusObj={item.status} />
+        </View>
+        <View style={Styles.flexRow}>
+          <FText style={{color: Color.GREYISH_PURPLE}}>Request by: </FText>
+          <FText numberOfLines={1} style={Styles.destination} type="medium">
+            {item.requestedBy}
+          </FText>
         </View>
         <View style={Styles.flexRow}>
           <FText numberOfLines={1} style={Styles.destination} type="medium">
@@ -59,28 +62,25 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
               Styles.date
             }>{`${item.tripStartDate} - ${item.tripEndDate}`}</FText>
         </View>
-        <View style={[Styles.flexRow, Styles.justifyBetween]}>
-          <View style={Styles.flexDirectionRow}>
-            <FText style={{color: Color.GREYISH_PURPLE}}>
-              Co-traveler(s):{' '}
-            </FText>
-            <FTouchableOpacity
-              onPress={() =>
-                item.coTravellers.length > 1 && setSheetVisible(true)
-              }>
-              <FText>
-                {item.coTravellers[0]}
-                {item.coTravellers.length > 1 &&
-                  ` +${item.coTravellers.length - 1}`}
+        {item.coTravellers?.length > 0 && (
+          <View style={[Styles.flexRow, Styles.justifyBetween]}>
+            <View style={Styles.flexDirectionRow}>
+              <FText style={{color: Color.GREYISH_PURPLE}}>
+                Co-traveler(s):{' '}
               </FText>
-            </FTouchableOpacity>
+              <FTouchableOpacity
+                onPress={() =>
+                  item.coTravellers.length > 1 && setSheetVisible(true)
+                }>
+                <FText>
+                  {item.coTravellers[0]}
+                  {item.coTravellers.length > 1 &&
+                    ` +${item.coTravellers.length - 1}`}
+                </FText>
+              </FTouchableOpacity>
+            </View>
           </View>
-          {item.actions?.find((e) => e.type === 'SEND_REMINDER') && (
-            <FTouchableOpacity onPress={() => _onActionPress('SEND_REMINDER')}>
-              <FImage source={ImageConst.bellIcon} style={Styles.bell} />
-            </FTouchableOpacity>
-          )}
-        </View>
+        )}
         {item.isCancelled && (
           <View style={Styles.flexRow}>
             <View style={Styles.cancelledDot} />
@@ -88,13 +88,46 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
           </View>
         )}
         <View style={Styles.footer}>
-          {item.actions
-            .filter((e) => e.type !== 'SEND_REMINDER')
-            .map((e) => (
-              <FTouchableOpacity onPress={() => _onActionPress(e.type)}>
-                <FText style={Styles.action(e.type)}>{e.name}</FText>
-              </FTouchableOpacity>
-            ))}
+          {item.actions?.[0]?.type === 'VIEW_DETAILS' && (
+            <FTouchableOpacity
+              activeOpacity={1}
+              style={[Styles.btn]}
+              onPress={() => _onActionPress(item.actions[0].type)}>
+              <FText style={Styles.actionText(Color.DODGER_BLUE)}>
+                {item.actions?.[0].name}
+              </FText>
+            </FTouchableOpacity>
+          )}
+          {item.actions?.[1]?.type === 'DENY' && (
+            <FTouchableOpacity
+              activeOpacity={1}
+              style={[Styles.btn]}
+              onPress={() => _onActionPress(item.actions[1].type)}>
+              <AntDesign
+                name="closesquare"
+                size={DP._16}
+                color={Color.PASTEL_RED}
+              />
+              <FText style={Styles.actionText(Color.PASTEL_RED)}>
+                {item.actions?.[1].name}
+              </FText>
+            </FTouchableOpacity>
+          )}
+          {item.actions?.[0]?.type === 'APPROVE' && (
+            <FTouchableOpacity
+              activeOpacity={1}
+              style={[Styles.btn]}
+              onPress={() => _onActionPress(item.actions[0].type)}>
+              <AntDesign
+                name="checksquare"
+                size={DP._16}
+                color={Color.DARK_SEA_FOAM}
+              />
+              <FText style={Styles.actionText(Color.DARK_SEA_FOAM)}>
+                {item.actions?.[0].name}
+              </FText>
+            </FTouchableOpacity>
+          )}
         </View>
       </FTouchableOpacity>
       <DialogBox
@@ -123,4 +156,4 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
   );
 };
 
-export default SubmittedTripCard;
+export default ReceivedCard;

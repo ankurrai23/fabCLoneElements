@@ -24,7 +24,15 @@ export default function FlightPreferenceCard({
 }) {
   return (
     <FTouchableOpacity onPress={onPress} style={Styles.container}>
-      <Animated.View style={{width: width, height: height, overflow: 'hidden'}}>
+      <Animated.View
+        style={[
+          {
+            width: width,
+            height: height,
+            overflow: 'hidden',
+            padding: DP._16,
+          },
+        ]}>
         <View style={Styles.flightLogoAndNameContainer}>
           <FImage
             style={{

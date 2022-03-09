@@ -1,10 +1,11 @@
-const submittedTripCardProps = {
+const receivedTripCardProps = {
   item: {
     masterTripId: 'TP962KDG',
+    requestedBy: 'Rohan Srivasatava',
     requestType: 'FLIGHT_AND_HOTEL',
-    title: 'Trip to Gurgaon',
+    title: 'Delhi to Mumbai',
     isProcessing: true,
-    coTravellers: ['Rahul Gupta', 'Abhishek Gupta'],
+    coTravellers: [],
     tripStartDate: 'Thu, 22 Nov',
     tripEndDate: 'Thu, 23 Nov',
     bookingStatus: 'CONFIRMED',
@@ -15,16 +16,20 @@ const submittedTripCardProps = {
       key: 'APPROVAL_PENDING',
       value: 'Approval pending',
       textColor: '#ffa239',
-      bgColor: '#fef5eb',
+      bgColor: '#ffa23915',
     },
     actions: [
+      // {
+      //   type: 'VIEW_DETAILS',
+      //   name: 'View Details',
+      // },
       {
-        type: 'SEND_REMINDER',
-        name: 'Send Reminder',
+        type: 'APPROVE',
+        name: 'Approve',
       },
       {
-        type: 'VIEW_OPTIONS',
-        name: 'View options',
+        type: 'DENY',
+        name: 'Reject',
       },
     ],
   },
@@ -32,4 +37,4 @@ const submittedTripCardProps = {
   onActionPress: (item) => console.log('Action Pressed', item),
 };
 
-export default submittedTripCardProps;
+export default receivedTripCardProps;

@@ -25,6 +25,7 @@ import TripListingCard from './components/trips/tripListingCard';
 import SubmittedTripCard from './components/trips/submittedTripCard';
 import HotelPreferenceCard from './components/trips/hotelPreferenceCard';
 import ManagerActions from './components/trips/managerActions';
+import ReceivedTripCard from './components/trips/receivedTripCard';
 import TripCardLoadingState from './components/trips/tripCardLoadingState';
 import ItineraryViewLoadingState from './components/trips/itineraryViewLoadingState';
 import ComingSoon from './components/trips/tripCreation/comingSoon';
@@ -62,6 +63,7 @@ export {
   ItineraryHeader,
   TripListingCard,
   SubmittedTripCard,
+  ReceivedTripCard,
   HotelPreferenceCard,
   ManagerActions,
   TripCardLoadingState,
