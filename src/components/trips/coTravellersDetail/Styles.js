@@ -7,7 +7,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: DP._16,
     paddingTop: DP._26,
-    paddingBottom: DP._50,
+    paddingBottom: DP._24,
   },
   subContainer: {
     flexDirection: 'row',
