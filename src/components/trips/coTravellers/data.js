@@ -1,4 +1,4 @@
-const coTravellersDetailProps = {
+const coTravellersProps = {
   data: {
     cotravellerCount: '5 Co-travellers',
     names: 'Abhishek Gupta, Pranay Shah, Tanmay Shroff, Prateek Gupta',
@@ -6,4 +6,4 @@ const coTravellersDetailProps = {
   },
 };
 
-export default coTravellersDetailProps;
+export default coTravellersProps;

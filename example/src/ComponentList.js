@@ -31,6 +31,7 @@ import {
   ApprovalManager,
   AddFlightDetails,
   AddHotelDetails,
+  CoTravellers,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -68,10 +69,10 @@ const TRIP_COMPONENTS = [
     name: 'RemarksContainer',
     component: <RemarksContainer {...data.remarksContainerProps} />,
   },
-  // {
-  //   name: 'CoTravellersDetail',
-  //   component: <CoTravellerDetails {...data.coTravellersDetailProps} />,
-  // },
+  {
+    name: 'CoTravellers',
+    component: <CoTravellers {...data.coTravellersProps} />,
+  },
   {
     name: 'ItineraryHeader',
     component: <ItineraryHeader {...data.itineraryHeaderProps} />,
