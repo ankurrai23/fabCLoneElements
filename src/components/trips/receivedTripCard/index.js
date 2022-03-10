@@ -8,10 +8,13 @@ import {ImageConst} from '../../../utils/imageConst';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import TripStatus from '../tripStatus';
+import ReasonModal from '../../../common/components/reasonModal';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const ReceivedCard = ({item, onCardPress, onActionPress}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
+  const [approveModal, setApproveModal] = useState(false);
+  const [rejectModal, setRejectModal] = useState(false);
 
   const tripIcons = (requestType) => {
     let icons = [];
@@ -24,13 +27,15 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
     return <FText style={{fontSize: DP._16}}>{coTravelerName}</FText>;
   };
 
-  const _onActionPress = (actionType) => {
-    const data = {
-      ['masterTripId']: item.masterTripId,
-      ['type']: actionType,
-    };
-    onActionPress(data);
-  };
+  function _onActionPress(actionType, comments) {
+    setApproveModal(false);
+    setRejectModal(false);
+    onActionPress({
+      actionType,
+      masterTripId: item.masterTripId,
+      comments,
+    });
+  }
 
   return (
     <>
@@ -89,10 +94,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
         )}
         <View style={Styles.footer}>
           {item.actions?.[0]?.type === 'VIEW_DETAILS' && (
-            <FTouchableOpacity
-              activeOpacity={1}
-              style={[Styles.btn]}
-              onPress={() => _onActionPress(item.actions[0].type)}>
+            <FTouchableOpacity activeOpacity={1} style={[Styles.btn]} disabled>
               <FText style={Styles.actionText(Color.DODGER_BLUE)}>
                 {item.actions?.[0].name}
               </FText>
@@ -102,7 +104,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
             <FTouchableOpacity
               activeOpacity={1}
               style={[Styles.btn]}
-              onPress={() => _onActionPress(item.actions[1].type)}>
+              onPress={() => setRejectModal(true)}>
               <AntDesign
                 name="closesquare"
                 size={DP._16}
@@ -117,7 +119,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
             <FTouchableOpacity
               activeOpacity={1}
               style={[Styles.btn]}
-              onPress={() => _onActionPress(item.actions[0].type)}>
+              onPress={() => setApproveModal(true)}>
               <AntDesign
                 name="checksquare"
                 size={DP._16}
@@ -151,6 +153,20 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
             />
           </View>
         }
+      />
+      <ReasonModal
+        visible={approveModal}
+        setVisible={setApproveModal}
+        onSubmit={(reason) => _onActionPress('APPROVE', reason)}
+        heading={'Approve request'}
+        buttonText={'Approve'}
+      />
+      <ReasonModal
+        visible={rejectModal}
+        setVisible={setRejectModal}
+        onSubmit={(reason) => _onActionPress('DENY', reason)}
+        heading={'Reject request'}
+        buttonText={'Reject'}
       />
     </>
   );
