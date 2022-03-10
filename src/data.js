@@ -26,6 +26,7 @@ import approvalManagerProps from './components/trips/tripCreation/approvalManage
 import addFlightDetailsProps from './components/trips/tripCreation/addFlightDetails/data';
 import addHotelDetailsProps from './components/trips/tripCreation/addHotelDetails/data';
 import coTravellersProps from './components/trips/coTravellers/data';
+import flightDetailCardProps from './components/trips/flightDetailCard/data';
 
 export {
   buttonProps,
@@ -56,4 +57,5 @@ export {
   addFlightDetailsProps,
   addHotelDetailsProps,
   coTravellersProps,
+  flightDetailCardProps,
 };

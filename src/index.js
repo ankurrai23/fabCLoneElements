@@ -41,6 +41,7 @@ import OtherTravelDetails from './components/trips/tripCreation/otherTravelDetai
 import ApprovalManager from './components/trips/tripCreation/approvalManager';
 import AddFlightDetails from './components/trips/tripCreation/addFlightDetails';
 import AddHotelDetails from './components/trips/tripCreation/addHotelDetails';
+import FlightDetailCard from './components/trips/flightDetailCard';
 
 export {
   data,
@@ -76,6 +77,7 @@ export {
   HotelDetailLoadingState,
   FlightPreferenceLoadingState,
   CoTravellers,
+  FlightDetailCard,
   // Trip Creation
   ComingSoon,
   RequestType,

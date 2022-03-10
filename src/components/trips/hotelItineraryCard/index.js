@@ -17,10 +17,7 @@ import {
 } from '../../..';
 import Styles from './Styles';
 import InfoBox from '../components/infoBox';
-import {
-  FlightSubTripActions,
-  HotelSubTripActions,
-} from '../../../utils/SubTripActions';
+import {HotelSubTripActions} from '../../../utils/SubTripActions';
 
 const HotelItineraryCard = ({
   item,
@@ -36,7 +33,7 @@ const HotelItineraryCard = ({
   processed,
   timelineGreyed,
 }) => {
-  const isActionEnabled = (type) => item.actions.find((e) => e.type === type);
+  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
   const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
@@ -119,7 +116,7 @@ const HotelItineraryCard = ({
               </FText>
               <FText style={Styles.month}> {item.month}</FText>
             </FText>
-            {item.status.key === 'CANCELLED' ? (
+            {item?.status?.key === 'CANCELLED' ? (
               <TripStatus statusObj={item.status} />
             ) : (
               processed && (

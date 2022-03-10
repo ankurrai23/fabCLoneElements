@@ -33,7 +33,7 @@ const FlightItineraryCard = ({
   timelineGreyed,
   processed,
 }) => {
-  const isActionEnabled = (type) => item.actions.find((e) => e.type === type);
+  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
@@ -117,7 +117,7 @@ const FlightItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item.status.key === 'CANCELLED' ? (
+            {item?.status?.key === 'CANCELLED' ? (
               <TripStatus statusObj={item.status} />
             ) : processed ? (
               <Feather
@@ -132,15 +132,19 @@ const FlightItineraryCard = ({
             )}
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-            <View>
-              <FText style={Styles.portName}>
+            <View style={Styles.flex}>
+              <FText style={Styles.portName} numberOfLines={1}>
                 {item.pnr ? item.sourceAirportCode : item.source}
               </FText>
               <FText style={Styles.time}>
                 {item.pnr ? item.departureTime : item.sourceAirportCode}
               </FText>
             </View>
-            <View style={Styles.justifyContent_around(item.duration)}>
+            <View
+              style={[
+                Styles.justifyContent_around(item.duration),
+                Styles.flex,
+              ]}>
               <MaterialCommunityIcon
                 name="airplane"
                 size={DP._18}
@@ -151,8 +155,8 @@ const FlightItineraryCard = ({
                 <FText style={Styles.duration}>{item.duration}</FText>
               )}
             </View>
-            <View style={Styles.alignItem_flexEnd}>
-              <FText style={Styles.portName}>
+            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+              <FText style={Styles.portName} numberOfLines={1}>
                 {item.pnr ? item.destinationAirportCode : item.destination}
               </FText>
               <FText style={Styles.time}>
