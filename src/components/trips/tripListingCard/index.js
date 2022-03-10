@@ -92,7 +92,10 @@ const TripListingCard = ({item, onCardPress}) => {
               renderItem={renderItem}
               ItemSeparatorComponent={() => (
                 <Separator
-                  style={{marginVertical: DP._5, backgroundColor: Color.SILVER}}
+                  style={{
+                    marginVertical: DP._16,
+                    backgroundColor: Color.SILVER,
+                  }}
                 />
               )}
               keyExtractor={(_) => _}

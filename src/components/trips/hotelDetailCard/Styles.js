@@ -17,12 +17,10 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._18,
     color: Color.GREYISH_PURPLE,
-    marginBottom: DP._8,
   },
   weatherIcon: {
     width: DP._14,
     height: DP._14,
-    backgroundColor: 'black',
   },
   sectionTitle: {
     fontSize: DP._12,
@@ -94,7 +92,7 @@ export default StyleSheet.create({
   hotelImage: {
     width: DP._88,
     height: DP._80,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: DP._8,
     backgroundColor: Color.GREY_PURPLE + '1a',
   },
@@ -102,5 +100,11 @@ export default StyleSheet.create({
   searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
   bookingDetailsContainer: {marginLeft: DP._8, flex: 1},
   flexRow: {flexDirection: 'row'},
-  paymentStatusContainer: {alignItems: 'center', lineHeight: DP._16},
+  paymentStatusContainer: {lineHeight: DP._16},
+  modalHeading: {
+    fontSize: DP._20,
+    color: Color.BLACK,
+    textAlign: 'center',
+    marginVertical: DP._20,
+  },
 });

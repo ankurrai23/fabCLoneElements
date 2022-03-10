@@ -22,6 +22,9 @@ import {
   ManagerActions,
   TripCardLoadingState,
   ItineraryViewLoadingState,
+  HotelPreferenceLoadingState,
+  HotelDetailLoadingState,
+  FlightPreferenceLoadingState,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -94,6 +97,18 @@ const TRIP_COMPONENTS = [
   {
     name: 'ItineraryViewLoadingState',
     component: <ItineraryViewLoadingState />,
+  },
+  {
+    name: 'HotelPreferenceLoadingState',
+    component: <HotelPreferenceLoadingState />,
+  },
+  {
+    name: 'HotelDetailLoadingState',
+    component: <HotelDetailLoadingState />,
+  },
+  {
+    name: 'FlightPreferenceLoadingState',
+    component: <FlightPreferenceLoadingState />,
   },
 ];
 
