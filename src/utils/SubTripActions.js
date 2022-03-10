@@ -1,0 +1,15 @@
+export const HotelSubTripActions = {
+  DIRECTION: 'DIRECTION',
+  PAY_NOW: 'PAY_NOW',
+  SUPPORT: 'SUPPORT',
+  MODIFY: 'MODIFY',
+  CANCEL: 'CANCEL',
+  VIEW_REMARKS: 'VIEW_REMARKS',
+};
+
+export const FlightSubTripActions = {
+  RESCHEDULE: 'RESCHEDULE',
+  CANCEL: 'CANCEL',
+  SUPPORT: 'SUPPORT',
+  VIEW_REMARKS: 'VIEW_REMARKS',
+};
