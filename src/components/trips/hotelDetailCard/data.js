@@ -1,7 +1,7 @@
 import {Color} from '../../../utils/color';
 
 export default {
-  data: {
+  item: {
     bookingId: 'QHS12E',
     hotelName: 'Lemon Tree Premier, Mumbai Internation Airport',
     mainImage:
@@ -72,6 +72,7 @@ export default {
         name: 'Pay Now',
       },
     ],
+    modified: false,
   },
   onActionPress: (item) => console.log(item),
   onMainImagePress: () => console.log('image press'),

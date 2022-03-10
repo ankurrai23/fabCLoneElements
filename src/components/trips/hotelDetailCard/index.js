@@ -13,14 +13,21 @@ import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import Button from '../../../common/components/button';
-
+import {HotelSubTripActions} from '../../../utils/SubTripActions';
 export default function HotelDetailCard({
-  data,
+  item,
   onActionPress,
   onMainImagePress,
-  modified = false,
 }) {
   const [sheetVisible, setSheetVisible] = useState(false);
+
+  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
+
+  const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
+  const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
+  const payNowAction = isActionEnabled(HotelSubTripActions.PAY_NOW);
+  const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
+
   const CheckInInfo = ({title, date, time}) => (
     <View>
       <FText style={Styles.sectionTitle}>{title}</FText>
@@ -57,12 +64,12 @@ export default function HotelDetailCard({
   return (
     <>
       <View style={Styles.container}>
-        <View style={Styles.subContainer(modified)}>
+        <View style={Styles.subContainer(item.modified)}>
           <View style={Styles.hotelNameAndImageContainer}>
             <FTouchableOpacity onPress={onMainImagePress}>
               <FImage
                 style={Styles.hotelImage}
-                source={{uri: data.mainImage}}
+                source={{uri: item.mainImage}}
               />
               <FontAwesome5
                 name="search-plus"
@@ -75,19 +82,19 @@ export default function HotelDetailCard({
               <FText>
                 Booking ID{' '}
                 <FText type="bold" style={{paddingLeft: DP._8}}>
-                  {data.bookingId}
+                  {item.bookingId}
                 </FText>
               </FText>
-              <FText style={{marginTop: DP._12}}>{data.hotelName}</FText>
+              <FText style={{marginTop: DP._12}}>{item.hotelName}</FText>
             </View>
           </View>
-          <FText style={Styles.addressText}>{data.address}</FText>
+          <FText style={Styles.addressText}>{item.address}</FText>
           <Separator style={Styles.separator} />
           <View style={Styles.flexRowWithSpaceBetween}>
             <View style={Styles.flexRowWithAlignCenter}>
               <FImage
                 style={Styles.weatherIcon}
-                source={{uri: data.weather.weatherIcon}}
+                source={{uri: item.weather.weatherIcon}}
               />
               <FText
                 style={{
@@ -95,17 +102,13 @@ export default function HotelDetailCard({
                   color: Color.GREY_PURPLE,
                   marginLeft: DP._4,
                 }}>
-                {data.weather.weatherName}
+                {item.weather.weatherName}
               </FText>
             </View>
-            {data.actions.find((i) => i.type === 'DIRECTION') && (
+            {directionAction && (
               <FTouchableOpacity
                 style={[Styles.flexRowWithAlignCenter]}
-                onPress={() =>
-                  onActionPress?.(
-                    data.actions.find((i) => i.type === 'DIRECTION'),
-                  )
-                }>
+                onPress={() => onActionPress?.(directionAction)}>
                 <MaterialCommunityIcons
                   name="navigation"
                   size={DP._18}
@@ -126,13 +129,13 @@ export default function HotelDetailCard({
           <View style={Styles.flexRowWithSpaceBetween}>
             <CheckInInfo
               title={'Check-in date'}
-              date={data.checkIn.date}
-              time={`Check-in: ${data.checkIn.time}`}
+              date={item.checkIn.date}
+              time={`Check-in: ${item.checkIn.time}`}
             />
             <CheckInInfo
               title={'Check-out date'}
-              date={data.checkOut.date}
-              time={`Check-out: ${data.checkOut.time}`}
+              date={item.checkOut.date}
+              time={`Check-out: ${item.checkOut.time}`}
             />
             <View>
               <FText
@@ -143,12 +146,12 @@ export default function HotelDetailCard({
                 }}>
                 Rooms
               </FText>
-              <FText type="medium">{data.noOfRooms}</FText>
+              <FText type="medium">{item.noOfRooms}</FText>
             </View>
           </View>
           <Separator style={Styles.separator} />
           <FText style={Styles.sectionTitle}>Inclusions</FText>
-          {data.inclusions.map((item, index) => {
+          {item.inclusions.map((item, index) => {
             if (index < 3)
               return (
                 <Inclusions
@@ -158,16 +161,16 @@ export default function HotelDetailCard({
                 />
               );
           })}
-          {data.inclusions.length > 3 && (
+          {item.inclusions.length > 3 && (
             <FTouchableOpacity onPress={() => setSheetVisible(true)}>
               <FText style={Styles.moreInclustion}>
-                +{data.inclusions.length - 3} more
+                +{item.inclusions.length - 3} more
               </FText>
             </FTouchableOpacity>
           )}
           <Separator style={Styles.separator} />
           <FText style={Styles.sectionTitle}>Co-travelers</FText>
-          {data.coTravellers.map((item, index) => (
+          {item.coTravellers.map((item, index) => (
             <CoTraveller name={item} key={`abc${index}def`} />
           ))}
           <Separator style={Styles.separator} />
@@ -187,34 +190,37 @@ export default function HotelDetailCard({
             </View>
             <View style={[Styles.paymentStatusContainer, Styles.halfFlex]}>
               <Feather
-                name={data.paymentStatus.icon}
+                name={item.paymentStatus.icon}
                 style={{marginRight: DP._4}}
-                color={data.paymentStatus.color}
+                color={item.paymentStatus.color}
               />
               <FText
-                style={{fontSize: DP._10, color: data.paymentStatus.color}}>
-                {data.paymentStatus.statusText}
+                style={{fontSize: DP._10, color: item.paymentStatus.color}}>
+                {item.paymentStatus.statusText}
               </FText>
             </View>
           </View>
-          {data.actions.find((i) => i.type === 'PAY_NOW') && (
+          {payNowAction && (
             <Button
-              onPress={() =>
-                onActionPress?.(data.actions.find((i) => i.type === 'PAY_NOW'))
-              }
+              onPress={() => onActionPress?.(payNowAction)}
               style={{borderRadius: DP._4, marginTop: DP._4}}
               textFont="medium">
-              Pay Now
+              {payNowAction.name}
             </Button>
           )}
         </View>
+        <Separator style={{backgroundColor: Color.VERY_LIGHT_BLUE}} />
         <View style={Styles.buttonContainer}>
-          <FTouchableOpacity onPress={() => onActionPress?.(data.actions[1])}>
-            <FText style={Styles.cancel}>{data.actions[1].name}</FText>
-          </FTouchableOpacity>
-          <FTouchableOpacity onPress={() => onActionPress?.(data.actions[0])}>
-            <FText style={Styles.modify}>{data.actions[0].name}</FText>
-          </FTouchableOpacity>
+          {cancelAction && (
+            <FTouchableOpacity onPress={() => onActionPress?.(cancelAction)}>
+              <FText style={Styles.cancel}>{cancelAction.name}</FText>
+            </FTouchableOpacity>
+          )}
+          {modifyAction && (
+            <FTouchableOpacity onPress={() => onActionPress?.(modifyAction)}>
+              <FText style={Styles.modify}>{modifyAction.name}</FText>
+            </FTouchableOpacity>
+          )}
         </View>
       </View>
       <DialogBox
@@ -224,7 +230,7 @@ export default function HotelDetailCard({
           <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
             <FText style={Styles.modalHeading}>Inclusions</FText>
             <FlatList
-              data={data.inclusions}
+              data={item.inclusions}
               renderItem={renderItem}
               ItemSeparatorComponent={() => (
                 <Separator

@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Color} from '../../../../utils/color';
 import Feather from 'react-native-vector-icons/Feather';
-import FText from '../../../components/rn/FText';
+import FText from '../../../../common/rn/FText';
 import {DP} from '../../../../utils/Dimen';
 
 const ModificationAlertBox = ({msg}) => {

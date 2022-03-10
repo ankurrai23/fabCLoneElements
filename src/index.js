@@ -42,6 +42,7 @@ import ApprovalManager from './components/trips/tripCreation/approvalManager';
 import AddFlightDetails from './components/trips/tripCreation/addFlightDetails';
 import AddHotelDetails from './components/trips/tripCreation/addHotelDetails';
 import FlightDetailCard from './components/trips/flightDetailCard';
+import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 
 export {
   data,
@@ -57,6 +58,7 @@ export {
   TextField,
   DashedLine,
   PickerField,
+  ModificationAlertBox,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
