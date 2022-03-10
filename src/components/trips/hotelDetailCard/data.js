@@ -67,6 +67,10 @@ export default {
         type: 'DIRECTION',
         name: 'Directions',
       },
+      {
+        type: 'PAY_NOW',
+        name: 'Pay Now',
+      },
     ],
   },
   onActionPress: (item) => console.log(item),

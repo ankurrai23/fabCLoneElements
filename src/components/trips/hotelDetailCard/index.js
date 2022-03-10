@@ -12,6 +12,7 @@ import Separator from '../../../common/components/separator';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
+import Button from '../../../common/components/button';
 
 export default function HotelDetailCard({
   data,
@@ -174,7 +175,7 @@ export default function HotelDetailCard({
             Payment mode
           </FText>
           <View style={Styles.paymentModeContainer}>
-            <View style={[Styles.flexRow, {flex: 0.5}]}>
+            <View style={[Styles.flexRow, Styles.halfFlex]}>
               <Feather
                 name="credit-card"
                 size={DP._15}
@@ -184,11 +185,7 @@ export default function HotelDetailCard({
                 Bill to company
               </FText>
             </View>
-            <View
-              style={[
-                Styles.paymentStatusContainer,
-                {flex: 0.5, flexDirection: 'row'},
-              ]}>
+            <View style={[Styles.paymentStatusContainer, Styles.halfFlex]}>
               <Feather
                 name={data.paymentStatus.icon}
                 style={{marginRight: DP._4}}
@@ -200,6 +197,16 @@ export default function HotelDetailCard({
               </FText>
             </View>
           </View>
+          {data.actions.find((i) => i.type === 'PAY_NOW') && (
+            <Button
+              onPress={() =>
+                onActionPress?.(data.actions.find((i) => i.type === 'PAY_NOW'))
+              }
+              style={{borderRadius: DP._4, marginTop: DP._4}}
+              textFont="medium">
+              Pay Now
+            </Button>
+          )}
         </View>
         <View style={Styles.buttonContainer}>
           <FTouchableOpacity onPress={() => onActionPress?.(data.actions[1])}>

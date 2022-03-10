@@ -100,11 +100,14 @@ export default StyleSheet.create({
   searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
   bookingDetailsContainer: {marginLeft: DP._8, flex: 1},
   flexRow: {flexDirection: 'row'},
-  paymentStatusContainer: {lineHeight: DP._16},
+  paymentStatusContainer: {lineHeight: DP._16, flexDirection: 'row'},
   modalHeading: {
     fontSize: DP._20,
     color: Color.BLACK,
     textAlign: 'center',
     marginVertical: DP._20,
+  },
+  halfFlex: {
+    flex: 0.5,
   },
 });
