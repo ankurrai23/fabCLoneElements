@@ -62,7 +62,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
         <View style={[Styles.flexRow, Styles.justifyBetween]}>
           <View style={Styles.flexDirectionRow}>
             <FText style={{color: Color.GREYISH_PURPLE}}>
-              Co-traveler(s):{' '}
+              {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
             </FText>
             <FTouchableOpacity
               onPress={() =>

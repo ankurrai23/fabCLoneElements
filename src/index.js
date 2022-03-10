@@ -18,6 +18,7 @@ import TripStatus from './components/trips/tripStatus';
 import FlightItineraryCard from './components/trips/flightItineraryCard';
 import HotelItineraryCard from './components/trips/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';
+import CoTravellers from './components/trips/coTravellers';
 import CoTravellerDetails from './components/trips/tripCreation/coTravelersDetails';
 import EmptyScreen from './common/components/emptyScreen';
 import ItineraryHeader from './components/trips/itineraryHeader';
@@ -68,6 +69,7 @@ export {
   ManagerActions,
   TripCardLoadingState,
   ItineraryViewLoadingState,
+  CoTravellers,
   // Trip Creation
   ComingSoon,
   RequestType,

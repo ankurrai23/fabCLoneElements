@@ -59,7 +59,9 @@ const TripListingCard = ({item, onCardPress}) => {
             }>{`${item.tripStartDate} - ${item.tripEndDate}`}</FText>
         </View>
         <View style={Styles.flexRow}>
-          <FText style={{color: Color.GREYISH_PURPLE}}>Co-traveler(s): </FText>
+          <FText style={{color: Color.GREYISH_PURPLE}}>
+            {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
+          </FText>
           <FTouchableOpacity
             onPress={() =>
               item.coTravellers.length > 1 && setSheetVisible(true)
