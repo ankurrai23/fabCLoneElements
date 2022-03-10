@@ -22,6 +22,9 @@ import {
   ManagerActions,
   TripCardLoadingState,
   ItineraryViewLoadingState,
+  HotelPreferenceLoadingState,
+  HotelDetailLoadingState,
+  FlightPreferenceLoadingState,
   ComingSoon,
   RequestType,
   BasicTravelDetails,
@@ -104,6 +107,18 @@ const TRIP_COMPONENTS = [
   {
     name: 'ItineraryViewLoadingState',
     component: <ItineraryViewLoadingState />,
+  },
+  {
+    name: 'HotelPreferenceLoadingState',
+    component: <HotelPreferenceLoadingState />,
+  },
+  {
+    name: 'HotelDetailLoadingState',
+    component: <HotelDetailLoadingState />,
+  },
+  {
+    name: 'FlightPreferenceLoadingState',
+    component: <FlightPreferenceLoadingState />,
   },
 ];
 

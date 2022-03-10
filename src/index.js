@@ -29,6 +29,9 @@ import ManagerActions from './components/trips/managerActions';
 import ReceivedTripCard from './components/trips/receivedTripCard';
 import TripCardLoadingState from './components/trips/tripCardLoadingState';
 import ItineraryViewLoadingState from './components/trips/itineraryViewLoadingState';
+import HotelPreferenceLoadingState from './components/trips/hotelPreferenceLoadingState';
+import HotelDetailLoadingState from './components/trips/hotelDetailLoadingState';
+import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoadingState';
 import ComingSoon from './components/trips/tripCreation/comingSoon';
 import RequestType from './components/trips/tripCreation/requestType';
 import BasicTravelDetails from './components/trips/tripCreation/basicTravelDetails';
@@ -69,6 +72,9 @@ export {
   ManagerActions,
   TripCardLoadingState,
   ItineraryViewLoadingState,
+  HotelPreferenceLoadingState,
+  HotelDetailLoadingState,
+  FlightPreferenceLoadingState,
   CoTravellers,
   // Trip Creation
   ComingSoon,
