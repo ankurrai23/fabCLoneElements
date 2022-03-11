@@ -23,5 +23,6 @@ export default StyleSheet.create({
     color: Color.GREY_PURPLE,
     lineHeight: DP._18,
     fontSize: DP._12,
+    textAlign: 'center',
   },
 });

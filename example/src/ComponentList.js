@@ -12,7 +12,7 @@ import {
   FlightItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
-  CoTravellerDetails,
+  CoTravelersDetails,
   EmptyScreen,
   ItineraryHeader,
   TripListingCard,
@@ -70,7 +70,7 @@ const TRIP_COMPONENTS = [
   },
   // {
   //   name: 'CoTravellersDetail',
-  //   component: <CoTravellerDetails {...data.coTravellersDetailProps} />,
+  //   component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
   // },
   {
     name: 'ItineraryHeader',
@@ -109,8 +109,8 @@ const TRIP_COMPONENTS = [
 const TRIP_CREATION = [
   {name: 'Trips Creation'},
   {
-    name: 'CoTravellersDetail',
-    component: <CoTravellerDetails {...data.coTravellersDetailProps} />,
+    name: 'CoTravelersDetails',
+    component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
   },
   {
     name: 'Coming Soon',

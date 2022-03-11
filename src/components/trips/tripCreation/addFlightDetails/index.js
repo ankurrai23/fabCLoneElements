@@ -113,26 +113,26 @@ export default function AddFlightDetails(props) {
             <PickerField
               label="From"
               value={
-                flightDetails[1]?.startTime
-                  ? moment(flightDetails[1]?.startTime).format('hh:mm A')
+                flightDetails[0]?.startTime
+                  ? moment(flightDetails[0]?.startTime).format('hh:mm A')
                   : ''
               }
-              error={errors.returnFromTime}
+              error={errors.onwoardFromTime}
               labelStyle={Styles.textFieldLabel}
-              onPress={props.returnStartTimePicker}
+              onPress={props.onWardStartTimePicker}
               touchContainer={{flex: 0.5, marginRight: DP._8}}
             />
             <FText style={Styles.dash}>-</FText>
             <PickerField
               label="To"
               value={
-                flightDetails[1]?.endTime
-                  ? moment(flightDetails[1]?.endTime).format('hh:mm A')
+                flightDetails[0]?.endTime
+                  ? moment(flightDetails[0]?.endTime).format('hh:mm A')
                   : ''
               }
-              error={errors.returnToTime}
+              error={errors.onwardToTime}
               labelStyle={Styles.textFieldLabel}
-              onPress={props.returnEndTimePicker}
+              onPress={props.onWardEndTimePicker}
               touchContainer={{flex: 0.5, marginLeft: DP._8}}
             />
           </View>

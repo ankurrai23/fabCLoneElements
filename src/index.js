@@ -18,7 +18,6 @@ import TripStatus from './components/trips/tripStatus';
 import FlightItineraryCard from './components/trips/flightItineraryCard';
 import HotelItineraryCard from './components/trips/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';
-import CoTravellerDetails from './components/trips/tripCreation/coTravelersDetails';
 import EmptyScreen from './common/components/emptyScreen';
 import ItineraryHeader from './components/trips/itineraryHeader';
 import TripListingCard from './components/trips/tripListingCard';
@@ -37,6 +36,7 @@ import OtherTravelDetails from './components/trips/tripCreation/otherTravelDetai
 import ApprovalManager from './components/trips/tripCreation/approvalManager';
 import AddFlightDetails from './components/trips/tripCreation/addFlightDetails';
 import AddHotelDetails from './components/trips/tripCreation/addHotelDetails';
+import CoTravelersDetails from './components/trips/tripCreation/coTravelersDetails';
 
 export {
   data,
@@ -75,7 +75,7 @@ export {
   HotelDetails,
   FlightDetails,
   OtherTravelDetails,
-  CoTravellerDetails,
+  CoTravelersDetails,
   ApprovalManager,
   AddFlightDetails,
   AddHotelDetails,

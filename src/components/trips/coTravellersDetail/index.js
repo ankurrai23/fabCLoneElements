@@ -4,7 +4,7 @@ import Styles from './Styles';
 import {FText} from '../../..';
 import {DP} from '../../../utils/Dimen';
 
-export default function CoTravellerDetails({data}) {
+export default function CoTravelersDetails({data}) {
   return (
     <View style={Styles.container}>
       {data.names?.length > 0 && (
