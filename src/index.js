@@ -43,7 +43,7 @@ import AddFlightDetails from './components/trips/tripCreation/addFlightDetails';
 import AddHotelDetails from './components/trips/tripCreation/addHotelDetails';
 import FlightDetailCard from './components/trips/flightDetailCard';
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
-
+import ListTypeFilter from './components/trips/listTypeFilter';
 export {
   data,
   //RN Components
@@ -80,6 +80,7 @@ export {
   FlightPreferenceLoadingState,
   CoTravellers,
   FlightDetailCard,
+  ListTypeFilter,
   // Trip Creation
   ComingSoon,
   RequestType,

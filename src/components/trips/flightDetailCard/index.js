@@ -12,11 +12,7 @@ import Separator from '../../../common/components/separator';
 import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
-/*
-TODO:
-1. Cancelled state prop
-2. Actions in non itinerary view
-*/
+
 const FlightDetailCard = ({item, onActionPress, onCardPress}) => {
   const isActionEnabled = (type) => item.actions.find((e) => e.type === type);
 

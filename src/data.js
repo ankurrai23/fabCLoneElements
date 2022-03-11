@@ -27,6 +27,7 @@ import addFlightDetailsProps from './components/trips/tripCreation/addFlightDeta
 import addHotelDetailsProps from './components/trips/tripCreation/addHotelDetails/data';
 import coTravellersProps from './components/trips/coTravellers/data';
 import flightDetailCardProps from './components/trips/flightDetailCard/data';
+import listTypeFilterProps from './components/trips/listTypeFilter/data';
 
 export {
   buttonProps,
@@ -58,4 +59,5 @@ export {
   addHotelDetailsProps,
   coTravellersProps,
   flightDetailCardProps,
+  listTypeFilterProps,
 };

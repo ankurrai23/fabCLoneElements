@@ -36,6 +36,7 @@ import {
   AddHotelDetails,
   CoTravellers,
   FlightDetailCard,
+  ListTypeFilter,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -107,7 +108,7 @@ const TRIP_COMPONENTS = [
   },
   {
     name: 'TripCardLoadingState',
-    component: <TripCardLoadingState />,
+    component: <TripCardLoadingState {...data.listTypeFilterProps} />,
   },
   {
     name: 'ItineraryViewLoadingState',
@@ -124,6 +125,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightPreferenceLoadingState',
     component: <FlightPreferenceLoadingState />,
+  },
+  {
+    name: 'ListTypeFilter',
+    component: <ListTypeFilter {...data.listTypeFilterProps} />,
   },
 ];
 
