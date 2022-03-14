@@ -17,6 +17,7 @@ export default StyleSheet.create({
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
+    backgroundColor: Color.DODGER_BLUE + '12',
   },
   cancel: {
     color: Color.PASTEL_RED,
@@ -43,10 +44,6 @@ export default StyleSheet.create({
   date: {
     fontSize: DP._18,
   },
-  slotDetail: {
-    fontSize: DP._12,
-    color: Color.TWILIGHT_BLUE,
-  },
   marginTop_16: {
     marginTop: DP._16,
   },
@@ -55,7 +52,7 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'baseline'},
-  card: {padding: DP._16},
+  card: (modified) => ({padding: DP._16, opacity: modified ? 0.4 : 1}),
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },
@@ -83,11 +80,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: DP._26,
-  },
-  chevronContainer: {
-    backgroundColor: Color.DODGER_BLUE + '12',
-    padding: DP._3,
-    borderRadius: DP._12,
   },
   rescheduleIcon: {
     width: DP._18,

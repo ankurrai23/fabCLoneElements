@@ -18,6 +18,7 @@ export default function ManagerActions({
           <FImage source={ImageConst.editIcon} style={Styles.editIcon} />
         </FTouchableOpacity>
       </View>
+      <View style={{flexGrow: 1}}/>
       <View style={Styles.buttonContainer}>
         <Button
           style={Styles.rejectButtonStyle}

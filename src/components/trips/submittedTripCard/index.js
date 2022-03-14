@@ -25,8 +25,8 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
 
   const _onActionPress = (actionType) => {
     const data = {
-      ['masterTripId']: item.masterTripId,
-      ['type']: actionType,
+      masterTripId: item.masterTripId,
+      actionType: actionType,
     };
     onActionPress(data);
   };
@@ -62,7 +62,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
         <View style={[Styles.flexRow, Styles.justifyBetween]}>
           <View style={Styles.flexDirectionRow}>
             <FText style={{color: Color.GREYISH_PURPLE}}>
-              Co-traveler(s):{' '}
+              {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
             </FText>
             <FTouchableOpacity
               onPress={() =>
@@ -91,7 +91,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
           {item.actions
             .filter((e) => e.type !== 'SEND_REMINDER')
             .map((e) => (
-              <FTouchableOpacity onPress={() => _onActionPress(e.type)}>
+              <FTouchableOpacity disabled>
                 <FText style={Styles.action(e.type)}>{e.name}</FText>
               </FTouchableOpacity>
             ))}

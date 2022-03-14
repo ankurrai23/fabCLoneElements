@@ -22,6 +22,9 @@ import {
   ManagerActions,
   TripCardLoadingState,
   ItineraryViewLoadingState,
+  HotelPreferenceLoadingState,
+  HotelDetailLoadingState,
+  FlightPreferenceLoadingState,
   ComingSoon,
   RequestType,
   BasicTravelDetails,
@@ -31,6 +34,9 @@ import {
   ApprovalManager,
   AddFlightDetails,
   AddHotelDetails,
+  CoTravellers,
+  FlightDetailCard,
+  ListTypeFilter,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -68,10 +74,10 @@ const TRIP_COMPONENTS = [
     name: 'RemarksContainer',
     component: <RemarksContainer {...data.remarksContainerProps} />,
   },
-  // {
-  //   name: 'CoTravellersDetail',
-  //   component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
-  // },
+  {
+    name: 'CoTravellers',
+    component: <CoTravellers {...data.coTravellersProps} />,
+  },
   {
     name: 'ItineraryHeader',
     component: <ItineraryHeader {...data.itineraryHeaderProps} />,
@@ -97,12 +103,32 @@ const TRIP_COMPONENTS = [
     component: <ManagerActions {...data.managerActionsProps} />,
   },
   {
+    name: 'FlightDetailCard',
+    component: <FlightDetailCard {...data.flightDetailCardProps} />,
+  },
+  {
     name: 'TripCardLoadingState',
-    component: <TripCardLoadingState />,
+    component: <TripCardLoadingState {...data.listTypeFilterProps} />,
   },
   {
     name: 'ItineraryViewLoadingState',
     component: <ItineraryViewLoadingState />,
+  },
+  {
+    name: 'HotelPreferenceLoadingState',
+    component: <HotelPreferenceLoadingState />,
+  },
+  {
+    name: 'HotelDetailLoadingState',
+    component: <HotelDetailLoadingState />,
+  },
+  {
+    name: 'FlightPreferenceLoadingState',
+    component: <FlightPreferenceLoadingState />,
+  },
+  {
+    name: 'ListTypeFilter',
+    component: <ListTypeFilter {...data.listTypeFilterProps} />,
   },
 ];
 

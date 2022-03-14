@@ -46,7 +46,8 @@ const ReasonModal = (props) => {
         label={props.textFieldLabel}
         value={reason}
         onChangeText={onChangeText}
-        errorMessage={errors.reason}
+        helperText={errors.reason}
+        error={!!errors.reason}
         onBlur={validateForm}
       />
       <Button style={Styles.submitButton} onPress={onSubmit}>

@@ -13,7 +13,9 @@ export default function CustomDrawer({navigation, state}) {
         <FTouchableOpacity
           onPress={() => navigation.navigate(item.name)}
           style={styles.buttonStyle(selected)}>
-          <FText style={styles.componentName(selected)}>{item.name}</FText>
+          <FText style={styles.componentName(selected)} numberOfLines={1}>
+            {item.name}
+          </FText>
           <Feather
             name="chevron-right"
             size={18}
@@ -54,10 +56,11 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     borderRadius: 5,
     justifyContent: 'space-between',
-    backgroundColor: selected ? '#379aff1a' : 'transaprent',
+    backgroundColor: selected ? '#379aff1a' : 'transparent',
   }),
   titleText: {fontSize: 20, marginVertical: 5},
   componentName: (selected) => ({
     color: selected ? '#379aff' : 'black',
+    flex: 0.9,
   }),
 });
