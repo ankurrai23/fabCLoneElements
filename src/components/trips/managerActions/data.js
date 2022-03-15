@@ -1,6 +1,18 @@
 const managerActionsProps = {
-  onRequestModification: () => console.log('request modification'),
-  onReject: () => console.log('reject pressed'),
+  actions: [
+    {
+      type: 'REQUEST_MODIFICATION',
+      name: 'Request for modification',
+    },
+    {
+      type: 'APPROVE',
+      name: 'Approve',
+    },
+    {
+      type: 'DENY',
+      name: 'Deny',
+    },
+  ],
   onApprove: () => console.log('approve pressed'),
 };
 
