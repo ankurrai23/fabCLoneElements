@@ -24,7 +24,6 @@ const FlightItineraryCard = ({
   item,
   onActionPress,
   onCardPress,
-  onInfoPress,
   style,
   hideIcon,
   showLine,
@@ -38,6 +37,12 @@ const FlightItineraryCard = ({
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
+  const shortlistingAction = isActionEnabled(
+    FlightSubTripActions.SHORTLIST_FLIGHT_TRIPS,
+  );
+  const viewShortlistedFlightAction = isActionEnabled(
+    FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
+  );
 
   const ActionsInItinerary = () => (
     <>
@@ -184,7 +189,9 @@ const FlightItineraryCard = ({
         {showInfo && (
           <InfoBox
             preferenceSelected={preferenceSelected}
-            onPress={onInfoPress}
+            onPress={() =>
+              onActionPress(viewShortlistedFlightAction || shortlistingAction)
+            }
           />
         )}
       </View>

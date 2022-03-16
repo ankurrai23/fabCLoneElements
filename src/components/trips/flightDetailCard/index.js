@@ -13,8 +13,8 @@ import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
 
-const FlightDetailCard = ({item, onActionPress, onCardPress}) => {
-  const isActionEnabled = (type) => item.actions.find((e) => e.type === type);
+const FlightDetailCard = ({item, onActionPress, onCardPress, style}) => {
+  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
@@ -61,7 +61,7 @@ const FlightDetailCard = ({item, onActionPress, onCardPress}) => {
     </>
   );
   return (
-    <View style={Styles.container}>
+    <View style={[Styles.container, style]}>
       <FTouchableOpacity
         style={Styles.card(item.modified)}
         onPress={onCardPress}>
@@ -76,7 +76,7 @@ const FlightDetailCard = ({item, onActionPress, onCardPress}) => {
                 fontSize: DP._12,
               }}>{` ${item.month}`}</FText>
           </FText>
-          {item.status.key === 'CANCELLED' && (
+          {item?.status?.key === 'CANCELLED' && (
             <TripStatus statusObj={item.status} />
           )}
         </View>

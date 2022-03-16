@@ -13,7 +13,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import DashedLine from '../../../common/components/dashedLine';
 
-const TripCardLoadingState = () => {
+const TripCardLoadingState = ({onBackClick}) => {
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -68,7 +68,7 @@ const TripCardLoadingState = () => {
         duration={1500}
         delay={500}
         style={Styles.headerContainer}>
-        <FTouchableOpacity>
+        <FTouchableOpacity onPress={onBackClick}>
           <Feather name="arrow-left" size={DP._24} color={Color.BLACK} />
         </FTouchableOpacity>
         <View style={{marginLeft: DP._26}}>

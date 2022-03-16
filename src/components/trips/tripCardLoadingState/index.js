@@ -50,15 +50,15 @@ const TripCardLoadingState = ({
   };
 
   const ButtonWithIcon = ({iconName, text, style}) => (
-    <View style={Styles.flexRow}>
-      <MaterialIcons name={iconName} color={Color.DODGER_BLUE} size={DP._16} />
+    <View style={Styles.button}>
+      <MaterialIcons name={iconName} color={Color.DODGER_BLUE} size={DP._18} />
       <FText style={[Styles.buttonTextStyle, style]}>{text}</FText>
     </View>
   );
 
   return (
     <>
-      <View style={Styles.header}>
+      <View style={[Styles.header]}>
         <ListTypeFilter data={data} selected={selected} onChange={onChange} />
         {showSortAndFilter && (
           <View style={Styles.buttonWithIconContainer}>

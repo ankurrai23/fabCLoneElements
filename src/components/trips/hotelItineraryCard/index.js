@@ -23,9 +23,7 @@ const HotelItineraryCard = ({
   item,
   onActionPress,
   onCardPress,
-  onInfoPress,
   style,
-  itineraryView,
   hideIcon,
   showLine,
   showInfo,
@@ -40,7 +38,12 @@ const HotelItineraryCard = ({
 
   const viewRemarksAction = isActionEnabled(HotelSubTripActions.VIEW_REMARKS);
   const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
-
+  const shortlistingAction = isActionEnabled(
+    HotelSubTripActions.SHORTLIST_HOTEL_TRIPS,
+  );
+  const viewShortlistedHotelAction = isActionEnabled(
+    HotelSubTripActions.VIEW_SHORTLISTED_HOTEL_TRIPS,
+  );
   const ActionsInItinerary = () => (
     <>
       <Separator style={{marginHorizontal: DP._16}} />
@@ -163,10 +166,12 @@ const HotelItineraryCard = ({
           (modifyAction || cancelAction || viewRemarksAction) && (
             <ActionsInItinerary />
           )}
-        {itineraryView && showInfo && (
+        {showInfo && (
           <InfoBox
             preferenceSelected={preferenceSelected}
-            onPress={onInfoPress}
+            onPress={() =>
+              onActionPress(viewShortlistedHotelAction || shortlistingAction)
+            }
           />
         )}
       </View>
