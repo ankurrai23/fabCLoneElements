@@ -33,7 +33,6 @@ const flightItineraryCardProps = {
   },
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
-  onInfoPress: () => console.log('Info Pressed'),
   showLine: true,
   hideIcon: false,
   showInfo: false,

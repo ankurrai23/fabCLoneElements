@@ -41,6 +41,8 @@ import ApprovalManager from './components/trips/tripCreation/approvalManager';
 import AddFlightDetails from './components/trips/tripCreation/addFlightDetails';
 import AddHotelDetails from './components/trips/tripCreation/addHotelDetails';
 import CoTravelersDetails from './components/trips/tripCreation/coTravelersDetails';
+import {FlightSubTripActions} from './utils/SubTripActions';
+import {HotelSubTripActions} from './utils/SubTripActions';
 
 import FlightDetailCard from './components/trips/flightDetailCard';
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
@@ -93,4 +95,7 @@ export {
   ApprovalManager,
   AddFlightDetails,
   AddHotelDetails,
+  // constants
+  FlightSubTripActions,
+  HotelSubTripActions,
 };

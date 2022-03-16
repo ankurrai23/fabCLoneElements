@@ -65,4 +65,8 @@ export default StyleSheet.create({
     color: Color.DODGER_BLUE,
     marginLeft: DP._4,
   },
+  button: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
 });

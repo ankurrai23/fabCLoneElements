@@ -18,6 +18,7 @@ export default function HotelDetailCard({
   item,
   onActionPress,
   onMainImagePress,
+  style,
 }) {
   const [sheetVisible, setSheetVisible] = useState(false);
 
@@ -63,7 +64,7 @@ export default function HotelDetailCard({
 
   return (
     <>
-      <View style={Styles.container}>
+      <View style={[Styles.container, style]}>
         <View style={Styles.subContainer(item.modified)}>
           <View style={Styles.hotelNameAndImageContainer}>
             <FTouchableOpacity onPress={onMainImagePress}>

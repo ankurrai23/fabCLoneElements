@@ -13,7 +13,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import FText from '../../../common/rn/FText';
 
-const HotelPreferenceLoadingState = ({offline = false}) => {
+const HotelPreferenceLoadingState = ({offline = false, onBackClick}) => {
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -111,7 +111,7 @@ const HotelPreferenceLoadingState = ({offline = false}) => {
         delay={500}
         style={Styles.headerContainer}>
         <View style={Styles.flexRow}>
-          <FTouchableOpacity>
+          <FTouchableOpacity onPress={onBackClick}>
             <Feather name="arrow-left" size={DP._24} color={Color.BLACK} />
           </FTouchableOpacity>
           <Placeholder style={Styles.headerTitleLoader} />
