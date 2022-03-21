@@ -11,7 +11,11 @@ export default function AddHotelDetails({data, errors, ...props}) {
       <View style={Styles.container}>
         <View style={Styles.topContainer}>
           <PickerField
-            value={data.city.city}
+            value={
+              data.city.cityPlaceId
+                ? data.city.city
+                : data.preferredLocality.location
+            }
             error={errors.city}
             helperText={errors.cityError}
             label="Enter city"
