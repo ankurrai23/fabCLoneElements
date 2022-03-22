@@ -37,6 +37,7 @@ import {
   CoTravellers,
   FlightDetailCard,
   ListTypeFilter,
+  ContactSupport,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -46,6 +47,10 @@ const COMMON_COMPONENTS = [
   {name: 'PickerField', component: <PickerField {...data.pickerFieldProps} />},
   {name: 'DashedLine', component: <DashedLine {...data.dashLineProps} />},
   {name: 'EmptyScreen', component: <EmptyScreen {...data.emptyScreenProps} />},
+  {
+    name: 'ContactSupport',
+    component: <ContactSupport {...data.contactSupportProps} />,
+  },
 ];
 
 const TRIP_COMPONENTS = [

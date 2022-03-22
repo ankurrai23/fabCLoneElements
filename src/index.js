@@ -47,6 +47,8 @@ import {HotelSubTripActions} from './utils/SubTripActions';
 import FlightDetailCard from './components/trips/flightDetailCard';
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
+import ContactSupport from './components/trips/components/contactSupport';
+
 export {
   data,
   //RN Components
@@ -84,6 +86,7 @@ export {
   CoTravellers,
   FlightDetailCard,
   ListTypeFilter,
+  ContactSupport,
   // Trip Creation
   ComingSoon,
   RequestType,
