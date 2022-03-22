@@ -8,6 +8,7 @@ import Styles from './Styles';
 import {DP} from '../../../../utils/Dimen';
 
 export default function AddFlightDetails(props) {
+  console.log('new data====ne data', props);
   const {flightDetails, errors} = props;
 
   function renderReturnForm() {
@@ -19,14 +20,22 @@ export default function AddFlightDetails(props) {
           </FText>
           <PickerField
             label="From"
-            value={`${flightDetails[1]?.source} (${flightDetails[1]?.sourceAirportCode})`}
+            value={
+              flightDetails[1]?.sourceAirportCode
+                ? `${flightDetails[1]?.source} (${flightDetails[1]?.sourceAirportCode})`
+                : null
+            }
             error={errors.returnFrom}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchReturnFrom}
           />
           <PickerField
             label="To"
-            value={`${flightDetails[1]?.destination} (${flightDetails[1]?.destinationAirportCode})`}
+            value={
+              flightDetails[1]?.destinationAirportCode
+                ? `${flightDetails[1]?.destination} (${flightDetails[1]?.destinationAirportCode})`
+                : null
+            }
             error={errors.returnTo}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchReturnTo}
@@ -85,14 +94,22 @@ export default function AddFlightDetails(props) {
           )}
           <PickerField
             label="From"
-            value={`${flightDetails[0]?.source} (${flightDetails[0]?.sourceAirportCode})`}
+            value={
+              flightDetails[0]?.sourceAirportCode
+                ? `${flightDetails[0]?.source} (${flightDetails[0]?.sourceAirportCode})`
+                : null
+            }
             error={errors.onwardFrom}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchOnwardFrom}
           />
           <PickerField
             label="To"
-            value={`${flightDetails[0]?.destination} (${flightDetails[0]?.destinationAirportCode})`}
+            value={
+              flightDetails[0]?.destinationAirportCode
+                ? `${flightDetails[0]?.destination} (${flightDetails[0]?.destinationAirportCode})`
+                : null
+            }
             error={errors.onwardTo}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchOnwardTo}

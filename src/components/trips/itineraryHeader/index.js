@@ -21,7 +21,7 @@ function ItineraryHeader(props) {
       </View>
       <View style={Styles.datesContainer}>
         <FText style={Styles.tripId}>{props.tripId}</FText>
-        <TripStatus statusObj={props.status} />
+        {props.status && <TripStatus statusObj={props.status} />}
       </View>
       {props.cancelledMessage && (
         <FText style={Styles.cancelMessage}>{props.cancelledMessage}</FText>
