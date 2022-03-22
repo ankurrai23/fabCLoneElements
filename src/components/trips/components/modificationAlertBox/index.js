@@ -5,15 +5,17 @@ import Feather from 'react-native-vector-icons/Feather';
 import FText from '../../../../common/rn/FText';
 import {DP} from '../../../../utils/Dimen';
 
-const ModificationAlertBox = ({msg}) => {
+const ModificationAlertBox = ({icon, msg, style}) => {
   return (
-    <View style={Styles.modifyMsgContainer}>
-      <Feather
-        name="info"
-        size={DP._12}
-        color={Color.TWILIGHT_BLUE}
-        style={{marginTop: DP._3}}
-      />
+    <View style={[Styles.modifyMsgContainer, style]}>
+      {icon || (
+        <Feather
+          name="info"
+          size={DP._12}
+          color={Color.TWILIGHT_BLUE}
+          style={{marginTop: DP._3}}
+        />
+      )}
       <FText style={Styles.modifyText}>{msg}</FText>
     </View>
   );

@@ -7,6 +7,7 @@ export default StyleSheet.create({
   container: {
     borderRadius: DP._12,
     backgroundColor: Color.WHITE,
+    marginTop: DP._8,
     ...shadowObj,
   },
   subContainer: (modified) => ({
@@ -109,5 +110,32 @@ export default StyleSheet.create({
   },
   halfFlex: {
     flex: 0.5,
+  },
+  postTripActionContainer: {
+    backgroundColor: Color.WHITE,
+    paddingHorizontal: DP._16,
+    marginBottom: DP._4,
+    borderRadius: DP._8,
+    borderColor: Color.LIGHT_PERIWINKLE,
+    borderWidth: DP._0_5,
+    ...shadowObj,
+  },
+  postTripButtonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  contactSupportButton: {
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._14,
+    backgroundColor: Color.WHITE,
+    marginTop: DP._16,
+    borderWidth: 0.5,
+    borderColor: Color.LIGHT_PERIWINKLE,
+    borderRadius: DP._8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    ...shadowObj,
   },
 });

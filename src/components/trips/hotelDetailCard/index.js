@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import FText from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
@@ -14,20 +14,26 @@ import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import Button from '../../../common/components/button';
 import {HotelSubTripActions} from '../../../utils/SubTripActions';
+import ContactSupport from '../components/contactSupport';
+import ModificationAlertBox from '../components/modificationAlertBox';
 export default function HotelDetailCard({
   item,
   onActionPress,
   onMainImagePress,
   style,
+  supportDetails,
 }) {
   const [sheetVisible, setSheetVisible] = useState(false);
-
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
   const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
   const payNowAction = isActionEnabled(HotelSubTripActions.PAY_NOW);
   const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
+  const posAction = isActionEnabled(HotelSubTripActions.SUBMIT_POS);
+  const reviewAction = isActionEnabled(HotelSubTripActions.SUBMIT_REVIEW);
+  const invoiceAction = isActionEnabled(HotelSubTripActions.VIEW_INVOICE);
+  const supportAction = isActionEnabled(HotelSubTripActions.SUPPORT);
 
   const CheckInInfo = ({title, date, time}) => (
     <View>
@@ -58,14 +64,51 @@ export default function HotelDetailCard({
     </View>
   );
 
+  const PostTripHotelActions = () => (
+    <View style={Styles.postTripActionContainer}>
+      {[posAction, invoiceAction, reviewAction].map((item, index) => (
+        <>
+          {item && (
+            <>
+              <FTouchableOpacity
+                style={{paddingVertical: DP._16}}
+                onPress={() => onActionPress(item)}>
+                <View style={Styles.postTripButtonContainer}>
+                  <FText style={{color: Color.DODGER_BLUE}}>{item.name}</FText>
+                  <Feather name="chevron-right" size={DP._14} />
+                </View>
+                {item.type === 'SUBMIT_REVIEW' && (
+                  <FText
+                    style={{
+                      fontSize: DP._11,
+                      color: Color.GREY_PURPLE,
+                    }}>
+                    Help your colleague decide the next time
+                  </FText>
+                )}
+              </FTouchableOpacity>
+              <Separator />
+            </>
+          )}
+        </>
+      ))}
+    </View>
+  );
+
   const renderItem = ({item: inclusion}) => {
-    return <Inclusions text={inclusion.detail} image={inclusion.icon} />;
+    return <Inclusions text={inclusion.text} image={inclusion.icon} />;
   };
 
   return (
-    <>
+    <ScrollView contentContainerStyle={{padding: DP._16}}>
+      {(posAction || invoiceAction || reviewAction) && <PostTripHotelActions />}
+      {item.modificationRequested && (
+        <ModificationAlertBox
+          msg={'Your have sent a modification request for this booking.'}
+        />
+      )}
       <View style={[Styles.container, style]}>
-        <View style={Styles.subContainer(item.modified)}>
+        <View style={Styles.subContainer(item.modificationRequested)}>
           <View style={Styles.hotelNameAndImageContainer}>
             <FTouchableOpacity onPress={onMainImagePress}>
               <FImage
@@ -95,7 +138,7 @@ export default function HotelDetailCard({
             <View style={Styles.flexRowWithAlignCenter}>
               <FImage
                 style={Styles.weatherIcon}
-                source={{uri: item.weather.weatherIcon}}
+                source={{uri: item.weather.iconPath}}
               />
               <FText
                 style={{
@@ -103,7 +146,7 @@ export default function HotelDetailCard({
                   color: Color.GREY_PURPLE,
                   marginLeft: DP._4,
                 }}>
-                {item.weather.weatherName}
+                {item.weather.description}
               </FText>
             </View>
             {directionAction && (
@@ -157,7 +200,7 @@ export default function HotelDetailCard({
               return (
                 <Inclusions
                   key={`ab${index}cd`}
-                  text={item.detail}
+                  text={item.text}
                   image={item.icon}
                 />
               );
@@ -210,20 +253,29 @@ export default function HotelDetailCard({
             </Button>
           )}
         </View>
-        <Separator style={{backgroundColor: Color.VERY_LIGHT_BLUE}} />
-        <View style={Styles.buttonContainer}>
-          {cancelAction && (
-            <FTouchableOpacity onPress={() => onActionPress?.(cancelAction)}>
-              <FText style={Styles.cancel}>{cancelAction.name}</FText>
-            </FTouchableOpacity>
-          )}
-          {modifyAction && (
-            <FTouchableOpacity onPress={() => onActionPress?.(modifyAction)}>
-              <FText style={Styles.modify}>{modifyAction.name}</FText>
-            </FTouchableOpacity>
-          )}
-        </View>
+        {!item.actionsDisabled && (
+          <>
+            <Separator style={{backgroundColor: Color.VERY_LIGHT_BLUE}} />
+            <View style={Styles.buttonContainer}>
+              {cancelAction && (
+                <FTouchableOpacity
+                  onPress={() => onActionPress?.(cancelAction)}>
+                  <FText style={Styles.cancel}>{cancelAction.name}</FText>
+                </FTouchableOpacity>
+              )}
+              {modifyAction && (
+                <FTouchableOpacity
+                  onPress={() => onActionPress?.(modifyAction)}>
+                  <FText style={Styles.modify}>{modifyAction.name}</FText>
+                </FTouchableOpacity>
+              )}
+            </View>
+          </>
+        )}
       </View>
+      {supportAction && (
+        <ContactSupport item={supportAction} supportDetails={supportDetails} />
+      )}
       <DialogBox
         modalVisible={sheetVisible}
         onClose={() => setSheetVisible(false)}
@@ -246,6 +298,6 @@ export default function HotelDetailCard({
           </View>
         }
       />
-    </>
+    </ScrollView>
   );
 }

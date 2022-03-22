@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     backgroundColor: 'white',
     borderRadius: DP._12,
-    flex: 1,
+    marginHorizontal: DP._16,
     ...shadowObj,
   },
   actionContainer: {
@@ -88,5 +88,10 @@ export default StyleSheet.create({
   },
   flex: {
     flex: 1,
+  },
+  heading: {
+    marginBottom: DP._8,
+    marginTop: DP._24,
+    marginHorizontal: DP._16,
   },
 });

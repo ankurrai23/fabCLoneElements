@@ -10,8 +10,8 @@ export default {
       'Opposite Mittal Industrial Estate, Andheri Kurla Road, Andheri East, Mumbai -400059, Maharashtra',
     directions: '220 m from Marol naka Metro station',
     weather: {
-      weatherIcon: 'https://static.fabhotels.com/weather-icon/clear-sky.png',
-      weatherName: 'Cloudy (Current)',
+      iconPath: 'https://static.fabhotels.com/weather-icon/clear-sky.png',
+      description: 'Cloudy (Current)',
     },
     checkIn: {
       date: 'Tue, 22 Jun',
@@ -25,27 +25,27 @@ export default {
     inclusions: [
       {
         icon: 'https://static.fabhotels.com/weather-icon/clear-sky.png',
-        detail: 'Lunch Ala Carte (veg)',
+        text: 'Lunch Ala Carte (veg)',
       },
       {
         icon: 'https://static.fabhotels.com/weather-icon/clear-sky.png',
-        detail: 'Lunch Ala Carte (Non veg)',
+        text: 'Lunch Ala Carte (Non veg)',
       },
       {
         icon: 'https://static.fabhotels.com/weather-icon/clear-sky.png',
-        detail: 'Dinner Ala Carte (Non veg)',
+        text: 'Dinner Ala Carte (Non veg)',
       },
       {
         icon: 'https://static.fabhotels.com/weather-icon/clear-sky.png',
-        detail: 'Lunch Ala Carte (veg)',
+        text: 'Lunch Ala Carte (veg)',
       },
       {
         icon: 'https://static.fabhotels.com/weather-icon/clear-sky.png',
-        detail: 'Lunch Ala Carte (veg)',
+        text: 'Lunch Ala Carte (veg)',
       },
       {
         icon: 'https://static.fabhotels.com/weather-icon/clear-sky.png',
-        detail: 'Lunch Ala Carte (veg)',
+        text: 'Lunch Ala Carte (veg)',
       },
     ],
     coTravellers: ['Abhishek Gupta', 'Pranay Shah'],
@@ -68,12 +68,35 @@ export default {
         name: 'Directions',
       },
       {
-        type: 'PAY_NOW',
-        name: 'Pay Now',
+        type: 'SUBMIT_REVIEW',
+        name: 'Submit a review',
+      },
+      {
+        type: 'SUBMIT_POS',
+        name: 'Submit proof of stay',
+      },
+      {
+        type: 'VIEW_INVOICE',
+        name: 'See invoice',
+      },
+      {
+        type: 'SUPPORT',
+        name: 'Contact 24x7 support',
       },
     ],
-    modified: false,
+    actionsDisabled: true,
+    modificationRequested: true,
   },
   onActionPress: (item) => console.log(item),
+  supportDetails: [
+    {
+      name: 'FabHotel Cabana',
+      value: '7042424242',
+    },
+    {
+      name: 'TravelPlus helpline',
+      value: '9873646962',
+    },
+  ],
   onMainImagePress: () => console.log('image press'),
 };

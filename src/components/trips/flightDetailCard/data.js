@@ -1,4 +1,5 @@
 const flightDetailCardProps = {
+  title: 'Return Flight',
   item: {
     date: '22',
     month: 'Nov',
@@ -13,7 +14,7 @@ const flightDetailCardProps = {
     pnr: 'GBLP6Q',
     duration: '1h 50min',
     airline: 'Indigo',
-    actionsDisabled: false,
+    actionsDisabled: true,
     status: {
       key: 'PROCESSED',
       value: 'Processed',
@@ -30,7 +31,7 @@ const flightDetailCardProps = {
         name: 'Cancel',
       },
     ],
-    modified: false,
+    modificationRequested: true,
   },
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
