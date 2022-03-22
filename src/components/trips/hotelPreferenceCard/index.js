@@ -91,9 +91,11 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         showsHorizontalScrollIndicator={false}
         keyExtractor={(_, index) => `${index}abc`}
       />
-      <FText type="bold" style={Styles.companyPreferred}>
-        {item.preferredBy} preferred
-      </FText>
+      {item.preferenceText && (
+        <FText type="bold" style={Styles.companyPreferred}>
+          {item.preferenceText}
+        </FText>
+      )}
     </View>
     <View style={Styles.subContainer}>
       <View style={Styles.starContainer}>
