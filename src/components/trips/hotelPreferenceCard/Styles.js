@@ -127,7 +127,7 @@ export default StyleSheet.create({
   hotelLocality: {
     fontSize: DP._11,
     color: Color.CHARCOAL_GREY_TWO,
-    marginBottom: DP._4,
+    marginBottom: DP._12,
   },
   reviewsText: {
     color: Color.CHARCOAL_GREY_TWO,
@@ -148,6 +148,7 @@ export default StyleSheet.create({
   inclusions: {
     fontSize: DP._12,
     color: Color.DARK_SEA_FOAM,
+    marginLeft: DP._4,
   },
   secondaryAddr: {
     fontSize: DP._11,
