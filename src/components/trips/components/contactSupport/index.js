@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: DP._16,
     paddingVertical: DP._14,
     backgroundColor: Color.WHITE,
+    marginVertical: DP._16,
     marginTop: DP._16,
     borderWidth: 0.5,
     borderColor: Color.LIGHT_PERIWINKLE,
