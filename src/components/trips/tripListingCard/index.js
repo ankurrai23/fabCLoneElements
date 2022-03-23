@@ -29,7 +29,7 @@ const TripListingCard = ({item, onCardPress}) => {
         style={[Styles.container, {borderRadius: DP._12}]}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
-            {tripIcons(item.requestType).map((asset, index) => (
+            {tripIcons(item.tripRequestType).map((asset, index) => (
               <FImage
                 source={asset}
                 style={Styles.imageStyle}
