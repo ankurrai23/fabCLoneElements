@@ -276,7 +276,11 @@ export default function HotelDetailCard({
         )}
       </View>
       {supportAction && (
-        <ContactSupport item={supportAction} supportDetails={supportDetails} />
+        <ContactSupport
+          item={supportAction}
+          supportDetails={supportDetails}
+          onPress={() => onActionPress(supportAction)}
+        />
       )}
       <DialogBox
         modalVisible={sheetVisible}

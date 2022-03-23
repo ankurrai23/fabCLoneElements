@@ -11,7 +11,7 @@ import SupportDialog from '../../../../common/components/supportDialog';
 
 // TODO: Handle the case when no data in supportDetails
 
-export default function ContactSupport({item, supportDetails}) {
+export default function ContactSupport({item, supportDetails, onPress, style}) {
   const [visible, setVisible] = useState(false);
 
   // useEffect(() => {
@@ -23,8 +23,11 @@ export default function ContactSupport({item, supportDetails}) {
   return (
     <>
       <FTouchableOpacity
-        style={styles.container}
-        onPress={() => setVisible(true)}>
+        style={[styles.container, style]}
+        onPress={() => {
+          onPress();
+          setVisible(true);
+        }}>
         <FText style={styles.textStyle}>
           {item?.name || 'Contact 24x7 Support'}
         </FText>
@@ -45,7 +48,6 @@ const styles = StyleSheet.create({
     paddingVertical: DP._14,
     backgroundColor: Color.WHITE,
     marginVertical: DP._16,
-    marginHorizontal: DP._16,
     marginTop: DP._16,
     borderWidth: 0.5,
     borderColor: Color.LIGHT_PERIWINKLE,
