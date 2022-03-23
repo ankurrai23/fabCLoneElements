@@ -232,17 +232,19 @@ export default function HotelDetailCard({
                 Bill to company
               </FText>
             </View>
-            <View style={[Styles.paymentStatusContainer, Styles.halfFlex]}>
-              <Feather
-                name={item.paymentStatus.icon}
-                style={{marginRight: DP._4}}
-                color={item.paymentStatus.color}
-              />
-              <FText
-                style={{fontSize: DP._10, color: item.paymentStatus.color}}>
-                {item.paymentStatus.statusText}
-              </FText>
-            </View>
+            {item.paymentStatus && (
+              <View style={[Styles.paymentStatusContainer, Styles.halfFlex]}>
+                <Feather
+                  name={item.paymentStatus.icon}
+                  style={{marginRight: DP._4}}
+                  color={item.paymentStatus.color}
+                />
+                <FText
+                  style={{fontSize: DP._10, color: item.paymentStatus.color}}>
+                  {item.paymentStatus.statusText}
+                </FText>
+              </View>
+            )}
           </View>
           {payNowAction && (
             <Button
