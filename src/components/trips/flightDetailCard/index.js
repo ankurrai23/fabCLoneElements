@@ -66,9 +66,11 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
   }
   return (
     <>
-      <FText type="medium" style={Styles.heading}>
-        {title}
-      </FText>
+      {title && (
+        <FText type="medium" style={Styles.heading}>
+          {title}
+        </FText>
+      )}
       {item.modificationRequested && (
         <ModificationAlertBox
           msg={'Your have sent a modification request for this booking.'}
