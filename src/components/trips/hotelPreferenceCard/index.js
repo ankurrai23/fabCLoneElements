@@ -133,10 +133,12 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         ))}
         <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
       </View>
-      <FText style={Styles.ratingsText}>
-        Your <FText type="medium">{item.colleaguesCount}</FText> colleagues
-        rated it {item.colleaguesRatingAvg} (avg)
-      </FText>
+      {item.colleaguesCount && (
+        <FText style={Styles.ratingsText}>
+          Your <FText type="medium">{item.colleaguesCount}</FText> colleagues
+          rated it {item.colleaguesRatingAvg} (avg)
+        </FText>
+      )}
       <View style={Styles.amountContainer}>
         <View style={[Styles.flexRow, {paddingTop: DP._1}]}>
           {item.includesBreakfast && (
