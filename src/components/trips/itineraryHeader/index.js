@@ -30,7 +30,7 @@ function ItineraryHeader(props) {
         <View style={Styles.subContainer}>
           <View style={Styles.detailsContainer}>
             <FText style={Styles.detailsTitle}>Request by: </FText>
-            <FText>{props.tripRequesterInfo.requestedBy}</FText>
+            <FText>{props.tripRequesterInfo.name}</FText>
           </View>
           <View style={Styles.detailsContainer}>
             <FText style={Styles.detailsTitle}>Department: </FText>
