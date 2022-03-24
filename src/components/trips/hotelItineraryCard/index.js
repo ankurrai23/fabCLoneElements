@@ -46,7 +46,12 @@ const HotelItineraryCard = ({
   );
   const ActionsInItinerary = () => (
     <>
-      <Separator style={{marginHorizontal: DP._16}} />
+      <Separator
+        style={{
+          marginHorizontal: DP._16,
+          backgroundColor: Color.LIGHT_PERIWINKLE,
+        }}
+      />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
