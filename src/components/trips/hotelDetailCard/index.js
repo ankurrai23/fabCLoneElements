@@ -1,4 +1,4 @@
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, RefreshControl} from 'react-native';
 import React, {useState} from 'react';
 import FText from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
@@ -16,12 +16,14 @@ import Button from '../../../common/components/button';
 import {HotelSubTripActions} from '../../../utils/SubTripActions';
 import ContactSupport from '../components/contactSupport';
 import ModificationAlertBox from '../components/modificationAlertBox';
+
 export default function HotelDetailCard({
   item,
   onActionPress,
   onMainImagePress,
   style,
   supportDetails,
+  onRefresh,
 }) {
   const [sheetVisible, setSheetVisible] = useState(false);
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
@@ -100,7 +102,11 @@ export default function HotelDetailCard({
   };
 
   return (
-    <ScrollView contentContainerStyle={{padding: DP._16}}>
+    <ScrollView
+      contentContainerStyle={{padding: DP._16}}
+      refreshControl={
+        <RefreshControl refreshing={false} onRefresh={onRefresh} />
+      }>
       {(posAction || invoiceAction || reviewAction) && <PostTripHotelActions />}
       {item.modificationRequested && (
         <ModificationAlertBox

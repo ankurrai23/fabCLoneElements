@@ -99,4 +99,5 @@ export default {
     },
   ],
   onMainImagePress: () => console.log('image press'),
+  onRefresh: () => console.log('refreshing'),
 };
