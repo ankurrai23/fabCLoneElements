@@ -133,7 +133,7 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         ))}
         <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
       </View>
-      {item.colleaguesCount && (
+      {!!item.colleaguesCount && (
         <FText style={Styles.ratingsText}>
           Your <FText type="medium">{item.colleaguesCount}</FText> colleagues
           rated it {item.colleaguesRatingAvg} (avg)
