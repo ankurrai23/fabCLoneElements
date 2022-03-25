@@ -137,11 +137,11 @@ export default StyleSheet.create({
   ratingsText: {
     color: Color.CHARCOAL_GREY_TWO,
     fontSize: DP._12,
-    marginBottom: DP._16,
   },
   amountContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: DP._16,
   },
   cancellationText: {color: Color.BATTLESHIP_GREY_TWO, fontSize: DP._10},
   buttonContainer: {paddingHorizontal: DP._8, paddingBottom: DP._16},
