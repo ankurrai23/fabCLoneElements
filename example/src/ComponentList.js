@@ -38,6 +38,7 @@ import {
   FlightDetailCard,
   ListTypeFilter,
   ContactSupport,
+  FlightDetailLoadingState,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -134,6 +135,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'ListTypeFilter',
     component: <ListTypeFilter {...data.listTypeFilterProps} />,
+  },
+  {
+    name: 'FlightDetailLoadingState',
+    component: <FlightDetailLoadingState />,
   },
 ];
 
