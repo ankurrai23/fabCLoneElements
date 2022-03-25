@@ -6,12 +6,12 @@ const hotelItineraryCardProps = {
     location: 'Andheri East',
     checkInTime: '1AM',
     status: {
-      key: 'CANCELLED',
+      key: 'APPROVAL_PENDING',
       value: 'Cancelled',
       textColor: '#d65656',
       bgColor: '#d656561a',
     },
-    actionsDisabled: false,
+    actionsDisabled: true,
     actions: [
       {
         type: 'MODIFY',
@@ -29,12 +29,13 @@ const hotelItineraryCardProps = {
   },
   onActionPress: (action) => console.log('Action Pressed'),
   onCardPress: () => console.log('Card Pressed'),
-  hideIcon: false,
-  showLine: true,
+  hideIcon: true,
+  showLine: false,
   showInfo: false,
   preferenceSelected: false,
-  processed: true,
+  processed: false,
   timelineGreyed: false,
+  showConfirmedStatus: true,
 };
 
 export default hotelItineraryCardProps;

@@ -30,6 +30,7 @@ const HotelItineraryCard = ({
   preferenceSelected,
   processed,
   timelineGreyed,
+  showConfirmedStatus,
 }) => {
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
@@ -44,6 +45,14 @@ const HotelItineraryCard = ({
   const viewShortlistedHotelAction = isActionEnabled(
     HotelSubTripActions.VIEW_SHORTLISTED_HOTEL_TRIPS,
   );
+
+  const confirmedStatus = {
+    key: 'CONFIRMED',
+    value: 'Confirmed',
+    textColor: Color.DARK_SEA_FOAM,
+    bgColor: Color.DARK_SEA_FOAM + '26',
+  };
+
   const ActionsInItinerary = () => (
     <>
       <Separator
@@ -124,6 +133,7 @@ const HotelItineraryCard = ({
               </FText>
               <FText style={Styles.month}> {item.month}</FText>
             </FText>
+            {showConfirmedStatus && <TripStatus statusObj={confirmedStatus} />}
             {item?.status?.key === 'CANCELLED' ? (
               <TripStatus statusObj={item.status} />
             ) : (
