@@ -79,8 +79,9 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
       )}
       <View style={[Styles.container, style]}>
         <FTouchableOpacity
-          activeOpacity={item.modificationRequested ? 0.4 : 1}
-          style={Styles.card(item.modificationRequested)}
+          disabled={item.cancelled}
+          activeOpacity={item.modificationRequested || item.cancelled ? 0.4 : 1}
+          style={Styles.card(item.modificationRequested || item.cancelled)}
           onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>

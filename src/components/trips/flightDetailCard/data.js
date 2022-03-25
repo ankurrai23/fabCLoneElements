@@ -14,7 +14,7 @@ const flightDetailCardProps = {
     pnr: 'GBLP6Q',
     duration: '1h 50min',
     airline: 'Indigo',
-    actionsDisabled: true,
+    actionsDisabled: false,
     status: {
       key: 'PROCESSED',
       value: 'Processed',
@@ -32,6 +32,7 @@ const flightDetailCardProps = {
       },
     ],
     modificationRequested: true,
+    cancelled: false,
   },
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),

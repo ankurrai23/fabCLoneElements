@@ -114,7 +114,10 @@ export default function HotelDetailCard({
         />
       )}
       <View style={[Styles.container, style]}>
-        <View style={Styles.subContainer(item.modificationRequested)}>
+        <View
+          style={Styles.subContainer(
+            item.modificationRequested || item.cancelled,
+          )}>
           <View style={Styles.hotelNameAndImageContainer}>
             <FTouchableOpacity onPress={onMainImagePress}>
               <FImage
