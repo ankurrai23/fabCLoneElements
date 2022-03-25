@@ -250,6 +250,7 @@ export default class TextField extends React.Component {
         onKeyPress: this.props.onKeyPress,
         blurOnSubmit: this.props.blurOnSubmit,
         pointerEvents: this.props.pointerEvents,
+        textAlignVertical: this.props.textAlignVertical,
       },
       elementStyles = [Styles.element, this.props.style];
 

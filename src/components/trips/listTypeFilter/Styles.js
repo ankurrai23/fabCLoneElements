@@ -20,7 +20,7 @@ export default StyleSheet.create({
   }),
   filterTag: (isSelected) => ({
     fontSize: DP._14,
-    color: isSelected ? Color.DODGER_BLUE : Color.CHARCOAL_GREY,
+    color: isSelected ? Color.DODGER_BLUE : Color.CHARCOAL_GREY_TWO,
     textAlign: 'center',
   }),
 });
