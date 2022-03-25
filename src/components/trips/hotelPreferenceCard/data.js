@@ -15,7 +15,7 @@ const hotelPreferenceCardProps = {
     cost: '₹260923',
     ratingScore: 80,
     reviewsCount: '4.5/5 (134 reviews)',
-    colleaguesCount: 22,
+    colleaguesCount: 0,
     colleaguesRatingAvg: 4.2,
     googleMapUrl: 'https://www.google.com',
     preference: 5,
