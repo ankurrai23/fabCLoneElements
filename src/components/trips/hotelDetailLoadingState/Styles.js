@@ -45,6 +45,11 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   payment: {flex: 1, flexDirection: 'row'},
-  hotelCard: {backgroundColor: 'white', borderRadius: DP._12, ...shadowObj},
+  hotelCard: {
+    backgroundColor: 'white',
+    borderRadius: DP._12,
+    ...shadowObj,
+    marginTop: DP._16,
+  },
   subContainer: {marginLeft: DP._8, flexGrow: 1},
 });

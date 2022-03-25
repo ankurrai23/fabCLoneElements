@@ -96,6 +96,8 @@ export default function FlightDetailLoadingState() {
     <View style={Styles.cardContainer}>
       <Header />
       <FlightCard />
+      <Header />
+      <FlightCard />
     </View>
   );
 }

@@ -8,7 +8,7 @@ export default StyleSheet.create({
     flex: 1,
     width: DP._100,
   },
-  cardContainer: {paddingHorizontal: DP._16},
+  cardContainer: {padding: DP._16},
   commonPlaceholder2: (width, height, marginTop) => ({
     width: width,
     height: height,
@@ -36,6 +36,7 @@ export default StyleSheet.create({
     borderRadius: DP._12,
     ...shadowObj,
     marginTop: DP._8,
+    marginBottom: DP._16,
   },
   subContainerStyle: (alignItems = 'flex-start') => ({
     marginTop: DP._16,
