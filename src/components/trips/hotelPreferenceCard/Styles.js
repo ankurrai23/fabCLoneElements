@@ -6,7 +6,7 @@ const {width} = Dimensions.get('window');
 export default StyleSheet.create({
   container: (offline) => ({
     backgroundColor: Color.WHITE,
-    padding: offline && DP._16,
+    padding: offline ? DP._16 : 0,
     borderRadius: DP._4,
     ...shadowObj,
   }),
