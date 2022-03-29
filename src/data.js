@@ -30,6 +30,12 @@ import flightDetailCardProps from './components/trips/flightDetailCard/data';
 import listTypeFilterProps from './components/trips/listTypeFilter/data';
 import contactSupportProps from './components/trips/components/contactSupport/data';
 
+import homeHeaderProps from './components/home/homeHeader/data';
+import homeCardProps from './common/components/homeCard/data';
+import claimsListProps from './components/home/claimsList/data';
+import headerViewProps from './components/home/headerView/data';
+import messageCardProps from './components/home/messageCard/data';
+
 export {
   buttonProps,
   textFieldProps,
@@ -62,4 +68,9 @@ export {
   flightDetailCardProps,
   listTypeFilterProps,
   contactSupportProps,
+  homeHeaderProps,
+  homeCardProps,
+  claimsListProps,
+  headerViewProps,
+  messageCardProps,
 };
