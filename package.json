@@ -1,6 +1,6 @@
 {
   "name": "react-native-fab-elements",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "FabHotels RN Components",
   "main": "src/index",
   "react-native": "src/index",
