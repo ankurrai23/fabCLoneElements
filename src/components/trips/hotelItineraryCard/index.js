@@ -32,6 +32,8 @@ const HotelItineraryCard = ({
   timelineGreyed,
   showConfirmedStatus,
 }) => {
+  const sameMonthDates = item.checkIn.month === item.checkOut.month;
+
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
@@ -127,12 +129,25 @@ const HotelItineraryCard = ({
       <View style={[Styles.container]}>
         <FTouchableOpacity onPress={onCardPress}>
           <View style={Styles.dateAndStatusContainer}>
-            <FText>
-              <FText type="medium" style={Styles.date}>
-                {item.date}
+            {sameMonthDates ? (
+              <FText>
+                <FText type="medium" style={Styles.date}>
+                  {`${item.checkIn.date}-${item.checkOut.date}`}
+                </FText>
+                <FText style={Styles.month}> {item.checkIn.month}</FText>
               </FText>
-              <FText style={Styles.month}> {item.month}</FText>
-            </FText>
+            ) : (
+              <FText>
+                <FText type="medium" style={Styles.date}>
+                  {item.checkIn.date}
+                </FText>
+                <FText style={Styles.month}> {item.checkIn.month}</FText>
+                <FText type="medium" style={Styles.date}>
+                  {` - ${item.checkOut.date}`}
+                </FText>
+                <FText style={Styles.month}> {item.checkOut.month}</FText>
+              </FText>
+            )}
             {showConfirmedStatus && <TripStatus statusObj={confirmedStatus} />}
             {item?.status?.key === 'CANCELLED' ? (
               <TripStatus statusObj={item.status} />
