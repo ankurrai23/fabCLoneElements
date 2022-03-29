@@ -12,6 +12,7 @@ import TextField from './common/components/textField';
 import DashedLine from './common/components/dashedLine';
 import PickerField from './common/components/pickerField';
 import HomeCard from './common/components/homeCard';
+import DialogBox from './common/components/dialogBox';
 
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
 import HotelDetailCard from './components/trips/hotelDetailCard';
@@ -71,6 +72,7 @@ export {
   DashedLine,
   PickerField,
   ModificationAlertBox,
+  DialogBox,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
