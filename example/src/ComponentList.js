@@ -39,6 +39,11 @@ import {
   ListTypeFilter,
   ContactSupport,
   FlightDetailLoadingState,
+  HomeHeader,
+  HomeCard,
+  ClaimsList,
+  HeaderView,
+  MessageCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -51,6 +56,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'ContactSupport',
     component: <ContactSupport {...data.contactSupportProps} />,
+  },
+  {
+    name: 'HomeCard',
+    component: <HomeCard {...data.homeCardProps} />,
   },
 ];
 
@@ -186,4 +195,29 @@ const TRIP_CREATION = [
   },
 ];
 
-export default [...COMMON_COMPONENTS, ...TRIP_COMPONENTS, ...TRIP_CREATION];
+const HOME = [
+  {name: 'Home'},
+  {
+    name: 'Home Header',
+    component: <HomeHeader {...data.homeHeaderProps} />,
+  },
+  {
+    name: 'Claim List',
+    component: <ClaimsList {...data.claimsListProps} />,
+  },
+  {
+    name: 'Header View',
+    component: <HeaderView {...data.headerViewProps} />,
+  },
+  {
+    name: 'Message Card',
+    component: <MessageCard {...data.messageCardProps} />,
+  },
+];
+
+export default [
+  ...COMMON_COMPONENTS,
+  ...TRIP_COMPONENTS,
+  ...TRIP_CREATION,
+  ...HOME,
+];

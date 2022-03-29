@@ -11,6 +11,7 @@ import Separator from './common/components/separator';
 import TextField from './common/components/textField';
 import DashedLine from './common/components/dashedLine';
 import PickerField from './common/components/pickerField';
+import HomeCard from './common/components/homeCard';
 
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
 import HotelDetailCard from './components/trips/hotelDetailCard';
@@ -49,6 +50,11 @@ import ModificationAlertBox from './components/trips/components/modificationAler
 import ListTypeFilter from './components/trips/listTypeFilter';
 import ContactSupport from './components/trips/components/contactSupport';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
+
+import HomeHeader from './components/home/homeHeader';
+import ClaimsList from './components/home/claimsList';
+import HeaderView from './components/home/headerView';
+import MessageCard from './components/home/messageCard';
 
 export {
   data,
@@ -103,4 +109,10 @@ export {
   // constants
   FlightSubTripActions,
   HotelSubTripActions,
+  // Home
+  HomeHeader,
+  HomeCard,
+  ClaimsList,
+  HeaderView,
+  MessageCard,
 };
