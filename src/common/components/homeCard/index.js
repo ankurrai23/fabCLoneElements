@@ -101,17 +101,19 @@ export default function HomeCard({...props}) {
                     </FText>
                   </View>
                   <View style={Styles.dateAndArrowContainer}>
-                    {props.date ? (
-                      <FText type={'medium'} style={Styles.dateText}>
-                        {props.date}
-                      </FText>
-                    ) : (
+                    {props.showActionNeeded ? (
                       <View style={Styles.actionView}>
                         <View style={Styles.circleView} />
                         <FText style={Styles.actionNeedTxt}>
                           Action needed
                         </FText>
                       </View>
+                    ) : (
+                      props.date && (
+                        <FText type={'medium'} style={Styles.dateText}>
+                          {props.date}
+                        </FText>
+                      )
                     )}
                     {props.disabled ? null : (
                       <View style={Styles.rightArrowView}>

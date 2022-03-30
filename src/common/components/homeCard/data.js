@@ -10,6 +10,7 @@ const homeCardProps = {
   date: 'Jan 21',
   arrowVisible: false,
   onPress: () => console.log('onclick card'),
+  showActionNeeded: true,
 };
 
 export default homeCardProps;
