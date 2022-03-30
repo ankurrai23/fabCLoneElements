@@ -11,7 +11,7 @@ import Separator from './common/components/separator';
 import TextField from './common/components/textField';
 import DashedLine from './common/components/dashedLine';
 import PickerField from './common/components/pickerField';
-import HomeCard from './common/components/homeCard';
+import ClaimsCard from './common/components/claimsCard';
 import DialogBox from './common/components/dialogBox';
 
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -113,7 +113,7 @@ export {
   HotelSubTripActions,
   // Home
   HomeHeader,
-  HomeCard,
+  ClaimsCard,
   ClaimsList,
   HeaderView,
   MessageCard,

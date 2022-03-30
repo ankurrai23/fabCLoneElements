@@ -40,7 +40,7 @@ import {
   ContactSupport,
   FlightDetailLoadingState,
   HomeHeader,
-  HomeCard,
+  ClaimsCard,
   ClaimsList,
   HeaderView,
   MessageCard,
@@ -58,8 +58,8 @@ const COMMON_COMPONENTS = [
     component: <ContactSupport {...data.contactSupportProps} />,
   },
   {
-    name: 'HomeCard',
-    component: <HomeCard {...data.homeCardProps} />,
+    name: 'ClaimsCard',
+    component: <ClaimsCard {...data.claimsCardProps} />,
   },
 ];
 
