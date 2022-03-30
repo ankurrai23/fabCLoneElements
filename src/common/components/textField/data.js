@@ -1,7 +1,8 @@
 export default {
   label: 'Name',
   onChangeText: (text) => console.log('Text =>', text),
-  helperText: 'Enter first name',
+  helperText: '',
+  placeholder: 'Please enter full name',
   error: false,
   icon: null,
 };
