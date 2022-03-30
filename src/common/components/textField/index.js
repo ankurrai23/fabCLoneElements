@@ -34,7 +34,7 @@ const dirtyStyle = {
   left: DP.minus_28,
 };
 
-export default class TextField extends React.Component {
+class TextField extends React.Component {
   static propTypes = {
     style: PropTypes.object,
     label: PropTypes.string,
@@ -241,7 +241,7 @@ export default class TextField extends React.Component {
         selectTextOnFocus: this.props.selectTextOnFocus,
         selectionState: this.props.selectionState,
         selectionColor: this.props.selectionColor,
-        style: [Styles.input, this.props.inputStyle],
+        style: [Styles.input(this.props.editable), this.props.inputStyle],
         testID: this.props.testID,
         accessibilityLabel: this.props.accessibilityLabel,
         value: this.props.value,
@@ -287,3 +287,9 @@ export default class TextField extends React.Component {
     );
   }
 }
+
+TextField.defaultProps = {
+  editable: true,
+};
+
+export default TextField;

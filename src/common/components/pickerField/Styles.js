@@ -12,7 +12,7 @@ export default StyleSheet.create({
     borderColor: error ? Color.DARK_CORAL : Color.PALE_GREY_THREE,
     borderRadius: DP._4,
     paddingHorizontal: DP._16,
-    paddingVertical: DP._16,
+    paddingVertical: DP._12,
     marginTop: DP._16,
   }),
   floatLabel: (error) => ({
@@ -29,11 +29,11 @@ export default StyleSheet.create({
     color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
     fontSize: DP._14,
   }),
-  value: {
+  value: (editable) => ({
     flex: 1,
     fontSize: DP._14,
-    color: Color.DARK,
-  },
+    color: editable ? Color.DARK : Color.GREY_PURPLE,
+  }),
   iconContainer: {
     alignSelf: 'center',
     height: DP._20,

@@ -30,11 +30,11 @@ export default StyleSheet.create({
     position: 'relative',
     flex: 1,
   },
-  input: {
-    color: Color.BLACK,
+  input: (editable) => ({
+    color: editable ? Color.BLACK : Color.GREY_PURPLE,
     height: DP._44,
     ...Specs.fontRegular,
-  },
+  }),
   label: {
     color: Color.GREY_PURPLE,
     position: 'absolute',
