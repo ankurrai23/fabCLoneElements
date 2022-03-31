@@ -46,6 +46,7 @@ import {
   MessageCard,
   FloatingAction,
   HomeLoadingState,
+  Checkbox,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -66,6 +67,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'Floating Action Button',
     component: <FloatingAction {...data.floatingActionProps} />,
+  },
+  {
+    name: 'Checkbox',
+    component: <Checkbox {...data.checkboxProps} />,
   },
 ];
 

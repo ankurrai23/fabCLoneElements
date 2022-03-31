@@ -25,7 +25,7 @@ import Styles from './Styles';
 const cleanStyle = {
   fontSize: DP._14,
   top: DP._13,
-  left: 0,
+  left: -4,
 };
 
 const dirtyStyle = {
@@ -34,7 +34,7 @@ const dirtyStyle = {
   left: DP.minus_28,
 };
 
-export default class TextField extends React.Component {
+class TextField extends React.Component {
   static propTypes = {
     style: PropTypes.object,
     label: PropTypes.string,
@@ -63,7 +63,7 @@ export default class TextField extends React.Component {
         this.state.dirty ? dirtyStyle.top : cleanStyle.top,
       ),
       left: new Animated.Value(
-        this.state.dirty && props.icon ? dirtyStyle.left : cleanStyle.left,
+        this.state.dirty && props.icon ? props.labelDirtyLeft || dirtyStyle.left : cleanStyle.left,
       ),
     };
   }
@@ -103,7 +103,11 @@ export default class TextField extends React.Component {
   }
 
   _animate = (dirty) => {
-    const nextStyle = dirty ? dirtyStyle : cleanStyle;
+    const dirtyStyleConfig = dirtyStyle;
+    if (this.props.labelDirtyLeft) {
+      dirtyStyleConfig.left = this.props.labelDirtyLeft;
+    }
+    const nextStyle = dirty ? dirtyStyleConfig : cleanStyle;
     let labelStyle = this.state.labelStyle;
     let anims = Object.keys(nextStyle).map((prop) => {
       let toValue = prop === 'left' && !this.props.icon ? 0 : nextStyle[prop];
@@ -235,13 +239,15 @@ export default class TextField extends React.Component {
         onSubmitEditing: this.props.onSubmitEditing,
         password: this.props.secureTextEntry || this.props.password, // Compatibility
         placeholder: this.props.placeholder,
-        placeholderTextColor: Color.GREY_PURPLE,
+        placeholderTextColor: this.props.error
+          ? Color.PASTEL_RED
+          : Color.GREY_PURPLE,
         secureTextEntry: this.props.secureTextEntry || this.props.password, // Compatibility
         returnKeyType: this.props.returnKeyType,
         selectTextOnFocus: this.props.selectTextOnFocus,
         selectionState: this.props.selectionState,
         selectionColor: this.props.selectionColor,
-        style: [Styles.input, this.props.inputStyle],
+        style: [Styles.input(this.props.editable), this.props.inputStyle],
         testID: this.props.testID,
         accessibilityLabel: this.props.accessibilityLabel,
         value: this.props.value,
@@ -287,3 +293,9 @@ export default class TextField extends React.Component {
     );
   }
 }
+
+TextField.defaultProps = {
+  editable: true,
+};
+
+export default TextField;
