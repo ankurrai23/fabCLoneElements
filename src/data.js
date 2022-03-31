@@ -7,6 +7,7 @@ import emptyScreenProps from './common/components/emptyScreen/data';
 import checkboxProps from './common/components/checkbox/data';
 import claimsCardProps from './common/components/claimsCard/data';
 import stackHeaderProps from './common/components/stackHeader/data';
+import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -83,4 +84,5 @@ export {
   messageCardProps,
   checkboxProps,
   stackHeaderProps,
+  scrollableTabBarProps,
 };

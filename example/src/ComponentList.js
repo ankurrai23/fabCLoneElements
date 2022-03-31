@@ -46,6 +46,7 @@ import {
   MessageCard,
   Checkbox,
   StackHeader,
+  ScrollableTabBar,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -70,6 +71,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'StackHeader',
     component: <StackHeader {...data.stackHeaderProps} />,
+  },
+  {
+    name: 'ScrollableTabBar',
+    component: <ScrollableTabBar {...data.scrollableTabBarProps} />,
   },
 ];
 

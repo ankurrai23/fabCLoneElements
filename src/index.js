@@ -18,6 +18,7 @@ import DialogBox from './common/components/dialogBox';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
 import StackHeader from './common/components/stackHeader';
+import ScrollableTabBar from './common/components/scrollableTabBar';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -84,6 +85,7 @@ export {
   DialogBox,
   Checkbox,
   StackHeader,
+  ScrollableTabBar,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
