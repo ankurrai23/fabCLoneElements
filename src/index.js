@@ -74,6 +74,7 @@ import ExpenseCard from './components/expense/expenseCard';
 import ExpenseDetailCard from './components/expense/expenseDetailCard';
 import StopDetailList from './components/expense/stopsDetailList';
 import ExpenseApprovalCard from './components/expense/expenseApprovalCard';
+import ExpenseApprovalHeader from './components/expense/expenseApprovalHeader';
 
 export {
   data,
@@ -145,4 +146,5 @@ export {
   ExpenseDetailCard,
   StopDetailList,
   ExpenseApprovalCard,
+  ExpenseApprovalHeader,
 };
