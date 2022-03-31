@@ -25,7 +25,7 @@ import Styles from './Styles';
 const cleanStyle = {
   fontSize: DP._14,
   top: DP._13,
-  left: 0,
+  left: -4,
 };
 
 const dirtyStyle = {
@@ -63,7 +63,7 @@ export default class TextField extends React.Component {
         this.state.dirty ? dirtyStyle.top : cleanStyle.top,
       ),
       left: new Animated.Value(
-        this.state.dirty && props.icon ? dirtyStyle.left : cleanStyle.left,
+        this.state.dirty && props.icon ? props.labelDirtyLeft || dirtyStyle.left : cleanStyle.left,
       ),
     };
   }
@@ -103,7 +103,11 @@ export default class TextField extends React.Component {
   }
 
   _animate = (dirty) => {
-    const nextStyle = dirty ? dirtyStyle : cleanStyle;
+    const dirtyStyleConfig = dirtyStyle;
+    if (this.props.labelDirtyLeft) {
+      dirtyStyleConfig.left = this.props.labelDirtyLeft;
+    }
+    const nextStyle = dirty ? dirtyStyleConfig : cleanStyle;
     let labelStyle = this.state.labelStyle;
     let anims = Object.keys(nextStyle).map((prop) => {
       let toValue = prop === 'left' && !this.props.icon ? 0 : nextStyle[prop];
