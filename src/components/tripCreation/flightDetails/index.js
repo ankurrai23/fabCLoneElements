@@ -4,9 +4,9 @@ import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import moment from 'moment';
 
-import {FText, FTouchableOpacity} from '../../../..';
-import {Color} from '../../../../utils/color/index.travelPlus';
-import {DP} from '../../../../utils/Dimen';
+import {FText, FTouchableOpacity} from '../../..';
+import {Color} from '../../../utils/color/index.travelPlus';
+import {DP} from '../../../utils/Dimen';
 import Styles from './Styles';
 
 export default function FlightDetails(props) {

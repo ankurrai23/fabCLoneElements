@@ -10,11 +10,11 @@ import {
   FTouchableOpacity,
   PickerField,
   TextField,
-} from '../../../..';
+} from '../../..';
 import Styles from './Styles';
-import {DP} from '../../../../utils/Dimen';
-import {Color} from '../../../../utils/color/index.travelPlus';
-import DialogBox from '../../../../common/components/dialogBox';
+import {DP} from '../../../utils/Dimen';
+import {Color} from '../../../utils/color/index.travelPlus';
+import DialogBox from '../../../common/components/dialogBox';
 
 export default function OtherTravelDetails(props) {
   const [visible, setVisible] = useState(false);

@@ -1,8 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
-import {FText, PickerField} from '../../../..';
-import {DP} from '../../../../utils/Dimen';
-import {formattedDate} from '../../../../utils/Utils';
+import {FText, PickerField} from '../../..';
+import {DP} from '../../../utils/Dimen';
+import {formattedDate} from '../../../utils/Utils';
 import Styles from './Styles';
 
 function BasicTravelDetails({

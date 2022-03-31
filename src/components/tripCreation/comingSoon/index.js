@@ -1,9 +1,10 @@
 import {View} from 'react-native';
 import React from 'react';
 
-import {FImage, FText} from '../../../..';
+import FImage from '../../../common/rn/FImage';
+import FText from '../../../common/rn/FText';
 import Styles from './Styles';
-import {ImageConst} from '../../../../utils/imageConst';
+import {ImageConst} from '../../../utils/imageConst/index.fabhotel';
 
 export default function ComingSoon({title, subTitle}) {
   return (

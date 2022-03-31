@@ -1,8 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {Color} from '../../../../utils/color/index.travelPlus';
+import {Color} from '../../../utils/color/index.travelPlus';
 
-import {DP} from '../../../../utils/Dimen';
-import {shadowObj} from '../../../../utils/Utils';
+import {DP} from '../../../utils/Dimen';
+import {shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {

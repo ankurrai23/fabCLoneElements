@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import {Button, FText} from '../../../..';
+import {Button, FText} from '../../..';
 import Styles from './Styles';
 
 export default function RequestType({onChange, requestType}) {

@@ -2,10 +2,10 @@ import React from 'react';
 import {View, ScrollView} from 'react-native';
 import moment from 'moment';
 
-import {Button, FText, PickerField} from '../../../..';
-import {formattedDate} from '../../../../utils/Utils';
+import {Button, FText, PickerField} from '../../..';
+import {formattedDate} from '../../../utils/Utils';
 import Styles from './Styles';
-import {DP} from '../../../../utils/Dimen';
+import {DP} from '../../../utils/Dimen';
 
 export default function AddFlightDetails(props) {
   console.log('new data====ne data', props);

@@ -2,10 +2,10 @@ import {View} from 'react-native';
 import React from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 
-import {FSwitch, FText, FTouchableOpacity, PickerField} from '../../../..';
+import {FSwitch, FText, FTouchableOpacity, PickerField} from '../../..';
 import Styles from './Styles';
-import {Color} from '../../../../utils/color/index.travelPlus';
-import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../utils/color/index.travelPlus';
+import {DP} from '../../../utils/Dimen';
 
 export default function CoTravelersDetails({
   isCoTravellersEnabled,

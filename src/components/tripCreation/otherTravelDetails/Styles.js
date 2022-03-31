@@ -1,8 +1,8 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-import {Color} from '../../../../utils/color/index.fabhotel';
-import {DP} from '../../../../utils/Dimen';
-import {Specs} from '../../../../utils/Utils';
+import {Color} from '../../../utils/color/index.fabhotel';
+import {DP} from '../../../utils/Dimen';
+import {Specs} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {

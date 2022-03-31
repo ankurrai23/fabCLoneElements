@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {FText} from '../../../..';
+import {FText} from '../../..';
 import Styles from './Styles';
 
 export default function ApprovalManager(props) {
