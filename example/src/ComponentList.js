@@ -45,6 +45,7 @@ import {
   HeaderView,
   MessageCard,
   Checkbox,
+  StackHeader,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -65,6 +66,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'Checkbox',
     component: <Checkbox {...data.checkboxProps} />,
+  },
+  {
+    name: 'StackHeader',
+    component: <StackHeader {...data.stackHeaderProps} />,
   },
 ];
 

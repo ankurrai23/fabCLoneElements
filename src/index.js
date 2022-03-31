@@ -17,6 +17,7 @@ import ClaimsCard from './common/components/claimsCard';
 import DialogBox from './common/components/dialogBox';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
+import StackHeader from './common/components/stackHeader';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -82,6 +83,7 @@ export {
   ModificationAlertBox,
   DialogBox,
   Checkbox,
+  StackHeader,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
