@@ -14,4 +14,5 @@ export default {
   bellIcon: require(TRIP_DIRECTORY + 'bell-icon.png'),
   editIcon: require(TRIP_DIRECTORY + 'edit.png'),
   comingSoon: require(TRIP_DIRECTORY + 'no_results_copy.png'),
+  rupees: require(TRIP_DIRECTORY + 'rupees.png'),
 };

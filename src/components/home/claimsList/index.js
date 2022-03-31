@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {HomeCard} from '../../..';
+import ClaimsCard from '../../../common/components/claimsCard';
 import Styles from './Styles';
 
 export default function ClaimsList(props) {
@@ -8,7 +8,7 @@ export default function ClaimsList(props) {
     <FlatList
       data={props.cardData}
       renderItem={({item}) => (
-        <HomeCard
+        <ClaimsCard
           {...item}
           type={'large'}
           onPress={() => props.onPress(item)}

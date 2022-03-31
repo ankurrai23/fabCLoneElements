@@ -47,7 +47,10 @@ const NonRichHotelView = ({
   onViewMapPress,
   onCardPress,
 }) => (
-  <TouchableOpacity style={Styles.container(offline)} onPress={onCardPress}>
+  <TouchableOpacity
+    style={Styles.container(offline)}
+    onPress={onCardPress}
+    activeOpacity={1}>
     <View style={Styles.starContainer}>
       <Stars item={item} />
       <FText style={Styles.hotelStar}>{item.starRating} star hotel</FText>

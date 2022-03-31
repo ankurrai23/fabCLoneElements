@@ -40,10 +40,12 @@ import {
   ContactSupport,
   FlightDetailLoadingState,
   HomeHeader,
-  HomeCard,
+  ClaimsCard,
   ClaimsList,
   HeaderView,
   MessageCard,
+  FloatingAction,
+  HomeLoadingState,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -58,8 +60,12 @@ const COMMON_COMPONENTS = [
     component: <ContactSupport {...data.contactSupportProps} />,
   },
   {
-    name: 'HomeCard',
-    component: <HomeCard {...data.homeCardProps} />,
+    name: 'ClaimsCard',
+    component: <ClaimsCard {...data.claimsCardProps} />,
+  },
+  {
+    name: 'Floating Action Button',
+    component: <FloatingAction {...data.floatingActionProps} />,
   },
 ];
 
@@ -212,6 +218,10 @@ const HOME = [
   {
     name: 'Message Card',
     component: <MessageCard {...data.messageCardProps} />,
+  },
+  {
+    name: 'Loading State',
+    component: <HomeLoadingState />,
   },
 ];
 

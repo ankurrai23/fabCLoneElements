@@ -1,4 +1,4 @@
-const homeCardProps = {
+const claimsCardProps = {
   cardColor: '#395093',
   cardSecondaryColor: '#4D64A6',
   cardTitle: 'claims',
@@ -13,4 +13,4 @@ const homeCardProps = {
   showActionNeeded: true,
 };
 
-export default homeCardProps;
+export default claimsCardProps;

@@ -10,7 +10,6 @@ const claimsListProps = {
       cardSecondaryColor: '#4D64A6',
       id: '1',
       noClaim: true,
-      date: 'Jan 21',
     },
     {
       cardTitle: 'expense',

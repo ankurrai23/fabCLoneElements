@@ -7,21 +7,13 @@ import {shadowObj} from '../../../utils/Utils';
 const {width} = Dimensions.get('window');
 
 export default StyleSheet.create({
-  container: (backgroundColor, noClaim) => ({
-    paddingTop: DP._16,
-    paddingHorizontal: DP._12,
-    paddingBottom: DP._12,
+  container: (backgroundColor, noClaim, type) => ({
     borderRadius: DP._12,
     backgroundColor: backgroundColor,
     ...(noClaim ? {width: 0.4222 * width} : {width: 0.4222 * width}),
     ...shadowObj,
-    overflow: 'hidden',
-    flex: 1,
   }),
   containerSecondary: {
-    paddingTop: DP._24,
-    paddingHorizontal: DP._16,
-    paddingBottom: DP._16,
     marginRight: DP._8,
   },
   quantity: {
@@ -91,6 +83,7 @@ export default StyleSheet.create({
     borderTopWidth: ref.height,
     borderRightColor: 'transparent',
     borderTopColor: color,
+    borderRadius: DP._12,
     transform: [{rotate: '180deg'}],
   }),
   rightArrowView: {
@@ -116,5 +109,15 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.WHITE,
     marginLeft: 5,
+  },
+  largeCardGradientStyle: {
+    padding: DP._16,
+    paddingTop: DP._24,
+    borderRadius: DP._12,
+  },
+  smallCardGradientStyle: {
+    padding: DP._12,
+    paddingTop: DP._16,
+    borderRadius: DP._12,
   },
 });

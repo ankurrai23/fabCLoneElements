@@ -10,7 +10,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
 
-export default function HomeCard({...props}) {
+export default function ClaimsCard({...props}) {
   const [layout, setLayout] = useState({});
   function onLayout(event) {
     if (!layout.height) {
@@ -19,14 +19,18 @@ export default function HomeCard({...props}) {
     }
   }
   return (
-    <View>
+    <>
       {props.type === 'small' && (
-        <FTouchableOpacity onPress={props.onPress} disabled={props.disabled}>
+        <FTouchableOpacity
+          onPress={props.onPress}
+          disabled={props.disabled}
+          style={[Styles.container(props.cardColor, null), props.style]}>
           <LinearGradient
             colors={[props.cardSecondaryColor, props.cardColor]}
             onLayout={onLayout}
-            style={[Styles.container(props.cardColor, null), props.style]}
-            locations={[0.2, 0.6]}>
+            style={Styles.smallCardGradientStyle}
+            start={{x: 1, y: 0}}
+            locations={[0, 0.6]}>
             <View style={Styles.rightTriangle(layout, props.cardColor)} />
             <View>
               <FText type="medium" style={Styles.quantity}>
@@ -50,15 +54,19 @@ export default function HomeCard({...props}) {
         </FTouchableOpacity>
       )}
       {props.type === 'large' && (
-        <FTouchableOpacity onPress={props.onPress} disabled={props.disabled}>
+        <FTouchableOpacity
+          onPress={props.onPress}
+          disabled={props.disabled}
+          style={[
+            Styles.container(props.cardColor, props.noClaim),
+            Styles.containerSecondary,
+          ]}>
           <LinearGradient
             colors={[props.cardSecondaryColor, props.cardColor]}
             onLayout={onLayout}
-            style={[
-              Styles.container(props.cardColor, props.noClaim),
-              Styles.containerSecondary,
-            ]}
-            locations={[0.2, 0.6]}>
+            style={Styles.largeCardGradientStyle}
+            start={{x: 1, y: 0}}
+            locations={[0, 0.6]}>
             <View style={Styles.rightTriangle(layout, props.cardColor)} />
             <View>
               {props.noClaim ? (
@@ -131,6 +139,6 @@ export default function HomeCard({...props}) {
           </LinearGradient>
         </FTouchableOpacity>
       )}
-    </View>
+    </>
   );
 }
