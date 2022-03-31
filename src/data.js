@@ -49,6 +49,7 @@ import messageCardProps from './components/home/messageCard/data';
 //expense components props
 import expenseCardProps from './components/expense/expenseCard/data';
 import expenseDetailCardProps from './components/expense/expenseDetailCard/data';
+import stopDetailListProps from './components/expense/stopsDetailList/data';
 
 export {
   buttonProps,
@@ -93,4 +94,5 @@ export {
   scrollableTabBarProps,
   expenseCardProps,
   expenseDetailCardProps,
+  stopDetailListProps,
 };

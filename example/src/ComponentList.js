@@ -51,6 +51,7 @@ import {
   ScrollableTabBar,
   ExpenseCard,
   ExpenseDetailCard,
+  StopDetailList,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -251,6 +252,10 @@ const EXPENSE = [
   {
     name: 'ExpenseDetailCard',
     component: <ExpenseDetailCard {...data.expenseDetailCardProps} />,
+  },
+  {
+    name: 'StopDetailList',
+    component: <StopDetailList {...data.stopDetailListProps} />,
   },
 ];
 
