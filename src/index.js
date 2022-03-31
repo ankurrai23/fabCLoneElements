@@ -75,6 +75,7 @@ import ExpenseDetailCard from './components/expense/expenseDetailCard';
 import StopDetailList from './components/expense/stopsDetailList';
 import ExpenseApprovalCard from './components/expense/expenseApprovalCard';
 import ExpenseApprovalHeader from './components/expense/expenseApprovalHeader';
+import LocationInputBox from './components/expense/locationInputBox';
 
 export {
   data,
@@ -147,4 +148,5 @@ export {
   StopDetailList,
   ExpenseApprovalCard,
   ExpenseApprovalHeader,
+  LocationInputBox,
 };

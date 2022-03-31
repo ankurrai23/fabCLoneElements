@@ -52,6 +52,7 @@ import expenseDetailCardProps from './components/expense/expenseDetailCard/data'
 import stopDetailListProps from './components/expense/stopsDetailList/data';
 import expenseApprovalCardProps from './components/expense/expenseApprovalCard/data';
 import expenseApprovalHeaderProps from './components/expense/expenseApprovalHeader/data';
+import locationInputBoxProps from './components/expense/locationInputBox/data';
 
 export {
   buttonProps,
@@ -99,4 +100,5 @@ export {
   stopDetailListProps,
   expenseApprovalCardProps,
   expenseApprovalHeaderProps,
+  locationInputBoxProps,
 };

@@ -54,6 +54,7 @@ import {
   StopDetailList,
   ExpenseApprovalCard,
   ExpenseApprovalHeader,
+  LocationInputBox,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -266,6 +267,10 @@ const EXPENSE = [
   {
     name: 'ExpenseApprovalHeader',
     component: <ExpenseApprovalHeader {...data.expenseApprovalHeaderProps} />,
+  },
+  {
+    name: 'LocationInputBox',
+    component: <LocationInputBox {...data.locationInputBoxProps} />,
   },
 ];
 
