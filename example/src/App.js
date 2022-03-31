@@ -37,9 +37,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    // paddingVertical: 16,
-    // paddingHorizontal: 16,
-    flexGrow: 1,
+    // justifyContent: 'center',
+    // // paddingVertical: 16,
+    // // paddingHorizontal: 16,
+    // flexGrow: 1,
   },
 });

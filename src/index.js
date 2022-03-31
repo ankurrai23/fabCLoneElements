@@ -15,6 +15,7 @@ import DashedLine from './common/components/dashedLine';
 import PickerField from './common/components/pickerField';
 import ClaimsCard from './common/components/claimsCard';
 import DialogBox from './common/components/dialogBox';
+import FloatingAction from './common/components/floatingActionButton';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
 
@@ -64,6 +65,7 @@ import HomeHeader from './components/home/homeHeader';
 import ClaimsList from './components/home/claimsList';
 import HeaderView from './components/home/headerView';
 import MessageCard from './components/home/messageCard';
+import HomeLoadingState from './components/home/homeLoadingState';
 
 export {
   data,
@@ -81,6 +83,7 @@ export {
   PickerField,
   ModificationAlertBox,
   DialogBox,
+  FloatingAction,
   Checkbox,
   // Trips components
   FlightPreferenceCard,
@@ -126,4 +129,5 @@ export {
   ClaimsList,
   HeaderView,
   MessageCard,
+  HomeLoadingState,
 };

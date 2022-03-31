@@ -44,6 +44,8 @@ import {
   ClaimsList,
   HeaderView,
   MessageCard,
+  FloatingAction,
+  HomeLoadingState,
   Checkbox,
 } from 'react-native-fab-elements';
 
@@ -61,6 +63,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'ClaimsCard',
     component: <ClaimsCard {...data.claimsCardProps} />,
+  },
+  {
+    name: 'Floating Action Button',
+    component: <FloatingAction {...data.floatingActionProps} />,
   },
   {
     name: 'Checkbox',
@@ -217,6 +223,10 @@ const HOME = [
   {
     name: 'Message Card',
     component: <MessageCard {...data.messageCardProps} />,
+  },
+  {
+    name: 'Loading State',
+    component: <HomeLoadingState />,
   },
 ];
 
