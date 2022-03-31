@@ -94,4 +94,7 @@ export default StyleSheet.create({
     height: DP._18,
     resizeMode: 'contain',
   },
+  flex: {
+    flex: 1,
+  },
 });

@@ -44,5 +44,29 @@ export default StyleSheet.create({
     marginTop: DP._13,
     alignSelf: 'flex-end',
   },
-  cardContainer: {paddingHorizontal: DP._16},
+  cardContainer: {
+    paddingHorizontal: DP._16,
+    backgroundColor: 'white',
+  },
+  buttonWithIconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginBottom: DP._16,
+  },
+  flexRow: {
+    flexDirection: 'row',
+  },
+  header: {
+    marginHorizontal: DP._24,
+    marginTop: DP._16,
+  },
+  buttonTextStyle: {
+    fontSize: DP._12,
+    color: Color.DODGER_BLUE,
+    marginLeft: DP._4,
+  },
+  button: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
 });

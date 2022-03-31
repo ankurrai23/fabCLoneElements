@@ -1,7 +1,7 @@
 const tripListingCardProps = {
   item: {
     masterTripId: 'TP962KDG',
-    requestType: 'FLIGHT_AND_HOTEL',
+    tripRequestType: 'FLIGHT_AND_HOTEL',
     title: 'Trip to Gurgaon',
     isProcessing: true,
     coTravellers: ['Rahul Gupta', 'Abhishek Gupta'],

@@ -1,16 +1,25 @@
 import {View} from 'react-native';
 import React from 'react';
-import {FText, FTouchableOpacity, Separator, FImage} from '../../..';
+import FText from '../../../common/rn/FText';
+import Separator from '../../../common/components/separator';
+import FImage from '../../../common/rn/FImage';
 import Styles from './Styles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {FlatList} from 'react-native-gesture-handler';
+import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
+import Feather from 'react-native-vector-icons/Feather';
 
 const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
   <>
-    <Separator style={Styles.marginBottom_16} />
-    <FTouchableOpacity
+    <Separator
+      style={[
+        Styles.marginBottom_16,
+        {backgroundColor: Color.LIGHT_PERIWINKLE},
+      ]}
+    />
+    <TouchableOpacity
+      activeOpacity={1}
       onPress={onTapToSetPreferences}
       disabled={item.disablePref}
       style={Styles.buttonStyle(item.disablePref, item.preference)}>
@@ -27,7 +36,7 @@ const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
           {item.preference}
         </FText>
       </View>
-    </FTouchableOpacity>
+    </TouchableOpacity>
   </>
 );
 
@@ -38,7 +47,10 @@ const NonRichHotelView = ({
   onViewMapPress,
   onCardPress,
 }) => (
-  <FTouchableOpacity style={Styles.container(offline)} onPress={onCardPress}>
+  <TouchableOpacity
+    style={Styles.container(offline)}
+    onPress={onCardPress}
+    activeOpacity={1}>
     <View style={Styles.starContainer}>
       <Stars item={item} />
       <FText style={Styles.hotelStar}>{item.starRating} star hotel</FText>
@@ -55,16 +67,16 @@ const NonRichHotelView = ({
       </FText>
     </View>
     <View style={Styles.mapAndCostInfoContainer}>
-      <FTouchableOpacity onPress={() => onViewMapPress(item.googleMapUrl)}>
+      <TouchableOpacity onPress={() => onViewMapPress(item.googleMapUrl)}>
         <FText style={Styles.viewOnMap}>View on map</FText>
-      </FTouchableOpacity>
+      </TouchableOpacity>
       <FText style={Styles.priceDetail}>price/night (Ex GST)</FText>
     </View>
     <SetOrResetPreference
       onTapToSetPreferences={onTapToSetPreferences}
       item={item}
     />
-  </FTouchableOpacity>
+  </TouchableOpacity>
 );
 
 const Stars = ({item}) => {
@@ -80,7 +92,10 @@ const Stars = ({item}) => {
 };
 
 const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
-  <FTouchableOpacity style={Styles.container(offline)} onPress={onCardPress}>
+  <TouchableOpacity
+    style={Styles.container(offline)}
+    onPress={onCardPress}
+    activeOpacity={1}>
     <View>
       <FlatList
         data={item.hotelImages}
@@ -91,9 +106,11 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         showsHorizontalScrollIndicator={false}
         keyExtractor={(_, index) => `${index}abc`}
       />
-      <FText type="bold" style={Styles.companyPreferred}>
-        {item.preferredBy} preferred
-      </FText>
+      {item.preferenceText && (
+        <FText type="bold" style={Styles.companyPreferred}>
+          {item.preferenceText}
+        </FText>
+      )}
     </View>
     <View style={Styles.subContainer}>
       <View style={Styles.starContainer}>
@@ -111,7 +128,6 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         {item.hotelName}
       </FText>
       <FText style={Styles.hotelLocality}>{item.hotelAddress}</FText>
-      <FText style={Styles.secondaryAddr}>{item.distanceToProperty}</FText>
       <View style={Styles.ratingsContainer}>
         {ratingsArray(item.ratingScore).map((item, index) => (
           <View style={Styles.ratingBarEmpty} key={`${index}`}>
@@ -120,16 +136,21 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         ))}
         <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
       </View>
-      <FText style={Styles.ratingsText}>
-        Your <FText type="medium">{item.colleaguesCount}</FText> colleagues
-        rated it {item.colleaguesRatingAvg} (avg)
-      </FText>
+      {!!item.colleaguesCount && (
+        <FText style={Styles.ratingsText}>
+          Your <FText type="medium">{item.colleaguesCount}</FText> colleagues
+          rated it {item.colleaguesRatingAvg} (avg)
+        </FText>
+      )}
       <View style={Styles.amountContainer}>
         <View style={[Styles.flexRow, {paddingTop: DP._1}]}>
           {item.includesBreakfast && (
-            <FText type="medium" style={Styles.inclusions}>
-              Includes breakfast
-            </FText>
+            <View style={Styles.flexRow}>
+              <Feather name="check" size={DP._16} color={Color.DARK_SEA_FOAM} />
+              <FText type="medium" style={Styles.inclusions}>
+                Includes breakfast
+              </FText>
+            </View>
           )}
         </View>
         <FText type={'bold'} style={Styles.costOfHotel}>
@@ -147,7 +168,7 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         />
       </View>
     </View>
-  </FTouchableOpacity>
+  </TouchableOpacity>
 );
 
 const ratingsArray = (value) => {

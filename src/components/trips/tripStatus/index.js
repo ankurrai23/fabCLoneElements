@@ -28,7 +28,7 @@ const TripStatus = ({statusObj}) => {
         ]),
       ).start();
     }
-  }, []); //eslint-disable-line react-hooks/exhaustive-deps
+  }, [statusObj]); //eslint-disable-line react-hooks/exhaustive-deps
 
   const Gradient = () => (
     <AnimatedLinearGradient

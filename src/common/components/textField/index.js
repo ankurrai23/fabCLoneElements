@@ -34,7 +34,7 @@ const dirtyStyle = {
   left: DP.minus_28,
 };
 
-export default class TextField extends React.Component {
+class TextField extends React.Component {
   static propTypes = {
     style: PropTypes.object,
     label: PropTypes.string,
@@ -239,13 +239,15 @@ export default class TextField extends React.Component {
         onSubmitEditing: this.props.onSubmitEditing,
         password: this.props.secureTextEntry || this.props.password, // Compatibility
         placeholder: this.props.placeholder,
-        placeholderTextColor: Color.GREY_PURPLE,
+        placeholderTextColor: this.props.error
+          ? Color.PASTEL_RED
+          : Color.GREY_PURPLE,
         secureTextEntry: this.props.secureTextEntry || this.props.password, // Compatibility
         returnKeyType: this.props.returnKeyType,
         selectTextOnFocus: this.props.selectTextOnFocus,
         selectionState: this.props.selectionState,
         selectionColor: this.props.selectionColor,
-        style: [Styles.input, this.props.inputStyle],
+        style: [Styles.input(this.props.editable), this.props.inputStyle],
         testID: this.props.testID,
         accessibilityLabel: this.props.accessibilityLabel,
         value: this.props.value,
@@ -254,6 +256,7 @@ export default class TextField extends React.Component {
         onKeyPress: this.props.onKeyPress,
         blurOnSubmit: this.props.blurOnSubmit,
         pointerEvents: this.props.pointerEvents,
+        textAlignVertical: this.props.textAlignVertical,
       },
       elementStyles = [Styles.element, this.props.style];
 
@@ -290,3 +293,9 @@ export default class TextField extends React.Component {
     );
   }
 }
+
+TextField.defaultProps = {
+  editable: true,
+};
+
+export default TextField;

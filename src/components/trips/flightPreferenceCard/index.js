@@ -38,8 +38,8 @@ export default function FlightPreferenceCard({
             style={{
               width: DP._32,
               height: DP._32,
-              backgroundColor: Color.DARK,
             }}
+            source={{uri: flightInfo.airlineIcon}}
           />
           <FText style={Styles.flightName}>{flightInfo.carrier}</FText>
           <FText style={Styles.flightNumber}>
@@ -79,7 +79,7 @@ export default function FlightPreferenceCard({
                 color: Color.GREYISH_PURPLE,
                 opacity: opacity,
               }}>
-              {flightInfo.duration}
+              {flightInfo.flightDuration}
             </Animated.Text>
           </View>
           <View style={Styles.dot_two} />

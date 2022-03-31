@@ -7,7 +7,7 @@ import Styles from './Styles';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
 
-export default function CoTravellerDetails({
+export default function CoTravelersDetails({
   isCoTravellersEnabled,
   onCoTravellersToggle,
   onPressCoTraveler,

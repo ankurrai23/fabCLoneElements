@@ -26,6 +26,15 @@ import approvalManagerProps from './components/trips/tripCreation/approvalManage
 import addFlightDetailsProps from './components/trips/tripCreation/addFlightDetails/data';
 import addHotelDetailsProps from './components/trips/tripCreation/addHotelDetails/data';
 import coTravellersProps from './components/trips/coTravellers/data';
+import flightDetailCardProps from './components/trips/flightDetailCard/data';
+import listTypeFilterProps from './components/trips/listTypeFilter/data';
+import contactSupportProps from './components/trips/components/contactSupport/data';
+
+import homeHeaderProps from './components/home/homeHeader/data';
+import claimsCardProps from './common/components/claimsCard/data';
+import claimsListProps from './components/home/claimsList/data';
+import headerViewProps from './components/home/headerView/data';
+import messageCardProps from './components/home/messageCard/data';
 
 export {
   buttonProps,
@@ -56,4 +65,12 @@ export {
   addFlightDetailsProps,
   addHotelDetailsProps,
   coTravellersProps,
+  flightDetailCardProps,
+  listTypeFilterProps,
+  contactSupportProps,
+  homeHeaderProps,
+  claimsCardProps,
+  claimsListProps,
+  headerViewProps,
+  messageCardProps,
 };

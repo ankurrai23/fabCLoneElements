@@ -12,7 +12,7 @@ import {
   FlightItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
-  CoTravellerDetails,
+  CoTravelersDetails,
   EmptyScreen,
   ItineraryHeader,
   TripListingCard,
@@ -22,6 +22,9 @@ import {
   ManagerActions,
   TripCardLoadingState,
   ItineraryViewLoadingState,
+  HotelPreferenceLoadingState,
+  HotelDetailLoadingState,
+  FlightPreferenceLoadingState,
   ComingSoon,
   RequestType,
   BasicTravelDetails,
@@ -32,6 +35,15 @@ import {
   AddFlightDetails,
   AddHotelDetails,
   CoTravellers,
+  FlightDetailCard,
+  ListTypeFilter,
+  ContactSupport,
+  FlightDetailLoadingState,
+  HomeHeader,
+  ClaimsCard,
+  ClaimsList,
+  HeaderView,
+  MessageCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -41,6 +53,14 @@ const COMMON_COMPONENTS = [
   {name: 'PickerField', component: <PickerField {...data.pickerFieldProps} />},
   {name: 'DashedLine', component: <DashedLine {...data.dashLineProps} />},
   {name: 'EmptyScreen', component: <EmptyScreen {...data.emptyScreenProps} />},
+  {
+    name: 'ContactSupport',
+    component: <ContactSupport {...data.contactSupportProps} />,
+  },
+  {
+    name: 'ClaimsCard',
+    component: <ClaimsCard {...data.claimsCardProps} />,
+  },
 ];
 
 const TRIP_COMPONENTS = [
@@ -98,20 +118,44 @@ const TRIP_COMPONENTS = [
     component: <ManagerActions {...data.managerActionsProps} />,
   },
   {
+    name: 'FlightDetailCard',
+    component: <FlightDetailCard {...data.flightDetailCardProps} />,
+  },
+  {
     name: 'TripCardLoadingState',
-    component: <TripCardLoadingState />,
+    component: <TripCardLoadingState {...data.listTypeFilterProps} />,
   },
   {
     name: 'ItineraryViewLoadingState',
     component: <ItineraryViewLoadingState />,
+  },
+  {
+    name: 'HotelPreferenceLoadingState',
+    component: <HotelPreferenceLoadingState />,
+  },
+  {
+    name: 'HotelDetailLoadingState',
+    component: <HotelDetailLoadingState />,
+  },
+  {
+    name: 'FlightPreferenceLoadingState',
+    component: <FlightPreferenceLoadingState />,
+  },
+  {
+    name: 'ListTypeFilter',
+    component: <ListTypeFilter {...data.listTypeFilterProps} />,
+  },
+  {
+    name: 'FlightDetailLoadingState',
+    component: <FlightDetailLoadingState />,
   },
 ];
 
 const TRIP_CREATION = [
   {name: 'Trips Creation'},
   {
-    name: 'CoTravellersDetail',
-    component: <CoTravellerDetails {...data.coTravellersDetailProps} />,
+    name: 'CoTravelersDetails',
+    component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
   },
   {
     name: 'Coming Soon',
@@ -151,4 +195,29 @@ const TRIP_CREATION = [
   },
 ];
 
-export default [...COMMON_COMPONENTS, ...TRIP_COMPONENTS, ...TRIP_CREATION];
+const HOME = [
+  {name: 'Home'},
+  {
+    name: 'Home Header',
+    component: <HomeHeader {...data.homeHeaderProps} />,
+  },
+  {
+    name: 'Claim List',
+    component: <ClaimsList {...data.claimsListProps} />,
+  },
+  {
+    name: 'Header View',
+    component: <HeaderView {...data.headerViewProps} />,
+  },
+  {
+    name: 'Message Card',
+    component: <MessageCard {...data.messageCardProps} />,
+  },
+];
+
+export default [
+  ...COMMON_COMPONENTS,
+  ...TRIP_COMPONENTS,
+  ...TRIP_CREATION,
+  ...HOME,
+];

@@ -1,0 +1,97 @@
+import {StyleSheet} from 'react-native';
+import {DP} from '../../../utils/Dimen';
+import {Color} from '../../../utils/color';
+import {shadowObj} from '../../../utils/Utils';
+export default StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    borderRadius: DP._12,
+    marginHorizontal: DP._16,
+    ...shadowObj,
+  },
+  actionContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingVertical: DP._13,
+    paddingHorizontal: DP._16,
+    borderBottomLeftRadius: DP._12,
+    borderBottomRightRadius: DP._12,
+    backgroundColor: Color.DODGER_BLUE + '12',
+  },
+  cancel: {
+    color: Color.PASTEL_RED,
+    marginLeft: DP._4,
+  },
+  reschedule: {
+    color: Color.DODGER_BLUE,
+    marginLeft: DP._4,
+  },
+  flexDirectionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  airplane: {
+    transform: [{rotate: '90deg'}],
+  },
+  portName: {
+    color: Color.GREYISH_PURPLE,
+  },
+  time: {
+    marginTop: DP._4,
+    fontSize: DP._16,
+  },
+  date: {
+    fontSize: DP._18,
+  },
+  marginTop_16: {
+    marginTop: DP._16,
+  },
+  duration: {
+    fontSize: DP._10,
+    color: Color.GREYISH_PURPLE,
+  },
+  baseline: {alignItems: 'baseline'},
+  card: (modified) => ({padding: DP._16, opacity: modified ? 0.4 : 1}),
+  alignItem_flexEnd: {
+    alignItems: 'flex-end',
+  },
+  icon: {
+    width: DP._30,
+    height: DP._30,
+    marginRight: DP._8,
+  },
+  dashedLineContainer: {
+    position: 'absolute',
+    height: '100%',
+    zIndex: 1,
+    left: 15,
+    top: 30,
+    paddingTop: DP._4,
+    paddingBottom: DP._10,
+  },
+  flexRow: {flexDirection: 'row'},
+  justifyContent_around: (duration) => ({
+    justifyContent: duration ? 'space-around' : 'flex-start',
+    alignItems: 'center',
+  }),
+  flexRowAndAlignCenter: {flexDirection: 'row', alignItems: 'center'},
+  primaryButtonStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: DP._26,
+  },
+  rescheduleIcon: {
+    width: DP._18,
+    height: DP._18,
+    resizeMode: 'contain',
+  },
+  flex: {
+    flex: 1,
+  },
+  heading: {
+    marginBottom: DP._8,
+    marginTop: DP._24,
+    marginHorizontal: DP._16,
+  },
+});

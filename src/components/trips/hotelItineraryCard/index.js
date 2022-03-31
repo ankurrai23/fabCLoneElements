@@ -17,48 +17,84 @@ import {
 } from '../../..';
 import Styles from './Styles';
 import InfoBox from '../components/infoBox';
+import {HotelSubTripActions} from '../../../utils/SubTripActions';
 
 const HotelItineraryCard = ({
   item,
   onActionPress,
   onCardPress,
-  onInfoPress,
   style,
-  itineraryView,
   hideIcon,
   showLine,
   showInfo,
   preferenceSelected,
   processed,
   timelineGreyed,
+  showConfirmedStatus,
 }) => {
+  const sameMonthDates = item.checkIn.month === item.checkOut.month;
+
+  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
+
+  const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
+  const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
+
+  const viewRemarksAction = isActionEnabled(HotelSubTripActions.VIEW_REMARKS);
+  const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
+  const shortlistingAction = isActionEnabled(
+    HotelSubTripActions.SHORTLIST_HOTEL_TRIPS,
+  );
+  const viewShortlistedHotelAction = isActionEnabled(
+    HotelSubTripActions.VIEW_SHORTLISTED_HOTEL_TRIPS,
+  );
+
+  const confirmedStatus = {
+    key: 'CONFIRMED',
+    value: 'Confirmed',
+    textColor: Color.DARK_SEA_FOAM,
+    bgColor: Color.DARK_SEA_FOAM + '26',
+  };
+
   const ActionsInItinerary = () => (
     <>
-      <Separator style={{marginHorizontal: DP._16}} />
+      <Separator
+        style={{
+          marginHorizontal: DP._16,
+          backgroundColor: Color.LIGHT_PERIWINKLE,
+        }}
+      />
       <View style={Styles.actionContainer}>
-        {item.actions?.[0]?.type === 'VIEW_REMARKS' ? (
+        {viewRemarksAction ? (
           <FTouchableOpacity
-            onPress={() => onActionPress(item.actions[0])}
+            onPress={() => onActionPress(viewRemarksAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{item.actions?.[0]?.name}</FText>
+            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
           </FTouchableOpacity>
         ) : (
           <>
-            <FTouchableOpacity
-              onPress={() => onActionPress(item.actions[1])}
-              style={Styles.flexRowAndAlignCenter}>
-              <AntDesign name="close" size={DP._18} color={Color.PASTEL_RED} />
-              <FText style={Styles.cancel}>{item.actions?.[1]?.name}</FText>
-            </FTouchableOpacity>
-            <FTouchableOpacity
-              onPress={() => onActionPress(item.actions[0])}
-              style={Styles.primaryButtonStyle}>
-              <FImage
-                style={Styles.rescheduleIcon}
-                source={ImageConst.rescheduleIcon}
-              />
-              <FText style={Styles.reschedule}>{item.actions?.[0]?.name}</FText>
-            </FTouchableOpacity>
+            {cancelAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(cancelAction)}
+                style={Styles.flexRowAndAlignCenter}>
+                <AntDesign
+                  name="close"
+                  size={DP._18}
+                  color={Color.PASTEL_RED}
+                />
+                <FText style={Styles.cancel}>{cancelAction.name}</FText>
+              </FTouchableOpacity>
+            )}
+            {modifyAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(modifyAction)}
+                style={Styles.primaryButtonStyle}>
+                <FImage
+                  style={Styles.rescheduleIcon}
+                  source={ImageConst.rescheduleIcon}
+                />
+                <FText style={Styles.reschedule}>{modifyAction.name}</FText>
+              </FTouchableOpacity>
+            )}
           </>
         )}
       </View>
@@ -93,13 +129,27 @@ const HotelItineraryCard = ({
       <View style={[Styles.container]}>
         <FTouchableOpacity onPress={onCardPress}>
           <View style={Styles.dateAndStatusContainer}>
-            <FText>
-              <FText type="medium" style={Styles.date}>
-                {item.date}
+            {sameMonthDates ? (
+              <FText>
+                <FText type="medium" style={Styles.date}>
+                  {`${item.checkIn.date}-${item.checkOut.date}`}
+                </FText>
+                <FText style={Styles.month}> {item.checkIn.month}</FText>
               </FText>
-              <FText style={Styles.month}> {item.month}</FText>
-            </FText>
-            {item.status.key === 'CANCELLED' ? (
+            ) : (
+              <FText>
+                <FText type="medium" style={Styles.date}>
+                  {item.checkIn.date}
+                </FText>
+                <FText style={Styles.month}> {item.checkIn.month}</FText>
+                <FText type="medium" style={Styles.date}>
+                  {` - ${item.checkOut.date}`}
+                </FText>
+                <FText style={Styles.month}> {item.checkOut.month}</FText>
+              </FText>
+            )}
+            {showConfirmedStatus && <TripStatus statusObj={confirmedStatus} />}
+            {item?.status?.key === 'CANCELLED' ? (
               <TripStatus statusObj={item.status} />
             ) : (
               processed && (
@@ -119,14 +169,10 @@ const HotelItineraryCard = ({
                 <FText style={Styles.checkIn}>
                   Check-in {item.checkInTime}
                 </FText>
-                {item.actions.find((i) => i.type === 'DIRECTION') && (
+                {directionAction && (
                   <FTouchableOpacity
                     style={[Styles.flexRowWithAlignCenter]}
-                    onPress={() =>
-                      onActionPress(
-                        item.actions.find((i) => i.type === 'DIRECTION'),
-                      )
-                    }>
+                    onPress={() => onActionPress(directionAction)}>
                     <MaterialCommunityIcons
                       name="navigation"
                       size={DP._18}
@@ -138,7 +184,7 @@ const HotelItineraryCard = ({
                         fontSize: DP._12,
                         color: Color.DODGER_BLUE,
                       }}>
-                      Directions
+                      {directionAction.name}
                     </FText>
                   </FTouchableOpacity>
                 )}
@@ -146,11 +192,16 @@ const HotelItineraryCard = ({
             )}
           </View>
         </FTouchableOpacity>
-        {!item.actionsDisabled && <ActionsInItinerary />}
-        {itineraryView && showInfo && (
+        {!item.actionsDisabled &&
+          (modifyAction || cancelAction || viewRemarksAction) && (
+            <ActionsInItinerary />
+          )}
+        {showInfo && (
           <InfoBox
             preferenceSelected={preferenceSelected}
-            onPress={onInfoPress}
+            onPress={() =>
+              onActionPress(viewShortlistedHotelAction || shortlistingAction)
+            }
           />
         )}
       </View>

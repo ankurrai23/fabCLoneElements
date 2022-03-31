@@ -14,6 +14,7 @@ import Separator from '../../../common/components/separator';
 import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
+import {FlightSubTripActions} from '../../../utils/SubTripActions';
 /*
 TODO:
 1. Cancelled state prop
@@ -23,7 +24,6 @@ const FlightItineraryCard = ({
   item,
   onActionPress,
   onCardPress,
-  onInfoPress,
   style,
   hideIcon,
   showLine,
@@ -32,33 +32,58 @@ const FlightItineraryCard = ({
   timelineGreyed,
   processed,
 }) => {
+  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
+
+  const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
+  const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
+  const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
+  const shortlistingAction = isActionEnabled(
+    FlightSubTripActions.SHORTLIST_FLIGHT_TRIPS,
+  );
+  const viewShortlistedFlightAction = isActionEnabled(
+    FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
+  );
+
   const ActionsInItinerary = () => (
     <>
-      <Separator style={{marginHorizontal: DP._16}} />
+      <Separator
+        style={{
+          marginHorizontal: DP._16,
+          backgroundColor: Color.LIGHT_PERIWINKLE,
+        }}
+      />
       <View style={Styles.actionContainer}>
-        {item.actions?.[0]?.type === 'VIEW_REMARKS' ? (
+        {viewRemarksAction ? (
           <FTouchableOpacity
-            onPress={() => onActionPress(item.actions[0])}
+            onPress={() => onActionPress(viewRemarksAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{item.actions?.[0]?.name}</FText>
+            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
           </FTouchableOpacity>
         ) : (
           <>
-            <FTouchableOpacity
-              onPress={() => onActionPress(item.actions[1])}
-              style={Styles.flexRowAndAlignCenter}>
-              <AntDesign name="close" size={DP._18} color={Color.PASTEL_RED} />
-              <FText style={Styles.cancel}>{item.actions?.[1]?.name}</FText>
-            </FTouchableOpacity>
-            <FTouchableOpacity
-              onPress={() => onActionPress(item.actions[0])}
-              style={Styles.primaryButtonStyle}>
-              <FImage
-                style={Styles.rescheduleIcon}
-                source={ImageConst.rescheduleIcon}
-              />
-              <FText style={Styles.reschedule}>{item.actions?.[0]?.name}</FText>
-            </FTouchableOpacity>
+            {cancelAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(cancelAction)}
+                style={Styles.flexRowAndAlignCenter}>
+                <AntDesign
+                  name="close"
+                  size={DP._18}
+                  color={Color.PASTEL_RED}
+                />
+                <FText style={Styles.cancel}>{cancelAction.name}</FText>
+              </FTouchableOpacity>
+            )}
+            {rescheduleAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(rescheduleAction)}
+                style={Styles.primaryButtonStyle}>
+                <FImage
+                  style={Styles.rescheduleIcon}
+                  source={ImageConst.rescheduleIcon}
+                />
+                <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+              </FTouchableOpacity>
+            )}
           </>
         )}
       </View>
@@ -102,7 +127,7 @@ const FlightItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item.status.key === 'CANCELLED' ? (
+            {item?.status?.key === 'CANCELLED' ? (
               <TripStatus statusObj={item.status} />
             ) : processed ? (
               <Feather
@@ -117,15 +142,19 @@ const FlightItineraryCard = ({
             )}
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-            <View>
-              <FText style={Styles.portName}>
+            <View style={Styles.flex}>
+              <FText style={Styles.portName} numberOfLines={1}>
                 {item.pnr ? item.sourceAirportCode : item.source}
               </FText>
               <FText style={Styles.time}>
                 {item.pnr ? item.departureTime : item.sourceAirportCode}
               </FText>
             </View>
-            <View style={Styles.justifyContent_around(item.duration)}>
+            <View
+              style={[
+                Styles.justifyContent_around(item.duration),
+                Styles.flex,
+              ]}>
               <MaterialCommunityIcon
                 name="airplane"
                 size={DP._18}
@@ -136,8 +165,8 @@ const FlightItineraryCard = ({
                 <FText style={Styles.duration}>{item.duration}</FText>
               )}
             </View>
-            <View style={Styles.alignItem_flexEnd}>
-              <FText style={Styles.portName}>
+            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+              <FText style={Styles.portName} numberOfLines={1}>
                 {item.pnr ? item.destinationAirportCode : item.destination}
               </FText>
               <FText style={Styles.time}>
@@ -158,11 +187,16 @@ const FlightItineraryCard = ({
             </View>
           )}
         </FTouchableOpacity>
-        {!item.actionsDisabled && <ActionsInItinerary />}
+        {!item.actionsDisabled &&
+          (rescheduleAction || cancelAction || viewRemarksAction) && (
+            <ActionsInItinerary />
+          )}
         {showInfo && (
           <InfoBox
             preferenceSelected={preferenceSelected}
-            onPress={onInfoPress}
+            onPress={() =>
+              onActionPress(viewShortlistedFlightAction || shortlistingAction)
+            }
           />
         )}
       </View>

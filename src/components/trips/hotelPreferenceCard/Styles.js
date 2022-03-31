@@ -6,7 +6,7 @@ const {width} = Dimensions.get('window');
 export default StyleSheet.create({
   container: (offline) => ({
     backgroundColor: Color.WHITE,
-    padding: offline && DP._16,
+    padding: offline ? DP._16 : 0,
     borderRadius: DP._4,
     ...shadowObj,
   }),
@@ -127,7 +127,7 @@ export default StyleSheet.create({
   hotelLocality: {
     fontSize: DP._11,
     color: Color.CHARCOAL_GREY_TWO,
-    marginBottom: DP._4,
+    marginBottom: DP._12,
   },
   reviewsText: {
     color: Color.CHARCOAL_GREY_TWO,
@@ -137,17 +137,18 @@ export default StyleSheet.create({
   ratingsText: {
     color: Color.CHARCOAL_GREY_TWO,
     fontSize: DP._12,
-    marginBottom: DP._16,
   },
   amountContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: DP._16,
   },
   cancellationText: {color: Color.BATTLESHIP_GREY_TWO, fontSize: DP._10},
   buttonContainer: {paddingHorizontal: DP._8, paddingBottom: DP._16},
   inclusions: {
     fontSize: DP._12,
     color: Color.DARK_SEA_FOAM,
+    marginLeft: DP._4,
   },
   secondaryAddr: {
     fontSize: DP._11,

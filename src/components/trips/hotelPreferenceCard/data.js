@@ -1,6 +1,6 @@
 const hotelPreferenceCardProps = {
   item: {
-    preferredBy: 'TravelPlus',
+    preferenceText: 'TravelPlus preferred',
     hotelImages: [
       'https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/10/18/Photos/Processed/fabhotels-kgmE--621x414@LiveMint.jpg',
       'https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/10/18/Photos/Processed/fabhotels-kgmE--621x414@LiveMint.jpg',
@@ -15,7 +15,7 @@ const hotelPreferenceCardProps = {
     cost: '₹260923',
     ratingScore: 80,
     reviewsCount: '4.5/5 (134 reviews)',
-    colleaguesCount: 22,
+    colleaguesCount: 0,
     colleaguesRatingAvg: 4.2,
     googleMapUrl: 'https://www.google.com',
     preference: 5,
@@ -26,7 +26,7 @@ const hotelPreferenceCardProps = {
   onTapToSetPreferences: () => console.log('preferences tapped'),
   onViewMapPress: (item) => console.log(item),
   onCardPress: (item) => console.log('Card pressed'),
-  offline: true,
+  offline: false,
 };
 
 export default hotelPreferenceCardProps;

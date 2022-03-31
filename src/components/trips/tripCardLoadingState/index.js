@@ -8,8 +8,17 @@ import LinearGradient from 'react-native-linear-gradient';
 import Styles from './Styles';
 import {Color} from '../../../utils/color';
 import Separator from '../../../common/components/separator';
+import {DP} from '../../../utils/Dimen';
+import ListTypeFilter from '../listTypeFilter';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FText from '../../../common/rn/FText';
 
-const TripCardLoadingState = () => {
+const TripCardLoadingState = ({
+  data,
+  selected,
+  onChange,
+  showSortAndFilter,
+}) => {
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -40,12 +49,34 @@ const TripCardLoadingState = () => {
     );
   };
 
-  return (
-    <View style={Styles.cardContainer}>
-      {[...Array(5).fill('')].map((item, index) => (
-        <TripCard key={`${index}abc`} />
-      ))}
+  const ButtonWithIcon = ({iconName, text, style}) => (
+    <View style={Styles.button}>
+      <MaterialIcons name={iconName} color={Color.DODGER_BLUE} size={DP._18} />
+      <FText style={[Styles.buttonTextStyle, style]}>{text}</FText>
     </View>
+  );
+
+  return (
+    <>
+      <View style={[Styles.header]}>
+        <ListTypeFilter data={data} selected={selected} onChange={onChange} />
+        {showSortAndFilter && (
+          <View style={Styles.buttonWithIconContainer}>
+            <ButtonWithIcon
+              iconName={'sort'}
+              text={'Sort'}
+              style={{marginRight: DP._24}}
+            />
+            <ButtonWithIcon iconName={'tune'} text={'Filter'} />
+          </View>
+        )}
+      </View>
+      <View style={Styles.cardContainer}>
+        {[...Array(5).fill('')].map((_, index) => (
+          <TripCard key={`${index}abc`} />
+        ))}
+      </View>
+    </>
   );
 };
 

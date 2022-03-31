@@ -22,7 +22,7 @@ const PickerField = (props) => {
     return (
       <FText
         numberOfLines={props.numberOfLines}
-        style={[Styles.value, props.valueStyle]}>
+        style={[Styles.value(props.editable), props.valueStyle]}>
         {props.value}
       </FText>
     );
@@ -49,6 +49,10 @@ const PickerField = (props) => {
       <FText style={Styles.helperText(props.error)}>{props.helperText}</FText>
     </FTouchableOpacity>
   );
+};
+
+PickerField.defaultProps = {
+  editable: true,
 };
 
 export default PickerField;
