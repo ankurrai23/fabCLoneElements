@@ -56,13 +56,13 @@ export default StyleSheet.create({
     paddingHorizontal: DP._3,
     overflow: 'hidden',
   },
-  dateAndArrowContainer: {
+  dateAndArrowContainer: (boolean) => ({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: DP._16,
-    justifyContent: 'space-between',
+    justifyContent: boolean ? 'space-between' : 'flex-end',
     height: DP._18,
-  },
+  }),
   Flex: {
     flex: 1,
   },

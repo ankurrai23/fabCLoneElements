@@ -108,7 +108,10 @@ export default function ClaimsCard({...props}) {
                       {props.subText}
                     </FText>
                   </View>
-                  <View style={Styles.dateAndArrowContainer}>
+                  <View
+                    style={Styles.dateAndArrowContainer(
+                      props.showActionNeeded || props.date,
+                    )}>
                     {props.showActionNeeded ? (
                       <View style={Styles.actionView}>
                         <View style={Styles.circleView} />
