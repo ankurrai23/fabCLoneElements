@@ -1,20 +1,23 @@
 import React from 'react';
 import {View} from 'react-native';
-import {FText, FTouchableOpacity} from '../../..';
+import {FText, FTouchableOpacity, FImage} from '../../..';
 import Styles from './Styles';
 
-export default function HomeHeader({data, ...props}) {
+export default function HomeHeader({...props}) {
   return (
     <View style={Styles.profileNameContainer}>
       <FText type="medium" style={Styles.userName}>
-        Hello, {data.profileName}!
+        Hello, {props.profileName}!
       </FText>
       <FTouchableOpacity
         style={Styles.profilePicContainer}
         onPress={props.openProfileImagePicker}>
-        <FText type={'medium'} style={Styles.letter}>
-          {/* {data.profileName[0]} */}
-        </FText>
+        <FImage
+          source={{
+            uri: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Images-HD.png',
+          }}
+          style={Styles.imageContainer}
+        />
       </FTouchableOpacity>
     </View>
   );

@@ -44,6 +44,8 @@ import {
   ClaimsList,
   HeaderView,
   MessageCard,
+  FloatingAction,
+  HomeLoadingState,
   Checkbox,
   StackHeader,
   ScrollableTabBar,
@@ -65,6 +67,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'ClaimsCard',
     component: <ClaimsCard {...data.claimsCardProps} />,
+  },
+  {
+    name: 'FloatingAction',
+    component: <FloatingAction {...data.floatingActionProps} />,
   },
   {
     name: 'Checkbox',
@@ -175,39 +181,39 @@ const TRIP_CREATION = [
     component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
   },
   {
-    name: 'Coming Soon',
+    name: 'ComingSoon',
     component: <ComingSoon {...data.comingSoonProps} />,
   },
   {
-    name: 'Request Type',
+    name: 'RequestType',
     component: <RequestType {...data.requestTypeProps} />,
   },
   {
-    name: 'Basic Travel Details',
+    name: 'BasicTravelDetails',
     component: <BasicTravelDetails {...data.basicTravelDetailsProps} />,
   },
   {
-    name: 'Hotel Details',
+    name: 'HotelDetails',
     component: <HotelDetails {...data.hotelDetailsProps} />,
   },
   {
-    name: 'Flight Details',
+    name: 'FlightDetails',
     component: <FlightDetails {...data.flightDetailsProps} />,
   },
   {
-    name: 'Other Travel Details',
+    name: 'OtherTravelDetails',
     component: <OtherTravelDetails {...data.otherTravelDetailsProps} />,
   },
   {
-    name: 'Approval Manager',
+    name: 'ApprovalManager',
     component: <ApprovalManager {...data.approvalManagerProps} />,
   },
   {
-    name: 'Add flight Details',
+    name: 'AddFlightDetails',
     component: <AddFlightDetails {...data.addFlightDetailsProps} />,
   },
   {
-    name: 'Add hotel Details',
+    name: 'AddHotelDetails',
     component: <AddHotelDetails {...data.addHotelDetailsProps} />,
   },
 ];
@@ -215,20 +221,24 @@ const TRIP_CREATION = [
 const HOME = [
   {name: 'Home'},
   {
-    name: 'Home Header',
+    name: 'HomeHeader',
     component: <HomeHeader {...data.homeHeaderProps} />,
   },
   {
-    name: 'Claim List',
+    name: 'ClaimList',
     component: <ClaimsList {...data.claimsListProps} />,
   },
   {
-    name: 'Header View',
+    name: 'HeaderView',
     component: <HeaderView {...data.headerViewProps} />,
   },
   {
-    name: 'Message Card',
+    name: 'MessageCard',
     component: <MessageCard {...data.messageCardProps} />,
+  },
+  {
+    name: 'HomeLoadingState',
+    component: <HomeLoadingState />,
   },
 ];
 

@@ -22,6 +22,11 @@ export default StyleSheet.create({
     backgroundColor: Color.WHITE,
     borderColor: Color.DODGER_BLUE,
   },
+  imageContainer: {
+    width: DP._35,
+    height: DP._35,
+    borderRadius: DP._35,
+  },
   letter: {
     fontSize: DP._28,
     color: Color.WHITE,

@@ -15,6 +15,7 @@ import DashedLine from './common/components/dashedLine';
 import PickerField from './common/components/pickerField';
 import ClaimsCard from './common/components/claimsCard';
 import DialogBox from './common/components/dialogBox';
+import FloatingAction from './common/components/floatingActionButton';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
 import StackHeader from './common/components/stackHeader';
@@ -66,6 +67,7 @@ import HomeHeader from './components/home/homeHeader';
 import ClaimsList from './components/home/claimsList';
 import HeaderView from './components/home/headerView';
 import MessageCard from './components/home/messageCard';
+import HomeLoadingState from './components/home/homeLoadingState';
 
 //Expense Components
 import ExpenseCard from './components/expense/expenseCard';
@@ -87,6 +89,7 @@ export {
   PickerField,
   ModificationAlertBox,
   DialogBox,
+  FloatingAction,
   Checkbox,
   StackHeader,
   ScrollableTabBar,
@@ -134,6 +137,7 @@ export {
   ClaimsList,
   HeaderView,
   MessageCard,
+  HomeLoadingState,
   //Expense,
   ExpenseCard,
   ExpenseDetailCard,

@@ -29,7 +29,8 @@ export default function ClaimsCard({...props}) {
             colors={[props.cardSecondaryColor, props.cardColor]}
             onLayout={onLayout}
             style={Styles.smallCardGradientStyle}
-            locations={[0.2, 0.6]}>
+            start={{x: 1, y: 0}}
+            locations={[0, 0.6]}>
             <View style={Styles.rightTriangle(layout, props.cardColor)} />
             <View>
               <FText type="medium" style={Styles.quantity}>
@@ -64,7 +65,8 @@ export default function ClaimsCard({...props}) {
             colors={[props.cardSecondaryColor, props.cardColor]}
             onLayout={onLayout}
             style={Styles.largeCardGradientStyle}
-            locations={[0.2, 0.6]}>
+            start={{x: 1, y: 0}}
+            locations={[0, 0.6]}>
             <View style={Styles.rightTriangle(layout, props.cardColor)} />
             <View>
               {props.noClaim ? (
@@ -107,17 +109,19 @@ export default function ClaimsCard({...props}) {
                     </FText>
                   </View>
                   <View style={Styles.dateAndArrowContainer}>
-                    {props.date ? (
-                      <FText type={'medium'} style={Styles.dateText}>
-                        {props.date}
-                      </FText>
-                    ) : (
+                    {props.showActionNeeded ? (
                       <View style={Styles.actionView}>
                         <View style={Styles.circleView} />
                         <FText style={Styles.actionNeedTxt}>
                           Action needed
                         </FText>
                       </View>
+                    ) : (
+                      props.date && (
+                        <FText type={'medium'} style={Styles.dateText}>
+                          {props.date}
+                        </FText>
+                      )
                     )}
                     {props.disabled ? null : (
                       <View style={Styles.rightArrowView}>

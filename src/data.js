@@ -26,6 +26,7 @@ import coTravellersProps from './components/trips/coTravellers/data';
 import flightDetailCardProps from './components/trips/flightDetailCard/data';
 import listTypeFilterProps from './components/trips/listTypeFilter/data';
 import contactSupportProps from './components/trips/components/contactSupport/data';
+import floatingActionProps from './common/components/floatingActionButton/data';
 
 //trip creation props
 import coTravellersDetailProps from './components/tripCreation/coTravelersDetails/data';
@@ -86,6 +87,7 @@ export {
   claimsListProps,
   headerViewProps,
   messageCardProps,
+  floatingActionProps,
   checkboxProps,
   stackHeaderProps,
   scrollableTabBarProps,

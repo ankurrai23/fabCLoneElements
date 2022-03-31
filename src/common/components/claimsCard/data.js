@@ -5,11 +5,12 @@ const claimsCardProps = {
   subText: 'submitted',
   amount: 4550,
   quantity: 8,
-  type: 'small',
+  type: 'large',
   noClaim: false,
   date: 'Jan 21',
   arrowVisible: false,
   onPress: () => console.log('onclick card'),
+  showActionNeeded: true,
 };
 
 export default claimsCardProps;
