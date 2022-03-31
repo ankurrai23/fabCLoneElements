@@ -69,6 +69,7 @@ import MessageCard from './components/home/messageCard';
 
 //Expense Components
 import ExpenseCard from './components/expense/expenseCard';
+import ExpenseDetailCard from './components/expense/expenseDetailCard';
 
 export {
   data,
@@ -135,4 +136,5 @@ export {
   MessageCard,
   //Expense,
   ExpenseCard,
+  ExpenseDetailCard,
 };

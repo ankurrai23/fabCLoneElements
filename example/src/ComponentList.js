@@ -48,6 +48,7 @@ import {
   StackHeader,
   ScrollableTabBar,
   ExpenseCard,
+  ExpenseDetailCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -236,6 +237,10 @@ const EXPENSE = [
   {
     name: 'ExpenseCard',
     component: <ExpenseCard {...data.expenseCardProps} />,
+  },
+  {
+    name: 'ExpenseDetailCard',
+    component: <ExpenseDetailCard {...data.expenseDetailCardProps} />,
   },
 ];
 
