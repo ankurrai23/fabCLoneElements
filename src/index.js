@@ -73,6 +73,7 @@ import HomeLoadingState from './components/home/homeLoadingState';
 import ExpenseCard from './components/expense/expenseCard';
 import ExpenseDetailCard from './components/expense/expenseDetailCard';
 import StopDetailList from './components/expense/stopsDetailList';
+import ExpenseApprovalCard from './components/expense/expenseApprovalCard';
 
 export {
   data,
@@ -143,4 +144,5 @@ export {
   ExpenseCard,
   ExpenseDetailCard,
   StopDetailList,
+  ExpenseApprovalCard,
 };

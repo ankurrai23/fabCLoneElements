@@ -50,6 +50,7 @@ import messageCardProps from './components/home/messageCard/data';
 import expenseCardProps from './components/expense/expenseCard/data';
 import expenseDetailCardProps from './components/expense/expenseDetailCard/data';
 import stopDetailListProps from './components/expense/stopsDetailList/data';
+import expenseApprovalCardProps from './components/expense/expenseApprovalCard/data';
 
 export {
   buttonProps,
@@ -95,4 +96,5 @@ export {
   expenseCardProps,
   expenseDetailCardProps,
   stopDetailListProps,
+  expenseApprovalCardProps,
 };

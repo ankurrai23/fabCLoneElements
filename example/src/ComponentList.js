@@ -52,6 +52,7 @@ import {
   ExpenseCard,
   ExpenseDetailCard,
   StopDetailList,
+  ExpenseApprovalCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -256,6 +257,10 @@ const EXPENSE = [
   {
     name: 'StopDetailList',
     component: <StopDetailList {...data.stopDetailListProps} />,
+  },
+  {
+    name: 'ExpenseApprovalCard',
+    component: <ExpenseApprovalCard {...data.expenseApprovalCardProps} />,
   },
 ];
 
