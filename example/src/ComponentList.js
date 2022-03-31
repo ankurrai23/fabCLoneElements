@@ -44,6 +44,7 @@ import {
   ClaimsList,
   HeaderView,
   MessageCard,
+  Checkbox,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -60,6 +61,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'ClaimsCard',
     component: <ClaimsCard {...data.claimsCardProps} />,
+  },
+  {
+    name: 'Checkbox',
+    component: <Checkbox {...data.checkboxProps} />,
   },
 ];
 
