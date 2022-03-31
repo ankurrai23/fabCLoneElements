@@ -67,6 +67,9 @@ import ClaimsList from './components/home/claimsList';
 import HeaderView from './components/home/headerView';
 import MessageCard from './components/home/messageCard';
 
+//Expense Components
+import ExpenseCard from './components/expense/expenseCard';
+
 export {
   data,
   //RN Components
@@ -130,4 +133,6 @@ export {
   ClaimsList,
   HeaderView,
   MessageCard,
+  //Expense,
+  ExpenseCard,
 };

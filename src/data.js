@@ -45,6 +45,9 @@ import claimsListProps from './components/home/claimsList/data';
 import headerViewProps from './components/home/headerView/data';
 import messageCardProps from './components/home/messageCard/data';
 
+//expense components props
+import expenseCardProps from './components/expense/expenseCard/data';
+
 export {
   buttonProps,
   textFieldProps,
@@ -85,4 +88,5 @@ export {
   checkboxProps,
   stackHeaderProps,
   scrollableTabBarProps,
+  expenseCardProps,
 };

@@ -47,6 +47,7 @@ import {
   Checkbox,
   StackHeader,
   ScrollableTabBar,
+  ExpenseCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -230,9 +231,18 @@ const HOME = [
   },
 ];
 
+const EXPENSE = [
+  {name: 'Expense'},
+  {
+    name: 'ExpenseCard',
+    component: <ExpenseCard {...data.expenseCardProps} />,
+  },
+];
+
 export default [
   ...COMMON_COMPONENTS,
   ...TRIP_COMPONENTS,
   ...TRIP_CREATION,
   ...HOME,
+  ...EXPENSE,
 ];
