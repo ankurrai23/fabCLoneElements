@@ -58,7 +58,7 @@ const TripListingCard = ({item, onCardPress}) => {
               Styles.date
             }>{`${item.tripStartDate} - ${item.tripEndDate}`}</FText>
         </View>
-        <View style={Styles.flexRow}>
+        <View style={item.actionsDisabled ? Styles.flexRows : Styles.flexRow}>
           <FText style={{color: Color.GREYISH_PURPLE}}>
             {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
           </FText>
@@ -79,9 +79,11 @@ const TripListingCard = ({item, onCardPress}) => {
             <FText style={Styles.cancelledText}>{item.cancelMsg}</FText>
           </View>
         )}
-        <View style={Styles.footer}>
-          <FText style={Styles.action}>View Details</FText>
-        </View>
+        {!item.actionsDisabled && (
+          <View style={Styles.footer}>
+            <FText style={Styles.action}>View Details</FText>
+          </View>
+        )}
       </FTouchableOpacity>
       <DialogBox
         modalVisible={sheetVisible}
