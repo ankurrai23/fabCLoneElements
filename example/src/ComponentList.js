@@ -55,6 +55,7 @@ import {
   ExpenseApprovalCard,
   ExpenseApprovalHeader,
   LocationInputBox,
+  Swiper,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -271,6 +272,10 @@ const EXPENSE = [
   {
     name: 'LocationInputBox',
     component: <LocationInputBox {...data.locationInputBoxProps} />,
+  },
+  {
+    name: 'Swiper',
+    component: <Swiper {...data.swiperProps} />,
   },
 ];
 

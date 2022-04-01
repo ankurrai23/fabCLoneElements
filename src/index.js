@@ -76,6 +76,7 @@ import StopDetailList from './components/expense/stopsDetailList';
 import ExpenseApprovalCard from './components/expense/expenseApprovalCard';
 import ExpenseApprovalHeader from './components/expense/expenseApprovalHeader';
 import LocationInputBox from './components/expense/locationInputBox';
+import Swiper from './components/expense/swiper';
 
 export {
   data,
@@ -149,4 +150,5 @@ export {
   ExpenseApprovalCard,
   ExpenseApprovalHeader,
   LocationInputBox,
+  Swiper,
 };
