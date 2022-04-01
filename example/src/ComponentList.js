@@ -56,6 +56,7 @@ import {
   ExpenseApprovalHeader,
   LocationInputBox,
   Swiper,
+  MonthPicker,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -276,6 +277,10 @@ const EXPENSE = [
   {
     name: 'Swiper',
     component: <Swiper {...data.swiperProps} />,
+  },
+  {
+    name: 'MonthPicker',
+    component: <MonthPicker {...data.monthPickerProps} />,
   },
 ];
 

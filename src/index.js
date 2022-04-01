@@ -77,6 +77,8 @@ import ExpenseApprovalCard from './components/expense/expenseApprovalCard';
 import ExpenseApprovalHeader from './components/expense/expenseApprovalHeader';
 import LocationInputBox from './components/expense/locationInputBox';
 import Swiper from './components/expense/swiper';
+import MonthPicker from './components/expense/monthPicker';
+import ClaimFilter from './components/expense/claimFilter';
 
 export {
   data,
@@ -151,4 +153,6 @@ export {
   ExpenseApprovalHeader,
   LocationInputBox,
   Swiper,
+  MonthPicker,
+  ClaimFilter,
 };
