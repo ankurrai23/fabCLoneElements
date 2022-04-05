@@ -99,7 +99,7 @@ export default StyleSheet.create({
   },
   directionIcon: {transform: [{rotateZ: '45deg'}], bottom: 2, right: 2},
   searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
-  bookingDetailsContainer: {marginLeft: DP._8, flex: 1},
+  bookingDetailsContainer: {flex: 1, marginBottom: DP._8},
   flexRow: {flexDirection: 'row'},
   paymentStatusContainer: {lineHeight: DP._16, flexDirection: 'row'},
   modalHeading: {

@@ -41,7 +41,7 @@ export default function HotelDetailCard({
     <View>
       <FText style={Styles.sectionTitle}>{title}</FText>
       <FText type="medium">{date}</FText>
-      <FText style={Styles.checkInTIme}>{time}</FText>
+      {time && <FText style={Styles.checkInTIme}>{time}</FText>}
     </View>
   );
 
@@ -119,25 +119,29 @@ export default function HotelDetailCard({
             item.modificationRequested || item.cancelled,
           )}>
           <View style={Styles.hotelNameAndImageContainer}>
-            <FTouchableOpacity onPress={onMainImagePress}>
-              <FImage
-                style={Styles.hotelImage}
-                source={{uri: item.mainImage}}
-              />
-              <FontAwesome5
-                name="search-plus"
-                style={Styles.searchIcon}
-                size={DP._18}
-                color={Color.WHITE}
-              />
-            </FTouchableOpacity>
+            {item.mainImage && (
+              <FTouchableOpacity
+                style={{marginRight: DP._8}}
+                onPress={onMainImagePress}>
+                <FImage
+                  style={Styles.hotelImage}
+                  source={{uri: item.mainImage}}
+                />
+                <FontAwesome5
+                  name="search-plus"
+                  style={Styles.searchIcon}
+                  size={DP._18}
+                  color={Color.WHITE}
+                />
+              </FTouchableOpacity>
+            )}
             <View style={Styles.bookingDetailsContainer}>
-              <FText>
-                Booking ID{' '}
+              <View style={Styles.flexRow}>
+                <FText>Booking ID</FText>
                 <FText type="bold" style={{paddingLeft: DP._8}}>
                   {item.bookingId}
                 </FText>
-              </FText>
+              </View>
               <FText style={{marginTop: DP._12}}>{item.hotelName}</FText>
             </View>
           </View>
@@ -183,12 +187,14 @@ export default function HotelDetailCard({
             <CheckInInfo
               title={'Check-in date'}
               date={item.checkIn.date}
-              time={`Check-in: ${item.checkIn.time}`}
+              time={item.checkIn.time ? `Check-in: ${item.checkIn.time}` : null}
             />
             <CheckInInfo
               title={'Check-out date'}
               date={item.checkOut.date}
-              time={`Check-out: ${item.checkOut.time}`}
+              time={
+                item.checkOut.time ? `Check-out: ${item.checkOut.time}` : null
+              }
             />
             <View>
               <FText
@@ -203,25 +209,29 @@ export default function HotelDetailCard({
             </View>
           </View>
           <Separator style={Styles.separator} />
-          <FText style={Styles.sectionTitle}>Inclusions</FText>
-          {item.inclusions.map((item, index) => {
-            if (index < 3)
-              return (
-                <Inclusions
-                  key={`ab${index}cd`}
-                  text={item.text}
-                  image={item.icon}
-                />
-              );
-          })}
-          {item.inclusions.length > 3 && (
-            <FTouchableOpacity onPress={() => setSheetVisible(true)}>
-              <FText style={Styles.moreInclustion}>
-                +{item.inclusions.length - 3} more
-              </FText>
-            </FTouchableOpacity>
+          {item.inclusions && (
+            <>
+              <FText style={Styles.sectionTitle}>Inclusions</FText>
+              {item.inclusions.map((item, index) => {
+                if (index < 3)
+                  return (
+                    <Inclusions
+                      key={`ab${index}cd`}
+                      text={item.text}
+                      image={item.icon}
+                    />
+                  );
+              })}
+              {item.inclusions.length > 3 && (
+                <FTouchableOpacity onPress={() => setSheetVisible(true)}>
+                  <FText style={Styles.moreInclustion}>
+                    +{item.inclusions.length - 3} more
+                  </FText>
+                </FTouchableOpacity>
+              )}
+              <Separator style={Styles.separator} />
+            </>
           )}
-          <Separator style={Styles.separator} />
           <FText style={Styles.sectionTitle}>Co-travelers</FText>
           {item.coTravellers.map((item, index) => (
             <CoTraveller name={item} key={`abc${index}def`} />
