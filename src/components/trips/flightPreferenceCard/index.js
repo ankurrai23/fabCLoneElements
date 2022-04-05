@@ -41,10 +41,10 @@ export default function FlightPreferenceCard({
             }}
             source={{uri: flightInfo.airlineIcon}}
           />
-          <FText style={Styles.flightName}>{flightInfo.carrier}</FText>
+          <FText style={Styles.flightName}>{flightInfo.airline}</FText>
           <FText style={Styles.flightNumber}>
             {' '}
-            | {flightInfo.airline}-{flightInfo.flightNumber}
+            | {flightInfo.airlineCode}-{flightInfo.flightNumber}
           </FText>
           <View style={Styles.flexGrow_1} />
           <Animated.Text style={{opacity: opacity, fontFamily: 'Rubik-Bold'}}>

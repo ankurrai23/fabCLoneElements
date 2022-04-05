@@ -1,8 +1,8 @@
 export default {
   flightInfo: {
-    carrier: 'Air Asia',
+    airline: 'Air Asia',
     flightNumber: '113',
-    airline: 'G8',
+    airlineCode: 'G8',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     price: '2600',
