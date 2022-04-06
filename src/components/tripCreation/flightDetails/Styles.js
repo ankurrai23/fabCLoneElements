@@ -119,4 +119,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: 187,
   },
+  hitSlop: {
+    top: DP._15,
+    bottom: DP._15,
+    left: DP._10,
+    right: 0,
+  },
 });

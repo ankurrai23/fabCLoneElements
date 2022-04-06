@@ -1,14 +1,14 @@
 const coTravellersDetailProps = {
-  data: {
-    cotravellerCount: '6 Co-travellers',
-    names: 'Abhishek Gupta, Pranay Shah, Tanmay Shroff, Prateek Gupta',
-    purpose: 'Agency meeting',
-    remarks: 'Please consider only veg meals',
-  },
+  // data: {
+  //   cotravellerCount: '6 Co-travellers',
+  //   names: 'Abhishek Gupta, Pranay Shah, Tanmay Shroff, Prateek Gupta',
+  //   purpose: 'Agency meeting',
+  //   remarks: 'Please consider only veg meals',
+  // },
   isCoTravellersEnabled: () => console.log('card pressed', true),
   onCoTravellersToggle: () => console.log('Info Pressed'),
   onPressCoTraveler: () => console.log('co travelers'),
-  coTravellers: [
+  data: [
     {
       userId: 'a3e42285-b567-49be-b4a6-6ea3c8f118c7',
       fullName: 'Rahul Srivastav',

@@ -26,6 +26,7 @@ export default function AddFlightDetails(props) {
                 : null
             }
             error={errors.returnFrom}
+            helperText={errors.sourceTextErrorTo}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchReturnFrom}
           />
@@ -37,6 +38,7 @@ export default function AddFlightDetails(props) {
                 : null
             }
             error={errors.returnTo}
+            helperText={errors.destinationTextErrorTo}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchReturnTo}
           />
@@ -85,7 +87,7 @@ export default function AddFlightDetails(props) {
   }
   return (
     <View style={Styles.fill}>
-      <ScrollView contentContainerStyle={Styles.container}>
+      <ScrollView bounces={false} contentContainerStyle={Styles.container}>
         <View style={Styles.topContainer}>
           {props.tripType === 1 && (
             <FText type="medium" style={Styles.title}>
@@ -100,6 +102,7 @@ export default function AddFlightDetails(props) {
                 : null
             }
             error={errors.onwardFrom}
+            helperText={errors.sourceTextError}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchOnwardFrom}
           />
@@ -111,6 +114,7 @@ export default function AddFlightDetails(props) {
                 : null
             }
             error={errors.onwardTo}
+            helperText={errors.destnationTextError}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchOnwardTo}
           />

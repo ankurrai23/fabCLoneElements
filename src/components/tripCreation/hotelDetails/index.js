@@ -50,6 +50,7 @@ export default function HotelDetails(props) {
         </FText>
         <FTouchableOpacity
           style={Styles.flexRow}
+          hitSlop={Styles.hitSlop}
           onPress={
             data.city?.city ? props.editHotelDetail : props.goToAddHotelDetails
           }>
