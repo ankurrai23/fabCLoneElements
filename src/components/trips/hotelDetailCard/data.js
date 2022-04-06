@@ -86,7 +86,7 @@ export default {
     ],
     actionsDisabled: true,
     modificationRequested: false,
-    cancelled: true,
+    cancelled: false,
   },
   onActionPress: (item) => console.log(item),
   supportDetails: [

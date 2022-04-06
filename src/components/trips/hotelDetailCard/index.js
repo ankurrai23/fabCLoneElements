@@ -146,22 +146,26 @@ export default function HotelDetailCard({
             </View>
           </View>
           <FText style={Styles.addressText}>{item.address}</FText>
-          <Separator style={Styles.separator} />
+          {(item.weather || directionAction) && (
+            <Separator style={Styles.separator} />
+          )}
           <View style={Styles.flexRowWithSpaceBetween}>
-            <View style={Styles.flexRowWithAlignCenter}>
-              <FImage
-                style={Styles.weatherIcon}
-                source={{uri: item.weather.iconPath}}
-              />
-              <FText
-                style={{
-                  fontSize: DP._10,
-                  color: Color.GREY_PURPLE,
-                  marginLeft: DP._4,
-                }}>
-                {item.weather.description}
-              </FText>
-            </View>
+            {item.weather && (
+              <View style={Styles.flexRowWithAlignCenter}>
+                <FImage
+                  style={Styles.weatherIcon}
+                  source={{uri: item.weather.iconPath}}
+                />
+                <FText
+                  style={{
+                    fontSize: DP._10,
+                    color: Color.GREY_PURPLE,
+                    marginLeft: DP._4,
+                  }}>
+                  {item.weather.description}
+                </FText>
+              </View>
+            )}
             {directionAction && (
               <FTouchableOpacity
                 style={[Styles.flexRowWithAlignCenter]}
@@ -205,7 +209,7 @@ export default function HotelDetailCard({
                 }}>
                 Rooms
               </FText>
-              <FText type="medium">{item.noOfRooms}</FText>
+              <FText type="medium">{item.noOfRooms || '-'}</FText>
             </View>
           </View>
           <Separator style={Styles.separator} />
@@ -232,11 +236,15 @@ export default function HotelDetailCard({
               <Separator style={Styles.separator} />
             </>
           )}
-          <FText style={Styles.sectionTitle}>Co-travelers</FText>
-          {item.coTravellers.map((item, index) => (
-            <CoTraveller name={item} key={`abc${index}def`} />
-          ))}
-          <Separator style={Styles.separator} />
+          {item?.coTravellers?.length > 0 && (
+            <>
+              <FText style={Styles.sectionTitle}>Co-travelers</FText>
+              {item.coTravellers.map((item, index) => (
+                <CoTraveller name={item} key={`abc${index}def`} />
+              ))}
+              <Separator style={Styles.separator} />
+            </>
+          )}
           <FText style={[Styles.sectionTitle, {marginTop: DP._8}]}>
             Payment mode
           </FText>
