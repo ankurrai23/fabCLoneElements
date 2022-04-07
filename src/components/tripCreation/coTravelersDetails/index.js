@@ -6,34 +6,31 @@ import {FSwitch, FText, FTouchableOpacity, PickerField} from '../../..';
 import Styles from './Styles';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {DP} from '../../../utils/Dimen';
+import Utils from '../../../../../../src/utils/Utils';
 
-export default function CoTravelersDetails({
-  isCoTravellersEnabled,
-  onCoTravellersToggle,
-  onPressCoTraveler,
-  coTravellers,
-  coTravelerError,
-  removeItem,
-  error,
-}) {
-  function getHelperText() {
-    if (coTravellers?.length) {
-      return `${coTravellers.length} co-travelers`;
-    }
-    return error;
-  }
-
+export default function CoTravelersDetails(props) {
   function renderPickerChildren() {
-    return coTravellers?.map((item, index) => {
+    return props.data?.map((item, index) => {
       return (
         <View style={Styles.coTravelerContainer}>
           <FText style={Styles.coTravelerName}>{item.fullName}</FText>
-          <FTouchableOpacity onPress={() => removeItem(index)}>
+          <FTouchableOpacity onPress={() => props.removeItem(index)}>
             <Feather name="x" color={Color.DODGER_BLUE} size={DP._16} />
           </FTouchableOpacity>
         </View>
       );
     });
+  }
+
+  function getHelperText() {
+    if (props.data?.length) {
+      return `${props.data.length} ${Utils.getPluralText(
+        props.data.length,
+        'co-traveler',
+        false,
+      )}`;
+    }
+    return props.error;
   }
 
   return (
@@ -47,16 +44,16 @@ export default function CoTravelersDetails({
           </FText>
         </View>
         <FSwitch
-          value={isCoTravellersEnabled}
-          onChange={onCoTravellersToggle}
+          value={props.isCoTravellersEnabled}
+          onChange={props.onCoTravellersToggle}
         />
       </View>
-      {isCoTravellersEnabled && (
+      {props.isCoTravellersEnabled && (
         <PickerField
-          onPress={onPressCoTraveler}
+          onPress={props.onPressCoTraveler}
           label="Enter co-travelers email IDs"
-          value={coTravellers?.length}
-          error={coTravelerError}
+          value={props.data?.length}
+          error={props.coTravelerError}
           helperText={getHelperText()}>
           {renderPickerChildren()}
         </PickerField>

@@ -22,7 +22,7 @@ export default StyleSheet.create({
   subTitle: {
     color: Color.GREY_PURPLE,
     lineHeight: DP._18,
-    fontSize: DP._12,
+    fontSize: DP._14,
     textAlign: 'center',
   },
 });

@@ -14,7 +14,7 @@ export default function AddHotelDetails({data, errors, ...props}) {
             value={
               data.city.cityPlaceId
                 ? data.city.city
-                : data.preferredLocality.location
+                : data.preferredLocality.locality
             }
             error={errors.city}
             helperText={errors.cityError}

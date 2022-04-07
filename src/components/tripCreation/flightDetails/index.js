@@ -76,6 +76,7 @@ export default function FlightDetails(props) {
         </FText>
         <FTouchableOpacity
           style={Styles.flexRow}
+          hitSlop={Styles.hitSlop}
           onPress={
             props.data.length > 0
               ? props.goToEditFlightDetail

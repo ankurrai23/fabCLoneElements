@@ -74,4 +74,10 @@ export default StyleSheet.create({
     lineHeight: DP._18,
     marginTop: 5,
   },
+  hitSlop: {
+    top: DP._15,
+    bottom: DP._15,
+    left: DP._10,
+    right: 0,
+  },
 });
