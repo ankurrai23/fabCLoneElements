@@ -25,38 +25,24 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
     <>
       <Separator style={{backgroundColor: Color.VERY_LIGHT_BLUE}} />
       <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
+        {cancelAction && (
           <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
+            onPress={() => onActionPress(cancelAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
+            <AntDesign name="close" size={DP._18} color={Color.PASTEL_RED} />
+            <FText style={Styles.cancel}>{cancelAction.name}</FText>
           </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <AntDesign
-                  name="close"
-                  size={DP._18}
-                  color={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {rescheduleAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(rescheduleAction)}
-                style={Styles.primaryButtonStyle}>
-                <FImage
-                  style={Styles.rescheduleIcon}
-                  source={ImageConst.rescheduleIcon}
-                />
-                <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
+        )}
+        {rescheduleAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(rescheduleAction)}
+            style={Styles.primaryButtonStyle}>
+            <FImage
+              style={Styles.rescheduleIcon}
+              source={ImageConst.rescheduleIcon}
+            />
+            <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+          </FTouchableOpacity>
         )}
       </View>
     </>
@@ -94,9 +80,7 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item?.status?.key === 'CANCELLED' && (
-              <TripStatus statusObj={item.status} />
-            )}
+            {item.status && <TripStatus statusObj={item.status} />}
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
             <View style={Styles.flex}>

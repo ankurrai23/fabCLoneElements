@@ -16,7 +16,9 @@ import Button from '../../../common/components/button';
 import {HotelSubTripActions} from '../../../utils/SubTripActions';
 import ContactSupport from '../components/contactSupport';
 import ModificationAlertBox from '../components/modificationAlertBox';
-
+import TripStatus from '../tripStatus';
+import {ImageConst} from '../../../utils/imageConst';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 export default function HotelDetailCard({
   item,
   onActionPress,
@@ -37,6 +39,41 @@ export default function HotelDetailCard({
   const invoiceAction = isActionEnabled(HotelSubTripActions.VIEW_INVOICE);
   const supportAction = isActionEnabled(HotelSubTripActions.SUPPORT);
 
+  const getStatusObject = (status = item.bookingStatus) => {
+    const capitalize = () => {
+      return `${status[0]}${status.slice(1).toLowerCase()}`;
+    };
+    switch (status) {
+      case 'CANCELLED':
+        return {
+          key: status,
+          value: capitalize(),
+          bgColor: Color.PASTEL_RED + '1a',
+          textColor: Color.PASTEL_RED,
+        };
+      case 'NO_SHOW':
+        return {
+          key: status,
+          value: 'No show',
+          bgColor: Color.PASTEL_RED + '1a',
+          textColor: Color.PASTEL_RED,
+        };
+      case 'TENTATIVE':
+        return {
+          key: status,
+          value: capitalize(),
+          bgColor: Color.MANGO + '1a',
+          textColor: Color.MANGO,
+        };
+      default:
+        return {
+          key: status,
+          value: capitalize(),
+          bgColor: Color.DARK_SEA_FOAM + '1a',
+          textColor: Color.DARK_SEA_FOAM,
+        };
+    }
+  };
   const CheckInInfo = ({title, date, time}) => (
     <View>
       <FText style={Styles.sectionTitle}>{title}</FText>
@@ -136,12 +173,7 @@ export default function HotelDetailCard({
               </FTouchableOpacity>
             )}
             <View style={Styles.bookingDetailsContainer}>
-              <View style={Styles.flexRow}>
-                <FText>Booking ID</FText>
-                <FText type="bold" style={{paddingLeft: DP._8}}>
-                  {item.bookingId}
-                </FText>
-              </View>
+              <TripStatus statusObj={getStatusObject()} />
               <FText style={{marginTop: DP._12}}>{item.hotelName}</FText>
             </View>
           </View>
@@ -150,22 +182,12 @@ export default function HotelDetailCard({
             <Separator style={Styles.separator} />
           )}
           <View style={Styles.flexRowWithSpaceBetween}>
-            {item.weather && (
-              <View style={Styles.flexRowWithAlignCenter}>
-                <FImage
-                  style={Styles.weatherIcon}
-                  source={{uri: item.weather.iconPath}}
-                />
-                <FText
-                  style={{
-                    fontSize: DP._10,
-                    color: Color.GREY_PURPLE,
-                    marginLeft: DP._4,
-                  }}>
-                  {item.weather.description}
-                </FText>
-              </View>
-            )}
+            <View style={Styles.flexRow}>
+              <FText>Booking ID</FText>
+              <FText type="bold" style={{paddingLeft: DP._8}}>
+                {item.bookingId}
+              </FText>
+            </View>
             {directionAction && (
               <FTouchableOpacity
                 style={[Styles.flexRowWithAlignCenter]}
@@ -288,13 +310,28 @@ export default function HotelDetailCard({
             <View style={Styles.buttonContainer}>
               {cancelAction && (
                 <FTouchableOpacity
-                  onPress={() => onActionPress?.(cancelAction)}>
+                  onPress={() => onActionPress?.(cancelAction)}
+                  style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <AntDesign
+                    name="close"
+                    size={DP._18}
+                    color={Color.PASTEL_RED}
+                  />
                   <FText style={Styles.cancel}>{cancelAction.name}</FText>
                 </FTouchableOpacity>
               )}
               {modifyAction && (
                 <FTouchableOpacity
-                  onPress={() => onActionPress?.(modifyAction)}>
+                  onPress={() => onActionPress?.(modifyAction)}
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginLeft: DP._26,
+                  }}>
+                  <FImage
+                    style={Styles.rescheduleIcon}
+                    source={ImageConst.rescheduleIcon}
+                  />
                   <FText style={Styles.modify}>{modifyAction.name}</FText>
                 </FTouchableOpacity>
               )}

@@ -1,9 +1,10 @@
 import {Color} from '../../../utils/color';
 const tripStatusProps = {
   statusObj: {
-    key: 'IN_SHORTLISTING',
-    value: 'In Shortlisting',
-    color: Color.MANGO,
+    key: 'APPROVAL_PENDING',
+    value: 'Approval Pending',
+    bgColor: Color.MANGO + '1a',
+    textColor: Color.MANGO,
   },
 };
 

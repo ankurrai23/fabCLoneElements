@@ -1,3 +1,5 @@
+import {Color} from '../../../utils/color';
+
 const flightDetailCardProps = {
   title: 'Return Flight',
   item: {
@@ -17,9 +19,9 @@ const flightDetailCardProps = {
     actionsDisabled: false,
     status: {
       key: 'PROCESSED',
-      value: 'Processed',
-      textColor: '#d65656',
-      bgColor: '#d656561a',
+      value: 'Confirmed',
+      textColor: Color.DARK_SEA_FOAM,
+      bgColor: Color.DARK_SEA_FOAM + '1a',
     },
     actions: [
       {
@@ -31,7 +33,7 @@ const flightDetailCardProps = {
         name: 'Cancel',
       },
     ],
-    modificationRequested: true,
+    modificationRequested: false,
     cancelled: false,
   },
   onActionPress: (item) => console.log('Action Pressed', item),

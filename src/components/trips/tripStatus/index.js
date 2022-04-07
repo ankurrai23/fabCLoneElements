@@ -44,7 +44,7 @@ const TripStatus = ({statusObj}) => {
   );
 
   return (
-    <View style={Styles.alignCenter}>
+    <View style={Styles.wrap}>
       {statusObj?.key === 'IN_SHORTLISTING' ? (
         <View style={Styles.shimmerContainer}>
           <Gradient />

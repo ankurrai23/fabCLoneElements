@@ -24,7 +24,7 @@ export default StyleSheet.create({
     borderRadius: DP._11,
     overflow: 'hidden',
   }),
-  alignCenter: {
-    alignItems: 'center',
+  wrap: {
+    flexWrap: 'wrap',
   },
 });

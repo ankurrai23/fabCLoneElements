@@ -30,14 +30,16 @@ export default StyleSheet.create({
   },
   cancel: {
     color: Color.PASTEL_RED,
+    marginLeft: DP._4,
   },
   modify: {
     color: Color.DODGER_BLUE,
+    marginLeft: DP._4,
   },
   buttonContainer: {
     padding: DP._16,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     backgroundColor: Color.DODGER_BLUE + '12',
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -137,5 +139,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     ...shadowObj,
+  },
+  rescheduleIcon: {
+    width: DP._18,
+    height: DP._18,
+    resizeMode: 'contain',
   },
 });
