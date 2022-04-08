@@ -22,6 +22,7 @@ const hotelPreferenceCardProps = {
     includesBreakfast: true,
     cancellationText: 'Free cancellation before 12 Nov',
     disablePref: true,
+    gstIncluded: true,
   },
   onTapToSetPreferences: () => console.log('preferences tapped'),
   onViewMapPress: (item) => console.log(item),

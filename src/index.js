@@ -19,6 +19,8 @@ import FloatingAction from './common/components/floatingActionButton';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
 import DropDownList from './common/components/dropDownList';
+import StackHeader from './common/components/stackHeader';
+import ScrollableTabBar from './common/components/scrollableTabBar';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -68,6 +70,17 @@ import HeaderView from './components/home/headerView';
 import MessageCard from './components/home/messageCard';
 import HomeLoadingState from './components/home/homeLoadingState';
 
+//Expense Components
+import ExpenseCard from './components/expense/expenseCard';
+import ExpenseDetailCard from './components/expense/expenseDetailCard';
+import StopDetailList from './components/expense/stopsDetailList';
+import ExpenseApprovalCard from './components/expense/expenseApprovalCard';
+import ExpenseApprovalHeader from './components/expense/expenseApprovalHeader';
+import LocationInputBox from './components/expense/locationInputBox';
+import Swiper from './components/expense/swiper';
+import MonthPicker from './components/expense/monthPicker';
+import ClaimFilter from './components/expense/claimFilter';
+
 export {
   data,
   //RN Components
@@ -87,6 +100,8 @@ export {
   FloatingAction,
   Checkbox,
   DropDownList,
+  StackHeader,
+  ScrollableTabBar,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
@@ -132,4 +147,14 @@ export {
   HeaderView,
   MessageCard,
   HomeLoadingState,
+  //Expense,
+  ExpenseCard,
+  ExpenseDetailCard,
+  StopDetailList,
+  ExpenseApprovalCard,
+  ExpenseApprovalHeader,
+  LocationInputBox,
+  Swiper,
+  MonthPicker,
+  ClaimFilter,
 };

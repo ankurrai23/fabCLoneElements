@@ -30,14 +30,16 @@ export default StyleSheet.create({
   },
   cancel: {
     color: Color.PASTEL_RED,
+    marginLeft: DP._4,
   },
   modify: {
     color: Color.DODGER_BLUE,
+    marginLeft: DP._4,
   },
   buttonContainer: {
     padding: DP._16,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     backgroundColor: Color.DODGER_BLUE + '12',
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -99,7 +101,7 @@ export default StyleSheet.create({
   },
   directionIcon: {transform: [{rotateZ: '45deg'}], bottom: 2, right: 2},
   searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
-  bookingDetailsContainer: {marginLeft: DP._8, flex: 1},
+  bookingDetailsContainer: {flex: 1, marginBottom: DP._8},
   flexRow: {flexDirection: 'row'},
   paymentStatusContainer: {lineHeight: DP._16, flexDirection: 'row'},
   modalHeading: {
@@ -137,5 +139,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     ...shadowObj,
+  },
+  rescheduleIcon: {
+    width: DP._18,
+    height: DP._18,
+    resizeMode: 'contain',
   },
 });

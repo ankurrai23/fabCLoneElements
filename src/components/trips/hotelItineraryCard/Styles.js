@@ -17,6 +17,15 @@ export default StyleSheet.create({
     paddingTop: DP._16,
     paddingHorizontal: DP._16,
   },
+  datesContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
+  hyphen: {
+    alignSelf: 'center',
+    fontSize: DP._12,
+    color: Color.BLUEY_GREY,
+  },
   statusContainer: {
     backgroundColor: Color.DARK_SEA_FOAM + '1a',
     paddingHorizontal: DP._8,
@@ -39,6 +48,7 @@ export default StyleSheet.create({
   },
   month: {
     fontSize: DP._12,
+    lineHeight: 18,
     color: Color.BLUEY_GREY,
   },
   checkIn: {

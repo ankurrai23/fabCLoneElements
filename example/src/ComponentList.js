@@ -48,6 +48,16 @@ import {
   HomeLoadingState,
   Checkbox,
   DropDownList,
+  StackHeader,
+  ScrollableTabBar,
+  ExpenseCard,
+  ExpenseDetailCard,
+  StopDetailList,
+  ExpenseApprovalCard,
+  ExpenseApprovalHeader,
+  LocationInputBox,
+  Swiper,
+  MonthPicker,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -66,7 +76,7 @@ const COMMON_COMPONENTS = [
     component: <ClaimsCard {...data.claimsCardProps} />,
   },
   {
-    name: 'Floating Action Button',
+    name: 'FloatingAction',
     component: <FloatingAction {...data.floatingActionProps} />,
   },
   {
@@ -76,6 +86,14 @@ const COMMON_COMPONENTS = [
   {
     name: 'Drop Down List',
     component: <DropDownList {...data.dropDownListProps} />,
+  },
+  {
+    name: 'StackHeader',
+    component: <StackHeader {...data.stackHeaderProps} />,
+  },
+  {
+    name: 'ScrollableTabBar',
+    component: <ScrollableTabBar {...data.scrollableTabBarProps} />,
   },
 ];
 
@@ -174,39 +192,39 @@ const TRIP_CREATION = [
     component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
   },
   {
-    name: 'Coming Soon',
+    name: 'ComingSoon',
     component: <ComingSoon {...data.comingSoonProps} />,
   },
   {
-    name: 'Request Type',
+    name: 'RequestType',
     component: <RequestType {...data.requestTypeProps} />,
   },
   {
-    name: 'Basic Travel Details',
+    name: 'BasicTravelDetails',
     component: <BasicTravelDetails {...data.basicTravelDetailsProps} />,
   },
   {
-    name: 'Hotel Details',
+    name: 'HotelDetails',
     component: <HotelDetails {...data.hotelDetailsProps} />,
   },
   {
-    name: 'Flight Details',
+    name: 'FlightDetails',
     component: <FlightDetails {...data.flightDetailsProps} />,
   },
   {
-    name: 'Other Travel Details',
+    name: 'OtherTravelDetails',
     component: <OtherTravelDetails {...data.otherTravelDetailsProps} />,
   },
   {
-    name: 'Approval Manager',
+    name: 'ApprovalManager',
     component: <ApprovalManager {...data.approvalManagerProps} />,
   },
   {
-    name: 'Add flight Details',
+    name: 'AddFlightDetails',
     component: <AddFlightDetails {...data.addFlightDetailsProps} />,
   },
   {
-    name: 'Add hotel Details',
+    name: 'AddHotelDetails',
     component: <AddHotelDetails {...data.addHotelDetailsProps} />,
   },
 ];
@@ -214,24 +232,60 @@ const TRIP_CREATION = [
 const HOME = [
   {name: 'Home'},
   {
-    name: 'Home Header',
+    name: 'HomeHeader',
     component: <HomeHeader {...data.homeHeaderProps} />,
   },
   {
-    name: 'Claim List',
+    name: 'ClaimList',
     component: <ClaimsList {...data.claimsListProps} />,
   },
   {
-    name: 'Header View',
+    name: 'HeaderView',
     component: <HeaderView {...data.headerViewProps} />,
   },
   {
-    name: 'Message Card',
+    name: 'MessageCard',
     component: <MessageCard {...data.messageCardProps} />,
   },
   {
-    name: 'Loading State',
+    name: 'HomeLoadingState',
     component: <HomeLoadingState />,
+  },
+];
+
+const EXPENSE = [
+  {name: 'Expense'},
+  {
+    name: 'ExpenseCard',
+    component: <ExpenseCard {...data.expenseCardProps} />,
+  },
+  {
+    name: 'ExpenseDetailCard',
+    component: <ExpenseDetailCard {...data.expenseDetailCardProps} />,
+  },
+  {
+    name: 'StopDetailList',
+    component: <StopDetailList {...data.stopDetailListProps} />,
+  },
+  {
+    name: 'ExpenseApprovalCard',
+    component: <ExpenseApprovalCard {...data.expenseApprovalCardProps} />,
+  },
+  {
+    name: 'ExpenseApprovalHeader',
+    component: <ExpenseApprovalHeader {...data.expenseApprovalHeaderProps} />,
+  },
+  {
+    name: 'LocationInputBox',
+    component: <LocationInputBox {...data.locationInputBoxProps} />,
+  },
+  {
+    name: 'Swiper',
+    component: <Swiper {...data.swiperProps} />,
+  },
+  {
+    name: 'MonthPicker',
+    component: <MonthPicker {...data.monthPickerProps} />,
   },
 ];
 
@@ -240,4 +294,5 @@ export default [
   ...TRIP_COMPONENTS,
   ...TRIP_CREATION,
   ...HOME,
+  ...EXPENSE,
 ];

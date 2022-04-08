@@ -7,6 +7,8 @@ import emptyScreenProps from './common/components/emptyScreen/data';
 import checkboxProps from './common/components/checkbox/data';
 import claimsCardProps from './common/components/claimsCard/data';
 import dropDownListProps from './common/components/dropDownList/data';
+import stackHeaderProps from './common/components/stackHeader/data';
+import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -44,6 +46,16 @@ import homeHeaderProps from './components/home/homeHeader/data';
 import claimsListProps from './components/home/claimsList/data';
 import headerViewProps from './components/home/headerView/data';
 import messageCardProps from './components/home/messageCard/data';
+
+//expense components props
+import expenseCardProps from './components/expense/expenseCard/data';
+import expenseDetailCardProps from './components/expense/expenseDetailCard/data';
+import stopDetailListProps from './components/expense/stopsDetailList/data';
+import expenseApprovalCardProps from './components/expense/expenseApprovalCard/data';
+import expenseApprovalHeaderProps from './components/expense/expenseApprovalHeader/data';
+import locationInputBoxProps from './components/expense/locationInputBox/data';
+import swiperProps from './components/expense/swiper/data';
+import monthPickerProps from './components/expense/monthPicker/data';
 
 export {
   buttonProps,
@@ -85,4 +97,14 @@ export {
   floatingActionProps,
   checkboxProps,
   dropDownListProps,
+  stackHeaderProps,
+  scrollableTabBarProps,
+  expenseCardProps,
+  expenseDetailCardProps,
+  stopDetailListProps,
+  expenseApprovalCardProps,
+  expenseApprovalHeaderProps,
+  locationInputBoxProps,
+  swiperProps,
+  monthPickerProps,
 };

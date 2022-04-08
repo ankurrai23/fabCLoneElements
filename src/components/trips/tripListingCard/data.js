@@ -3,7 +3,7 @@ const tripListingCardProps = {
     masterTripId: 'TP962KDG',
     tripRequestType: 'FLIGHT_AND_HOTEL',
     title: 'Trip to Gurgaon',
-    isProcessing: true,
+    isProcessing: false,
     coTravellers: ['Rahul Gupta', 'Abhishek Gupta'],
     tripStartDate: 'Thu, 22 Nov',
     tripEndDate: 'Thu, 23 Nov',
@@ -11,6 +11,7 @@ const tripListingCardProps = {
     tripIcons: [{}, {}, {}],
     isCancelled: false,
     cancelMsg: 'This trip is cancelled',
+    actionsDisabled: true,
   },
   onCardPress: (item) => console.log('card pressed', item),
 };

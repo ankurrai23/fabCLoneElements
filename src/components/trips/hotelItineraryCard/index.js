@@ -130,23 +130,28 @@ const HotelItineraryCard = ({
         <FTouchableOpacity onPress={onCardPress}>
           <View style={Styles.dateAndStatusContainer}>
             {sameMonthDates ? (
-              <FText>
+              <View style={Styles.datesContainer}>
                 <FText type="medium" style={Styles.date}>
-                  {`${item.checkIn.date}-${item.checkOut.date}`}
+                  {item.checkIn.date}
+                </FText>
+                <FText style={Styles.hyphen}>{' - '}</FText>
+                <FText type="medium" style={Styles.date}>
+                  {item.checkOut.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkIn.month}</FText>
-              </FText>
+              </View>
             ) : (
-              <FText>
+              <View style={Styles.datesContainer}>
                 <FText type="medium" style={Styles.date}>
                   {item.checkIn.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkIn.month}</FText>
+                <FText style={Styles.hyphen}>{' - '}</FText>
                 <FText type="medium" style={Styles.date}>
-                  {` - ${item.checkOut.date}`}
+                  {item.checkOut.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkOut.month}</FText>
-              </FText>
+              </View>
             )}
             {showConfirmedStatus && <TripStatus statusObj={confirmedStatus} />}
             {item?.status?.key === 'CANCELLED' ? (

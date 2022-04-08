@@ -21,6 +21,7 @@ export default {
       date: 'Fri, 25 Jun',
       time: '11AM',
     },
+    bookingStatus: 'CONFIRMED',
     noOfRooms: 1,
     inclusions: [
       {
@@ -84,9 +85,9 @@ export default {
         name: 'Contact 24x7 support',
       },
     ],
-    actionsDisabled: true,
+    actionsDisabled: false,
     modificationRequested: false,
-    cancelled: true,
+    cancelled: false,
   },
   onActionPress: (item) => console.log(item),
   supportDetails: [
