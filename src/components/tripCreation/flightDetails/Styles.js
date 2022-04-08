@@ -125,4 +125,7 @@ export default StyleSheet.create({
     left: DP._10,
     right: 0,
   },
+  airplane: {
+    transform: [{rotate: '90deg'}],
+  },
 });
