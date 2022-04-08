@@ -18,6 +18,7 @@ import DialogBox from './common/components/dialogBox';
 import FloatingAction from './common/components/floatingActionButton';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
+import DropDownList from './common/components/dropDownList';
 import StackHeader from './common/components/stackHeader';
 import ScrollableTabBar from './common/components/scrollableTabBar';
 
@@ -98,6 +99,7 @@ export {
   DialogBox,
   FloatingAction,
   Checkbox,
+  DropDownList,
   StackHeader,
   ScrollableTabBar,
   // Trips components

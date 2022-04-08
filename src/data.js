@@ -6,6 +6,7 @@ import pickerFieldProps from './common/components/pickerField/data';
 import emptyScreenProps from './common/components/emptyScreen/data';
 import checkboxProps from './common/components/checkbox/data';
 import claimsCardProps from './common/components/claimsCard/data';
+import dropDownListProps from './common/components/dropDownList/data';
 import stackHeaderProps from './common/components/stackHeader/data';
 import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 
@@ -95,6 +96,7 @@ export {
   messageCardProps,
   floatingActionProps,
   checkboxProps,
+  dropDownListProps,
   stackHeaderProps,
   scrollableTabBarProps,
   expenseCardProps,
