@@ -18,7 +18,7 @@ export default function AddHotelDetails({data, errors, ...props}) {
             }
             error={errors.city}
             helperText={errors.cityError}
-            label="Enter city"
+            label="Enter city/location"
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearch}
           />
