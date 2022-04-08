@@ -19,6 +19,43 @@ import ModificationAlertBox from '../components/modificationAlertBox';
 import TripStatus from '../tripStatus';
 import {ImageConst} from '../../../utils/imageConst';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+
+export const getStatusObject = (status) => {
+  const capitalize = () => {
+    return `${status[0]}${status.slice(1).toLowerCase()}`;
+  };
+  switch (status) {
+    case 'CANCELLED':
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.PASTEL_RED + '1a',
+        textColor: Color.PASTEL_RED,
+      };
+    case 'NO_SHOW':
+      return {
+        key: status,
+        value: 'No show',
+        bgColor: Color.PASTEL_RED + '1a',
+        textColor: Color.PASTEL_RED,
+      };
+    case 'TENTATIVE':
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.MANGO + '1a',
+        textColor: Color.MANGO,
+      };
+    default:
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.DARK_SEA_FOAM + '1a',
+        textColor: Color.DARK_SEA_FOAM,
+      };
+  }
+};
+
 export default function HotelDetailCard({
   item,
   onActionPress,
@@ -39,41 +76,6 @@ export default function HotelDetailCard({
   const invoiceAction = isActionEnabled(HotelSubTripActions.VIEW_INVOICE);
   const supportAction = isActionEnabled(HotelSubTripActions.SUPPORT);
 
-  const getStatusObject = (status = item.bookingStatus) => {
-    const capitalize = () => {
-      return `${status[0]}${status.slice(1).toLowerCase()}`;
-    };
-    switch (status) {
-      case 'CANCELLED':
-        return {
-          key: status,
-          value: capitalize(),
-          bgColor: Color.PASTEL_RED + '1a',
-          textColor: Color.PASTEL_RED,
-        };
-      case 'NO_SHOW':
-        return {
-          key: status,
-          value: 'No show',
-          bgColor: Color.PASTEL_RED + '1a',
-          textColor: Color.PASTEL_RED,
-        };
-      case 'TENTATIVE':
-        return {
-          key: status,
-          value: capitalize(),
-          bgColor: Color.MANGO + '1a',
-          textColor: Color.MANGO,
-        };
-      default:
-        return {
-          key: status,
-          value: capitalize(),
-          bgColor: Color.DARK_SEA_FOAM + '1a',
-          textColor: Color.DARK_SEA_FOAM,
-        };
-    }
-  };
   const CheckInInfo = ({title, date, time}) => (
     <View>
       <FText style={Styles.sectionTitle}>{title}</FText>
@@ -173,7 +175,9 @@ export default function HotelDetailCard({
               </FTouchableOpacity>
             )}
             <View style={Styles.bookingDetailsContainer}>
-              <TripStatus statusObj={getStatusObject()} />
+              {!!item.bookingStatus && (
+                <TripStatus statusObj={getStatusObject(item.bookingStatus)} />
+              )}
               <FText style={{marginTop: DP._12}}>{item.hotelName}</FText>
             </View>
           </View>

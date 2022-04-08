@@ -13,6 +13,7 @@ import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
 import ModificationAlertBox from '../components/modificationAlertBox';
+import {getStatusObject} from '../hotelDetailCard';
 
 const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
@@ -80,7 +81,9 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item.status && <TripStatus statusObj={item.status} />}
+            {!!item.bookingStatus && (
+              <TripStatus statusObj={getStatusObject(item.bookingStatus)} />
+            )}
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
             <View style={Styles.flex}>
