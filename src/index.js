@@ -18,6 +18,7 @@ import DialogBox from './common/components/dialogBox';
 import FloatingAction from './common/components/floatingActionButton';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
+import DropDownList from './common/components/dropDownList';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -85,6 +86,7 @@ export {
   DialogBox,
   FloatingAction,
   Checkbox,
+  DropDownList,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,

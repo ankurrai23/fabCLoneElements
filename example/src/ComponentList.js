@@ -47,6 +47,7 @@ import {
   FloatingAction,
   HomeLoadingState,
   Checkbox,
+  DropDownList,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -71,6 +72,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'Checkbox',
     component: <Checkbox {...data.checkboxProps} />,
+  },
+  {
+    name: 'Drop Down List',
+    component: <DropDownList {...data.dropDownListProps} />,
   },
 ];
 

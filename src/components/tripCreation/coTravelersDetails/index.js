@@ -6,7 +6,7 @@ import {FSwitch, FText, FTouchableOpacity, PickerField} from '../../..';
 import Styles from './Styles';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {DP} from '../../../utils/Dimen';
-import Utils from '../../../../../../src/utils/Utils';
+import Utils from '../../../utils/Utils';
 
 export default function CoTravelersDetails(props) {
   function renderPickerChildren() {
