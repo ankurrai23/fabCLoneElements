@@ -1,6 +1,6 @@
 const hotelItineraryCardProps = {
   item: {
-    checkIn: {date: '28', month: 'Nov'},
+    checkIn: {date: '8', month: 'Oct'},
     checkOut: {date: '29', month: 'Nov'},
     title: 'Mumbai',
     location: 'Andheri East',
