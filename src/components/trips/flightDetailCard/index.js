@@ -101,7 +101,11 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
                 color={Color.LIGHT_BLUEY_GREY}
                 style={Styles.airplane}
               />
-              <FText style={Styles.duration}>{item.duration}</FText>
+              <View style={Styles.durationContainer}>
+                <FText style={Styles.duration}>{item.duration}</FText>
+                <View style={Styles.dot_two} />
+                <FText style={Styles.duration}>{item.journeyType}</FText>
+              </View>
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
               <FText style={Styles.portName}>

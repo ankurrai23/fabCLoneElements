@@ -15,6 +15,7 @@ import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
+import Animated from 'react-native-reanimated';
 /*
 TODO:
 1. Cancelled state prop
@@ -162,7 +163,11 @@ const FlightItineraryCard = ({
                 style={Styles.airplane}
               />
               {item.duration && (
-                <FText style={Styles.duration}>{item.duration}</FText>
+                <View style={Styles.durationContainer}>
+                  <FText style={Styles.duration}>{item.duration}</FText>
+                  <View style={Styles.dot_two} />
+                  <FText style={Styles.duration}>{item.journeyType}</FText>
+                </View>
               )}
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
