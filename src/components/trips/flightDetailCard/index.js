@@ -81,8 +81,10 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {!!item.bookingStatus && (
-              <TripStatus statusObj={getStatusObject(item.bookingStatus)} />
+            {!!item.flightBookingStatus && (
+              <TripStatus
+                statusObj={getStatusObject(item.flightBookingStatus)}
+              />
             )}
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
