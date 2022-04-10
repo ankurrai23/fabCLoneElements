@@ -6,8 +6,8 @@ import {shadowObj, Specs} from '../../../utils/Utils';
 export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
-    paddingHorizontal: DP._16,
-    flex: 1,
+    // paddingHorizontal: DP._16,
+    // flex: 1,
   },
   errorText: {
     fontSize: DP._12,
@@ -33,7 +33,7 @@ export default StyleSheet.create({
     backgroundColor: Color.SILVER,
   },
   searchItem: {
-    padding: DP._15,
+    padding: DP._12,
     flexDirection: 'row',
     // alignItems: 'center',
   },
