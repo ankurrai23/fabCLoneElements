@@ -19,12 +19,13 @@ export default StyleSheet.create({
     marginLeft: DP._16,
   },
   flightNumber: {color: Color.BATTLESHIP_GREY_TWO},
-  flightTimeTextStyle: {fontSize: DP._20},
+  flightTimeTextStyle: {fontSize: DP._16},
   flexGrow_1: {flexGrow: 1},
   flightTimeContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: DP._4,
+    justifyContent: 'space-between',
     minWidth: 160,
   },
   flightDurationContainer: {

@@ -6,7 +6,7 @@ import FText from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
+import {Color} from '../../../utils/color/index.fabhotel';
 import {shadowObj} from '../../../utils/Utils';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -52,30 +52,37 @@ export default function FlightPreferenceCard({
           </Animated.Text>
         </View>
         <View style={Styles.flightTimeContainer}>
-          <FText style={Styles.flightTimeTextStyle}>
-            {flightInfo.departureTime}
+          <FText style={{color: Color.GREY_PURPLE}}>
+            {flightInfo.sourceAirportCode}
           </FText>
-          <Animated.View style={[Styles.dot, {opacity: opacity}]} />
-          <Animated.View style={[Styles.line, {opacity: opacity}]} />
+          {/*<Animated.View style={[Styles.dot, {opacity: opacity}]} />*/}
+          {/*<Animated.View style={[Styles.line, {opacity: opacity}]} />*/}
           <AnimatedMaterialCommunityIcon
             name="airplane"
             size={DP._20}
             color={Color.LIGHT_BLUEY_GREY}
             style={[Styles.airplane, {opacity: opacity}]}
           />
-          <Animated.View style={[Styles.line, {opacity: opacity}]} />
-          <Animated.View style={[Styles.whiteDot, {opacity: opacity}]} />
+          {/*<Animated.View style={[Styles.line, {opacity: opacity}]} />*/}
+          {/*<Animated.View style={[Styles.whiteDot, {opacity: opacity}]} />*/}
           <Animated.Text
-            style={[Styles.flightTimeTextStyle, {opacity: opacity}]}>
-            {flightInfo.arrivalTime}
+            type="medium"
+            style={{
+              opacity: opacity,
+              fontFamily: 'Rubik-Regular',
+              color: Color.GREY_PURPLE,
+            }}>
+            {flightInfo.destinationAirportCode}
           </Animated.Text>
         </View>
         <View style={Styles.flightDurationContainer}>
           <View style={Styles.nameAndDurationContainer}>
-            <FText type="medium">{flightInfo.sourceAirportCode}</FText>
+            <FText style={Styles.flightTimeTextStyle}>
+              {flightInfo.departureTime}
+            </FText>
             <Animated.Text
               style={{
-                fontSize: DP._12,
+                fontSize: DP._10,
                 color: Color.GREYISH_PURPLE,
                 opacity: opacity,
               }}>
@@ -86,16 +93,16 @@ export default function FlightPreferenceCard({
           <View style={Styles.nameAndDurationContainer}>
             <Animated.Text
               style={{
-                fontSize: DP._12,
+                fontSize: DP._10,
                 color: Color.GREYISH_PURPLE,
                 opacity: opacity,
               }}>
               {flightInfo.journeyType}
             </Animated.Text>
+
             <Animated.Text
-              type="medium"
-              style={{opacity: opacity, fontFamily: 'Rubik-Medium'}}>
-              {flightInfo.destinationAirportCode}
+              style={[Styles.flightTimeTextStyle, {opacity: opacity}]}>
+              {flightInfo.arrivalTime}
             </Animated.Text>
           </View>
         </View>
