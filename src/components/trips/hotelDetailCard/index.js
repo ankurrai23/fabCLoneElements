@@ -182,9 +182,7 @@ export default function HotelDetailCard({
             </View>
           </View>
           <FText style={Styles.addressText}>{item.address}</FText>
-          {(item.weather || directionAction) && (
-            <Separator style={Styles.separator} />
-          )}
+          <Separator style={Styles.separator} />
           <View style={Styles.flexRowWithSpaceBetween}>
             <View style={Styles.flexRow}>
               <FText>Booking ID</FText>
