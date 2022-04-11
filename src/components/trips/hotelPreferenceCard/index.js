@@ -70,9 +70,9 @@ const NonRichHotelView = ({
       <TouchableOpacity onPress={() => onViewMapPress(item.googleMapUrl)}>
         <FText style={Styles.viewOnMap}>View on map</FText>
       </TouchableOpacity>
-      <FText style={Styles.priceDetail}>{`price/night (${
-        item.gstIncluded ? 'Incl' : 'Ex'
-      } GST)`}</FText>
+      <FText style={Styles.priceDetail}>{`price/night${
+        !item.gstIncluded ? ' (Ex GST)' : ''
+      }`}</FText>
     </View>
     <SetOrResetPreference
       onTapToSetPreferences={onTapToSetPreferences}
@@ -161,9 +161,9 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
       </View>
       <View style={Styles.cancellationInfoContainer}>
         <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
-        <FText style={Styles.priceDetail}>{`price/night (${
-          item.gstIncluded ? 'Incl' : 'Ex'
-        } GST)`}</FText>
+        <FText style={Styles.priceDetail}>{`price/night${
+          !item.gstIncluded ? ' (Ex GST)' : ''
+        }`}</FText>
       </View>
       <View style={Styles.buttonContainer}>
         <SetOrResetPreference
