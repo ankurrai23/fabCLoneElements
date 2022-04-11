@@ -59,9 +59,11 @@ export default function DropDownList({
             bounces={false}
             data={searchResult}
             renderItem={renderSearchItem}
-            style={Styles.searchList}
+            contentContainerStyle={Styles.searchList}
+            style={Styles.shadowStyles}
             keyboardShouldPersistTaps="always"
             keyExtractor={(index) => index}
+            showsVerticalScrollIndicator={false}
           />
         )}
       </View>
