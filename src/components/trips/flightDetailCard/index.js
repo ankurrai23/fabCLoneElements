@@ -89,7 +89,12 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
             <View style={Styles.flex}>
-              <FText style={Styles.portName}>{item.sourceAirportCode}</FText>
+              <FText style={Styles.portName}>
+                {`${item.sourceAirportCode}` +
+                  (item.departureAirportTerminal
+                    ? ` - ${item.departureAirportTerminal}`
+                    : '')}
+              </FText>
               <FText style={Styles.time}>{item.departureTime}</FText>
             </View>
             <View
@@ -111,7 +116,10 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
               <FText style={Styles.portName}>
-                {item.destinationAirportCode}
+                {`${item.destinationAirportCode}` +
+                  (item.arrivalAirportTerminal
+                    ? ` - ${item.arrivalAirportTerminal}`
+                    : '')}
               </FText>
               <FText style={Styles.time}>{item.arrivalTime}</FText>
             </View>
