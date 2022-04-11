@@ -37,7 +37,6 @@ import {
   CoTravellers,
   FlightDetailCard,
   ListTypeFilter,
-  ContactSupport,
   FlightDetailLoadingState,
   HomeHeader,
   ClaimsCard,
@@ -67,10 +66,6 @@ const COMMON_COMPONENTS = [
   {name: 'PickerField', component: <PickerField {...data.pickerFieldProps} />},
   {name: 'DashedLine', component: <DashedLine {...data.dashLineProps} />},
   {name: 'EmptyScreen', component: <EmptyScreen {...data.emptyScreenProps} />},
-  {
-    name: 'ContactSupport',
-    component: <ContactSupport {...data.contactSupportProps} />,
-  },
   {
     name: 'ClaimsCard',
     component: <ClaimsCard {...data.claimsCardProps} />,

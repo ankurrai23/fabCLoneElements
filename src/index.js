@@ -44,7 +44,6 @@ import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoa
 import FlightDetailCard from './components/trips/flightDetailCard';
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
-import ContactSupport from './components/trips/components/contactSupport';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
 
 //Constants
@@ -124,7 +123,6 @@ export {
   CoTravellers,
   FlightDetailCard,
   ListTypeFilter,
-  ContactSupport,
   FlightDetailLoadingState,
   // Trip Creation
   ComingSoon,

@@ -14,7 +14,6 @@ import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import Button from '../../../common/components/button';
 import {HotelSubTripActions} from '../../../utils/SubTripActions';
-import ContactSupport from '../components/contactSupport';
 import ModificationAlertBox from '../components/modificationAlertBox';
 import TripStatus from '../tripStatus';
 import {ImageConst} from '../../../utils/imageConst';
@@ -61,7 +60,7 @@ export default function HotelDetailCard({
   onActionPress,
   onMainImagePress,
   style,
-  supportDetails,
+  footerComponent,
   onRefresh,
 }) {
   const [sheetVisible, setSheetVisible] = useState(false);
@@ -74,7 +73,6 @@ export default function HotelDetailCard({
   const posAction = isActionEnabled(HotelSubTripActions.SUBMIT_POS);
   const reviewAction = isActionEnabled(HotelSubTripActions.SUBMIT_REVIEW);
   const invoiceAction = isActionEnabled(HotelSubTripActions.VIEW_INVOICE);
-  const supportAction = isActionEnabled(HotelSubTripActions.SUPPORT);
 
   const CheckInInfo = ({title, date, time}) => (
     <View>
@@ -341,13 +339,7 @@ export default function HotelDetailCard({
           </>
         )}
       </View>
-      {supportAction && (
-        <ContactSupport
-          item={supportAction}
-          supportDetails={supportDetails}
-          onPress={() => onActionPress(supportAction)}
-        />
-      )}
+      {footerComponent}
       <DialogBox
         modalVisible={sheetVisible}
         onClose={() => setSheetVisible(false)}
