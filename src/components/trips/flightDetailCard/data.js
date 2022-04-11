@@ -18,7 +18,7 @@ const flightDetailCardProps = {
     airline: 'Indigo',
     actionsDisabled: false,
     flightBookingStatus: 'CONFIRMED',
-    journeyType: 'Non stop',
+    stop: 'Non stop',
     status: {
       key: 'PROCESSED',
       value: 'Confirmed',

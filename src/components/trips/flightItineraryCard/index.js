@@ -166,7 +166,7 @@ const FlightItineraryCard = ({
                 <View style={Styles.durationContainer}>
                   <FText style={Styles.duration}>{item.duration}</FText>
                   <View style={Styles.dot_two} />
-                  <FText style={Styles.duration}>{item.journeyType}</FText>
+                  <FText style={Styles.duration}>{item.stop}</FText>
                 </View>
               )}
             </View>

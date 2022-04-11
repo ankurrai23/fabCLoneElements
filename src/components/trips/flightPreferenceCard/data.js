@@ -11,7 +11,7 @@ export default {
     arrivalTime: '20:20',
     destinationAirportCode: 'BOM',
     flightDuration: '1h 50 mins',
-    journeyType: 'Non stop',
+    stop: 'Non stop',
     preference: 1,
     disablePref: false,
   },

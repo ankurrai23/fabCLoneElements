@@ -14,7 +14,7 @@ const flightItineraryCardProps = {
     duration: '1h 50min',
     airline: 'Indigo',
     actionDisabled: false,
-    journeyType: 'Non stop',
+    stop: 'Non stop',
     status: {
       key: 'PROCESSED',
       value: 'Processed',
