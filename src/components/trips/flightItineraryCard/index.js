@@ -145,7 +145,12 @@ const FlightItineraryCard = ({
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
             <View style={Styles.flex}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {item.pnr ? item.sourceAirportCode : item.source}
+                {item.pnr
+                  ? item.sourceAirportCode +
+                    (item.departureAirportTerminal
+                      ? ` - ${item.departureAirportTerminal}`
+                      : '')
+                  : item.source}
               </FText>
               <FText style={Styles.time}>
                 {item.pnr ? item.departureTime : item.sourceAirportCode}
@@ -172,7 +177,12 @@ const FlightItineraryCard = ({
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {item.pnr ? item.destinationAirportCode : item.destination}
+                {item.pnr
+                  ? item.destinationAirportCode +
+                    (item.arrivalAirportTerminal
+                      ? ` - ${item.arrivalAirportTerminal}`
+                      : '')
+                  : item.destination}
               </FText>
               <FText style={Styles.time}>
                 {item.pnr ? item.arrivalTime : item.destinationAirportCode}
