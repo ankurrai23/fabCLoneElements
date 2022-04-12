@@ -5,35 +5,68 @@ import {shadowObj, Specs} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: Color.WHITE,
+    backgroundColor: 'red',
     // paddingHorizontal: DP._16,
-    // flex: 1,
+    // padding: DP._50,
   },
   errorText: {
     fontSize: DP._12,
     color: Color.PASTEL_RED,
     ...Specs.fontRegular,
   },
-  searchList: {
-    // maxHeight: DP._200,
+  iosDropdownStyle: {
     backgroundColor: Color.WHITE,
+    maxHeight: DP._250,
+    position: 'absolute',
+    width: DP.match_width - 10,
+
+    zIndex: 2,
+    top: DP._63,
+    left: DP.minus_20,
+  },
+  iosContentContainerStyle: {
+    backgroundColor: 'white',
     borderColor: Color.WHITE,
     borderWidth: DP._1,
     borderBottomLeftRadius: DP._8,
     borderBottomRightRadius: DP._8,
     paddingVertical: DP._10,
+
+    // maxHeight: DP._250,
+
+    marginTop: 0,
     margin: DP._20,
+
+    marginBottom: DP._30,
+
     shadowColor: 'rgba(0,0,0,0.4)',
     shadowOffset: {width: 3, height: 6},
     shadowOpacity: 0.3,
     shadowRadius: 6,
     elevation: 10,
   },
-  shadowStyles: {
+  androidDropdownStyle: {
+    marginTop: 0,
+    margin: DP._20,
+
+    shadowColor: 'rgba(0,0,0,0.4)',
+    shadowOffset: {width: 3, height: 6},
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+
+    elevation: 10,
+    borderColor: Color.WHITE,
+    borderWidth: DP._1,
+    borderBottomLeftRadius: DP._8,
+    borderBottomRightRadius: DP._8,
+
+    backgroundColor: Color.WHITE,
+    maxHeight: DP._250,
     position: 'absolute',
-    width: DP.match_width - 10,
+    width: '100%',
+
     zIndex: 2,
-    top: DP._45,
+    top: DP._63,
     left: DP.minus_20,
   },
   separator: {
