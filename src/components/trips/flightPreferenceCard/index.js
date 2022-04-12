@@ -97,7 +97,7 @@ export default function FlightPreferenceCard({
                 color: Color.GREYISH_PURPLE,
                 opacity: opacity,
               }}>
-              {flightInfo.stop}
+              {flightInfo.stops}
             </Animated.Text>
 
             <Animated.Text
