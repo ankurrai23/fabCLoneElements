@@ -10,6 +10,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   userName: {
+    flex: 1,
     fontSize: DP._20,
   },
   profilePicContainer: {

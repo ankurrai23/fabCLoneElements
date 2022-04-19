@@ -6,7 +6,7 @@ import Styles from './Styles';
 export default function HomeHeader({...props}) {
   return (
     <View style={Styles.profileNameContainer}>
-      <FText type="medium" style={Styles.userName}>
+      <FText numberOfLines={1} type="medium" style={Styles.userName}>
         Hello, {props.profileName}
       </FText>
       <FTouchableOpacity
