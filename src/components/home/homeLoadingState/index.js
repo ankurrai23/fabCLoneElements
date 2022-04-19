@@ -65,7 +65,7 @@ const HomeLoadingState = () => {
         />
       </View>
       <FText type="medium" style={Styles.sectionTitleLoader}>
-        Message
+        Updates
       </FText>
       <InboxPlaceholder />
     </>
