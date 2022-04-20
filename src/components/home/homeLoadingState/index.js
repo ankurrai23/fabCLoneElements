@@ -8,6 +8,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import Styles from './Styles';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {FText} from '../../..';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {DP} from '../../../utils/Dimen';
 
 const HomeLoadingState = () => {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -56,17 +58,20 @@ const HomeLoadingState = () => {
       <View
         style={[Styles.claimsCardContainerLoader, Styles.marginHorizontal_24]}>
         <CardPlaceholder
-          cardColor={Color.IRIS}
-          secondaryColor={Color.PERIWINKLE}
+          cardColor={Color.VERY_LIGHT_PINK_2}
+          secondaryColor={Color.WHITE}
         />
         <CardPlaceholder
-          cardColor={Color.AQUA_MARINE}
-          secondaryColor={Color.TIFFANY_BLUE}
+          cardColor={Color.VERY_LIGHT_PINK_2}
+          secondaryColor={Color.WHITE}
         />
       </View>
-      <FText type="medium" style={Styles.sectionTitleLoader}>
-        Updates
-      </FText>
+      <View style={Styles.headerView}>
+        <FText type="medium" style={Styles.sectionTitleLoader}>
+          Updates
+        </FText>
+        <AntDesign name="rightcircle" size={DP._17} color={Color.DODGER_BLUE} />
+      </View>
       <InboxPlaceholder />
     </>
   );
