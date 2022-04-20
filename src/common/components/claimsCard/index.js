@@ -42,11 +42,9 @@ export default function ClaimsCard({...props}) {
                   {props.amount}
                 </FText>
                 {props.disabled ? null : (
-                  <Feather
-                    name="chevron-right"
-                    size={DP._24}
-                    color={Color.WHITE}
-                  />
+                  <View style={Styles.rightArrowView}>
+                    <AntDesign name="right" size={DP._15} color={Color.WHITE} />
+                  </View>
                 )}
               </View>
             </View>
