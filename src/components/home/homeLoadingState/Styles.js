@@ -56,7 +56,15 @@ export default StyleSheet.create({
   sectionTitleLoader: {
     fontSize: DP._16,
     color: Color.DARK,
-    paddingLeft: DP._24,
-    marginTop: DP._24,
+    // paddingLeft: DP._24,
+    // marginTop: DP._24,
+  },
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: DP._26,
+    paddingVertical: DP._5,
+    marginTop: DP._12,
   },
 });
