@@ -22,6 +22,7 @@ export default StyleSheet.create({
     borderRadius: DP._22,
     backgroundColor: Color.WHITE,
     borderColor: Color.DODGER_BLUE,
+    marginLeft: DP._20,
   },
   imageContainer: {
     width: DP._35,
