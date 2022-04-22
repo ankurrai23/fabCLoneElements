@@ -70,7 +70,9 @@ const HomeLoadingState = () => {
         <FText type="medium" style={Styles.sectionTitleLoader}>
           Updates
         </FText>
-        <AntDesign name="rightcircle" size={DP._17} color={Color.DODGER_BLUE} />
+        <FText type="medium" style={Styles.seeMore}>
+          See more
+        </FText>
       </View>
       <InboxPlaceholder />
     </>

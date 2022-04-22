@@ -63,8 +63,12 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: DP._26,
+    paddingHorizontal: DP._16,
     paddingVertical: DP._5,
     marginTop: DP._12,
+  },
+  seeMore: {
+    fontSize: DP._12,
+    color: Color.DODGER_BLUE,
   },
 });
