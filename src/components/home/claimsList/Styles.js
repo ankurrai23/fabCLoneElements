@@ -6,7 +6,7 @@ export default StyleSheet.create({
     flexWrap: 'wrap',
   },
   contentContainerStyle: {
-    paddingHorizontal: DP._24,
+    paddingHorizontal: DP._16,
     paddingVertical: DP._24,
   },
 });
