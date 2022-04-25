@@ -20,11 +20,10 @@ export default StyleSheet.create({
     backgroundColor: '#eee',
   }),
   inboxPlaceholderContainer: {
-    height: DP._145,
     borderColor: Color.LIGHT_PERIWINKLE,
     borderWidth: DP._1,
     padding: DP._16,
-    marginHorizontal: DP._24,
+    marginHorizontal: DP._16,
     marginTop: DP._8,
     borderRadius: DP._12,
     paddingTop: DP._15,
@@ -41,7 +40,7 @@ export default StyleSheet.create({
     borderBottomLeftRadius: DP._11,
   },
   datePlaceholder: {
-    width: '40%',
+    width: '30%',
     height: 10,
     backgroundColor: '#eee',
     marginTop: DP._4,
@@ -51,7 +50,7 @@ export default StyleSheet.create({
     marginTop: DP._34,
   },
   marginHorizontal_24: {
-    marginHorizontal: DP._24,
+    marginHorizontal: DP._16,
   },
   sectionTitleLoader: {
     fontSize: DP._16,
@@ -63,8 +62,12 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: DP._26,
-    paddingVertical: DP._5,
-    marginTop: DP._12,
+    paddingHorizontal: DP._16,
+    // paddingVertical: DP._5,
+    marginTop: DP._24,
+  },
+  seeMore: {
+    fontSize: DP._12,
+    color: Color.DODGER_BLUE,
   },
 });

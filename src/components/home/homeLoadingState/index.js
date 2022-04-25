@@ -8,8 +8,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import Styles from './Styles';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {FText} from '../../..';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import {DP} from '../../../utils/Dimen';
 
 const HomeLoadingState = () => {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -44,10 +42,9 @@ const HomeLoadingState = () => {
         duration={1000}
         delay={100}
         style={Styles.inboxPlaceholderContainer}>
-        <Placeholder style={Styles.inboxTextPlaceholder('80%')} />
-        <Placeholder style={Styles.inboxTextPlaceholder('90%')} />
-        <Placeholder style={Styles.inboxTextPlaceholder('60%')} />
-        <Placeholder style={Styles.inboxTextPlaceholder('50%')} />
+        <Placeholder style={Styles.inboxTextPlaceholder('35%')} />
+        <Placeholder style={Styles.inboxTextPlaceholder('97%')} />
+        <Placeholder style={Styles.inboxTextPlaceholder('95%')} />
         <Placeholder style={Styles.datePlaceholder} />
       </PlaceholderContainer>
     );
@@ -70,7 +67,9 @@ const HomeLoadingState = () => {
         <FText type="medium" style={Styles.sectionTitleLoader}>
           Updates
         </FText>
-        <AntDesign name="rightcircle" size={DP._17} color={Color.DODGER_BLUE} />
+        <FText type="medium" style={Styles.seeMore}>
+          See more
+        </FText>
       </View>
       <InboxPlaceholder />
     </>
