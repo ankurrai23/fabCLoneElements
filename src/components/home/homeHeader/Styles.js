@@ -33,4 +33,16 @@ export default StyleSheet.create({
     fontSize: DP._28,
     color: Color.WHITE,
   },
+  initialsContainer: {
+    width: DP._35,
+    height: DP._35,
+    borderRadius: DP._35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Color.DARK_SLATE_BLUE,
+  },
+  initials: {
+    fontSize: DP._16,
+    color: Color.WHITE,
+  },
 });

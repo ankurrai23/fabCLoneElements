@@ -12,12 +12,18 @@ export default function HomeHeader({...props}) {
       <FTouchableOpacity
         style={Styles.profilePicContainer}
         onPress={props.openProfileImagePicker}>
-        <FImage
-          source={{
-            uri: props.profileImage,
-          }}
-          style={Styles.imageContainer}
-        />
+        {props.profileImage ? (
+          <FImage
+            source={{
+              uri: props.profileImage,
+            }}
+            style={Styles.imageContainer}
+          />
+        ) : (
+          <View style={Styles.initialsContainer}>
+            <FText style={Styles.initials}>{props.nameInitials}</FText>
+          </View>
+        )}
       </FTouchableOpacity>
     </View>
   );
