@@ -7,7 +7,7 @@ const deviceWidth = Dimensions.get('window').width;
 export default StyleSheet.create({
   animatedComponent: {flex: 1, width: DP._100},
   loadingCardStyle: (cardColor) => ({
-    width: 0.4222 * deviceWidth,
+    width: 0.44 * deviceWidth,
     height: 175,
     backgroundColor: cardColor,
     borderRadius: 12,
