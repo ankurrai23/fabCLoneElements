@@ -3,62 +3,58 @@ import {StyleSheet, View} from 'react-native';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
-import {FText, FImage, Button} from '../../..';
+import FText from '../../rn/FText';
+import FImage from '../../rn/FImage';
+import Button from '../button';
 
-const EmptyScreen = ({
-  heading,
-  image,
-  subHeading,
-  btnText,
-  onPress,
-  headingTextStyle,
-  subHeadingTextStyle,
-  imageWidth,
-  imageHeight,
-}) => {
+
+const EmptyScreen = props => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <FImage style={styles.image(imageWidth, imageHeight)} source={image} />
-        <FText style={[styles.heading, headingTextStyle]}>{heading}</FText>
-        {!!subHeading && (
-          <FText style={[styles.subHeading, subHeadingTextStyle]}>
-            {subHeading}
-          </FText>
+        <FImage style={styles.image} source={props.image} />
+        <FText style={styles.heading}>
+          {props.heading || "Nothing on your itinerary"}
+        </FText>
+        {!!props.subHeading && (
+          <FText style={styles.subHeading}>{props.subHeading}</FText>
         )}
       </View>
-      {btnText && <Button onPress={onPress}>{btnText}</Button>}
+      {!!props.btnText && (
+        <Button onPress={props.onPress}>{props.btnText}</Button>
+      )}
     </View>
   );
 };
 
-export default EmptyScreen;
-
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    padding: DP._16,
+    paddingBottom: DP._24,
   },
   textContainer: {
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
-  image: (width, height) => ({
-    height: height || DP._180,
-    width: width || DP._180,
-    resizeMode: 'contain',
-    marginBottom: DP._24,
-  }),
+  image: {
+    marginBottom: DP._18,
+  },
   heading: {
-    fontSize: DP._18,
-    color: Color.DARK,
+    fontSize: DP._20,
+    color: Color.BLACK,
     textAlign: 'center',
   },
   subHeading: {
     fontSize: DP._14,
     lineHeight: DP._21,
-    marginVertical: DP._8,
+    marginTop: DP._4,
     textAlign: 'center',
     color: Color.GREY_PURPLE,
-    marginHorizontal: DP._35,
+    paddingHorizontal: DP._44,
   },
 });
+
+export default EmptyScreen;
