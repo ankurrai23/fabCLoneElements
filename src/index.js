@@ -81,6 +81,7 @@ import MonthPicker from './components/expense/monthPicker';
 import ClaimFilter from './components/expense/claimFilter';
 import ReceiptsList from './components/expense/receiptsList';
 import AddReceiptModal from './components/expense/addReceiptModal';
+import ReceiptListView from './components/expense/receiptListView';
 
 export {
   data,
@@ -159,4 +160,5 @@ export {
   ClaimFilter,
   ReceiptsList,
   AddReceiptModal,
+  ReceiptListView,
 };
