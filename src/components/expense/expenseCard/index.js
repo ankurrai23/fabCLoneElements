@@ -72,7 +72,7 @@ const ExpenseCard = ({
         </View>
         {receiptRequired && (
           <View style={Styles.uploadReceiptButton}>
-            <FTouchableOpacity onPress={()=> setVisible(true)}>
+            <FTouchableOpacity onPress={() => setVisible(true)}>
               <FText style={Styles.uploadReceiptText}>Upload receipt</FText>
             </FTouchableOpacity>
           </View>

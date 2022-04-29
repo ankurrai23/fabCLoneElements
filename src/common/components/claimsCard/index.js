@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {FText, FTouchableOpacity} from '../../..';
