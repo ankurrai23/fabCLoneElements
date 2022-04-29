@@ -55,6 +55,7 @@ import expenseApprovalHeaderProps from './components/expense/expenseApprovalHead
 import locationInputBoxProps from './components/expense/locationInputBox/data';
 import swiperProps from './components/expense/swiper/data';
 import monthPickerProps from './components/expense/monthPicker/data';
+import receiptsListProps from './components/expense/receiptsList/data';
 
 export {
   buttonProps,
@@ -105,4 +106,5 @@ export {
   locationInputBoxProps,
   swiperProps,
   monthPickerProps,
+  receiptsListProps,
 };

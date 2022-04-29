@@ -79,6 +79,8 @@ import LocationInputBox from './components/expense/locationInputBox';
 import Swiper from './components/expense/swiper';
 import MonthPicker from './components/expense/monthPicker';
 import ClaimFilter from './components/expense/claimFilter';
+import ReceiptsList from './components/expense/receiptsList';
+import AddReceiptModal from './components/expense/addReceiptModal';
 
 export {
   data,
@@ -155,4 +157,6 @@ export {
   Swiper,
   MonthPicker,
   ClaimFilter,
+  ReceiptsList,
+  AddReceiptModal,
 };
