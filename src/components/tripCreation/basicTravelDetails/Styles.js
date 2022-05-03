@@ -27,19 +27,24 @@ export default StyleSheet.create({
     color: Color.PASTEL_RED,
     marginTop: DP._8,
   },
-  btnStyle: {
+  btnStyle: (data) => ({
     marginTop: DP._10,
     borderWidth: 1,
-    borderColor: Color.DODGER_BLUE,
+    borderColor:
+      data.source.name === null ||
+      data.destination.name === null ||
+      data.departureDate === null
+        ? Color.PALE_GREY_THREE
+        : Color.DODGER_BLUE,
     backgroundColor: Color.WHITE,
-  },
+  }),
   listContainer: {
     borderWidth: 1,
     borderColor: Color.LIGHT_PERIWINKLE,
     borderRadius: DP._8,
     paddingVertical: DP._16,
     paddingHorizontal: DP._16,
-    marginTop: DP._6,
+    marginVertical: DP._8,
   },
   sourceTxt: {
     fontSize: DP._17,
@@ -111,4 +116,19 @@ export default StyleSheet.create({
     lineHeight: DP._18,
     marginLeft: DP._4,
   },
+  btnTextStyle: (data) => ({
+    fontSize:
+      data.source.name === null ||
+      data.destination.name === null ||
+      data.departureDate === null
+        ? DP._16
+        : DP._14,
+    lineHeight: DP._18,
+    color:
+      data.source.name === null ||
+      data.destination.name === null ||
+      data.departureDate === null
+        ? Color.PALE_GREY_THREE
+        : Color.DODGER_BLUE,
+  }),
 });
