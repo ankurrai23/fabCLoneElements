@@ -81,7 +81,7 @@ const TripListingCard = ({item, onCardPress}) => {
         )}
         {!item.actionsDisabled && (
           <View style={Styles.footer}>
-            <FText style={Styles.action}>View Details</FText>
+            <FText style={Styles.action}>View details</FText>
           </View>
         )}
       </FTouchableOpacity>
