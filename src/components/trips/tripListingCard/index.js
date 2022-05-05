@@ -64,12 +64,12 @@ const TripListingCard = ({item, onCardPress}) => {
           </FText>
           <FTouchableOpacity
             onPress={() =>
-              item.coTravellers.length > 1 && setSheetVisible(true)
+              item.coTravellers?.length > 1 && setSheetVisible(true)
             }>
             <FText>
-              {item.coTravellers[0]}
-              {item.coTravellers.length > 1 &&
-                ` +${item.coTravellers.length - 1}`}
+              {item.coTravellers?.[0]}
+              {item.coTravellers?.length > 1 &&
+                ` +${item.coTravellers?.length - 1}`}
             </FText>
           </FTouchableOpacity>
         </View>
