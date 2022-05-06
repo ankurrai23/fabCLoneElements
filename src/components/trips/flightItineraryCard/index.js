@@ -15,7 +15,6 @@ import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
-import Animated from 'react-native-reanimated';
 /*
 TODO:
 1. Cancelled state prop
@@ -147,8 +146,8 @@ const FlightItineraryCard = ({
               <FText style={Styles.portName} numberOfLines={1}>
                 {item.pnr
                   ? item.sourceAirportCode +
-                    (item.departureAirportTerminal
-                      ? ` - ${item.departureAirportTerminal}`
+                    (item.sourceAirportTerminal
+                      ? ` - ${item.sourceAirportTerminal}`
                       : '')
                   : item.source}
               </FText>
@@ -179,8 +178,8 @@ const FlightItineraryCard = ({
               <FText style={Styles.portName} numberOfLines={1}>
                 {item.pnr
                   ? item.destinationAirportCode +
-                    (item.arrivalAirportTerminal
-                      ? ` - ${item.arrivalAirportTerminal}`
+                    (item.destinationAirportTerminal
+                      ? ` - ${item.destinationAirportTerminal}`
                       : '')
                   : item.destination}
               </FText>
