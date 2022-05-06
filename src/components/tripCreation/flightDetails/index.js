@@ -126,7 +126,7 @@ export default function FlightDetails(props) {
   }
 
   return (
-    <View style={Styles.container}>
+    <View onLayout={props.onLayout} style={Styles.container}>
       <View style={Styles.titleContainer}>
         <FText type="medium" style={Styles.title}>
           Flight(s)
