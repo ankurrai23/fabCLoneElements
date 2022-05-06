@@ -117,7 +117,8 @@
           "jsxBracketSameLine": true,
           "bracketSpacing": false,
           "singleQuote": true,
-          "trailingComma": "all"
+          "trailingComma": "all",
+          "arrowParens": "avoid"
         }
       ]
     }
