@@ -199,6 +199,7 @@ const HotelItineraryCard = ({
         {showInfo && (
           <InfoBox
             preferenceSelected={preferenceSelected}
+            text={viewShortlistedHotelAction?.name || shortlistingAction?.name}
             onPress={() =>
               onActionPress(viewShortlistedHotelAction || shortlistingAction)
             }
