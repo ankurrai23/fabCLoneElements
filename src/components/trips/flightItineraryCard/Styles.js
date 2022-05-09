@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import {shadowObj} from '../../../utils/Utils';
+
 export default StyleSheet.create({
   container: {
     backgroundColor: 'white',
@@ -96,5 +97,16 @@ export default StyleSheet.create({
   },
   flex: {
     flex: 1,
+  },
+  dot_two: {
+    padding: DP._3,
+    borderRadius: DP._4,
+    backgroundColor: Color.LIGHT_BLUEY_GREY,
+    marginHorizontal: DP._5,
+  },
+  durationContainer: {
+    flexDirection: 'row',
+    flexGrow: 1,
+    alignItems: 'center',
   },
 });

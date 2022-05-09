@@ -130,23 +130,28 @@ const HotelItineraryCard = ({
         <FTouchableOpacity onPress={onCardPress}>
           <View style={Styles.dateAndStatusContainer}>
             {sameMonthDates ? (
-              <FText>
+              <View style={Styles.datesContainer}>
                 <FText type="medium" style={Styles.date}>
-                  {`${item.checkIn.date}-${item.checkOut.date}`}
+                  {item.checkIn.date}
+                </FText>
+                <FText style={Styles.hyphen}>{' - '}</FText>
+                <FText type="medium" style={Styles.date}>
+                  {item.checkOut.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkIn.month}</FText>
-              </FText>
+              </View>
             ) : (
-              <FText>
+              <View style={Styles.datesContainer}>
                 <FText type="medium" style={Styles.date}>
                   {item.checkIn.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkIn.month}</FText>
+                <FText style={Styles.hyphen}>{' - '}</FText>
                 <FText type="medium" style={Styles.date}>
-                  {` - ${item.checkOut.date}`}
+                  {item.checkOut.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkOut.month}</FText>
-              </FText>
+              </View>
             )}
             {showConfirmedStatus && <TripStatus statusObj={confirmedStatus} />}
             {item?.status?.key === 'CANCELLED' ? (
@@ -164,32 +169,34 @@ const HotelItineraryCard = ({
           <View style={{paddingHorizontal: DP._16}}>
             <FText style={Styles.hotelName}>{item.title}</FText>
             <FText style={Styles.hotelLocation}>{item.location}</FText>
-            {item.checkInTime && (
-              <View style={Styles.checkInAndDirectionContainer}>
+            <View style={Styles.checkInAndDirectionContainer}>
+              {item.checkInTime ? (
                 <FText style={Styles.checkIn}>
                   Check-in {item.checkInTime}
                 </FText>
-                {directionAction && (
-                  <FTouchableOpacity
-                    style={[Styles.flexRowWithAlignCenter]}
-                    onPress={() => onActionPress(directionAction)}>
-                    <MaterialCommunityIcons
-                      name="navigation"
-                      size={DP._18}
-                      color={Color.DODGER_BLUE}
-                      style={Styles.directionIcon}
-                    />
-                    <FText
-                      style={{
-                        fontSize: DP._12,
-                        color: Color.DODGER_BLUE,
-                      }}>
-                      {directionAction.name}
-                    </FText>
-                  </FTouchableOpacity>
-                )}
-              </View>
-            )}
+              ) : (
+                <View />
+              )}
+              {directionAction && (
+                <FTouchableOpacity
+                  style={[Styles.flexRowWithAlignCenter]}
+                  onPress={() => onActionPress(directionAction)}>
+                  <MaterialCommunityIcons
+                    name="navigation"
+                    size={DP._18}
+                    color={Color.DODGER_BLUE}
+                    style={Styles.directionIcon}
+                  />
+                  <FText
+                    style={{
+                      fontSize: DP._12,
+                      color: Color.DODGER_BLUE,
+                    }}>
+                    {directionAction.name}
+                  </FText>
+                </FTouchableOpacity>
+              )}
+            </View>
           </View>
         </FTouchableOpacity>
         {!item.actionsDisabled &&

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {FText, FTouchableOpacity} from '../../..';
@@ -42,11 +41,9 @@ export default function ClaimsCard({...props}) {
                   {props.amount}
                 </FText>
                 {props.disabled ? null : (
-                  <Feather
-                    name="chevron-right"
-                    size={DP._24}
-                    color={Color.WHITE}
-                  />
+                  <View style={Styles.rightArrowView}>
+                    <AntDesign name="right" size={DP._15} color={Color.WHITE} />
+                  </View>
                 )}
               </View>
             </View>

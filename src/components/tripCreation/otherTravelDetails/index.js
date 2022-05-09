@@ -40,17 +40,19 @@ export default function OtherTravelDetails(props) {
   }
 
   function onPress(item) {
+    setVisible(false);
     setSelectedValueTemp(item);
+    props._onPressDetail(item);
   }
 
-  function onPressCancel() {
-    setVisible(false);
-  }
+  // function onPressCancel() {
+  //   setVisible(false);
+  // }
 
-  function _onPressApply() {
-    setVisible(false);
-    props._onPressApply(selectedValueTemp);
-  }
+  // function _onPressApply() {
+  //   setVisible(false);
+  //   props._onPressApply(selectedValueTemp);
+  // }
 
   function onChangeText(val) {
     props.onChangeText(val);
@@ -109,7 +111,7 @@ export default function OtherTravelDetails(props) {
                   showsVerticalScrollIndicator={false}
                 />
                 <View style={Styles.buttonView}>
-                  <Button
+                  {/* <Button
                     style={Styles.cancelButton}
                     textStyle={Styles.cancelText}
                     onPress={() => onPressCancel()}
@@ -122,7 +124,7 @@ export default function OtherTravelDetails(props) {
                     onPress={() => _onPressApply()}
                     textFont="medium">
                     {'Apply'}
-                  </Button>
+                  </Button> */}
                 </View>
               </View>
             </View>

@@ -10,6 +10,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   userName: {
+    flex: 1,
     fontSize: DP._20,
   },
   profilePicContainer: {
@@ -21,6 +22,7 @@ export default StyleSheet.create({
     borderRadius: DP._22,
     backgroundColor: Color.WHITE,
     borderColor: Color.DODGER_BLUE,
+    marginLeft: DP._20,
   },
   imageContainer: {
     width: DP._35,
@@ -29,6 +31,18 @@ export default StyleSheet.create({
   },
   letter: {
     fontSize: DP._28,
+    color: Color.WHITE,
+  },
+  initialsContainer: {
+    width: DP._35,
+    height: DP._35,
+    borderRadius: DP._35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Color.DARK_SLATE_BLUE,
+  },
+  initials: {
+    fontSize: DP._16,
     color: Color.WHITE,
   },
 });

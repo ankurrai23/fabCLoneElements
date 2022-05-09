@@ -53,7 +53,9 @@ export default function AddFlightDetails(props) {
             labelStyle={Styles.textFieldLabel}
             onPress={props.openDatePickerreturn}
           />
-          <FText style={Styles.timeSlotTitle}>Enter time slot</FText>
+          <FText style={Styles.timeSlotTitle}>
+            Enter time slot (Min 3 hrs)
+          </FText>
           <View style={Styles.datesContainer}>
             <PickerField
               label="From"
@@ -129,7 +131,9 @@ export default function AddFlightDetails(props) {
             labelStyle={Styles.textFieldLabel}
             onPress={props.openDatePickeronWord}
           />
-          <FText style={Styles.timeSlotTitle}>Enter time slot</FText>
+          <FText style={Styles.timeSlotTitle}>
+            Enter time slot (Min 3 hrs)
+          </FText>
           <View style={Styles.datesContainer}>
             <PickerField
               label="From"

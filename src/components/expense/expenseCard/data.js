@@ -6,6 +6,7 @@ const expenseCardProps = {
   date: `23 Dec`,
   amount: 4500,
   outOfPolicy: true,
+  receiptCount: 4,
   receiptRequired: false,
   viewReceipt: true,
   showStatus: true,

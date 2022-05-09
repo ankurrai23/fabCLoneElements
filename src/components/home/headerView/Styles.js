@@ -13,4 +13,8 @@ export default StyleSheet.create({
     fontSize: DP._16,
     color: Color.DARK,
   },
+  seeMore: {
+    fontSize: DP._12,
+    color: Color.DODGER_BLUE,
+  },
 });

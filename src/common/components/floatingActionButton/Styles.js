@@ -7,7 +7,7 @@ export default StyleSheet.create({
   container: {
     position: 'absolute',
     bottom: DP._24,
-    right: DP._24,
+    right: DP._16,
   },
   button: {
     // position: 'absolute',

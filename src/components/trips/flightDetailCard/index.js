@@ -13,6 +13,7 @@ import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
 import ModificationAlertBox from '../components/modificationAlertBox';
+import {getStatusObject} from '../hotelDetailCard';
 
 const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
@@ -80,11 +81,20 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item.status && <TripStatus statusObj={item.status} />}
+            {!!item.flightBookingStatus && (
+              <TripStatus
+                statusObj={getStatusObject(item.flightBookingStatus)}
+              />
+            )}
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
             <View style={Styles.flex}>
-              <FText style={Styles.portName}>{item.sourceAirportCode}</FText>
+              <FText style={Styles.portName}>
+                {`${item.sourceAirportCode}` +
+                  (item.sourceAirportTerminal
+                    ? ` - ${item.sourceAirportTerminal}`
+                    : '')}
+              </FText>
               <FText style={Styles.time}>{item.departureTime}</FText>
             </View>
             <View
@@ -98,11 +108,18 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
                 color={Color.LIGHT_BLUEY_GREY}
                 style={Styles.airplane}
               />
-              <FText style={Styles.duration}>{item.duration}</FText>
+              <View style={Styles.durationContainer}>
+                <FText style={Styles.duration}>{item.duration}</FText>
+                <View style={Styles.dot_two} />
+                <FText style={Styles.duration}>{item.stop}</FText>
+              </View>
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
               <FText style={Styles.portName}>
-                {item.destinationAirportCode}
+                {`${item.destinationAirportCode}` +
+                  (item.destinationAirportTerminal
+                    ? ` - ${item.destinationAirportTerminal}`
+                    : '')}
               </FText>
               <FText style={Styles.time}>{item.arrivalTime}</FText>
             </View>

@@ -42,10 +42,9 @@ const HomeLoadingState = () => {
         duration={1000}
         delay={100}
         style={Styles.inboxPlaceholderContainer}>
-        <Placeholder style={Styles.inboxTextPlaceholder('80%')} />
-        <Placeholder style={Styles.inboxTextPlaceholder('90%')} />
-        <Placeholder style={Styles.inboxTextPlaceholder('60%')} />
-        <Placeholder style={Styles.inboxTextPlaceholder('50%')} />
+        <Placeholder style={Styles.inboxTextPlaceholder('35%')} />
+        <Placeholder style={Styles.inboxTextPlaceholder('97%')} />
+        <Placeholder style={Styles.inboxTextPlaceholder('95%')} />
         <Placeholder style={Styles.datePlaceholder} />
       </PlaceholderContainer>
     );
@@ -56,17 +55,22 @@ const HomeLoadingState = () => {
       <View
         style={[Styles.claimsCardContainerLoader, Styles.marginHorizontal_24]}>
         <CardPlaceholder
-          cardColor={Color.IRIS}
-          secondaryColor={Color.PERIWINKLE}
+          cardColor={Color.VERY_LIGHT_PINK_2}
+          secondaryColor={Color.WHITE}
         />
         <CardPlaceholder
-          cardColor={Color.AQUA_MARINE}
-          secondaryColor={Color.TIFFANY_BLUE}
+          cardColor={Color.VERY_LIGHT_PINK_2}
+          secondaryColor={Color.WHITE}
         />
       </View>
-      <FText type="medium" style={Styles.sectionTitleLoader}>
-        Message
-      </FText>
+      <View style={Styles.headerView}>
+        <FText type="medium" style={Styles.sectionTitleLoader}>
+          Updates
+        </FText>
+        <FText type="medium" style={Styles.seeMore}>
+          See more
+        </FText>
+      </View>
       <InboxPlaceholder />
     </>
   );

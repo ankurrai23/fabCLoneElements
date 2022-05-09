@@ -18,6 +18,7 @@ import DialogBox from './common/components/dialogBox';
 import FloatingAction from './common/components/floatingActionButton';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
+import DropDownList from './common/components/dropDownList';
 import StackHeader from './common/components/stackHeader';
 import ScrollableTabBar from './common/components/scrollableTabBar';
 
@@ -43,7 +44,6 @@ import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoa
 import FlightDetailCard from './components/trips/flightDetailCard';
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
-import ContactSupport from './components/trips/components/contactSupport';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
 
 //Constants
@@ -79,6 +79,9 @@ import LocationInputBox from './components/expense/locationInputBox';
 import Swiper from './components/expense/swiper';
 import MonthPicker from './components/expense/monthPicker';
 import ClaimFilter from './components/expense/claimFilter';
+import ReceiptsList from './components/expense/receiptsList';
+import AddReceiptModal from './components/expense/addReceiptModal';
+import ReceiptListView from './components/expense/receiptListView';
 
 export {
   data,
@@ -98,6 +101,7 @@ export {
   DialogBox,
   FloatingAction,
   Checkbox,
+  DropDownList,
   StackHeader,
   ScrollableTabBar,
   // Trips components
@@ -122,7 +126,6 @@ export {
   CoTravellers,
   FlightDetailCard,
   ListTypeFilter,
-  ContactSupport,
   FlightDetailLoadingState,
   // Trip Creation
   ComingSoon,
@@ -155,4 +158,7 @@ export {
   Swiper,
   MonthPicker,
   ClaimFilter,
+  ReceiptsList,
+  AddReceiptModal,
+  ReceiptListView,
 };

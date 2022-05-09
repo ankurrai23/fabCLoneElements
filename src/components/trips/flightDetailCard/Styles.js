@@ -94,4 +94,15 @@ export default StyleSheet.create({
     marginTop: DP._24,
     marginHorizontal: DP._16,
   },
+  dot_two: {
+    padding: DP._3,
+    borderRadius: DP._4,
+    backgroundColor: Color.LIGHT_BLUEY_GREY,
+    marginHorizontal: DP._5,
+  },
+  durationContainer: {
+    flexDirection: 'row',
+    flexGrow: 1,
+    alignItems: 'center',
+  },
 });

@@ -37,7 +37,6 @@ import {
   CoTravellers,
   FlightDetailCard,
   ListTypeFilter,
-  ContactSupport,
   FlightDetailLoadingState,
   HomeHeader,
   ClaimsCard,
@@ -47,6 +46,7 @@ import {
   FloatingAction,
   HomeLoadingState,
   Checkbox,
+  DropDownList,
   StackHeader,
   ScrollableTabBar,
   ExpenseCard,
@@ -57,6 +57,8 @@ import {
   LocationInputBox,
   Swiper,
   MonthPicker,
+  ReceiptsList,
+  ReceiptListView,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -66,10 +68,6 @@ const COMMON_COMPONENTS = [
   {name: 'PickerField', component: <PickerField {...data.pickerFieldProps} />},
   {name: 'DashedLine', component: <DashedLine {...data.dashLineProps} />},
   {name: 'EmptyScreen', component: <EmptyScreen {...data.emptyScreenProps} />},
-  {
-    name: 'ContactSupport',
-    component: <ContactSupport {...data.contactSupportProps} />,
-  },
   {
     name: 'ClaimsCard',
     component: <ClaimsCard {...data.claimsCardProps} />,
@@ -81,6 +79,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'Checkbox',
     component: <Checkbox {...data.checkboxProps} />,
+  },
+  {
+    name: 'Drop Down List',
+    component: <DropDownList {...data.dropDownListProps} />,
   },
   {
     name: 'StackHeader',
@@ -281,6 +283,14 @@ const EXPENSE = [
   {
     name: 'MonthPicker',
     component: <MonthPicker {...data.monthPickerProps} />,
+  },
+  {
+    name: 'ReceiptsList',
+    component: <ReceiptsList {...data.receiptsListProps} />,
+  },
+  {
+    name: 'ReceiptListView',
+    component: <ReceiptListView {...data.receiptListViewProps} />,
   },
 ];
 

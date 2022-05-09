@@ -30,7 +30,7 @@ const Swiper = ({itemData, updateView, count}) => {
         viewabilityConfig={viewConfigRef.current}
         renderItem={({item, index}) => {
           return (
-            <View key={index}>
+            <View key={index} style={Styles.container}>
               <ImageZoomViewer item={item} />
             </View>
           );
