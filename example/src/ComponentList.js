@@ -57,6 +57,7 @@ import {
   LocationInputBox,
   Swiper,
   MonthPicker,
+  BasicTravelDetailsCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -221,6 +222,10 @@ const TRIP_CREATION = [
   {
     name: 'AddHotelDetails',
     component: <AddHotelDetails {...data.addHotelDetailsProps} />,
+  },
+  {
+    name: 'BasicTravelDetailsCard',
+    component: <BasicTravelDetailsCard {...data.basicTravelDetailsCardProps} />,
   },
 ];
 
