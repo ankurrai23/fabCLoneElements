@@ -6,7 +6,7 @@ import {DP} from '../../../../utils/Dimen';
 import {Color} from '../../../../utils/color';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 
-export default function InfoBox({preferenceSelected, onPress}) {
+export default function InfoBox({preferenceSelected, onPress, text}) {
   return (
     <FTouchableOpacity
       style={styles.container(preferenceSelected)}
@@ -17,11 +17,7 @@ export default function InfoBox({preferenceSelected, onPress}) {
         color={preferenceSelected ? Color.DARK_SEA_FOAM : Color.TWILIGHT_BLUE}
         style={styles.icon}
       />
-      <FText style={styles.text(preferenceSelected)}>
-        {preferenceSelected
-          ? 'Bravo! You have set order of preference for shortlisted flights. Booking details shall be shared shortly.'
-          : 'Your travel desk has shared shortlisted flight options. Please set order of preference asap.'}
-      </FText>
+      <FText style={styles.text(preferenceSelected)}>{text}</FText>
       {!preferenceSelected && (
         <Feather
           name="chevron-right"
