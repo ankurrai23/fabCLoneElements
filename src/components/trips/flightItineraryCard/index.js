@@ -208,6 +208,7 @@ const FlightItineraryCard = ({
         {showInfo && (
           <InfoBox
             preferenceSelected={preferenceSelected}
+            text={viewShortlistedFlightAction?.name || shortlistingAction?.name}
             onPress={() =>
               onActionPress(viewShortlistedFlightAction || shortlistingAction)
             }
