@@ -278,7 +278,7 @@ export default function HotelDetailCard({
                 color={Color.GREY_PURPLE}
               />
               <FText style={{marginLeft: DP._8, fontSize: DP._12}}>
-                Bill to company
+                {item?.paymentMode ? item.paymentMode : 'N.A'}
               </FText>
             </View>
             {item.paymentStatus && (
