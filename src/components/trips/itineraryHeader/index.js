@@ -17,7 +17,7 @@ function ItineraryHeader(props) {
       }}>
       <View style={Styles.flexRow}>
         <FTouchableOpacity onPress={props.onBackClick}>
-          <Feather name="arrow-left" size={DP._24} color={Color.BLACK} />
+          <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
         </FTouchableOpacity>
         <FText type="medium" style={Styles.title}>
           {props.itinerary}
