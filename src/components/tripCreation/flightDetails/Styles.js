@@ -5,12 +5,12 @@ import {DP} from '../../../utils/Dimen';
 import {shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
-  container: {
+  container: (request) => ({
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
-    paddingVertical: DP._20,
-    marginBottom: DP._5,
-  },
+    marginTop: request === 'FLIGHT_AND_HOTEL' ? DP._40 : DP._32,
+    // marginBottom: DP._5,
+  }),
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
