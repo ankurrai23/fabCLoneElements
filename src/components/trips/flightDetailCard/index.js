@@ -58,17 +58,16 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
           {title}
         </FText>
       )}
-      {item.modificationRequested && (
+      {!!item.alertMessage && (
         <ModificationAlertBox
-          msg={'Your have sent a modification request for this booking.'}
+          msg={item.alertMessage}
           style={{marginHorizontal: DP._16}}
         />
       )}
       <View style={[Styles.container, style]}>
         <FTouchableOpacity
-          disabled={item.cancelled}
-          activeOpacity={item.modificationRequested || item.cancelled ? 0.4 : 1}
-          style={Styles.card(item.modificationRequested || item.cancelled)}
+          activeOpacity={item.reduceOpacity ? 0.4 : 1}
+          style={Styles.card(item.reduceOpacity)}
           onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>
@@ -137,10 +136,7 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
             </View>
           )}
         </FTouchableOpacity>
-        {!item.actionsDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <Actions />
-          )}
+        {(rescheduleAction || cancelAction || viewRemarksAction) && <Actions />}
       </View>
     </>
   );

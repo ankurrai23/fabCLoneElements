@@ -28,7 +28,7 @@ const Styles = StyleSheet.create({
     backgroundColor: Color.DODGER_BLUE + '1a',
     padding: DP._8,
     borderRadius: DP._8,
-    marginBottom: DP._4,
+    marginBottom: DP._16,
     flexDirection: 'row',
   },
   modifyText: {

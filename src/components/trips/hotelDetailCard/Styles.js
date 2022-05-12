@@ -7,7 +7,6 @@ export default StyleSheet.create({
   container: {
     borderRadius: DP._12,
     backgroundColor: Color.WHITE,
-    marginTop: DP._8,
     ...shadowObj,
   },
   subContainer: (modified) => ({
@@ -144,5 +143,14 @@ export default StyleSheet.create({
     width: DP._18,
     height: DP._18,
     resizeMode: 'contain',
+  },
+  modifyButtonStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: DP._26,
+  },
+  cancelButtonStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
