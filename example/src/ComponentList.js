@@ -41,7 +41,6 @@ import {
   HomeHeader,
   ClaimsCard,
   ClaimsList,
-  HeaderView,
   MessageCard,
   FloatingAction,
   HomeLoadingState,
@@ -235,10 +234,6 @@ const HOME = [
   {
     name: 'ClaimList',
     component: <ClaimsList {...data.claimsListProps} />,
-  },
-  {
-    name: 'HeaderView',
-    component: <HeaderView {...data.headerViewProps} />,
   },
   {
     name: 'MessageCard',
