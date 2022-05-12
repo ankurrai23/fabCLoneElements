@@ -57,6 +57,8 @@ import {
   LocationInputBox,
   Swiper,
   MonthPicker,
+  ReceiptsList,
+  ReceiptListView,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -281,6 +283,14 @@ const EXPENSE = [
   {
     name: 'MonthPicker',
     component: <MonthPicker {...data.monthPickerProps} />,
+  },
+  {
+    name: 'ReceiptsList',
+    component: <ReceiptsList {...data.receiptsListProps} />,
+  },
+  {
+    name: 'ReceiptListView',
+    component: <ReceiptListView {...data.receiptListViewProps} />,
   },
 ];
 

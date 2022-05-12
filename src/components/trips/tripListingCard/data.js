@@ -4,7 +4,7 @@ const tripListingCardProps = {
     tripRequestType: 'FLIGHT_AND_HOTEL',
     title: 'Trip to Gurgaon',
     isProcessing: false,
-    coTravellers: ['Rahul Gupta', 'Abhishek Gupta'],
+    coTravellers: null,
     tripStartDate: 'Thu, 22 Nov',
     tripEndDate: 'Thu, 23 Nov',
     bookingStatus: 'CONFIRMED',

@@ -9,7 +9,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: DP._16,
-    paddingHorizontal: DP._24,
+    paddingLeft: DP._8, // actual is 16 as Feather icon has its own padding.
     backgroundColor: Color.WHITE,
     zIndex: shadowVisible ? 1 : 0,
     ...(shadowVisible ? shadowObj : null),

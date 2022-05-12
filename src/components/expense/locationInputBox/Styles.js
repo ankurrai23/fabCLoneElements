@@ -34,7 +34,4 @@ export default StyleSheet.create({
   closeButton: {
     marginLeft: DP._4,
   },
-  addButton: {
-    marginLeft: DP._10,
-  },
 });

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import FText from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import FImage from '../../../common/rn/FImage';
-
+import AddReceiptModal from '../addReceiptModal';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 
@@ -17,6 +17,7 @@ const ExpenseCard = ({
   status,
   title,
   receiptRequired,
+  receiptCount,
   showStatus,
   amount,
   outOfPolicy,
@@ -26,6 +27,12 @@ const ExpenseCard = ({
   onUploadReceipt,
   onViewReceipt,
 }) => {
+  const [visible, setVisible] = useState(false);
+  function onAddReceiptOptionPress(type) {
+    setVisible(false);
+    setTimeout(() => onUploadReceipt(type), 100);
+  }
+
   return (
     <FTouchableOpacity
       style={[Styles.container(showSeparator), style]}
@@ -65,7 +72,7 @@ const ExpenseCard = ({
         </View>
         {receiptRequired && (
           <View style={Styles.uploadReceiptButton}>
-            <FTouchableOpacity onPress={onUploadReceipt}>
+            <FTouchableOpacity onPress={() => setVisible(true)}>
               <FText style={Styles.uploadReceiptText}>Upload receipt</FText>
             </FTouchableOpacity>
           </View>
@@ -75,12 +82,19 @@ const ExpenseCard = ({
             <FTouchableOpacity onPress={onViewReceipt}>
               <FText style={Styles.uploadReceiptText}>
                 <Feather name="paperclip" size={DP._13} />
-                {' View receipt'}
+                {receiptCount > 1
+                  ? ` View ${receiptCount} receipts`
+                  : ' View receipt'}
               </FText>
             </FTouchableOpacity>
           </View>
         )}
       </View>
+      <AddReceiptModal
+        visible={visible}
+        setVisible={setVisible}
+        onPress={onAddReceiptOptionPress}
+      />
     </FTouchableOpacity>
   );
 };

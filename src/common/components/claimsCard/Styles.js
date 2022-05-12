@@ -7,10 +7,10 @@ import {shadowObj} from '../../../utils/Utils';
 const {width} = Dimensions.get('window');
 
 export default StyleSheet.create({
-  container: (backgroundColor, noClaim, type) => ({
+  container: (backgroundColor) => ({
     borderRadius: DP._12,
     backgroundColor: backgroundColor,
-    ...(noClaim ? {width: 0.4222 * width} : {width: 0.4222 * width}),
+    width: 0.44 * width,
     ...shadowObj,
   }),
   containerSecondary: {

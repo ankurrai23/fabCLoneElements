@@ -29,4 +29,9 @@ export default StyleSheet.create({
     fontSize: DP._20,
     color: Color.WHITE,
   },
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Color.DARK,
+  },
 });

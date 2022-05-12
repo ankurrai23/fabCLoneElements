@@ -39,7 +39,7 @@ function BasicTravelDetails({
         <PickerField
           error={errors.sourceError}
           helperText={errors.sourceTextError}
-          label="From"
+          label="Departure city"
           value={data.source?.name}
           labelStyle={Styles.textFieldLabel}
           onPress={openSourceGoogleSearch}
@@ -47,7 +47,7 @@ function BasicTravelDetails({
         <PickerField
           error={errors.destinationError}
           helperText={errors.DestinationTextError}
-          label="Destination"
+          label="Arrival city"
           value={data.destination?.name}
           labelStyle={Styles.textFieldLabel}
           onPress={openDestinationGoogleSearch}

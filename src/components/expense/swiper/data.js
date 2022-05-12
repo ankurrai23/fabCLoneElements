@@ -9,7 +9,6 @@ const swiperProps = {
       'https://thumbs.dreamstime.com/b/antique-grungy-french-invoice-collage-background-pastel-colors-ephemera-ledger-paper-59858183.jpg',
       'https://thumbs.dreamstime.com/b/antique-grungy-french-invoice-collage-background-pastel-colors-ephemera-ledger-paper-59858183.jpg',
     ],
-    id: 0,
     name: 'Domino`s Pizza',
     notes: 'At the airport via hyderabad',
     expenseDate: '23, Nov 2021',
