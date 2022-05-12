@@ -10,11 +10,11 @@ export default function HeaderView(props) {
       <FText type="medium" style={Styles.sectionTitle}>
         {props.title}
       </FText>
-      <FTouchableOpacity onPress={props.onPress}>
+      {!!props.showViewAllButton && <FTouchableOpacity onPress={props.onPress}>
         <FText type="medium" style={Styles.seeMore}>
           See more
         </FText>
-      </FTouchableOpacity>
+      </FTouchableOpacity>}
     </View>
   );
 }
