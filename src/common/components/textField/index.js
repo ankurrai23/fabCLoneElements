@@ -13,6 +13,7 @@ import {
   TextInput,
   View,
   // LayoutAnimation,
+  Platform,
 } from 'react-native';
 
 import FText from '../../rn/FText';
@@ -25,7 +26,7 @@ import Styles from './Styles';
 const cleanStyle = {
   fontSize: DP._14,
   top: DP._13,
-  left: -4,
+  left: Platform.OS === 'android' ? 0 : -4,
 };
 
 const dirtyStyle = {
@@ -110,7 +111,8 @@ class TextField extends React.Component {
     const nextStyle = dirty ? dirtyStyleConfig : cleanStyle;
     let labelStyle = this.state.labelStyle;
     let anims = Object.keys(nextStyle).map((prop) => {
-      let toValue = prop === 'left' && !this.props.icon ? 0 : nextStyle[prop];
+      let initialLeft = Platform.OS === 'android' ? 0 : -4;
+      let toValue = prop === 'left' && !this.props.icon ? initialLeft : nextStyle[prop];
       return Animated.timing(
         labelStyle[prop],
         {
