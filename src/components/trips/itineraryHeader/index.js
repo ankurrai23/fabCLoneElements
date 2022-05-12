@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Platform} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-import {FText, FTouchableOpacity, TripStatus} from '../../..';
+import {FText, FTouchableOpacity, StackHeader, TripStatus} from '../../..';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 
@@ -16,12 +16,11 @@ function ItineraryHeader(props) {
         paddingTop: Platform.OS === 'android' ? DP._20 : DP._10,
       }}>
       <View style={Styles.flexRow}>
-        <FTouchableOpacity onPress={props.onBackClick}>
-          <Feather name="arrow-left" size={DP._24} color={Color.BLACK} />
-        </FTouchableOpacity>
-        <FText type="medium" style={Styles.title}>
-          {props.itinerary}
-        </FText>
+        <StackHeader
+          shadowVisible={false}
+          onBackClick={props.onBackClick}
+          title={props.itinerary}
+        />
       </View>
       <View style={Styles.datesContainer}>
         <FText style={Styles.tripId}>{props.tripId}</FText>
