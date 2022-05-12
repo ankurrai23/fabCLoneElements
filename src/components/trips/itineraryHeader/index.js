@@ -16,11 +16,12 @@ function ItineraryHeader(props) {
         paddingTop: Platform.OS === 'android' ? DP._20 : DP._10,
       }}>
       <View style={Styles.flexRow}>
-        <StackHeader
-          shadowVisible={false}
-          onBackClick={props.onBackClick}
-          title={props.itinerary}
-        />
+        <FTouchableOpacity onPress={props.onBackClick}>
+          <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
+        </FTouchableOpacity>
+        <FText type="medium" style={Styles.title}>
+          {props.itinerary}
+        </FText>
       </View>
       <View style={Styles.datesContainer}>
         <FText style={Styles.tripId}>{props.tripId}</FText>
