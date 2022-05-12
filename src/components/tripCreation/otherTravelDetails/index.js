@@ -110,22 +110,6 @@ export default function OtherTravelDetails(props) {
                   style={Styles.flatListStyle}
                   showsVerticalScrollIndicator={false}
                 />
-                <View style={Styles.buttonView}>
-                  {/* <Button
-                    style={Styles.cancelButton}
-                    textStyle={Styles.cancelText}
-                    onPress={() => onPressCancel()}
-                    textFont="medium">
-                    {'Cancel'}
-                  </Button>
-                  <Button
-                    style={Styles.applyButton}
-                    textStyle={Styles.cancelText}
-                    onPress={() => _onPressApply()}
-                    textFont="medium">
-                    {'Apply'}
-                  </Button> */}
-                </View>
               </View>
             </View>
           }

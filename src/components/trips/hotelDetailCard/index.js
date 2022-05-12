@@ -145,16 +145,9 @@ export default function HotelDetailCard({
         <RefreshControl refreshing={false} onRefresh={onRefresh} />
       }>
       {(posAction || invoiceAction || reviewAction) && <PostTripHotelActions />}
-      {item.modificationRequested && (
-        <ModificationAlertBox
-          msg={'Your have sent a modification request for this booking.'}
-        />
-      )}
+      {!!item.alertMessage && <ModificationAlertBox msg={item.alertMessage} />}
       <View style={[Styles.container, style]}>
-        <View
-          style={Styles.subContainer(
-            item.modificationRequested || item.cancelled,
-          )}>
+        <View style={Styles.subContainer(item.reduceOpacity)}>
           <View style={Styles.hotelNameAndImageContainer}>
             {item.mainImage && (
               <FTouchableOpacity
@@ -278,7 +271,7 @@ export default function HotelDetailCard({
                 color={Color.GREY_PURPLE}
               />
               <FText style={{marginLeft: DP._8, fontSize: DP._12}}>
-                Bill to company
+                {item?.paymentMode ? item.paymentMode : 'N.A'}
               </FText>
             </View>
             {item.paymentStatus && (
@@ -304,14 +297,14 @@ export default function HotelDetailCard({
             </Button>
           )}
         </View>
-        {!item.actionsDisabled && (
+        {(cancelAction || modifyAction) && (
           <>
             <Separator style={{backgroundColor: Color.VERY_LIGHT_BLUE}} />
             <View style={Styles.buttonContainer}>
               {cancelAction && (
                 <FTouchableOpacity
                   onPress={() => onActionPress?.(cancelAction)}
-                  style={{flexDirection: 'row', alignItems: 'center'}}>
+                  style={Styles.cancelButtonStyle}>
                   <AntDesign
                     name="close"
                     size={DP._18}
@@ -323,11 +316,7 @@ export default function HotelDetailCard({
               {modifyAction && (
                 <FTouchableOpacity
                   onPress={() => onActionPress?.(modifyAction)}
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginLeft: DP._26,
-                  }}>
+                  style={Styles.modifyButtonStyle}>
                   <FImage
                     style={Styles.rescheduleIcon}
                     source={ImageConst.rescheduleIcon}

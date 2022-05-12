@@ -65,7 +65,6 @@ import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
 import ClaimsList from './components/home/claimsList';
-import HeaderView from './components/home/headerView';
 import MessageCard from './components/home/messageCard';
 import HomeLoadingState from './components/home/homeLoadingState';
 
@@ -145,7 +144,6 @@ export {
   HomeHeader,
   ClaimsCard,
   ClaimsList,
-  HeaderView,
   MessageCard,
   HomeLoadingState,
   //Expense,
