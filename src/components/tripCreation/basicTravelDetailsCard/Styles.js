@@ -10,7 +10,7 @@ export default StyleSheet.create({
     paddingVertical: DP._16,
     paddingHorizontal: DP._16,
     marginVertical: DP._8,
-    marginHorizontal: DP._19,
+    marginHorizontal: DP._16,
   },
   flexView: (margin) => ({
     flexDirection: 'row',
