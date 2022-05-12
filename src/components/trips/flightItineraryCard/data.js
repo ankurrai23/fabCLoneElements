@@ -1,3 +1,5 @@
+import {FlightSubTripActions} from '../../../utils/SubTripActions';
+
 const flightItineraryCardProps = {
   item: {
     date: '22',
@@ -32,14 +34,18 @@ const flightItineraryCardProps = {
         type: 'CANCEL',
         name: 'Cancel',
       },
+      {
+        type: FlightSubTripActions.CANCELLATION_REQUESTED,
+        name: 'You have sent a modification request for this booking.',
+      },
     ],
   },
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: true,
   hideIcon: false,
-  showInfo: false,
-  preferenceSelected: true,
+  showInfo: true,
+  isAlert: true,
   timelineGreyed: false,
   processed: true,
 };

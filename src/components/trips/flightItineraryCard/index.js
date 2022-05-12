@@ -28,7 +28,6 @@ const FlightItineraryCard = ({
   hideIcon,
   showLine,
   showInfo,
-  preferenceSelected,
   timelineGreyed,
   processed,
 }) => {
@@ -42,6 +41,12 @@ const FlightItineraryCard = ({
   );
   const viewShortlistedFlightAction = isActionEnabled(
     FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
+  );
+  const modificationRequestedAction = isActionEnabled(
+    FlightSubTripActions.MODIFICATION_REQUESTED,
+  );
+  const cancellationRequestedAction = isActionEnabled(
+    FlightSubTripActions.CANCELLATION_REQUESTED,
   );
 
   const ActionsInItinerary = () => (
@@ -201,14 +206,26 @@ const FlightItineraryCard = ({
             </View>
           )}
         </FTouchableOpacity>
-        {!item.actionsDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+        {(rescheduleAction || cancelAction || viewRemarksAction) && (
+          <ActionsInItinerary />
+        )}
         {showInfo && (
           <InfoBox
-            preferenceSelected={preferenceSelected}
-            text={viewShortlistedFlightAction?.name || shortlistingAction?.name}
+            isAlert={
+              shortlistingAction ||
+              modificationRequestedAction ||
+              cancellationRequestedAction
+            }
+            text={
+              viewShortlistedFlightAction?.name ||
+              shortlistingAction?.name ||
+              modificationRequestedAction?.name ||
+              cancellationRequestedAction?.name
+            }
+            showChevron={!!shortlistingAction}
+            disablePressEvent={
+              modificationRequestedAction || cancellationRequestedAction
+            }
             onPress={() =>
               onActionPress(viewShortlistedFlightAction || shortlistingAction)
             }
