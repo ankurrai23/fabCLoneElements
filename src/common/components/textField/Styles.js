@@ -17,7 +17,8 @@ export default StyleSheet.create({
       ? Color.DODGER_BLUE
       : Color.PALE_GREY_THREE,
     borderRadius: DP._4,
-    paddingHorizontal: DP._12,
+    paddingRight: DP._12,
+    paddingLeft: DP._16,
   }),
   iconContainer: {
     alignSelf: 'center',
