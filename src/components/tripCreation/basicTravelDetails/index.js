@@ -18,9 +18,9 @@ function BasicTravelDetails({
   let roundTrip = tripType === 1;
   return (
     <View style={Styles.container}>
-      <FText type="medium" style={Styles.title}>
+      {/* <FText type="medium" style={Styles.title}>
         Basic travel details
-      </FText>
+      </FText> */}
       {(errors?.sourceError ||
         errors?.destinationError ||
         errors?.defatureDateError ||

@@ -26,6 +26,6 @@ export default StyleSheet.create({
   errorTitle: {
     fontSize: DP._12,
     color: Color.PASTEL_RED,
-    marginTop: DP._8,
+    // marginTop: DP._5,
   },
 });
