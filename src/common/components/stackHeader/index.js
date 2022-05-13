@@ -15,7 +15,7 @@ function StackHeader(props) {
     <View style={[Styles.container(props.shadowVisible), props.containerStyle]}>
       <FTouchableOpacity
         onPress={props.onBackClick}
-        hitSlop={{top: 20, bottom: 20, left: 50, right: 50}}>
+        hitSlop={{top: 20, bottom: 20, left: 50, right: 20}}>
         <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
       </FTouchableOpacity>
       <FText type="medium" style={Styles.title}>
