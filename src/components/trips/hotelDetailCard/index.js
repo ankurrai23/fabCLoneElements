@@ -145,9 +145,11 @@ export default function HotelDetailCard({
         <RefreshControl refreshing={false} onRefresh={onRefresh} />
       }>
       {(posAction || invoiceAction || reviewAction) && <PostTripHotelActions />}
-      {!!item.alertMessage && <ModificationAlertBox msg={item.alertMessage} />}
+      {!!item.notificationText && (
+        <ModificationAlertBox msg={item.notificationText} />
+      )}
       <View style={[Styles.container, style]}>
-        <View style={Styles.subContainer(item.reduceOpacity)}>
+        <View style={Styles.subContainer(item.notificationText)}>
           <View style={Styles.hotelNameAndImageContainer}>
             {item.mainImage && (
               <FTouchableOpacity

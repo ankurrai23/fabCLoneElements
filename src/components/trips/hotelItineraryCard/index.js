@@ -47,12 +47,6 @@ const HotelItineraryCard = ({
   const viewShortlistedHotelAction = isActionEnabled(
     HotelSubTripActions.VIEW_SHORTLISTED_HOTEL_TRIPS,
   );
-  const modificationRequestedAction = isActionEnabled(
-    HotelSubTripActions.MODIFICATION_REQUESTED,
-  );
-  const cancellationRequestedAction = isActionEnabled(
-    HotelSubTripActions.CANCELLATION_REQUESTED,
-  );
 
   const confirmedStatus = {
     key: 'CONFIRMED',
@@ -211,21 +205,14 @@ const HotelItineraryCard = ({
           )}
         {showInfo && (
           <InfoBox
-            isAlert={
-              shortlistingAction ||
-              modificationRequestedAction ||
-              cancellationRequestedAction
-            }
+            isAlert={shortlistingAction || !!item.notificationText}
             text={
               viewShortlistedHotelAction?.name ||
               shortlistingAction?.name ||
-              modificationRequestedAction?.name ||
-              cancellationRequestedAction?.name
+              item.notificationText
             }
             showChevron={!!shortlistingAction}
-            disablePressEvent={
-              modificationRequestedAction || cancellationRequestedAction
-            }
+            disablePressEvent={!!item.notificationText}
             onPress={() =>
               onActionPress(viewShortlistedHotelAction || shortlistingAction)
             }

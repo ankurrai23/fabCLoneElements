@@ -42,12 +42,6 @@ const FlightItineraryCard = ({
   const viewShortlistedFlightAction = isActionEnabled(
     FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
   );
-  const modificationRequestedAction = isActionEnabled(
-    FlightSubTripActions.MODIFICATION_REQUESTED,
-  );
-  const cancellationRequestedAction = isActionEnabled(
-    FlightSubTripActions.CANCELLATION_REQUESTED,
-  );
 
   const ActionsInItinerary = () => (
     <>
@@ -211,21 +205,14 @@ const FlightItineraryCard = ({
         )}
         {showInfo && (
           <InfoBox
-            isAlert={
-              shortlistingAction ||
-              modificationRequestedAction ||
-              cancellationRequestedAction
-            }
+            isAlert={shortlistingAction || !!item.notificationText}
             text={
               viewShortlistedFlightAction?.name ||
               shortlistingAction?.name ||
-              modificationRequestedAction?.name ||
-              cancellationRequestedAction?.name
+              item.notificationText
             }
             showChevron={!!shortlistingAction}
-            disablePressEvent={
-              modificationRequestedAction || cancellationRequestedAction
-            }
+            disablePressEvent={!!item.notificationText}
             onPress={() =>
               onActionPress(viewShortlistedFlightAction || shortlistingAction)
             }
