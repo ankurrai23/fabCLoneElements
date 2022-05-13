@@ -110,7 +110,7 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
         style={Styles.headerContainer}>
         <View style={Styles.flexRow}>
           <FTouchableOpacity onPress={onBackClick}>
-            <Feather name="arrow-left" size={DP._24} color={Color.BLACK} />
+            <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
           </FTouchableOpacity>
           <Placeholder style={Styles.headerTitleLoader} />
         </View>
