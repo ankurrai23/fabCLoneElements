@@ -44,7 +44,6 @@ import basicTravelDetailsCardProps from './components/tripCreation/basicTravelDe
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
 import claimsListProps from './components/home/claimsList/data';
-import headerViewProps from './components/home/headerView/data';
 import messageCardProps from './components/home/messageCard/data';
 
 //expense components props
@@ -56,6 +55,8 @@ import expenseApprovalHeaderProps from './components/expense/expenseApprovalHead
 import locationInputBoxProps from './components/expense/locationInputBox/data';
 import swiperProps from './components/expense/swiper/data';
 import monthPickerProps from './components/expense/monthPicker/data';
+import receiptsListProps from './components/expense/receiptsList/data';
+import receiptListViewProps from './components/expense/receiptListView/data';
 
 export {
   buttonProps,
@@ -91,7 +92,6 @@ export {
   homeHeaderProps,
   claimsCardProps,
   claimsListProps,
-  headerViewProps,
   messageCardProps,
   floatingActionProps,
   checkboxProps,
@@ -107,4 +107,6 @@ export {
   swiperProps,
   monthPickerProps,
   basicTravelDetailsCardProps,
+  receiptsListProps,
+  receiptListViewProps,
 };

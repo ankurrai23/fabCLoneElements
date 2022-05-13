@@ -16,7 +16,7 @@ export default StyleSheet.create({
       borderWidth: type === 'SECONDARY' ? 0.5 : 0,
     }),
     ...(disabled && {
-      backgroundColor: Color.BLUEY_GREY,
+      backgroundColor: Color.HAWKES_BLUE,
     }),
   }),
   textStyle: (type, disabled) => ({

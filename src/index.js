@@ -66,7 +66,6 @@ import BasicTravelDetailsCard from './components/tripCreation/basicTravelDetails
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
 import ClaimsList from './components/home/claimsList';
-import HeaderView from './components/home/headerView';
 import MessageCard from './components/home/messageCard';
 import HomeLoadingState from './components/home/homeLoadingState';
 
@@ -80,6 +79,9 @@ import LocationInputBox from './components/expense/locationInputBox';
 import Swiper from './components/expense/swiper';
 import MonthPicker from './components/expense/monthPicker';
 import ClaimFilter from './components/expense/claimFilter';
+import ReceiptsList from './components/expense/receiptsList';
+import AddReceiptModal from './components/expense/addReceiptModal';
+import ReceiptListView from './components/expense/receiptListView';
 
 export {
   data,
@@ -144,7 +146,6 @@ export {
   HomeHeader,
   ClaimsCard,
   ClaimsList,
-  HeaderView,
   MessageCard,
   HomeLoadingState,
   //Expense,
@@ -157,4 +158,7 @@ export {
   Swiper,
   MonthPicker,
   ClaimFilter,
+  ReceiptsList,
+  AddReceiptModal,
+  ReceiptListView,
 };

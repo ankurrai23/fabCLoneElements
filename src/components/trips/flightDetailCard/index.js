@@ -58,17 +58,16 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
           {title}
         </FText>
       )}
-      {item.modificationRequested && (
+      {!!item.alertMessage && (
         <ModificationAlertBox
-          msg={'Your have sent a modification request for this booking.'}
+          msg={item.alertMessage}
           style={{marginHorizontal: DP._16}}
         />
       )}
       <View style={[Styles.container, style]}>
         <FTouchableOpacity
-          disabled={item.cancelled}
-          activeOpacity={item.modificationRequested || item.cancelled ? 0.4 : 1}
-          style={Styles.card(item.modificationRequested || item.cancelled)}
+          activeOpacity={item.reduceOpacity ? 0.4 : 1}
+          style={Styles.card(item.reduceOpacity)}
           onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>
@@ -91,8 +90,8 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
             <View style={Styles.flex}>
               <FText style={Styles.portName}>
                 {`${item.sourceAirportCode}` +
-                  (item.departureAirportTerminal
-                    ? ` - ${item.departureAirportTerminal}`
+                  (item.sourceAirportTerminal
+                    ? ` - ${item.sourceAirportTerminal}`
                     : '')}
               </FText>
               <FText style={Styles.time}>{item.departureTime}</FText>
@@ -117,8 +116,8 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
               <FText style={Styles.portName}>
                 {`${item.destinationAirportCode}` +
-                  (item.arrivalAirportTerminal
-                    ? ` - ${item.arrivalAirportTerminal}`
+                  (item.destinationAirportTerminal
+                    ? ` - ${item.destinationAirportTerminal}`
                     : '')}
               </FText>
               <FText style={Styles.time}>{item.arrivalTime}</FText>
@@ -137,10 +136,7 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
             </View>
           )}
         </FTouchableOpacity>
-        {!item.actionsDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <Actions />
-          )}
+        {(rescheduleAction || cancelAction || viewRemarksAction) && <Actions />}
       </View>
     </>
   );

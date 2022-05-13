@@ -6,23 +6,26 @@ import {DP} from '../../../../utils/Dimen';
 import {Color} from '../../../../utils/color';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 
-export default function InfoBox({preferenceSelected, onPress}) {
+export default function InfoBox({
+  isAlert,
+  onPress,
+  text,
+  disablePressEvent,
+  showChevron,
+}) {
   return (
     <FTouchableOpacity
-      style={styles.container(preferenceSelected)}
-      onPress={onPress}>
+      style={styles.container(isAlert)}
+      onPress={onPress}
+      disabled={disablePressEvent}>
       <Feather
-        name={preferenceSelected ? 'check-circle' : 'info'}
+        name={isAlert ? 'info' : 'check-circle'}
         size={DP._16}
-        color={preferenceSelected ? Color.DARK_SEA_FOAM : Color.TWILIGHT_BLUE}
+        color={isAlert ? Color.TWILIGHT_BLUE : Color.DARK_SEA_FOAM}
         style={styles.icon}
       />
-      <FText style={styles.text(preferenceSelected)}>
-        {preferenceSelected
-          ? 'Bravo! You have set order of preference for shortlisted flights. Booking details shall be shared shortly.'
-          : 'Your travel desk has shared shortlisted flight options. Please set order of preference asap.'}
-      </FText>
-      {!preferenceSelected && (
+      <FText style={styles.text(isAlert)}>{text}</FText>
+      {showChevron && (
         <Feather
           name="chevron-right"
           size={DP._24}
@@ -35,19 +38,19 @@ export default function InfoBox({preferenceSelected, onPress}) {
 }
 
 const styles = StyleSheet.create({
-  container: (preferenceSelected) => ({
+  container: (isAlert) => ({
     paddingVertical: DP._16,
-    backgroundColor: !preferenceSelected ? Color.DODGER_BLUE + '12' : 'white',
+    backgroundColor: isAlert ? Color.DODGER_BLUE + '12' : 'white',
     flexDirection: 'row',
     paddingLeft: DP._16,
     paddingRight: DP._8,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
-    borderWidth: preferenceSelected ? DP._0_5 : 0,
-    borderColor: preferenceSelected ? Color.DARK_SEA_FOAM : null,
+    borderWidth: isAlert ? 0 : DP._0_5,
+    borderColor: isAlert ? null : Color.DARK_SEA_FOAM,
   }),
-  text: (preferenceSelected) => ({
-    color: !preferenceSelected ? Color.TWILIGHT_BLUE : Color.DARK,
+  text: (isAlert) => ({
+    color: isAlert ? Color.TWILIGHT_BLUE : Color.DARK,
     lineHeight: DP._21,
     marginRight: DP._16,
     flex: 1,

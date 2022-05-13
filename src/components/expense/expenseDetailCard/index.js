@@ -28,7 +28,7 @@ const ExpenseDetailCard = ({data, style}) => {
           )}
         </View>
       </View>
-      {data.notes && (
+      {!!data.notes && (
         <>
           <Separator style={Styles.separator} />
           <FText style={Styles.remark}>{data.notes}</FText>

@@ -7,23 +7,23 @@ import {DP} from '../../../utils/Dimen';
 export default function CoTravellers({data}) {
   return (
     <View style={Styles.container}>
-      {data.names?.length > 0 && (
-        <>
-          <View style={Styles.subContainer}>
-            <FText style={Styles.title}>Co-traveler details</FText>
+      <>
+        <View style={Styles.subContainer}>
+          <FText style={Styles.title}>Co-traveler detail(s)</FText>
+          {data.names?.length > 0 && (
             <FText style={Styles.cotravelerCount}>
               {data.cotravellerCount}
             </FText>
-          </View>
-          <FText
-            style={[
-              Styles.marginTop_8,
-              {paddingBottom: data.purpose ? DP._24 : 0},
-            ]}>
-            {data.names}
-          </FText>
-        </>
-      )}
+          )}
+        </View>
+        <FText
+          style={[
+            Styles.marginTop_8,
+            {paddingBottom: data.purpose ? DP._24 : 0},
+          ]}>
+          {data.names?.length > 0 ? data.names : 'None'}
+        </FText>
+      </>
       {!!data.purpose && (
         <>
           <FText style={[Styles.title]}>Purpose of travel</FText>

@@ -13,8 +13,10 @@ import Styles from './Styles';
 function StackHeader(props) {
   return (
     <View style={[Styles.container(props.shadowVisible), props.containerStyle]}>
-      <FTouchableOpacity onPress={props.onBackClick}>
-        <Feather name="arrow-left" size={DP._24} color={Color.BLACK} />
+      <FTouchableOpacity
+        onPress={props.onBackClick}
+        hitSlop={{top: 20, bottom: 20, left: 50, right: 20}}>
+        <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
       </FTouchableOpacity>
       <FText type="medium" style={Styles.title}>
         {props.title}

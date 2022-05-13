@@ -69,7 +69,7 @@ const TripCardLoadingState = ({onBackClick}) => {
         delay={500}
         style={Styles.headerContainer}>
         <FTouchableOpacity onPress={onBackClick}>
-          <Feather name="arrow-left" size={DP._24} color={Color.BLACK} />
+          <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
         </FTouchableOpacity>
         <View style={{marginLeft: DP._26}}>
           <Placeholder style={Styles.headerTitleLoader} />

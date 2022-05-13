@@ -5,8 +5,8 @@ import {DP} from '../../../utils/Dimen';
 export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
-    padding: DP._16,
-    paddingTop: DP._23,
+    paddingHorizontal: DP._16,
+    marginTop: DP._25,
   },
   title: {
     fontSize: DP._14,

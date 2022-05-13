@@ -41,7 +41,6 @@ import {
   HomeHeader,
   ClaimsCard,
   ClaimsList,
-  HeaderView,
   MessageCard,
   FloatingAction,
   HomeLoadingState,
@@ -58,6 +57,8 @@ import {
   Swiper,
   MonthPicker,
   BasicTravelDetailsCard,
+  ReceiptsList,
+  ReceiptListView,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -240,10 +241,6 @@ const HOME = [
     component: <ClaimsList {...data.claimsListProps} />,
   },
   {
-    name: 'HeaderView',
-    component: <HeaderView {...data.headerViewProps} />,
-  },
-  {
     name: 'MessageCard',
     component: <MessageCard {...data.messageCardProps} />,
   },
@@ -286,6 +283,14 @@ const EXPENSE = [
   {
     name: 'MonthPicker',
     component: <MonthPicker {...data.monthPickerProps} />,
+  },
+  {
+    name: 'ReceiptsList',
+    component: <ReceiptsList {...data.receiptsListProps} />,
+  },
+  {
+    name: 'ReceiptListView',
+    component: <ReceiptListView {...data.receiptListViewProps} />,
   },
 ];
 

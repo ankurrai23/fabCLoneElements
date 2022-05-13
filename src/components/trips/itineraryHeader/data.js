@@ -12,7 +12,7 @@ const itineraryHeaderProps = {
     color: Color.DARK_SEA_FOAM,
   },
   tripRequesterInfo: {
-    requestedBy: 'Rohan Srivastava',
+    name: 'Rohan Srivastava',
     department: 'B2B sales',
     designation: 'Area Manager',
   },

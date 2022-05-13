@@ -13,22 +13,14 @@ const LocationInputBox = ({
   value,
   index,
   error,
-  showAddButton,
   showRemoveButton,
   onPress,
   onRemove,
-  onAdd,
   joinBelow,
 }) => {
   const CloseButton = () => (
     <FTouchableOpacity onPress={onRemove} style={Styles.closeButton}>
       <AntDesign name="close" size={DP._18} color={Color.DARK} />
-    </FTouchableOpacity>
-  );
-
-  const AddButton = () => (
-    <FTouchableOpacity onPress={onAdd} style={Styles.addButton}>
-      <AntDesign name="pluscircleo" size={DP._20} color={Color.DARK} />
     </FTouchableOpacity>
   );
 
@@ -59,7 +51,6 @@ const LocationInputBox = ({
         />
       </View>
       <View style={{width: DP._36}}>
-        {showAddButton ? <AddButton /> : null}
         {showRemoveButton ? <CloseButton /> : null}
       </View>
     </View>

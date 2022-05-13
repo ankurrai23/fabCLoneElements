@@ -15,7 +15,6 @@ import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
-import Animated from 'react-native-reanimated';
 /*
 TODO:
 1. Cancelled state prop
@@ -29,7 +28,6 @@ const FlightItineraryCard = ({
   hideIcon,
   showLine,
   showInfo,
-  preferenceSelected,
   timelineGreyed,
   processed,
 }) => {
@@ -43,6 +41,12 @@ const FlightItineraryCard = ({
   );
   const viewShortlistedFlightAction = isActionEnabled(
     FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
+  );
+  const modificationRequestedAction = isActionEnabled(
+    FlightSubTripActions.MODIFICATION_REQUESTED,
+  );
+  const cancellationRequestedAction = isActionEnabled(
+    FlightSubTripActions.CANCELLATION_REQUESTED,
   );
 
   const ActionsInItinerary = () => (
@@ -147,8 +151,8 @@ const FlightItineraryCard = ({
               <FText style={Styles.portName} numberOfLines={1}>
                 {item.pnr
                   ? item.sourceAirportCode +
-                    (item.departureAirportTerminal
-                      ? ` - ${item.departureAirportTerminal}`
+                    (item.sourceAirportTerminal
+                      ? ` - ${item.sourceAirportTerminal}`
                       : '')
                   : item.source}
               </FText>
@@ -179,8 +183,8 @@ const FlightItineraryCard = ({
               <FText style={Styles.portName} numberOfLines={1}>
                 {item.pnr
                   ? item.destinationAirportCode +
-                    (item.arrivalAirportTerminal
-                      ? ` - ${item.arrivalAirportTerminal}`
+                    (item.destinationAirportTerminal
+                      ? ` - ${item.destinationAirportTerminal}`
                       : '')
                   : item.destination}
               </FText>
@@ -202,13 +206,26 @@ const FlightItineraryCard = ({
             </View>
           )}
         </FTouchableOpacity>
-        {!item.actionsDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+        {(rescheduleAction || cancelAction || viewRemarksAction) && (
+          <ActionsInItinerary />
+        )}
         {showInfo && (
           <InfoBox
-            preferenceSelected={preferenceSelected}
+            isAlert={
+              shortlistingAction ||
+              modificationRequestedAction ||
+              cancellationRequestedAction
+            }
+            text={
+              viewShortlistedFlightAction?.name ||
+              shortlistingAction?.name ||
+              modificationRequestedAction?.name ||
+              cancellationRequestedAction?.name
+            }
+            showChevron={!!shortlistingAction}
+            disablePressEvent={
+              modificationRequestedAction || cancellationRequestedAction
+            }
             onPress={() =>
               onActionPress(viewShortlistedFlightAction || shortlistingAction)
             }
