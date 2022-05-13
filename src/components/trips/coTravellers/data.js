@@ -1,7 +1,7 @@
 const coTravellersProps = {
   data: {
-    cotravellerCount: '5 Co-travellers',
-    names: 'Abhishek Gupta, Pranay Shah, Tanmay Shroff, Prateek Gupta',
+    cotravellerCount: '1 Co-travellers',
+    names: '',
     purpose: '',
   },
 };
