@@ -266,10 +266,11 @@ export default function HotelDetailCard({
             Payment mode
           </FText>
           <View style={Styles.paymentModeContainer}>
-            <View style={[Styles.flexRow, Styles.halfFlex]}>
+            <View
+              style={[Styles.flexRow, Styles.halfFlex, {alignItems: 'center'}]}>
               <Feather
                 name="credit-card"
-                size={DP._15}
+                size={DP._16}
                 color={Color.GREY_PURPLE}
               />
               <FText style={{marginLeft: DP._8, fontSize: DP._12}}>

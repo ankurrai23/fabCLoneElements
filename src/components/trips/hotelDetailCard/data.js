@@ -51,7 +51,7 @@ export default {
     ],
     coTravellers: ['Abhishek Gupta', 'Pranay Shah'],
     paymentStatus: {
-      statusText: 'payment pending',
+      statusText: 'Payment pending',
       color: Color.MANGO,
       icon: 'info',
     },
