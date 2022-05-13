@@ -37,7 +37,6 @@ import HotelPreferenceCard from './components/trips/hotelPreferenceCard';
 import ManagerActions from './components/trips/managerActions';
 import ReceivedTripCard from './components/trips/receivedTripCard';
 import TripCardLoadingState from './components/trips/tripCardLoadingState';
-import ItineraryViewLoadingState from './components/trips/itineraryViewLoadingState';
 import HotelPreferenceLoadingState from './components/trips/hotelPreferenceLoadingState';
 import HotelDetailLoadingState from './components/trips/hotelDetailLoadingState';
 import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoadingState';
@@ -118,7 +117,6 @@ export {
   HotelPreferenceCard,
   ManagerActions,
   TripCardLoadingState,
-  ItineraryViewLoadingState,
   HotelPreferenceLoadingState,
   HotelDetailLoadingState,
   FlightPreferenceLoadingState,
