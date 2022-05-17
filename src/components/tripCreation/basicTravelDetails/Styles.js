@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
-    marginTop: DP._32,
+    marginTop: DP._5,
     // marginBottom: DP._8,
   },
   title: {

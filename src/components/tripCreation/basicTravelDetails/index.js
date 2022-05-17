@@ -14,10 +14,11 @@ function BasicTravelDetails({
   openDestinationGoogleSearch,
   openReturnDatePicker,
   openDepatureDatePicker,
+  onLayout,
 }) {
   let roundTrip = tripType === 1;
   return (
-    <View style={Styles.container}>
+    <View onLayout={onLayout} style={Styles.container}>
       {/* <FText type="medium" style={Styles.title}>
         Basic travel details
       </FText> */}
