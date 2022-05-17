@@ -126,7 +126,7 @@ const FlightItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item?.status?.key === 'CANCELLED' ? (
+            {item.showStatus ? (
               <TripStatus statusObj={item.status} />
             ) : processed ? (
               <Feather
