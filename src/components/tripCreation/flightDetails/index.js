@@ -31,7 +31,9 @@ export default function FlightDetails(props) {
               <View style={Styles.slotContainer}>
                 <FText type="medium" style={Styles.slotText}>{`Slot: ${moment(
                   item.startTime,
-                ).format('hA')} - ${moment(item.endTime).format('hA')}`}</FText>
+                ).format('h:mmA')} - ${moment(item.endTime).format(
+                  'h:mmA',
+                )}`}</FText>
               </View>
             </View>
             <View style={Styles.routeContainer}>
@@ -80,8 +82,8 @@ export default function FlightDetails(props) {
             <View style={Styles.slotContainer}>
               <FText type="medium" style={Styles.slotText}>{`Slot: ${moment(
                 props.data[0]?.startTime,
-              ).format('hA')} - ${moment(props.data[0]?.endTime).format(
-                'hA',
+              ).format('h:mmA')} - ${moment(props.data[0]?.endTime).format(
+                'h:mmA',
               )}`}</FText>
             </View>
           </View>
@@ -126,7 +128,7 @@ export default function FlightDetails(props) {
   }
 
   return (
-    <View style={Styles.container}>
+    <View onLayout={props.onLayout} style={Styles.container(props.requestType)}>
       <View style={Styles.titleContainer}>
         <FText type="medium" style={Styles.title}>
           Flight(s)

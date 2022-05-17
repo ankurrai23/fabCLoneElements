@@ -43,7 +43,6 @@ import addHotelDetailsProps from './components/tripCreation/addHotelDetails/data
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
 import claimsListProps from './components/home/claimsList/data';
-import headerViewProps from './components/home/headerView/data';
 import messageCardProps from './components/home/messageCard/data';
 
 //expense components props
@@ -92,7 +91,6 @@ export {
   homeHeaderProps,
   claimsCardProps,
   claimsListProps,
-  headerViewProps,
   messageCardProps,
   floatingActionProps,
   checkboxProps,

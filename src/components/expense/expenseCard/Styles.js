@@ -18,6 +18,7 @@ export default StyleSheet.create({
     width: DP._40,
     height: DP._40,
     borderRadius: DP._8,
+    resizeMode: 'contain',
   },
   amount: (faded) => ({
     fontSize: DP._16,

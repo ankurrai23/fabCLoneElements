@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Platform} from 'react-native';
+import {View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
 import {FText, FTouchableOpacity, TripStatus} from '../../..';
@@ -11,13 +11,12 @@ import Separator from '../../../common/components/separator';
 
 function ItineraryHeader(props) {
   return (
-    <View
-      style={{
-        paddingTop: Platform.OS === 'android' ? DP._20 : DP._10,
-      }}>
+    <View style={Styles.container}>
       <View style={Styles.flexRow}>
-        <FTouchableOpacity onPress={props.onBackClick}>
-          <Feather name="arrow-left" size={DP._24} color={Color.BLACK} />
+        <FTouchableOpacity
+          onPress={props.onBackClick}
+          hitSlop={{left: 50, right: 20, bottom: 20, top: 20}}>
+          <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
         </FTouchableOpacity>
         <FText type="medium" style={Styles.title}>
           {props.itinerary}

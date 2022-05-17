@@ -15,7 +15,6 @@ import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
 import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
-import Animated from 'react-native-reanimated';
 /*
 TODO:
 1. Cancelled state prop
@@ -29,7 +28,6 @@ const FlightItineraryCard = ({
   hideIcon,
   showLine,
   showInfo,
-  preferenceSelected,
   timelineGreyed,
   processed,
 }) => {
@@ -128,7 +126,7 @@ const FlightItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item?.status?.key === 'CANCELLED' ? (
+            {item.showStatus ? (
               <TripStatus statusObj={item.status} />
             ) : processed ? (
               <Feather
@@ -145,15 +143,15 @@ const FlightItineraryCard = ({
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
             <View style={Styles.flex}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {item.pnr
+                {processed
                   ? item.sourceAirportCode +
-                    (item.departureAirportTerminal
-                      ? ` - ${item.departureAirportTerminal}`
+                    (item.sourceAirportTerminal
+                      ? ` - ${item.sourceAirportTerminal}`
                       : '')
                   : item.source}
               </FText>
               <FText style={Styles.time}>
-                {item.pnr ? item.departureTime : item.sourceAirportCode}
+                {processed ? item.departureTime : item.sourceAirportCode}
               </FText>
             </View>
             <View
@@ -177,19 +175,19 @@ const FlightItineraryCard = ({
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {item.pnr
+                {processed
                   ? item.destinationAirportCode +
-                    (item.arrivalAirportTerminal
-                      ? ` - ${item.arrivalAirportTerminal}`
+                    (item.destinationAirportTerminal
+                      ? ` - ${item.destinationAirportTerminal}`
                       : '')
                   : item.destination}
               </FText>
               <FText style={Styles.time}>
-                {item.pnr ? item.arrivalTime : item.destinationAirportCode}
+                {processed ? item.arrivalTime : item.destinationAirportCode}
               </FText>
             </View>
           </View>
-          {item.pnr && (
+          {processed && (
             <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
               <View>
                 <FText style={Styles.portName}>{item.airline}</FText>
@@ -202,13 +200,19 @@ const FlightItineraryCard = ({
             </View>
           )}
         </FTouchableOpacity>
-        {!item.actionsDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+        {(rescheduleAction || cancelAction || viewRemarksAction) && (
+          <ActionsInItinerary />
+        )}
         {showInfo && (
           <InfoBox
-            preferenceSelected={preferenceSelected}
+            isAlert={shortlistingAction || !!item.notificationText}
+            text={
+              viewShortlistedFlightAction?.name ||
+              shortlistingAction?.name ||
+              item.notificationText
+            }
+            showChevron={!!shortlistingAction}
+            disablePressEvent={!!item.notificationText}
             onPress={() =>
               onActionPress(viewShortlistedFlightAction || shortlistingAction)
             }

@@ -8,6 +8,7 @@ const Drawer = createDrawerNavigator();
 import ComponentList from './ComponentList';
 import {FlatList} from 'react-native-gesture-handler';
 import CustomDrawer from './CustomDrawer';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function App() {
   return (
@@ -21,11 +22,14 @@ export default function App() {
             return (
               <Drawer.Screen name={item.name} key={`abc${index}`}>
                 {() => (
-                  <FlatList
-                    contentContainerStyle={styles.container}
-                    showsVerticalScrollIndicator={false}
-                    ListHeaderComponent={item.component}
-                  />
+                  // <FlatList
+                  //   contentContainerStyle={styles.container}
+                  //   showsVerticalScrollIndicator={false}
+                  //   ListHeaderComponent={item.component}
+                  // />
+                  <SafeAreaView style={styles.container}>
+                    {item.component}
+                  </SafeAreaView>
                 )}
               </Drawer.Screen>
             );
@@ -37,7 +41,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    backgroundColor: 'white',
+    paddingHorizontal: 24,
+    // justifyContent: 'center',
     // // paddingVertical: 16,
     // // paddingHorizontal: 16,
     flexGrow: 1,

@@ -7,7 +7,6 @@ export default StyleSheet.create({
   container: {
     borderRadius: DP._12,
     backgroundColor: Color.WHITE,
-    marginTop: DP._8,
     ...shadowObj,
   },
   subContainer: (modified) => ({
@@ -103,7 +102,11 @@ export default StyleSheet.create({
   searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
   bookingDetailsContainer: {flex: 1, marginBottom: DP._8},
   flexRow: {flexDirection: 'row'},
-  paymentStatusContainer: {lineHeight: DP._16, flexDirection: 'row'},
+  paymentStatusContainer: {
+    lineHeight: DP._16,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
   modalHeading: {
     fontSize: DP._20,
     color: Color.BLACK,
@@ -144,5 +147,14 @@ export default StyleSheet.create({
     width: DP._18,
     height: DP._18,
     resizeMode: 'contain',
+  },
+  modifyButtonStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: DP._26,
+  },
+  cancelButtonStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

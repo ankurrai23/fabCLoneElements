@@ -6,8 +6,8 @@ export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
-    paddingVertical: DP._12,
-    marginBottom: DP._8,
+    marginTop: DP._32,
+    // marginBottom: DP._8,
   },
   topContainer: {
     flexDirection: 'row',

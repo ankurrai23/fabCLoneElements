@@ -37,7 +37,6 @@ import HotelPreferenceCard from './components/trips/hotelPreferenceCard';
 import ManagerActions from './components/trips/managerActions';
 import ReceivedTripCard from './components/trips/receivedTripCard';
 import TripCardLoadingState from './components/trips/tripCardLoadingState';
-import ItineraryViewLoadingState from './components/trips/itineraryViewLoadingState';
 import HotelPreferenceLoadingState from './components/trips/hotelPreferenceLoadingState';
 import HotelDetailLoadingState from './components/trips/hotelDetailLoadingState';
 import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoadingState';
@@ -65,7 +64,6 @@ import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
 import ClaimsList from './components/home/claimsList';
-import HeaderView from './components/home/headerView';
 import MessageCard from './components/home/messageCard';
 import HomeLoadingState from './components/home/homeLoadingState';
 
@@ -119,7 +117,6 @@ export {
   HotelPreferenceCard,
   ManagerActions,
   TripCardLoadingState,
-  ItineraryViewLoadingState,
   HotelPreferenceLoadingState,
   HotelDetailLoadingState,
   FlightPreferenceLoadingState,
@@ -145,7 +142,6 @@ export {
   HomeHeader,
   ClaimsCard,
   ClaimsList,
-  HeaderView,
   MessageCard,
   HomeLoadingState,
   //Expense,

@@ -51,7 +51,7 @@ export default {
     ],
     coTravellers: ['Abhishek Gupta', 'Pranay Shah'],
     paymentStatus: {
-      statusText: 'payment pending',
+      statusText: 'Payment pending',
       color: Color.MANGO,
       icon: 'info',
     },
@@ -85,9 +85,8 @@ export default {
         name: 'Contact 24x7 support',
       },
     ],
-    actionsDisabled: false,
-    modificationRequested: false,
-    cancelled: false,
+    alertMessage: 'You have sent a cancellation request for this booking.',
+    reduceOpacity: true,
   },
   onActionPress: (item) => console.log(item),
   supportDetails: [

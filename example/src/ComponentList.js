@@ -21,7 +21,6 @@ import {
   HotelPreferenceCard,
   ManagerActions,
   TripCardLoadingState,
-  ItineraryViewLoadingState,
   HotelPreferenceLoadingState,
   HotelDetailLoadingState,
   FlightPreferenceLoadingState,
@@ -41,7 +40,6 @@ import {
   HomeHeader,
   ClaimsCard,
   ClaimsList,
-  HeaderView,
   MessageCard,
   FloatingAction,
   HomeLoadingState,
@@ -157,10 +155,6 @@ const TRIP_COMPONENTS = [
     component: <TripCardLoadingState {...data.listTypeFilterProps} />,
   },
   {
-    name: 'ItineraryViewLoadingState',
-    component: <ItineraryViewLoadingState />,
-  },
-  {
     name: 'HotelPreferenceLoadingState',
     component: <HotelPreferenceLoadingState />,
   },
@@ -235,10 +229,6 @@ const HOME = [
   {
     name: 'ClaimList',
     component: <ClaimsList {...data.claimsListProps} />,
-  },
-  {
-    name: 'HeaderView',
-    component: <HeaderView {...data.headerViewProps} />,
   },
   {
     name: 'MessageCard',
