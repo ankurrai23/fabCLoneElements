@@ -40,7 +40,8 @@ const HotelItineraryCard = ({
   const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
 
   const viewRemarksAction = isActionEnabled(HotelSubTripActions.VIEW_REMARKS);
-  const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
+  const directionAction =
+    isActionEnabled(HotelSubTripActions.DIRECTION) && processed;
   const shortlistingAction = isActionEnabled(
     HotelSubTripActions.SHORTLIST_HOTEL_TRIPS,
   );
