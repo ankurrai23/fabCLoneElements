@@ -149,7 +149,10 @@ export default function HotelDetailCard({
         <ModificationAlertBox msg={item.notificationText} />
       )}
       <View style={[Styles.container, style]}>
-        <View style={Styles.subContainer(item.notificationText)}>
+        <View
+          style={Styles.subContainer(
+            item.notificationText || item.bookingStatus === 'CANCELLED',
+          )}>
           <View style={Styles.hotelNameAndImageContainer}>
             {item.mainImage && (
               <FTouchableOpacity
