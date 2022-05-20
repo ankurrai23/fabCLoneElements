@@ -160,7 +160,7 @@ export default function HotelDetailCard({
                 onPress={onMainImagePress}>
                 <FImage
                   style={Styles.hotelImage}
-                  source={{uri: item.mainImage}}
+                  source={{uri: item.imageBaseUrl + item.mainImage}}
                 />
                 <FontAwesome5
                   name="search-plus"
