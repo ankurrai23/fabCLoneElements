@@ -10,7 +10,7 @@ export default StyleSheet.create({
     ...shadowObj,
   },
   subContainer: (modified) => ({
-    opacity: modified ? 0.4 : 1,
+    opacity: modified ? 0.6 : 1,
     padding: DP._16,
   }),
   addressText: {

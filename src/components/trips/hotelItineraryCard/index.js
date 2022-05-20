@@ -40,8 +40,7 @@ const HotelItineraryCard = ({
   const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
 
   const viewRemarksAction = isActionEnabled(HotelSubTripActions.VIEW_REMARKS);
-  const directionAction =
-    isActionEnabled(HotelSubTripActions.DIRECTION) && processed;
+  const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
   const shortlistingAction = isActionEnabled(
     HotelSubTripActions.SHORTLIST_HOTEL_TRIPS,
   );
@@ -178,7 +177,7 @@ const HotelItineraryCard = ({
               ) : (
                 <View />
               )}
-              {directionAction && (
+              {directionAction && processed && (
                 <FTouchableOpacity
                   style={[Styles.flexRowWithAlignCenter]}
                   onPress={() => onActionPress(directionAction)}>
