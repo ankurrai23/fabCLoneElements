@@ -173,7 +173,7 @@ const HotelItineraryCard = ({
             <View style={Styles.checkInAndDirectionContainer}>
               {item.checkInTime ? (
                 <FText style={Styles.checkIn}>
-                  Check-in {item.checkInTime}
+                  Check-in: {item.checkInTime}
                 </FText>
               ) : (
                 <View />
