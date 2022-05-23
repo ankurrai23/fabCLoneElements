@@ -8,7 +8,7 @@ import FTouchableOpacity from '../../rn/FTouchableOpacity';
 
 import TextField from '../textField';
 import Styles from './Styles';
-import Utils from '../../../utils/Utils';
+import Utils, {isPlatformIos} from '../../../utils/Utils';
 
 export default function DropDownList({
   label,
@@ -45,6 +45,28 @@ export default function DropDownList({
       </FTouchableOpacity>
     );
   };
+
+  const SearchList = () => {
+    return (
+      <FlatList
+        bounces={false}
+        data={searchResult}
+        renderItem={renderSearchItem}
+        style={
+          Utils.isPlatformIos()
+            ? Styles.iosDropdownStyle
+            : Styles.androidDropdownStyle
+        }
+        contentContainerStyle={
+          Utils.isPlatformIos() ? Styles.iosContentContainerStyle : {}
+        }
+        keyboardShouldPersistTaps="always"
+        keyExtractor={(index) => index}
+        showsVerticalScrollIndicator={false}
+      />
+    );
+  };
+
   return (
     <View>
       <TextField
@@ -58,22 +80,15 @@ export default function DropDownList({
       />
       {error && <FText style={Styles.errorText}>{error}</FText>}
       {!error && showSearch && !!searchResult?.length && (
-        <FlatList
-          bounces={false}
-          data={searchResult}
-          renderItem={renderSearchItem}
-          style={
-            Utils.isPlatformIos()
-              ? Styles.iosDropdownStyle
-              : Styles.androidDropdownStyle
-          }
-          contentContainerStyle={
-            Utils.isPlatformIos() ? Styles.iosContentContainerStyle : {}
-          }
-          keyboardShouldPersistTaps="always"
-          keyExtractor={(index) => index}
-          showsVerticalScrollIndicator={false}
-        />
+        <>
+          {isPlatformIos() ? (
+            <View style={Styles.flatlistView}>
+              <SearchList />
+            </View>
+          ) : (
+            <SearchList />
+          )}
+        </>
       )}
     </View>
   );

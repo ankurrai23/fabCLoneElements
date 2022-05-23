@@ -10,7 +10,7 @@ export default StyleSheet.create({
     ...shadowObj,
   },
   subContainer: (modified) => ({
-    opacity: modified ? 0.4 : 1,
+    opacity: modified ? 0.6 : 1,
     padding: DP._16,
   }),
   addressText: {
@@ -102,7 +102,11 @@ export default StyleSheet.create({
   searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
   bookingDetailsContainer: {flex: 1, marginBottom: DP._8},
   flexRow: {flexDirection: 'row'},
-  paymentStatusContainer: {lineHeight: DP._16, flexDirection: 'row'},
+  paymentStatusContainer: {
+    lineHeight: DP._16,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
   modalHeading: {
     fontSize: DP._20,
     color: Color.BLACK,

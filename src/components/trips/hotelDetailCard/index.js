@@ -145,9 +145,14 @@ export default function HotelDetailCard({
         <RefreshControl refreshing={false} onRefresh={onRefresh} />
       }>
       {(posAction || invoiceAction || reviewAction) && <PostTripHotelActions />}
-      {!!item.alertMessage && <ModificationAlertBox msg={item.alertMessage} />}
+      {!!item.notificationText && (
+        <ModificationAlertBox msg={item.notificationText} />
+      )}
       <View style={[Styles.container, style]}>
-        <View style={Styles.subContainer(item.reduceOpacity)}>
+        <View
+          style={Styles.subContainer(
+            item.notificationText || item.bookingStatus === 'CANCELLED',
+          )}>
           <View style={Styles.hotelNameAndImageContainer}>
             {item.mainImage && (
               <FTouchableOpacity
@@ -155,7 +160,7 @@ export default function HotelDetailCard({
                 onPress={onMainImagePress}>
                 <FImage
                   style={Styles.hotelImage}
-                  source={{uri: item.mainImage}}
+                  source={{uri: item.imageBaseUrl + item.mainImage}}
                 />
                 <FontAwesome5
                   name="search-plus"
@@ -264,10 +269,11 @@ export default function HotelDetailCard({
             Payment mode
           </FText>
           <View style={Styles.paymentModeContainer}>
-            <View style={[Styles.flexRow, Styles.halfFlex]}>
+            <View
+              style={[Styles.flexRow, Styles.halfFlex, {alignItems: 'center'}]}>
               <Feather
                 name="credit-card"
-                size={DP._15}
+                size={DP._16}
                 color={Color.GREY_PURPLE}
               />
               <FText style={{marginLeft: DP._8, fontSize: DP._12}}>

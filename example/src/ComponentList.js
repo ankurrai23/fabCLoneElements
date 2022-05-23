@@ -21,7 +21,6 @@ import {
   HotelPreferenceCard,
   ManagerActions,
   TripCardLoadingState,
-  ItineraryViewLoadingState,
   HotelPreferenceLoadingState,
   HotelDetailLoadingState,
   FlightPreferenceLoadingState,
@@ -155,10 +154,6 @@ const TRIP_COMPONENTS = [
   {
     name: 'TripCardLoadingState',
     component: <TripCardLoadingState {...data.listTypeFilterProps} />,
-  },
-  {
-    name: 'ItineraryViewLoadingState',
-    component: <ItineraryViewLoadingState />,
   },
   {
     name: 'HotelPreferenceLoadingState',

@@ -39,6 +39,7 @@ const flightItineraryCardProps = {
         name: 'You have sent a modification request for this booking.',
       },
     ],
+    showStatus: false,
   },
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),

@@ -37,7 +37,6 @@ export default StyleSheet.create({
   separator: {
     backgroundColor: Color.PALE_GREY,
     height: DP._1,
-    marginHorizontal: DP._16,
     marginVertical: DP._7,
   },
   renderItem: {

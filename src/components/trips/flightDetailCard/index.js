@@ -58,16 +58,22 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
           {title}
         </FText>
       )}
-      {!!item.alertMessage && (
+      {!!item.notificationText && (
         <ModificationAlertBox
-          msg={item.alertMessage}
+          msg={item.notificationText}
           style={{marginHorizontal: DP._16}}
         />
       )}
       <View style={[Styles.container, style]}>
         <FTouchableOpacity
-          activeOpacity={item.reduceOpacity ? 0.4 : 1}
-          style={Styles.card(item.reduceOpacity)}
+          activeOpacity={
+            item.notificationText || item.flightBookingStatus === 'CANCELLED'
+              ? 0.6
+              : 1
+          }
+          style={Styles.card(
+            item.notificationText || item.flightBookingStatus === 'CANCELLED',
+          )}
           onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>

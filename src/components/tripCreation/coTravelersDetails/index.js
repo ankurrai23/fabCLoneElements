@@ -51,7 +51,7 @@ export default function CoTravelersDetails(props) {
       {props.isCoTravellersEnabled && (
         <PickerField
           onPress={props.onPressCoTraveler}
-          label="Enter co-travelers email IDs"
+          label="Select co-travelers"
           value={props.data?.length}
           error={props.coTravelerError}
           helperText={getHelperText()}>
