@@ -58,6 +58,7 @@ import {
   BasicTravelDetailsCard,
   ReceiptsList,
   ReceiptListView,
+  RemoveItinerary,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -222,6 +223,10 @@ const TRIP_CREATION = [
   {
     name: 'BasicTravelDetailsCard',
     component: <BasicTravelDetailsCard {...data.basicTravelDetailsCardProps} />,
+  },
+  {
+    name: 'Remove Itinerary',
+    component: <RemoveItinerary {...data.removeItineraryProps} />,
   },
 ];
 
