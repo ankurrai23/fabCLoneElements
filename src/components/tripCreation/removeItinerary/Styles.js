@@ -7,13 +7,13 @@ export default StyleSheet.create({
   removeItinerary: {
     flexDirection: 'row',
     paddingHorizontal: DP._16,
-    marginVertical: DP._5,
-    marginTop: DP._21,
+    // marginVertical: DP._5,
+    marginTop: DP._24,
     justifyContent: 'space-between',
   },
   itineraryTxt: {
-    fontSize: DP._12,
-    lineHeight: DP._14,
+    fontSize: DP._14,
+    lineHeight: DP._17,
     color: Color.DARK,
   },
   removeTxt: {

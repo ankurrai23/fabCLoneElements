@@ -17,8 +17,8 @@ export default function AddHotelDetails({data, errors, ...props}) {
                 ? data.city?.city
                 : data.preferredLocality?.locality
             }
-            error={errors.city}
-            helperText={errors.cityError}
+            error={data.cityError}
+            helperText={data.cityErrorString}
             label="Enter city/location"
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearch}
@@ -28,6 +28,7 @@ export default function AddHotelDetails({data, errors, ...props}) {
               label="Enter preferred locality"
               value={data.preferredLocality.location}
               error={data.preferredLocalityError}
+              helperText={data.localityError}
               labelStyle={Styles.textFieldLabel}
               onPress={props.openGoogleSearchLocality}
             />
@@ -45,6 +46,7 @@ export default function AddHotelDetails({data, errors, ...props}) {
               label="Check-out date"
               value={data.checkOutDate ? formattedDate(data.checkOutDate) : ''}
               error={data.checkOutDateError}
+              helperText={data.checkOutDateError && 'Enter check-out date'}
               labelStyle={Styles.textFieldLabel}
               onPress={props.openCheckOutDatePicker}
               touchContainer={{flex: 0.5, marginLeft: DP._8}}
