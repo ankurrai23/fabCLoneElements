@@ -11,8 +11,9 @@ import Styles from './Styles';
 
 export default function FlightDetails(props) {
   function renderRoute() {
-    if (props.tripType === 1) {
+    if (props.tripType === 1 || props.tripType === 2) {
       return props.data?.map((item, index) => {
+        if (item.remove) return null;
         return (
           <View key={index} style={Styles.renderRoute}>
             <View style={Styles.flexDirectionRow}>
