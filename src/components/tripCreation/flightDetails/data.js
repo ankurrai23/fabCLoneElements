@@ -1,8 +1,8 @@
 const flightDetailsProps = {
   data: [
     {
-      startTime: '2013-03-10T09:00:00Z',
-      endTime: '2013-03-10T09:00:00Z',
+      startTime: '09:00 AM',
+      endTime: '09:00 AM',
       departureDate: '16 feb 22',
 
       source: 'Delhi',
@@ -15,8 +15,8 @@ const flightDetailsProps = {
       // "type": "ONWARD",    // ONWARD, RETURN
     },
     {
-      startTime: '2013-03-10T09:00:00Z',
-      endTime: '2013-03-10T09:00:00Z',
+      startTime: '09:00 AM',
+      endTime: '09:00 AM',
       returnDate: '18 feb 22',
 
       source: 'Mumbai',
