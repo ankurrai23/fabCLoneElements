@@ -57,6 +57,7 @@ import {
   MonthPicker,
   ReceiptsList,
   ReceiptListView,
+  FilterModal
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -89,6 +90,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'ScrollableTabBar',
     component: <ScrollableTabBar {...data.scrollableTabBarProps} />,
+  },
+  {
+    name: 'FilterModal',
+    component: <FilterModal {...data.filterModalProps} />,
   },
 ];
 

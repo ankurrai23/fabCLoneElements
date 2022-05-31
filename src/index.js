@@ -21,6 +21,7 @@ import EmptyScreen from './common/components/emptyScreen';
 import DropDownList from './common/components/dropDownList';
 import StackHeader from './common/components/stackHeader';
 import ScrollableTabBar from './common/components/scrollableTabBar';
+import FilterModal from './common/components/filterModal';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -157,4 +158,5 @@ export {
   ReceiptsList,
   AddReceiptModal,
   ReceiptListView,
+  FilterModal,
 };
