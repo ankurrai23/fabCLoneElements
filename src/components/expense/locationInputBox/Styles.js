@@ -8,9 +8,10 @@ export default StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
-  textFieldContainer: {
+  textFieldContainer: (addRightMargin) => ({
     flex: 1,
-  },
+    marginRight: addRightMargin ? DP._22_3 : 0,
+  }),
   text: {
     color: Color.WHITE,
     fontSize: DP._12,
@@ -23,6 +24,7 @@ export default StyleSheet.create({
     backgroundColor: Color.TWILIGHT_BLUE,
     borderRadius: DP._15,
     marginRight: DP._8,
+    marginTop: DP.minus_8,
   },
   dashedLine: {
     left: DP._8,
@@ -33,5 +35,6 @@ export default StyleSheet.create({
   },
   closeButton: {
     marginLeft: DP._4,
+    marginTop: DP.minus_8,
   },
 });

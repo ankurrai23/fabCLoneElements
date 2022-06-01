@@ -14,6 +14,7 @@ const LocationInputBox = ({
   index,
   error,
   showRemoveButton,
+  addRightMargin,
   onPress,
   onRemove,
   joinBelow,
@@ -40,7 +41,7 @@ const LocationInputBox = ({
           />
         </View>
       )}
-      <View style={Styles.textFieldContainer}>
+      <View style={Styles.textFieldContainer(addRightMargin)}>
         <PickerField
           numberOfLines={1}
           value={value}
@@ -48,11 +49,10 @@ const LocationInputBox = ({
           placeholder={index > 0 ? 'Stop' : 'Start'}
           helperText={error}
           error={!!error}
+          topMargin={DP._8}
         />
       </View>
-      <View style={{width: DP._36}}>
-        {showRemoveButton ? <CloseButton /> : null}
-      </View>
+      <View>{showRemoveButton ? <CloseButton /> : null}</View>
     </View>
   );
 };
