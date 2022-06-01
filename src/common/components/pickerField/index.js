@@ -6,6 +6,12 @@ import FText from '../../rn/FText';
 
 import Styles from './Styles';
 
+/*
+Do not use styles for adding the top and bottom margin to this component
+To add some margin at the top, use topMargin prop
+To add some margin at the bottom, use bottomMargin prop
+*/
+
 const PickerField = (props) => {
   function renderView() {
     if (!props.value) {

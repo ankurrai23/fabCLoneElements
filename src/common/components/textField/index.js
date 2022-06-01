@@ -36,6 +36,11 @@ const dirtyStyle = {
   left: DP.minus_28,
 };
 
+/*
+Do not use styles for adding the top and bottom margin to this component
+To add some margin at the top, use topMargin prop
+To add some margin at the bottom, use bottomMargin prop
+*/
 class TextField extends React.Component {
   static propTypes = {
     style: PropTypes.object,
