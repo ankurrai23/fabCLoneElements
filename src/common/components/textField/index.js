@@ -22,11 +22,12 @@ import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 
 import Styles from './Styles';
+import {isPlatformIos} from '../../../utils/Utils';
 
 const cleanStyle = {
   fontSize: DP._14,
   top: DP._13,
-  left: Platform.OS === 'android' ? 0 : -4,
+  left: -4,
 };
 
 const dirtyStyle = {
@@ -64,7 +65,9 @@ class TextField extends React.Component {
         this.state.dirty ? dirtyStyle.top : cleanStyle.top,
       ),
       left: new Animated.Value(
-        this.state.dirty && props.icon ? props.labelDirtyLeft || dirtyStyle.left : cleanStyle.left,
+        this.state.dirty && props.icon
+          ? props.labelDirtyLeft || dirtyStyle.left
+          : cleanStyle.left,
       ),
     };
   }
@@ -111,8 +114,9 @@ class TextField extends React.Component {
     const nextStyle = dirty ? dirtyStyleConfig : cleanStyle;
     let labelStyle = this.state.labelStyle;
     let anims = Object.keys(nextStyle).map((prop) => {
-      let initialLeft = Platform.OS === 'android' ? 0 : -4;
-      let toValue = prop === 'left' && !this.props.icon ? initialLeft : nextStyle[prop];
+      let initialLeft = -4;
+      let toValue =
+        prop === 'left' && !this.props.icon ? initialLeft : nextStyle[prop];
       return Animated.timing(
         labelStyle[prop],
         {
@@ -193,23 +197,23 @@ class TextField extends React.Component {
     );
   };
 
-  componentDidMount() {
-    this.keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      this._keyboardDidHide,
-    );
-  }
+  // componentDidMount() {
+  //   this.keyboardDidHideListener = Keyboard.addListener(
+  //     'keyboardDidHide',
+  //     this._keyboardDidHide,
+  //   );
+  // }
 
-  componentWillUnmount() {
-    this.keyboardDidHideListener.remove();
-  }
+  // componentWillUnmount() {
+  //   this.keyboardDidHideListener.remove();
+  // }
 
-  _keyboardDidHide = () => {
-    if (this.textInput.current.isFocused()) {
-      this.textInput.current.blur();
-      this.setState({isFocused: false});
-    }
-  };
+  // _keyboardDidHide = () => {
+  //   if (this.textInput.current.isFocused()) {
+  //     this.textInput.current.blur();
+  //     this.setState({isFocused: false});
+  //   }
+  // };
 
   _onTextInput = (event) => {
     this.props.onTextInput && this.props.onTextInput(event.nativeEvent);
@@ -263,7 +267,7 @@ class TextField extends React.Component {
       elementStyles = [Styles.element, this.props.style];
 
     return (
-      <View style={Styles.mainContainer}>
+      <View style={Styles.mainContainer(this.props.topMargin)}>
         <View
           style={[
             Styles.container(this.state.isFocused, this.props.error),
@@ -276,7 +280,13 @@ class TextField extends React.Component {
           )}
           <View style={elementStyles}>
             {!!this.props.label && this._renderLabel()}
-            <TextInput {...props} style={[{color: Color.DARK}, props.style]} />
+            <TextInput
+              {...props}
+              style={[
+                {color: Color.DARK, marginLeft: isPlatformIos() ? 0 : -4},
+                props.style,
+              ]}
+            />
           </View>
           {!!this.props.rightIcon && (
             <View style={[Styles.iconContainer, this.props.rightIconStyle]}>
@@ -287,7 +297,11 @@ class TextField extends React.Component {
         {typeof this.props.helperText === 'object' ? (
           this.props.helperText
         ) : (
-          <FText style={Styles.helperText(this.props.error)}>
+          <FText
+            style={Styles.helperText(
+              this.props.error,
+              this.props.bottomMargin,
+            )}>
             {this.props.helperText}
           </FText>
         )}
