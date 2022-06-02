@@ -77,6 +77,7 @@ export default function DropDownList({
         onBlur={_onBlur}
         onFocus={_onFocus}
         autoFocus
+        topMargin={DP._16}
       />
       {error && <FText style={Styles.errorText}>{error}</FText>}
       {!error && showSearch && !!searchResult?.length && (

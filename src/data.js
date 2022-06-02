@@ -40,6 +40,8 @@ import otherTravelDetailsProps from './components/tripCreation/otherTravelDetail
 import approvalManagerProps from './components/tripCreation/approvalManager/data';
 import addFlightDetailsProps from './components/tripCreation/addFlightDetails/data';
 import addHotelDetailsProps from './components/tripCreation/addHotelDetails/data';
+import basicTravelDetailsCardProps from './components/tripCreation/basicTravelDetailsCard/data';
+import removeItineraryProps from './components/tripCreation/removeItinerary/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -106,7 +108,9 @@ export {
   locationInputBoxProps,
   swiperProps,
   monthPickerProps,
+  basicTravelDetailsCardProps,
   receiptsListProps,
   receiptListViewProps,
-  filterModalProps
+  removeItineraryProps,
+  filterModalProps,
 };
