@@ -9,6 +9,7 @@ import claimsCardProps from './common/components/claimsCard/data';
 import dropDownListProps from './common/components/dropDownList/data';
 import stackHeaderProps from './common/components/stackHeader/data';
 import scrollableTabBarProps from './common/components/scrollableTabBar/data';
+import filterModalProps from './common/components/filterModal/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -111,4 +112,5 @@ export {
   receiptsListProps,
   receiptListViewProps,
   removeItineraryProps,
+  filterModalProps,
 };
