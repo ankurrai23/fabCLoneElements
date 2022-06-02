@@ -53,6 +53,7 @@ export const DP = {
   _24: calculateDimen(24),
   _25: calculateDimen(25),
   _26: calculateDimen(26),
+  _26_3: calculateDimen(26.3),
   _27: calculateDimen(27),
   _28: calculateDimen(28),
   _29: calculateDimen(29),

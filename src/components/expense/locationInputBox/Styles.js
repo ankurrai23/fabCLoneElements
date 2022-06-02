@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   textFieldContainer: (addRightMargin) => ({
     flex: 1,
-    marginRight: addRightMargin ? DP._22_3 : 0,
+    marginRight: addRightMargin ? DP._26_3 : 0,
   }),
   text: {
     color: Color.WHITE,
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     zIndex: -1,
   },
   closeButton: {
-    marginLeft: DP._4,
+    marginLeft: DP._8,
     marginTop: DP.minus_8,
   },
 });
