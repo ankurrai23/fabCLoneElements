@@ -3,6 +3,7 @@ const locationInputBoxProps = {
   joinBelow: true,
   showAddButton: false,
   showRemoveButton: false,
+  addRightMargin: true,
   value: 'Delhi',
   // error: 'Please select city/locality',
   onAdd: () => console.log('add stop'),

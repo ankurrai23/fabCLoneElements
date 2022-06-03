@@ -7,42 +7,72 @@ export default StyleSheet.create({
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
     marginTop: DP._32,
-    // marginBottom: DP._8,
   },
   topContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   titleContainer: {
-    marginRight: DP._10,
-    flex: 0.9,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
   },
   title: {
     fontSize: DP._14,
     color: Color.DARK,
-    marginBottom: DP._4,
+  },
+  titleSubContainer: {
+    flex: 0.9,
+  },
+  hitSlop: {
+    top: DP._15,
+    bottom: DP._15,
+    left: DP._10,
+    right: 0,
+  },
+  flexRow: {
+    flexDirection: 'row',
+  },
+  addDetails: {
+    fontSize: DP._12,
+    color: Color.DODGER_BLUE,
+    marginLeft: DP._4,
   },
   subText: {
     fontSize: DP._12,
     lineHeight: DP._18,
     color: Color.GREY_PURPLE,
+    marginTop: DP._5,
+    marginRight: DP._12,
   },
   coTravelerContainer: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: DP._1,
-    borderRadius: DP._4,
+    justifyContent: 'center',
+    borderWidth: 0, //1
+    borderRadius: DP._20, //4
     borderColor: Color.DODGER_BLUE,
     paddingVertical: DP._3,
-    paddingHorizontal: DP._4,
+    paddingHorizontal: DP._8,
     backgroundColor: Color.ICE_BLUE,
-    marginRight: DP._16,
-    marginTop: DP._12,
+    marginRight: DP._17,
+    marginTop: DP._18,
   },
   coTravelerName: {
     fontSize: DP._12,
     lineHeight: DP._18,
     color: Color.DODGER_BLUE,
-    marginRight: DP._8,
+    // marginRight: DP._8,
+  },
+  addRemoveButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  listSubContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginTop: DP._8,
   },
 });
