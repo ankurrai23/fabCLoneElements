@@ -4,7 +4,7 @@ import Styles from './Styles';
 
 export default function MessageCard({...props}) {
   return (
-    <FTouchableOpacity style={[Styles.container, {...props.marginTop}]} onPress={props.onPress}>
+    <FTouchableOpacity style={[Styles.container, {...props.style}]} onPress={props.onPress}>
       <FText
         type={props.isRead ? 'regular' : 'medium'}
         style={Styles.title}
