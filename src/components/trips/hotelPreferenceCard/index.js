@@ -146,11 +146,11 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
       )}
       <View style={Styles.amountContainer}>
         <View style={[Styles.flexRow, {paddingTop: DP._1}]}>
-          {item.includesBreakfast && (
-            <View style={Styles.flexRow}>
+          {item.mealTypeText && (
+            <View style={[Styles.flexRow, {alignItems: 'center'}]}>
               <Feather name="check" size={DP._16} color={Color.DARK_SEA_FOAM} />
               <FText type="medium" style={Styles.inclusions}>
-                Includes breakfast
+                {item.mealTypeText}
               </FText>
             </View>
           )}

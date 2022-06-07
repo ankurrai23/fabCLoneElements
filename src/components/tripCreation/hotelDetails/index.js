@@ -52,22 +52,27 @@ export default function HotelDetails(props) {
           style={Styles.flexRow}
           hitSlop={Styles.hitSlop}
           onPress={
-            data.city?.city ? props.editHotelDetail : props.goToAddHotelDetails
+            data.length ? props.editHotelDetail : props.goToAddHotelDetails
           }>
-          {!!data.city?.city && (
+          {!!data?.length && (
             <Feather name="edit-2" size={DP._12} color={Color.DODGER_BLUE} />
           )}
           <FText type="medium" style={Styles.addDetails}>
-            {data.city?.city ? 'Edit' : 'Add details'}
+            {data?.length ? 'Edit' : 'Add details'}
           </FText>
         </FTouchableOpacity>
       </View>
       {hotelError === true ? (
         <FText style={Styles.errorDetailTxt}>{'Enter hotel details'}</FText>
       ) : null}
-      {!!data.city?.city && (
-        <View style={Styles.innerContainer}>{renderItem(data)}</View>
-      )}
+      {!!data?.length &&
+        data?.map((item, i) => {
+          return (
+            <View key={i} style={Styles.innerContainer}>
+              {renderItem(item)}
+            </View>
+          );
+        })}
     </View>
   );
 }

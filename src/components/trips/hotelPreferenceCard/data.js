@@ -19,7 +19,7 @@ const hotelPreferenceCardProps = {
     colleaguesRatingAvg: 4.2,
     googleMapUrl: 'https://www.google.com',
     preference: 5,
-    includesBreakfast: true,
+    mealTypeText: 'Free breakfast',
     cancellationText: 'Free cancellation before 12 Nov',
     disablePref: true,
     gstIncluded: false,

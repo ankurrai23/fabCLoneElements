@@ -60,7 +60,7 @@ const ClaimFilter = ({data, onPressCancel, onPressApply}) => {
     <View style={{marginBottom: DP._15}}>
       <FTouchableOpacity onPress={_handleClearAll} style={Styles.clearAllView}>
         <FText type="regular" style={Styles.clearAll}>
-          {'Clear All'}
+          {'Clear all'}
         </FText>
       </FTouchableOpacity>
       <FText type="regular" style={Styles.titleTxt}>

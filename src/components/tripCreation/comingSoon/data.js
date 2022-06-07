@@ -1,6 +1,6 @@
 const comingSoonProps = {
-  title: 'Coming soon!',
-  subTitle: 'We are working hard to reveal this section. Kindly be patient.',
+  title: 'Coming soon',
+  subTitle: 'Patience is a virtue. ',
 };
 
 export default comingSoonProps;

@@ -5,9 +5,9 @@ import {Color} from '../../../utils/color';
 import {Specs} from '../../../utils/Utils';
 
 export default StyleSheet.create({
-  mainContainer: {
-    marginTop: DP._16,
-  },
+  mainContainer: (marginTop) => ({
+    marginTop: marginTop,
+  }),
   container: (focused, error) => ({
     flexDirection: 'row',
     borderWidth: DP._1,
@@ -17,8 +17,7 @@ export default StyleSheet.create({
       ? Color.DODGER_BLUE
       : Color.PALE_GREY_THREE,
     borderRadius: DP._4,
-    paddingRight: DP._12,
-    paddingLeft: DP._16,
+    paddingHorizontal: DP._16,
   }),
   iconContainer: {
     alignSelf: 'center',
@@ -44,10 +43,10 @@ export default StyleSheet.create({
     lineHeight: DP._18,
     ...Specs.fontRegular,
   },
-  helperText: (error) => ({
+  helperText: (error, marginBottom) => ({
     color: error ? Color.PASTEL_RED : Color.GREY_PURPLE,
     fontSize: DP._12,
-    minHeight: DP._16,
+    minHeight: marginBottom ? DP._16 + marginBottom : DP._16,
     lineHeight: DP._16,
     marginLeft: DP._16,
   }),

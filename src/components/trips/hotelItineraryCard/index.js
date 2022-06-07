@@ -172,12 +172,12 @@ const HotelItineraryCard = ({
             <View style={Styles.checkInAndDirectionContainer}>
               {item.checkInTime ? (
                 <FText style={Styles.checkIn}>
-                  Check-in {item.checkInTime}
+                  Check-in: {item.checkInTime}
                 </FText>
               ) : (
                 <View />
               )}
-              {directionAction && (
+              {directionAction && processed && (
                 <FTouchableOpacity
                   style={[Styles.flexRowWithAlignCenter]}
                   onPress={() => onActionPress(directionAction)}>

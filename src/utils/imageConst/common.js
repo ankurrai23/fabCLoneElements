@@ -18,7 +18,7 @@ export default {
   flightIcon: require(TRIP_DIRECTORY + 'itinerary-flight-icon.png'),
   bellIcon: require(TRIP_DIRECTORY + 'bell-icon.png'),
   editIcon: require(TRIP_DIRECTORY + 'edit.png'),
-  comingSoon: require(TRIP_DIRECTORY + 'no_results_copy.png'),
+  comingSoon: require(TRIP_DIRECTORY + 'comingSoon.png'),
 
   //Icons for FAB button
   rupees: require(TRIP_DIRECTORY + 'rupees.png'),

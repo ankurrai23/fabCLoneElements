@@ -66,8 +66,8 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
       )}
       <View style={[Styles.container, style]}>
         <FTouchableOpacity
-          activeOpacity={item.notificationText ? 0.4 : 1}
-          style={Styles.card(item.notificationText)}
+          activeOpacity={item.reduceOpacity ? 0.6 : 1}
+          style={Styles.card(item.reduceOpacity)}
           onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>
