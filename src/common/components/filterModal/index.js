@@ -7,7 +7,6 @@ import BottomSheet, {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 import {BlurView} from '@react-native-community/blur';
 
 export default function FilterModal({
-  visible = true,
   data,
   clearFilterLabel,
   filterTypeLabel,
