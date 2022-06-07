@@ -26,9 +26,9 @@ export const Specs = {
 export const shadowObj = {
   shadowColor: 'rgba(0,0,0,0.4)',
   shadowOffset: {width: 3, height: 3},
-  shadowOpacity: 0.3,
+  shadowOpacity: 0.2,
   shadowRadius: 6,
-  elevation: 10,
+  elevation: 7,
 };
 
 export const dialogBoxStyle = {

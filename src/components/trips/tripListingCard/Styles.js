@@ -8,7 +8,6 @@ export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
     padding: DP._16,
-    marginBottom: DP._16,
     ...shadowObj,
   },
   tripIdContainer: {

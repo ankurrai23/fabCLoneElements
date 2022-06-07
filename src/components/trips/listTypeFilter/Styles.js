@@ -6,7 +6,6 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: DP._24,
   },
   renderItem: (isSelected, index) => ({
     paddingHorizontal: DP._4,
