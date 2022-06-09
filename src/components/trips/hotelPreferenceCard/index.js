@@ -176,8 +176,9 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
 );
 
 const ratingsArray = (value) => {
-  let filledBars = parseInt(value / 20, 10);
-  let partialFilled = ((value % 20) / 20) * 100;
+  value *= 100;
+  let filledBars = parseInt(value / 100, 10);
+  let partialFilled = value % 100;
   let arr = [...Array(filledBars).fill('100%')];
   if (filledBars === 5) {
     return arr;

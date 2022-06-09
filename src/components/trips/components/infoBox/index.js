@@ -40,7 +40,7 @@ export default function InfoBox({
 const styles = StyleSheet.create({
   container: (isAlert) => ({
     paddingVertical: DP._16,
-    backgroundColor: isAlert ? Color.DODGER_BLUE + '12' : 'white',
+    backgroundColor: isAlert ? Color.DODGER_BLUE + '12' : Color.DARK_SEA_FOAM_10,
     flexDirection: 'row',
     paddingLeft: DP._16,
     paddingRight: DP._8,
