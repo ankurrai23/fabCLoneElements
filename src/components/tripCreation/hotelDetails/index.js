@@ -28,10 +28,8 @@ export default function HotelDetails(props) {
           </FText>
         </View>
         <View style={Styles.rendercity}>
-          <FText style={Styles.renderCityTxt}>{value.city?.city}</FText>
-          <FText style={Styles.renderLocality}>
-            {value.preferredLocality?.location}
-          </FText>
+          <FText style={Styles.renderCityTxt}>{value.city}</FText>
+          <FText style={Styles.renderLocality}>{value.location}</FText>
         </View>
       </View>
     );
@@ -43,7 +41,9 @@ export default function HotelDetails(props) {
   }
 
   return (
-    <View onLayout={props.onLayout} style={Styles.container}>
+    <View
+      onLayout={props.onLayout}
+      style={[Styles.container, {...props.style}]}>
       <View style={Styles.titleContainer}>
         <FText type="medium" style={Styles.title}>
           Hotel(s)
@@ -51,9 +51,7 @@ export default function HotelDetails(props) {
         <FTouchableOpacity
           style={Styles.flexRow}
           hitSlop={Styles.hitSlop}
-          onPress={
-            data.length ? props.editHotelDetail : props.goToAddHotelDetails
-          }>
+          onPress={props.onPress}>
           {!!data?.length && (
             <Feather name="edit-2" size={DP._12} color={Color.DODGER_BLUE} />
           )}

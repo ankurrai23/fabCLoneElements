@@ -129,7 +129,9 @@ export default function FlightDetails(props) {
   }
 
   return (
-    <View onLayout={props.onLayout} style={Styles.container(props.requestType)}>
+    <View
+      onLayout={props.onLayout}
+      style={[Styles.container, {...props.style}]}>
       <View style={Styles.titleContainer}>
         <FText type="medium" style={Styles.title}>
           Flight(s)
@@ -137,11 +139,7 @@ export default function FlightDetails(props) {
         <FTouchableOpacity
           style={Styles.flexRow}
           hitSlop={Styles.hitSlop}
-          onPress={
-            props.data?.length > 0
-              ? props.goToEditFlightDetail
-              : props.goToAddFlightDetails
-          }>
+          onPress={props.onPress}>
           {props.data?.length > 0 ? (
             <Feather name="edit-2" size={DP._12} color={Color.DODGER_BLUE} />
           ) : null}
@@ -158,7 +156,7 @@ export default function FlightDetails(props) {
       ) : null}
       {props.data?.length === 1 && props.tripType === 1 ? (
         <FTouchableOpacity
-          onPress={props.goToAddFlightDetails}
+          onPress={props.onPress}
           style={Styles.renderNewRoute}>
           <View style={Styles.innerViewFlight}>
             <FText style={Styles.addFlightTxt}>
