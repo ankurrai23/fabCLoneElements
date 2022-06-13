@@ -1,14 +1,13 @@
 import React from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
 import moment from 'moment';
 
-import {FText, FTouchableOpacity} from '../../..';
+import {FText, FTouchableOpacity, FImage} from '../../..';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {DP} from '../../../utils/Dimen';
 import Styles from './Styles';
+import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 
 export default function FlightDetails(props) {
   function renderRoute() {
@@ -141,11 +140,9 @@ export default function FlightDetails(props) {
           style={Styles.flexRow}
           hitSlop={Styles.hitSlop}
           onPress={props.onPress}>
-          {props.data?.length > 0 ? (
-            <Feather name="edit-2" size={DP._12} color={Color.DODGER_BLUE} />
-          ) : (
-            <Entypo name="plus" size={DP._12} color={Color.DODGER_BLUE} />
-          )}
+          <FImage
+            source={props.data?.length ? ImageConst.edit2 : ImageConst.plus}
+          />
           <FText type="medium" style={Styles.addDetails}>
             {props.data?.length > 0 ? 'Edit' : 'Add'}
           </FText>

@@ -1,13 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import Entypo from 'react-native-vector-icons/Entypo';
 import moment from 'moment';
 
-import {FText, FTouchableOpacity} from '../../..';
-import {Color} from '../../../utils/color/index.travelPlus';
-import {DP} from '../../../utils/Dimen';
+import {FText, FTouchableOpacity, FImage} from '../../..';
 import Styles from './Styles';
+import {ImageConst} from '../../../utils/imageConst';
 
 export default function HotelDetails(props) {
   const {data, hotelError} = props;
@@ -53,11 +50,7 @@ export default function HotelDetails(props) {
           style={Styles.flexRow}
           hitSlop={Styles.hitSlop}
           onPress={props.onPress}>
-          {data?.length ? (
-            <Feather name="edit-2" size={DP._12} color={Color.DODGER_BLUE} />
-          ) : (
-            <Entypo name="plus" size={DP._12} color={Color.DODGER_BLUE} />
-          )}
+          <FImage source={data?.length ? ImageConst.edit2 : ImageConst.plus} />
           <FText type="medium" style={Styles.addDetails}>
             {data?.length ? 'Edit' : 'Add'}
           </FText>

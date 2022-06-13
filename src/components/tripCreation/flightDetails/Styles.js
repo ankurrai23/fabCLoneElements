@@ -19,11 +19,12 @@ export default StyleSheet.create({
   },
   flexRow: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   addDetails: {
     fontSize: DP._12,
     color: Color.DODGER_BLUE,
-    marginLeft: DP._4,
+    marginLeft: DP._6,
   },
   renderRoute: {
     backgroundColor: Color.WHITE,

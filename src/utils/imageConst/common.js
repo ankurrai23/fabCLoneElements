@@ -19,6 +19,8 @@ export default {
   bellIcon: require(TRIP_DIRECTORY + 'bell-icon.png'),
   editIcon: require(TRIP_DIRECTORY + 'edit.png'),
   comingSoon: require(TRIP_DIRECTORY + 'comingSoon.png'),
+  edit2: require(TRIP_DIRECTORY + 'edit-2.png'),
+  plus: require(TRIP_DIRECTORY + 'plus.png'),
 
   //Icons for FAB button
   rupees: require(TRIP_DIRECTORY + 'rupees.png'),
