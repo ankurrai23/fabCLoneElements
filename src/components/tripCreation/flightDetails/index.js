@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import moment from 'moment';
 
 import {FText, FTouchableOpacity} from '../../..';
@@ -142,9 +143,11 @@ export default function FlightDetails(props) {
           onPress={props.onPress}>
           {props.data?.length > 0 ? (
             <Feather name="edit-2" size={DP._12} color={Color.DODGER_BLUE} />
-          ) : null}
+          ) : (
+            <Entypo name="plus" size={DP._12} color={Color.DODGER_BLUE} />
+          )}
           <FText type="medium" style={Styles.addDetails}>
-            {props.data?.length > 0 ? 'Edit' : 'Add details'}
+            {props.data?.length > 0 ? 'Edit' : 'Add'}
           </FText>
         </FTouchableOpacity>
       </View>
