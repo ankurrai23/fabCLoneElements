@@ -23,10 +23,10 @@ const ListTypeFilter = ({
     return (
       <FTouchableOpacity
         key={item.id}
-        style={[styles.renderItem(isSelected, index), {buttonStyle}]}
+        style={[styles.renderItem(isSelected, index), ...buttonStyle]}
         activeOpacity={1}
         onPress={() => onPress(item.id)}>
-        <FText style={[styles.filterTag(isSelected), {textStyle}]}>
+        <FText style={[styles.filterTag(isSelected), ...textStyle]}>
           {item.title}
         </FText>
       </FTouchableOpacity>
@@ -34,7 +34,7 @@ const ListTypeFilter = ({
   }
 
   return (
-    <View style={[styles.container, {style}]}>{data?.map(renderItem)}</View>
+    <View style={[styles.container, ...style]}>{data?.map(renderItem)}</View>
   );
 };
 
