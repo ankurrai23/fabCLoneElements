@@ -33,11 +33,6 @@ export default function HotelDetails(props) {
     );
   }
 
-  //in case of flight only return null
-  if (props.requestType === 'FLIGHT' || props.requestType === null) {
-    return null;
-  }
-
   return (
     <View
       onLayout={props.onLayout}
