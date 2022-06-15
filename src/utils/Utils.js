@@ -80,15 +80,26 @@ export function getPluralText(number, text, isCaps, isNumberPrefix) {
     : '';
 }
 
+export const FontWegithSpec = {
+  normal: {
+    fontWeight: '400',
+  },
+  medium: {
+    fontWeight: '500',
+  },
+  semiBold: {
+    fontWeight: '600',
+  },
+  bold: {
+    fontWeight: '700',
+  },
+};
+
 export function convertOpacityPercentIntoHex(percent) {
-  let hexValue = '';
-  const item = percentToHexChart.find((el) => el.opacity === percent);
-  if (item) {
-    hexValue = item.value;
-  } else {
-    throw Error('Invalid color percent');
+  if (percentToHexChart[percent]) {
+    return percentToHexChart[percent];
   }
-  return hexValue;
+  throw Error('Invalid opacity percentage');
 }
 
 export default {

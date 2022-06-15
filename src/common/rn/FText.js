@@ -2,15 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Text} from 'react-native';
 
-import {Specs} from '../../utils/Utils';
+import {Specs, FontWegithSpec} from '../../utils/Utils';
 import {Color} from '../../utils/color';
 
 function FText({children, type, weight, style, ...props}) {
   function getFont() {
-    if(weight !== null && weight !== undefined){
-      return {...Specs[type], fontWeight: weight};
-    }
-    return Specs[type];
+    return {...Specs[type], ...FontWegithSpec[weight]};
   }
 
   return (
@@ -22,13 +19,13 @@ function FText({children, type, weight, style, ...props}) {
 
 FText.propTypes = {
   type: PropTypes.oneOf(['regular', 'light', 'bold', 'medium', 'semiBold']),
-  weight: PropTypes.oneOf(['400', '500', '600', '700']),
+  weight: PropTypes.oneOf(['normal', 'medium', 'semiBold', 'bold']),
 };
 
 FText.defaultProps = {
   children: '',
   type: 'regular',
-  weight: null,
+  weight: 'normal',
 };
 
 export default FText;
