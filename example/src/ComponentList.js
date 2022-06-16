@@ -60,6 +60,7 @@ import {
   ReceiptListView,
   RemoveItinerary,
   FilterModal,
+  ItineraryCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -204,6 +205,10 @@ const TRIP_CREATION = [
   {
     name: 'HotelDetails',
     component: <HotelDetails {...data.hotelDetailsProps} />,
+  },
+  {
+    name: 'ItineraryCard',
+    component: <ItineraryCard {...data.itineraryCardProps} />,
   },
   {
     name: 'FlightDetails',

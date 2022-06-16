@@ -63,6 +63,7 @@ import AddHotelDetails from './components/tripCreation/addHotelDetails';
 import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
 import BasicTravelDetailsCard from './components/tripCreation/basicTravelDetailsCard';
 import RemoveItinerary from './components/tripCreation/removeItinerary';
+import ItineraryCard from './components/tripCreation/itinerary';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -149,6 +150,7 @@ export {
   ClaimsList,
   MessageCard,
   HomeLoadingState,
+  ItineraryCard,
   //Expense,
   ExpenseCard,
   ExpenseDetailCard,
