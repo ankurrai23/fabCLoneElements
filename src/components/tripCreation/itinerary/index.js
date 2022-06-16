@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {LayoutAnimation, View} from 'react-native';
 import {Button, FText, FTouchableOpacity, PickerField} from '../../..';
 import Styles from './styles';
@@ -7,12 +7,21 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
 
 const ItineraryCard = (props) => {
+  const [openCardView, setopenCardView] = useState(!props?.shouldCollapse)
+
+
   const onEditClicked = () => {
+    setopenCardView(false);
     props?.editClicked(props?.index);
     LayoutAnimation.easeInEaseOut();
   };
 
-  if (props?.shouldCollapse) {
+  useEffect(() => {
+    setopenCardView(props.shouldCollapse)
+  },[props.shouldCollapse])
+
+
+  if (openCardView) {
     return (
       <View style={Styles.briefCardStyle_container}>
         <View style={Styles.briefCardStyle_flexView()}>
@@ -90,9 +99,9 @@ const ItineraryCard = (props) => {
               onPress={() => {
                 props?.pickerFieldClicked(props?.index, 'departure date');
               }}
-              // touchContainer={
-              //   showReturnDate ? {flex: 0.5, marginRight: DP._8} : {flex: 1}
-              // }
+              touchContainer={
+                props?.showReturnDate ? {flex: 0.5, marginRight: DP._8} : {flex: 1}
+              }
             />
             {props?.showReturnDate && (
               <PickerField
@@ -103,7 +112,7 @@ const ItineraryCard = (props) => {
                 onPress={() => {
                   props?.pickerFieldClicked(props?.index, 'return date');
                 }}
-                // touchContainer={{flex: 0.5, marginLeft: DP._8}}
+                touchContainer={{flex: 0.5, marginLeft: DP._8}}
               />
             )}
           </View>
@@ -117,6 +126,8 @@ const ItineraryCard = (props) => {
           //   departureDate === null
           // }
           onPress={() => {
+            LayoutAnimation.easeInEaseOut();
+            setopenCardView(true);
             props?.saveClicked(props?.index, {});
           }}
           type="SECONDARY"

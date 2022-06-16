@@ -14,7 +14,7 @@ const itineraryCardProps = {
     returnDate: '2022-04-28',
   },
   showSaveButton: true,
-  showReturnDate: false,
+  showReturnDate: true,
   shouldCollapse: false,
   editClicked: (index) => {
     console.log('edit clicked for ', index);

@@ -79,7 +79,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     ...(margin && {
-      marginTop: DP._9,
+      marginTop: DP._8,
     }),
   }),
   briefCardStyle_sourceTxt: {
@@ -116,9 +116,9 @@ export default StyleSheet.create({
     color: Color.DARK,
   },
   briefCardStyle_touchView: {
-    top: 10,
-    bottom: 10,
-    left: 20,
-    right: 15,
+    top: DP._10,
+    bottom: DP._10,
+    left: DP._10,
+    right: DP._14,
   },
 });
