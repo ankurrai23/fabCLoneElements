@@ -10,7 +10,15 @@ import FImage from '../../rn/FImage';
 import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function DropDown({data, label, searchType, onPress}) {
+export default function DropDown({
+  data,
+  label,
+  searchType,
+  onPress,
+  onChangeText,
+  keyword,
+  style,
+}) {
   const getImage = () => {
     switch (searchType) {
       case 'city':
@@ -44,13 +52,15 @@ export default function DropDown({data, label, searchType, onPress}) {
   };
 
   return (
-    <View>
+    <View style={style}>
       <TextField
         label={label}
         icon={<Ionicons name="search" size={DP._16} color={Color.BLACK} />}
         iconStyle={Styles.searchIcon}
         labelStyle={Styles.labelStyle}
         inputStyle={Styles.inputStyle}
+        value={keyword}
+        onChangeText={onChangeText}
       />
       <View style={Styles.flatlistContainer(data.length > 1)}>
         <FlatList
