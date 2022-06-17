@@ -7,21 +7,13 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
 
 const ItineraryCard = (props) => {
-  const [openCardView, setopenCardView] = useState(!props?.shouldCollapse)
-
 
   const onEditClicked = () => {
-    setopenCardView(false);
     props?.editClicked(props?.index);
     LayoutAnimation.easeInEaseOut();
   };
 
-  useEffect(() => {
-    setopenCardView(props.shouldCollapse)
-  },[props.shouldCollapse])
-
-
-  if (openCardView) {
+  if (props?.shouldCollapse) {
     return (
       <View style={Styles.briefCardStyle_container}>
         <View style={Styles.briefCardStyle_flexView()}>
@@ -126,8 +118,6 @@ const ItineraryCard = (props) => {
           //   departureDate === null
           // }
           onPress={() => {
-            LayoutAnimation.easeInEaseOut();
-            setopenCardView(true);
             props?.saveClicked(props?.index, {});
           }}
           type="SECONDARY"
