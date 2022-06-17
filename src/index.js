@@ -22,6 +22,7 @@ import DropDownList from './common/components/dropDownList';
 import StackHeader from './common/components/stackHeader';
 import ScrollableTabBar from './common/components/scrollableTabBar';
 import FilterModal from './common/components/filterModal';
+import DropDown from './common/components/dropDown';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -105,6 +106,7 @@ export {
   DropDownList,
   StackHeader,
   ScrollableTabBar,
+  DropDown,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,

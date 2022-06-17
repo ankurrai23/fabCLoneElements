@@ -21,6 +21,9 @@ export default {
   comingSoon: require(TRIP_DIRECTORY + 'comingSoon.png'),
   edit2: require(TRIP_DIRECTORY + 'edit-2.png'),
   plus: require(TRIP_DIRECTORY + 'plus.png'),
+  searchCity: require(TRIP_DIRECTORY + 'search-city.png'),
+  searchAirport: require(TRIP_DIRECTORY + 'search-airport.png'),
+  searchCoTraveler: require(TRIP_DIRECTORY + 'search-cotraveler.png'),
 
   //Icons for FAB button
   rupees: require(TRIP_DIRECTORY + 'rupees.png'),
