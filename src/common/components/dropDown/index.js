@@ -30,10 +30,10 @@ export default function DropDown({
     }
   };
 
-  const Item = ({entity: {title, subTitle, insideBracket}, entity}) => {
+  const Item = ({entity: {title, subTitle, insideBracket}, entity, index}) => {
     return (
       <FTouchableOpacity
-        onPress={() => onPress(entity)}
+        onPress={() => onPress(entity, index)}
         style={Styles.cardStyle}>
         <View style={Styles.titleAndIconContainer}>
           <FImage source={getImage()} />
@@ -65,7 +65,7 @@ export default function DropDown({
       <View style={Styles.flatlistContainer(data?.length > 1)}>
         <FlatList
           data={data}
-          renderItem={({item}) => <Item entity={item} />}
+          renderItem={({item, index}) => <Item entity={item} index={index} />}
           contentContainerStyle={Styles.contentContainer}
           bounces={false}
           keyboardShouldPersistTaps="always"
