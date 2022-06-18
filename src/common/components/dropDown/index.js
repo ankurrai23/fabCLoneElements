@@ -62,12 +62,13 @@ export default function DropDown({
         value={keyword}
         onChangeText={onChangeText}
       />
-      <View style={Styles.flatlistContainer(data.length > 1)}>
+      <View style={Styles.flatlistContainer(data?.length > 1)}>
         <FlatList
           data={data}
           renderItem={({item}) => <Item entity={item} />}
           contentContainerStyle={Styles.contentContainer}
           bounces={false}
+          keyboardShouldPersistTaps="always"
         />
       </View>
     </View>
