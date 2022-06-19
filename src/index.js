@@ -49,6 +49,7 @@ import FlightDetailLoadingState from './components/trips/flightDetailLoadingStat
 //Constants
 import {FlightSubTripActions} from './utils/SubTripActions';
 import {HotelSubTripActions} from './utils/SubTripActions';
+import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
 //Trip Creation Components
 import ComingSoon from './components/tripCreation/comingSoon';
@@ -144,6 +145,7 @@ export {
   // constants
   FlightSubTripActions,
   HotelSubTripActions,
+  FieldNamesEnum,
   // Home
   HomeHeader,
   ClaimsCard,

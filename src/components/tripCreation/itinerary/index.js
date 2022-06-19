@@ -69,7 +69,7 @@ const ItineraryCard = (props) => {
             value={props?.itinerary?.sourceCity}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
-              props?.pickerFieldClicked(props?.index, 'departure city');
+              props?.pickerFieldClicked(props?.index, FieldNamesEnum.DEPARTURE_CITY);
             }}
           />
           <PickerField
@@ -79,7 +79,7 @@ const ItineraryCard = (props) => {
             value={props?.itinerary?.destinationCity}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
-              props?.pickerFieldClicked(props?.index, 'arrival city');
+              props?.pickerFieldClicked(props?.index, FieldNamesEnum.ARRIVAL_CITY);
             }}
           />
           <View style={Styles.datesContainer}>
@@ -89,7 +89,7 @@ const ItineraryCard = (props) => {
               value={props?.itinerary?.departureDate}
               labelStyle={Styles.textFieldLabel}
               onPress={() => {
-                props?.pickerFieldClicked(props?.index, 'departure date');
+                props?.pickerFieldClicked(props?.index, FieldNamesEnum.DEPARTURE_DATE);
               }}
               touchContainer={
                 props?.showReturnDate ? {flex: 0.5, marginRight: DP._8} : {flex: 1}
@@ -102,7 +102,7 @@ const ItineraryCard = (props) => {
                 // error={errors.returnDateError}
                 labelStyle={Styles.textFieldLabel}
                 onPress={() => {
-                  props?.pickerFieldClicked(props?.index, 'return date');
+                  props?.pickerFieldClicked(props?.index, FieldNamesEnum.RETURN_DATE);
                 }}
                 touchContainer={{flex: 0.5, marginLeft: DP._8}}
               />
@@ -145,6 +145,13 @@ const ItineraryCard = (props) => {
       {/*/>*/}
     </>
   );
+};
+
+export const FieldNamesEnum = {
+  DEPARTURE_CITY: 'DEPARTURE_CITY',
+  ARRIVAL_CITY: 'ARRIVAL_CITY',
+  DEPARTURE_DATE: 'DEPARTURE_DATE',
+  RETURN_DATE: 'RETURN_DATE',
 };
 
 export default ItineraryCard;
