@@ -61,6 +61,7 @@ export default function DropDown({
         inputStyle={Styles.inputStyle}
         value={keyword}
         onChangeText={onChangeText}
+        autoFocus
       />
       <View style={Styles.flatlistContainer(data?.length > 1)}>
         <FlatList
