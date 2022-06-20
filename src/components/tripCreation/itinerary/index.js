@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {LayoutAnimation, View} from 'react-native';
-import {Button, FText, FTouchableOpacity, PickerField} from '../../..';
+import {Button, FText, FTouchableOpacity, PickerField, RemoveItinerary} from '../../..';
 import Styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
-
+import {RemoveItinrary} from '../'
 const ItineraryCard = (props) => {
 
   const onEditClicked = () => {
@@ -47,6 +47,7 @@ const ItineraryCard = (props) => {
   }
   return (
     <>
+    {props?.showLabel && <RemoveItinerary itinerary={props?.index + 1} _onPressRemove={() => props?.removeClicked(props?.index)}/>}
       <View style={Styles.container}>
         {/* {(departureCityError.error ||
             arrivalCityError.error ||
