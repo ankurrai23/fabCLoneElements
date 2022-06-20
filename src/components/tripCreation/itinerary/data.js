@@ -17,6 +17,7 @@ const itineraryCardProps = {
   showReturnDate: true,
   shouldCollapse: false,
   showLabel: true,
+  showRemove: false,
   editClicked: (index) => {
     console.log('edit clicked for ', index);
   },
