@@ -36,7 +36,7 @@ const ItineraryCard = (props) => {
         <View style={Styles.briefCardStyle_flexView('margin')}>
           <View style={Styles.briefCardStyle_flex6}>
             <FText style={Styles.briefCardStyle_dateTxt}>
-              {formattedDate(props?.itinerary?.departureDate)}
+              {props?.itinerary?.departureDate ? formattedDate(props?.itinerary?.departureDate) : ""}
             </FText>
           </View>
           <FTouchableOpacity
@@ -98,7 +98,7 @@ const ItineraryCard = (props) => {
             <PickerField
               // error={errors.defatureDateError}
               label={'Departure date'}
-              value={formattedDate(props?.itinerary?.departureDate)}
+              value={props?.itinerary?.departureDate ? formattedDate(props?.itinerary?.departureDate) : null}
               labelStyle={Styles.textFieldLabel}
               onPress={() => {
                 props?.pickerFieldClicked(props?.index, FieldNamesEnum.DEPARTURE_DATE);
@@ -112,7 +112,7 @@ const ItineraryCard = (props) => {
             {props?.showReturnDate && (
               <PickerField
                 label={'Return date'}
-                value={formattedDate(props?.itinerary?.returnDate)}
+                value={props?.itinerary?.returnDate ? formattedDate(props?.itinerary?.returnDate) : null}
                 // error={errors.returnDateError}
                 labelStyle={Styles.textFieldLabel}
                 onPress={() => {
