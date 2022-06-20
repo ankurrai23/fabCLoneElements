@@ -18,8 +18,13 @@ const itineraryCardProps = {
   showSaveButton: true,
   showReturnDate: true,
   shouldCollapse: false,
+  showLabel: true,
+  showRemove: false,
   editClicked: (index) => {
     console.log('edit clicked for ', index);
+  },
+  removeClicked: (index) => {
+    console.log('remove Itinerary Clicked for', index);
   },
   pickerFieldClicked: (cardIndex, fieldName) => {
     console.log(

@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import {LayoutAnimation, View} from 'react-native';
-import {Button, FText, FTouchableOpacity, PickerField} from '../../..';
+import {
+  Button,
+  FText,
+  FTouchableOpacity,
+  PickerField,
+  RemoveItinerary,
+} from '../../..';
 import Styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
 
 const ItineraryCard = (props) => {
-
   const onEditClicked = () => {
     props?.editClicked(props?.index);
     LayoutAnimation.easeInEaseOut();
@@ -47,6 +52,13 @@ const ItineraryCard = (props) => {
   }
   return (
     <>
+      <RemoveItinerary
+        itinerary={props?.index + 1}
+        _onPressRemove={() => props?.removeClicked(props?.index)}
+        showRemove={props?.showRemove}
+        showLabel={props?.showLabel}
+      />
+
       <View style={Styles.container}>
         {/* {(departureCityError.error ||
             arrivalCityError.error ||
@@ -92,7 +104,9 @@ const ItineraryCard = (props) => {
                 props?.pickerFieldClicked(props?.index, FieldNamesEnum.DEPARTURE_DATE);
               }}
               touchContainer={
-                props?.showReturnDate ? {flex: 0.5, marginRight: DP._8} : {flex: 1}
+                props?.showReturnDate
+                  ? {flex: 0.5, marginRight: DP._8}
+                  : {flex: 1}
               }
             />
             {props?.showReturnDate && (
