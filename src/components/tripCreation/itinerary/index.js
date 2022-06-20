@@ -11,7 +11,7 @@ import Styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
-
+import { formattedDate } from '../../../utils/Utils';
 const ItineraryCard = (props) => {
   const onEditClicked = () => {
     props?.editClicked(props?.index);
@@ -36,7 +36,7 @@ const ItineraryCard = (props) => {
         <View style={Styles.briefCardStyle_flexView('margin')}>
           <View style={Styles.briefCardStyle_flex6}>
             <FText style={Styles.briefCardStyle_dateTxt}>
-              {props?.itinerary?.departureDate}
+              {formattedDate(props?.itinerary?.departureDate)}
             </FText>
           </View>
           <FTouchableOpacity
@@ -98,7 +98,7 @@ const ItineraryCard = (props) => {
             <PickerField
               // error={errors.defatureDateError}
               label={'Departure date'}
-              value={props?.itinerary?.departureDate}
+              value={formattedDate(props?.itinerary?.departureDate)}
               labelStyle={Styles.textFieldLabel}
               onPress={() => {
                 props?.pickerFieldClicked(props?.index, FieldNamesEnum.DEPARTURE_DATE);
@@ -112,7 +112,7 @@ const ItineraryCard = (props) => {
             {props?.showReturnDate && (
               <PickerField
                 label={'Return date'}
-                value={props?.itinerary?.returnDate}
+                value={formattedDate(props?.itinerary?.returnDate)}
                 // error={errors.returnDateError}
                 labelStyle={Styles.textFieldLabel}
                 onPress={() => {
