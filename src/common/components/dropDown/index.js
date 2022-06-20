@@ -1,5 +1,5 @@
 import {View, FlatList} from 'react-native';
-import React from 'react';
+import React, {forwardRef, useImperativeHandle, useRef} from 'react';
 import FText from '../../rn/FText';
 import TextField from '../textField';
 import {DP} from '../../../utils/Dimen';
@@ -10,15 +10,30 @@ import FImage from '../../rn/FImage';
 import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function DropDown({
-  data,
-  label,
-  searchType,
-  onPress,
-  onChangeText,
-  keyword,
-  style,
-}) {
+function DropDown(
+  {
+    data,
+    label,
+    searchType,
+    onPress,
+    onChangeText,
+    keyword,
+    style,
+    onFocusChange,
+  },
+  ref,
+) {
+  const inputFieldRef = useRef();
+
+  useImperativeHandle(ref, () => ({
+    blur: () => {
+      inputFieldRef.current.blur();
+    },
+    focus: () => {
+      inputFieldRef.current.focus();
+    },
+  }));
+
   const getImage = () => {
     switch (searchType) {
       case 'city':
@@ -62,6 +77,9 @@ export default function DropDown({
         value={keyword}
         onChangeText={onChangeText}
         autoFocus
+        ref={inputFieldRef}
+        onFocus={() => onFocusChange(true)}
+        onBlur={() => onFocusChange(false)}
       />
       <View style={Styles.flatlistContainer(data?.length > 1)}>
         <FlatList
@@ -75,3 +93,5 @@ export default function DropDown({
     </View>
   );
 }
+
+export default forwardRef(DropDown);
