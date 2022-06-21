@@ -127,9 +127,9 @@ const ItineraryCard = (props) => {
       {props?.showSaveButton && (
         <Button
           disabled={
-            source?.name === null ||
-            destination?.name === null ||
-            departureDate === null
+            props?.source?.name === null ||
+            props?.destination?.name === null ||
+            props?.departureDate === null
           }
           onPress={() => {
             props?.saveClicked(props?.index, {});
