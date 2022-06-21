@@ -1,5 +1,5 @@
-import {View, ScrollView, RefreshControl} from 'react-native';
-import React, {useState} from 'react';
+import {View, ScrollView, RefreshControl, Animated} from 'react-native';
+import React, {useState, useEffect} from 'react';
 import FText from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
 import Feather from 'react-native-vector-icons/Feather';
@@ -56,14 +56,18 @@ export const getStatusObject = (status) => {
 };
 
 export default function HotelDetailCard({
-  item,
+  data,
   onActionPress,
   onMainImagePress,
   style,
   footerComponent,
   onRefresh,
+  onPress,
 }) {
+  const item = data.item;
+  const [expanded, setExpanded] = useState(false);
   const [sheetVisible, setSheetVisible] = useState(false);
+  const [fadeIn] = useState(new Animated.Value(0));
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
@@ -73,6 +77,28 @@ export default function HotelDetailCard({
   const posAction = isActionEnabled(HotelSubTripActions.SUBMIT_POS);
   const reviewAction = isActionEnabled(HotelSubTripActions.SUBMIT_REVIEW);
   const invoiceAction = isActionEnabled(HotelSubTripActions.VIEW_INVOICE);
+
+  const spin = fadeIn.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '180deg'],
+  });
+  const onItemPress = () => {
+    // onPress()
+    if (!expanded) {
+      Animated.timing(fadeIn, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(fadeIn, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    }
+    setExpanded(!expanded);
+  };
 
   const CheckInInfo = ({title, date, time}) => (
     <View>
@@ -137,13 +163,14 @@ export default function HotelDetailCard({
   const renderItem = ({item: inclusion}) => {
     return <Inclusions text={inclusion.text} image={inclusion.icon} />;
   };
-
+  console.log('app,e=====', expanded);
   return (
-    <ScrollView
-      contentContainerStyle={{padding: DP._16}}
-      refreshControl={
-        <RefreshControl refreshing={false} onRefresh={onRefresh} />
-      }>
+    // <ScrollView
+    //   contentContainerStyle={{padding: DP._16}}
+    //   refreshControl={
+    //     <RefreshControl refreshing={false} onRefresh={onRefresh} />
+    //   }>
+    <>
       {(posAction || invoiceAction || reviewAction) && <PostTripHotelActions />}
       {!!item.notificationText && (
         <ModificationAlertBox msg={item.notificationText} />
@@ -207,101 +234,125 @@ export default function HotelDetailCard({
             )}
           </View>
           <Separator style={Styles.separator} />
-          <View style={Styles.flexRowWithSpaceBetween}>
-            <CheckInInfo
-              title={'Check-in date'}
-              date={item.checkIn.date}
-              time={item.checkIn.time ? `Check-in: ${item.checkIn.time}` : null}
-            />
-            <CheckInInfo
-              title={'Check-out date'}
-              date={item.checkOut.date}
-              time={
-                item.checkOut.time ? `Check-out: ${item.checkOut.time}` : null
-              }
-            />
-            <View>
-              <FText
-                style={{
-                  fontSize: DP._12,
-                  color: Color.GREY_PURPLE,
-                  marginBottom: DP._8,
-                }}>
-                Rooms
-              </FText>
-              <FText type="medium">{item.noOfRooms || '-'}</FText>
-            </View>
-          </View>
-          <Separator style={Styles.separator} />
-          {item.inclusions && (
-            <>
-              <FText style={Styles.sectionTitle}>Inclusions</FText>
-              {item.inclusions.map((item, index) => {
-                if (index < 3)
-                  return (
-                    <Inclusions
-                      key={`ab${index}cd`}
-                      text={item.text}
-                      image={item.icon}
-                    />
-                  );
-              })}
-              {item.inclusions.length > 3 && (
-                <FTouchableOpacity onPress={() => setSheetVisible(true)}>
-                  <FText style={Styles.moreInclustion}>
-                    +{item.inclusions.length - 3} more
-                  </FText>
-                </FTouchableOpacity>
-              )}
-              <Separator style={Styles.separator} />
-            </>
-          )}
-          {item?.coTravellers?.length > 0 && (
-            <>
-              <FText style={Styles.sectionTitle}>Co-travelers</FText>
-              {item.coTravellers.map((item, index) => (
-                <CoTraveller name={item} key={`abc${index}def`} />
-              ))}
-              <Separator style={Styles.separator} />
-            </>
-          )}
-          <FText style={[Styles.sectionTitle, {marginTop: DP._8}]}>
-            Payment mode
-          </FText>
-          <View style={Styles.paymentModeContainer}>
-            <View
-              style={[Styles.flexRow, Styles.halfFlex, {alignItems: 'center'}]}>
-              <Feather
-                name="credit-card"
-                size={DP._16}
-                color={Color.GREY_PURPLE}
-              />
-              <FText style={{marginLeft: DP._8, fontSize: DP._12}}>
-                {item?.paymentMode ? item.paymentMode : 'N.A'}
-              </FText>
-            </View>
-            {item.paymentStatus && (
-              <View style={[Styles.paymentStatusContainer, Styles.halfFlex]}>
-                <Feather
-                  name={item.paymentStatus.icon}
-                  style={{marginRight: DP._4}}
-                  color={item.paymentStatus.color}
+          {expanded && (
+            <Animated.View style={{opacity: fadeIn}}>
+              <View style={Styles.flexRowWithSpaceBetween}>
+                <CheckInInfo
+                  title={'Check-in date'}
+                  date={item.checkIn.date}
+                  time={
+                    item.checkIn.time ? `Check-in: ${item.checkIn.time}` : null
+                  }
                 />
-                <FText
-                  style={{fontSize: DP._10, color: item.paymentStatus.color}}>
-                  {item.paymentStatus.statusText}
-                </FText>
+                <CheckInInfo
+                  title={'Check-out date'}
+                  date={item.checkOut.date}
+                  time={
+                    item.checkOut.time
+                      ? `Check-out: ${item.checkOut.time}`
+                      : null
+                  }
+                />
+                <View>
+                  <FText
+                    style={{
+                      fontSize: DP._12,
+                      color: Color.GREY_PURPLE,
+                      marginBottom: DP._8,
+                    }}>
+                    Rooms
+                  </FText>
+                  <FText type="medium">{item.noOfRooms || '-'}</FText>
+                </View>
               </View>
-            )}
-          </View>
-          {payNowAction && (
-            <Button
-              onPress={() => onActionPress?.(payNowAction)}
-              style={{borderRadius: DP._4, marginTop: DP._4}}
-              textFont="medium">
-              {payNowAction.name}
-            </Button>
+              <Separator style={Styles.separator} />
+              {item.inclusions && (
+                <>
+                  <FText style={Styles.sectionTitle}>Inclusions</FText>
+                  {item.inclusions.map((item, index) => {
+                    if (index < 3)
+                      return (
+                        <Inclusions
+                          key={`ab${index}cd`}
+                          text={item.text}
+                          image={item.icon}
+                        />
+                      );
+                  })}
+                  {item.inclusions.length > 3 && (
+                    <FTouchableOpacity onPress={() => setSheetVisible(true)}>
+                      <FText style={Styles.moreInclustion}>
+                        +{item.inclusions.length - 3} more
+                      </FText>
+                    </FTouchableOpacity>
+                  )}
+                  <Separator style={Styles.separator} />
+                </>
+              )}
+              {item?.coTravellers?.length > 0 && (
+                <>
+                  <FText style={Styles.sectionTitle}>Co-travelers</FText>
+                  {item.coTravellers.map((item, index) => (
+                    <CoTraveller name={item} key={`abc${index}def`} />
+                  ))}
+                  <Separator style={Styles.separator} />
+                </>
+              )}
+              <FText style={[Styles.sectionTitle, {marginTop: DP._8}]}>
+                Payment mode
+              </FText>
+              <View style={Styles.paymentModeContainer}>
+                <View
+                  style={[
+                    Styles.flexRow,
+                    Styles.halfFlex,
+                    {alignItems: 'center'},
+                  ]}>
+                  <Feather
+                    name="credit-card"
+                    size={DP._16}
+                    color={Color.GREY_PURPLE}
+                  />
+                  <FText style={{marginLeft: DP._8, fontSize: DP._12}}>
+                    {item?.paymentMode ? item.paymentMode : 'N.A'}
+                  </FText>
+                </View>
+                {item.paymentStatus && (
+                  <View
+                    style={[Styles.paymentStatusContainer, Styles.halfFlex]}>
+                    <Feather
+                      name={item.paymentStatus.icon}
+                      style={{marginRight: DP._4}}
+                      color={item.paymentStatus.color}
+                    />
+                    <FText
+                      style={{
+                        fontSize: DP._10,
+                        color: item.paymentStatus.color,
+                      }}>
+                      {item.paymentStatus.statusText}
+                    </FText>
+                  </View>
+                )}
+              </View>
+              {payNowAction && (
+                <Button
+                  onPress={() => onActionPress?.(payNowAction)}
+                  style={{borderRadius: DP._4, marginTop: DP._4}}
+                  textFont="medium">
+                  {payNowAction.name}
+                </Button>
+              )}
+            </Animated.View>
           )}
+          <FTouchableOpacity
+            onPress={onItemPress}
+            style={Styles.viewDetailView}>
+            <FText style={Styles.showMoreTxt}>View more details</FText>
+            <Animated.View style={{transform: [{rotate: spin}]}}>
+              <AntDesign name="down" size={DP._12} color={Color.DODGER_BLUE} />
+            </Animated.View>
+          </FTouchableOpacity>
         </View>
         {(cancelAction || modifyAction) && (
           <>
@@ -334,7 +385,7 @@ export default function HotelDetailCard({
           </>
         )}
       </View>
-      {footerComponent}
+      {/* {footerComponent} */}
       <DialogBox
         modalVisible={sheetVisible}
         onClose={() => setSheetVisible(false)}
@@ -357,6 +408,7 @@ export default function HotelDetailCard({
           </View>
         }
       />
-    </ScrollView>
+      {/* </ScrollView> */}
+    </>
   );
 }
