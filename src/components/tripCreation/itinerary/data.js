@@ -27,7 +27,7 @@ const itineraryCardProps = {
   },
   showSaveButton: true,
   showReturnDate: true,
-  shouldCollapse: true,
+  shouldCollapse: false,
   showLabel: true,
   showRemove: false,
   editClicked: (index) => {
@@ -46,7 +46,9 @@ const itineraryCardProps = {
   },
   label: 'Itinerary 1',
   index: 0,
-  // errors
+  errors:{
+    isItinerarySame : 'Itinerary details cannot be same'
+  }
 };
 
 export default itineraryCardProps;

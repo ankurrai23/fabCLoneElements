@@ -57,6 +57,7 @@ const ItineraryCard = (props) => {
         _onPressRemove={() => props?.removeClicked(props?.index)}
         showRemove={props?.showRemove}
         showLabel={props?.showLabel}
+        errorText={props?.errors?.isItinerarySame}
       />
 
       <View style={Styles.container}>
