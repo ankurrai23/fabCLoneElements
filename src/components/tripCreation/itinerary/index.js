@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React  from 'react';
 import {LayoutAnimation, View} from 'react-native';
 import {
   Button,
@@ -17,7 +17,7 @@ const ItineraryCard = (props) => {
     props?.editClicked(props?.index);
     LayoutAnimation.easeInEaseOut();
   };
-  
+
   if (props?.shouldCollapse) {
     return (
       <View style={Styles.briefCardStyle_container}>
@@ -126,11 +126,11 @@ const ItineraryCard = (props) => {
       </View>
       {props?.showSaveButton && (
         <Button
-          // disabled={
-          //   source?.name === null ||
-          //   destination?.name === null ||
-          //   departureDate === null
-          // }
+          disabled={
+            source?.name === null ||
+            destination?.name === null ||
+            departureDate === null
+          }
           onPress={() => {
             props?.saveClicked(props?.index, {});
           }}
@@ -149,14 +149,6 @@ const ItineraryCard = (props) => {
           Save
         </Button>
       )}
-      {/*<DateTimePickerModal*/}
-      {/*  isVisible={!!datePicker}*/}
-      {/*  mode="date"*/}
-      {/*  date={selectedDate}*/}
-      {/*  minimumDate={minDate}*/}
-      {/*  onConfirm={onDateSelect}*/}
-      {/*  onCancel={onDateCancel}*/}
-      {/*/>*/}
     </>
   );
 };
