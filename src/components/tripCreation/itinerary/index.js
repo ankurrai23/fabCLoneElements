@@ -17,14 +17,14 @@ const ItineraryCard = (props) => {
     props?.editClicked(props?.index);
     LayoutAnimation.easeInEaseOut();
   };
-
+  
   if (props?.shouldCollapse) {
     return (
       <View style={Styles.briefCardStyle_container}>
         <View style={Styles.briefCardStyle_flexView()}>
           <View style={Styles.briefCardStyle_flex6}>
             <FText numberOfLines={1} type="medium" style={Styles.sourceTxt}>
-              {`${props?.itinerary?.sourceCity} to ${props?.itinerary?.destinationCity}`}
+              {`${props?.itinerary?.source?.name} to ${props?.itinerary?.destination?.name}`}
             </FText>
           </View>
           <View style={Styles.briefCardStyle_iteneryView}>
@@ -78,7 +78,7 @@ const ItineraryCard = (props) => {
             // error={departureCityError.error}
             // helperText={departureCityError.errorText}
             label={'Departure city'}
-            value={props?.itinerary?.sourceCity}
+            value={props?.itinerary?.source?.name}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
               props?.pickerFieldClicked(props?.index, FieldNamesEnum.DEPARTURE_CITY);
@@ -88,7 +88,7 @@ const ItineraryCard = (props) => {
             // error={arrivalCityError.error}
             // helperText={arrivalCityError.errorText}
             label={'Arrival city'}
-            value={props?.itinerary?.destinationCity}
+            value={props?.itinerary?.destination?.name}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
               props?.pickerFieldClicked(props?.index, FieldNamesEnum.ARRIVAL_CITY);
@@ -127,8 +127,8 @@ const ItineraryCard = (props) => {
       {props?.showSaveButton && (
         <Button
           // disabled={
-          //   sourceCity === null ||
-          //   destinationCity === null ||
+          //   source?.name === null ||
+          //   destination?.name === null ||
           //   departureDate === null
           // }
           onPress={() => {
@@ -137,13 +137,13 @@ const ItineraryCard = (props) => {
           type="SECONDARY"
           textFont={'medium'}
           style={Styles.btnStyle(
-            props?.itinerary?.sourceCity,
-            props?.itinerary?.destinationCity,
+            props?.itinerary?.source?.name,
+            props?.itinerary?.destination?.name,
             props?.itinerary?.departureDate,
           )}
           textStyle={Styles.btnTextStyle(
-            props?.itinerary?.sourceCity,
-            props?.itinerary?.destinationCity,
+            props?.itinerary?.source?.name,
+            props?.itinerary?.destination?.name,
             props?.itinerary?.departureDate,
           )}>
           Save
