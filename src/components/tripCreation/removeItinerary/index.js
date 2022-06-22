@@ -9,13 +9,14 @@ import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 
-const RemoveItinerary = ({itinerary, _onPressRemove}) => {
+const RemoveItinerary = ({itinerary, _onPressRemove, showRemove, showLabel, errorText}) => {
   return (
+    <>
     <View style={Styles.removeItinerary}>
-      <FText
+      {showLabel && <FText
         type="medium"
-        style={Styles.itineraryTxt}>{`Itinerary ${itinerary}`}</FText>
-      <FTouchableOpacity
+        style={Styles.itineraryTxt}>{`Itinerary ${itinerary}`}</FText>}
+      {showRemove && <FTouchableOpacity
         onPress={_onPressRemove}
         hitSlop={Styles.removeSlope}
         style={Styles.removeView}>
@@ -24,8 +25,10 @@ const RemoveItinerary = ({itinerary, _onPressRemove}) => {
           {' '}
           Remove
         </FText>
-      </FTouchableOpacity>
+      </FTouchableOpacity>}
     </View>
+    {errorText && <FText type="regular" style={Styles.errorTxt}>{errorText}</FText>}
+    </>
   );
 };
 

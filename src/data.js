@@ -43,6 +43,7 @@ import addFlightDetailsProps from './components/tripCreation/addFlightDetails/da
 import addHotelDetailsProps from './components/tripCreation/addHotelDetails/data';
 import basicTravelDetailsCardProps from './components/tripCreation/basicTravelDetailsCard/data';
 import removeItineraryProps from './components/tripCreation/removeItinerary/data';
+import itineraryCardProps from './components/tripCreation/itinerary/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -113,6 +114,7 @@ export {
   receiptsListProps,
   receiptListViewProps,
   removeItineraryProps,
+  itineraryCardProps,
   filterModalProps,
   dropDownProps,
 };

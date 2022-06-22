@@ -50,6 +50,7 @@ import FlightDetailLoadingState from './components/trips/flightDetailLoadingStat
 //Constants
 import {FlightSubTripActions} from './utils/SubTripActions';
 import {HotelSubTripActions} from './utils/SubTripActions';
+import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
 //Trip Creation Components
 import ComingSoon from './components/tripCreation/comingSoon';
@@ -64,6 +65,7 @@ import AddHotelDetails from './components/tripCreation/addHotelDetails';
 import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
 import BasicTravelDetailsCard from './components/tripCreation/basicTravelDetailsCard';
 import RemoveItinerary from './components/tripCreation/removeItinerary';
+import ItineraryCard from './components/tripCreation/itinerary';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -145,12 +147,14 @@ export {
   // constants
   FlightSubTripActions,
   HotelSubTripActions,
+  FieldNamesEnum,
   // Home
   HomeHeader,
   ClaimsCard,
   ClaimsList,
   MessageCard,
   HomeLoadingState,
+  ItineraryCard,
   //Expense,
   ExpenseCard,
   ExpenseDetailCard,

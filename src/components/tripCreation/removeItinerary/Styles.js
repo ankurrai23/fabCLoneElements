@@ -21,6 +21,12 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.PASTEL_RED,
   },
+  errorTxt: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.PASTEL_RED,
+    paddingHorizontal: DP._16,
+  },
   removeView: {
     flexDirection: 'row',
     alignItems: 'center',
