@@ -18,6 +18,7 @@ import ModificationAlertBox from '../components/modificationAlertBox';
 import TripStatus from '../tripStatus';
 import {ImageConst} from '../../../utils/imageConst';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import ContactSupport from '../../../common/components/contactSupport';
 
 export const getStatusObject = (status) => {
   const capitalize = () => {
@@ -56,15 +57,15 @@ export const getStatusObject = (status) => {
 };
 
 export default function HotelDetailCard({
-  data,
+  item,
   onActionPress,
   onMainImagePress,
   style,
-  footerComponent,
-  onRefresh,
-  onPress,
+  supportDetails,
+  onPressClose,
+  onContactSupportPress,
 }) {
-  const item = data.item;
+  // const item = data;
   const [expanded, setExpanded] = useState(false);
   const [sheetVisible, setSheetVisible] = useState(false);
   const [fadeIn] = useState(new Animated.Value(0));
@@ -83,7 +84,6 @@ export default function HotelDetailCard({
     outputRange: ['0deg', '180deg'],
   });
   const onItemPress = () => {
-    // onPress()
     if (!expanded) {
       Animated.timing(fadeIn, {
         toValue: 1,
@@ -343,6 +343,12 @@ export default function HotelDetailCard({
                   {payNowAction.name}
                 </Button>
               )}
+              <Separator style={Styles.separator} />
+              <ContactSupport
+                supportDetails={supportDetails}
+                onPressClose={onPressClose}
+                onContactSupportPress={onContactSupportPress}
+              />
             </Animated.View>
           )}
           <FTouchableOpacity
@@ -385,7 +391,6 @@ export default function HotelDetailCard({
           </>
         )}
       </View>
-      {/* {footerComponent} */}
       <DialogBox
         modalVisible={sheetVisible}
         onClose={() => setSheetVisible(false)}

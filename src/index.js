@@ -21,6 +21,7 @@ import EmptyScreen from './common/components/emptyScreen';
 import DropDownList from './common/components/dropDownList';
 import StackHeader from './common/components/stackHeader';
 import ScrollableTabBar from './common/components/scrollableTabBar';
+import ContactSupport from './common/components/contactSupport';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -104,6 +105,7 @@ export {
   DropDownList,
   StackHeader,
   ScrollableTabBar,
+  ContactSupport,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
