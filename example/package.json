@@ -21,8 +21,7 @@
     "react-native-screens": "3.10.2",
     "react-native-vector-icons": "8.1.0",
     "@react-native-community/blur": "3.6.0",
-    "react-native-webview": "11.4.3",
-    "react-native-fab-elements": "file:../"
+    "react-native-webview": "11.4.3"
   },
   "devDependencies": {
     "@babel/core": "7.14.8",
