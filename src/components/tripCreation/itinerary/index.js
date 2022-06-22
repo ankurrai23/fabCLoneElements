@@ -17,7 +17,9 @@ const ItineraryCard = (props) => {
     props?.editClicked(props?.index);
     LayoutAnimation.easeInEaseOut();
   };
+  const ifItineraryHasError = () => {
 
+  }
   if (props?.shouldCollapse) {
     return (
       <View style={Styles.briefCardStyle_container}>
@@ -76,7 +78,7 @@ const ItineraryCard = (props) => {
             ) : null} */}
         <View style={Styles.innerContainer}>
           <PickerField
-            // error={departureCityError.error}
+            error={props?.errors?.itinerarySameError || props?.errors?.departureCityError}
             // helperText={departureCityError.errorText}
             label={'Departure city'}
             value={props?.itinerary?.source?.name}
@@ -86,7 +88,7 @@ const ItineraryCard = (props) => {
             }}
           />
           <PickerField
-            // error={arrivalCityError.error}
+            error={props?.errors?.itinerarySameError || props?.errors?.arrivalCityError}
             // helperText={arrivalCityError.errorText}
             label={'Arrival city'}
             value={props?.itinerary?.destination?.name}
@@ -97,7 +99,7 @@ const ItineraryCard = (props) => {
           />
           <View style={Styles.datesContainer}>
             <PickerField
-              // error={errors.defatureDateError}
+              error={props?.errors?.itinerarySameError || props?.errors?.departureDateError}
               label={'Departure date'}
               value={props?.itinerary?.departureDate ? formattedDate(props?.itinerary?.departureDate) : null}
               labelStyle={Styles.textFieldLabel}
@@ -114,7 +116,7 @@ const ItineraryCard = (props) => {
               <PickerField
                 label={'Return date'}
                 value={props?.itinerary?.returnDate ? formattedDate(props?.itinerary?.returnDate) : null}
-                // error={errors.returnDateError}
+                error={props?.errors?.itinerarySameError || props?.errors?.returnDateError}
                 labelStyle={Styles.textFieldLabel}
                 onPress={() => {
                   props?.pickerFieldClicked(props?.index, FieldNamesEnum.RETURN_DATE);

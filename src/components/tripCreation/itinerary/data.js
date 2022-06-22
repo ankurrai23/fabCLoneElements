@@ -47,7 +47,11 @@ const itineraryCardProps = {
   label: 'Itinerary 1',
   index: 0,
   errors:{
-    isItinerarySame : 'Itinerary details cannot be same'
+    itinerarySameError : 'Itinerary details cannot be same',
+    departureCityError : null,
+    arrivalCityError : null,
+    departureDateError : null,
+    returnDateError : null,
   }
 };
 
