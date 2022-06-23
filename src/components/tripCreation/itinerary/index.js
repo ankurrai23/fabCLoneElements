@@ -79,7 +79,7 @@ const ItineraryCard = (props) => {
         <View style={Styles.innerContainer}>
           <PickerField
             error={props?.errors?.itinerarySameError || props?.errors?.departureCityError}
-            // helperText={departureCityError.errorText}
+            helperText={props?.errors?.departureCityError}
             label={'Departure city'}
             value={props?.itinerary?.source?.name}
             labelStyle={Styles.textFieldLabel}
@@ -89,7 +89,7 @@ const ItineraryCard = (props) => {
           />
           <PickerField
             error={props?.errors?.itinerarySameError || props?.errors?.arrivalCityError}
-            // helperText={arrivalCityError.errorText}
+            helperText={props?.errors?.arrivalCityError}
             label={'Arrival city'}
             value={props?.itinerary?.destination?.name}
             labelStyle={Styles.textFieldLabel}
@@ -100,6 +100,7 @@ const ItineraryCard = (props) => {
           <View style={Styles.datesContainer}>
             <PickerField
               error={props?.errors?.itinerarySameError || props?.errors?.departureDateError}
+              helperText={props?.errors?.departureDateError}
               label={'Departure date'}
               value={props?.itinerary?.departureDate ? formattedDate(props?.itinerary?.departureDate) : null}
               labelStyle={Styles.textFieldLabel}
@@ -117,6 +118,7 @@ const ItineraryCard = (props) => {
                 label={'Return date'}
                 value={props?.itinerary?.returnDate ? formattedDate(props?.itinerary?.returnDate) : null}
                 error={props?.errors?.itinerarySameError || props?.errors?.returnDateError}
+                helperText={props?.errors?.returnDateError}
                 labelStyle={Styles.textFieldLabel}
                 onPress={() => {
                   props?.pickerFieldClicked(props?.index, FieldNamesEnum.RETURN_DATE);
