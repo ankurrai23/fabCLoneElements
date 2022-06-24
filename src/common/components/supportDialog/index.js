@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, FlatList, View, Linking} from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -31,9 +31,7 @@ const SupportDialog = (props) => {
       modalVisible={props.visible}
       ContentModal={
         <View style={styles.paddingView}>
-          <FTouchableOpacity
-            style={styles.closeView}
-            onPress={() => props.setVisible(false)}>
+          <FTouchableOpacity style={styles.closeView} onPress={props.onClose}>
             <MaterialCommunityIcons
               name="close"
               size={DP._26}
@@ -52,9 +50,7 @@ const SupportDialog = (props) => {
           </View>
         </View>
       }
-      onClose={() => {
-        props.setVisible(false);
-      }}
+      onClose={props.onClose}
     />
   );
 };

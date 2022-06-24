@@ -62,13 +62,14 @@ export default function HotelDetailCard({
   onMainImagePress,
   style,
   supportDetails,
-  onPressClose,
+  onClose,
   onContactSupportPress,
 }) {
-  // const item = data;
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(!item.enableViewMoreButton);
   const [sheetVisible, setSheetVisible] = useState(false);
-  const [fadeIn] = useState(new Animated.Value(0));
+  const [fadeIn] = useState(
+    new Animated.Value(item.enableViewMoreButton ? 0 : 1),
+  );
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
@@ -163,13 +164,7 @@ export default function HotelDetailCard({
   const renderItem = ({item: inclusion}) => {
     return <Inclusions text={inclusion.text} image={inclusion.icon} />;
   };
-  console.log('app,e=====', expanded);
   return (
-    // <ScrollView
-    //   contentContainerStyle={{padding: DP._16}}
-    //   refreshControl={
-    //     <RefreshControl refreshing={false} onRefresh={onRefresh} />
-    //   }>
     <>
       {(posAction || invoiceAction || reviewAction) && <PostTripHotelActions />}
       {!!item.notificationText && (
@@ -269,7 +264,7 @@ export default function HotelDetailCard({
               {item.inclusions && (
                 <>
                   <FText style={Styles.sectionTitle}>Inclusions</FText>
-                  {item.inclusions.map((item, index) => {
+                  {item.inclusions?.map((item, index) => {
                     if (index < 3)
                       return (
                         <Inclusions
@@ -346,19 +341,26 @@ export default function HotelDetailCard({
               <Separator style={Styles.separator} />
               <ContactSupport
                 supportDetails={supportDetails}
-                onPressClose={onPressClose}
                 onContactSupportPress={onContactSupportPress}
+                onClose={onClose}
               />
+              <Separator style={Styles.separator} />
             </Animated.View>
           )}
-          <FTouchableOpacity
-            onPress={onItemPress}
-            style={Styles.viewDetailView}>
-            <FText style={Styles.showMoreTxt}>View more details</FText>
-            <Animated.View style={{transform: [{rotate: spin}]}}>
-              <AntDesign name="down" size={DP._12} color={Color.DODGER_BLUE} />
-            </Animated.View>
-          </FTouchableOpacity>
+          {item.enableViewMoreButton && (
+            <FTouchableOpacity
+              onPress={onItemPress}
+              style={Styles.viewDetailView}>
+              <FText style={Styles.showMoreTxt}>View more details</FText>
+              <Animated.View style={{transform: [{rotate: spin}]}}>
+                <AntDesign
+                  name="down"
+                  size={DP._12}
+                  color={Color.DODGER_BLUE}
+                />
+              </Animated.View>
+            </FTouchableOpacity>
+          )}
         </View>
         {(cancelAction || modifyAction) && (
           <>
@@ -413,7 +415,6 @@ export default function HotelDetailCard({
           </View>
         }
       />
-      {/* </ScrollView> */}
     </>
   );
 }
