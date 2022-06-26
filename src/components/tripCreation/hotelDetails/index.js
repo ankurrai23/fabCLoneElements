@@ -7,7 +7,7 @@ import Styles from './Styles';
 import {ImageConst} from '../../../utils/imageConst';
 
 export default function HotelDetails(props) {
-  const {data, hotelError} = props;
+  const {data, error} = props;
   function renderItem(value) {
     return (
       <View style={Styles.renderItem}>
@@ -51,8 +51,8 @@ export default function HotelDetails(props) {
           </FText>
         </FTouchableOpacity>
       </View>
-      {hotelError === true ? (
-        <FText style={Styles.errorDetailTxt}>{'Enter hotel details'}</FText>
+      {error === true ? (
+        <FText style={Styles.errorDetailTxt}>{error}</FText>
       ) : null}
       {!!data?.length &&
         data?.map((item, i) => {

@@ -84,8 +84,8 @@ export default function FlightDetails(props) {
           </FText>
         </FTouchableOpacity>
       </View>
-      {props.flightError === true ? (
-        <FText style={Styles.errorDetailTxt}>{'Enter flight details'}</FText>
+      {!!props.error === true ? (
+        <FText style={Styles.errorDetailTxt}>{props.error}</FText>
       ) : null}
       {props.data?.length > 0 ? (
         <View style={{marginTop: DP._12}}>{renderRoute()}</View>
