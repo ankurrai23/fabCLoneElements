@@ -51,9 +51,7 @@ export default function HotelDetails(props) {
           </FText>
         </FTouchableOpacity>
       </View>
-      {error === true ? (
-        <FText style={Styles.errorDetailTxt}>{error}</FText>
-      ) : null}
+      {error ? <FText style={Styles.errorDetailTxt}>{error}</FText> : null}
       {!!data?.length &&
         data?.map((item, i) => {
           return (
