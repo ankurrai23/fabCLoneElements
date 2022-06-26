@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import {LayoutAnimation, View} from 'react-native';
 import {
   Button,
@@ -11,45 +11,57 @@ import Styles from './styles';
 import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
-import { formattedDate } from '../../../utils/Utils';
+import {formattedDate} from '../../../utils/Utils';
 const ItineraryCard = (props) => {
   const onEditClicked = () => {
     props?.editClicked(props?.index);
     LayoutAnimation.easeInEaseOut();
   };
-  const ifItineraryHasError = () => {
-
-  }
   if (props?.shouldCollapse) {
     return (
-      <View style={Styles.briefCardStyle_container}>
-        <View style={Styles.briefCardStyle_flexView()}>
-          <View style={Styles.briefCardStyle_flex6}>
-            <FText numberOfLines={1} type="medium" style={Styles.sourceTxt}>
-              {`${props?.itinerary?.source?.name} to ${props?.itinerary?.destination?.name}`}
-            </FText>
+      <>
+        <View
+          style={[
+            Styles.briefCardStyle_container,
+            props?.errors?.itineraryDetailsMissingError
+              ? {borderColor: Color.PASTEL_RED}
+              : {},
+          ]}>
+          <View style={Styles.briefCardStyle_flexView()}>
+            <View style={Styles.briefCardStyle_flex6}>
+              <FText numberOfLines={1} type="medium" style={Styles.sourceTxt}>
+                {`${props?.itinerary?.source?.name} to ${props?.itinerary?.destination?.name}`}
+              </FText>
+            </View>
+            <View style={Styles.briefCardStyle_iteneryView}>
+              <FText style={Styles.briefCardStyle_itineraryTxt}>
+                {props?.label}
+              </FText>
+            </View>
           </View>
-          <View style={Styles.briefCardStyle_iteneryView}>
-            <FText style={Styles.briefCardStyle_itineraryTxt}>
-              {props?.label}
-            </FText>
+          <View style={Styles.briefCardStyle_flexView('margin')}>
+            <View style={Styles.briefCardStyle_flex6}>
+              <FText style={Styles.briefCardStyle_dateTxt}>
+                {props?.itinerary?.departureDate
+                  ? formattedDate(props?.itinerary?.departureDate)
+                  : ''}
+              </FText>
+            </View>
+            <FTouchableOpacity
+              onPress={onEditClicked}
+              hitSlop={Styles.briefCardStyle_touchView}
+              style={Styles.briefCardStyle_flexView()}>
+              <Feather name="edit-2" size={DP._15} color={Color.DODGER_BLUE} />
+              <FText style={Styles.briefCardStyle_editTxt}>Edit</FText>
+            </FTouchableOpacity>
           </View>
         </View>
-        <View style={Styles.briefCardStyle_flexView('margin')}>
-          <View style={Styles.briefCardStyle_flex6}>
-            <FText style={Styles.briefCardStyle_dateTxt}>
-              {props?.itinerary?.departureDate ? formattedDate(props?.itinerary?.departureDate) : ""}
-            </FText>
-          </View>
-          <FTouchableOpacity
-            onPress={onEditClicked}
-            hitSlop={Styles.briefCardStyle_touchView}
-            style={Styles.briefCardStyle_flexView()}>
-            <Feather name="edit-2" size={DP._15} color={Color.DODGER_BLUE} />
-            <FText style={Styles.briefCardStyle_editTxt}>Edit</FText>
-          </FTouchableOpacity>
-        </View>
-      </View>
+        {props?.errors?.itineraryDetailsMissingError ? (
+          <FText style={Styles.errorTxt}>
+            {props?.errors?.itineraryDetailsMissingError}
+          </FText>
+        ) : null}
+      </>
     );
   }
   return (
@@ -63,49 +75,58 @@ const ItineraryCard = (props) => {
       />
 
       <View style={Styles.container}>
-        {/* {(departureCityError.error ||
-            arrivalCityError.error ||
-            departureDateError.error ||
-            (isRoundTrip ? returnDateError.error : '')) === true ? (
-            <FText style={Styles.errorTitle}>
-                {`Please enter basic travel details to add ${requestType === 'HOTEL'
-                    ? 'hotel'
-                    : requestType === 'FLIGHT'
-                        ? 'flight'
-                        : 'flight & hotel'
-                    } details`}
-            </FText>
-            ) : null} */}
         <View style={Styles.innerContainer}>
           <PickerField
-            error={props?.errors?.itinerarySameError || props?.errors?.departureCityError}
+            error={
+              props?.errors?.itinerarySameError ||
+              props?.errors?.departureCityError
+            }
             helperText={props?.errors?.departureCityError}
             label={'Departure city'}
             value={props?.itinerary?.source?.name}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
-              props?.pickerFieldClicked(props?.index, FieldNamesEnum.DEPARTURE_CITY);
+              props?.pickerFieldClicked(
+                props?.index,
+                FieldNamesEnum.DEPARTURE_CITY,
+              );
             }}
           />
           <PickerField
-            error={props?.errors?.itinerarySameError || props?.errors?.arrivalCityError}
+            error={
+              props?.errors?.itinerarySameError ||
+              props?.errors?.arrivalCityError
+            }
             helperText={props?.errors?.arrivalCityError}
             label={'Arrival city'}
             value={props?.itinerary?.destination?.name}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
-              props?.pickerFieldClicked(props?.index, FieldNamesEnum.ARRIVAL_CITY);
+              props?.pickerFieldClicked(
+                props?.index,
+                FieldNamesEnum.ARRIVAL_CITY,
+              );
             }}
           />
           <View style={Styles.datesContainer}>
             <PickerField
-              error={props?.errors?.itinerarySameError || props?.errors?.departureDateError}
+              error={
+                props?.errors?.itinerarySameError ||
+                props?.errors?.departureDateError
+              }
               helperText={props?.errors?.departureDateError}
               label={'Departure date'}
-              value={props?.itinerary?.departureDate ? formattedDate(props?.itinerary?.departureDate) : null}
+              value={
+                props?.itinerary?.departureDate
+                  ? formattedDate(props?.itinerary?.departureDate)
+                  : null
+              }
               labelStyle={Styles.textFieldLabel}
               onPress={() => {
-                props?.pickerFieldClicked(props?.index, FieldNamesEnum.DEPARTURE_DATE);
+                props?.pickerFieldClicked(
+                  props?.index,
+                  FieldNamesEnum.DEPARTURE_DATE,
+                );
               }}
               touchContainer={
                 props?.showReturnDate
@@ -116,12 +137,22 @@ const ItineraryCard = (props) => {
             {props?.showReturnDate && (
               <PickerField
                 label={'Return date'}
-                value={props?.itinerary?.returnDate ? formattedDate(props?.itinerary?.returnDate) : null}
-                error={props?.errors?.itinerarySameError || props?.errors?.returnDateError}
+                value={
+                  props?.itinerary?.returnDate
+                    ? formattedDate(props?.itinerary?.returnDate)
+                    : null
+                }
+                error={
+                  props?.errors?.itinerarySameError ||
+                  props?.errors?.returnDateError
+                }
                 helperText={props?.errors?.returnDateError}
                 labelStyle={Styles.textFieldLabel}
                 onPress={() => {
-                  props?.pickerFieldClicked(props?.index, FieldNamesEnum.RETURN_DATE);
+                  props?.pickerFieldClicked(
+                    props?.index,
+                    FieldNamesEnum.RETURN_DATE,
+                  );
                 }}
                 touchContainer={{flex: 0.5, marginLeft: DP._8}}
               />

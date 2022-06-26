@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
-import { Color } from '../../../utils/color/index.fabhotel';
-import { DP } from '../../../utils/Dimen';
+import {Color} from '../../../utils/color/index.fabhotel';
+import {DP} from '../../../utils/Dimen';
 
 export default StyleSheet.create({
   btnStyle: (departureCity, arrivalCity, departureDate) => ({
@@ -120,5 +120,11 @@ export default StyleSheet.create({
     bottom: DP._10,
     left: DP._10,
     right: DP._14,
+  },
+  errorTxt: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.PASTEL_RED,
+    paddingHorizontal: DP._34,
   },
 });
