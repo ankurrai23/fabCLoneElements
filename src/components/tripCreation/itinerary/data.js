@@ -1,6 +1,6 @@
 const itineraryCardProps = {
   itinerary: {
-    source:{
+    source: {
       name: 'Delhi',
       lat: 28.6,
       lon: 122.6,
@@ -27,7 +27,7 @@ const itineraryCardProps = {
   },
   showSaveButton: true,
   showReturnDate: true,
-  shouldCollapse: false,
+  shouldCollapse: true,
   showLabel: true,
   showRemove: false,
   editClicked: (index) => {
@@ -46,13 +46,15 @@ const itineraryCardProps = {
   },
   label: 'Itinerary 1',
   index: 0,
-  errors:{
-    itinerarySameError : 'Itinerary details cannot be same',
-    departureCityError : null,
-    arrivalCityError : null,
-    departureDateError : null,
-    returnDateError : null,
-  }
+  errors: {
+    itinerarySameError: 'Itinerary details cannot be same',
+    departureCityError: null,
+    arrivalCityError: null,
+    departureDateError: null,
+    returnDateError: null,
+    itineraryDetailsMissingError:
+      'Enter a flight or a hotel in itinerary 2 to proceed',
+  },
 };
 
 export default itineraryCardProps;
