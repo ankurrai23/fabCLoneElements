@@ -26,7 +26,7 @@ export default function ContactSupport({
         </FText>
         <Ionicons name="call" size={DP._18} color={Color.DODGER_BLUE} />
       </FTouchableOpacity>
-      {!!supportDetails.length && (
+      {!!supportDetails?.length && (
         <SupportDialog
           visible={supportDetails.length > 0}
           onClose={onClose}
@@ -39,14 +39,7 @@ export default function ContactSupport({
 
 const styles = StyleSheet.create({
   container: {
-    // paddingHorizontal: DP._16,
-    paddingVertical: DP._3,
     backgroundColor: Color.WHITE,
-    // marginVertical: DP._16,
-    // marginTop: DP._16,
-    // borderWidth: 0.5,
-    // borderColor: Color.LIGHT_PINK_WINKLE,
-    // borderRadius: DP._8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

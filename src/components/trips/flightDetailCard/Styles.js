@@ -90,7 +90,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   heading: {
-    marginBottom: DP._8,
+    marginVertical: DP._16,
     marginTop: DP._24,
     marginHorizontal: DP._16,
   },
