@@ -8,7 +8,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: DP._16,
     // marginVertical: DP._5,
-    marginTop: DP._24,
     justifyContent: 'space-between',
   },
   itineraryTxt: {
