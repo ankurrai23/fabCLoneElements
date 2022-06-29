@@ -64,6 +64,23 @@ const ItineraryCard = (props) => {
       </>
     );
   }
+  const ifCitiesAndDepartureDateNull =
+    props?.errors?.departureCityError &&
+    props?.errors?.arrivalCityError &&
+    props?.errors?.departureDateError;
+
+  const ifEveryFieldisEmpty =
+    (props?.showReturnDate &&
+      ifCitiesAndDepartureDateNull &&
+      props?.errors.retureDateError) ||
+    ifCitiesAndDepartureDateNull
+      ? 'Enter basic travel details'
+      : '';
+  console.log({
+    ifCitiesAndDepartureDateNull,
+    ifEveryFieldisEmpty,
+    showReturn: props?.showReturnDate,
+  });
   return (
     <>
       <RemoveItinerary
@@ -71,7 +88,7 @@ const ItineraryCard = (props) => {
         _onPressRemove={() => props?.removeClicked(props?.index)}
         showRemove={props?.showRemove}
         showLabel={props?.showLabel}
-        errorText={props?.errors?.itinerarySameError}
+        errorText={ifEveryFieldisEmpty || props?.errors?.itinerarySameError}
       />
 
       <View style={Styles.container}>
@@ -81,7 +98,9 @@ const ItineraryCard = (props) => {
               props?.errors?.itinerarySameError ||
               props?.errors?.departureCityError
             }
-            helperText={props?.errors?.departureCityError}
+            helperText={
+              !ifEveryFieldisEmpty ? props?.errors?.departureCityError : ''
+            }
             label={'Departure city'}
             value={props?.itinerary?.source?.name}
             labelStyle={Styles.textFieldLabel}
@@ -91,13 +110,16 @@ const ItineraryCard = (props) => {
                 FieldNamesEnum.DEPARTURE_CITY,
               );
             }}
+            bottomMargin={DP._24}
           />
           <PickerField
             error={
               props?.errors?.itinerarySameError ||
               props?.errors?.arrivalCityError
             }
-            helperText={props?.errors?.arrivalCityError}
+            helperText={
+              !ifEveryFieldisEmpty ? props?.errors?.arrivalCityError : ''
+            }
             label={'Arrival city'}
             value={props?.itinerary?.destination?.name}
             labelStyle={Styles.textFieldLabel}
@@ -107,6 +129,7 @@ const ItineraryCard = (props) => {
                 FieldNamesEnum.ARRIVAL_CITY,
               );
             }}
+            bottomMargin={DP._24}
           />
           <View style={Styles.datesContainer}>
             <PickerField
@@ -114,7 +137,9 @@ const ItineraryCard = (props) => {
                 props?.errors?.itinerarySameError ||
                 props?.errors?.departureDateError
               }
-              helperText={props?.errors?.departureDateError}
+              helperText={
+                !ifEveryFieldisEmpty ? props?.errors?.departureDateError : ''
+              }
               label={'Departure date'}
               value={
                 props?.itinerary?.departureDate
@@ -133,6 +158,7 @@ const ItineraryCard = (props) => {
                   ? {flex: 0.5, marginRight: DP._8}
                   : {flex: 1}
               }
+              bottomMargin={DP._24}
             />
             {props?.showReturnDate && (
               <PickerField
@@ -142,11 +168,10 @@ const ItineraryCard = (props) => {
                     ? formattedDate(props?.itinerary?.returnDate)
                     : null
                 }
-                error={
-                  props?.errors?.itinerarySameError ||
-                  props?.errors?.returnDateError
+                error={props?.errors?.returnDateError}
+                helperText={
+                  !ifEveryFieldisEmpty ? props?.errors?.returnDateError : ''
                 }
-                helperText={props?.errors?.returnDateError}
                 labelStyle={Styles.textFieldLabel}
                 onPress={() => {
                   props?.pickerFieldClicked(
@@ -155,6 +180,7 @@ const ItineraryCard = (props) => {
                   );
                 }}
                 touchContainer={{flex: 0.5, marginLeft: DP._8}}
+                bottomMargin={DP._24}
               />
             )}
           </View>
@@ -168,7 +194,7 @@ const ItineraryCard = (props) => {
             props?.departureDate === null
           }
           onPress={() => {
-            props?.saveClicked(props?.index, {});
+            props?.saveClicked(props?.index);
           }}
           type="SECONDARY"
           textFont={'medium'}

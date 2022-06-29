@@ -1,7 +1,7 @@
 const itineraryCardProps = {
   itinerary: {
     source: {
-      name: 'Delhi',
+      name: '',
       lat: 28.6,
       lon: 122.6,
       placeId: '1231SDasd',
@@ -12,7 +12,7 @@ const itineraryCardProps = {
       viewport: null,
     },
     destination: {
-      name: 'Mumbai',
+      name: '',
       lat: 28.6,
       lon: 122.6,
       placeId: '1231SDasd',
@@ -22,13 +22,13 @@ const itineraryCardProps = {
       country: '',
       viewport: null,
     },
-    departureDate: '2022-04-28',
+    departureDate: '',
     returnDate: '2022-04-28',
   },
   showSaveButton: true,
   showReturnDate: true,
-  shouldCollapse: true,
-  showLabel: true,
+  shouldCollapse: false,
+  showLabel: false,
   showRemove: false,
   editClicked: (index) => {
     console.log('edit clicked for ', index);
@@ -47,9 +47,9 @@ const itineraryCardProps = {
   label: 'Itinerary 1',
   index: 0,
   errors: {
-    itinerarySameError: 'Itinerary details cannot be same',
-    departureCityError: null,
-    arrivalCityError: null,
+    itinerarySameError: null,
+    departureCityError: 'Please Enter departure city',
+    arrivalCityError: 'Please enter arrival city',
     departureDateError: null,
     returnDateError: null,
     itineraryDetailsMissingError:
