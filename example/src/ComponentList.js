@@ -59,6 +59,7 @@ import {
   ReceiptsList,
   ReceiptListView,
   RemoveItinerary,
+  ContactSupport,
   FilterModal,
 } from 'react-native-fab-elements';
 
@@ -92,6 +93,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'ScrollableTabBar',
     component: <ScrollableTabBar {...data.scrollableTabBarProps} />,
+  },
+  {
+    name: 'Contact Support',
+    component: <ContactSupport {...data.contactSupportProps} />,
   },
   {
     name: 'FilterModal',

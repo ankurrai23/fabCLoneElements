@@ -14,13 +14,24 @@ import {TripStatus} from '../../../index';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
 import ModificationAlertBox from '../components/modificationAlertBox';
 import {getStatusObject} from '../hotelDetailCard';
+import ContactSupport from '../../../common/components/contactSupport';
 
-const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
+const FlightDetailCard = ({
+  title,
+  item,
+  onActionPress,
+  onCardPress,
+  style,
+  supportDetails,
+  onContactSupportPress,
+  onClose,
+}) => {
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
+  const supportAction = isActionEnabled(FlightSubTripActions.SUPPORT);
 
   const Actions = () => (
     <>
@@ -134,6 +145,16 @@ const FlightDetailCard = ({title, item, onActionPress, onCardPress, style}) => {
                 <FText style={Styles.time}>{item.pnr}</FText>
               </View>
             </View>
+          )}
+          {supportAction && (
+            <>
+              <Separator style={Styles.separator} />
+              <ContactSupport
+                supportDetails={supportDetails}
+                onContactSupportPress={onContactSupportPress}
+                onClose={onClose}
+              />
+            </>
           )}
         </FTouchableOpacity>
         {(rescheduleAction || cancelAction || viewRemarksAction) && <Actions />}
