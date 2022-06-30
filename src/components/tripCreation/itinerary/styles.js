@@ -29,7 +29,6 @@ export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
-    marginTop: DP._24,
   },
   title: {
     fontSize: DP._14,
@@ -71,8 +70,6 @@ export default StyleSheet.create({
     borderRadius: DP._8,
     paddingVertical: DP._16,
     paddingHorizontal: DP._16,
-    marginVertical: DP._8,
-    marginHorizontal: DP._16,
   },
   briefCardStyle_flexView: (margin) => ({
     flexDirection: 'row',

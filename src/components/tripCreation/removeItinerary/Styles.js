@@ -7,7 +7,6 @@ export default StyleSheet.create({
   removeItinerary: {
     flexDirection: 'row',
     paddingHorizontal: DP._16,
-    // marginVertical: DP._5,
     justifyContent: 'space-between',
   },
   itineraryTxt: {

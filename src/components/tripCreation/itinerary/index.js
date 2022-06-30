@@ -83,15 +83,15 @@ const ItineraryCard = (props) => {
   });
   return (
     <>
-      <RemoveItinerary
-        itinerary={props?.index + 1}
-        _onPressRemove={() => props?.removeClicked(props?.index)}
-        showRemove={props?.showRemove}
-        showLabel={props?.showLabel}
-        errorText={ifEveryFieldisEmpty || props?.errors?.itinerarySameError}
-      />
-
       <View style={Styles.container}>
+        <RemoveItinerary
+          itinerary={props?.index + 1}
+          _onPressRemove={() => props?.removeClicked(props?.index)}
+          showRemove={props?.showRemove}
+          showLabel={props?.showLabel}
+          errorText={ifEveryFieldisEmpty || props?.errors?.itinerarySameError}
+        />
+
         <View style={Styles.innerContainer}>
           <PickerField
             error={
