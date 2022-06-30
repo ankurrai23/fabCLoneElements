@@ -105,4 +105,7 @@ export default StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
   },
+  separator: {
+    marginVertical: DP._16,
+  },
 });
