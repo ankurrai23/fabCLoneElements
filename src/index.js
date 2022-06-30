@@ -21,6 +21,7 @@ import EmptyScreen from './common/components/emptyScreen';
 import DropDownList from './common/components/dropDownList';
 import StackHeader from './common/components/stackHeader';
 import ScrollableTabBar from './common/components/scrollableTabBar';
+import ContactSupport from './common/components/contactSupport';
 import FilterModal from './common/components/filterModal';
 import DropDown from './common/components/dropDown';
 
@@ -109,6 +110,7 @@ export {
   StackHeader,
   ScrollableTabBar,
   DropDown,
+  ContactSupport,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
