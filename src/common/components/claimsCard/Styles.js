@@ -23,7 +23,6 @@ export default StyleSheet.create({
   },
   title: {
     color: Color.WHITE,
-    marginBottom: DP._8,
     fontSize: DP._16,
     lineHeight: DP._18,
   },
@@ -34,11 +33,10 @@ export default StyleSheet.create({
   amountSecondary: {
     fontSize: DP._28,
     color: Color.WHITE,
-    marginBottom: DP._24,
   },
   plusCircle: {
     color: Color.WHITE,
-    marginBottom: DP._24,
+    marginBottom: DP._16,
   },
   lowerCase: {
     textTransform: 'lowercase',
@@ -46,8 +44,8 @@ export default StyleSheet.create({
   claimsText: {
     color: Color.WHITE,
     fontSize: DP._16,
-    lineHeight: DP._18,
     textTransform: 'capitalize',
+    marginTop: DP._16,
   },
   dateText: {
     fontSize: DP._12,
@@ -67,6 +65,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   amountContainer: {
+    marginTop: DP._8,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -112,7 +111,6 @@ export default StyleSheet.create({
   },
   largeCardGradientStyle: {
     padding: DP._16,
-    paddingTop: DP._24,
     borderRadius: DP._12,
   },
   smallCardGradientStyle: {

@@ -11,7 +11,7 @@ const basicTravelDetailsProps = {
     departureDate: '22 feb 22',
     returnDate: '26 feb 22',
   },
-  tripType: 2,
+  tripType: 1,
   requestType: 'HOTEL',
   openSourceGoogleSearch: () => console.log('source location api'),
   openDestinationGoogleSearch: () => console.log('destination location api'),

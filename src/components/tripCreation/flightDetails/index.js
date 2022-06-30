@@ -11,8 +11,9 @@ import Styles from './Styles';
 
 export default function FlightDetails(props) {
   function renderRoute() {
-    if (props.tripType === 1) {
+    if (props.tripType === 1 || props.tripType === 2) {
       return props.data?.map((item, index) => {
+        if (item.remove) return null;
         return (
           <View key={index} style={Styles.renderRoute}>
             <View style={Styles.flexDirectionRow}>
@@ -29,11 +30,11 @@ export default function FlightDetails(props) {
                 </FText>
               </View>
               <View style={Styles.slotContainer}>
-                <FText type="medium" style={Styles.slotText}>{`Slot: ${moment(
-                  item.startTime,
-                ).format('h:mmA')} - ${moment(item.endTime).format(
-                  'h:mmA',
-                )}`}</FText>
+                <FText
+                  type="medium"
+                  style={
+                    Styles.slotText
+                  }>{`Slot: ${item.startTime} - ${item.endTime}`}</FText>
               </View>
             </View>
             <View style={Styles.routeContainer}>
@@ -80,11 +81,11 @@ export default function FlightDetails(props) {
               </FText>
             </View>
             <View style={Styles.slotContainer}>
-              <FText type="medium" style={Styles.slotText}>{`Slot: ${moment(
-                props.data[0]?.startTime,
-              ).format('h:mmA')} - ${moment(props.data[0]?.endTime).format(
-                'h:mmA',
-              )}`}</FText>
+              <FText
+                type="medium"
+                style={
+                  Styles.slotText
+                }>{`Slot: ${props.data[0]?.startTime} - ${props.data[0]?.endTime}`}</FText>
             </View>
           </View>
           <View style={Styles.routeContainer}>

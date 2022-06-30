@@ -31,6 +31,7 @@ export default function AddHotelDetails({data, errors, ...props}) {
               helperText={data.localityError}
               labelStyle={Styles.textFieldLabel}
               onPress={props.openGoogleSearchLocality}
+              topMargin={DP._8}
             />
           )}
           <View style={Styles.datesContainer}>
@@ -41,6 +42,7 @@ export default function AddHotelDetails({data, errors, ...props}) {
               labelStyle={Styles.textFieldLabel}
               onPress={props.openCheckInDatePicker}
               touchContainer={{flex: 0.5, marginRight: DP._8}}
+              topMargin={DP._8}
             />
             <PickerField
               label="Check-out date"
@@ -50,6 +52,7 @@ export default function AddHotelDetails({data, errors, ...props}) {
               labelStyle={Styles.textFieldLabel}
               onPress={props.openCheckOutDatePicker}
               touchContainer={{flex: 0.5, marginLeft: DP._8}}
+              topMargin={DP._8}
             />
           </View>
         </View>

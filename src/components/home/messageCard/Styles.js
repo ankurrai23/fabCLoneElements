@@ -14,7 +14,7 @@ export default StyleSheet.create({
     borderRadius: DP._12,
     borderWidth: DP._0_5,
     borderColor: Color.LIGHT_PERIWINKLE,
-    marginVertical: DP._8,
+    marginTop: DP._12,
     marginHorizontal: DP._16,
     ...shadowObj,
   },

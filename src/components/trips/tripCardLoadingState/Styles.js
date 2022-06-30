@@ -52,6 +52,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     marginBottom: DP._16,
+    marginTop: DP._24,
   },
   flexRow: {
     flexDirection: 'row',

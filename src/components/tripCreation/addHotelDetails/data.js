@@ -15,6 +15,7 @@ const addHotelDetailsProps = {
     },
     checkInDate: null,
     checkOutDate: null,
+    showLocation: true,
   },
   errors: {
     city: false,
@@ -26,7 +27,7 @@ const addHotelDetailsProps = {
   openGoogleSearch: () => console.log('open location'),
   openCheckInDatePicker: () => console.log('checkin date'),
   openCheckOutDatePicker: () => console.log('checkout date'),
-  showLocation: true,
+  // showLocation: true,
 };
 
 export default addHotelDetailsProps;
