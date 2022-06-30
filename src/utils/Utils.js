@@ -2,6 +2,7 @@ import moment from 'moment';
 import {Platform} from 'react-native';
 import Config from './config';
 import {DP} from './Dimen';
+import percentToHexChart from './color/percent-to-hex-chart.json';
 
 export const FontFamily = Config.fontFamily || 'Metropolis';
 
@@ -79,6 +80,28 @@ export function getPluralText(number, text, isCaps, isNumberPrefix) {
     : '';
 }
 
+export const FontWegithSpec = {
+  normal: {
+    fontWeight: '400',
+  },
+  medium: {
+    fontWeight: '500',
+  },
+  semiBold: {
+    fontWeight: '600',
+  },
+  bold: {
+    fontWeight: '700',
+  },
+};
+
+export function convertOpacityPercentIntoHex(percent) {
+  if (percentToHexChart[percent]) {
+    return percentToHexChart[percent];
+  }
+  throw Error('Invalid opacity percentage');
+}
+
 export default {
   FontFamily,
   Specs,
@@ -88,4 +111,5 @@ export default {
   isEmpty,
   isPlatformIos,
   getPluralText,
+  convertOpacityPercentIntoHex,
 };
