@@ -8,7 +8,7 @@ import {ImageConst} from '../../../utils/imageConst';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 
-const TripListingCard = ({item, onCardPress}) => {
+const TripListingCard = ({item, onCardPress, style}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
 
   const tripIcons = (requestType) => {
@@ -26,7 +26,8 @@ const TripListingCard = ({item, onCardPress}) => {
     <>
       <FTouchableOpacity
         onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
-        style={[Styles.container, {borderRadius: DP._12}]}>
+        style={[Styles.container, {borderRadius: DP._12,
+          borderWidth: DP._0_5, borderColor: Color.LIGHT_PERIWINKLE}, {...style}]}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
             {tripIcons(item.tripRequestType).map((asset, index) => (

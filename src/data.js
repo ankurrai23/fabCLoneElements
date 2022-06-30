@@ -10,6 +10,7 @@ import dropDownListProps from './common/components/dropDownList/data';
 import stackHeaderProps from './common/components/stackHeader/data';
 import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 import contactSupportProps from './common/components/contactSupport/data';
+import filterModalProps from './common/components/filterModal/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -113,4 +114,5 @@ export {
   receiptListViewProps,
   removeItineraryProps,
   contactSupportProps,
+  filterModalProps,
 };

@@ -71,7 +71,7 @@ const TripCardLoadingState = ({
           </View>
         )}
       </View>
-      <View style={Styles.cardContainer}>
+      <View style={[Styles.cardContainer, {marginTop: showSortAndFilter ? 0 : DP._54}]}>
         {[...Array(5).fill('')].map((_, index) => (
           <TripCard key={`${index}abc`} />
         ))}

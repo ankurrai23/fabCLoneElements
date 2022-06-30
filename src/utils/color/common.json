@@ -72,5 +72,6 @@
     "PALE_TURQUOISE_76": "#b3e6d1c2",
     "WARM_BLUE": "#3b5cdf",
     "RED": "#B13A3A",
-    "HAWKES_BLUE": "#DBDCE1"
+    "HAWKES_BLUE": "#DBDCE1",
+    "DARK_BLUE_OPACITY_8": "rgba(28, 25, 57, 0.8)"
 }

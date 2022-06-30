@@ -1,5 +1,5 @@
-import {View, ScrollView, RefreshControl, Animated} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import {View, Animated} from 'react-native';
+import React, {useState} from 'react';
 import FText from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
 import Feather from 'react-native-vector-icons/Feather';
@@ -171,14 +171,12 @@ export default function HotelDetailCard({
         <ModificationAlertBox msg={item.notificationText} />
       )}
       <View style={[Styles.container, style]}>
-        <View
-          style={Styles.subContainer(
-            item.notificationText || item.bookingStatus === 'CANCELLED',
-          )}>
+        <View style={Styles.subContainer(item.reduceOpacity)}>
           <View style={Styles.hotelNameAndImageContainer}>
             {item.mainImage && (
               <FTouchableOpacity
                 style={{marginRight: DP._8}}
+                disabled={item.reduceOpacity}
                 onPress={onMainImagePress}>
                 <FImage
                   style={Styles.hotelImage}
@@ -211,7 +209,8 @@ export default function HotelDetailCard({
             {directionAction && (
               <FTouchableOpacity
                 style={[Styles.flexRowWithAlignCenter]}
-                onPress={() => onActionPress?.(directionAction)}>
+                onPress={() => onActionPress?.(directionAction)}
+                disabled={item.reduceOpacity}>
                 <MaterialCommunityIcons
                   name="navigation"
                   size={DP._18}
@@ -275,7 +274,9 @@ export default function HotelDetailCard({
                       );
                   })}
                   {item.inclusions.length > 3 && (
-                    <FTouchableOpacity onPress={() => setSheetVisible(true)}>
+                    <FTouchableOpacity
+                      onPress={() => setSheetVisible(true)}
+                      disabled={item.reduceOpacity}>
                       <FText style={Styles.moreInclustion}>
                         +{item.inclusions.length - 3} more
                       </FText>
@@ -334,6 +335,7 @@ export default function HotelDetailCard({
                 <Button
                   onPress={() => onActionPress?.(payNowAction)}
                   style={{borderRadius: DP._4, marginTop: DP._4}}
+                  disabled={item.reduceOpacity}
                   textFont="medium">
                   {payNowAction.name}
                 </Button>

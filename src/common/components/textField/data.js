@@ -5,4 +5,6 @@ export default {
   placeholder: 'Please enter full name',
   error: false,
   icon: null,
+  topMargin: 8,
+  bottomMargin: 8,
 };
