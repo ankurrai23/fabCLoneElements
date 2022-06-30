@@ -89,7 +89,7 @@ const FlightDetailCard = ({
             <FText>
               <FText type={'medium'} style={Styles.date}>
                 {item.date}
-              </FText>g
+              </FText>
               <FText
                 style={{
                   color: Color.BLUEY_GREY,
