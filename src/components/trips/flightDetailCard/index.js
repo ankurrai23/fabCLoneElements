@@ -31,6 +31,7 @@ const FlightDetailCard = ({
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
+  const supportAction = isActionEnabled(FlightSubTripActions.SUPPORT);
 
   const Actions = () => (
     <>
@@ -145,12 +146,16 @@ const FlightDetailCard = ({
               </View>
             </View>
           )}
-          <Separator style={Styles.separator} />
-          <ContactSupport
-            supportDetails={supportDetails}
-            onContactSupportPress={onContactSupportPress}
-            onClose={onClose}
-          />
+          {supportAction && (
+            <>
+              <Separator style={Styles.separator} />
+              <ContactSupport
+                supportDetails={supportDetails}
+                onContactSupportPress={onContactSupportPress}
+                onClose={onClose}
+              />
+            </>
+          )}
         </FTouchableOpacity>
         {(rescheduleAction || cancelAction || viewRemarksAction) && <Actions />}
       </View>
