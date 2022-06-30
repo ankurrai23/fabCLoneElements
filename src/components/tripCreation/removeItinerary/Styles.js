@@ -7,8 +7,6 @@ export default StyleSheet.create({
   removeItinerary: {
     flexDirection: 'row',
     paddingHorizontal: DP._16,
-    // marginVertical: DP._5,
-    marginTop: DP._24,
     justifyContent: 'space-between',
   },
   itineraryTxt: {
@@ -20,6 +18,12 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._14,
     color: Color.PASTEL_RED,
+  },
+  errorTxt: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.PASTEL_RED,
+    paddingHorizontal: DP._16,
   },
   removeView: {
     flexDirection: 'row',

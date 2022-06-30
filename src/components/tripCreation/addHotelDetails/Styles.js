@@ -9,7 +9,7 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: DP._16,
+    // padding: DP._16,
   },
   topContainer: {
     flex: 1,

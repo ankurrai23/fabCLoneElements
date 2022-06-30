@@ -7,9 +7,6 @@ import {shadowObj} from '../../../utils/Utils';
 export default StyleSheet.create({
   container: (request) => ({
     backgroundColor: Color.WHITE,
-    paddingHorizontal: DP._16,
-    marginTop: request === 'FLIGHT_AND_HOTEL' ? DP._40 : DP._32,
-    // marginBottom: DP._5,
   }),
   titleContainer: {
     flexDirection: 'row',
@@ -22,11 +19,12 @@ export default StyleSheet.create({
   },
   flexRow: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   addDetails: {
     fontSize: DP._12,
     color: Color.DODGER_BLUE,
-    marginLeft: DP._4,
+    marginLeft: DP._6,
   },
   renderRoute: {
     backgroundColor: Color.WHITE,

@@ -224,6 +224,18 @@ class TextField extends React.Component {
     this.props.onTextInput && this.props.onTextInput(event.nativeEvent);
   };
 
+  blur = () => {
+    this.textInput.current.blur();
+  };
+
+  focus = () => {
+    this.textInput.current.focus();
+  };
+
+  isFocused = () => {
+    this.textInput.current.isFocused();
+  };
+
   render() {
     const props = {
         autoCapitalize: this.props.autoCapitalize,

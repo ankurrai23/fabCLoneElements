@@ -1,15 +1,13 @@
 import React from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 import moment from 'moment';
 
-import {FText, FTouchableOpacity} from '../../..';
-import {Color} from '../../../utils/color/index.travelPlus';
-import {DP} from '../../../utils/Dimen';
+import {FText, FTouchableOpacity, FImage} from '../../..';
 import Styles from './Styles';
+import {ImageConst} from '../../../utils/imageConst';
 
 export default function HotelDetails(props) {
-  const {data, hotelError} = props;
+  const {data, error} = props;
   function renderItem(value) {
     return (
       <View style={Styles.renderItem}>
@@ -28,22 +26,17 @@ export default function HotelDetails(props) {
           </FText>
         </View>
         <View style={Styles.rendercity}>
-          <FText style={Styles.renderCityTxt}>{value.city?.city}</FText>
-          <FText style={Styles.renderLocality}>
-            {value.preferredLocality?.location}
-          </FText>
+          <FText style={Styles.renderCityTxt}>{value.city}</FText>
+          <FText style={Styles.renderLocality}>{value.location}</FText>
         </View>
       </View>
     );
   }
 
-  //in case of flight only return null
-  if (props.requestType === 'FLIGHT' || props.requestType === null) {
-    return null;
-  }
-
   return (
-    <View onLayout={props.onLayout} style={Styles.container}>
+    <View
+      onLayout={props.onLayout}
+      style={[Styles.container, {...props.style}]}>
       <View style={Styles.titleContainer}>
         <FText type="medium" style={Styles.title}>
           Hotel(s)
@@ -51,20 +44,14 @@ export default function HotelDetails(props) {
         <FTouchableOpacity
           style={Styles.flexRow}
           hitSlop={Styles.hitSlop}
-          onPress={
-            data.length ? props.editHotelDetail : props.goToAddHotelDetails
-          }>
-          {!!data?.length && (
-            <Feather name="edit-2" size={DP._12} color={Color.DODGER_BLUE} />
-          )}
+          onPress={props.onPress}>
+          <FImage source={data?.length ? ImageConst.edit2 : ImageConst.plus} />
           <FText type="medium" style={Styles.addDetails}>
-            {data?.length ? 'Edit' : 'Add details'}
+            {data?.length ? 'Edit' : 'Add'}
           </FText>
         </FTouchableOpacity>
       </View>
-      {hotelError === true ? (
-        <FText style={Styles.errorDetailTxt}>{'Enter hotel details'}</FText>
-      ) : null}
+      {error ? <FText style={Styles.errorDetailTxt}>{error}</FText> : null}
       {!!data?.length &&
         data?.map((item, i) => {
           return (

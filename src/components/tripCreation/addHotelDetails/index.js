@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Button, PickerField} from '../../..';
+import {PickerField} from '../../..';
 import {DP} from '../../../utils/Dimen';
 import {formattedDate} from '../../../utils/Utils';
 import Styles from './Styles';

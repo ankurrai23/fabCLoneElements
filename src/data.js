@@ -11,6 +11,7 @@ import stackHeaderProps from './common/components/stackHeader/data';
 import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 import contactSupportProps from './common/components/contactSupport/data';
 import filterModalProps from './common/components/filterModal/data';
+import dropDownProps from './common/components/dropDown/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -43,6 +44,7 @@ import addFlightDetailsProps from './components/tripCreation/addFlightDetails/da
 import addHotelDetailsProps from './components/tripCreation/addHotelDetails/data';
 import basicTravelDetailsCardProps from './components/tripCreation/basicTravelDetailsCard/data';
 import removeItineraryProps from './components/tripCreation/removeItinerary/data';
+import itineraryCardProps from './components/tripCreation/itinerary/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -113,6 +115,8 @@ export {
   receiptsListProps,
   receiptListViewProps,
   removeItineraryProps,
+  itineraryCardProps,
   contactSupportProps,
   filterModalProps,
+  dropDownProps,
 };

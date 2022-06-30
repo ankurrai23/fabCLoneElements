@@ -3,14 +3,7 @@ import {View, FlatList} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-
-import {
-  Button,
-  FText,
-  FTouchableOpacity,
-  PickerField,
-  TextField,
-} from '../../..';
+import {FText, FTouchableOpacity, PickerField, TextField} from '../../..';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
@@ -45,15 +38,6 @@ export default function OtherTravelDetails(props) {
     props._onPressDetail(item);
   }
 
-  // function onPressCancel() {
-  //   setVisible(false);
-  // }
-
-  // function _onPressApply() {
-  //   setVisible(false);
-  //   props._onPressApply(selectedValueTemp);
-  // }
-
   function onChangeText(val) {
     props.onChangeText(val);
   }
@@ -66,6 +50,7 @@ export default function OtherTravelDetails(props) {
       <PickerField
         onPress={() => setVisible(true)}
         error={purposeOfTravelerError}
+        helperText={purposeOfTravelerError}
         label="Purpose of travel"
         labelStyle={Styles.textFieldLabel}
         value={selectedValue.value}

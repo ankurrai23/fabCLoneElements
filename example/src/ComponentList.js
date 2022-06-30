@@ -61,6 +61,8 @@ import {
   RemoveItinerary,
   ContactSupport,
   FilterModal,
+  DropDown,
+  ItineraryCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -101,6 +103,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'FilterModal',
     component: <FilterModal {...data.filterModalProps} />,
+  },
+  {
+    name: 'DropDown',
+    component: <DropDown {...data.dropDownProps} />,
   },
 ];
 
@@ -209,6 +215,10 @@ const TRIP_CREATION = [
   {
     name: 'HotelDetails',
     component: <HotelDetails {...data.hotelDetailsProps} />,
+  },
+  {
+    name: 'ItineraryCard',
+    component: <ItineraryCard {...data.itineraryCardProps} />,
   },
   {
     name: 'FlightDetails',
