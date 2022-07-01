@@ -9,6 +9,8 @@ export default StyleSheet.create({
     backgroundColor: Color.WHITE,
     padding: DP._16,
     marginBottom: DP._16,
+    borderWidth: DP._0_5,
+    borderColor: Color.LIGHT_PERIWINKLE,
     ...shadowObj,
   },
   tripIdContainer: {

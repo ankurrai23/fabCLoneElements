@@ -7,6 +7,8 @@ export default StyleSheet.create({
   container: {
     borderRadius: DP._12,
     backgroundColor: Color.WHITE,
+    borderWidth: DP._0_5,
+    borderColor: Color.LIGHT_PERIWINKLE,
     ...shadowObj,
   },
   subContainer: (modified) => ({

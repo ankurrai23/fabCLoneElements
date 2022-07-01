@@ -7,6 +7,8 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: DP._12,
     marginHorizontal: DP._16,
+    borderWidth: DP._0_5,
+    borderColor: Color.LIGHT_PERIWINKLE,
     ...shadowObj,
   },
   actionContainer: {
