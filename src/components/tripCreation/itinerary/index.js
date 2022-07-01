@@ -36,7 +36,7 @@ const ItineraryCard = (props) => {
           <View style={Styles.briefCardStyle_flexView()}>
             <View style={Styles.briefCardStyle_flex6}>
               <FText numberOfLines={1} type="medium" style={Styles.sourceTxt}>
-                {`${props?.itinerary?.source?.name} to ${props?.itinerary?.destination?.name}`}
+                {`${props?.itinerary?.source?.city} to ${props?.itinerary?.destination?.city}`}
               </FText>
             </View>
             <View style={Styles.briefCardStyle_iteneryView}>
@@ -116,7 +116,7 @@ const ItineraryCard = (props) => {
               !ifEveryFieldisEmpty ? props?.errors?.departureCityError : ''
             }
             label={'Departure city'}
-            value={props?.itinerary?.source?.name}
+            value={props?.itinerary?.source?.city}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
               props?.pickerFieldClicked(
@@ -140,7 +140,7 @@ const ItineraryCard = (props) => {
               !ifEveryFieldisEmpty ? props?.errors?.arrivalCityError : ''
             }
             label={'Arrival city'}
-            value={props?.itinerary?.destination?.name}
+            value={props?.itinerary?.destination?.city}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
               props?.pickerFieldClicked(
