@@ -1,7 +1,7 @@
 const itineraryCardProps = {
   itinerary: {
     source: {
-      name: '',
+      name: null,
       lat: 28.6,
       lon: 122.6,
       placeId: '1231SDasd',
@@ -12,7 +12,7 @@ const itineraryCardProps = {
       viewport: null,
     },
     destination: {
-      name: '',
+      name: null,
       lat: 28.6,
       lon: 122.6,
       placeId: '1231SDasd',
@@ -44,7 +44,7 @@ const itineraryCardProps = {
   saveClicked: (cardIndex, itinerary) => {
     console.log(`save clicked for ${cardIndex} with data = ${itinerary}`);
   },
-  label: 'Itinerary 1',
+  label: 'Itinerary 2',
   index: 0,
   errors: {
     itinerarySameError: null,
