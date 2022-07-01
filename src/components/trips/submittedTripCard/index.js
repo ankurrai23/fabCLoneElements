@@ -35,7 +35,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
     <>
       <FTouchableOpacity
         onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
-        style={[Styles.container, {borderRadius: DP._12}]}>
+        style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
             {tripIcons(item.requestType).map((asset, index) => (

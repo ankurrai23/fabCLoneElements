@@ -1,15 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 export default StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    borderRadius: DP._12,
     marginHorizontal: DP._16,
-    borderWidth: DP._0_5,
-    borderColor: Color.LIGHT_PERIWINKLE,
     ...shadowObj,
+    ...cardStyleObj,
   },
   actionContainer: {
     flexDirection: 'row',

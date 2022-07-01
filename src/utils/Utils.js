@@ -3,6 +3,7 @@ import {Platform} from 'react-native';
 import Config from './config';
 import {DP} from './Dimen';
 import percentToHexChart from './color/percent-to-hex-chart.json';
+import {Color} from './color';
 
 export const FontFamily = Config.fontFamily || 'Metropolis';
 
@@ -30,6 +31,13 @@ export const shadowObj = {
   shadowOpacity: 0.2,
   shadowRadius: 6,
   elevation: 7,
+};
+
+export const cardStyleObj = {
+  backgroundColor: Color.WHITE,
+  borderWidth: DP._0_5,
+  borderColor: Color.LIGHT_PERIWINKLE,
+  borderRadius: DP._12,
 };
 
 export const dialogBoxStyle = {

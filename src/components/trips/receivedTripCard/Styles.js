@@ -2,16 +2,14 @@ import {StyleSheet} from 'react-native';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: Color.WHITE,
     padding: DP._16,
     marginBottom: DP._16,
-    borderWidth: DP._0_5,
-    borderColor: Color.LIGHT_PERIWINKLE,
     ...shadowObj,
+    ...cardStyleObj,
   },
   tripIdContainer: {
     flexDirection: 'row',
