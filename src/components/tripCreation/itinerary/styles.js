@@ -8,7 +8,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor:
       departureCity === null || arrivalCity === null || departureDate === null
-        ? Color.LIGHT_PINK_WINKLE
+        ? Color.HAWKES_BLUE
         : Color.DODGER_BLUE,
     backgroundColor: Color.WHITE,
     marginBottom: marginBottom ? marginBottom : DP._32,
@@ -21,7 +21,7 @@ export default StyleSheet.create({
     lineHeight: DP._18,
     color:
       departureCity === null || arrivalCity === null || departureDate === null
-        ? Color.LIGHT_PINK_WINKLE
+        ? Color.HAWKES_BLUE
         : Color.DODGER_BLUE,
   }),
   container: {
@@ -87,7 +87,7 @@ export default StyleSheet.create({
   },
   briefCardStyle_iteneryView: {
     height: DP._16,
-    width: DP._63,
+    width: DP._66,
     paddingHorizontal: DP._8,
     backgroundColor: Color.PURPLEY,
     borderRadius: DP._9,
