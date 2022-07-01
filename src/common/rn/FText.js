@@ -25,7 +25,6 @@ FText.propTypes = {
 FText.defaultProps = {
   children: '',
   type: 'regular',
-  weight: 'normal',
 };
 
 export default FText;
