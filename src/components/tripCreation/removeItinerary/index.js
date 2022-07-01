@@ -15,9 +15,10 @@ const RemoveItinerary = ({
   showRemove,
   showLabel,
   errorText,
+  margin: marginBottom,
 }) => {
   return (
-    <>
+    <View style={Styles.marginBottom(marginBottom)}>
       <View style={Styles.removeItinerary}>
         {showLabel && (
           <FText
@@ -37,12 +38,12 @@ const RemoveItinerary = ({
           </FTouchableOpacity>
         )}
       </View>
-      {errorText && (
+      {errorText ? (
         <FText type="regular" style={Styles.errorTxt}>
           {errorText}
         </FText>
-      )}
-    </>
+      ) : null}
+    </View>
   );
 };
 

@@ -4,9 +4,11 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 
 export default StyleSheet.create({
+  marginBottom: (margin) => ({
+    marginBottom: margin ? margin : 0,
+  }),
   removeItinerary: {
     flexDirection: 'row',
-    paddingHorizontal: DP._16,
     justifyContent: 'space-between',
   },
   itineraryTxt: {
@@ -23,7 +25,6 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._14,
     color: Color.PASTEL_RED,
-    paddingHorizontal: DP._16,
   },
   removeView: {
     flexDirection: 'row',

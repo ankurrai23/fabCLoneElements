@@ -4,16 +4,14 @@ import {Color} from '../../../utils/color/index.fabhotel';
 import {DP} from '../../../utils/Dimen';
 
 export default StyleSheet.create({
-  btnStyle: (departureCity, arrivalCity, departureDate) => ({
-    marginVertical: DP._16,
-    marginBottom: DP._24,
+  btnStyle: (departureCity, arrivalCity, departureDate, marginBottom) => ({
     borderWidth: 1,
     borderColor:
       departureCity === null || arrivalCity === null || departureDate === null
         ? Color.LIGHT_PINK_WINKLE
         : Color.DODGER_BLUE,
     backgroundColor: Color.WHITE,
-    marginHorizontal: DP._16,
+    marginBottom: marginBottom ? marginBottom : DP._32,
   }),
   btnTextStyle: (departureCity, arrivalCity, departureDate) => ({
     fontSize:
@@ -28,15 +26,15 @@ export default StyleSheet.create({
   }),
   container: {
     backgroundColor: Color.WHITE,
-    paddingHorizontal: DP._16,
+    // paddingHorizontal: DP._16,
   },
   title: {
     fontSize: DP._14,
     color: Color.DARK,
-    marginTop: DP._8,
+    // marginTop: DP._8,
   },
   innerContainer: {
-    marginTop: DP._10,
+    // marginTop: DP._10,
   },
   textFieldLabel: {
     backgroundColor: Color.WHITE,
@@ -47,15 +45,15 @@ export default StyleSheet.create({
   errorTitle: {
     fontSize: DP._12,
     color: Color.PASTEL_RED,
-    marginTop: DP._8,
+    // marginTop: DP._8,
   },
   addCityBtnView: {
     paddingVertical: DP._8,
     borderWidth: 1,
     borderColor: Color.DODGER_BLUE,
     borderStyle: 'dashed',
-    marginHorizontal: DP._16,
-    marginVertical: DP._14,
+    // marginHorizontal: DP._16,
+    // marginVertical: DP._14,
     borderRadius: DP._8,
     alignItems: 'center',
   },
@@ -68,9 +66,12 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: Color.LIGHT_PERIWINKLE,
     borderRadius: DP._8,
-    paddingVertical: DP._16,
-    paddingHorizontal: DP._16,
+    padding: DP._16,
+    // marginHorizontal: DP._16,
   },
+  briefCardBottomMargin: (margin) => ({
+    marginBottom: margin ? margin : DP._16,
+  }),
   briefCardStyle_flexView: (margin) => ({
     flexDirection: 'row',
     alignItems: 'center',
@@ -105,7 +106,7 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._14,
     color: Color.DODGER_BLUE,
-    marginLeft: DP._6,
+    // marginLeft: DP._6,
   },
   briefCardStyle_dateTxt: {
     fontSize: DP._14,
@@ -122,6 +123,6 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._14,
     color: Color.PASTEL_RED,
-    paddingHorizontal: DP._34,
+    paddingHorizontal: DP._16,
   },
 });
