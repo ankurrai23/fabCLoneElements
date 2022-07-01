@@ -102,4 +102,5 @@ export default {
     },
   ],
   onMainImagePress: () => console.log('image press'),
+  onClose: () => console.log('close'),
 };

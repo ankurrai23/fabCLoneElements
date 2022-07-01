@@ -1,13 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {Color} from '../../../utils/color/index.fabhotel';
 import {DP} from '../../../utils/Dimen';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
-    borderRadius: DP._12,
-    backgroundColor: Color.WHITE,
     ...shadowObj,
+    ...cardStyleObj,
   },
   subContainer: (modified) => ({
     opacity: modified ? 0.6 : 1,

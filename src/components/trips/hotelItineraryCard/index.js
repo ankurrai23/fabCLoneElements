@@ -126,7 +126,7 @@ const HotelItineraryCard = ({
           </View>
         )}
       </View>
-      <View style={[Styles.container]}>
+      <View style={Styles.container}>
         <FTouchableOpacity onPress={onCardPress}>
           <View style={Styles.dateAndStatusContainer}>
             {sameMonthDates ? (

@@ -40,14 +40,16 @@ export default function InfoBox({
 const styles = StyleSheet.create({
   container: (isAlert) => ({
     paddingVertical: DP._16,
-    backgroundColor: isAlert ? Color.DODGER_BLUE + '12' : Color.DARK_SEA_FOAM_10,
+    backgroundColor: isAlert
+      ? Color.DODGER_BLUE + '12'
+      : Color.DARK_SEA_FOAM_10,
     flexDirection: 'row',
     paddingLeft: DP._16,
     paddingRight: DP._8,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
-    borderWidth: isAlert ? 0 : DP._0_5,
-    borderColor: isAlert ? null : Color.DARK_SEA_FOAM,
+    // borderWidth: isAlert ? 0 : DP._0_5,
+    // borderColor: isAlert ? null : Color.DARK_SEA_FOAM,
   }),
   text: (isAlert) => ({
     color: isAlert ? Color.TWILIGHT_BLUE : Color.DARK,

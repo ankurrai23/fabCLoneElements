@@ -26,8 +26,7 @@ const TripListingCard = ({item, onCardPress, style}) => {
     <>
       <FTouchableOpacity
         onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
-        style={[Styles.container, {borderRadius: DP._12,
-          borderWidth: DP._0_5, borderColor: Color.LIGHT_PERIWINKLE}, {...style}]}>
+        style={[Styles.container, {...style}]}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
             {tripIcons(item.tripRequestType).map((asset, index) => (

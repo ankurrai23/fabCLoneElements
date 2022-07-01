@@ -1,15 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: Color.WHITE,
     padding: DP._16,
-    borderRadius: DP._12,
-    borderWidth: DP._0_5,
-    borderColor: Color.LIGHT_PERIWINKLE,
+    ...cardStyleObj,
     ...shadowObj,
   },
   locationNameAndStopContainer: (lastIndex) => ({

@@ -1,14 +1,13 @@
 import {StyleSheet} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    borderRadius: DP._12,
     flex: 1,
     ...shadowObj,
+    ...cardStyleObj,
   },
   actionContainer: {
     flexDirection: 'row',
