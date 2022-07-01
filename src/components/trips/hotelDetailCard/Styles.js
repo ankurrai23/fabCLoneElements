@@ -157,4 +157,19 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  viewDetailView: {
+    // paddingVertical:DP._16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  hidden: {
+    height: 0,
+  },
+  showMoreTxt: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.DODGER_BLUE,
+    marginRight: 3,
+  },
 });

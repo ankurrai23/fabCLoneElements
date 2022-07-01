@@ -59,6 +59,7 @@ import {
   ReceiptsList,
   ReceiptListView,
   RemoveItinerary,
+  ContactSupport,
   FilterModal,
   DropDown,
   ItineraryCard,
@@ -94,6 +95,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'ScrollableTabBar',
     component: <ScrollableTabBar {...data.scrollableTabBarProps} />,
+  },
+  {
+    name: 'Contact Support',
+    component: <ContactSupport {...data.contactSupportProps} />,
   },
   {
     name: 'FilterModal',
