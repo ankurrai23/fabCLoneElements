@@ -88,6 +88,9 @@ import ReceiptsList from './components/expense/receiptsList';
 import AddReceiptModal from './components/expense/addReceiptModal';
 import ReceiptListView from './components/expense/receiptListView';
 
+//Constants
+import {shadowObj} from './utils/Utils';
+
 export {
   data,
   //RN Components
@@ -171,4 +174,6 @@ export {
   AddReceiptModal,
   ReceiptListView,
   FilterModal,
+  //Constants
+  shadowObj,
 };
