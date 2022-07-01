@@ -80,18 +80,21 @@ export function getPluralText(number, text, isCaps, isNumberPrefix) {
     : '';
 }
 
-export const FontWegithSpec = {
-  normal: {
-    fontWeight: '400',
+export const FontWeightSpec = {
+  300: {
+    fontFamily: `${FontFamily}-Light`,
   },
-  medium: {
-    fontWeight: '500',
+  400: {
+    fontFamily: `${FontFamily}-Regular`,
   },
-  semiBold: {
-    fontWeight: '600',
+  500: {
+    fontFamily: `${FontFamily}-Medium`,
   },
-  bold: {
-    fontWeight: '700',
+  600: {
+    fontFamily: `${FontFamily}-SemiBold`,
+  },
+  700: {
+    fontFamily: `${FontFamily}-Bold`,
   },
 };
 
