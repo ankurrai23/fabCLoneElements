@@ -6,12 +6,13 @@ import {
   FTouchableOpacity,
   PickerField,
   RemoveItinerary,
+  FImage,
 } from '../../..';
 import Styles from './styles';
-import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
 import {formattedDate} from '../../../utils/Utils';
+import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 const ItineraryCard = (props) => {
   const onEditClicked = () => {
     props?.editClicked(props?.index);
@@ -60,7 +61,7 @@ const ItineraryCard = (props) => {
               onPress={onEditClicked}
               hitSlop={Styles.briefCardStyle_touchView}
               style={Styles.briefCardStyle_flexView()}>
-              <Feather name="edit-2" size={DP._15} color={Color.DODGER_BLUE} />
+              <FImage source={ImageConst.edit2} />
               <FText style={Styles.briefCardStyle_editTxt}>Edit</FText>
             </FTouchableOpacity>
           </View>

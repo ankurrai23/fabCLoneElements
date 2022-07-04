@@ -33,6 +33,7 @@ export default StyleSheet.create({
   },
   flexRow: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   addDetails: {
     fontSize: DP._12,
