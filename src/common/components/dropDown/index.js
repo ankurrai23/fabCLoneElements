@@ -73,11 +73,13 @@ function DropDown(
         label={label}
         icon={<Ionicons name="search" size={DP._16} color={Color.BLACK} />}
         rightIcon={
-          <FTouchableOpacity
-            onPress={onPressClose}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-            <Ionicons name="close" size={DP._18} color={Color.BLUEY_GREY} />
-          </FTouchableOpacity>
+          !!keyword && (
+            <FTouchableOpacity
+              onPress={onPressClose}
+              hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+              <Ionicons name="close" size={DP._18} color={Color.BLUEY_GREY} />
+            </FTouchableOpacity>
+          )
         }
         iconStyle={Styles.searchIcon}
         labelStyle={Styles.labelStyle}
