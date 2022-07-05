@@ -29,6 +29,7 @@ export default function AddFlightDetails(props) {
             helperText={errors.sourceTextErrorTo}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchReturnFrom}
+            topMargin={DP._16}
           />
           <PickerField
             label="To"
@@ -41,6 +42,7 @@ export default function AddFlightDetails(props) {
             helperText={errors.destinationTextErrorTo}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchReturnTo}
+            topMargin={DP._16}
           />
           <PickerField
             label="Departure date"
@@ -52,6 +54,7 @@ export default function AddFlightDetails(props) {
             error={errors.returnDepatureDate}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openDatePickerreturn}
+            topMargin={DP._16}
           />
           <FText style={Styles.timeSlotTitle}>
             Enter time slot (Min 3 hrs)
@@ -68,6 +71,7 @@ export default function AddFlightDetails(props) {
               labelStyle={Styles.textFieldLabel}
               onPress={props.returnStartTimePicker}
               touchContainer={{flex: 0.5, marginRight: DP._8}}
+              topMargin={DP._16}
             />
             <FText style={Styles.dash}>-</FText>
             <PickerField
@@ -81,6 +85,7 @@ export default function AddFlightDetails(props) {
               labelStyle={Styles.textFieldLabel}
               onPress={props.returnEndTimePicker}
               touchContainer={{flex: 0.5, marginLeft: DP._8}}
+              topMargin={DP._16}
             />
           </View>
         </View>
@@ -107,6 +112,7 @@ export default function AddFlightDetails(props) {
             helperText={errors.sourceTextError}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchOnwardFrom}
+            topMargin={DP._16}
           />
           <PickerField
             label="To"
@@ -119,6 +125,7 @@ export default function AddFlightDetails(props) {
             helperText={errors.destnationTextError}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearchOnwardTo}
+            topMargin={DP._16}
           />
           <PickerField
             label="Departure date"
@@ -130,6 +137,7 @@ export default function AddFlightDetails(props) {
             error={errors.onwardDepatureDate}
             labelStyle={Styles.textFieldLabel}
             onPress={props.openDatePickeronWord}
+            topMargin={DP._16}
           />
           <FText style={Styles.timeSlotTitle}>
             Enter time slot (Min 3 hrs)
@@ -146,6 +154,7 @@ export default function AddFlightDetails(props) {
               labelStyle={Styles.textFieldLabel}
               onPress={props.onWardStartTimePicker}
               touchContainer={{flex: 0.5, marginRight: DP._8}}
+              topMargin={DP._16}
             />
             <FText style={Styles.dash}>-</FText>
             <PickerField
@@ -159,6 +168,7 @@ export default function AddFlightDetails(props) {
               labelStyle={Styles.textFieldLabel}
               onPress={props.onWardEndTimePicker}
               touchContainer={{flex: 0.5, marginLeft: DP._8}}
+              topMargin={DP._16}
             />
           </View>
         </View>

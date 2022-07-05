@@ -22,6 +22,7 @@ export default function AddHotelDetails({data, errors, ...props}) {
             label="Enter city/location"
             labelStyle={Styles.textFieldLabel}
             onPress={props.openGoogleSearch}
+            topMargin={DP._16}
           />
           {data.showLocation && (
             <PickerField
