@@ -45,4 +45,9 @@ export default StyleSheet.create({
   cardStyle: {
     padding: DP._16,
   },
+  closeIcon: {
+    alignItems: 'center',
+    position: 'absolute',
+    right: DP._8,
+  },
 });

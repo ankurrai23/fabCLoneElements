@@ -50,6 +50,8 @@ const dropDownProps = {
   label: 'Enter city name',
   searchType: 'airport',
   onPress: (item) => console.log('pressed item', item),
+  onFocusChange: () => console.log('focus changed'),
+  onPressClose: () => console.log('closed'),
 };
 
 export default dropDownProps;
