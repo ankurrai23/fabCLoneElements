@@ -6,17 +6,24 @@ import {
   FTouchableOpacity,
   PickerField,
   RemoveItinerary,
+  FImage,
 } from '../../..';
 import Styles from './styles';
-import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
 import {formattedDate} from '../../../utils/Utils';
+import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 const ItineraryCard = (props) => {
   const onEditClicked = () => {
     props?.editClicked(props?.index);
     LayoutAnimation.easeInEaseOut();
   };
+  const collapsedDateFormat = props?.collapsedDateFormat
+    ? props?.collapsedDateFormat
+    : 'ddd, DD MMM';
+  const expandedDateFormat = props?.expandedDateFormat
+    ? props?.expandedDateFormat
+    : "DD MMM'YY";
   if (props?.shouldCollapse) {
     return (
       <View style={Styles.briefCardBottomMargin(props?.bottomMargin)}>
@@ -43,7 +50,10 @@ const ItineraryCard = (props) => {
             <View style={Styles.briefCardStyle_flex6}>
               <FText style={Styles.briefCardStyle_dateTxt}>
                 {props?.itinerary?.departureDate
-                  ? formattedDate(props?.itinerary?.departureDate)
+                  ? formattedDate(
+                      props?.itinerary?.departureDate,
+                      collapsedDateFormat,
+                    )
                   : ''}
               </FText>
             </View>
@@ -51,7 +61,7 @@ const ItineraryCard = (props) => {
               onPress={onEditClicked}
               hitSlop={Styles.briefCardStyle_touchView}
               style={Styles.briefCardStyle_flexView()}>
-              <Feather name="edit-2" size={DP._15} color={Color.DODGER_BLUE} />
+              <FImage source={ImageConst.edit2} />
               <FText style={Styles.briefCardStyle_editTxt}>Edit</FText>
             </FTouchableOpacity>
           </View>
@@ -158,7 +168,10 @@ const ItineraryCard = (props) => {
               label={'Departure date'}
               value={
                 props?.itinerary?.departureDate
-                  ? formattedDate(props?.itinerary?.departureDate)
+                  ? formattedDate(
+                      props?.itinerary?.departureDate,
+                      expandedDateFormat,
+                    )
                   : null
               }
               labelStyle={Styles.textFieldLabel}
@@ -183,7 +196,10 @@ const ItineraryCard = (props) => {
                 label={'Return date'}
                 value={
                   props?.itinerary?.returnDate
-                    ? formattedDate(props?.itinerary?.returnDate)
+                    ? formattedDate(
+                        props?.itinerary?.returnDate,
+                        expandedDateFormat,
+                      )
                     : null
                 }
                 error={props?.errors?.returnDateError}

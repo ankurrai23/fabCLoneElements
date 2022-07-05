@@ -106,7 +106,7 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._14,
     color: Color.DODGER_BLUE,
-    // marginLeft: DP._6,
+    marginLeft: DP._4,
   },
   briefCardStyle_dateTxt: {
     fontSize: DP._14,
@@ -124,5 +124,6 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.PASTEL_RED,
     paddingHorizontal: DP._16,
+    paddingTop: DP._4,
   },
 });
