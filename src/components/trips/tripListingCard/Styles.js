@@ -111,4 +111,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginVertical: DP._20,
   },
+  flex: {
+    flex: 1,
+  },
 });
