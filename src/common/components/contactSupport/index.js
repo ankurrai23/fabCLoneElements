@@ -24,7 +24,7 @@ export default function ContactSupport({
         <FText style={styles.textStyle}>
           {item?.name || 'Contact 24x7 Support'}
         </FText>
-        <Ionicons name="call" size={DP._18} color={Color.DODGER_BLUE} />
+        <Ionicons name="call" size={DP._16} color={Color.DODGER_BLUE} />
       </FTouchableOpacity>
       {!!supportDetails?.length && (
         <SupportDialog
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   textStyle: {
-    color: Color.DODGER_BLUE,
+    color: Color.DARK,
+    fontSize: DP._12,
   },
 });
