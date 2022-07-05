@@ -87,19 +87,19 @@ export default {
     ],
     notificationText: null,
     alertMessage: 'You have sent a cancellation request for this booking.',
-    reduceOpacity: true,
+    reduceOpacity: false,
   },
   onActionPress: (item) => console.log(item),
   onPressClose: () => console.log('close modal'),
   supportDetails: [
-    {
-      name: 'FabHotel Cabana',
-      value: '7042424242',
-    },
-    {
-      name: 'TravelPlus helpline',
-      value: '9873646962',
-    },
+    // {
+    //   name: 'FabHotel Cabana',
+    //   value: '7042424242',
+    // },
+    // {
+    //   name: 'TravelPlus helpline',
+    //   value: '9873646962',
+    // },
   ],
   onMainImagePress: () => console.log('image press'),
   onClose: () => console.log('close'),
