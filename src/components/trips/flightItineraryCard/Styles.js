@@ -31,7 +31,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   airplane: {
-    transform: [{rotate: '90deg'}],
+    transform: [{rotate: '45deg'}],
   },
   portName: {
     color: Color.GREYISH_PURPLE,
