@@ -126,11 +126,12 @@ const ItineraryCard = (props) => {
               );
             }}
             touchContainer={{marginBottom: DP._8}}
-            bottomMargin={
-              !ifEveryFieldisEmpty && props?.errors?.departureCityError
-                ? DP._16
-                : 0
-            }
+            // todo: For now let's revert this and wait for confirmation from design team
+            // bottomMargin={
+            //   !ifEveryFieldisEmpty && props?.errors?.departureCityError
+            //     ? DP._16
+            //     : 0
+            // }
           />
           <PickerField
             error={
@@ -150,11 +151,11 @@ const ItineraryCard = (props) => {
               );
             }}
             touchContainer={{marginBottom: DP._8}}
-            bottomMargin={
-              !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
-                ? DP._16
-                : 0
-            }
+            // bottomMargin={
+            //   !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
+            //     ? DP._16
+            //     : 0
+            // }
           />
           <View style={Styles.datesContainer}>
             <PickerField
@@ -185,11 +186,11 @@ const ItineraryCard = (props) => {
                 marginBottom: props?.showSaveButton ? DP._8 : DP._16,
                 ...departureDateStyle,
               }}
-              bottomMargin={
-                !ifEveryFieldisEmpty && props?.errors?.departureDateError
-                  ? DP._16
-                  : 0
-              }
+              // bottomMargin={
+              //   !ifEveryFieldisEmpty && props?.errors?.departureDateError
+              //     ? DP._16
+              //     : 0
+              // }
             />
             {props?.showReturnDate && (
               <PickerField
@@ -218,11 +219,11 @@ const ItineraryCard = (props) => {
                   marginLeft: DP._8,
                   marginBottom: props?.showSaveButton ? DP._8 : DP._16,
                 }}
-                bottomMargin={
-                  !ifEveryFieldisEmpty && props?.errors?.returnDateError
-                    ? DP._16
-                    : 0
-                }
+                // bottomMargin={
+                //   !ifEveryFieldisEmpty && props?.errors?.returnDateError
+                //     ? DP._16
+                //     : 0
+                // }
               />
             )}
           </View>
