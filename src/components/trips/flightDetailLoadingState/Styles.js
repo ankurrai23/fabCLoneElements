@@ -44,6 +44,6 @@ export default StyleSheet.create({
     alignItems: alignItems,
   }),
   airplane: {
-    transform: [{rotate: '90deg'}],
+    transform: [{rotate: '45deg'}],
   },
 });

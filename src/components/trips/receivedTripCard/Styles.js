@@ -138,4 +138,7 @@ export default StyleSheet.create({
   },
   bell: {width: DP._24, height: DP._24, resizeMode: 'contain'},
   justifyBetween: {justifyContent: 'space-between'},
+  flex: {
+    flex: 1,
+  },
 });

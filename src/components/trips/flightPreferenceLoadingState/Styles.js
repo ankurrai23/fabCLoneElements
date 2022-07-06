@@ -123,7 +123,7 @@ export default StyleSheet.create({
     borderColor: Color.LIGHT_BLUEY_GREY,
     marginRight: DP._8,
   },
-  airplane: {transform: [{rotateZ: '90deg'}], top: 1},
+  airplane: {transform: [{rotateZ: '45deg'}], top: 1},
   time2: {
     width: '50%',
     height: DP._14,

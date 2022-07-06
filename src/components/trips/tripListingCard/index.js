@@ -63,10 +63,11 @@ const TripListingCard = ({item, onCardPress, style}) => {
             {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
           </FText>
           <FTouchableOpacity
+            style={Styles.flex}
             onPress={() =>
               item.coTravellers?.length > 1 && setSheetVisible(true)
             }>
-            <FText>
+            <FText numberOfLines={1}>
               {item.coTravellers?.[0]}
               {item.coTravellers?.length > 1 &&
                 ` +${item.coTravellers?.length - 1}`}
