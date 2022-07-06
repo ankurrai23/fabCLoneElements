@@ -118,7 +118,7 @@ export default StyleSheet.create({
   postTripActionContainer: {
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
-    marginBottom: DP._4,
+    marginBottom: DP._16,
     borderRadius: DP._8,
     borderColor: Color.LIGHT_PERIWINKLE,
     borderWidth: DP._0_5,
