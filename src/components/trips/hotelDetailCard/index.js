@@ -192,7 +192,7 @@ export default function HotelDetailCard({
             )}
             <View style={Styles.bookingDetailsContainer}>
               {!!item.bookingStatus && (
-                <TripStatus statusObj={getStatusObject(item.bookingStatus)} />
+                <TripStatus statusObj={item.bookingStatus} />
               )}
               <FText style={{marginTop: DP._12}}>{item.hotelName}</FText>
             </View>
