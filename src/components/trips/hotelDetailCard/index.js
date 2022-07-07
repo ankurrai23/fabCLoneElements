@@ -355,7 +355,9 @@ export default function HotelDetailCard({
             <FTouchableOpacity
               onPress={onItemPress}
               style={Styles.viewDetailView}>
-              <FText style={Styles.showMoreTxt}>View more details</FText>
+              <FText style={Styles.showMoreTxt}>{`View ${
+                expanded ? 'less' : 'more'
+              } details`}</FText>
               <Animated.View style={{transform: [{rotate: spin}]}}>
                 <AntDesign
                   name="down"
