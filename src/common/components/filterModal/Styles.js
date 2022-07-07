@@ -7,30 +7,15 @@ const {width, height} = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
-    position: 'absolute',
-    bottom: 0,
-    width: width,
-    height: height * 0.6,
-    backgroundColor: Color.WHITE,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    borderTopLeftRadius: DP._20,
-    borderTopRightRadius: DP._20,
+    flex: 1,
+    backgroundColor: Color.GREY_PURPLE,
   },
-  notch: {
-    width: DP._56,
-    height: DP._5,
-    backgroundColor: Color.WHITESH_GREY,
-    borderRadius: DP._100,
-    alignSelf: 'center',
-    marginTop: DP._8,
+  contentContainer:{
+    flex: 1,
+    alignItems: 'center',
+  },
+  listContainer: {
+    height: height,
   },
   clearFilterContainer: {
     width: width,
@@ -50,6 +35,7 @@ export default StyleSheet.create({
     fontSize: DP._20,
     ...Specs.fontRegular,
     marginTop: DP._18,
+    marginBottom: DP._16
   },
   filterItemContainer: {
     width: width,
@@ -72,7 +58,8 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     paddingLeft: DP._24,
     paddingRight: DP._29,
-    marginTop: DP._28
+    marginTop: DP._10,
+    marginBottom: DP._24
   },
   buttonStyle: (type) => ({
       width: DP._150,
@@ -81,5 +68,20 @@ export default StyleSheet.create({
       borderWidth: type === 'PRIMARY' ? 0 : DP._0_5,
       borderColor: type === 'PRIMARY' ? '' : Color.DARK,
       backgroundColor: type === 'PRIMARY' ? Color.SUN_YELLOW : Color.WHITE
-  })
+  }),
+  absolute: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
+  cancelText: {
+    color: Color.DARK_SLATE_BLUE_TWO,
+    fontSize: DP._16,
+  },
+  applyText: {
+    color: Color.DARK_SLATE_BLUE_TWO,
+    fontSize: DP._16,
+  },
 });
