@@ -39,7 +39,8 @@
   "dependencies": {
     "intl": "^1.2.5",
     "moment": "2.29.1",
-    "react-native-loading-placeholder": "0.0.6"
+    "react-native-loading-placeholder": "0.0.6",
+    "@gorhom/bottom-sheet": "^2.4.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
