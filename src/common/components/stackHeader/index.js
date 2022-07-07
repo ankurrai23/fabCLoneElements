@@ -17,13 +17,19 @@ function StackHeader({
   textStyle,
   title,
   rightView,
+  iconSize,
+  iconColor,
 }) {
   return (
     <View style={[Styles.container(shadowVisible), containerStyle]}>
       <FTouchableOpacity
         onPress={onBackClick}
         hitSlop={{top: 20, bottom: 20, left: 50, right: 20}}>
-        <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
+        <Feather
+          name="chevron-left"
+          size={iconSize || DP._24}
+          color={iconColor || Color.BLACK}
+        />
       </FTouchableOpacity>
       <FText type="medium" style={[Styles.title, textStyle]}>
         {title}

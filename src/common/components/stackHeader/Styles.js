@@ -15,6 +15,7 @@ export default StyleSheet.create({
     ...(shadowVisible ? shadowObj : null),
   }),
   title: {
+    flex: 1,
     fontSize: DP._16,
     marginLeft: DP._16,
     color: Color.DARK,
