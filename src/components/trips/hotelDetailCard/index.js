@@ -64,6 +64,7 @@ export default function HotelDetailCard({
   supportDetails,
   onClose,
   onContactSupportPress,
+  onViewMorePress,
 }) {
   const [expanded, setExpanded] = useState(!item.enableViewMoreButton);
   const [sheetVisible, setSheetVisible] = useState(false);
@@ -99,6 +100,7 @@ export default function HotelDetailCard({
       }).start();
     }
     setExpanded(!expanded);
+    onViewMorePress();
   };
 
   const CheckInInfo = ({title, date, time}) => (
@@ -129,7 +131,6 @@ export default function HotelDetailCard({
       <FText>{text}</FText>
     </View>
   );
-
   const PostTripHotelActions = () => (
     <View style={Styles.postTripActionContainer}>
       {[posAction, invoiceAction, reviewAction].map((item, index) => (
@@ -260,7 +261,7 @@ export default function HotelDetailCard({
                 </View>
               </View>
               <Separator style={Styles.separator} />
-              {!item.inclusions?.length ? null : (
+              {item.inclusions && (
                 <>
                   <FText style={Styles.sectionTitle}>Inclusions</FText>
                   {item.inclusions?.map((item, index) => {
@@ -346,9 +347,7 @@ export default function HotelDetailCard({
                 onContactSupportPress={onContactSupportPress}
                 onClose={onClose}
               />
-              {item.enableViewMoreButton && (
-                <Separator style={Styles.separator} />
-              )}
+              <Separator style={Styles.separator} />
             </Animated.View>
           )}
           {item.enableViewMoreButton && (
