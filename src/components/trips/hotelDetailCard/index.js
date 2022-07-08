@@ -131,6 +131,7 @@ export default function HotelDetailCard({
       <FText>{text}</FText>
     </View>
   );
+
   const PostTripHotelActions = () => (
     <View style={Styles.postTripActionContainer}>
       {[posAction, invoiceAction, reviewAction].map((item, index) => (
@@ -261,7 +262,7 @@ export default function HotelDetailCard({
                 </View>
               </View>
               <Separator style={Styles.separator} />
-              {item.inclusions && (
+              {!item.inclusions?.length ? null : (
                 <>
                   <FText style={Styles.sectionTitle}>Inclusions</FText>
                   {item.inclusions?.map((item, index) => {
@@ -347,7 +348,9 @@ export default function HotelDetailCard({
                 onContactSupportPress={onContactSupportPress}
                 onClose={onClose}
               />
-              <Separator style={Styles.separator} />
+              {item.enableViewMoreButton && (
+                <Separator style={Styles.separator} />
+              )}
             </Animated.View>
           )}
           {item.enableViewMoreButton && (
