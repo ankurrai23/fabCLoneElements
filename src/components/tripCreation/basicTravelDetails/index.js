@@ -14,13 +14,14 @@ function BasicTravelDetails({
   openDestinationGoogleSearch,
   openReturnDatePicker,
   openDepatureDatePicker,
+  onLayout,
 }) {
   let roundTrip = tripType === 1;
   return (
-    <View style={Styles.container}>
-      <FText type="medium" style={Styles.title}>
+    <View onLayout={onLayout} style={Styles.container}>
+      {/* <FText type="medium" style={Styles.title}>
         Basic travel details
-      </FText>
+      </FText> */}
       {(errors?.sourceError ||
         errors?.destinationError ||
         errors?.defatureDateError ||
@@ -43,6 +44,7 @@ function BasicTravelDetails({
           value={data.source?.name}
           labelStyle={Styles.textFieldLabel}
           onPress={openSourceGoogleSearch}
+          topMargin={DP._24}
         />
         <PickerField
           error={errors.destinationError}
@@ -51,6 +53,7 @@ function BasicTravelDetails({
           value={data.destination?.name}
           labelStyle={Styles.textFieldLabel}
           onPress={openDestinationGoogleSearch}
+          topMargin={DP._8}
         />
         <View style={Styles.datesContainer}>
           <PickerField
@@ -62,6 +65,7 @@ function BasicTravelDetails({
             touchContainer={
               roundTrip ? {flex: 0.5, marginRight: DP._8} : {flex: 1}
             }
+            topMargin={DP._8}
           />
           {roundTrip && (
             <PickerField
@@ -71,6 +75,7 @@ function BasicTravelDetails({
               labelStyle={Styles.textFieldLabel}
               onPress={openReturnDatePicker}
               touchContainer={{flex: 0.5, marginLeft: DP._8}}
+              topMargin={DP._8}
             />
           )}
         </View>

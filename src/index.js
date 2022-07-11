@@ -21,6 +21,9 @@ import EmptyScreen from './common/components/emptyScreen';
 import DropDownList from './common/components/dropDownList';
 import StackHeader from './common/components/stackHeader';
 import ScrollableTabBar from './common/components/scrollableTabBar';
+import ContactSupport from './common/components/contactSupport';
+import FilterModal from './common/components/filterModal';
+import DropDown from './common/components/dropDown';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -48,6 +51,7 @@ import FlightDetailLoadingState from './components/trips/flightDetailLoadingStat
 //Constants
 import {FlightSubTripActions} from './utils/SubTripActions';
 import {HotelSubTripActions} from './utils/SubTripActions';
+import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
 //Trip Creation Components
 import ComingSoon from './components/tripCreation/comingSoon';
@@ -60,6 +64,9 @@ import ApprovalManager from './components/tripCreation/approvalManager';
 import AddFlightDetails from './components/tripCreation/addFlightDetails';
 import AddHotelDetails from './components/tripCreation/addHotelDetails';
 import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
+import BasicTravelDetailsCard from './components/tripCreation/basicTravelDetailsCard';
+import RemoveItinerary from './components/tripCreation/removeItinerary';
+import ItineraryCard from './components/tripCreation/itinerary';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -80,7 +87,7 @@ import ClaimFilter from './components/expense/claimFilter';
 import ReceiptsList from './components/expense/receiptsList';
 import AddReceiptModal from './components/expense/addReceiptModal';
 import ReceiptListView from './components/expense/receiptListView';
-
+import Utils from './utils/Utils';
 export {
   data,
   //RN Components
@@ -102,6 +109,8 @@ export {
   DropDownList,
   StackHeader,
   ScrollableTabBar,
+  DropDown,
+  ContactSupport,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
@@ -135,15 +144,19 @@ export {
   ApprovalManager,
   AddFlightDetails,
   AddHotelDetails,
+  BasicTravelDetailsCard,
+  RemoveItinerary,
   // constants
   FlightSubTripActions,
   HotelSubTripActions,
+  FieldNamesEnum,
   // Home
   HomeHeader,
   ClaimsCard,
   ClaimsList,
   MessageCard,
   HomeLoadingState,
+  ItineraryCard,
   //Expense,
   ExpenseCard,
   ExpenseDetailCard,
@@ -157,4 +170,6 @@ export {
   ReceiptsList,
   AddReceiptModal,
   ReceiptListView,
+  FilterModal,
+  Utils,
 };

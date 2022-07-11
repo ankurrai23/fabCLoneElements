@@ -1,16 +1,13 @@
 import {StyleSheet} from 'react-native';
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: (notesIsPresent) => ({
     padding: DP._24,
     paddingBottom: notesIsPresent ? DP._16 : DP._24,
-    backgroundColor: Color.WHITE,
-    borderRadius: DP._12,
-    borderWidth: DP._0_5,
-    borderColor: Color.LIGHT_PERIWINKLE,
+    ...cardStyleObj,
     ...shadowObj,
   }),
   titleContainer: {

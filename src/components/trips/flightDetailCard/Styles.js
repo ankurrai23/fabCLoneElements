@@ -1,13 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 export default StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    borderRadius: DP._12,
     marginHorizontal: DP._16,
     ...shadowObj,
+    ...cardStyleObj,
   },
   actionContainer: {
     flexDirection: 'row',
@@ -32,7 +31,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   airplane: {
-    transform: [{rotate: '90deg'}],
+    transform: [{rotate: '45deg'}],
   },
   portName: {
     color: Color.GREYISH_PURPLE,
@@ -52,7 +51,7 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'baseline'},
-  card: (modified) => ({padding: DP._16, opacity: modified ? 0.4 : 1}),
+  card: (modified) => ({padding: DP._16, opacity: modified ? 0.6 : 1}),
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },
@@ -90,7 +89,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   heading: {
-    marginBottom: DP._8,
+    marginVertical: DP._16,
     marginTop: DP._24,
     marginHorizontal: DP._16,
   },
@@ -104,5 +103,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     alignItems: 'center',
+  },
+  separator: {
+    marginVertical: DP._16,
   },
 });

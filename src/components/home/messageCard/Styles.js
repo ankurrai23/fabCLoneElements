@@ -2,21 +2,18 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
 const {width} = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
     height: DP._111,
-    backgroundColor: Color.WHITE,
     padding: DP._16,
-    borderRadius: DP._12,
-    borderWidth: DP._0_5,
-    borderColor: Color.LIGHT_PERIWINKLE,
-    marginVertical: DP._8,
+    marginTop: DP._12,
     marginHorizontal: DP._16,
     ...shadowObj,
+    ...cardStyleObj,
   },
   title: {
     color: Color.DARK,

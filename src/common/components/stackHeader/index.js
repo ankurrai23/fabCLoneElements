@@ -10,24 +10,37 @@ import {Color} from '../../../utils/color';
 
 import Styles from './Styles';
 
-function StackHeader(props) {
+function StackHeader({
+  onBackClick,
+  shadowVisible,
+  containerStyle,
+  textStyle,
+  title,
+  rightView,
+  iconSize,
+  iconColor,
+}) {
   return (
-    <View style={[Styles.container(props.shadowVisible), props.containerStyle]}>
+    <View style={[Styles.container(shadowVisible), containerStyle]}>
       <FTouchableOpacity
-        onPress={props.onBackClick}
+        onPress={onBackClick}
         hitSlop={{top: 20, bottom: 20, left: 50, right: 20}}>
-        <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
+        <Feather
+          name="chevron-left"
+          size={iconSize || DP._24}
+          color={iconColor || Color.BLACK}
+        />
       </FTouchableOpacity>
-      <FText type="medium" style={Styles.title}>
-        {props.title}
+      <FText type="medium" style={[Styles.title, textStyle]}>
+        {title}
       </FText>
+      {rightView}
     </View>
   );
 }
 
 StackHeader.defaultProps = {
-  title: 'title here',
-  shadowVisible: true,
+  shadowVisible: false,
 };
 
 export default StackHeader;

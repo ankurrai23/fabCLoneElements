@@ -35,7 +35,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
     <>
       <FTouchableOpacity
         onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
-        style={[Styles.container, {borderRadius: DP._12}]}>
+        style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
             {tripIcons(item.requestType).map((asset, index) => (
@@ -60,15 +60,16 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
             }>{`${item.tripStartDate} - ${item.tripEndDate}`}</FText>
         </View>
         <View style={[Styles.flexRow, Styles.justifyBetween]}>
-          <View style={Styles.flexDirectionRow}>
+          <View style={[Styles.flexDirectionRow, Styles.flex]}>
             <FText style={{color: Color.GREYISH_PURPLE}}>
               {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
             </FText>
             <FTouchableOpacity
+              style={Styles.flex}
               onPress={() =>
                 item.coTravellers?.length > 1 && setSheetVisible(true)
               }>
-              <FText>
+              <FText numberOfLines={1}>
                 {item.coTravellers?.[0]}
                 {item.coTravellers?.length > 1 &&
                   ` +${item.coTravellers?.length - 1}`}
@@ -76,7 +77,9 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
             </FTouchableOpacity>
           </View>
           {item.actions?.find((e) => e.type === 'SEND_REMINDER') && (
-            <FTouchableOpacity onPress={() => _onActionPress('SEND_REMINDER')}>
+            <FTouchableOpacity
+              onPress={() => _onActionPress('SEND_REMINDER')}
+              style={{marginLeft: DP._8}}>
               <FImage source={ImageConst.bellIcon} style={Styles.bell} />
             </FTouchableOpacity>
           )}

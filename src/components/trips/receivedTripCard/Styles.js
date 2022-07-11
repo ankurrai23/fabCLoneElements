@@ -2,14 +2,14 @@ import {StyleSheet} from 'react-native';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: Color.WHITE,
     padding: DP._16,
     marginBottom: DP._16,
     ...shadowObj,
+    ...cardStyleObj,
   },
   tripIdContainer: {
     flexDirection: 'row',
@@ -138,4 +138,7 @@ export default StyleSheet.create({
   },
   bell: {width: DP._24, height: DP._24, resizeMode: 'contain'},
   justifyBetween: {justifyContent: 'space-between'},
+  flex: {
+    flex: 1,
+  },
 });

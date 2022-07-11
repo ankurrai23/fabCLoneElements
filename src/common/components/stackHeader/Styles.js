@@ -9,14 +9,15 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: DP._16,
-    paddingLeft: DP._8, // actual is 16 as Feather icon has its own padding.
+    paddingLeft: DP._16,
     backgroundColor: Color.WHITE,
     zIndex: shadowVisible ? 1 : 0,
     ...(shadowVisible ? shadowObj : null),
   }),
   title: {
-    fontSize: DP._20,
-    marginLeft: DP._8,
+    flex: 1,
+    fontSize: DP._16,
+    marginLeft: DP._16,
     color: Color.DARK,
   },
 });

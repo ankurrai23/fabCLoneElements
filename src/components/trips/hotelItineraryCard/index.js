@@ -40,8 +40,7 @@ const HotelItineraryCard = ({
   const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
 
   const viewRemarksAction = isActionEnabled(HotelSubTripActions.VIEW_REMARKS);
-  const directionAction =
-    isActionEnabled(HotelSubTripActions.DIRECTION) && processed;
+  const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
   const shortlistingAction = isActionEnabled(
     HotelSubTripActions.SHORTLIST_HOTEL_TRIPS,
   );
@@ -127,7 +126,7 @@ const HotelItineraryCard = ({
           </View>
         )}
       </View>
-      <View style={[Styles.container]}>
+      <View style={Styles.container}>
         <FTouchableOpacity onPress={onCardPress}>
           <View style={Styles.dateAndStatusContainer}>
             {sameMonthDates ? (
@@ -173,12 +172,12 @@ const HotelItineraryCard = ({
             <View style={Styles.checkInAndDirectionContainer}>
               {item.checkInTime ? (
                 <FText style={Styles.checkIn}>
-                  Check-in {item.checkInTime}
+                  Check-in: {item.checkInTime}
                 </FText>
               ) : (
                 <View />
               )}
-              {directionAction && (
+              {directionAction && processed && (
                 <FTouchableOpacity
                   style={[Styles.flexRowWithAlignCenter]}
                   onPress={() => onActionPress(directionAction)}>

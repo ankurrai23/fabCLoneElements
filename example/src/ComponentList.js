@@ -55,8 +55,14 @@ import {
   LocationInputBox,
   Swiper,
   MonthPicker,
+  BasicTravelDetailsCard,
   ReceiptsList,
   ReceiptListView,
+  RemoveItinerary,
+  ContactSupport,
+  FilterModal,
+  DropDown,
+  ItineraryCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -89,6 +95,18 @@ const COMMON_COMPONENTS = [
   {
     name: 'ScrollableTabBar',
     component: <ScrollableTabBar {...data.scrollableTabBarProps} />,
+  },
+  {
+    name: 'Contact Support',
+    component: <ContactSupport {...data.contactSupportProps} />,
+  },
+  {
+    name: 'FilterModal',
+    component: <FilterModal {...data.filterModalProps} />,
+  },
+  {
+    name: 'DropDown',
+    component: <DropDown {...data.dropDownProps} />,
   },
 ];
 
@@ -199,6 +217,10 @@ const TRIP_CREATION = [
     component: <HotelDetails {...data.hotelDetailsProps} />,
   },
   {
+    name: 'ItineraryCard',
+    component: <ItineraryCard {...data.itineraryCardProps} />,
+  },
+  {
     name: 'FlightDetails',
     component: <FlightDetails {...data.flightDetailsProps} />,
   },
@@ -217,6 +239,14 @@ const TRIP_CREATION = [
   {
     name: 'AddHotelDetails',
     component: <AddHotelDetails {...data.addHotelDetailsProps} />,
+  },
+  {
+    name: 'BasicTravelDetailsCard',
+    component: <BasicTravelDetailsCard {...data.basicTravelDetailsCardProps} />,
+  },
+  {
+    name: 'Remove Itinerary',
+    component: <RemoveItinerary {...data.removeItineraryProps} />,
   },
 ];
 

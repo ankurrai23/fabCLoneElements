@@ -41,7 +41,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
     <>
       <FTouchableOpacity
         onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
-        style={[Styles.container, {borderRadius: DP._12}]}>
+        style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
             {tripIcons(item.requestType).map((asset) => (
@@ -73,10 +73,11 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
             </FText>
             <FTouchableOpacity
+              style={Styles.flex}
               onPress={() =>
                 item.coTravellers.length > 1 && setSheetVisible(true)
               }>
-              <FText>
+              <FText numberOfLines={1}>
                 {item.coTravellers?.[0]}
                 {item.coTravellers?.length > 1 &&
                   ` +${item.coTravellers?.length - 1}`}

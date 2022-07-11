@@ -7,6 +7,6 @@ export default StyleSheet.create({
   },
   contentContainerStyle: {
     paddingHorizontal: DP._16,
-    paddingVertical: DP._24,
+    paddingTop: DP._24,
   },
 });

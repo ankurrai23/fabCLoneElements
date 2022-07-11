@@ -4,8 +4,7 @@ export default {
   item: {
     bookingId: 'QHS12E',
     hotelName: 'Lemon Tree Premier, Mumbai Internation Airport',
-    mainImage:
-      'https://media-cdn.tripadvisor.com/media/photo-s/16/04/49/70/room.jpg',
+    mainImage: null,
     address:
       'Opposite Mittal Industrial Estate, Andheri Kurla Road, Andheri East, Mumbai -400059, Maharashtra',
     directions: '220 m from Marol naka Metro station',
@@ -83,22 +82,25 @@ export default {
       {
         type: 'SUPPORT',
         name: 'Contact 24x7 support',
+        grayedOut: false,
       },
     ],
+    notificationText: null,
     alertMessage: 'You have sent a cancellation request for this booking.',
-    reduceOpacity: true,
+    reduceOpacity: false,
   },
   onActionPress: (item) => console.log(item),
+  onPressClose: () => console.log('close modal'),
   supportDetails: [
-    {
-      name: 'FabHotel Cabana',
-      value: '7042424242',
-    },
-    {
-      name: 'TravelPlus helpline',
-      value: '9873646962',
-    },
+    // {
+    //   name: 'FabHotel Cabana',
+    //   value: '7042424242',
+    // },
+    // {
+    //   name: 'TravelPlus helpline',
+    //   value: '9873646962',
+    // },
   ],
   onMainImagePress: () => console.log('image press'),
-  onRefresh: () => console.log('refreshing'),
+  onClose: () => console.log('close'),
 };

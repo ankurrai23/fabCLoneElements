@@ -76,11 +76,11 @@ export default function ClaimsCard({...props}) {
               ) : (
                 <>
                   {props.amount ? (
-                    <FText type="medium" style={Styles.amountSecondary}>
+                    <FText type="medium" style={Styles.amountSecondary} numberOfLines={1}>
                       {props.amount}
                     </FText>
                   ) : (
-                    <FText type="medium" style={Styles.amountSecondary}>
+                    <FText type="medium" style={Styles.amountSecondary} numberOfLines={1}>
                       {props.quantity}
                     </FText>
                   )}
@@ -98,10 +98,10 @@ export default function ClaimsCard({...props}) {
               ) : (
                 <>
                   <View>
-                    <FText type="semiBold" style={Styles.claimsText}>
+                    <FText type="semiBold" style={Styles.claimsText} numberOfLines={1}>
                       {props.cardTitle}
                     </FText>
-                    <FText style={[Styles.title, Styles.lowerCase]}>
+                    <FText style={[Styles.title, Styles.lowerCase]} numberOfLines={1}>
                       {props.subText}
                     </FText>
                   </View>

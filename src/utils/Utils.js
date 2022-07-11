@@ -2,6 +2,8 @@ import moment from 'moment';
 import {Platform} from 'react-native';
 import Config from './config';
 import {DP} from './Dimen';
+import percentToHexChart from './color/percent-to-hex-chart.json';
+import {Color} from './color';
 
 export const FontFamily = Config.fontFamily || 'Metropolis';
 
@@ -26,9 +28,16 @@ export const Specs = {
 export const shadowObj = {
   shadowColor: 'rgba(0,0,0,0.4)',
   shadowOffset: {width: 3, height: 3},
-  shadowOpacity: 0.3,
+  shadowOpacity: 0.2,
   shadowRadius: 6,
-  elevation: 10,
+  elevation: 7,
+};
+
+export const cardStyleObj = {
+  backgroundColor: Color.WHITE,
+  borderWidth: DP._0_5,
+  borderColor: Color.LIGHT_PERIWINKLE,
+  borderRadius: DP._12,
 };
 
 export const dialogBoxStyle = {
@@ -79,6 +88,31 @@ export function getPluralText(number, text, isCaps, isNumberPrefix) {
     : '';
 }
 
+export const FontWeightSpec = {
+  300: {
+    fontFamily: `${FontFamily}-Light`,
+  },
+  400: {
+    fontFamily: `${FontFamily}-Regular`,
+  },
+  500: {
+    fontFamily: `${FontFamily}-Medium`,
+  },
+  600: {
+    fontFamily: `${FontFamily}-SemiBold`,
+  },
+  700: {
+    fontFamily: `${FontFamily}-Bold`,
+  },
+};
+
+export function convertOpacityPercentIntoHex(percent) {
+  if (percentToHexChart[percent]) {
+    return percentToHexChart[percent];
+  }
+  throw Error('Invalid opacity percentage');
+}
+
 export default {
   FontFamily,
   Specs,
@@ -88,4 +122,5 @@ export default {
   isEmpty,
   isPlatformIos,
   getPluralText,
+  convertOpacityPercentIntoHex,
 };

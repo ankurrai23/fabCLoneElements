@@ -4,7 +4,14 @@ import FText from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import styles from './Styles';
 
-const ListTypeFilter = ({data, selected, onChange}) => {
+const ListTypeFilter = ({
+  data,
+  selected,
+  onChange,
+  style,
+  buttonStyle,
+  textStyle,
+}) => {
   function onPress(id) {
     if (selected !== id) {
       onChange(id);
@@ -16,15 +23,19 @@ const ListTypeFilter = ({data, selected, onChange}) => {
     return (
       <FTouchableOpacity
         key={item.id}
-        style={styles.renderItem(isSelected, index)}
+        style={[styles.renderItem(isSelected, index), {...buttonStyle}]}
         activeOpacity={1}
         onPress={() => onPress(item.id)}>
-        <FText style={styles.filterTag(isSelected)}>{item.title}</FText>
+        <FText style={[styles.filterTag(isSelected), {...textStyle}]}>
+          {item.title}
+        </FText>
       </FTouchableOpacity>
     );
   }
 
-  return <View style={styles.container}>{data?.map(renderItem)}</View>;
+  return (
+    <View style={[styles.container, {...style}]}>{data?.map(renderItem)}</View>
+  );
 };
 
 export default ListTypeFilter;

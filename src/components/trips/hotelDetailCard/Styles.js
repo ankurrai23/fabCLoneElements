@@ -1,16 +1,15 @@
 import {StyleSheet} from 'react-native';
 import {Color} from '../../../utils/color/index.fabhotel';
 import {DP} from '../../../utils/Dimen';
-import {shadowObj} from '../../../utils/Utils';
+import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
-    borderRadius: DP._12,
-    backgroundColor: Color.WHITE,
     ...shadowObj,
+    ...cardStyleObj,
   },
   subContainer: (modified) => ({
-    opacity: modified ? 0.4 : 1,
+    opacity: modified ? 0.6 : 1,
     padding: DP._16,
   }),
   addressText: {
@@ -119,7 +118,7 @@ export default StyleSheet.create({
   postTripActionContainer: {
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
-    marginBottom: DP._4,
+    marginBottom: DP._16,
     borderRadius: DP._8,
     borderColor: Color.LIGHT_PERIWINKLE,
     borderWidth: DP._0_5,
@@ -156,5 +155,20 @@ export default StyleSheet.create({
   cancelButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  viewDetailView: {
+    // paddingVertical:DP._16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  hidden: {
+    height: 0,
+  },
+  showMoreTxt: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.DODGER_BLUE,
+    marginRight: 3,
   },
 });

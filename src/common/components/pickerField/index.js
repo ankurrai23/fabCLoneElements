@@ -6,6 +6,12 @@ import FText from '../../rn/FText';
 
 import Styles from './Styles';
 
+/*
+Do not use styles for adding the top and bottom margin to this component
+To add some margin at the top, use topMargin prop
+To add some margin at the bottom, use bottomMargin prop
+*/
+
 const PickerField = (props) => {
   function renderView() {
     if (!props.value) {
@@ -30,7 +36,8 @@ const PickerField = (props) => {
 
   return (
     <FTouchableOpacity onPress={props.onPress} style={props.touchContainer}>
-      <View style={[Styles.container(props.error), props.style]}>
+      <View
+        style={[Styles.container(props.error, props.topMargin), props.style]}>
         {!!props.value && props.label && (
           <FText style={[Styles.floatLabel(props.error)]}>{props.label}</FText>
         )}
@@ -46,7 +53,9 @@ const PickerField = (props) => {
           </View>
         )}
       </View>
-      <FText style={Styles.helperText(props.error)}>{props.helperText}</FText>
+      <FText style={Styles.helperText(props.error, props.bottomMargin)}>
+        {props.helperText}
+      </FText>
     </FTouchableOpacity>
   );
 };
