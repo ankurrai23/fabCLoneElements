@@ -262,9 +262,7 @@ class TextField extends React.Component {
         onSubmitEditing: this.props.onSubmitEditing,
         password: this.props.secureTextEntry || this.props.password, // Compatibility
         placeholder: this.props.placeholder,
-        placeholderTextColor: this.props.error
-          ? Color.PASTEL_RED
-          : Color.GREY_PURPLE,
+        placeholderTextColor: Color.GREY_PURPLE,
         secureTextEntry: this.props.secureTextEntry || this.props.password, // Compatibility
         returnKeyType: this.props.returnKeyType,
         selectTextOnFocus: this.props.selectTextOnFocus,
@@ -302,7 +300,7 @@ class TextField extends React.Component {
               style={[
                 props.style,
                 {
-                  color: this.props.error ? Color.GREY_PURPLE : Color.DARK,
+                  color: Color.DARK,
                   marginLeft: isPlatformIos() ? 0 : -4,
                 },
               ]}

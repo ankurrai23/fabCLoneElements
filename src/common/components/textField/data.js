@@ -11,4 +11,5 @@ export default {
   topMargin: 8,
   bottomMargin: 0,
   rightIcon: <Entypo name="cross" size={DP._24} />,
+  error: true,
 };

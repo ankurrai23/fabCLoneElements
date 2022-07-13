@@ -24,19 +24,15 @@ export default StyleSheet.create({
     top: DP.minus_6,
     left: DP._12,
   }),
-  placeholder: (error) => ({
+  placeholder: {
     flex: 1,
-    color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
+    color: Color.GREY_PURPLE,
     fontSize: DP._14,
-  }),
-  value: (editable, error) => ({
+  },
+  value: (editable) => ({
     flex: 1,
     fontSize: DP._14,
-    color: editable
-      ? !error
-        ? Color.DARK
-        : Color.GREY_PURPLE
-      : Color.GREY_PURPLE,
+    color: editable ? Color.DARK : Color.GREY_PURPLE,
   }),
   iconContainer: (isLeftIcon) => ({
     alignSelf: 'center',
@@ -46,12 +42,12 @@ export default StyleSheet.create({
     marginRight: isLeftIcon ? DP._8 : 0,
   }),
   helperTextContainer: (marginBottom) => ({
-    minHeight: marginBottom ? DP._16 + marginBottom : DP._16,
+    minHeight: marginBottom ? DP._14 + marginBottom : DP._14,
     justifyContent: 'flex-end',
   }),
   helperText: (error) => ({
     color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
-    fontSize: DP._12,
-    lineHeight: DP._16,
+    fontSize: DP._11,
+    lineHeight: DP._13,
   }),
 });

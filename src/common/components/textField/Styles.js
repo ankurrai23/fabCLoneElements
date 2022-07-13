@@ -44,12 +44,12 @@ export default StyleSheet.create({
     ...Specs.fontRegular,
   },
   helperTextContainer: (marginBottom) => ({
-    minHeight: marginBottom ? DP._16 + marginBottom : DP._16,
+    minHeight: marginBottom ? DP._14 + marginBottom : DP._14,
     justifyContent: 'flex-end',
   }),
   helperText: (error) => ({
     color: error ? Color.PASTEL_RED : Color.GREY_PURPLE,
-    fontSize: DP._12,
-    lineHeight: DP._14,
+    fontSize: DP._11,
+    lineHeight: DP._13,
   }),
 });

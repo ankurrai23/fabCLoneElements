@@ -17,7 +17,8 @@ const PickerField = (props) => {
     if (!props.value) {
       return (
         <FText
-          style={[Styles.placeholder(props.error), props.placeholderStyle]}>
+          style={[Styles.placeholder, props.placeholderStyle]}
+          numberOfLines={props?.numberOfLines ?? 1}>
           {props.label || props.placeholder}
         </FText>
       );
@@ -27,8 +28,8 @@ const PickerField = (props) => {
     }
     return (
       <FText
-        numberOfLines={props.numberOfLines}
-        style={[Styles.value(props.editable, props.error), props.valueStyle]}>
+        numberOfLines={props?.numberOfLines ?? 1}
+        style={[Styles.value(props.editable), props.valueStyle]}>
         {props.value}
       </FText>
     );
@@ -54,7 +55,11 @@ const PickerField = (props) => {
         )}
       </View>
       <View style={Styles.helperTextContainer(props.bottomMargin)}>
-        <FText style={Styles.helperText(props.error)}>{props.helperText}</FText>
+        <FText
+          style={Styles.helperText(props.error)}
+          numberOfLines={props?.helperTextNumberOfLines ?? 1}>
+          {props.helperText}
+        </FText>
       </View>
     </FTouchableOpacity>
   );
