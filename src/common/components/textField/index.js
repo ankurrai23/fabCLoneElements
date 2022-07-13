@@ -291,7 +291,7 @@ class TextField extends React.Component {
             this.props.containerStyle,
           ]}>
           {!!this.props.icon && (
-            <View style={[Styles.iconContainer, this.props.iconStyle]}>
+            <View style={[Styles.iconContainer(true), this.props.iconStyle]}>
               {this.props.icon}
             </View>
           )}
@@ -300,13 +300,17 @@ class TextField extends React.Component {
             <TextInput
               {...props}
               style={[
-                {color: Color.DARK, marginLeft: isPlatformIos() ? 0 : -4},
                 props.style,
+                {
+                  color: this.props.error ? Color.GREY_PURPLE : Color.DARK,
+                  marginLeft: isPlatformIos() ? 0 : -4,
+                },
               ]}
             />
           </View>
           {!!this.props.rightIcon && (
-            <View style={[Styles.iconContainer, this.props.rightIconStyle]}>
+            <View
+              style={[Styles.iconContainer(false), this.props.rightIconStyle]}>
               {this.props.rightIcon}
             </View>
           )}
@@ -314,13 +318,15 @@ class TextField extends React.Component {
         {typeof this.props.helperText === 'object' ? (
           this.props.helperText
         ) : (
-          <FText
-            style={Styles.helperText(
-              this.props.error,
-              this.props.bottomMargin,
-            )}>
-            {this.props.helperText}
-          </FText>
+          <View style={Styles.helperTextContainer(this.props.bottomMargin)}>
+            <FText
+              style={Styles.helperText(
+                this.props.error,
+                this.props.bottomMargin,
+              )}>
+              {this.props.helperText}
+            </FText>
+          </View>
         )}
       </View>
     );

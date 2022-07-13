@@ -19,13 +19,13 @@ export default StyleSheet.create({
     borderRadius: DP._4,
     paddingHorizontal: DP._16,
   }),
-  iconContainer: {
+  iconContainer: (leftIcon) => ({
     alignSelf: 'center',
-    height: DP._20,
-    width: DP._20,
+    height: DP._24,
+    width: DP._24,
     overflow: 'hidden',
-    marginHorizontal: DP._4,
-  },
+    marginRight: leftIcon ? DP._8 : 0,
+  }),
   element: {
     position: 'relative',
     flex: 1,
@@ -43,11 +43,13 @@ export default StyleSheet.create({
     lineHeight: DP._18,
     ...Specs.fontRegular,
   },
-  helperText: (error, marginBottom) => ({
+  helperTextContainer: (marginBottom) => ({
+    minHeight: marginBottom ? DP._16 + marginBottom : DP._16,
+    justifyContent: 'flex-end',
+  }),
+  helperText: (error) => ({
     color: error ? Color.PASTEL_RED : Color.GREY_PURPLE,
     fontSize: DP._12,
-    minHeight: marginBottom ? DP._16 + marginBottom : DP._16,
-    lineHeight: DP._16,
-    marginLeft: DP._16,
+    lineHeight: DP._14,
   }),
 });
