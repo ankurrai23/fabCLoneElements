@@ -28,7 +28,7 @@ const PickerField = (props) => {
     return (
       <FText
         numberOfLines={props.numberOfLines}
-        style={[Styles.value(props.editable), props.valueStyle]}>
+        style={[Styles.value(props.editable, props.error), props.valueStyle]}>
         {props.value}
       </FText>
     );
@@ -42,20 +42,20 @@ const PickerField = (props) => {
           <FText style={[Styles.floatLabel(props.error)]}>{props.label}</FText>
         )}
         {!!props.icon && (
-          <View style={[Styles.iconContainer, props.iconStyle]}>
+          <View style={[Styles.iconContainer(true), props.iconStyle]}>
             {props.icon}
           </View>
         )}
         {renderView()}
         {!!props.rightIcon && (
-          <View style={[Styles.iconContainer, props.rightIconStyle]}>
+          <View style={[Styles.iconContainer(false), props.rightIconStyle]}>
             {props.rightIcon}
           </View>
         )}
       </View>
-      <FText style={Styles.helperText(props.error, props.bottomMargin)}>
-        {props.helperText}
-      </FText>
+      <View style={Styles.helperTextContainer(props.bottomMargin)}>
+        <FText style={Styles.helperText(props.error)}>{props.helperText}</FText>
+      </View>
     </FTouchableOpacity>
   );
 };

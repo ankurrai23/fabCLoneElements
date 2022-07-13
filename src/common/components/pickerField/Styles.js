@@ -29,23 +29,29 @@ export default StyleSheet.create({
     color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
     fontSize: DP._14,
   }),
-  value: (editable) => ({
+  value: (editable, error) => ({
     flex: 1,
     fontSize: DP._14,
-    color: editable ? Color.DARK : Color.GREY_PURPLE,
+    color: editable
+      ? !error
+        ? Color.DARK
+        : Color.GREY_PURPLE
+      : Color.GREY_PURPLE,
   }),
-  iconContainer: {
+  iconContainer: (isLeftIcon) => ({
     alignSelf: 'center',
-    height: DP._20,
-    width: DP._20,
+    height: DP._24,
+    width: DP._24,
     overflow: 'hidden',
-    marginHorizontal: DP._4,
-  },
-  helperText: (error, marginBottom) => ({
+    marginRight: isLeftIcon ? DP._8 : 0,
+  }),
+  helperTextContainer: (marginBottom) => ({
+    minHeight: marginBottom ? DP._16 + marginBottom : DP._16,
+    justifyContent: 'flex-end',
+  }),
+  helperText: (error) => ({
     color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
     fontSize: DP._12,
-    minHeight: marginBottom ? DP._16 + marginBottom : DP._16,
     lineHeight: DP._16,
-    marginLeft: DP._16,
   }),
 });
