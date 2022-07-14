@@ -36,10 +36,11 @@ export default StyleSheet.create({
   }),
   iconContainer: (isLeftIcon) => ({
     alignSelf: 'center',
-    height: DP._24,
-    width: DP._24,
+    height: DP._16,
+    width: DP._16,
     overflow: 'hidden',
     marginRight: isLeftIcon ? DP._8 : 0,
+    marginLeft: isLeftIcon ? 0 : DP._8,
   }),
   helperTextContainer: (marginBottom) => ({
     minHeight: marginBottom ? DP._14 + marginBottom : DP._14,

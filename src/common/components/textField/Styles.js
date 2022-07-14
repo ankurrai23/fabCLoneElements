@@ -21,10 +21,11 @@ export default StyleSheet.create({
   }),
   iconContainer: (leftIcon) => ({
     alignSelf: 'center',
-    height: DP._24,
-    width: DP._24,
+    height: DP._16,
+    width: DP._16,
     overflow: 'hidden',
     marginRight: leftIcon ? DP._8 : 0,
+    marginLeft: leftIcon ? 0 : DP._8,
   }),
   element: {
     position: 'relative',
