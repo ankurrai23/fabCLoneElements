@@ -125,7 +125,7 @@ const ItineraryCard = (props) => {
                 FieldNamesEnum.DEPARTURE_CITY,
               );
             }}
-            touchContainer={{marginBottom: DP._8}}
+            touchContainer={{marginBottom: DP._18}}
             // todo: For now let's revert this and wait for confirmation from design team
             // bottomMargin={
             //   !ifEveryFieldisEmpty && props?.errors?.departureCityError
@@ -150,7 +150,7 @@ const ItineraryCard = (props) => {
                 FieldNamesEnum.ARRIVAL_CITY,
               );
             }}
-            touchContainer={{marginBottom: DP._8}}
+            touchContainer={{marginBottom: DP._18}}
             // bottomMargin={
             //   !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
             //     ? DP._16
@@ -183,7 +183,7 @@ const ItineraryCard = (props) => {
                 );
               }}
               touchContainer={{
-                marginBottom: props?.showSaveButton ? DP._8 : DP._16,
+                marginBottom: DP._18,
                 ...departureDateStyle,
               }}
               // bottomMargin={
@@ -217,7 +217,7 @@ const ItineraryCard = (props) => {
                 touchContainer={{
                   flex: 0.5,
                   marginLeft: DP._8,
-                  marginBottom: props?.showSaveButton ? DP._8 : DP._16,
+                  marginBottom: DP._18,
                 }}
                 // bottomMargin={
                 //   !ifEveryFieldisEmpty && props?.errors?.returnDateError
