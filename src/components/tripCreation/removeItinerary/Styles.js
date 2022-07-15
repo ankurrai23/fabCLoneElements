@@ -22,7 +22,7 @@ export default StyleSheet.create({
     color: Color.PASTEL_RED,
   },
   errorTxt: {
-    paddingTop: DP._5,
+    paddingTop: DP._4,
     fontSize: DP._12,
     lineHeight: DP._14,
     color: Color.PASTEL_RED,
