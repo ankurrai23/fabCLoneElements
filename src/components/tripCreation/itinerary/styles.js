@@ -119,7 +119,6 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._14,
     color: Color.PASTEL_RED,
-    paddingHorizontal: DP._16,
     paddingTop: DP._4,
   },
   briefCardBottomMargin: (margin, error) => {

@@ -43,7 +43,8 @@ export default StyleSheet.create({
     marginLeft: isLeftIcon ? 0 : DP._8,
   }),
   helperTextContainer: (marginBottom) => ({
-    minHeight: marginBottom ? DP._14 + marginBottom : DP._14,
+    minHeight: DP._14,
+    marginBottom,
     justifyContent: 'flex-end',
   }),
   helperText: (error) => ({
