@@ -57,7 +57,7 @@ export default function OtherTravelDetails(props) {
         rightIcon={
           <Feather
             name="chevron-down"
-            size={DP._20}
+            size={DP._16}
             color={Color.GREY_PURPLE}
           />
         }

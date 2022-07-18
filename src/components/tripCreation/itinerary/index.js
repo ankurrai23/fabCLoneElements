@@ -187,7 +187,7 @@ const ItineraryCard = (props) => {
                 );
               }}
               touchContainer={{
-                marginBottom: DP._18,
+                marginBottom: DP._24,
                 ...departureDateStyle,
               }}
               // bottomMargin={
@@ -221,7 +221,7 @@ const ItineraryCard = (props) => {
                 touchContainer={{
                   flex: 0.5,
                   marginLeft: DP._8,
-                  marginBottom: DP._18,
+                  marginBottom: DP._24,
                 }}
                 // bottomMargin={
                 //   !ifEveryFieldisEmpty && props?.errors?.returnDateError
