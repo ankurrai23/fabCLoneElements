@@ -125,7 +125,7 @@ export default StyleSheet.create({
     const DEFAULT_MARGIN = DP._32;
     const ERROR_TEXTBOX_HEIGHT = DP._18;
     let final_margin =
-      margin ?? DEFAULT_MARGIN - (error ? ERROR_TEXTBOX_HEIGHT : 0);
+      (margin ?? DEFAULT_MARGIN) - (error ? ERROR_TEXTBOX_HEIGHT : 0);
     return {marginBottom: final_margin};
   },
 });
