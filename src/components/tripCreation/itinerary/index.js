@@ -249,6 +249,7 @@ const ItineraryCard = (props) => {
             props?.itinerary?.source?.name,
             props?.itinerary?.destination?.name,
             props?.itinerary?.departureDate,
+            props?.expandedItineraryMargin,
           )}
           textStyle={Styles.btnTextStyle(
             props?.itinerary?.source?.name,
