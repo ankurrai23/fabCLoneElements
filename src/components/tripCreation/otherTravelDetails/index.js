@@ -68,7 +68,7 @@ export default function OtherTravelDetails(props) {
         onChangeText={onChangeText}
         label="Other remarks (optional)"
         labelStyle={Styles.textFieldLabel}
-        topMargin={DP._8}
+        topMargin={DP._18}
       />
       {visible && (
         <DialogBox

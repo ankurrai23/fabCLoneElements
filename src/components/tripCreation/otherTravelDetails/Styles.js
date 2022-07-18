@@ -8,7 +8,7 @@ export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._16,
-    marginTop: DP._32,
+    marginTop: DP._16,
     // marginBottom: DP._8,
   },
   textFieldLabel: {
