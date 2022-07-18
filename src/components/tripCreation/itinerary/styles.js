@@ -67,11 +67,7 @@ export default StyleSheet.create({
     borderColor: Color.LIGHT_PERIWINKLE,
     borderRadius: DP._8,
     padding: DP._16,
-    // marginHorizontal: DP._16,
   },
-  briefCardBottomMargin: (margin) => ({
-    marginBottom: margin ? margin : DP._16,
-  }),
   briefCardStyle_flexView: (margin) => ({
     flexDirection: 'row',
     alignItems: 'center',
@@ -125,5 +121,12 @@ export default StyleSheet.create({
     color: Color.PASTEL_RED,
     paddingHorizontal: DP._16,
     paddingTop: DP._4,
+  },
+  briefCardBottomMargin: (margin, error) => {
+    const DEFAULT_MARGIN = DP._32;
+    const ERROR_TEXTBOX_HEIGHT = DP._18;
+    let final_margin =
+      margin ?? DEFAULT_MARGIN - (error ? ERROR_TEXTBOX_HEIGHT : 0);
+    return {marginBottom: final_margin};
   },
 });

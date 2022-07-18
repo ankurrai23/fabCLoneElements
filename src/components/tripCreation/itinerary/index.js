@@ -26,7 +26,11 @@ const ItineraryCard = (props) => {
     : "DD MMM'YY";
   if (props?.shouldCollapse) {
     return (
-      <View style={Styles.briefCardBottomMargin(props?.bottomMargin)}>
+      <View
+        style={Styles.briefCardBottomMargin(
+          props?.bottomMargin,
+          props?.errors?.itineraryDetailsMissingError,
+        )}>
         <View
           style={[
             Styles.briefCardStyle_container,
