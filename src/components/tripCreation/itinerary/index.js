@@ -28,7 +28,7 @@ const ItineraryCard = (props) => {
     return (
       <View
         style={Styles.briefCardBottomMargin(
-          props?.bottomMargin,
+          props?.briefCardBottomMargin,
           props?.errors?.itineraryDetailsMissingError,
         )}>
         <View
