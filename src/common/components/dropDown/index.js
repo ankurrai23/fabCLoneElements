@@ -77,14 +77,14 @@ function DropDown(
             <FTouchableOpacity
               onPress={onPressClose}
               hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-              <Ionicons name="close" size={DP._18} color={Color.BLUEY_GREY} />
+              <Ionicons name="close" size={DP._16} color={Color.BLUEY_GREY} />
             </FTouchableOpacity>
           )
         }
-        iconStyle={Styles.searchIcon}
+        // iconStyle={Styles.searchIcon}
         labelStyle={Styles.labelStyle}
         inputStyle={Styles.inputStyle}
-        rightIconStyle={Styles.closeIcon}
+        // rightIconStyle={Styles.closeIcon}
         value={keyword}
         onChangeText={onChangeText}
         autoFocus
