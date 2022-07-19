@@ -45,7 +45,8 @@ export default StyleSheet.create({
     ...Specs.fontRegular,
   },
   helperTextContainer: (marginBottom) => ({
-    minHeight: marginBottom ? DP._14 + marginBottom : DP._14,
+    minHeight: DP._14,
+    marginBottom,
     justifyContent: 'flex-end',
   }),
   helperText: (error) => ({
