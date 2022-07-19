@@ -12,7 +12,7 @@ export default StyleSheet.create({
     borderColor: error ? Color.DARK_CORAL : Color.PALE_GREY_THREE,
     borderRadius: DP._4,
     paddingHorizontal: DP._16,
-    paddingVertical: DP._12,
+    paddingVertical: DP._14,
     marginTop: marginTop,
   }),
   floatLabel: (error) => ({
