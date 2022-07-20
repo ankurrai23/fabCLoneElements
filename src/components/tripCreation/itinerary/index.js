@@ -231,26 +231,17 @@ const ItineraryCard = (props) => {
       </View>
       {props?.showSaveButton && (
         <Button
-          disabled={
-            props?.source?.name === null ||
-            props?.destination?.name === null ||
-            props?.departureDate === null
-          }
+          disabled={!props?.isDirty}
           onPress={() => {
             props?.saveClicked(props?.index);
           }}
           type="SECONDARY"
           textFont={'medium'}
           style={Styles.btnStyle(
-            props?.itinerary?.source?.name,
-            props?.itinerary?.destination?.name,
-            props?.itinerary?.departureDate,
+            props?.isDirty,
+            props?.expandedItineraryMargin,
           )}
-          textStyle={Styles.btnTextStyle(
-            props?.itinerary?.source?.name,
-            props?.itinerary?.destination?.name,
-            props?.itinerary?.departureDate,
-          )}>
+          textStyle={Styles.btnTextStyle(props?.isDirty)}>
           Save
         </Button>
       )}
