@@ -108,7 +108,15 @@ const ItineraryCard = (props) => {
           showRemove={props?.showRemove}
           showLabel={props?.showLabel}
           errorText={ifEveryFieldisEmpty || props?.errors?.itinerarySameError}
-          margin={props?.showLabel ? DP._24 : ifEveryFieldisEmpty ? DP._14 : 0}
+          margin={
+            props?.showLabel
+              ? ifEveryFieldisEmpty
+                ? DP._14
+                : DP._32
+              : ifEveryFieldisEmpty
+              ? DP._14
+              : 0
+          }
         />
 
         <View style={Styles.innerContainer}>

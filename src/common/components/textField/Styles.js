@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   input: (editable) => ({
     color: editable ? Color.BLACK : Color.GREY_PURPLE,
-    height: DP._44,
+    height: DP._42,
     ...Specs.fontRegular,
   }),
   label: {
