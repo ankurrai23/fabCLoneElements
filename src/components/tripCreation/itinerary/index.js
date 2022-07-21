@@ -110,7 +110,7 @@ const ItineraryCard = (props) => {
           errorText={ifEveryFieldisEmpty || props?.errors?.itinerarySameError}
           margin={
             props?.showLabel
-              ? ifEveryFieldisEmpty
+              ? props?.errors?.itinerarySameError
                 ? DP._14
                 : DP._32
               : ifEveryFieldisEmpty
@@ -195,7 +195,7 @@ const ItineraryCard = (props) => {
                 );
               }}
               touchContainer={{
-                marginBottom: DP._24,
+                marginBottom: DP._27,
                 ...departureDateStyle,
               }}
               // bottomMargin={
@@ -229,7 +229,7 @@ const ItineraryCard = (props) => {
                 touchContainer={{
                   flex: 0.5,
                   marginLeft: DP._8,
-                  marginBottom: DP._24,
+                  marginBottom: DP._27,
                 }}
                 // bottomMargin={
                 //   !ifEveryFieldisEmpty && props?.errors?.returnDateError
