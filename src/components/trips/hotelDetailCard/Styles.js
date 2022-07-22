@@ -171,4 +171,10 @@ export default StyleSheet.create({
     color: Color.DODGER_BLUE,
     marginRight: 3,
   },
+  viewDetailHitSlop: {
+    top: DP._15,
+    bottom: DP._15,
+    left: DP._15,
+    right: DP._15,
+  },
 });
