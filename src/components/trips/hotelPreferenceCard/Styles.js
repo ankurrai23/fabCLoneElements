@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import {shadowObj} from '../../../utils/Utils';
-const {width} = Dimensions.get('window');
+const {width: Width} = Dimensions.get('window');
 export default StyleSheet.create({
   container: (offline) => ({
     backgroundColor: Color.WHITE,
@@ -47,6 +47,7 @@ export default StyleSheet.create({
     marginBottom: offline ? DP._8 : DP._4,
   }),
   flexRow: {flexDirection: 'row'},
+  flexCol: {flexDirection: 'column'},
   hotelAddress: {
     flex: 0.5,
     paddingTop: DP._2,
@@ -66,7 +67,11 @@ export default StyleSheet.create({
     marginBottom: DP._16,
   },
   viewOnMap: {fontSize: DP._10, color: Color.DODGER_BLUE},
-  priceDetail: {fontSize: DP._12, color: Color.BATTLESHIP_GREY_TWO},
+  priceDetail: {
+    fontSize: DP._12,
+    color: Color.BATTLESHIP_GREY_TWO,
+    marginTop: DP._4,
+  },
   marginBottom_16: {marginBottom: DP._16},
   hotelStar: (offline) => ({
     fontSize: DP._12,
@@ -116,7 +121,8 @@ export default StyleSheet.create({
   ratingsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: DP._6,
+    // marginBottom: DP._6,
+    marginTop: DP._12,
   },
   cancellationInfoContainer: {
     flexDirection: 'row',
@@ -127,7 +133,7 @@ export default StyleSheet.create({
   hotelLocality: {
     fontSize: DP._11,
     color: Color.CHARCOAL_GREY_TWO,
-    marginBottom: DP._12,
+    // marginBottom: DP._12,
   },
   reviewsText: {
     color: Color.CHARCOAL_GREY_TWO,
@@ -137,13 +143,19 @@ export default StyleSheet.create({
   ratingsText: {
     color: Color.CHARCOAL_GREY_TWO,
     fontSize: DP._12,
+    marginTop: DP._6,
   },
   amountContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: DP._16,
+    marginTop: DP._12,
+    marginBottom: DP._16,
   },
-  cancellationText: {color: Color.BATTLESHIP_GREY_TWO, fontSize: DP._10},
+  cancellationText: {
+    color: Color.BATTLESHIP_GREY_TWO,
+    fontSize: DP._10,
+    marginTop: DP._10,
+  },
   buttonContainer: {paddingHorizontal: DP._8, paddingBottom: DP._16},
   inclusions: {
     fontSize: DP._12,
@@ -155,5 +167,5 @@ export default StyleSheet.create({
     color: Color.CHARCOAL_GREY_TWO,
     marginBottom: DP._12,
   },
-  hotelImageStyle: {width: 0.7 * width, height: DP._146, marginRight: DP._1},
+  hotelImageStyle: {width: 0.7 * Width, height: DP._146, marginRight: DP._1},
 });
