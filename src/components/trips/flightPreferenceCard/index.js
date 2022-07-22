@@ -7,7 +7,6 @@ import FImage from '../../../common/rn/FImage';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
-import {shadowObj} from '../../../utils/Utils';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const AnimatedMaterialCommunityIcon = Animated.createAnimatedComponent(
@@ -24,15 +23,7 @@ export default function FlightPreferenceCard({
 }) {
   return (
     <FTouchableOpacity onPress={onPress} style={Styles.container}>
-      <Animated.View
-        style={[
-          {
-            width: width,
-            height: height,
-            overflow: 'hidden',
-            padding: DP._16,
-          },
-        ]}>
+      <Animated.View style={Styles.animatedContainer(width, height)}>
         <View style={Styles.flightLogoAndNameContainer}>
           <FImage
             style={{
@@ -47,7 +38,7 @@ export default function FlightPreferenceCard({
             | {flightInfo.airlineCode}-{flightInfo.flightNumber}
           </FText>
           <View style={Styles.flexGrow_1} />
-          <Animated.Text style={{opacity: opacity, fontFamily: 'Rubik-Bold'}}>
+          <Animated.Text style={Styles.flightPrice(opacity)}>
             {flightInfo.price}
           </Animated.Text>
         </View>
@@ -67,11 +58,7 @@ export default function FlightPreferenceCard({
           {/*<Animated.View style={[Styles.whiteDot, {opacity: opacity}]} />*/}
           <Animated.Text
             type="medium"
-            style={{
-              opacity: opacity,
-              fontFamily: 'Rubik-Regular',
-              color: Color.GREY_PURPLE,
-            }}>
+            style={Styles.destinationAirPortCode(opacity)}>
             {flightInfo.destinationAirportCode}
           </Animated.Text>
         </View>

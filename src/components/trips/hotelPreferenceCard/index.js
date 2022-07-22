@@ -145,25 +145,25 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         </FText>
       )}
       <View style={Styles.amountContainer}>
-        <View style={[Styles.flexRow, {paddingTop: DP._1}]}>
+        <View style={[Styles.flexCol]}>
           {item.mealTypeText && (
-            <View style={[Styles.flexRow, {alignItems: 'center'}]}>
+            <View style={[Styles.flexRow]}>
               <Feather name="check" size={DP._16} color={Color.DARK_SEA_FOAM} />
               <FText type="medium" style={Styles.inclusions}>
                 {item.mealTypeText}
               </FText>
             </View>
           )}
+          <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
         </View>
-        <FText type={'bold'} style={Styles.costOfHotel}>
-          {item.cost}
-        </FText>
-      </View>
-      <View style={Styles.cancellationInfoContainer}>
-        <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
-        <FText style={Styles.priceDetail}>{`price/night${
-          !item.gstIncluded ? ' (Ex GST)' : ''
-        }`}</FText>
+        <View>
+          <FText type={'bold'} style={Styles.costOfHotel}>
+            {item.cost}
+          </FText>
+          <FText style={Styles.priceDetail}>{`price/night${
+            !item.gstIncluded ? ' (Ex GST)' : ''
+          }`}</FText>
+        </View>
       </View>
       <View style={Styles.buttonContainer}>
         <SetOrResetPreference

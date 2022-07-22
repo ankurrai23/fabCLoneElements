@@ -98,6 +98,7 @@ const FloatingAction = ({
       ) : null}
       <View style={Styles.container}>
         <TouchableNativeFeedback
+          hitSlop={Styles.hitSlopTouchTrip}
           background={TouchableNativeFeedback.Ripple('#EEE')}
           onPress={_onPressTripRequest}>
           <Animated.View style={[Styles.newView, bagStyle]}>
@@ -114,6 +115,7 @@ const FloatingAction = ({
           </Animated.View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback
+          hitSlop={Styles.hitSlopTouch}
           background={TouchableNativeFeedback.Ripple('#EEE')}
           onPress={_onPressExpenseClaim}>
           <Animated.View style={[Styles.newView, rupeesStyle]}>

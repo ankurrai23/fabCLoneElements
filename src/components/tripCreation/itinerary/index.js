@@ -125,7 +125,12 @@ const ItineraryCard = (props) => {
                 FieldNamesEnum.DEPARTURE_CITY,
               );
             }}
-            touchContainer={{marginBottom: DP._8}}
+            touchContainer={{
+              marginBottom:
+                !ifEveryFieldisEmpty && props?.errors?.departureCityError
+                  ? DP._24
+                  : DP._8,
+            }}
             // todo: For now let's revert this and wait for confirmation from design team
             // bottomMargin={
             //   !ifEveryFieldisEmpty && props?.errors?.departureCityError
@@ -150,7 +155,12 @@ const ItineraryCard = (props) => {
                 FieldNamesEnum.ARRIVAL_CITY,
               );
             }}
-            touchContainer={{marginBottom: DP._8}}
+            touchContainer={{
+              marginBottom:
+                !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
+                  ? DP._24
+                  : DP._8,
+            }}
             // bottomMargin={
             //   !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
             //     ? DP._16
@@ -183,7 +193,13 @@ const ItineraryCard = (props) => {
                 );
               }}
               touchContainer={{
-                marginBottom: props?.showSaveButton ? DP._8 : DP._16,
+                marginBottom: props?.showSaveButton
+                  ? !ifEveryFieldisEmpty && props?.errors?.departureDateError
+                    ? DP._24
+                    : DP._8
+                  : !ifEveryFieldisEmpty && props?.errors?.departureDateError
+                  ? DP._24
+                  : DP._16,
                 ...departureDateStyle,
               }}
               // bottomMargin={
@@ -217,7 +233,13 @@ const ItineraryCard = (props) => {
                 touchContainer={{
                   flex: 0.5,
                   marginLeft: DP._8,
-                  marginBottom: props?.showSaveButton ? DP._8 : DP._16,
+                  marginBottom: props?.showSaveButton
+                    ? !ifEveryFieldisEmpty && props?.errors?.returnDateError
+                      ? DP._24
+                      : DP._8
+                    : !ifEveryFieldisEmpty && props?.errors?.returnDateError
+                    ? DP._24
+                    : DP._16,
                 }}
                 // bottomMargin={
                 //   !ifEveryFieldisEmpty && props?.errors?.returnDateError
@@ -231,26 +253,17 @@ const ItineraryCard = (props) => {
       </View>
       {props?.showSaveButton && (
         <Button
-          disabled={
-            props?.source?.name === null ||
-            props?.destination?.name === null ||
-            props?.departureDate === null
-          }
+          disabled={!props?.isDirty}
           onPress={() => {
             props?.saveClicked(props?.index);
           }}
           type="SECONDARY"
           textFont={'medium'}
           style={Styles.btnStyle(
-            props?.itinerary?.source?.name,
-            props?.itinerary?.destination?.name,
-            props?.itinerary?.departureDate,
+            props?.isDirty,
+            props?.expandedItineraryMargin,
           )}
-          textStyle={Styles.btnTextStyle(
-            props?.itinerary?.source?.name,
-            props?.itinerary?.destination?.name,
-            props?.itinerary?.departureDate,
-          )}>
+          textStyle={Styles.btnTextStyle(props?.isDirty)}>
           Save
         </Button>
       )}
