@@ -355,6 +355,7 @@ export default function HotelDetailCard({
           )}
           {item.enableViewMoreButton && (
             <FTouchableOpacity
+              hitSlop={Styles.viewDetailHitSlop}
               onPress={onItemPress}
               style={Styles.viewDetailView}>
               <FText style={Styles.showMoreTxt}>{`View ${
