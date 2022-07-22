@@ -60,7 +60,6 @@ import {
   ReceiptListView,
   RemoveItinerary,
   ContactSupport,
-  FilterModal,
   DropDown,
   ItineraryCard,
 } from 'react-native-fab-elements';
@@ -99,10 +98,6 @@ const COMMON_COMPONENTS = [
   {
     name: 'Contact Support',
     component: <ContactSupport {...data.contactSupportProps} />,
-  },
-  {
-    name: 'FilterModal',
-    component: <FilterModal {...data.filterModalProps} />,
   },
   {
     name: 'DropDown',
