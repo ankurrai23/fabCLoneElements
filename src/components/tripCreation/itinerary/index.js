@@ -16,7 +16,6 @@ import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 const ItineraryCard = (props) => {
   const onEditClicked = () => {
     props?.editClicked(props?.index);
-    LayoutAnimation.easeInEaseOut();
   };
   const collapsedDateFormat = props?.collapsedDateFormat
     ? props?.collapsedDateFormat
