@@ -19,7 +19,7 @@ export default StyleSheet.create({
     marginLeft: DP._16,
   },
   flightNumber: {color: Color.BATTLESHIP_GREY_TWO},
-  flightTimeTextStyle: {fontSize: DP._16},
+  flightTimeTextStyle: {fontSize: DP._16, color: Color.DARK},
   flexGrow_1: {flexGrow: 1},
   flightTimeContainer: {
     flexDirection: 'row',
@@ -96,4 +96,20 @@ export default StyleSheet.create({
     right: 3,
     top: 3,
   },
+  flightPrice: (opacity) => ({
+    opacity: opacity,
+    fontFamily: 'Rubik-Bold',
+    color: Color.DARK,
+  }),
+  destinationAirPortCode: (opacity) => ({
+    opacity: opacity,
+    fontFamily: 'Rubik-Regular',
+    color: Color.GREY_PURPLE,
+  }),
+  animatedContainer: (width, height) => ({
+    width: width,
+    height: height,
+    overflow: 'hidden',
+    padding: DP._16,
+  }),
 });

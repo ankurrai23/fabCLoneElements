@@ -6,8 +6,10 @@ import FText from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 
 import Styles from './Styles';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color/index.travelPlus';
+
+import FImage from '../../../common/rn/FImage';
+
+import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 
 const RemoveItinerary = ({
   itinerary,
@@ -30,7 +32,7 @@ const RemoveItinerary = ({
             onPress={_onPressRemove}
             hitSlop={Styles.removeSlope}
             style={Styles.removeView}>
-            <AntDesign name="delete" size={DP._16} color={Color.PASTEL_RED} />
+            <FImage source={ImageConst.trashIcon} />
             <FText type="medium" style={Styles.removeTxt}>
               {' '}
               Remove

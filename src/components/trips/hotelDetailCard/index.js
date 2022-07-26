@@ -64,6 +64,7 @@ export default function HotelDetailCard({
   supportDetails,
   onClose,
   onContactSupportPress,
+  onViewMorePress,
 }) {
   const [expanded, setExpanded] = useState(!item.enableViewMoreButton);
   const [sheetVisible, setSheetVisible] = useState(false);
@@ -99,6 +100,7 @@ export default function HotelDetailCard({
       }).start();
     }
     setExpanded(!expanded);
+    onViewMorePress();
   };
 
   const CheckInInfo = ({title, date, time}) => (
@@ -353,9 +355,12 @@ export default function HotelDetailCard({
           )}
           {item.enableViewMoreButton && (
             <FTouchableOpacity
+              hitSlop={Styles.viewDetailHitSlop}
               onPress={onItemPress}
               style={Styles.viewDetailView}>
-              <FText style={Styles.showMoreTxt}>View more details</FText>
+              <FText style={Styles.showMoreTxt}>{`View ${
+                expanded ? 'less' : 'more'
+              } details`}</FText>
               <Animated.View style={{transform: [{rotate: spin}]}}>
                 <AntDesign
                   name="down"
