@@ -21,6 +21,7 @@ function DropDown(
     style,
     onFocusChange,
     onPressClose,
+    selectTextOnFocus,
   },
   ref,
 ) {
@@ -89,6 +90,7 @@ function DropDown(
         onChangeText={onChangeText}
         autoFocus
         ref={inputFieldRef}
+        selectTextOnFocus={selectTextOnFocus}
         onFocus={() => onFocusChange(true)}
         onBlur={() => onFocusChange(false)}
       />
