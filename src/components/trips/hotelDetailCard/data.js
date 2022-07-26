@@ -20,7 +20,12 @@ export default {
       date: 'Fri, 25 Jun',
       time: '11AM',
     },
-    bookingStatus: 'CONFIRMED',
+    bookingStatus: {
+      key: 'CONFIRMED',
+      value: 'Confirmed',
+      bgColor: Color.DARK_SEA_FOAM + '1a',
+      textColor: Color.DARK_SEA_FOAM,
+    },
     noOfRooms: 1,
     inclusions: [
       {
