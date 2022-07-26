@@ -162,10 +162,10 @@ const HotelDetailLoadingState = () => {
             </View>
           </View>
         </PlaceholderContainer>
-        <View style={Styles.buttonContainer}>
+        {/* <View style={Styles.buttonContainer}>
           <FText style={{color: Color.PASTEL_RED}}>Reject</FText>
           <FText style={{color: Color.DODGER_BLUE}}>Modify</FText>
-        </View>
+        </View> */}
       </View>
     );
   };
