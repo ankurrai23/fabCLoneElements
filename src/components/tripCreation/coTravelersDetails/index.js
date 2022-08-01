@@ -1,10 +1,11 @@
 import {View} from 'react-native';
 import React from 'react';
 import Styles from './Styles';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import FImage from '../../../common/rn/FImage';
 import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 export default function CoTravelersDetails(props) {
   function renderPickerChildren() {
@@ -21,14 +22,11 @@ export default function CoTravelersDetails(props) {
     <View style={Styles.container}>
       <View style={Styles.titleContainer}>
         <View style={Styles.titleSubContainer}>
-          <FText type="medium" style={Styles.title}>
-            {'Co-travelers (optional)'}
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
+            {Strings.cotravelerOptional}
           </FText>
           {!props.data?.length && (
-            <FText style={Styles.subText}>
-              Same hotel and flight details as filled above shall be applicable
-              to all travelers.
-            </FText>
+            <FText style={Styles.subText}>{Strings.coTravellerInfoText}</FText>
           )}
         </View>
         <FTouchableOpacity
@@ -38,8 +36,8 @@ export default function CoTravelersDetails(props) {
           <FImage
             source={props.data?.length ? ImageConst.edit2 : ImageConst.plus}
           />
-          <FText type="medium" style={Styles.addDetails}>
-            {!props.data?.length ? 'Add' : 'Edit'}
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.addDetails}>
+            {!props.data?.length ? Strings.add : Strings.edit}
           </FText>
         </FTouchableOpacity>
       </View>

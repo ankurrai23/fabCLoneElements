@@ -126,4 +126,7 @@ export default StyleSheet.create({
   airplane: {
     transform: [{rotate: '45deg'}],
   },
+  Flex: {
+    flex: 1,
+  },
 });

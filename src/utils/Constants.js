@@ -3,3 +3,9 @@ export const PICKER_TYPE = {
   GALLERY: 'GALLERY',
   FILE_MANAGER: 'FILE_MANAGER',
 };
+
+export const TRIP_TYPE = {
+  ONEWAY: 0,
+  ROUND_TRIP: 1,
+  MULTI_CITY: 2,
+};

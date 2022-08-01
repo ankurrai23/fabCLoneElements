@@ -1,22 +1,23 @@
 import React from 'react';
 import {View} from 'react-native';
-import {FText} from '../../..';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 import Styles from './Styles';
 
 export default function ApprovalManager(props) {
   return (
     <View style={Styles.container}>
-      <FText type="medium" style={Styles.title}>
-        Approval manager
+      <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
+        {Strings.approvalManager}
       </FText>
       <View style={Styles.innerContainer}>
         <View style={Styles.initialsContainer}>
-          <FText type="medium" style={Styles.initials}>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.initials}>
             {props.initials}
           </FText>
         </View>
         <View>
-          <FText type="medium" style={Styles.managerName}>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.managerName}>
             {props.managerName}
           </FText>
           <FText style={Styles.designation}>{props.managerDesignation}</FText>

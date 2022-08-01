@@ -1,28 +1,33 @@
 import React from 'react';
-import {LayoutAnimation, View} from 'react-native';
-import {
-  Button,
-  FText,
-  FTouchableOpacity,
-  PickerField,
-  RemoveItinerary,
-  FImage,
-} from '../../..';
+import {View} from 'react-native';
+
+import Button, {BUTTON_TYPE} from '../../../common/components/button';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import PickerField from '../../../common/components/pickerField';
+import RemoveItinerary from '../removeItinerary';
+import FImage from '../../../common/rn/FImage';
+
 import Styles from './styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
 import {formattedDate} from '../../../utils/Utils';
 import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
+import {Strings} from '../../../utils/strings/index.travelPlus';
+
+const DATE_FORMAT = "DD MMM'YY"; // 1 Aug'22
+const DATE_WITH_DAY_FORMAT = 'ddd, DD MMM'; // Mon, 1 Aug
+
 const ItineraryCard = (props) => {
   const onEditClicked = () => {
     props?.editClicked(props?.index);
   };
   const collapsedDateFormat = props?.collapsedDateFormat
     ? props?.collapsedDateFormat
-    : 'ddd, DD MMM';
+    : DATE_FORMAT;
   const expandedDateFormat = props?.expandedDateFormat
     ? props?.expandedDateFormat
-    : "DD MMM'YY";
+    : DATE_WITH_DAY_FORMAT;
   if (props?.shouldCollapse) {
     return (
       <View style={Styles.briefCardBottomMargin(props?.bottomMargin)}>
@@ -35,8 +40,14 @@ const ItineraryCard = (props) => {
           ]}>
           <View style={Styles.briefCardStyle_flexView()}>
             <View style={Styles.briefCardStyle_flex6}>
-              <FText numberOfLines={1} type="medium" style={Styles.sourceTxt}>
-                {`${props?.itinerary?.source?.city} to ${props?.itinerary?.destination?.city}`}
+              <FText
+                numberOfLines={1}
+                type={FONT_TYPE.MEDIUM}
+                style={Styles.sourceTxt}>
+                {Strings.sourcToDestination(
+                  props?.itinerary?.source?.city,
+                  props?.itinerary?.destination?.city,
+                )}
               </FText>
             </View>
             <View style={Styles.briefCardStyle_iteneryView}>
@@ -61,7 +72,9 @@ const ItineraryCard = (props) => {
               hitSlop={Styles.briefCardStyle_touchView}
               style={Styles.briefCardStyle_flexView()}>
               <FImage source={ImageConst.edit2} />
-              <FText style={Styles.briefCardStyle_editTxt}>Edit</FText>
+              <FText style={Styles.briefCardStyle_editTxt}>
+                {Strings.edit}
+              </FText>
             </FTouchableOpacity>
           </View>
         </View>
@@ -83,7 +96,7 @@ const ItineraryCard = (props) => {
       ifCitiesAndDepartureDateNull &&
       props?.errors.retureDateError) ||
     ifCitiesAndDepartureDateNull
-      ? 'Enter basic travel details'
+      ? Strings.basicTravelDetails
       : '';
   console.log({
     ifCitiesAndDepartureDateNull,
@@ -115,7 +128,7 @@ const ItineraryCard = (props) => {
             helperText={
               !ifEveryFieldisEmpty ? props?.errors?.departureCityError : ''
             }
-            label={'Departure city'}
+            label={Strings.departureCity}
             value={props?.itinerary?.source?.city}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
@@ -145,7 +158,7 @@ const ItineraryCard = (props) => {
             helperText={
               !ifEveryFieldisEmpty ? props?.errors?.arrivalCityError : ''
             }
-            label={'Arrival city'}
+            label={Strings.arrivalCity}
             value={props?.itinerary?.destination?.city}
             labelStyle={Styles.textFieldLabel}
             onPress={() => {
@@ -175,7 +188,7 @@ const ItineraryCard = (props) => {
               helperText={
                 !ifEveryFieldisEmpty ? props?.errors?.departureDateError : ''
               }
-              label={'Departure date'}
+              label={Strings.departureDate}
               value={
                 props?.itinerary?.departureDate
                   ? formattedDate(
@@ -209,7 +222,7 @@ const ItineraryCard = (props) => {
             />
             {props?.showReturnDate && (
               <PickerField
-                label={'Return date'}
+                label={Strings.returnDate}
                 value={
                   props?.itinerary?.returnDate
                     ? formattedDate(
@@ -256,8 +269,8 @@ const ItineraryCard = (props) => {
           onPress={() => {
             props?.saveClicked(props?.index);
           }}
-          type="SECONDARY"
-          textFont={'medium'}
+          type={BUTTON_TYPE.SECONDARY}
+          textFont={FONT_TYPE.MEDIUM}
           style={Styles.btnStyle(
             props?.isDirty,
             props?.expandedItineraryMargin,
