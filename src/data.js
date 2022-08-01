@@ -34,14 +34,10 @@ import floatingActionProps from './common/components/floatingActionButton/data';
 import coTravellersDetailProps from './components/tripCreation/coTravelersDetails/data';
 import comingSoonProps from './components/tripCreation/comingSoon/data';
 import requestTypeProps from './components/tripCreation/requestType/data';
-import basicTravelDetailsProps from './components/tripCreation/basicTravelDetails/data';
 import hotelDetailsProps from './components/tripCreation/hotelDetails/data';
 import flightDetailsProps from './components/tripCreation/flightDetails/data';
 import otherTravelDetailsProps from './components/tripCreation/otherTravelDetails/data';
 import approvalManagerProps from './components/tripCreation/approvalManager/data';
-import addFlightDetailsProps from './components/tripCreation/addFlightDetails/data';
-import addHotelDetailsProps from './components/tripCreation/addHotelDetails/data';
-import basicTravelDetailsCardProps from './components/tripCreation/basicTravelDetailsCard/data';
 import removeItineraryProps from './components/tripCreation/removeItinerary/data';
 import itineraryCardProps from './components/tripCreation/itinerary/data';
 
@@ -83,13 +79,10 @@ export {
   managerActionsProps,
   comingSoonProps,
   requestTypeProps,
-  basicTravelDetailsProps,
   hotelDetailsProps,
   flightDetailsProps,
   otherTravelDetailsProps,
   approvalManagerProps,
-  addFlightDetailsProps,
-  addHotelDetailsProps,
   coTravellersProps,
   flightDetailCardProps,
   listTypeFilterProps,
@@ -110,7 +103,6 @@ export {
   locationInputBoxProps,
   swiperProps,
   monthPickerProps,
-  basicTravelDetailsCardProps,
   receiptsListProps,
   receiptListViewProps,
   removeItineraryProps,

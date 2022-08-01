@@ -204,10 +204,6 @@ const TRIP_CREATION = [
     component: <RequestType {...data.requestTypeProps} />,
   },
   {
-    name: 'BasicTravelDetails',
-    component: <BasicTravelDetails {...data.basicTravelDetailsProps} />,
-  },
-  {
     name: 'HotelDetails',
     component: <HotelDetails {...data.hotelDetailsProps} />,
   },
@@ -226,18 +222,6 @@ const TRIP_CREATION = [
   {
     name: 'ApprovalManager',
     component: <ApprovalManager {...data.approvalManagerProps} />,
-  },
-  {
-    name: 'AddFlightDetails',
-    component: <AddFlightDetails {...data.addFlightDetailsProps} />,
-  },
-  {
-    name: 'AddHotelDetails',
-    component: <AddHotelDetails {...data.addHotelDetailsProps} />,
-  },
-  {
-    name: 'BasicTravelDetailsCard',
-    component: <BasicTravelDetailsCard {...data.basicTravelDetailsCardProps} />,
   },
   {
     name: 'Remove Itinerary',

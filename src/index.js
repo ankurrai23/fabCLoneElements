@@ -55,15 +55,11 @@ import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 //Trip Creation Components
 import ComingSoon from './components/tripCreation/comingSoon';
 import RequestType from './components/tripCreation/requestType';
-import BasicTravelDetails from './components/tripCreation/basicTravelDetails';
 import HotelDetails from './components/tripCreation/hotelDetails';
 import FlightDetails from './components/tripCreation/flightDetails';
 import OtherTravelDetails from './components/tripCreation/otherTravelDetails';
 import ApprovalManager from './components/tripCreation/approvalManager';
-import AddFlightDetails from './components/tripCreation/addFlightDetails';
-import AddHotelDetails from './components/tripCreation/addHotelDetails';
 import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
-import BasicTravelDetailsCard from './components/tripCreation/basicTravelDetailsCard';
 import RemoveItinerary from './components/tripCreation/removeItinerary';
 import ItineraryCard from './components/tripCreation/itinerary';
 
@@ -142,15 +138,11 @@ export {
   // Trip Creation
   ComingSoon,
   RequestType,
-  BasicTravelDetails,
   HotelDetails,
   FlightDetails,
   OtherTravelDetails,
   CoTravelersDetails,
   ApprovalManager,
-  AddFlightDetails,
-  AddHotelDetails,
-  BasicTravelDetailsCard,
   RemoveItinerary,
   // constants
   FlightSubTripActions,
