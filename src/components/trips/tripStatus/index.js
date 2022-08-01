@@ -4,6 +4,7 @@ import {Color} from '../../../utils/color';
 import FText from '../../../common/rn/FText';
 import Styles from './Styles';
 import LinearGradient from 'react-native-linear-gradient';
+import {TRIP_STATUS} from '../../../utils/Constants';
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
@@ -11,7 +12,7 @@ const TripStatus = ({statusObj}) => {
   const transX = useRef(new Animated.Value(-100)).current;
 
   useEffect(() => {
-    if (statusObj?.key === 'IN_SHORTLISTING') {
+    if (statusObj?.key === TRIP_STATUS.IN_SHORTLISTING) {
       Animated.loop(
         Animated.sequence([
           Animated.timing(transX, {
@@ -45,7 +46,7 @@ const TripStatus = ({statusObj}) => {
 
   return (
     <View style={Styles.wrap}>
-      {statusObj?.key === 'IN_SHORTLISTING' ? (
+      {statusObj?.key === TRIP_STATUS.IN_SHORTLISTING ? (
         <View style={Styles.shimmerContainer}>
           <Gradient />
           <FText style={Styles.text(Color.DARK_SEA_FOAM)}>

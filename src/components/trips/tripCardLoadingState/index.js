@@ -12,6 +12,7 @@ import {DP} from '../../../utils/Dimen';
 import ListTypeFilter from '../listTypeFilter';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FText from '../../../common/rn/FText';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const TripCardLoadingState = ({
   data,
@@ -64,14 +65,18 @@ const TripCardLoadingState = ({
           <View style={Styles.buttonWithIconContainer}>
             <ButtonWithIcon
               iconName={'sort'}
-              text={'Sort'}
+              text={Strings.sort}
               style={{marginRight: DP._24}}
             />
-            <ButtonWithIcon iconName={'tune'} text={'Filter'} />
+            <ButtonWithIcon iconName={'tune'} text={Strings.filter} />
           </View>
         )}
       </View>
-      <View style={[Styles.cardContainer, {marginTop: showSortAndFilter ? 0 : DP._54}]}>
+      <View
+        style={[
+          Styles.cardContainer,
+          {marginTop: showSortAndFilter ? 0 : DP._54},
+        ]}>
         {[...Array(5).fill('')].map((_, index) => (
           <TripCard key={`${index}abc`} />
         ))}

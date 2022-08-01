@@ -1,20 +1,27 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {FText, FTouchableOpacity, FImage, Separator} from '../../..';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import FImage from '../../../common/rn/FImage';
+import Separator from '../../../common/components/separator';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import {ImageConst} from '../../../utils/imageConst';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
+import {SUB_TRIP_TYPE} from '../../../utils/Constants';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const TripListingCard = ({item, onCardPress, style}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
 
   const tripIcons = (requestType) => {
     let icons = [];
-    if (requestType.includes('HOTEL')) icons.push(ImageConst.hotelIcon);
-    if (requestType.includes('FLIGHT')) icons.push(ImageConst.flightIcon);
+    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
+      icons.push(ImageConst.hotelIcon);
+    if (requestType.includes(SUB_TRIP_TYPE.FLIGHT))
+      icons.push(ImageConst.flightIcon);
     return icons;
   };
 
@@ -43,12 +50,15 @@ const TripListingCard = ({item, onCardPress, style}) => {
                 source={ImageConst.rescheduleIcon}
                 style={Styles.rescheduleIcon}
               />
-              <FText style={Styles.tripId}>Processsing</FText>
+              <FText style={Styles.tripId}>{Strings.processing}</FText>
             </View>
           )}
         </View>
         <View style={Styles.flexRow}>
-          <FText numberOfLines={1} style={Styles.destination} type="medium">
+          <FText
+            numberOfLines={1}
+            style={Styles.destination}
+            type={FONT_TYPE.MEDIUM}>
             {item.title}
           </FText>
         </View>
@@ -60,7 +70,7 @@ const TripListingCard = ({item, onCardPress, style}) => {
         </View>
         <View style={item.actionsDisabled ? Styles.flexRows : Styles.flexRow}>
           <FText style={{color: Color.GREYISH_PURPLE}}>
-            {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
+            {Strings.cotravelers} {!item.coTravellers?.length && Strings.none}
           </FText>
           <FTouchableOpacity
             style={Styles.flex}
@@ -82,7 +92,7 @@ const TripListingCard = ({item, onCardPress, style}) => {
         )}
         {!item.actionsDisabled && (
           <View style={Styles.footer}>
-            <FText style={Styles.action}>View details</FText>
+            <FText style={Styles.action}>{Strings.viewdetails}</FText>
           </View>
         )}
       </FTouchableOpacity>
@@ -91,7 +101,7 @@ const TripListingCard = ({item, onCardPress, style}) => {
         onClose={() => setSheetVisible(false)}
         ContentModal={
           <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>Co-Travelers</FText>
+            <FText style={Styles.modalHeading}>{Strings.coTravelers}</FText>
             <FlatList
               data={item.coTravellers}
               renderItem={renderItem}

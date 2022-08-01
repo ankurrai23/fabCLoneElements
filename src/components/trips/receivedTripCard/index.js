@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {FText, FTouchableOpacity, FImage, Separator} from '../../..';
+
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import FImage from '../../../common/rn/FImage';
+import Separator from '../../../common/components/separator';
+
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
@@ -10,6 +15,9 @@ import {FlatList} from 'react-native-gesture-handler';
 import TripStatus from '../tripStatus';
 import ReasonModal from '../../../common/components/reasonModal';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {Strings} from '../../../utils/strings/index.travelPlus';
+import {MANAGER_ACTIONS} from '../managerActions';
+import {SUB_TRIP_TYPE} from '../../../utils/Constants';
 
 const ReceivedCard = ({item, onCardPress, onActionPress}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
@@ -18,8 +26,10 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
 
   const tripIcons = (requestType) => {
     let icons = [];
-    if (requestType.includes('HOTEL')) icons.push(ImageConst.hotelIcon);
-    if (requestType.includes('FLIGHT')) icons.push(ImageConst.flightIcon);
+    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
+      icons.push(ImageConst.hotelIcon);
+    if (requestType.includes(SUB_TRIP_TYPE.FLIGHT))
+      icons.push(ImageConst.flightIcon);
     return icons;
   };
 
@@ -51,13 +61,21 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
           <TripStatus statusObj={item.status} />
         </View>
         <View style={Styles.flexRow}>
-          <FText style={{color: Color.GREYISH_PURPLE}}>Request by: </FText>
-          <FText numberOfLines={1} style={Styles.destination} type="medium">
+          <FText style={{color: Color.GREYISH_PURPLE}}>
+            {Strings.requestBy}
+          </FText>
+          <FText
+            numberOfLines={1}
+            style={Styles.destination}
+            type={FONT_TYPE.MEDIUM}>
             {item.requestedBy}
           </FText>
         </View>
         <View style={Styles.flexRow}>
-          <FText numberOfLines={1} style={Styles.destination} type="medium">
+          <FText
+            numberOfLines={1}
+            style={Styles.destination}
+            type={FONT_TYPE.MEDIUM}>
             {item.title}
           </FText>
         </View>
@@ -70,7 +88,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
         <View style={[Styles.flexRow, Styles.justifyBetween]}>
           <View style={Styles.flexDirectionRow}>
             <FText style={{color: Color.GREYISH_PURPLE}}>
-              {'Co-traveler(s): '} {!item.coTravellers?.length && 'None'}
+              {Strings.cotravelers} {!item.coTravellers?.length && Strings.none}
             </FText>
             <FTouchableOpacity
               style={Styles.flex}
@@ -92,14 +110,14 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
           </View>
         )}
         <View style={Styles.footer}>
-          {item.actions?.[0]?.type === 'VIEW_DETAILS' && (
+          {item.actions?.[0]?.type === MANAGER_ACTIONS.VIEW_DETAILS && (
             <FTouchableOpacity activeOpacity={1} style={[Styles.btn]} disabled>
               <FText style={Styles.actionText(Color.DODGER_BLUE)}>
                 {item.actions?.[0].name}
               </FText>
             </FTouchableOpacity>
           )}
-          {item.actions?.[1]?.type === 'DENY' && (
+          {item.actions?.[1]?.type === MANAGER_ACTIONS.DENY && (
             <FTouchableOpacity
               activeOpacity={1}
               style={[Styles.btn]}
@@ -114,7 +132,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               </FText>
             </FTouchableOpacity>
           )}
-          {item.actions?.[0]?.type === 'APPROVE' && (
+          {item.actions?.[0]?.type === MANAGER_ACTIONS.APPROVE && (
             <FTouchableOpacity
               activeOpacity={1}
               style={[Styles.btn]}
@@ -136,7 +154,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
         onClose={() => setSheetVisible(false)}
         ContentModal={
           <View style={{paddingBottom: DP._48, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>Co-travelers</FText>
+            <FText style={Styles.modalHeading}>{Strings.coTravelers}</FText>
             <FlatList
               data={item.coTravellers}
               renderItem={renderItem}
@@ -156,16 +174,16 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
       <ReasonModal
         visible={approveModal}
         setVisible={setApproveModal}
-        onSubmit={(reason) => _onActionPress('APPROVE', reason)}
-        heading={'Approve request'}
-        buttonText={'Approve'}
+        onSubmit={(reason) => _onActionPress(MANAGER_ACTIONS.APPROVE, reason)}
+        heading={Strings.approveRequest}
+        buttonText={Strings.approve}
       />
       <ReasonModal
         visible={rejectModal}
         setVisible={setRejectModal}
-        onSubmit={(reason) => _onActionPress('DENY', reason)}
-        heading={'Reject request'}
-        buttonText={'Reject'}
+        onSubmit={(reason) => _onActionPress(MANAGER_ACTIONS.DENY, reason)}
+        heading={Strings.rejectRequest}
+        buttonText={Strings.reject}
       />
     </>
   );

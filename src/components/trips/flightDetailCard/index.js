@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -15,6 +15,7 @@ import {FlightSubTripActions} from '../../../utils/SubTripActions';
 import ModificationAlertBox from '../components/modificationAlertBox';
 import {getStatusObject} from '../hotelDetailCard';
 import ContactSupport from '../../../common/components/contactSupport';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const FlightDetailCard = ({
   title,
@@ -65,7 +66,7 @@ const FlightDetailCard = ({
   return (
     <>
       {title && (
-        <FText type="medium" style={Styles.heading}>
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.heading}>
           {title}
         </FText>
       )}
@@ -82,7 +83,7 @@ const FlightDetailCard = ({
           onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>
-              <FText type={'medium'} style={Styles.date}>
+              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                 {item.date}
               </FText>
               <FText
@@ -141,7 +142,7 @@ const FlightDetailCard = ({
                 <FText style={Styles.time}>{item.flightNumber}</FText>
               </View>
               <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>PNR</FText>
+                <FText style={Styles.portName}>{Strings.pnr}</FText>
                 <FText style={Styles.time}>{item.pnr}</FText>
               </View>
             </View>

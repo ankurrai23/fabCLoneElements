@@ -10,8 +10,9 @@ import {Color} from '../../../utils/color';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -71,8 +72,8 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
           <Placeholder style={Styles.commonPlaceholder2('10%', DP._14)} />
         </View>
         <View>
-          <FText type={'medium'} style={Styles.button}>
-            Tap to set preference
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.button}>
+            {Strings.tapToSetPreference(false)}
           </FText>
         </View>
       </PlaceholderContainer>
@@ -131,7 +132,7 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
         delay={500}
         style={Styles.barContainer}>
         <View style={Styles.flexRowAlignCenter}>
-          <FText type="medium">DEPART</FText>
+          <FText type={FONT_TYPE.MEDIUM}>{Strings.depart}</FText>
           <Placeholder
             style={[
               Styles.commonPlaceholder('40%', DP._16),
@@ -139,7 +140,7 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
             ]}
           />
         </View>
-        <FText type="medium">RETURN</FText>
+        <FText type={FONT_TYPE.MEDIUM}>{Strings.return}</FText>
       </PlaceholderContainer>
     );
   };

@@ -13,7 +13,7 @@ const hotelPreferenceCardProps = {
       'Andheri - Kurla Rd, opposite Mittal Industrial Estate, Gamdevi, Marol, …',
     distanceToProperty: '220 m from Marol naka Metro Station',
     cost: '₹260923',
-    ratingScore: 80,
+    ratingScore: 4.1,
     reviewsCount: '4.5/5 (134 reviews)',
     colleaguesCount: 0,
     colleaguesRatingAvg: 4.2,

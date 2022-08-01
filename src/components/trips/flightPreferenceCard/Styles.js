@@ -112,4 +112,8 @@ export default StyleSheet.create({
     overflow: 'hidden',
     padding: DP._16,
   }),
+  imageStyle: {
+    width: DP._32,
+    height: DP._32,
+  },
 });

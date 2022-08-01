@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import React from 'react';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import Separator from '../../../common/components/separator';
 import FImage from '../../../common/rn/FImage';
 import Styles from './Styles';
@@ -9,6 +9,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
   <>
@@ -24,15 +25,17 @@ const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
       disabled={item.disablePref}
       style={Styles.buttonStyle(item.disablePref, item.preference)}>
       <FText
-        type="medium"
+        type={FONT_TYPE.MEDIUM}
         style={Styles.setAndResetPreferenceText(
           item.disablePref,
           item.preference,
         )}>
-        Tap to {item.preference ? 'reset' : 'set'} preference
+        {Strings.tapToSetPreference(item.preference)}
       </FText>
       <View style={Styles.preferenceContainer}>
-        <FText type="medium" style={Styles.preferenceText(item.disablePref)}>
+        <FText
+          type={FONT_TYPE.MEDIUM}
+          style={Styles.preferenceText(item.disablePref)}>
           {item.preference}
         </FText>
       </View>
@@ -53,23 +56,26 @@ const NonRichHotelView = ({
     activeOpacity={1}>
     <View style={Styles.starContainer}>
       <Stars item={item} />
-      <FText style={Styles.hotelStar}>{item.starRating} star hotel</FText>
+      <FText style={Styles.hotelStar}>
+        {Strings.starHotel(item.starRating)}
+      </FText>
     </View>
-    <FText type={'medium'} style={Styles.hotelName}>
+    <FText type={FONT_TYPE.MEDIUM} style={Styles.hotelName}>
       {item.hotelName}
     </FText>
     <View style={[Styles.flexRow]}>
       <FText style={Styles.hotelAddress} numberOfLines={2}>
         {item.hotelAddress}
       </FText>
-      <FText type={'bold'} style={Styles.costOfHotel}>
+      <FText type={FONT_TYPE.BOLD} style={Styles.costOfHotel}>
         {item.cost}
       </FText>
     </View>
     <View style={Styles.mapAndCostInfoContainer}>
       <TouchableOpacity onPress={() => onViewMapPress(item.googleMapUrl)}>
-        <FText style={Styles.viewOnMap}>View on map</FText>
+        <FText style={Styles.viewOnMap}>{Strings.viewOnMap}</FText>
       </TouchableOpacity>
+      {/*TODO: Need to discuss */}
       <FText style={Styles.priceDetail}>{`price/night${
         !item.gstIncluded ? ' (Ex GST)' : ''
       }`}</FText>
@@ -109,7 +115,7 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         keyExtractor={(_, index) => `${index}abc`}
       />
       {item.preferenceText && (
-        <FText type="bold" style={Styles.companyPreferred}>
+        <FText type={FONT_TYPE.BOLD} style={Styles.companyPreferred}>
           {item.preferenceText}
         </FText>
       )}
@@ -123,10 +129,10 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
           color={Color.MANGO}
         />
         <FText style={Styles.hotelStar(offline)}>
-          {item.starRating} star hotel
+          {Strings.starHotel(item.starRating)}
         </FText>
       </View>
-      <FText type="bold" style={Styles.hotelName(offline)}>
+      <FText type={FONT_TYPE.BOLD} style={Styles.hotelName(offline)}>
         {item.hotelName}
       </FText>
       <FText style={Styles.hotelLocality}>{item.hotelAddress}</FText>
@@ -140,8 +146,9 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
       </View>
       {!!item.colleaguesCount && (
         <FText style={Styles.ratingsText}>
-          Your <FText type="medium">{item.colleaguesCount}</FText> colleagues
-          rated it {item.colleaguesRatingAvg} (avg)
+          {Strings.your}
+          <FText type={FONT_TYPE.MEDIUM}>{item.colleaguesCount}</FText>
+          {Strings.colleagueAvgRating(item.colleaguesRatingAvg)}
         </FText>
       )}
       <View style={Styles.amountContainer}>
@@ -149,7 +156,7 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
           {item.mealTypeText && (
             <View style={[Styles.flexRow]}>
               <Feather name="check" size={DP._16} color={Color.DARK_SEA_FOAM} />
-              <FText type="medium" style={Styles.inclusions}>
+              <FText type={FONT_TYPE.MEDIUM} style={Styles.inclusions}>
                 {item.mealTypeText}
               </FText>
             </View>
@@ -157,9 +164,10 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
           <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
         </View>
         <View>
-          <FText type={'bold'} style={Styles.costOfHotel}>
+          <FText type={FONT_TYPE.BOLD} style={Styles.costOfHotel}>
             {item.cost}
           </FText>
+          {/*TODO: Need to discuss */}
           <FText style={Styles.priceDetail}>{`price/night${
             !item.gstIncluded ? ' (Ex GST)' : ''
           }`}</FText>
