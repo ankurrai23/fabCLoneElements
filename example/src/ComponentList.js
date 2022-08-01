@@ -25,14 +25,10 @@ import {
   HotelDetailLoadingState,
   FlightPreferenceLoadingState,
   ComingSoon,
-  RequestType,
-  BasicTravelDetails,
   HotelDetails,
   FlightDetails,
   OtherTravelDetails,
   ApprovalManager,
-  AddFlightDetails,
-  AddHotelDetails,
   CoTravellers,
   FlightDetailCard,
   ListTypeFilter,
@@ -55,7 +51,6 @@ import {
   LocationInputBox,
   Swiper,
   MonthPicker,
-  BasicTravelDetailsCard,
   ReceiptsList,
   ReceiptListView,
   RemoveItinerary,
@@ -198,10 +193,6 @@ const TRIP_CREATION = [
   {
     name: 'ComingSoon',
     component: <ComingSoon {...data.comingSoonProps} />,
-  },
-  {
-    name: 'RequestType',
-    component: <RequestType {...data.requestTypeProps} />,
   },
   {
     name: 'HotelDetails',
