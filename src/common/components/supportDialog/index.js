@@ -6,7 +6,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
-import {FText, FTouchableOpacity} from '../../..';
+import FText from '../../rn/FText';
+import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import DialogBox from '../dialogBox';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 

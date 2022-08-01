@@ -13,7 +13,7 @@ import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
 import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
-import {TripStatus} from '../../../index';
+import TripStatus from '../tripStatus';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 /*

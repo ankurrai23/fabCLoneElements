@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 
-import {FText, Button, TextField} from '../../..';
+import FText from '../../rn/FText';
+import Button from '../button';
+import TextField from '../textField';
 import Styles from './Styles';
 import Utils from '../../../utils/Utils';
 import BottomSheet from './BottomSheet';

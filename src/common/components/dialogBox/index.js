@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Styles from './Styles';
 import {BlurView} from '@react-native-community/blur';
-import {FTouchableOpacity} from '../../..';
+import FTouchableOpacity from '../../rn/FTouchableOpacity';
 
 const {height} = Dimensions.get('window');
 

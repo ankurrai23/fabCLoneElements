@@ -1,7 +1,7 @@
 import {View} from 'react-native';
 import React from 'react';
 import Styles from './Styles';
-import {FText} from '../../..';
+import FText from '../../../common/rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 
