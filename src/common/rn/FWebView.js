@@ -2,6 +2,8 @@ import React from 'react';
 import {WebView} from 'react-native-webview';
 import {StyleSheet} from 'react-native';
 
+const USER_AGENT = 'rn_elements_webview';
+
 function FWebView(props) {
   function onShouldStartLoadWithRequest(event) {
     if (props.onShouldStartLoadWithRequest) {
@@ -13,7 +15,7 @@ function FWebView(props) {
   const source = props.source || props.route.params?.source || null;
   return (
     <WebView
-      userAgent={'rn_elements_webview'}
+      userAgent={USER_AGENT}
       style={[Styles.webView, props.webviewStyle]}
       bounces={false}
       source={source}

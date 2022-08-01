@@ -6,9 +6,10 @@ import {DP} from '../../../utils/Dimen';
 import {dialogBoxStyle} from '../../../utils/Utils';
 import Button from '../../../common/components/button';
 import Separator from '../../../common/components/separator';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const MonthFilter = ({data, onPressCancel, onPressApply}) => {
   const [sheetData, setSheetData] = useState(data.map((item) => ({...item})));
@@ -37,7 +38,7 @@ const MonthFilter = ({data, onPressCancel, onPressApply}) => {
           onPress={() => _onPress(index)}
           style={Styles.rowDirection}>
           <View style={{flex: 7}}>
-            <FText type="regular" style={Styles.monthTxt}>
+            <FText type={FONT_TYPE.REGULAR} style={Styles.monthTxt}>
               {item.name}
             </FText>
           </View>
@@ -63,8 +64,8 @@ const MonthFilter = ({data, onPressCancel, onPressApply}) => {
 
   return (
     <View style={{marginBottom: DP._15, marginHorizontal: DP._24}}>
-      <FText type="regular" style={Styles.titleTxt}>
-        {'Select month'}
+      <FText type={FONT_TYPE.REGULAR} style={Styles.titleTxt}>
+        {Strings.selectMonth}
       </FText>
       <FlatList
         bounces={false}
@@ -78,16 +79,16 @@ const MonthFilter = ({data, onPressCancel, onPressApply}) => {
         <Button
           style={Styles.cancelButton}
           textStyle={Styles.cancelText}
-          textFont="medium"
+          textFont={FONT_TYPE.MEDIUM}
           onPress={onPressCancel}>
-          {'Cancel'}
+          {Strings.cancel}
         </Button>
         <Button
           style={Styles.applyButton}
           textStyle={Styles.cancelText}
-          textFont="medium"
+          textFont={FONT_TYPE.MEDIUM}
           onPress={_onPressApply}>
-          {'Apply'}
+          {Strings.apply}
         </Button>
       </View>
     </View>

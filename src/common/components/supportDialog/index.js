@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, FlatList, View, Linking} from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,6 +8,7 @@ import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import {FText, FTouchableOpacity} from '../../..';
 import DialogBox from '../dialogBox';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const SupportDialog = (props) => {
   function onPress(item) {
@@ -38,7 +39,7 @@ const SupportDialog = (props) => {
               color={Color.BROWN_GREY}
             />
           </FTouchableOpacity>
-          <FText style={styles.heading}>{'Support'}</FText>
+          <FText style={styles.heading}>{Strings.support}</FText>
           <View style={{paddingHorizontal: DP._10}}>
             <FlatList
               data={props.supportDetails}

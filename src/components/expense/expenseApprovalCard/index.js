@@ -9,6 +9,7 @@ import Checkbox from '../../../common/components/checkbox';
 
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const ExpenseApprovalCard = ({
   item,
@@ -36,7 +37,7 @@ const ExpenseApprovalCard = ({
                     {item.outOfPolicy && (
                       <View style={Styles.outOfPolicyContainer}>
                         <FText style={Styles.outOfPolicyText}>
-                          Out of policy
+                          {Strings.outOfPolicy}
                         </FText>
                         <View style={Styles.outOfPolicyBackground} />
                       </View>
@@ -55,8 +56,8 @@ const ExpenseApprovalCard = ({
                     <FText style={Styles.uploadReceiptText}>
                       <Feather name="paperclip" size={DP._13} />
                       {item.receiptCount > 1
-                        ? ` View ${item.receiptCount} receipts`
-                        : ' View receipt'}
+                        ? Strings.viewReceipts(item.receiptCount)
+                        : Strings.viewReceipt}
                     </FText>
                   </FTouchableOpacity>
                 </View>

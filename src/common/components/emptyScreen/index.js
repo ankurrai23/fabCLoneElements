@@ -6,15 +6,15 @@ import {DP} from '../../../utils/Dimen';
 import FText from '../../rn/FText';
 import FImage from '../../rn/FImage';
 import Button from '../button';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
-
-const EmptyScreen = props => {
+const EmptyScreen = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
         <FImage style={styles.image} source={props.image} />
         <FText style={styles.heading}>
-          {props.heading || "Nothing on your itinerary"}
+          {props.heading || Strings.nothingInItineraryMsg}
         </FText>
         {!!props.subHeading && (
           <FText style={styles.subHeading}>{props.subHeading}</FText>

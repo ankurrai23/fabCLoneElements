@@ -1,13 +1,16 @@
 import React from 'react';
 import {View} from 'react-native';
-import {FText, FTouchableOpacity, FImage} from '../../..';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import FImage from '../../../common/rn/FImage';
 import Styles from './Styles';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 export default function HomeHeader({...props}) {
   return (
     <View style={Styles.profileNameContainer}>
-      <FText numberOfLines={1} type="medium" style={Styles.userName}>
-        Hello, {props.profileName}
+      <FText numberOfLines={1} type={FONT_TYPE.MEDIUM} style={Styles.userName}>
+        {Strings.helloUser(props.profileName)}
       </FText>
       <FTouchableOpacity
         style={Styles.profilePicContainer}

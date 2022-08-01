@@ -1,0 +1,5 @@
+export const PICKER_TYPE = {
+  CAMERA: 'CAMERA',
+  GALLERY: 'GALLERY',
+  FILE_MANAGER: 'FILE_MANAGER',
+};

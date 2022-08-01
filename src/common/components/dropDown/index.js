@@ -1,6 +1,6 @@
 import {View, FlatList} from 'react-native';
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
-import FText from '../../rn/FText';
+import FText, {FONT_TYPE} from '../../rn/FText';
 import TextField from '../textField';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
@@ -54,10 +54,13 @@ function DropDown(
         style={Styles.cardStyle}>
         <View style={Styles.titleAndIconContainer}>
           <FImage source={getImage()} />
-          <FText type={'bold'} style={Styles.titleText} numberOfLines={1}>
+          <FText
+            type={FONT_TYPE.BOLD}
+            style={Styles.titleText}
+            numberOfLines={1}>
             {title}
             {insideBracket ? (
-              <FText type="light">{` (${insideBracket})`}</FText>
+              <FText type={FONT_TYPE.LIGHT}>{` (${insideBracket})`}</FText>
             ) : null}
           </FText>
         </View>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import FImage from '../../../common/rn/FImage';
 import AddReceiptModal from '../addReceiptModal';
@@ -9,6 +9,11 @@ import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 
 import {Color} from '../../../utils/color';
+import {Strings} from '../../../utils/strings/index.travelPlus';
+
+export const EXPENSE_CLAIM_STATUS = {
+  APPROVAL_PENDING: 'APPROVAL_PENDING',
+};
 
 const ExpenseCard = ({
   showSeparator,
@@ -47,20 +52,30 @@ const ExpenseCard = ({
       <View style={Styles.Flex}>
         <View style={Styles.detailsContainer}>
           <View style={Styles.Flex}>
-            <FText style={Styles.name(status.type !== 'APPROVAL_PENDING')}>
+            <FText
+              style={Styles.name(
+                status.type !== EXPENSE_CLAIM_STATUS.APPROVAL_PENDING,
+              )}>
               {title}
             </FText>
             <View style={Styles.FlexDirectionRow}>
-              <FText style={Styles.amount(status.type !== 'APPROVAL_PENDING')}>
+              <FText
+                style={Styles.amount(
+                  status.type !== EXPENSE_CLAIM_STATUS.APPROVAL_PENDING,
+                )}>
                 {amount}
               </FText>
               {outOfPolicy && (
-                <FText style={Styles.outOfPolicyText}>Out of policy</FText>
+                <FText style={Styles.outOfPolicyText}>
+                  {Strings.outOfPolicy}
+                </FText>
               )}
             </View>
           </View>
           {showStatus && (
-            <FText type="medium" style={Styles.typeOfClaim(status.color)}>
+            <FText
+              type={FONT_TYPE.MEDIUM}
+              style={Styles.typeOfClaim(status.color)}>
               {status.text}
             </FText>
           )}
@@ -73,7 +88,9 @@ const ExpenseCard = ({
         {receiptRequired && (
           <View style={Styles.uploadReceiptButton}>
             <FTouchableOpacity onPress={() => setVisible(true)}>
-              <FText style={Styles.uploadReceiptText}>Upload receipt</FText>
+              <FText style={Styles.uploadReceiptText}>
+                {Strings.uploadReceipt}
+              </FText>
             </FTouchableOpacity>
           </View>
         )}
@@ -83,8 +100,8 @@ const ExpenseCard = ({
               <FText style={Styles.uploadReceiptText}>
                 <Feather name="paperclip" size={DP._13} />
                 {receiptCount > 1
-                  ? ` View ${receiptCount} receipts`
-                  : ' View receipt'}
+                  ? Strings.viewReceipts(receiptCount)
+                  : Strings.viewReceipt}
               </FText>
             </FTouchableOpacity>
           </View>

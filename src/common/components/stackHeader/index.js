@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-import FText from '../../rn/FText';
+import FText, {FONT_TYPE} from '../../rn/FText';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 
 import {DP} from '../../../utils/Dimen';
@@ -31,7 +31,7 @@ function StackHeader({
           color={iconColor || Color.BLACK}
         />
       </FTouchableOpacity>
-      <FText type="medium" style={[Styles.title, textStyle]}>
+      <FText type={FONT_TYPE.MEDIUM} style={[Styles.title, textStyle]}>
         {title}
       </FText>
       {rightView}

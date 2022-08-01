@@ -7,7 +7,8 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Styles from './Styles';
 import {Color} from '../../../utils/color/index.travelPlus';
-import {FText} from '../../..';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const HomeLoadingState = () => {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -64,11 +65,11 @@ const HomeLoadingState = () => {
         />
       </View>
       <View style={Styles.headerView}>
-        <FText type="medium" style={Styles.sectionTitleLoader}>
-          Updates
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.sectionTitleLoader}>
+          {Strings.updates}
         </FText>
-        <FText type="medium" style={Styles.seeMore}>
-          See more
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.seeMore}>
+          {Strings.seeMore}
         </FText>
       </View>
       <InboxPlaceholder />

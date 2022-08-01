@@ -1,17 +1,22 @@
 import React from 'react';
 
-import FText from '../../rn/FText';
+import FText, {FONT_TYPE} from '../../rn/FText';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 
 import {Color} from '../../../utils/color';
 
 import Styles from './Styles';
 
+export const BUTTON_TYPE = {
+  PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY',
+};
+
 function Button({
   children,
-  type = 'PRIMARY',
+  type = BUTTON_TYPE.PRIMARY,
   onPress,
-  textFont = 'regular',
+  textFont = FONT_TYPE.REGULAR,
   textStyle,
   style,
   selected,

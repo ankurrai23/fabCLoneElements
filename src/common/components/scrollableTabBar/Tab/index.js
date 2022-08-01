@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import FText from '../../../rn/FText';
+import FText, {FONT_TYPE} from '../../../rn/FText';
 import FTouchableOpacity from '../../../rn/FTouchableOpacity';
 
 import Styles from './Styles';
@@ -74,7 +74,7 @@ export default class Tab extends Component {
         onLayout={this.onLayoutChanged}
         hitSlop={Styles.increasedTouchableArea}>
         <FText
-          type="medium"
+          type={FONT_TYPE.MEDIUM}
           style={[
             Styles.selectedText,
             isSelected ? selectedTabTextStyle : unSelectedTabTextStyle,

@@ -5,10 +5,11 @@ import {dialogBoxStyle} from '../../../utils/Utils';
 import Button from '../../../common/components/button';
 import Checkbox from '../../../common/components/checkbox';
 import Separator from '../../../common/components/separator';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 
 import Styles from './Styles';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const ClaimFilter = ({data, onPressCancel, onPressApply}) => {
   const [filterData, setFilterData] = useState(data.map((item) => ({...item})));
@@ -41,7 +42,7 @@ const ClaimFilter = ({data, onPressCancel, onPressApply}) => {
           style={Styles.rowDirection}
           onPress={() => _handleSelection(index)}>
           <View style={Styles.flex_7}>
-            <FText type="regular" style={Styles.filterTxt}>
+            <FText type={FONT_TYPE.REGULAR} style={Styles.filterTxt}>
               {item.name}
             </FText>
           </View>
@@ -59,12 +60,12 @@ const ClaimFilter = ({data, onPressCancel, onPressApply}) => {
   return (
     <View style={{marginBottom: DP._15}}>
       <FTouchableOpacity onPress={_handleClearAll} style={Styles.clearAllView}>
-        <FText type="regular" style={Styles.clearAll}>
-          {'Clear all'}
+        <FText type={FONT_TYPE.REGULAR} style={Styles.clearAll}>
+          {Strings.clearAll}
         </FText>
       </FTouchableOpacity>
-      <FText type="regular" style={Styles.titleTxt}>
-        {'Filter expense type'}
+      <FText type={FONT_TYPE.REGULAR} style={Styles.titleTxt}>
+        {Strings.filterExpenseType}
       </FText>
       <FlatList
         bounces={false}
@@ -78,16 +79,16 @@ const ClaimFilter = ({data, onPressCancel, onPressApply}) => {
         <Button
           style={Styles.cancelButton}
           textStyle={Styles.cancelText}
-          textFont="medium"
+          textFont={FONT_TYPE.MEDIUM}
           onPress={onPressCancel}>
-          {'Cancel'}
+          {Strings.cancel}
         </Button>
         <Button
           style={Styles.applyButton}
           textStyle={Styles.cancelText}
-          textFont="medium"
+          textFont={FONT_TYPE.MEDIUM}
           onPress={() => onPressApply(filterData)}>
-          {'Apply'}
+          {Strings.apply}
         </Button>
       </View>
     </View>

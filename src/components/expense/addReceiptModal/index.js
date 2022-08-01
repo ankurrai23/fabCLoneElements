@@ -8,6 +8,8 @@ import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
 
 import DialogBox from '../../../common/components/dialogBox';
+import {PICKER_TYPE} from '../../../utils/Constants';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const AddReceiptModal = (props) => {
   return (
@@ -16,24 +18,24 @@ const AddReceiptModal = (props) => {
         modalVisible={props.visible}
         ContentModal={
           <View style={Styles.container}>
-            <FText style={Styles.head}> Add a receipt</FText>
+            <FText style={Styles.head}>{Strings.addAReceipt}</FText>
             <FTouchableOpacity
               style={Styles.line}
-              onPress={() => props.onPress('CAMERA')}>
+              onPress={() => props.onPress(PICKER_TYPE.CAMERA)}>
               <Feather name="camera" style={Styles.icon} />
-              <FText style={Styles.option}>Open camera</FText>
+              <FText style={Styles.option}>{Strings.openCamera}</FText>
             </FTouchableOpacity>
             <FTouchableOpacity
               style={Styles.line}
-              onPress={() => props.onPress('GALLERY')}>
+              onPress={() => props.onPress(PICKER_TYPE.GALLERY)}>
               <Feather name="image" style={Styles.icon} />
-              <FText style={Styles.option}>Upload from gallery</FText>
+              <FText style={Styles.option}>{Strings.uploadFromGallery}</FText>
             </FTouchableOpacity>
             <FTouchableOpacity
               style={Styles.line}
-              onPress={() => props.onPress('FILE_MANAGER')}>
+              onPress={() => props.onPress(PICKER_TYPE.FILE_MANAGER)}>
               <Feather name="upload" style={Styles.icon} />
-              <FText style={Styles.option}>Import from files</FText>
+              <FText style={Styles.option}>{Strings.importFromFiles}</FText>
             </FTouchableOpacity>
           </View>
         }
