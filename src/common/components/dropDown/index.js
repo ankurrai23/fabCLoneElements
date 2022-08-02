@@ -7,14 +7,12 @@ import {Color} from '../../../utils/color/index.travelPlus';
 import Styles from './Styles.js';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import FImage from '../../rn/FImage';
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function DropDown(
   {
     data,
     label,
-    searchType,
     onPress,
     onChangeText,
     keyword,
@@ -36,24 +34,17 @@ function DropDown(
     },
   }));
 
-  const getImage = () => {
-    switch (searchType) {
-      case 'city':
-        return ImageConst.searchCity;
-      case 'airport':
-        return ImageConst.searchAirport;
-      case 'coTraveler':
-        return ImageConst.searchCoTraveler;
-    }
-  };
-
-  const Item = ({entity: {title, subTitle, insideBracket}, entity, index}) => {
+  const Item = ({
+    entity: {title, subTitle, insideBracket, img},
+    entity,
+    index,
+  }) => {
     return (
       <FTouchableOpacity
         onPress={() => onPress(entity, index)}
         style={Styles.cardStyle}>
         <View style={Styles.titleAndIconContainer}>
-          <FImage source={getImage()} />
+          <FImage source={img} />
           <FText
             type={FONT_TYPE.BOLD}
             style={Styles.titleText}
