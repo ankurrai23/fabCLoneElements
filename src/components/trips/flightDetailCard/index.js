@@ -10,7 +10,7 @@ import Styles from './Styles';
 import FImage from '../../../common/rn/FImage';
 import Separator from '../../../common/components/separator';
 import {ImageConst} from '../../../utils/imageConst';
-import {TripStatus} from '../../../index';
+import TripStatus from '../tripStatus';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
 import ModificationAlertBox from '../components/modificationAlertBox';
 import {getStatusObject} from '../hotelDetailCard';
