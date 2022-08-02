@@ -39,7 +39,6 @@ import {
   FloatingAction,
   HomeLoadingState,
   Checkbox,
-  DropDownList,
   StackHeader,
   ScrollableTabBar,
   ExpenseCard,
@@ -76,10 +75,6 @@ const COMMON_COMPONENTS = [
   {
     name: 'Checkbox',
     component: <Checkbox {...data.checkboxProps} />,
-  },
-  {
-    name: 'Drop Down List',
-    component: <DropDownList {...data.dropDownListProps} />,
   },
   {
     name: 'StackHeader',
