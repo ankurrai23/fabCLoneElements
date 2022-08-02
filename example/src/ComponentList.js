@@ -24,7 +24,6 @@ import {
   HotelPreferenceLoadingState,
   HotelDetailLoadingState,
   FlightPreferenceLoadingState,
-  ComingSoon,
   HotelDetails,
   FlightDetails,
   OtherTravelDetails,
@@ -189,10 +188,6 @@ const TRIP_CREATION = [
   {
     name: 'CoTravelersDetails',
     component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
-  },
-  {
-    name: 'ComingSoon',
-    component: <ComingSoon {...data.comingSoonProps} />,
   },
   {
     name: 'HotelDetails',

@@ -53,7 +53,6 @@ import {HotelSubTripActions} from './utils/SubTripActions';
 import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
 //Trip Creation Components
-import ComingSoon from './components/tripCreation/comingSoon';
 import HotelDetails from './components/tripCreation/hotelDetails';
 import FlightDetails from './components/tripCreation/flightDetails';
 import OtherTravelDetails from './components/tripCreation/otherTravelDetails';
@@ -135,7 +134,6 @@ export {
   ListTypeFilter,
   FlightDetailLoadingState,
   // Trip Creation
-  ComingSoon,
   HotelDetails,
   FlightDetails,
   OtherTravelDetails,

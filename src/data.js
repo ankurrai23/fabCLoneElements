@@ -32,7 +32,6 @@ import floatingActionProps from './common/components/floatingActionButton/data';
 
 //trip creation props
 import coTravellersDetailProps from './components/tripCreation/coTravelersDetails/data';
-import comingSoonProps from './components/tripCreation/comingSoon/data';
 import hotelDetailsProps from './components/tripCreation/hotelDetails/data';
 import flightDetailsProps from './components/tripCreation/flightDetails/data';
 import otherTravelDetailsProps from './components/tripCreation/otherTravelDetails/data';
@@ -76,7 +75,6 @@ export {
   receivedTripCardProps,
   hotelPreferenceCardProps,
   managerActionsProps,
-  comingSoonProps,
   hotelDetailsProps,
   flightDetailsProps,
   otherTravelDetailsProps,
