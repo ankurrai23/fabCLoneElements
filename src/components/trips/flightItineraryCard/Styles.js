@@ -84,7 +84,7 @@ export default StyleSheet.create({
   primaryButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._26,
+    marginLeft: DP._24,
   },
   chevronContainer: {
     backgroundColor: Color.DODGER_BLUE + '12',

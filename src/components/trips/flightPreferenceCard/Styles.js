@@ -19,7 +19,11 @@ export default StyleSheet.create({
     marginLeft: DP._16,
   },
   flightNumber: {color: Color.BATTLESHIP_GREY_TWO},
-  flightTimeTextStyle: {fontSize: DP._16, color: Color.DARK},
+  flightTimeTextStyle: {
+    fontSize: DP._16,
+    color: Color.DARK,
+    fontFamily: 'Rubik-Regular',
+  },
   flexGrow_1: {flexGrow: 1},
   flightTimeContainer: {
     flexDirection: 'row',
