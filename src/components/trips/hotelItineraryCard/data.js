@@ -11,7 +11,7 @@ const hotelItineraryCardProps = {
       textColor: '#d65656',
       bgColor: '#d656561a',
     },
-    actionsDisabled: true,
+    actionsDisabled: false,
     actions: [
       {
         type: 'MODIFY',

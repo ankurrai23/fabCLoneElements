@@ -51,18 +51,14 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
             }}
           />
         </View>
-        <View style={[Styles.flexRowAlignCenter, {marginTop: DP._18}]}>
+        <View style={Styles.aiportCodeWithIconContainer}>
           <Placeholder style={Styles.commonPlaceholder2(DP._52, DP._21)} />
-          <View style={Styles.dot} />
-          <View style={Styles.line} />
           <MaterialCommunityIcons
             name="airplane"
             size={DP._20}
             color={Color.LIGHT_BLUEY_GREY}
             style={Styles.airplane}
           />
-          <View style={Styles.line} />
-          <View style={Styles.whiteDot} />
           <Placeholder style={Styles.commonPlaceholder2(DP._52, DP._21)} />
         </View>
         <View style={[Styles.flexRowSpaceBetween, {marginTop: DP._8}]}>

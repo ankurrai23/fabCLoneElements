@@ -146,4 +146,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  aiportCodeWithIconContainer: {
+    marginTop: DP._18,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });

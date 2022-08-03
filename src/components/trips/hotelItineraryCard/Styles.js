@@ -109,10 +109,12 @@ export default StyleSheet.create({
   cancel: {
     color: Color.PASTEL_RED,
     marginLeft: DP._4,
+    fontSize: DP._12,
   },
   reschedule: {
     color: Color.DODGER_BLUE,
     marginLeft: DP._4,
+    fontSize: DP._12,
   },
   primaryButtonStyle: {
     flexDirection: 'row',
