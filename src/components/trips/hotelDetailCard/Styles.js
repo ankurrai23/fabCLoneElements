@@ -152,7 +152,7 @@ export default StyleSheet.create({
   modifyButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._26,
+    marginLeft: DP._24,
   },
   cancelButtonStyle: {
     flexDirection: 'row',

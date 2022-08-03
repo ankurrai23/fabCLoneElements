@@ -119,7 +119,7 @@ export default StyleSheet.create({
   primaryButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._26,
+    marginLeft: DP._24,
   },
   rescheduleIcon: {
     width: DP._18,
