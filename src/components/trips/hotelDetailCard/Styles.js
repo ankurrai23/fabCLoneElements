@@ -29,10 +29,12 @@ export default StyleSheet.create({
   cancel: {
     color: Color.PASTEL_RED,
     marginLeft: DP._4,
+    fontSize: DP._12,
   },
   modify: {
     color: Color.DODGER_BLUE,
     marginLeft: DP._4,
+    fontSize: DP._12,
   },
   buttonContainer: {
     padding: DP._16,
@@ -150,7 +152,7 @@ export default StyleSheet.create({
   modifyButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._26,
+    marginLeft: DP._24,
   },
   cancelButtonStyle: {
     flexDirection: 'row',
@@ -170,5 +172,11 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.DODGER_BLUE,
     marginRight: 3,
+  },
+  viewDetailHitSlop: {
+    top: DP._15,
+    bottom: DP._15,
+    left: DP._15,
+    right: DP._15,
   },
 });

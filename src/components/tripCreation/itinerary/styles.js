@@ -4,25 +4,16 @@ import {Color} from '../../../utils/color/index.fabhotel';
 import {DP} from '../../../utils/Dimen';
 
 export default StyleSheet.create({
-  btnStyle: (departureCity, arrivalCity, departureDate, marginBottom) => ({
+  btnStyle: (isDirty, marginBottom) => ({
     borderWidth: 1,
-    borderColor:
-      departureCity === null || arrivalCity === null || departureDate === null
-        ? Color.HAWKES_BLUE
-        : Color.DODGER_BLUE,
+    borderColor: !isDirty ? Color.HAWKES_BLUE : Color.DODGER_BLUE,
     backgroundColor: Color.WHITE,
     marginBottom: marginBottom ? marginBottom : DP._32,
   }),
-  btnTextStyle: (departureCity, arrivalCity, departureDate) => ({
-    fontSize:
-      departureCity === null || arrivalCity === null || departureDate === null
-        ? DP._16
-        : DP._14,
+  btnTextStyle: (isDirty) => ({
+    fontSize: !isDirty ? DP._16 : DP._14,
     lineHeight: DP._18,
-    color:
-      departureCity === null || arrivalCity === null || departureDate === null
-        ? Color.HAWKES_BLUE
-        : Color.DODGER_BLUE,
+    color: !isDirty ? Color.HAWKES_BLUE : Color.DODGER_BLUE,
   }),
   container: {
     backgroundColor: Color.WHITE,

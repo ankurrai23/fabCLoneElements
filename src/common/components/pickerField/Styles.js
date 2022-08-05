@@ -21,7 +21,7 @@ export default StyleSheet.create({
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._4,
     fontSize: DP._12,
-    top: DP.minus_6,
+    top: DP.minus_8,
     left: DP._12,
   }),
   placeholder: {

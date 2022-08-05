@@ -54,4 +54,16 @@ export default StyleSheet.create({
     bottom: 0,
     right: 0,
   },
+  hitSlopTouch: {
+    top: DP._7,
+    bottom: DP._15,
+    left: DP._140,
+    right: DP._10,
+  },
+  hitSlopTouchTrip: {
+    top: DP._12,
+    bottom: DP._8,
+    left: DP._145,
+    right: DP._10,
+  },
 });
