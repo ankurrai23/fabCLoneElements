@@ -342,12 +342,16 @@ export default function HotelDetailCard({
                   {payNowAction.name}
                 </Button>
               )}
-              <Separator style={Styles.separator} />
-              <ContactSupport
-                supportDetails={supportDetails}
-                onContactSupportPress={onContactSupportPress}
-                onClose={onClose}
-              />
+              {item.showContactSupport && (
+                <>
+                  <Separator style={Styles.separator} />
+                  <ContactSupport
+                    supportDetails={supportDetails}
+                    onContactSupportPress={onContactSupportPress}
+                    onClose={onClose}
+                  />
+                </>
+              )}
               {item.enableViewMoreButton && (
                 <Separator style={Styles.separator} />
               )}
