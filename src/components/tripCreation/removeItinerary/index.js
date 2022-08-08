@@ -1,6 +1,5 @@
 import React from 'react';
 import {View} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import FText from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';

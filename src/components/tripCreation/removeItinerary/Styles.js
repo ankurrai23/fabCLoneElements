@@ -22,9 +22,9 @@ export default StyleSheet.create({
     color: Color.PASTEL_RED,
   },
   errorTxt: {
-    paddingTop: DP._4,
+    paddingTop: DP._2,
     fontSize: DP._11,
-    lineHeight: DP._13,
+    lineHeight: DP._12,
     color: Color.PASTEL_RED,
   },
   removeView: {
