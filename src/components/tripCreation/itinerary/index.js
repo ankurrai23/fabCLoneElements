@@ -110,10 +110,10 @@ const ItineraryCard = (props) => {
           margin={
             props?.showLabel
               ? props?.errors?.itinerarySameError
-                ? DP._14
-                : DP._32
+                ? DP._10
+                : DP._24
               : ifEveryFieldisEmpty
-              ? DP._9
+              ? DP._10
               : 0
           }
         />
@@ -136,18 +136,11 @@ const ItineraryCard = (props) => {
                 FieldNamesEnum.DEPARTURE_CITY,
               );
             }}
-            touchContainer={{
-              marginBottom:
-                !ifEveryFieldisEmpty && props?.errors?.departureCityError
-                  ? 0
-                  : DP._6,
-            }}
-            // todo: For now let's revert this and wait for confirmation from design team
-            // bottomMargin={
-            //   !ifEveryFieldisEmpty && props?.errors?.departureCityError
-            //     ? DP._16
-            //     : 0
-            // }
+            bottomMargin={
+              !ifEveryFieldisEmpty && props?.errors?.departureCityError
+                ? 0
+                : DP._6
+            }
           />
           <PickerField
             topMargin={DP._18}
@@ -167,17 +160,11 @@ const ItineraryCard = (props) => {
                 FieldNamesEnum.ARRIVAL_CITY,
               );
             }}
-            touchContainer={{
-              marginBottom:
-                !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
-                  ? 0
-                  : DP._6,
-            }}
-            // bottomMargin={
-            //   !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
-            //     ? DP._16
-            //     : 0
-            // }
+            bottomMargin={
+              !ifEveryFieldisEmpty && props?.errors?.departureCityError
+                ? 0
+                : DP._6
+            }
           />
           <View style={Styles.datesContainer}>
             <PickerField
@@ -205,21 +192,18 @@ const ItineraryCard = (props) => {
                   FieldNamesEnum.DEPARTURE_DATE,
                 );
               }}
-              touchContainer={{
-                marginBottom: props?.showSaveButton
+              bottomMargin={
+                props?.showSaveButton
                   ? !ifEveryFieldisEmpty && props?.errors?.departureDateError
                     ? DP._18
                     : DP._32
                   : !ifEveryFieldisEmpty && props?.errors?.departureDateError
                   ? DP._18
-                  : DP._32,
+                  : DP._32
+              }
+              touchContainer={{
                 ...departureDateStyle,
               }}
-              // bottomMargin={
-              //   !ifEveryFieldisEmpty && props?.errors?.departureDateError
-              //     ? DP._16
-              //     : 0
-              // }
             />
             {props?.showReturnDate && (
               <PickerField
@@ -244,22 +228,19 @@ const ItineraryCard = (props) => {
                     FieldNamesEnum.RETURN_DATE,
                   );
                 }}
-                touchContainer={{
-                  flex: 0.5,
-                  marginLeft: DP._8,
-                  marginBottom: props?.showSaveButton
+                bottomMargin={
+                  props?.showSaveButton
                     ? !ifEveryFieldisEmpty && props?.errors?.returnDateError
                       ? DP._18
                       : DP._32
                     : !ifEveryFieldisEmpty && props?.errors?.returnDateError
                     ? DP._18
-                    : DP._32,
+                    : DP._32
+                }
+                touchContainer={{
+                  flex: 0.5,
+                  marginLeft: DP._8,
                 }}
-                // bottomMargin={
-                //   !ifEveryFieldisEmpty && props?.errors?.returnDateError
-                //     ? DP._16
-                //     : 0
-                // }
               />
             )}
           </View>
