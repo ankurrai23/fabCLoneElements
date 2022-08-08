@@ -6,6 +6,8 @@ export default {
   fabCredits: require(IMG_DIRECTORY + 'fab_credits.png'),
   couponGreen: require(IMG_DIRECTORY + 'coupon_green.png'),
   trashIcon: require(IMG_DIRECTORY + 'trash_icon.png'),
+  searchIcon: require(IMG_DIRECTORY + 'search_icon.png'),
+  crossIcon: require(IMG_DIRECTORY + 'cross_icon.png'),
 
   //Icons related to trip/travel module
   rescheduleIcon: require(TRIP_DIRECTORY + 'itinerary-reschedule-icon.png'),

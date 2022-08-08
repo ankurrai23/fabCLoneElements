@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   input: (editable) => ({
     color: editable ? Color.BLACK : Color.GREY_PURPLE,
-    height: DP._42,
+    height: DP._44,
     ...Specs.fontRegular,
   }),
   label: {
@@ -51,7 +51,8 @@ export default StyleSheet.create({
   }),
   helperText: (error) => ({
     color: error ? Color.PASTEL_RED : Color.GREY_PURPLE,
+    marginTop: DP._2,
     fontSize: DP._11,
-    lineHeight: DP._13,
+    lineHeight: DP._12,
   }),
 });

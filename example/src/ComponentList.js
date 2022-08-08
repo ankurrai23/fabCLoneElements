@@ -62,6 +62,7 @@ import {
   ContactSupport,
   DropDown,
   ItineraryCard,
+  FieldStates,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -102,6 +103,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'DropDown',
     component: <DropDown {...data.dropDownProps} />,
+  },
+  {
+    name: 'FieldStates',
+    component: <FieldStates />,
   },
 ];
 

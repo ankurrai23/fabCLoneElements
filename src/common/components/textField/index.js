@@ -191,8 +191,11 @@ class TextField extends React.Component {
       this.state.labelStyle,
       Styles.label,
       this.props.labelStyle,
-      this.state.isFocused && {color: Color.DODGER_BLUE},
-      this.props.error && {color: Color.PASTEL_RED},
+      this.state.isFocused && {
+        color: this.props.error ? Color.PASTEL_RED : Color.DODGER_BLUE,
+      },
+      this.props.error && this.props.value && {color: Color.PASTEL_RED},
+      {fontFamily: 'Rubik-Regular'},
     ]);
 
     return (
@@ -313,19 +316,20 @@ class TextField extends React.Component {
             </View>
           )}
         </View>
-        {typeof this.props.helperText === 'object' ? (
-          this.props.helperText
-        ) : (
-          <View style={Styles.helperTextContainer(this.props.bottomMargin)}>
-            <FText
-              style={Styles.helperText(
-                this.props.error,
-                this.props.bottomMargin,
-              )}>
-              {this.props.helperText}
-            </FText>
-          </View>
-        )}
+        {!!this.props.helperText &&
+          (typeof this.props.helperText === 'object' ? (
+            this.props.helperText
+          ) : (
+            <View style={Styles.helperTextContainer(this.props.bottomMargin)}>
+              <FText
+                style={Styles.helperText(
+                  this.props.error,
+                  this.props.bottomMargin,
+                )}>
+                {this.props.helperText}
+              </FText>
+            </View>
+          ))}
       </View>
     );
   }

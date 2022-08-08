@@ -1,7 +1,7 @@
 const itineraryCardProps = {
   itinerary: {
     source: {
-      name: null,
+      city: 'Delhi',
       lat: 28.6,
       lon: 122.6,
       placeId: '1231SDasd',
@@ -12,7 +12,7 @@ const itineraryCardProps = {
       viewport: null,
     },
     destination: {
-      name: null,
+      city: 'Mumbai',
       lat: 28.6,
       lon: 122.6,
       placeId: '1231SDasd',
@@ -27,7 +27,7 @@ const itineraryCardProps = {
   },
   showSaveButton: true,
   showReturnDate: true,
-  shouldCollapse: true,
+  shouldCollapse: false,
   showLabel: false,
   showRemove: false,
   editClicked: (index) => {
@@ -48,10 +48,10 @@ const itineraryCardProps = {
   index: 0,
   errors: {
     itinerarySameError: null,
-    departureCityError: 'Please Enter departure city',
+    departureCityError: 'Please enter departure city',
     arrivalCityError: 'Please enter arrival city',
-    departureDateError: null,
-    returnDateError: null,
+    departureDateError: 'Departure date missing',
+    returnDateError: 'Enter return date',
     itineraryDetailsMissingError:
       'Enter a flight or a hotel in itinerary 2 to proceed',
   },

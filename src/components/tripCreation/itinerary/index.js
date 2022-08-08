@@ -113,7 +113,7 @@ const ItineraryCard = (props) => {
                 ? DP._14
                 : DP._32
               : ifEveryFieldisEmpty
-              ? DP._14
+              ? DP._9
               : 0
           }
         />
@@ -139,8 +139,8 @@ const ItineraryCard = (props) => {
             touchContainer={{
               marginBottom:
                 !ifEveryFieldisEmpty && props?.errors?.departureCityError
-                  ? DP._24
-                  : DP._8,
+                  ? 0
+                  : DP._6,
             }}
             // todo: For now let's revert this and wait for confirmation from design team
             // bottomMargin={
@@ -150,6 +150,7 @@ const ItineraryCard = (props) => {
             // }
           />
           <PickerField
+            topMargin={DP._18}
             error={
               props?.errors?.itinerarySameError ||
               props?.errors?.arrivalCityError
@@ -169,8 +170,8 @@ const ItineraryCard = (props) => {
             touchContainer={{
               marginBottom:
                 !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
-                  ? DP._24
-                  : DP._8,
+                  ? 0
+                  : DP._6,
             }}
             // bottomMargin={
             //   !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
@@ -180,6 +181,7 @@ const ItineraryCard = (props) => {
           />
           <View style={Styles.datesContainer}>
             <PickerField
+              topMargin={DP._18}
               error={
                 props?.errors?.itinerarySameError ||
                 props?.errors?.departureDateError
@@ -206,11 +208,11 @@ const ItineraryCard = (props) => {
               touchContainer={{
                 marginBottom: props?.showSaveButton
                   ? !ifEveryFieldisEmpty && props?.errors?.departureDateError
-                    ? DP._24
-                    : DP._8
+                    ? DP._18
+                    : DP._32
                   : !ifEveryFieldisEmpty && props?.errors?.departureDateError
-                  ? DP._24
-                  : DP._16,
+                  ? DP._18
+                  : DP._32,
                 ...departureDateStyle,
               }}
               // bottomMargin={
@@ -221,6 +223,7 @@ const ItineraryCard = (props) => {
             />
             {props?.showReturnDate && (
               <PickerField
+                topMargin={DP._18}
                 label={'Return date'}
                 value={
                   props?.itinerary?.returnDate
@@ -246,11 +249,11 @@ const ItineraryCard = (props) => {
                   marginLeft: DP._8,
                   marginBottom: props?.showSaveButton
                     ? !ifEveryFieldisEmpty && props?.errors?.returnDateError
-                      ? DP._24
-                      : DP._8
+                      ? DP._18
+                      : DP._32
                     : !ifEveryFieldisEmpty && props?.errors?.returnDateError
-                    ? DP._24
-                    : DP._16,
+                    ? DP._18
+                    : DP._32,
                 }}
                 // bottomMargin={
                 //   !ifEveryFieldisEmpty && props?.errors?.returnDateError

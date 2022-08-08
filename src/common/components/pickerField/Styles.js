@@ -7,20 +7,19 @@ export default StyleSheet.create({
   container: (error, marginTop) => ({
     flexDirection: 'row',
     alignItems: 'center',
-    flexWrap: 'wrap',
     borderWidth: DP._1,
     borderColor: error ? Color.DARK_CORAL : Color.PALE_GREY_THREE,
     borderRadius: DP._4,
     paddingHorizontal: DP._16,
-    paddingVertical: DP._12_7,
+    height: DP._46,
     marginTop: marginTop,
   }),
-  floatLabel: (error) => ({
+  floatLabel: (error, value) => ({
     color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
     position: 'absolute',
     backgroundColor: Color.WHITE,
     paddingHorizontal: DP._4,
-    fontSize: DP._12,
+    fontSize: value ? DP._12 : DP._14,
     top: DP.minus_8,
     left: DP._12,
   }),
@@ -49,7 +48,8 @@ export default StyleSheet.create({
   }),
   helperText: (error) => ({
     color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
+    marginTop: DP._2,
     fontSize: DP._11,
-    lineHeight: DP._13,
+    lineHeight: DP._12,
   }),
 });

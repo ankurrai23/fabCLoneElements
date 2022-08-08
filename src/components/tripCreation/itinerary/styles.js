@@ -107,10 +107,10 @@ export default StyleSheet.create({
     right: DP._14,
   },
   errorTxt: {
-    fontSize: DP._12,
-    lineHeight: DP._14,
+    fontSize: DP._11,
+    lineHeight: DP._12,
     color: Color.PASTEL_RED,
-    paddingTop: DP._4,
+    paddingTop: DP._2,
   },
   briefCardBottomMargin: (margin, error) => {
     const DEFAULT_MARGIN = DP._32;
