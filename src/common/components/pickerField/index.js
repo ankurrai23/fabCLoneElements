@@ -36,9 +36,16 @@ const PickerField = (props) => {
   }
 
   return (
-    <FTouchableOpacity onPress={props.onPress} style={props.touchContainer}>
-      <View
-        style={[Styles.container(props.error, props.topMargin), props.style]}>
+    <FTouchableOpacity
+      onPress={props.onPress}
+      style={[
+        {
+          marginTop: props.topMargin,
+          marginBottom: props.bottomMargin,
+        },
+        props.touchContainer,
+      ]}>
+      <View style={[Styles.container(props.error), props.style]}>
         {!!props.value && props.label && (
           <FText style={[Styles.floatLabel(props.error, props.value)]}>
             {props.label}
@@ -57,7 +64,7 @@ const PickerField = (props) => {
         )}
       </View>
       {props.helperText ? (
-        <View style={Styles.helperTextContainer(props.bottomMargin)}>
+        <View style={Styles.helperTextContainer}>
           <FText
             style={Styles.helperText(props.error)}
             numberOfLines={props?.helperTextNumberOfLines ?? 1}>

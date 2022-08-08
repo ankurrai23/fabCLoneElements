@@ -4,7 +4,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 
 export default StyleSheet.create({
-  container: (error, marginTop) => ({
+  container: (error) => ({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: DP._1,
@@ -12,7 +12,6 @@ export default StyleSheet.create({
     borderRadius: DP._4,
     paddingHorizontal: DP._16,
     height: DP._46,
-    marginTop: marginTop,
   }),
   floatLabel: (error, value) => ({
     color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
@@ -41,11 +40,10 @@ export default StyleSheet.create({
     marginRight: isLeftIcon ? DP._8 : 0,
     marginLeft: isLeftIcon ? 0 : DP._8,
   }),
-  helperTextContainer: (marginBottom) => ({
+  helperTextContainer: {
     minHeight: DP._14,
-    marginBottom,
     justifyContent: 'flex-end',
-  }),
+  },
   helperText: (error) => ({
     color: error ? Color.DARK_CORAL : Color.GREY_PURPLE,
     marginTop: DP._2,
