@@ -62,6 +62,7 @@ export default function OtherTravelDetails(props) {
           />
         }
         topMargin={DP._16}
+        bottomMargin={purposeOfTravelerError ? 0 : DP._6}
       />
       <TextField
         value={props.otherRemark}

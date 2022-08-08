@@ -21,6 +21,7 @@ const otherTravelDetailsProps = {
       value: 'None Of ',
     },
   ],
+  purposeOfTravelerError: 'Enter a purpose of travel',
   selectedValue: {key: null, value: null},
   _onPressApply: (value) => console.log('apply', value),
 };
