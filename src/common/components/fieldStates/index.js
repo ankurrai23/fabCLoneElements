@@ -12,7 +12,6 @@ import PickerField from '../pickerField';
 const FIELD_STATES = [
   {
     label: 'Departure date',
-    value: 'Hi',
     helperText: 'Enter departure date',
     error: true,
     type: 'textField',
