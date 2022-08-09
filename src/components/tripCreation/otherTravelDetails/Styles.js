@@ -14,7 +14,6 @@ export default StyleSheet.create({
   title: {
     fontSize: DP._14,
     color: Color.DARK,
-    marginTop: DP._8,
     marginBottom: DP._8,
   },
   paddingView: {

@@ -80,7 +80,7 @@ export default StyleSheet.create({
     left: DP._10,
     right: 0,
   },
-  itemContainer: {
-    marginTop: DP._8,
-  },
+  itemContainer: (addMargin) => ({
+    marginTop: addMargin ? DP._8 : 0,
+  }),
 });
