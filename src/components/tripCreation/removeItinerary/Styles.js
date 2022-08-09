@@ -4,8 +4,9 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 
 export default StyleSheet.create({
-  marginBottom: (margin) => ({
+  marginBottom: (margin, itinerary) => ({
     marginBottom: margin ? margin : 0,
+    marginTop: itinerary === 1 ? 0 : DP._8,
   }),
   removeItinerary: {
     flexDirection: 'row',

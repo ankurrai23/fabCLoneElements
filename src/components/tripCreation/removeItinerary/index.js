@@ -19,7 +19,7 @@ const RemoveItinerary = ({
   margin: marginBottom,
 }) => {
   return (
-    <View style={Styles.marginBottom(marginBottom)}>
+    <View style={Styles.marginBottom(marginBottom, itinerary)}>
       <View style={Styles.removeItinerary}>
         {showLabel && (
           <FText

@@ -113,10 +113,9 @@ export default StyleSheet.create({
     paddingTop: DP._2,
   },
   briefCardBottomMargin: (margin, error) => {
-    const DEFAULT_MARGIN = DP._32;
-    const ERROR_TEXTBOX_HEIGHT = DP._18;
-    let final_margin =
-      (margin ?? DEFAULT_MARGIN) - (error ? ERROR_TEXTBOX_HEIGHT : 0);
-    return {marginBottom: final_margin};
+    let finalMargin = error ? (margin === DP._32 ? DP._18 : DP._10) : margin;
+    return {
+      marginBottom: finalMargin,
+    };
   },
 });
