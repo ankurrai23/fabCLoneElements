@@ -5,8 +5,6 @@ import {DP} from '../../../utils/Dimen';
 export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
-    paddingHorizontal: DP._16,
-    marginTop: DP._32,
   },
   topContainer: {
     flexDirection: 'row',

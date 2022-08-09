@@ -5,7 +5,7 @@ import Styles from './Styles';
 
 export default function ApprovalManager(props) {
   return (
-    <View style={Styles.container}>
+    <View style={[Styles.container, props.style]}>
       <FText type="medium" style={Styles.title}>
         Approval manager
       </FText>

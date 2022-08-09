@@ -18,7 +18,7 @@ export default function CoTravelersDetails(props) {
   }
 
   return (
-    <View style={Styles.container}>
+    <View style={[Styles.container, props.style]}>
       <View style={Styles.titleContainer}>
         <View style={Styles.titleSubContainer}>
           <FText type="medium" style={Styles.title}>

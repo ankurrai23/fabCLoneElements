@@ -7,9 +7,6 @@ import {Specs} from '../../../utils/Utils';
 export default StyleSheet.create({
   container: {
     backgroundColor: Color.WHITE,
-    paddingHorizontal: DP._16,
-    marginTop: DP._16,
-    // marginBottom: DP._8,
   },
   textFieldLabel: {
     backgroundColor: Color.WHITE,
