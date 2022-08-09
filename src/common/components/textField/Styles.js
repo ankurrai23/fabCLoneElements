@@ -5,8 +5,9 @@ import {Color} from '../../../utils/color';
 import {Specs} from '../../../utils/Utils';
 
 export default StyleSheet.create({
-  mainContainer: (marginTop) => ({
-    marginTop: marginTop,
+  mainContainer: (marginTop, marginBottom) => ({
+    marginTop,
+    marginBottom,
   }),
   container: (focused, error) => ({
     flexDirection: 'row',
@@ -44,11 +45,9 @@ export default StyleSheet.create({
     lineHeight: DP._18,
     ...Specs.fontRegular,
   },
-  helperTextContainer: (marginBottom) => ({
-    minHeight: DP._14,
-    marginBottom,
+  helperTextContainer: {
     justifyContent: 'flex-end',
-  }),
+  },
   helperText: (error) => ({
     color: error ? Color.PASTEL_RED : Color.GREY_PURPLE,
     marginTop: DP._2,

@@ -285,7 +285,11 @@ class TextField extends React.Component {
       elementStyles = [Styles.element, this.props.style];
 
     return (
-      <View style={Styles.mainContainer(this.props.topMargin)}>
+      <View
+        style={Styles.mainContainer(
+          this.props.topMargin,
+          this.props.bottomMargin,
+        )}>
         <View
           style={[
             Styles.container(this.state.isFocused, this.props.error),
@@ -303,7 +307,6 @@ class TextField extends React.Component {
               style={[
                 props.style,
                 {
-                  color: Color.DARK,
                   marginLeft: isPlatformIos() ? 0 : -4,
                 },
               ]}
@@ -320,7 +323,7 @@ class TextField extends React.Component {
           (typeof this.props.helperText === 'object' ? (
             this.props.helperText
           ) : (
-            <View style={Styles.helperTextContainer(this.props.bottomMargin)}>
+            <View style={Styles.helperTextContainer}>
               <FText
                 style={Styles.helperText(
                   this.props.error,
