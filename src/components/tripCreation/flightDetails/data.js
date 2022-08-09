@@ -31,6 +31,7 @@ const flightDetailsProps = {
   ],
   tripType: 0,
   requestType: 'FLIGHT',
+  // error: 'Enter flight details',
 };
 
 export default flightDetailsProps;

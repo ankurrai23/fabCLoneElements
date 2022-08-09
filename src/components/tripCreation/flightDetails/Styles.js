@@ -16,6 +16,7 @@ export default StyleSheet.create({
   title: {
     fontSize: DP._14,
     color: Color.DARK,
+    lineHeight: DP._20,
   },
   flexRow: {
     flexDirection: 'row',
@@ -25,12 +26,13 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.DODGER_BLUE,
     marginLeft: DP._6,
+    lineHeight: DP._16,
   },
   renderRoute: {
     backgroundColor: Color.WHITE,
     padding: DP._15,
     borderRadius: DP._12,
-    marginTop: DP._13,
+    marginTop: DP._16,
     ...shadowObj,
     borderWidth: 0.3,
     borderColor: Color.LIGHT_PERIWINKLE,
@@ -85,10 +87,10 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   errorDetailTxt: {
-    fontSize: DP._14,
+    fontSize: DP._11,
     color: Color.PASTEL_RED,
-    lineHeight: DP._18,
-    marginTop: 5,
+    lineHeight: DP._12,
+    marginTop: DP._2,
   },
   addFlightTxt: {
     fontSize: DP._14,
@@ -125,5 +127,11 @@ export default StyleSheet.create({
   },
   airplane: {
     transform: [{rotate: '45deg'}],
+  },
+  Flex: {
+    flex: 1,
+  },
+  itemContainer: {
+    marginTop: DP._8,
   },
 });

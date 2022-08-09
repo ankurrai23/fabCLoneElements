@@ -16,6 +16,7 @@ export default StyleSheet.create({
   title: {
     fontSize: DP._14,
     color: Color.DARK,
+    lineHeight: DP._20,
   },
   flexRow: {
     flexDirection: 'row',
@@ -25,6 +26,7 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.DODGER_BLUE,
     marginLeft: DP._6,
+    lineHeight: DP._16,
   },
   innerContainer: {
     backgroundColor: Color.WHITE,
@@ -67,15 +69,18 @@ export default StyleSheet.create({
     color: Color.GREY_PURPLE,
   },
   errorDetailTxt: {
-    fontSize: DP._14,
+    fontSize: DP._11,
+    lineHeight: DP._12,
     color: Color.PASTEL_RED,
-    lineHeight: DP._18,
-    marginTop: 5,
+    marginTop: DP._2,
   },
   hitSlop: {
     top: DP._15,
     bottom: DP._15,
     left: DP._10,
     right: 0,
+  },
+  itemContainer: {
+    marginTop: DP._8,
   },
 });

@@ -15,7 +15,7 @@ export default function FlightDetails(props) {
       return (
         <View key={index} style={Styles.renderRoute}>
           <View style={Styles.flexDirectionRow}>
-            <View style={{flex: 1}}>
+            <View style={Styles.Flex}>
               <FText type="medium" style={Styles.renderValue}>
                 {moment(item.departureDate).format('DD') + ' '}
                 <FText style={Styles.monthlabel}>
@@ -32,7 +32,7 @@ export default function FlightDetails(props) {
             </View>
           </View>
           <View style={Styles.routeContainer}>
-            <View style={{flex: 1}}>
+            <View style={Styles.Flex}>
               <FText style={Styles.cityName}>{item.source}</FText>
             </View>
             <View style={Styles.iconView}>
@@ -88,7 +88,7 @@ export default function FlightDetails(props) {
         <FText style={Styles.errorDetailTxt}>{props.error}</FText>
       ) : null}
       {props.data?.length > 0 ? (
-        <View style={{marginTop: DP._12}}>{renderRoute()}</View>
+        <View style={Styles.itemContainer}>{renderRoute()}</View>
       ) : null}
       {props.data?.length === 1 && props.tripType === 1 ? (
         <FTouchableOpacity
