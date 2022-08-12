@@ -24,15 +24,10 @@ import {
   HotelPreferenceLoadingState,
   HotelDetailLoadingState,
   FlightPreferenceLoadingState,
-  ComingSoon,
-  RequestType,
-  BasicTravelDetails,
   HotelDetails,
   FlightDetails,
   OtherTravelDetails,
   ApprovalManager,
-  AddFlightDetails,
-  AddHotelDetails,
   CoTravellers,
   FlightDetailCard,
   ListTypeFilter,
@@ -44,7 +39,6 @@ import {
   FloatingAction,
   HomeLoadingState,
   Checkbox,
-  DropDownList,
   StackHeader,
   ScrollableTabBar,
   ExpenseCard,
@@ -55,7 +49,6 @@ import {
   LocationInputBox,
   Swiper,
   MonthPicker,
-  BasicTravelDetailsCard,
   ReceiptsList,
   ReceiptListView,
   RemoveItinerary,
@@ -83,10 +76,6 @@ const COMMON_COMPONENTS = [
   {
     name: 'Checkbox',
     component: <Checkbox {...data.checkboxProps} />,
-  },
-  {
-    name: 'Drop Down List',
-    component: <DropDownList {...data.dropDownListProps} />,
   },
   {
     name: 'StackHeader',
@@ -201,18 +190,6 @@ const TRIP_CREATION = [
     component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
   },
   {
-    name: 'ComingSoon',
-    component: <ComingSoon {...data.comingSoonProps} />,
-  },
-  {
-    name: 'RequestType',
-    component: <RequestType {...data.requestTypeProps} />,
-  },
-  {
-    name: 'BasicTravelDetails',
-    component: <BasicTravelDetails {...data.basicTravelDetailsProps} />,
-  },
-  {
     name: 'HotelDetails',
     component: <HotelDetails {...data.hotelDetailsProps} />,
   },
@@ -231,18 +208,6 @@ const TRIP_CREATION = [
   {
     name: 'ApprovalManager',
     component: <ApprovalManager {...data.approvalManagerProps} />,
-  },
-  {
-    name: 'AddFlightDetails',
-    component: <AddFlightDetails {...data.addFlightDetailsProps} />,
-  },
-  {
-    name: 'AddHotelDetails',
-    component: <AddHotelDetails {...data.addHotelDetailsProps} />,
-  },
-  {
-    name: 'BasicTravelDetailsCard',
-    component: <BasicTravelDetailsCard {...data.basicTravelDetailsCardProps} />,
   },
   {
     name: 'Remove Itinerary',

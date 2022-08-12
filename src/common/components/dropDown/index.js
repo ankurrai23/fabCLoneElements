@@ -1,20 +1,18 @@
 import {View, FlatList} from 'react-native';
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
-import FText from '../../rn/FText';
+import FText, {FONT_TYPE} from '../../rn/FText';
 import TextField from '../textField';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import Styles from './Styles.js';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import FImage from '../../rn/FImage';
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function DropDown(
   {
     data,
     label,
-    searchType,
     onPress,
     onChangeText,
     keyword,
@@ -36,28 +34,24 @@ function DropDown(
     },
   }));
 
-  const getImage = () => {
-    switch (searchType) {
-      case 'city':
-        return ImageConst.searchCity;
-      case 'airport':
-        return ImageConst.searchAirport;
-      case 'coTraveler':
-        return ImageConst.searchCoTraveler;
-    }
-  };
-
-  const Item = ({entity: {title, subTitle, insideBracket}, entity, index}) => {
+  const Item = ({
+    entity: {title, subTitle, insideBracket, img},
+    entity,
+    index,
+  }) => {
     return (
       <FTouchableOpacity
         onPress={() => onPress(entity, index)}
         style={Styles.cardStyle}>
         <View style={Styles.titleAndIconContainer}>
-          <FImage source={getImage()} />
-          <FText type={'bold'} style={Styles.titleText} numberOfLines={1}>
+          <FImage source={img} />
+          <FText
+            type={FONT_TYPE.BOLD}
+            style={Styles.titleText}
+            numberOfLines={1}>
             {title}
             {insideBracket ? (
-              <FText type="light">{` (${insideBracket})`}</FText>
+              <FText type={FONT_TYPE.LIGHT}>{` (${insideBracket})`}</FText>
             ) : null}
           </FText>
         </View>

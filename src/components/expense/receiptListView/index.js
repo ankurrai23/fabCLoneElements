@@ -5,12 +5,18 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import FImage from '../../../common/rn/FImage';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import {getPluralText} from '../../../utils/Utils';
 import Button from '../../../common/components/button';
+import {Strings} from '../../../utils/strings/index.travelPlus';
+
+export const RECEIPT_LIST_VIEW_TYPE = {
+  IMAGE: 'image',
+  LIST: 'list',
+};
 
 const ReceiptListView = ({
   data,
@@ -24,7 +30,7 @@ const ReceiptListView = ({
 }) => {
   const listRef = useRef();
   const renderItem = ({item, index}) => {
-    if (type === 'image') {
+    if (type === RECEIPT_LIST_VIEW_TYPE.IMAGE) {
       return (
         <FTouchableOpacity onPress={() => onImagePress(item, index)}>
           <FImage
@@ -51,7 +57,7 @@ const ReceiptListView = ({
             <FText style={Styles.titleText}>{item.name}</FText>
             {!!item.size && (
               <FText style={Styles.sizeTxt}>
-                {Math.floor(item.size / 1000)} KB
+                {Math.floor(item.size / 1000)} {Strings.kb}
               </FText>
             )}
           </View>
@@ -74,26 +80,30 @@ const ReceiptListView = ({
           <AntDesign name="close" size={DP._24} color={Color.DARK} />
         </FTouchableOpacity>
       </View>
-      {type === 'image' ? null : (
-        <FText type="medium" style={Styles.headerTitle}>
-          {getPluralText(data?.length, 'Selected file')}
+      {type === RECEIPT_LIST_VIEW_TYPE.IMAGE ? null : (
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.headerTitle}>
+          {getPluralText(data?.length, Strings.selectedFile)}
         </FText>
       )}
       <View style={Styles.flex_1(type)}>
-        {data.length > 1 || type === 'list' ? (
+        {data.length > 1 || type === RECEIPT_LIST_VIEW_TYPE.LIST ? (
           <FlatList
             ref={listRef}
             onContentSizeChange={() => listRef.current.scrollToEnd()}
             data={data}
             renderItem={renderItem}
             keyExtractor={(item) => item.id}
-            horizontal={type === 'image' ? true : false}
+            horizontal={type === RECEIPT_LIST_VIEW_TYPE.IMAGE ? true : false}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{paddingLeft: type === 'image' ? DP._24 : 0}}
+            contentContainerStyle={{
+              paddingLeft: type === RECEIPT_LIST_VIEW_TYPE.IMAGE ? DP._24 : 0,
+            }}
             bounces={false}
             ItemSeparatorComponent={() =>
-              type === 'image' ? null : <View style={Styles.separator} />
+              type === RECEIPT_LIST_VIEW_TYPE.IMAGE ? null : (
+                <View style={Styles.separator} />
+              )
             }
           />
         ) : (
@@ -111,19 +121,19 @@ const ReceiptListView = ({
       </View>
       <View style={Styles.buttonsContainer}>
         <Button
-          textFont={'medium'}
+          textFont={FONT_TYPE.MEDIUM}
           style={Styles.scanButtonStyle(scanDisabled)}
           textStyle={Styles.scanButtonText}
           onPress={onScanAgainPress}
           activeOpacity={scanDisabled ? 0.4 : 1}>
-          Add another
+          {Strings.addAnother}
         </Button>
         <Button
-          textFont={'medium'}
+          textFont={FONT_TYPE.MEDIUM}
           style={Styles.uploadButtonStyle}
           textStyle={Styles.uploadButtonText}
           onPress={onUploadReceiptPress}>
-          Upload
+          {Strings.upload}
         </Button>
       </View>
     </View>

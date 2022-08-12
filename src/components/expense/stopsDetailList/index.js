@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import {View, FlatList} from 'react-native';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import DashedLine from '../../../common/components/dashedLine';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import DialogBox from '../../../common/components/dialogBox';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 
 import Styles from './Styles';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 /*
 TODO: Fix scroll issue for bottom list
@@ -24,7 +25,7 @@ const StopDetailList = ({data}) => {
             index === data.length - 1,
           )}>
           <View style={Styles.characterContainer(false)}>
-            <FText type={'medium'} style={Styles.character}>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.character}>
               {String.fromCharCode(index + 65)}
             </FText>
           </View>
@@ -54,9 +55,9 @@ const StopDetailList = ({data}) => {
         <View style={Styles.locationNameAndStopContainer(false)}>
           <View style={Styles.characterContainer(true)} />
           <FTouchableOpacity onPress={() => setModalVisible(true)}>
-            <FText style={Styles.locationName(true)}>{`${
-              data.length - 2
-            } stops`}</FText>
+            <FText style={Styles.locationName(true)}>
+              {Strings.stopsCount(data.length - 2)}
+            </FText>
           </FTouchableOpacity>
         </View>
         {showDash && (

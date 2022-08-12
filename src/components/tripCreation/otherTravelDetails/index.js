@@ -3,11 +3,16 @@ import {View, FlatList} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import {FText, FTouchableOpacity, PickerField, TextField} from '../../..';
+
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import PickerField from '../../../common/components/pickerField';
+import TextField from '../../../common/components/textField';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DialogBox from '../../../common/components/dialogBox';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 export default function OtherTravelDetails(props) {
   const [visible, setVisible] = useState(false);
@@ -43,15 +48,15 @@ export default function OtherTravelDetails(props) {
   }
 
   return (
-    <View style={[Styles.container, props.style]}>
-      <FText type="medium" style={Styles.title}>
-        Other details
+    <View style={Styles.container}>
+      <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
+        {Strings.otherDetails}
       </FText>
       <PickerField
         onPress={() => setVisible(true)}
         error={purposeOfTravelerError}
         helperText={purposeOfTravelerError}
-        label="Purpose of travel"
+        label={Strings.purposeOfTravel}
         labelStyle={Styles.textFieldLabel}
         value={selectedValue.value}
         rightIcon={
@@ -67,7 +72,7 @@ export default function OtherTravelDetails(props) {
       <TextField
         value={props.otherRemark}
         onChangeText={onChangeText}
-        label="Other remarks (optional)"
+        label={Strings.otherRemarks}
         labelStyle={Styles.textFieldLabel}
         topMargin={DP._18}
       />
@@ -85,7 +90,7 @@ export default function OtherTravelDetails(props) {
                   color={Color.BROWN_GREY}
                 />
               </FTouchableOpacity>
-              <FText style={Styles.heading}>{'Purpose of travel'}</FText>
+              <FText style={Styles.heading}>{Strings.purposeOfTravel}</FText>
               <View style={{paddingHorizontal: DP._20}}>
                 <FlatList
                   data={purposeOfTravel}

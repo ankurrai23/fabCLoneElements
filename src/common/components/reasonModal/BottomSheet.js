@@ -3,7 +3,7 @@ import {View, KeyboardAvoidingView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Modal from './Modal';
-import {FTouchableOpacity} from '../../..';
+import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import {DP} from '../../../utils/Dimen';
 import Styles from './Styles';
 import Utils from '../../../utils/Utils';

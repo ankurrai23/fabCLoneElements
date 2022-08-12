@@ -24,4 +24,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  FlexGrow: {
+    flexGrow: 1,
+  },
 });

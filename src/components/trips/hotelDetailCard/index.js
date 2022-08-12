@@ -1,6 +1,6 @@
 import {View, Animated} from 'react-native';
 import React, {useState} from 'react';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -19,6 +19,7 @@ import TripStatus from '../tripStatus';
 import {ImageConst} from '../../../utils/imageConst';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ContactSupport from '../../../common/components/contactSupport';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 export const getStatusObject = (status) => {
   const capitalize = () => {
@@ -106,7 +107,7 @@ export default function HotelDetailCard({
   const CheckInInfo = ({title, date, time}) => (
     <View>
       <FText style={Styles.sectionTitle}>{title}</FText>
-      <FText type="medium">{date}</FText>
+      <FText type={FONT_TYPE.MEDIUM}>{date}</FText>
       {time && <FText style={Styles.checkInTIme}>{time}</FText>}
     </View>
   );
@@ -120,14 +121,7 @@ export default function HotelDetailCard({
 
   const Inclusions = ({image, text}) => (
     <View style={Styles.inclusionContainer}>
-      <FImage
-        source={{uri: image}}
-        style={{
-          height: DP._16,
-          width: DP._16,
-          marginRight: DP._8,
-        }}
-      />
+      <FImage source={{uri: image}} style={Styles.inclusionIcon} />
       <FText>{text}</FText>
     </View>
   );
@@ -145,13 +139,13 @@ export default function HotelDetailCard({
                   <FText style={{color: Color.DODGER_BLUE}}>{item.name}</FText>
                   <Feather name="chevron-right" size={DP._14} />
                 </View>
-                {item.type === 'SUBMIT_REVIEW' && (
+                {item.type === HotelSubTripActions.SUBMIT_REVIEW && (
                   <FText
                     style={{
                       fontSize: DP._11,
                       color: Color.GREY_PURPLE,
                     }}>
-                    Help your colleague decide the next time
+                    {Strings.helpColleagueDecideNextTime}
                   </FText>
                 )}
               </FTouchableOpacity>
@@ -203,8 +197,8 @@ export default function HotelDetailCard({
           <Separator style={Styles.separator} />
           <View style={Styles.flexRowWithSpaceBetween}>
             <View style={Styles.flexRow}>
-              <FText>Booking ID</FText>
-              <FText type="bold" style={{paddingLeft: DP._8}}>
+              <FText>{Strings.bookingId}</FText>
+              <FText type={FONT_TYPE.BOLD} style={{paddingLeft: DP._8}}>
                 {item.bookingId}
               </FText>
             </View>
@@ -224,7 +218,7 @@ export default function HotelDetailCard({
                     fontSize: DP._12,
                     color: Color.DODGER_BLUE,
                   }}>
-                  Directions
+                  {Strings.directions}
                 </FText>
               </FTouchableOpacity>
             )}
@@ -234,18 +228,20 @@ export default function HotelDetailCard({
             <Animated.View style={{opacity: fadeIn}}>
               <View style={Styles.flexRowWithSpaceBetween}>
                 <CheckInInfo
-                  title={'Check-in date'}
+                  title={Strings.checkInDate}
                   date={item.checkIn.date}
                   time={
-                    item.checkIn.time ? `Check-in: ${item.checkIn.time}` : null
+                    item.checkIn.time
+                      ? Strings.checkInTime(item.checkIn.time)
+                      : null
                   }
                 />
                 <CheckInInfo
-                  title={'Check-out date'}
+                  title={Strings.checkOutDate}
                   date={item.checkOut.date}
                   time={
                     item.checkOut.time
-                      ? `Check-out: ${item.checkOut.time}`
+                      ? Strings.checkOutTime(item.checkOut.time)
                       : null
                   }
                 />
@@ -256,15 +252,17 @@ export default function HotelDetailCard({
                       color: Color.GREY_PURPLE,
                       marginBottom: DP._8,
                     }}>
-                    Rooms
+                    {Strings.rooms}
                   </FText>
-                  <FText type="medium">{item.noOfRooms || '-'}</FText>
+                  <FText type={FONT_TYPE.MEDIUM}>{item.noOfRooms || '-'}</FText>
                 </View>
               </View>
               <Separator style={Styles.separator} />
               {!item.inclusions?.length ? null : (
                 <>
-                  <FText style={Styles.sectionTitle}>Inclusions</FText>
+                  <FText style={Styles.sectionTitle}>
+                    {Strings.inclusions}
+                  </FText>
                   {item.inclusions?.map((item, index) => {
                     if (index < 3)
                       return (
@@ -280,7 +278,7 @@ export default function HotelDetailCard({
                       onPress={() => setSheetVisible(true)}
                       disabled={item.reduceOpacity}>
                       <FText style={Styles.moreInclustion}>
-                        +{item.inclusions.length - 3} more
+                        {Strings.moreInclusions(item.inclusions.length - 3)}
                       </FText>
                     </FTouchableOpacity>
                   )}
@@ -289,7 +287,9 @@ export default function HotelDetailCard({
               )}
               {item?.coTravellers?.length > 0 && (
                 <>
-                  <FText style={Styles.sectionTitle}>Co-travelers</FText>
+                  <FText style={Styles.sectionTitle}>
+                    {Strings.coTravelers}
+                  </FText>
                   {item.coTravellers.map((item, index) => (
                     <CoTraveller name={item} key={`abc${index}def`} />
                   ))}
@@ -297,7 +297,7 @@ export default function HotelDetailCard({
                 </>
               )}
               <FText style={[Styles.sectionTitle, {marginTop: DP._8}]}>
-                Payment mode
+                {Strings.paymentMode}
               </FText>
               <View style={Styles.paymentModeContainer}>
                 <View
@@ -312,7 +312,7 @@ export default function HotelDetailCard({
                     color={Color.GREY_PURPLE}
                   />
                   <FText style={{marginLeft: DP._8, fontSize: DP._12}}>
-                    {item?.paymentMode ? item.paymentMode : 'N.A'}
+                    {item?.paymentMode ? item.paymentMode : Strings.NA}
                   </FText>
                 </View>
                 {item.paymentStatus && (
@@ -338,7 +338,7 @@ export default function HotelDetailCard({
                   onPress={() => onActionPress?.(payNowAction)}
                   style={{borderRadius: DP._4, marginTop: DP._4}}
                   disabled={item.reduceOpacity}
-                  textFont="medium">
+                  textFont={FONT_TYPE.MEDIUM}>
                   {payNowAction.name}
                 </Button>
               )}
@@ -362,9 +362,9 @@ export default function HotelDetailCard({
               hitSlop={Styles.viewDetailHitSlop}
               onPress={onItemPress}
               style={Styles.viewDetailView}>
-              <FText style={Styles.showMoreTxt}>{`View ${
-                expanded ? 'less' : 'more'
-              } details`}</FText>
+              <FText style={Styles.showMoreTxt}>
+                {Strings.viewDetails(expanded)}
+              </FText>
               <Animated.View style={{transform: [{rotate: spin}]}}>
                 <AntDesign
                   name="down"
@@ -411,7 +411,7 @@ export default function HotelDetailCard({
         onClose={() => setSheetVisible(false)}
         ContentModal={
           <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>Inclusions</FText>
+            <FText style={Styles.modalHeading}>{Strings.inclusions}</FText>
             <FlatList
               data={item.inclusions}
               renderItem={renderItem}

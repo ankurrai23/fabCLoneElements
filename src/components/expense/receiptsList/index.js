@@ -2,7 +2,7 @@ import React from 'react';
 import {View, FlatList} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
 import {getPluralText} from '../../../utils/Utils';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -11,6 +11,8 @@ import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
+import {RECEIPT_LIST_VIEW_TYPE} from '../receiptListView';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const ListView = ({
   type,
@@ -23,7 +25,7 @@ const ListView = ({
   itemLength,
 }) => (
   <FTouchableOpacity onPress={onPress} style={Styles.imageStyle(multipleImage)}>
-    {type === 'image' ? (
+    {type === RECEIPT_LIST_VIEW_TYPE.IMAGE ? (
       <FImage
         source={{
           uri: imageUri,
@@ -63,12 +65,12 @@ const ReceiptsList = ({
   return (
     <View style={Styles.uploadReceiptContainer}>
       <View style={Styles.uploadReceiptView}>
-        <FText type={'medium'} style={Styles.uploadReceiptText}>
-          {getPluralText(receipts?.length, 'Uploaded receipt')}
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.uploadReceiptText}>
+          {getPluralText(receipts?.length, Strings.uploadedReceipt)}
         </FText>
         {onPressAddMore && (
           <FTouchableOpacity hitSlop={Styles.hitSlop} onPress={onPressAddMore}>
-            <FText style={Styles.addMoreTxt}>{'Add more'}</FText>
+            <FText style={Styles.addMoreTxt}>{Strings.addMore}</FText>
           </FTouchableOpacity>
         )}
       </View>

@@ -6,7 +6,6 @@ import pickerFieldProps from './common/components/pickerField/data';
 import emptyScreenProps from './common/components/emptyScreen/data';
 import checkboxProps from './common/components/checkbox/data';
 import claimsCardProps from './common/components/claimsCard/data';
-import dropDownListProps from './common/components/dropDownList/data';
 import stackHeaderProps from './common/components/stackHeader/data';
 import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 import contactSupportProps from './common/components/contactSupport/data';
@@ -32,16 +31,10 @@ import floatingActionProps from './common/components/floatingActionButton/data';
 
 //trip creation props
 import coTravellersDetailProps from './components/tripCreation/coTravelersDetails/data';
-import comingSoonProps from './components/tripCreation/comingSoon/data';
-import requestTypeProps from './components/tripCreation/requestType/data';
-import basicTravelDetailsProps from './components/tripCreation/basicTravelDetails/data';
 import hotelDetailsProps from './components/tripCreation/hotelDetails/data';
 import flightDetailsProps from './components/tripCreation/flightDetails/data';
 import otherTravelDetailsProps from './components/tripCreation/otherTravelDetails/data';
 import approvalManagerProps from './components/tripCreation/approvalManager/data';
-import addFlightDetailsProps from './components/tripCreation/addFlightDetails/data';
-import addHotelDetailsProps from './components/tripCreation/addHotelDetails/data';
-import basicTravelDetailsCardProps from './components/tripCreation/basicTravelDetailsCard/data';
 import removeItineraryProps from './components/tripCreation/removeItinerary/data';
 import itineraryCardProps from './components/tripCreation/itinerary/data';
 
@@ -81,15 +74,10 @@ export {
   receivedTripCardProps,
   hotelPreferenceCardProps,
   managerActionsProps,
-  comingSoonProps,
-  requestTypeProps,
-  basicTravelDetailsProps,
   hotelDetailsProps,
   flightDetailsProps,
   otherTravelDetailsProps,
   approvalManagerProps,
-  addFlightDetailsProps,
-  addHotelDetailsProps,
   coTravellersProps,
   flightDetailCardProps,
   listTypeFilterProps,
@@ -99,7 +87,6 @@ export {
   messageCardProps,
   floatingActionProps,
   checkboxProps,
-  dropDownListProps,
   stackHeaderProps,
   scrollableTabBarProps,
   expenseCardProps,
@@ -110,7 +97,6 @@ export {
   locationInputBoxProps,
   swiperProps,
   monthPickerProps,
-  basicTravelDetailsCardProps,
   receiptsListProps,
   receiptListViewProps,
   removeItineraryProps,

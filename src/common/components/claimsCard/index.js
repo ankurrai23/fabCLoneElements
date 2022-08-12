@@ -4,10 +4,17 @@ import {View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {FText, FTouchableOpacity} from '../../..';
+import FText, {FONT_TYPE} from '../../rn/FText';
+import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
+import {Strings} from '../../../utils/strings/index.travelPlus';
+
+export const CLAIM_CARD_TYPE = {
+  LARGE: 'large',
+  SMALL: 'small',
+};
 
 export default function ClaimsCard({...props}) {
   const [layout, setLayout] = useState({});
@@ -19,7 +26,7 @@ export default function ClaimsCard({...props}) {
   }
   return (
     <>
-      {props.type === 'small' && (
+      {props.type === CLAIM_CARD_TYPE.SMALL && (
         <FTouchableOpacity
           onPress={props.onPress}
           disabled={props.disabled}
@@ -32,12 +39,12 @@ export default function ClaimsCard({...props}) {
             locations={[0, 0.6]}>
             <View style={Styles.rightTriangle(layout, props.cardColor)} />
             <View>
-              <FText type="medium" style={Styles.quantity}>
+              <FText type={FONT_TYPE.MEDIUM} style={Styles.quantity}>
                 {props.quantity}
               </FText>
               <FText style={Styles.title}>{props.subText}</FText>
               <View style={Styles.amountContainer}>
-                <FText type="medium" style={Styles.amount}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.amount}>
                   {props.amount}
                 </FText>
                 {props.disabled ? null : (
@@ -50,7 +57,7 @@ export default function ClaimsCard({...props}) {
           </LinearGradient>
         </FTouchableOpacity>
       )}
-      {props.type === 'large' && (
+      {props.type === CLAIM_CARD_TYPE.LARGE && (
         <FTouchableOpacity
           onPress={props.onPress}
           disabled={props.disabled}
@@ -76,11 +83,17 @@ export default function ClaimsCard({...props}) {
               ) : (
                 <>
                   {props.amount ? (
-                    <FText type="medium" style={Styles.amountSecondary} numberOfLines={1}>
+                    <FText
+                      type={FONT_TYPE.MEDIUM}
+                      style={Styles.amountSecondary}
+                      numberOfLines={1}>
                       {props.amount}
                     </FText>
                   ) : (
-                    <FText type="medium" style={Styles.amountSecondary} numberOfLines={1}>
+                    <FText
+                      type={FONT_TYPE.MEDIUM}
+                      style={Styles.amountSecondary}
+                      numberOfLines={1}>
                       {props.quantity}
                     </FText>
                   )}
@@ -89,19 +102,26 @@ export default function ClaimsCard({...props}) {
               {props.noClaim ? (
                 <>
                   <FText style={[Styles.title]}>
-                    <FText style={Styles.color_White} type="semiBold">
-                      Add
+                    <FText
+                      style={Styles.color_White}
+                      type={FONT_TYPE.SEMI_BOLD}>
+                      {Strings.add}
                     </FText>
-                    {` your first expense claim for ${props.date}`}
+                    {Strings.firstExpenseClaim(props.date)}
                   </FText>
                 </>
               ) : (
                 <>
                   <View>
-                    <FText type="semiBold" style={Styles.claimsText} numberOfLines={1}>
+                    <FText
+                      type={FONT_TYPE.SEMI_BOLD}
+                      style={Styles.claimsText}
+                      numberOfLines={1}>
                       {props.cardTitle}
                     </FText>
-                    <FText style={[Styles.title, Styles.lowerCase]} numberOfLines={1}>
+                    <FText
+                      style={[Styles.title, Styles.lowerCase]}
+                      numberOfLines={1}>
                       {props.subText}
                     </FText>
                   </View>
@@ -113,12 +133,12 @@ export default function ClaimsCard({...props}) {
                       <View style={Styles.actionView}>
                         <View style={Styles.circleView} />
                         <FText style={Styles.actionNeedTxt}>
-                          Action needed
+                          {Strings.actionNeeded}
                         </FText>
                       </View>
                     ) : (
                       props.date && (
-                        <FText type={'medium'} style={Styles.dateText}>
+                        <FText type={FONT_TYPE.MEDIUM} style={Styles.dateText}>
                           {props.date}
                         </FText>
                       )

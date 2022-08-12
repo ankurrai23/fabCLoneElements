@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -13,8 +13,9 @@ import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
 import InfoBox from '../components/infoBox';
 import {ImageConst} from '../../../utils/imageConst';
-import {TripStatus} from '../../../index';
+import TripStatus from '../tripStatus';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 /*
 TODO:
 1. Cancelled state prop
@@ -117,7 +118,7 @@ const FlightItineraryCard = ({
         <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>
-              <FText type={'medium'} style={Styles.date}>
+              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                 {item.date}
               </FText>
               <FText
@@ -135,7 +136,7 @@ const FlightItineraryCard = ({
                 color={Color.BATTLESHIP_GREY_TWO}
               />
             ) : (
-              <FText type={'medium'} style={Styles.slotDetail}>
+              <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
                 {item.slotDetail}
               </FText>
             )}
@@ -194,7 +195,7 @@ const FlightItineraryCard = ({
                 <FText style={Styles.time}>{item.flightNumber}</FText>
               </View>
               <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>PNR</FText>
+                <FText style={Styles.portName}>{Strings.pnr}</FText>
                 <FText style={Styles.time}>{item.pnr}</FText>
               </View>
             </View>

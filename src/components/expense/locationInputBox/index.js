@@ -2,12 +2,13 @@ import React from 'react';
 import {View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import PickerField from '../../../common/components/pickerField';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import DashedLine from '../../../common/components/dashedLine';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const LocationInputBox = ({
   value,
@@ -28,7 +29,7 @@ const LocationInputBox = ({
   return (
     <View style={Styles.container}>
       <View style={Styles.textContainer(error)}>
-        <FText type={'medium'} style={Styles.text}>
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.text}>
           {String.fromCharCode(index + 65)}
         </FText>
       </View>
@@ -47,7 +48,11 @@ const LocationInputBox = ({
           value={value}
           onPress={onPress}
           label={
-            index > 1 && !value ? 'Add a stop' : index > 0 ? 'Stop' : 'Start'
+            index > 1 && !value
+              ? Strings.addAStop
+              : index > 0
+              ? Strings.stop
+              : Strings.start
           }
           helperText={error}
           error={!!error}

@@ -179,4 +179,9 @@ export default StyleSheet.create({
     left: DP._15,
     right: DP._15,
   },
+  inclusionIcon: {
+    height: DP._16,
+    width: DP._16,
+    marginRight: DP._8,
+  },
 });

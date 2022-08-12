@@ -3,11 +3,18 @@ import {View} from 'react-native';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import moment from 'moment';
 
-import {FText, FTouchableOpacity, FImage} from '../../..';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import FImage from '../../../common/rn/FImage';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {DP} from '../../../utils/Dimen';
 import Styles from './Styles';
 import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
+import {Strings} from '../../../utils/strings/index.travelPlus';
+import {TRIP_TYPE} from '../../../utils/Constants';
+
+const DATE = 'DD'; // 12, 13
+const MONTH = 'MMM'; // Jan, Feb
 
 export default function FlightDetails(props) {
   function renderRoute() {
@@ -16,19 +23,17 @@ export default function FlightDetails(props) {
         <View key={index} style={Styles.renderRoute}>
           <View style={Styles.flexDirectionRow}>
             <View style={Styles.Flex}>
-              <FText type="medium" style={Styles.renderValue}>
-                {moment(item.departureDate).format('DD') + ' '}
+              <FText type={FONT_TYPE.MEDIUM} style={Styles.renderValue}>
+                {moment(item.departureDate).format(DATE) + ' '}
                 <FText style={Styles.monthlabel}>
-                  {moment(item.departureDate).format('MMM')}
+                  {moment(item.departureDate).format(MONTH)}
                 </FText>
               </FText>
             </View>
             <View style={Styles.slotContainer}>
-              <FText
-                type="medium"
-                style={
-                  Styles.slotText
-                }>{`Slot: ${item.startTime} - ${item.endTime}`}</FText>
+              <FText type={FONT_TYPE.MEDIUM} style={Styles.slotText}>
+                {Strings.slotInfo(item.startTime, item.endTime)}
+              </FText>
             </View>
           </View>
           <View style={Styles.routeContainer}>
@@ -69,8 +74,8 @@ export default function FlightDetails(props) {
       onLayout={props.onLayout}
       style={[Styles.container, {...props.style}]}>
       <View style={Styles.titleContainer}>
-        <FText type="medium" style={Styles.title}>
-          Flight(s)
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
+          {Strings.flights}
         </FText>
         <FTouchableOpacity
           style={Styles.flexRow}
@@ -79,8 +84,8 @@ export default function FlightDetails(props) {
           <FImage
             source={props.data?.length ? ImageConst.edit2 : ImageConst.plus}
           />
-          <FText type="medium" style={Styles.addDetails}>
-            {props.data?.length > 0 ? 'Edit' : 'Add'}
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.addDetails}>
+            {props.data?.length > 0 ? Strings.edit : Strings.add}
           </FText>
         </FTouchableOpacity>
       </View>
@@ -90,14 +95,12 @@ export default function FlightDetails(props) {
       {props.data?.length > 0 ? (
         <View style={Styles.itemContainer}>{renderRoute()}</View>
       ) : null}
-      {props.data?.length === 1 && props.tripType === 1 ? (
+      {props.data?.length === 1 && props.tripType === TRIP_TYPE.ROUND_TRIP ? (
         <FTouchableOpacity
           onPress={props.onPress}
           style={Styles.renderNewRoute}>
           <View style={Styles.innerViewFlight}>
-            <FText style={Styles.addFlightTxt}>
-              {'Add return flight detail'}
-            </FText>
+            <FText style={Styles.addFlightTxt}>{Strings.addReturnFlight}</FText>
           </View>
         </FTouchableOpacity>
       ) : null}

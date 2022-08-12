@@ -10,6 +10,7 @@ import {Color} from '../../../utils/color';
 import Separator from '../../../common/components/separator';
 import {DP} from '../../../utils/Dimen';
 import FText from '../../../common/rn/FText';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const HotelDetailLoadingState = () => {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -128,15 +129,15 @@ const HotelDetailLoadingState = () => {
             </View>
           </View>
           <Separator style={{marginVertical: DP._16}} />
-          <FText style={Styles.sectionTitle}>Inclusions</FText>
+          <FText style={Styles.sectionTitle}>{Strings.inclusions}</FText>
           <InclusionComponent />
           <InclusionComponent />
           <Separator style={{marginVertical: DP._16}} />
-          <FText style={Styles.sectionTitle}>Co-travelers</FText>
+          <FText style={Styles.sectionTitle}>{Strings.coTravelers}</FText>
           <CoTravellerComponent width={'35%'} />
           <CoTravellerComponent width={'45%'} />
           <Separator style={{marginVertical: DP._16}} />
-          <FText style={Styles.sectionTitle}>Payment mode</FText>
+          <FText style={Styles.sectionTitle}>{Strings.paymentMode}</FText>
           <View style={Styles.flexRow}>
             <View style={Styles.payment}>
               <Placeholder

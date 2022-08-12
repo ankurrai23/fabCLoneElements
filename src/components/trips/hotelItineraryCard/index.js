@@ -7,17 +7,18 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 
-import {
-  DashedLine,
-  Separator,
-  FImage,
-  FText,
-  FTouchableOpacity,
-  TripStatus,
-} from '../../..';
+import DashedLine from '../../../common/components/dashedLine';
+import Separator from '../../../common/components/separator';
+import FImage from '../../../common/rn/FImage';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import TripStatus from '../tripStatus';
+
 import Styles from './Styles';
 import InfoBox from '../components/infoBox';
 import {HotelSubTripActions} from '../../../utils/SubTripActions';
+import {Strings} from '../../../utils/strings/index.travelPlus';
+import {TRIP_STATUS} from '../../../utils/Constants';
 
 const HotelItineraryCard = ({
   item,
@@ -27,7 +28,6 @@ const HotelItineraryCard = ({
   hideIcon,
   showLine,
   showInfo,
-  preferenceSelected,
   processed,
   timelineGreyed,
   showConfirmedStatus,
@@ -131,30 +131,30 @@ const HotelItineraryCard = ({
           <View style={Styles.dateAndStatusContainer}>
             {sameMonthDates ? (
               <View style={Styles.datesContainer}>
-                <FText type="medium" style={Styles.date}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                   {item.checkIn.date}
                 </FText>
                 <FText style={Styles.hyphen}>{' - '}</FText>
-                <FText type="medium" style={Styles.date}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                   {item.checkOut.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkIn.month}</FText>
               </View>
             ) : (
               <View style={Styles.datesContainer}>
-                <FText type="medium" style={Styles.date}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                   {item.checkIn.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkIn.month}</FText>
                 <FText style={Styles.hyphen}>{' - '}</FText>
-                <FText type="medium" style={Styles.date}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                   {item.checkOut.date}
                 </FText>
                 <FText style={Styles.month}> {item.checkOut.month}</FText>
               </View>
             )}
             {showConfirmedStatus && <TripStatus statusObj={confirmedStatus} />}
-            {item?.status?.key === 'CANCELLED' ? (
+            {item?.status?.key === TRIP_STATUS.CANCELLED ? (
               <TripStatus statusObj={item.status} />
             ) : (
               processed && (
@@ -172,7 +172,7 @@ const HotelItineraryCard = ({
             <View style={Styles.checkInAndDirectionContainer}>
               {item.checkInTime ? (
                 <FText style={Styles.checkIn}>
-                  Check-in: {item.checkInTime}
+                  {Strings.checkInTime(item.checkInTime)}
                 </FText>
               ) : (
                 <View />

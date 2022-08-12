@@ -4,7 +4,11 @@ import {Animated, Easing, View, TouchableNativeFeedback} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {BlurView} from '@react-native-community/blur';
 import Styles from './Styles';
-import {FImage, FText, FTouchableOpacity} from '../../..';
+
+import FImage from '../../rn/FImage';
+import FText from '../../rn/FText';
+import FTouchableOpacity from '../../rn/FTouchableOpacity';
+
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {ImageConst} from '../../../utils/imageConst/index.travelPlus';

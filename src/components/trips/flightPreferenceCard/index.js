@@ -2,12 +2,13 @@ import React from 'react';
 import {View} from 'react-native';
 import Styles from './Styles';
 import Animated from 'react-native-reanimated';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const AnimatedMaterialCommunityIcon = Animated.createAnimatedComponent(
   MaterialCommunityIcons,
@@ -26,10 +27,7 @@ export default function FlightPreferenceCard({
       <Animated.View style={Styles.animatedContainer(width, height)}>
         <View style={Styles.flightLogoAndNameContainer}>
           <FImage
-            style={{
-              width: DP._32,
-              height: DP._32,
-            }}
+            style={Styles.imageStyle}
             source={{uri: flightInfo.airlineIcon}}
           />
           <FText style={Styles.flightName}>{flightInfo.airline}</FText>
@@ -57,7 +55,7 @@ export default function FlightPreferenceCard({
           {/*<Animated.View style={[Styles.line, {opacity: opacity}]} />*/}
           {/*<Animated.View style={[Styles.whiteDot, {opacity: opacity}]} />*/}
           <Animated.Text
-            type="medium"
+            type={FONT_TYPE.MEDIUM}
             style={Styles.destinationAirPortCode(opacity)}>
             {flightInfo.destinationAirportCode}
           </Animated.Text>
@@ -102,7 +100,7 @@ export default function FlightPreferenceCard({
               flightInfo.preference,
             )}>
             <FText
-              type="medium"
+              type={FONT_TYPE.MEDIUM}
               style={{
                 color: flightInfo.disablePref
                   ? Color.WHITE
@@ -110,11 +108,11 @@ export default function FlightPreferenceCard({
                   ? Color.DARK
                   : Color.TWILIGHT_BLUE,
               }}>
-              Tap to {flightInfo.preference ? 'reset' : 'set'} preference
+              {Strings.tapToSetPreference(flightInfo.preference)}
             </FText>
             <View style={Styles.preferenceContainer}>
               <FText
-                type="medium"
+                type={FONT_TYPE.MEDIUM}
                 style={{
                   fontSize: DP._18,
                   color: flightInfo.disablePref

@@ -11,7 +11,8 @@ import Separator from '../../../common/components/separator';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const HotelPreferenceLoadingState = ({offline = false, onBackClick}) => {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -92,8 +93,8 @@ const HotelPreferenceLoadingState = ({offline = false, onBackClick}) => {
         </View>
         <View style={{padding: DP._16}}>
           <Separator />
-          <FText type={'medium'} style={Styles.button}>
-            Tap to set preference
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.button}>
+            {Strings.tapToSetPreference(false)}
           </FText>
         </View>
       </PlaceholderContainer>

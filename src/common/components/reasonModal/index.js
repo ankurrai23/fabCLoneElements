@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
-import {FText, Button, TextField} from '../../..';
+import FText from '../../rn/FText';
+import Button from '../button';
+import TextField from '../textField';
 import Styles from './Styles';
 import Utils from '../../../utils/Utils';
 import BottomSheet from './BottomSheet';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const ReasonModal = (props) => {
   const [reason, setReason] = useState('');
@@ -24,7 +27,7 @@ const ReasonModal = (props) => {
     }
     const newErrors = {};
     if (!reason?.trim()) {
-      newErrors.reason = 'Please enter a reason to proceed';
+      newErrors.reason = Strings.reasonToProceed;
     }
     setErrors(newErrors);
     return Utils.isEmpty(newErrors);

@@ -2,12 +2,15 @@ import React from 'react';
 import {View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-import {FText, FTouchableOpacity, TripStatus} from '../../..';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import TripStatus from '../tripStatus';
+
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-
 import Styles from './Styles';
 import Separator from '../../../common/components/separator';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
 function ItineraryHeader(props) {
   return (
@@ -18,7 +21,7 @@ function ItineraryHeader(props) {
           hitSlop={{left: 50, right: 20, bottom: 20, top: 20}}>
           <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
         </FTouchableOpacity>
-        <FText type="medium" style={Styles.title}>
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
           {props.itinerary}
         </FText>
       </View>
@@ -33,15 +36,15 @@ function ItineraryHeader(props) {
         <>
           <View style={Styles.subContainer}>
             <View style={Styles.detailsContainer}>
-              <FText style={Styles.detailsTitle}>Request by: </FText>
+              <FText style={Styles.detailsTitle}>{Strings.requestBy}</FText>
               <FText>{props.tripRequesterInfo.name}</FText>
             </View>
             <View style={Styles.detailsContainer}>
-              <FText style={Styles.detailsTitle}>Department: </FText>
+              <FText style={Styles.detailsTitle}>{Strings.department}</FText>
               <FText>{props.tripRequesterInfo.department}</FText>
             </View>
             <View style={Styles.detailsContainer_2}>
-              <FText style={Styles.detailsTitle}>Designation: </FText>
+              <FText style={Styles.detailsTitle}>{Strings.designation}</FText>
               <FText>{props.tripRequesterInfo.designation}</FText>
             </View>
           </View>

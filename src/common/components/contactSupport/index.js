@@ -6,6 +6,7 @@ import FText from '../../rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import SupportDialog from '../supportDialog';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 // TODO: Handle the case when no data in supportDetails
 
 export default function ContactSupport({
@@ -15,14 +16,13 @@ export default function ContactSupport({
   style,
   onClose,
 }) {
-  console.log('support dialog', supportDetails);
   return (
     <>
       <FTouchableOpacity
         style={[styles.container, style]}
         onPress={onContactSupportPress}>
         <FText style={styles.textStyle}>
-          {item?.name || 'Contact 24x7 Support'}
+          {item?.name || Strings.contactSupport}
         </FText>
         <Ionicons name="call" size={DP._16} color={Color.DODGER_BLUE} />
       </FTouchableOpacity>

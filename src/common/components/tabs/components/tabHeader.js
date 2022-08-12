@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FText from '../../../rn/FText';
+import FText, {FONT_TYPE} from '../../../rn/FText';
 import FTouchableOpacity from '../../../rn/FTouchableOpacity';
 
 import Styles from '../Styles';
@@ -23,7 +23,7 @@ export const TabHeader = ({
       style={Styles.tabContainer}>
       {absoluteView}
       <FText
-        type={index === initialPage ? 'semiBold' : 'regular'}
+        type={index === initialPage ? FONT_TYPE.SEMI_BOLD : FONT_TYPE.REGULAR}
         style={tabHeading}
         numberOfLines={2}>
         {title}
