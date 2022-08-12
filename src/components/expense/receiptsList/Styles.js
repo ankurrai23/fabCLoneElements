@@ -5,13 +5,12 @@ import {Color} from '../../../utils/color/index.travelPlus';
 
 export default StyleSheet.create({
   uploadReceiptContainer: {
-    marginBottom: DP._16,
+    marginBottom: DP._8,
   },
   uploadReceiptText: {
     fontSize: DP._14,
     color: Color.DARK,
-    marginBottom: DP._8,
-    lineHeight: DP._17,
+    lineHeight: DP._20,
   },
   imageStyle: (list) => ({
     width: list ? DP._154 : null,
@@ -22,13 +21,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   }),
-  separator: {width: DP._4},
+  separator: {width: DP._8},
   paddingHorizontal_16: {paddingHorizontal: DP._16},
   uploadReceiptView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: DP._16,
-    marginBottom: DP._12,
+    marginBottom: DP._16,
+    alignItems: 'center',
   },
   addMoreTxt: {
     fontSize: DP._12,

@@ -21,13 +21,13 @@ const LocationInputBox = ({
 }) => {
   const CloseButton = () => (
     <FTouchableOpacity onPress={onRemove} style={Styles.closeButton}>
-      <AntDesign name="close" size={DP._18} color={Color.DARK} />
+      <AntDesign name="close" size={DP._18} color={Color.BATTLESHIP_GREY_TWO} />
     </FTouchableOpacity>
   );
 
   return (
     <View style={Styles.container}>
-      <View style={Styles.textContainer}>
+      <View style={Styles.textContainer(error)}>
         <FText type={'medium'} style={Styles.text}>
           {String.fromCharCode(index + 65)}
         </FText>
@@ -46,10 +46,13 @@ const LocationInputBox = ({
           numberOfLines={1}
           value={value}
           onPress={onPress}
-          placeholder={index > 0 ? 'Stop' : 'Start'}
+          label={
+            index > 1 && !value ? 'Add a stop' : index > 0 ? 'Stop' : 'Start'
+          }
           helperText={error}
           error={!!error}
-          topMargin={DP._8}
+          topMargin={index > 0 ? DP._18 : DP._16}
+          bottomMargin={error ? 0 : DP._6}
         />
       </View>
       <View>{showRemoveButton ? <CloseButton /> : null}</View>

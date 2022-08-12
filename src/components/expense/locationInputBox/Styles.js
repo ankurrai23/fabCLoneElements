@@ -16,7 +16,7 @@ export default StyleSheet.create({
     color: Color.WHITE,
     fontSize: DP._12,
   },
-  textContainer: {
+  textContainer: (error) => ({
     height: DP._18,
     width: DP._18,
     alignItems: 'center',
@@ -24,17 +24,17 @@ export default StyleSheet.create({
     backgroundColor: Color.TWILIGHT_BLUE,
     borderRadius: DP._15,
     marginRight: DP._8,
-    marginTop: DP.minus_8,
-  },
+    marginTop: error ? DP._10 : DP._12,
+  }),
   dashedLine: {
     left: DP._8,
-    top: DP._34,
+    top: DP._40,
     position: 'absolute',
     height: '100%',
     zIndex: -1,
   },
   closeButton: {
     marginLeft: DP._8,
-    marginTop: DP.minus_8,
+    marginTop: DP._12,
   },
 });
