@@ -93,7 +93,6 @@ export default {
     notificationText: null,
     alertMessage: 'You have sent a cancellation request for this booking.',
     reduceOpacity: false,
-    showContactSupport: false,
   },
   onActionPress: (item) => console.log(item),
   onPressClose: () => console.log('close modal'),
