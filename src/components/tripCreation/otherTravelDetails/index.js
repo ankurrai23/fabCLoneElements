@@ -48,7 +48,7 @@ export default function OtherTravelDetails(props) {
   }
 
   return (
-    <View style={Styles.container}>
+    <View style={[Styles.container, props.style]}>
       <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
         {Strings.otherDetails}
       </FText>
