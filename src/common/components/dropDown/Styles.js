@@ -5,7 +5,6 @@ import {shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
   flatlistContainer: (showPaddingBottom) => ({
-    marginTop: DP.minus_16,
     maxHeight: DP._230,
     backgroundColor: 'white',
     paddingBottom: showPaddingBottom ? DP._8 : 0,
