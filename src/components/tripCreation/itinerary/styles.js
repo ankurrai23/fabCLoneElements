@@ -113,7 +113,7 @@ export default StyleSheet.create({
     paddingTop: DP._2,
   },
   briefCardBottomMargin: (margin, error) => {
-    let finalMargin = error ? (margin === DP._32 ? DP._18 : DP._10) : margin;
+    let finalMargin = error ? (margin === DP._24 ? DP._18 : DP._10) : margin;
     return {
       marginBottom: finalMargin,
     };

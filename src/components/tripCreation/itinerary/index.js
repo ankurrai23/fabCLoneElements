@@ -174,7 +174,7 @@ const ItineraryCard = (props) => {
               );
             }}
             bottomMargin={
-              !ifEveryFieldisEmpty && props?.errors?.departureCityError
+              !ifEveryFieldisEmpty && props?.errors?.arrivalCityError
                 ? 0
                 : DP._6
             }
@@ -209,7 +209,7 @@ const ItineraryCard = (props) => {
                 props?.showSaveButton
                   ? !ifEveryFieldisEmpty && props?.errors?.departureDateError
                     ? DP._18
-                    : DP._32
+                    : DP._24
                   : !ifEveryFieldisEmpty && props?.errors?.departureDateError
                   ? DP._18
                   : DP._32
@@ -245,7 +245,7 @@ const ItineraryCard = (props) => {
                   props?.showSaveButton
                     ? !ifEveryFieldisEmpty && props?.errors?.returnDateError
                       ? DP._18
-                      : DP._32
+                      : DP._24
                     : !ifEveryFieldisEmpty && props?.errors?.returnDateError
                     ? DP._18
                     : DP._32
