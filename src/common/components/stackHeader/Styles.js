@@ -10,7 +10,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: DP._16,
     paddingLeft: DP._16,
-    backgroundColor: Color.WHITE,
+    backgroundColor: Color.TWILIGHT_BLUE,
     zIndex: shadowVisible ? 1 : 0,
     ...(shadowVisible ? shadowObj : null),
   }),
@@ -18,6 +18,6 @@ export default StyleSheet.create({
     flex: 1,
     fontSize: DP._16,
     marginLeft: DP._16,
-    color: Color.DARK,
+    color: Color.WHITE,
   },
 });

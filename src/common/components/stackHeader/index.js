@@ -28,7 +28,7 @@ function StackHeader({
         <Feather
           name="chevron-left"
           size={iconSize || DP._24}
-          color={iconColor || Color.BLACK}
+          color={iconColor || Color.WHITE}
         />
       </FTouchableOpacity>
       <FText type={FONT_TYPE.MEDIUM} style={[Styles.title, textStyle]}>
