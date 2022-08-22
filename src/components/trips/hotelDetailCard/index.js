@@ -81,6 +81,7 @@ export default function HotelDetailCard({
   const posAction = isActionEnabled(HotelSubTripActions.SUBMIT_POS);
   const reviewAction = isActionEnabled(HotelSubTripActions.SUBMIT_REVIEW);
   const invoiceAction = isActionEnabled(HotelSubTripActions.VIEW_INVOICE);
+  const supportAction = isActionEnabled(HotelSubTripActions.SUPPORT);
 
   const spin = fadeIn.interpolate({
     inputRange: [0, 1],
@@ -342,7 +343,7 @@ export default function HotelDetailCard({
                   {payNowAction.name}
                 </Button>
               )}
-              {item.showContactSupport && (
+              {supportAction && (
                 <>
                   <Separator style={Styles.separator} />
                   <ContactSupport
