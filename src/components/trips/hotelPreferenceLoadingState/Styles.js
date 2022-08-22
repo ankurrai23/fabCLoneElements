@@ -16,11 +16,12 @@ export default StyleSheet.create({
     borderWidth: DP._0_5,
     ...shadowObj,
     flexGrow: 1,
+    marginHorizontal: DP._8,
   },
-  cardContainer: {paddingHorizontal: DP._8, backgroundColor: Color.WHITE},
+  cardContainer: {
+    backgroundColor: Color.WHITE,
+  },
   headerContainer: {
-    paddingVertical: DP._16,
-    paddingHorizontal: DP._8,
     flexGrow: 1,
   },
   headerTitleLoader: {
@@ -32,7 +33,8 @@ export default StyleSheet.create({
   headerSubTextLoader: {
     width: DP._178,
     height: DP._16,
-    marginTop: DP._32,
+    marginTop: DP._16,
+    marginLeft: DP._16,
     backgroundColor: Color.VERY_LIGHT_PINK,
   },
   headerSubTextLoader2: {
@@ -40,6 +42,8 @@ export default StyleSheet.create({
     height: DP._12,
     marginTop: DP._6,
     backgroundColor: Color.VERY_LIGHT_PINK,
+    marginLeft: DP._16,
+    marginBottom: DP._16,
   },
   imagePlaceholder1: {
     height: DP._146,
@@ -79,5 +83,14 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-end',
   },
-  mainContainer: {marginTop: DP._12, marginHorizontal: DP._8},
+  mainContainer: {
+    marginTop: DP._12,
+    marginHorizontal: DP._8,
+  },
+  headerStyle: {
+    backgroundColor: Color.TWILIGHT_BLUE,
+    alignItems: 'center',
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._16,
+  },
 });

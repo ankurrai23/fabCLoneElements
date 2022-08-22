@@ -43,14 +43,7 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
             <FText>|</FText>
             <Placeholder style={Styles.flightNumber} />
           </View>
-          <Placeholder
-            style={{
-              height: DP._16,
-              width: DP._48,
-              backgroundColor: Color.VERY_LIGHT_PINK,
-              marginLeft: DP._8,
-            }}
-          />
+          <Placeholder style={Styles.placeholder2} />
         </View>
         <View style={Styles.aiportCodeWithIconContainer}>
           <Placeholder style={Styles.commonPlaceholder2(DP._52, DP._21)} />
@@ -83,14 +76,7 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
       delay={500}
       style={Styles.loadingCard2}>
       <Placeholder style={Styles.flightIcon} />
-      <Placeholder
-        style={{
-          height: DP._21,
-          width: DP._52,
-          backgroundColor: Color.VERY_LIGHT_PINK,
-          marginTop: DP._18,
-        }}
-      />
+      <Placeholder style={Styles.placeholder1} />
       <Placeholder style={Styles.time2} />
     </PlaceholderContainer>
   );
@@ -105,9 +91,9 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
         duration={1500}
         delay={500}
         style={Styles.headerContainer}>
-        <View style={Styles.flexRow}>
+        <View style={[Styles.flexRow, Styles.headerStyle]}>
           <FTouchableOpacity onPress={onBackClick}>
-            <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
+            <Feather name="chevron-left" size={DP._24} color={Color.WHITE} />
           </FTouchableOpacity>
           <Placeholder style={Styles.headerTitleLoader} />
         </View>
@@ -128,7 +114,9 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
         delay={500}
         style={Styles.barContainer}>
         <View style={Styles.flexRowAlignCenter}>
-          <FText type={FONT_TYPE.MEDIUM}>{Strings.depart}</FText>
+          <FText style={Styles.depart} type={FONT_TYPE.MEDIUM}>
+            {Strings.depart}
+          </FText>
           <Placeholder
             style={[
               Styles.commonPlaceholder('40%', DP._16),
@@ -136,7 +124,9 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
             ]}
           />
         </View>
-        <FText type={FONT_TYPE.MEDIUM}>{Strings.return}</FText>
+        <FText style={Styles.depart} type={FONT_TYPE.MEDIUM}>
+          {Strings.return}
+        </FText>
       </PlaceholderContainer>
     );
   };

@@ -28,8 +28,8 @@ export default StyleSheet.create({
   },
   cardContainer: {backgroundColor: Color.WHITE},
   headerContainer: {
-    paddingVertical: DP._16,
-    paddingHorizontal: DP._16,
+    // paddingVertical: DP._16,
+    // paddingHorizontal: DP._16,
     flexGrow: 1,
   },
   headerTitleLoader: {
@@ -41,14 +41,17 @@ export default StyleSheet.create({
   headerSubTextLoader: {
     width: DP._178,
     height: DP._16,
-    marginTop: DP._32,
+    marginTop: DP._16,
+    marginHorizontal: DP._16,
     backgroundColor: Color.VERY_LIGHT_PINK,
   },
   headerSubTextLoader2: {
     width: DP._310,
     height: DP._12,
     marginTop: DP._6,
+    marginHorizontal: DP._16,
     backgroundColor: Color.VERY_LIGHT_PINK,
+    marginBottom: DP._24,
   },
   imagePlaceholder1: {
     height: DP._146,
@@ -151,5 +154,26 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  headerStyle: {
+    alignItems: 'center',
+    backgroundColor: Color.TWILIGHT_BLUE,
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._16,
+  },
+  depart: {
+    fontSize: DP._12,
+  },
+  placeholder1: {
+    height: DP._21,
+    width: DP._52,
+    backgroundColor: Color.VERY_LIGHT_PINK,
+    marginTop: DP._18,
+  },
+  placeholder2: {
+    height: DP._16,
+    width: DP._48,
+    backgroundColor: Color.VERY_LIGHT_PINK,
+    marginLeft: DP._8,
   },
 });

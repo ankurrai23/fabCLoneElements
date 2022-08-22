@@ -111,9 +111,9 @@ const HotelPreferenceLoadingState = ({offline = false, onBackClick}) => {
         duration={1500}
         delay={500}
         style={Styles.headerContainer}>
-        <View style={Styles.flexRow}>
+        <View style={[Styles.flexRow, Styles.headerStyle]}>
           <FTouchableOpacity onPress={onBackClick}>
-            <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
+            <Feather name="chevron-left" size={DP._24} color={Color.WHITE} />
           </FTouchableOpacity>
           <Placeholder style={Styles.headerTitleLoader} />
         </View>
