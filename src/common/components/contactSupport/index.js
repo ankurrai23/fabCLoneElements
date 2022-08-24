@@ -1,13 +1,12 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import FText from '../../rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import SupportDialog from '../supportDialog';
 import {Strings} from '../../../utils/strings/index.travelPlus';
-// TODO: Handle the case when no data in supportDetails
+import Icon from '../../../assets/icons/Icon';
 
 export default function ContactSupport({
   item,
@@ -24,7 +23,7 @@ export default function ContactSupport({
         <FText style={styles.textStyle}>
           {item?.name || Strings.contactSupport}
         </FText>
-        <Ionicons name="call" size={DP._16} color={Color.DODGER_BLUE} />
+        <Icon.Phone />
       </FTouchableOpacity>
       {!!supportDetails?.length && (
         <SupportDialog
@@ -47,5 +46,6 @@ const styles = StyleSheet.create({
   textStyle: {
     color: Color.DARK,
     fontSize: DP._12,
+    lineHeight: DP._14,
   },
 });

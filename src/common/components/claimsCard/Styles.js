@@ -35,7 +35,6 @@ export default StyleSheet.create({
     color: Color.WHITE,
   },
   plusCircle: {
-    color: Color.WHITE,
     marginBottom: DP._16,
   },
   lowerCase: {

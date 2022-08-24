@@ -1,9 +1,7 @@
 import React from 'react';
 import {StyleSheet, FlatList, View, Linking} from 'react-native';
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icon from 'react-native-vector-icons/Ionicons';
-
+import Icon from '../../../assets/icons/Icon';
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import FText from '../../rn/FText';
@@ -23,7 +21,7 @@ const SupportDialog = (props) => {
         style={styles.renderItem}
         onPress={() => onPress(item)}>
         <FText style={styles.itemText}>{item.name}</FText>
-        <Icon name="call" size={DP._20} color={Color.DODGER_BLUE} />
+        <Icon.Phone />
       </FTouchableOpacity>
     );
   }
@@ -34,10 +32,10 @@ const SupportDialog = (props) => {
       ContentModal={
         <View style={styles.paddingView}>
           <FTouchableOpacity style={styles.closeView} onPress={props.onClose}>
-            <MaterialCommunityIcons
-              name="close"
-              size={DP._26}
-              color={Color.BROWN_GREY}
+            <Icon.Cross
+              width={DP._26}
+              height={DP._26}
+              stroke={Color.BROWN_GREY}
             />
           </FTouchableOpacity>
           <FText style={styles.heading}>{Strings.support}</FText>

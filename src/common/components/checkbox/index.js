@@ -1,12 +1,10 @@
 import React from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
-
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
-
 import Styles from './Styles';
+import Icon from '../../../assets/icons/Icon';
 
 const Checkbox = ({
   toggleChecked,
@@ -32,12 +30,10 @@ const Checkbox = ({
       onPress={toggleChecked}
       {...props}>
       {isChecked ? (
-        <MaterialIcons
-          name="check"
-          style={{
-            color: Color.WHITE,
-            fontSize: size - DP._4,
-          }}
+        <Icon.Check
+          width={size - DP._4}
+          height={size - DP._4}
+          stroke={Color.WHITE}
         />
       ) : null}
     </FTouchableOpacity>

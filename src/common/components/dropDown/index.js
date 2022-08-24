@@ -6,8 +6,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import Styles from './Styles.js';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
-import FImage from '../../rn/FImage';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from '../../../assets/icons/Icon';
 
 function DropDown(
   {
@@ -44,7 +43,7 @@ function DropDown(
         onPress={() => onPress(entity, index)}
         style={Styles.cardStyle}>
         <View style={Styles.titleAndIconContainer}>
-          <FImage source={img} />
+          {img}
           <FText
             type={FONT_TYPE.BOLD}
             style={Styles.titleText}
@@ -66,20 +65,22 @@ function DropDown(
     <View style={style}>
       <TextField
         label={label}
-        icon={<Ionicons name="search" size={DP._16} color={Color.BLACK} />}
+        icon={<Icon.Search width={DP._16} height={DP._16} />}
         rightIcon={
           !!keyword && (
             <FTouchableOpacity
               onPress={onPressClose}
               hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-              <Ionicons name="close" size={DP._16} color={Color.BLUEY_GREY} />
+              <Icon.Cross
+                width={DP._16}
+                height={DP._16}
+                stroke={Color.BLUEY_GREY}
+              />
             </FTouchableOpacity>
           )
         }
-        // iconStyle={Styles.searchIcon}
         labelStyle={Styles.labelStyle}
         inputStyle={Styles.inputStyle}
-        // rightIconStyle={Styles.closeIcon}
         value={keyword}
         onChangeText={onChangeText}
         autoFocus

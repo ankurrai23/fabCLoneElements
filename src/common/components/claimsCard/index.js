@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
 
 import FText, {FONT_TYPE} from '../../rn/FText';
@@ -10,6 +8,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 export const CLAIM_CARD_TYPE = {
   LARGE: 'large',
@@ -49,7 +48,11 @@ export default function ClaimsCard({...props}) {
                 </FText>
                 {props.disabled ? null : (
                   <View style={Styles.rightArrowView}>
-                    <AntDesign name="right" size={DP._15} color={Color.WHITE} />
+                    <Icon.ChevronRight
+                      width={DP._18}
+                      height={DP._18}
+                      stroke={Color.WHITE}
+                    />
                   </View>
                 )}
               </View>
@@ -74,10 +77,9 @@ export default function ClaimsCard({...props}) {
             <View style={Styles.rightTriangle(layout, props.cardColor)} />
             <View>
               {props.noClaim ? (
-                <AntDesign
-                  name="pluscircleo"
-                  size={DP._32}
-                  color={Color.WHITE}
+                <Icon.PlusCircle
+                  width={DP._32}
+                  height={DP._32}
                   style={Styles.plusCircle}
                 />
               ) : (
@@ -145,10 +147,10 @@ export default function ClaimsCard({...props}) {
                     )}
                     {props.disabled ? null : (
                       <View style={Styles.rightArrowView}>
-                        <AntDesign
-                          name="right"
-                          size={DP._15}
-                          color={Color.WHITE}
+                        <Icon.ChevronRight
+                          width={DP._18}
+                          height={DP._18}
+                          stroke={Color.WHITE}
                         />
                       </View>
                     )}

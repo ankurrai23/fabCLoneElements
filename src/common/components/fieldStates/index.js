@@ -3,11 +3,10 @@ import React from 'react';
 import Styles from './Styles';
 import TextField from '../textField';
 import {DP} from '../../../utils/Dimen';
-import FImage from '../../rn/FImage';
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import FText from '../../rn/FText';
 import {Color} from '../../../utils/color/index.travelPlus';
 import PickerField from '../pickerField';
+import Icon from '../../../assets/icons/Icon';
 
 const FIELD_STATES = [
   {
@@ -36,7 +35,7 @@ const FIELD_STATES = [
     helperText: 'Source and destination cannot be same',
     error: true,
     value: 'With travel opening up, govt. advisories and sources',
-    rightIcon: <FImage source={ImageConst.crossIcon} />,
+    rightIcon: <Icon.Cross width={DP._16} height={DP._16} />,
     type: 'textField',
   },
   {
@@ -47,10 +46,10 @@ const FIELD_STATES = [
   {
     label: 'Enter co-travellers name or email',
     value: 'It is raining outside right now let go raining ',
-    icon: <FImage source={ImageConst.searchIcon} />,
+    icon: <Icon.Search width={DP._16} height={DP._16} />,
     type: 'pickerField',
     helperText: 'Location is incorrect',
-    rightIcon: <FImage source={ImageConst.crossIcon} />,
+    rightIcon: <Icon.Cross width={DP._16} height={DP._16} />,
     error: true,
   },
   {

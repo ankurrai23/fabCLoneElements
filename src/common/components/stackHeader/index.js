@@ -1,6 +1,5 @@
 import React from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 
 import FText, {FONT_TYPE} from '../../rn/FText';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
@@ -9,6 +8,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 
 import Styles from './Styles';
+import Icon from '../../../assets/icons/Icon';
 
 function StackHeader({
   onBackClick,
@@ -25,10 +25,10 @@ function StackHeader({
       <FTouchableOpacity
         onPress={onBackClick}
         hitSlop={{top: 20, bottom: 20, left: 50, right: 20}}>
-        <Feather
-          name="chevron-left"
-          size={iconSize || DP._24}
-          color={iconColor || Color.WHITE}
+        <Icon.ChevronLeft
+          width={iconSize || DP._24}
+          height={iconSize || DP._24}
+          stroke={iconColor || Color.WHITE}
         />
       </FTouchableOpacity>
       <FText type={FONT_TYPE.MEDIUM} style={[Styles.title, textStyle]}>
