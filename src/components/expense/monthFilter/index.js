@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {View, FlatList} from 'react-native';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import {dialogBoxStyle} from '../../../utils/Utils';
 import Button from '../../../common/components/button';
@@ -10,6 +8,7 @@ import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const MonthFilter = ({data, onPressCancel, onPressApply}) => {
   const [sheetData, setSheetData] = useState(data.map((item) => ({...item})));
@@ -43,19 +42,7 @@ const MonthFilter = ({data, onPressCancel, onPressApply}) => {
             </FText>
           </View>
           <View style={Styles.iconView}>
-            {item.isSelected ? (
-              <Fontisto
-                name={'radio-btn-active'}
-                size={DP._22}
-                color={Color.DODGER_BLUE}
-              />
-            ) : (
-              <Fontisto
-                name={'radio-btn-passive'}
-                size={DP._22}
-                color={Color.DARK_80}
-              />
-            )}
+            {item.isSelected ? <Icon.RadioActive /> : <Icon.RadioPassive />}
           </View>
         </FTouchableOpacity>
       </View>

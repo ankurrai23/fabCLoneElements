@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 
 import FText from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -11,6 +10,7 @@ import Styles from './Styles';
 
 import DialogBox from '../../../common/components/dialogBox';
 import MonthFilter from '../monthFilter';
+import Icon from '../../../assets/icons/Icon';
 
 const MonthPicker = (props) => {
   const [visible, setVisible] = useState(false);
@@ -21,7 +21,7 @@ const MonthPicker = (props) => {
           <FTouchableOpacity
             key={`${item.name}`}
             style={[
-              Styles.button,
+              Styles.button(index === 2),
               item.isSelected ? Styles.buttonSelected : null,
             ]}
             onPress={
@@ -30,11 +30,11 @@ const MonthPicker = (props) => {
                 : () => props.onMonthChange(item)
             }>
             {item.showAsDropdown && (
-              <Feather
-                name="calendar"
-                size={DP._15}
+              <Icon.Calendar
+                width={DP._15}
+                height={DP._15}
+                stroke={item.isSelected ? Color.DODGER_BLUE : Color.DARK}
                 style={Styles.calender}
-                color={item.isSelected ? Color.DODGER_BLUE : Color.DARK}
               />
             )}
             <FText
@@ -42,10 +42,11 @@ const MonthPicker = (props) => {
               {item.name}
             </FText>
             {item.showAsDropdown && (
-              <Feather
-                name="chevron-down"
+              <Icon.ChevronDown
+                width={DP._16}
+                height={DP._16}
+                stroke={item.isSelected ? Color.DODGER_BLUE : Color.DARK}
                 style={Styles.chevron}
-                color={item.isSelected ? Color.DODGER_BLUE : Color.DARK}
               />
             )}
           </FTouchableOpacity>

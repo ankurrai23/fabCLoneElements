@@ -7,15 +7,16 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'row',
   },
-  button: {
-    paddingHorizontal: DP._16,
+  button: (moreButton) => ({
+    paddingLeft: DP._16,
+    paddingRight: moreButton ? DP._8 : DP._16,
     paddingVertical: DP._10,
     backgroundColor: Color.WHITE_3,
     borderRadius: DP._12,
     marginRight: DP._8,
     alignItems: 'center',
     flexDirection: 'row',
-  },
+  }),
   buttonSelected: {
     backgroundColor: Color.ICE_BLUE,
     borderWidth: 0.5,
@@ -34,6 +35,6 @@ export default StyleSheet.create({
     marginRight: DP._4,
   },
   chevron: {
-    marginLeft: DP._8,
+    marginLeft: DP._4,
   },
 });

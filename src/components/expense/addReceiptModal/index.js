@@ -1,6 +1,5 @@
 import React from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 
 import FText from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -10,6 +9,7 @@ import Styles from './Styles';
 import DialogBox from '../../../common/components/dialogBox';
 import {PICKER_TYPE} from '../../../utils/Constants';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const AddReceiptModal = (props) => {
   return (
@@ -22,19 +22,19 @@ const AddReceiptModal = (props) => {
             <FTouchableOpacity
               style={Styles.line}
               onPress={() => props.onPress(PICKER_TYPE.CAMERA)}>
-              <Feather name="camera" style={Styles.icon} />
+              <Icon.Camera style={Styles.icon} />
               <FText style={Styles.option}>{Strings.openCamera}</FText>
             </FTouchableOpacity>
             <FTouchableOpacity
               style={Styles.line}
               onPress={() => props.onPress(PICKER_TYPE.GALLERY)}>
-              <Feather name="image" style={Styles.icon} />
+              <Icon.Image style={Styles.icon} />
               <FText style={Styles.option}>{Strings.uploadFromGallery}</FText>
             </FTouchableOpacity>
             <FTouchableOpacity
               style={Styles.line}
               onPress={() => props.onPress(PICKER_TYPE.FILE_MANAGER)}>
-              <Feather name="upload" style={Styles.icon} />
+              <Icon.Upload style={Styles.icon} />
               <FText style={Styles.option}>{Strings.importFromFiles}</FText>
             </FTouchableOpacity>
           </View>

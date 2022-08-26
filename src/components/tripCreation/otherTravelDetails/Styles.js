@@ -39,7 +39,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: DP._16,
+    paddingVertical: DP._12,
     borderBottomColor: Color.SILVER,
   },
   itemText: {

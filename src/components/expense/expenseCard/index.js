@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import FImage from '../../../common/rn/FImage';
@@ -10,6 +9,7 @@ import {DP} from '../../../utils/Dimen';
 
 import {Color} from '../../../utils/color';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 export const EXPENSE_CLAIM_STATUS = {
   APPROVAL_PENDING: 'APPROVAL_PENDING',
@@ -79,10 +79,11 @@ const ExpenseCard = ({
               {status.text}
             </FText>
           )}
-          <Feather
-            name="chevron-right"
-            size={DP._18}
-            color={Color.BATTLESHIP_GREY_TWO}
+          <Icon.ChevronRight
+            width={DP._18}
+            height={DP._18}
+            stroke={Color.BATTLESHIP_GREY_TWO}
+            strokeWidth={2}
           />
         </View>
         {receiptRequired && (
@@ -98,7 +99,6 @@ const ExpenseCard = ({
           <View style={Styles.uploadReceiptButton}>
             <FTouchableOpacity onPress={onViewReceipt}>
               <FText style={Styles.uploadReceiptText}>
-                <Feather name="paperclip" size={DP._13} />
                 {receiptCount > 1
                   ? Strings.viewReceipts(receiptCount)
                   : Strings.viewReceipt}

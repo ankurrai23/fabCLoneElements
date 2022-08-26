@@ -4,10 +4,10 @@ import moment from 'moment';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import FImage from '../../../common/rn/FImage';
 import Styles from './Styles';
-import {ImageConst} from '../../../utils/imageConst';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
+import {DP} from '../../../utils/Dimen';
 
 const DATE = 'DD'; // 12, 13
 const MONTH = 'MMM'; // Jan, Feb
@@ -51,7 +51,11 @@ export default function HotelDetails(props) {
           style={Styles.flexRow}
           hitSlop={Styles.hitSlop}
           onPress={props.onPress}>
-          <FImage source={data?.length ? ImageConst.edit2 : ImageConst.plus} />
+          {data?.length ? (
+            <Icon.EditFilled width={DP._10} height={DP._10} />
+          ) : (
+            <Icon.Plus width={DP._16} height={DP._16} />
+          )}
           <FText type={FONT_TYPE.MEDIUM} style={Styles.addDetails}>
             {data?.length ? Strings.edit : Strings.add}
           </FText>

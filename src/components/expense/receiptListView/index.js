@@ -1,17 +1,14 @@
 import React, {useRef} from 'react';
 import {FlatList, View} from 'react-native';
 import Styles from './Styles';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import FImage from '../../../common/rn/FImage';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color/index.travelPlus';
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import {getPluralText} from '../../../utils/Utils';
 import Button from '../../../common/components/button';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 export const RECEIPT_LIST_VIEW_TYPE = {
   IMAGE: 'image',
@@ -41,7 +38,7 @@ const ReceiptListView = ({
           <FTouchableOpacity
             onPress={() => onPressDelete(index)}
             style={Styles.deleteView}>
-            <EvilIcons name="trash" size={DP._32} color={Color.RED} />
+            <Icon.Trash width={DP._32} height={DP._32} />
           </FTouchableOpacity>
         </FTouchableOpacity>
       );
@@ -51,7 +48,7 @@ const ReceiptListView = ({
           onPress={() => onImagePress(item, index)}
           style={Styles.listView}>
           <View style={Styles.listViewLeftFlex}>
-            <FImage resizeMode={'contain'} source={ImageConst.file} />
+            <Icon.File height={DP._26} width={DP._26} />
           </View>
           <View style={Styles.listViewTextView}>
             <FText style={Styles.titleText}>{item.name}</FText>
@@ -65,7 +62,7 @@ const ReceiptListView = ({
             <FTouchableOpacity
               onPress={() => onPressDelete(index)}
               style={Styles.deleteListView}>
-              <EvilIcons name="trash" size={DP._25} color={Color.RED} />
+              <Icon.Trash width={DP._24} height={DP._24} />
             </FTouchableOpacity>
           )}
         </FTouchableOpacity>
@@ -74,10 +71,10 @@ const ReceiptListView = ({
   };
 
   return (
-    <View style={Styles.container}>
+    <View style={[Styles.container, Styles.whiteBackground]}>
       <View style={Styles.closeButtonContainer(type)}>
         <FTouchableOpacity onPress={onClosePress}>
-          <AntDesign name="close" size={DP._24} color={Color.DARK} />
+          <Icon.Cross />
         </FTouchableOpacity>
       </View>
       {type === RECEIPT_LIST_VIEW_TYPE.IMAGE ? null : (

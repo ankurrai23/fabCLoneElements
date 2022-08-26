@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, FlatList} from 'react-native';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
@@ -9,10 +8,9 @@ import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color/index.travelPlus';
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import {RECEIPT_LIST_VIEW_TYPE} from '../receiptListView';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const ListView = ({
   type,
@@ -34,7 +32,10 @@ const ListView = ({
       />
     ) : (
       <View style={Styles.alignments}>
-        <FImage style={Styles.imgStyle(itemLength)} source={ImageConst.file} />
+        <Icon.File
+          height={itemLength === 1 ? DP._32 : DP._26}
+          width={itemLength === 1 ? DP._32 : DP._26}
+        />
         <FText numberOfLines={1} style={Styles.titleText}>
           {name}
         </FText>
@@ -45,7 +46,7 @@ const ListView = ({
         hitSlop={Styles.hitSlopDelete}
         onPress={onPressDelete}
         style={Styles.deleteView}>
-        <EvilIcons name="trash" size={DP._20} color={Color.RED} />
+        <Icon.Trash width={DP._15} height={DP._15} />
       </FTouchableOpacity>
     )}
   </FTouchableOpacity>

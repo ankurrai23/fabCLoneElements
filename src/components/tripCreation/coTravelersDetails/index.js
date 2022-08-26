@@ -3,9 +3,10 @@ import React from 'react';
 import Styles from './Styles';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import FImage from '../../../common/rn/FImage';
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
+import {DP} from '../../../utils/Dimen';
+import {Color} from '../../../utils/color/index.travelPlus';
 
 export default function CoTravelersDetails(props) {
   function renderPickerChildren() {
@@ -33,9 +34,15 @@ export default function CoTravelersDetails(props) {
           style={Styles.flexRow}
           hitSlop={Styles.hitSlop}
           onPress={props.onPressCoTraveler}>
-          <FImage
-            source={props.data?.length ? ImageConst.edit2 : ImageConst.plus}
-          />
+          {props.data?.length ? (
+            <Icon.EditFilled width={DP._12} height={DP._12} />
+          ) : (
+            <Icon.Plus
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.DODGER_BLUE}
+            />
+          )}
           <FText type={FONT_TYPE.MEDIUM} style={Styles.addDetails}>
             {!props.data?.length ? Strings.add : Strings.edit}
           </FText>

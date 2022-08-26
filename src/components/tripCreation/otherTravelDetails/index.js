@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
 import {View, FlatList} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -13,6 +10,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DialogBox from '../../../common/components/dialogBox';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 export default function OtherTravelDetails(props) {
   const [visible, setVisible] = useState(false);
@@ -28,11 +26,7 @@ export default function OtherTravelDetails(props) {
         style={Styles.renderItem}
         onPress={() => onPress(item)}>
         <FText style={Styles.itemText}>{item.value}</FText>
-        <Fontisto
-          name={`radio-btn-${isActive ? 'active' : 'passive'}`}
-          size={DP._20}
-          color={isActive ? Color.DODGER_BLUE : Color.GREY_PURPLE}
-        />
+        {isActive ? <Icon.RadioActive /> : <Icon.RadioPassive />}
       </FTouchableOpacity>
     );
   }
@@ -60,10 +54,10 @@ export default function OtherTravelDetails(props) {
         labelStyle={Styles.textFieldLabel}
         value={selectedValue.value}
         rightIcon={
-          <Feather
-            name="chevron-down"
-            size={DP._16}
-            color={Color.GREY_PURPLE}
+          <Icon.ChevronDown
+            width={DP._16}
+            height={DP._16}
+            stroke={Color.GREY_PURPLE}
           />
         }
         topMargin={DP._16}
@@ -84,10 +78,10 @@ export default function OtherTravelDetails(props) {
               <FTouchableOpacity
                 style={Styles.closeView}
                 onPress={() => setVisible(false)}>
-                <MaterialCommunityIcons
-                  name="close"
-                  size={DP._26}
-                  color={Color.BROWN_GREY}
+                <Icon.Cross
+                  width={DP._26}
+                  height={DP._26}
+                  stroke={Color.BROWN_GREY}
                 />
               </FTouchableOpacity>
               <FText style={Styles.heading}>{Strings.purposeOfTravel}</FText>

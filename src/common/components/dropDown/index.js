@@ -19,6 +19,7 @@ function DropDown(
     onFocusChange,
     onPressClose,
     selectTextOnFocus,
+    icon,
   },
   ref,
 ) {
@@ -43,7 +44,7 @@ function DropDown(
         onPress={() => onPress(entity, index)}
         style={Styles.cardStyle}>
         <View style={Styles.titleAndIconContainer}>
-          {img}
+          {icon}
           <FText
             type={FONT_TYPE.BOLD}
             style={Styles.titleText}

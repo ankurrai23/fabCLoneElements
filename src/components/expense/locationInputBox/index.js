@@ -1,6 +1,5 @@
 import React from 'react';
 import {View} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import PickerField from '../../../common/components/pickerField';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -9,6 +8,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const LocationInputBox = ({
   value,
@@ -22,7 +22,11 @@ const LocationInputBox = ({
 }) => {
   const CloseButton = () => (
     <FTouchableOpacity onPress={onRemove} style={Styles.closeButton}>
-      <AntDesign name="close" size={DP._18} color={Color.BATTLESHIP_GREY_TWO} />
+      <Icon.Cross
+        width={DP._18}
+        height={DP._18}
+        stroke={Color.BATTLESHIP_GREY_TWO}
+      />
     </FTouchableOpacity>
   );
 

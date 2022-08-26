@@ -6,10 +6,9 @@ import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 
 import Styles from './Styles';
 
-import FImage from '../../../common/rn/FImage';
-
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
+import {DP} from '../../../utils/Dimen';
 
 const RemoveItinerary = ({
   itinerary,
@@ -32,7 +31,7 @@ const RemoveItinerary = ({
             onPress={_onPressRemove}
             hitSlop={Styles.removeSlope}
             style={Styles.removeView}>
-            <FImage source={ImageConst.trashIcon} />
+            <Icon.Trash width={DP._16} height={DP._16} />
             <FText type={FONT_TYPE.MEDIUM} style={Styles.removeTxt}>
               {' '}
               {Strings.remove}

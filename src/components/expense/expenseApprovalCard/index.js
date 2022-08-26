@@ -1,6 +1,5 @@
 import React from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 
 import FImage from '../../../common/rn/FImage';
 import FText from '../../../common/rn/FText';
@@ -10,6 +9,7 @@ import Checkbox from '../../../common/components/checkbox';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const ExpenseApprovalCard = ({
   item,
@@ -44,9 +44,9 @@ const ExpenseApprovalCard = ({
                     )}
                   </View>
                 </View>
-                <Feather
-                  name="chevron-right"
-                  size={DP._18}
+                <Icon.ChevronRight
+                  width={DP._18}
+                  height={DP._18}
                   style={Styles.chevronStyle}
                 />
               </View>
@@ -54,7 +54,6 @@ const ExpenseApprovalCard = ({
                 <View style={Styles.uploadReceiptButton}>
                   <FTouchableOpacity onPress={onUploadReceipt}>
                     <FText style={Styles.uploadReceiptText}>
-                      <Feather name="paperclip" size={DP._13} />
                       {item.receiptCount > 1
                         ? Strings.viewReceipts(item.receiptCount)
                         : Strings.viewReceipt}

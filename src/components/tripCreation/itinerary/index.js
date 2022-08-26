@@ -6,14 +6,13 @@ import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import PickerField from '../../../common/components/pickerField';
 import RemoveItinerary from '../removeItinerary';
-import FImage from '../../../common/rn/FImage';
 
 import Styles from './styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
 import {formattedDate} from '../../../utils/Utils';
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const DATE_FORMAT = "DD MMM'YY"; // 1 Aug'22
 const DATE_WITH_DAY_FORMAT = 'ddd, DD MMM'; // Mon, 1 Aug
@@ -75,7 +74,7 @@ const ItineraryCard = (props) => {
               onPress={onEditClicked}
               hitSlop={Styles.briefCardStyle_touchView}
               style={Styles.briefCardStyle_flexView()}>
-              <FImage source={ImageConst.edit2} />
+              <Icon.EditFilled width={DP._12} height={DP._12} />
               <FText style={Styles.briefCardStyle_editTxt}>
                 {Strings.edit}
               </FText>

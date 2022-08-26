@@ -25,7 +25,7 @@ export default StyleSheet.create({
   addDetails: {
     fontSize: DP._12,
     color: Color.DODGER_BLUE,
-    marginLeft: DP._6,
+    marginLeft: DP._4,
     lineHeight: DP._16,
   },
   innerContainer: {

@@ -16,17 +16,23 @@ export default StyleSheet.create({
     borderWidth: DP._1,
     borderColor: Color.DARK_SLATE_BLUE,
     paddingVertical: DP._12,
-    borderRadius: DP._20,
+    borderRadius: DP._24,
     opacity: scanDisabled ? 0.4 : 1,
   }),
-  uploadButtonStyle: {flex: 1, marginLeft: 4},
+  uploadButtonStyle: {
+    flex: 1,
+    marginLeft: 4,
+    borderRadius: DP._24,
+  },
   scanButtonText: {
     color: Color.DARK_SLATE_BLUE,
-    fontSize: DP._12,
+    fontSize: DP._16,
+    lineHeight: DP._24,
   },
   uploadButtonText: {
     color: Color.DARK,
-    fontSize: DP._12,
+    fontSize: DP._16,
+    lineHeight: DP._24,
   },
   closeButtonContainer: (type) => ({
     width: '100%',
@@ -55,7 +61,7 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 10,
     bottom: 0,
-    right: DP._45,
+    right: DP._24,
     height: DP._50,
     width: DP._50,
     borderRadius: DP._50,
@@ -105,5 +111,8 @@ export default StyleSheet.create({
     lineHeight: DP._18,
     marginBottom: DP._15,
     marginLeft: DP._18,
+  },
+  whiteBackground: {
+    backgroundColor: Color.WHITE,
   },
 });
