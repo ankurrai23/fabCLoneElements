@@ -126,7 +126,7 @@ export default StyleSheet.create({
     right: 0,
   },
   airplane: {
-    transform: [{rotate: '45deg'}],
+    transform: [{rotate: '90deg'}],
   },
   Flex: {
     flex: 1,
