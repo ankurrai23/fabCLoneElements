@@ -3,26 +3,37 @@ import {View} from 'react-native';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {ImageConst} from '../../../utils/imageConst';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import TripStatus from '../tripStatus';
 import {EMPLOYEE_ACTIONS, SUB_TRIP_TYPE} from '../../../utils/Constants';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import FImage from '../../../common/rn/FImage';
 import Separator from '../../../common/components/separator';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
 
   const tripIcons = (requestType) => {
     let icons = [];
-    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
-      icons.push(ImageConst.hotelIcon);
     if (requestType.includes(SUB_TRIP_TYPE.FLIGHT))
-      icons.push(ImageConst.flightIcon);
+      icons.push(
+        <Icon.Aeroplane
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />,
+      );
+    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
+      icons.push(
+        <Icon.Hotel
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />,
+      );
     return icons;
   };
 
@@ -45,12 +56,8 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
-            {tripIcons(item.requestType).map((asset, index) => (
-              <FImage
-                source={asset}
-                style={Styles.imageStyle}
-                key={`abc${index}`}
-              />
+            {tripIcons(item.requestType).map((asset) => (
+              <View style={Styles.iconStyle}>{asset}</View>
             ))}
           </View>
           <TripStatus statusObj={item.status} />
@@ -92,7 +99,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
             <FTouchableOpacity
               onPress={() => _onActionPress(EMPLOYEE_ACTIONS.SEND_REMINDER)}
               style={{marginLeft: DP._8}}>
-              <FImage source={ImageConst.bellIcon} style={Styles.bell} />
+              <Icon.Bell />
             </FTouchableOpacity>
           )}
         </View>

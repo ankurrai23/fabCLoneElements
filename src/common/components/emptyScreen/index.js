@@ -4,7 +4,6 @@ import {StyleSheet, View} from 'react-native';
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import FText from '../../rn/FText';
-import FImage from '../../rn/FImage';
 import Button from '../button';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 
@@ -12,7 +11,7 @@ const EmptyScreen = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <FImage style={styles.image} source={props.image} />
+        <View style={styles.image}>{props.image}</View>
         <FText style={styles.heading}>
           {props.heading || Strings.nothingInItineraryMsg}
         </FText>

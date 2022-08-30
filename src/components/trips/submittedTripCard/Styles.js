@@ -88,12 +88,6 @@ export default StyleSheet.create({
     marginLeft: DP._4,
     color: Color.PASTEL_RED,
   },
-  imageStyle: {
-    width: DP._24,
-    height: DP._24,
-    marginRight: DP._4,
-    resizeMode: 'contain',
-  },
   action: (type) => ({
     fontSize: DP._12,
     color: type === 'MODIFY_OR_CANCEL' ? Color.PASTEL_RED : Color.DODGER_BLUE,
@@ -116,5 +110,14 @@ export default StyleSheet.create({
   justifyBetween: {justifyContent: 'space-between'},
   flex: {
     flex: 1,
+  },
+  iconStyle: {
+    width: DP._20,
+    height: DP._20,
+    backgroundColor: '#E3F0FF',
+    marginRight: DP._8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: DP._10,
   },
 });

@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {View, KeyboardAvoidingView} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import Modal from './Modal';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
-import {DP} from '../../../utils/Dimen';
 import Styles from './Styles';
 import Utils from '../../../utils/Utils';
 import {Color} from '../../../utils/color';
+import Icon from '../../../assets/icons/Icon';
 
 const BottomSheet = ({style, ...props}) => {
   const [visible, setVisible] = useState(props.visible);
@@ -34,11 +33,7 @@ const BottomSheet = ({style, ...props}) => {
               activeOpacity={1}
               onPress={closeModal}
               style={Styles.crossIcon}>
-              <Icon
-                name="close-outline"
-                size={DP._30}
-                color={Color.GREY_PURPLE}
-              />
+              <Icon.Cross stroke={Color.GREY_PURPLE} />
             </FTouchableOpacity>
           )}
           {props.children}

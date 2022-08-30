@@ -4,18 +4,15 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import Styles from './Styles';
-import FImage from '../../../common/rn/FImage';
 import Separator from '../../../common/components/separator';
-import {ImageConst} from '../../../utils/imageConst';
 import TripStatus from '../tripStatus';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
 import ModificationAlertBox from '../components/modificationAlertBox';
 import {getStatusObject} from '../hotelDetailCard';
 import ContactSupport from '../../../common/components/contactSupport';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const FlightDetailCard = ({
   title,
@@ -42,7 +39,11 @@ const FlightDetailCard = ({
           <FTouchableOpacity
             onPress={() => onActionPress(cancelAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <AntDesign name="close" size={DP._18} color={Color.PASTEL_RED} />
+            <Icon.Cross
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.PASTEL_RED}
+            />
             <FText style={Styles.cancel}>{cancelAction.name}</FText>
           </FTouchableOpacity>
         )}
@@ -50,10 +51,7 @@ const FlightDetailCard = ({
           <FTouchableOpacity
             onPress={() => onActionPress(rescheduleAction)}
             style={Styles.primaryButtonStyle}>
-            <FImage
-              style={Styles.rescheduleIcon}
-              source={ImageConst.rescheduleIcon}
-            />
+            <Icon.Reschedule width={DP._16} height={DP._16} />
             <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
           </FTouchableOpacity>
         )}
@@ -113,10 +111,10 @@ const FlightDetailCard = ({
                 Styles.justifyContent_around(item.duration),
                 Styles.flex,
               ]}>
-              <MaterialCommunityIcon
-                name="airplane"
-                size={DP._18}
-                color={Color.LIGHT_BLUEY_GREY}
+              <Icon.Aeroplane
+                width={DP._18}
+                height={DP._18}
+                fill={Color.LIGHT_BLUEY_GREY}
                 style={Styles.airplane}
               />
               <View style={Styles.durationContainer}>

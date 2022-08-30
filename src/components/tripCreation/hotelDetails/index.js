@@ -8,6 +8,7 @@ import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {DP} from '../../../utils/Dimen';
+import {Color} from '../../../utils/color/index.travelPlus';
 
 const DATE = 'DD'; // 12, 13
 const MONTH = 'MMM'; // Jan, Feb
@@ -54,7 +55,11 @@ export default function HotelDetails(props) {
           {data?.length ? (
             <Icon.EditFilled width={DP._10} height={DP._10} />
           ) : (
-            <Icon.Plus width={DP._16} height={DP._16} />
+            <Icon.Plus
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.DODGER_BLUE}
+            />
           )}
           <FText type={FONT_TYPE.MEDIUM} style={Styles.addDetails}>
             {data?.length ? Strings.edit : Strings.add}

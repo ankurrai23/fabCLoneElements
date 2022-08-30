@@ -56,7 +56,7 @@ export default StyleSheet.create({
     fontSize: DP._10,
     color: Color.GREYISH_PURPLE,
   },
-  baseline: {alignItems: 'baseline'},
+  baseline: {alignItems: 'center'},
   card: {padding: DP._16},
   alignItem_flexEnd: {
     alignItems: 'flex-end',

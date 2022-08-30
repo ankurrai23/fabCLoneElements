@@ -72,18 +72,18 @@ export default {
         type: 'DIRECTION',
         name: 'Directions',
       },
-      // {
-      //   type: 'SUBMIT_REVIEW',
-      //   name: 'Submit a review',
-      // },
-      // {
-      //   type: 'SUBMIT_POS',
-      //   name: 'Submit proof of stay',
-      // },
-      // {
-      //   type: 'VIEW_INVOICE',
-      //   name: 'See invoice',
-      // },
+      {
+        type: 'SUBMIT_REVIEW',
+        name: 'Submit a review',
+      },
+      {
+        type: 'SUBMIT_POS',
+        name: 'Submit proof of stay',
+      },
+      {
+        type: 'VIEW_INVOICE',
+        name: 'See invoice',
+      },
       {
         type: 'SUPPORT',
         name: 'Contact 24x7 support',

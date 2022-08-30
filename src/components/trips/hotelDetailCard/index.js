@@ -2,9 +2,6 @@ import {View, Animated} from 'react-native';
 import React, {useState} from 'react';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FImage from '../../../common/rn/FImage';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
@@ -16,10 +13,9 @@ import Button from '../../../common/components/button';
 import {HotelSubTripActions} from '../../../utils/SubTripActions';
 import ModificationAlertBox from '../components/modificationAlertBox';
 import TripStatus from '../tripStatus';
-import {ImageConst} from '../../../utils/imageConst';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import ContactSupport from '../../../common/components/contactSupport';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 export const getStatusObject = (status) => {
   const capitalize = () => {
@@ -115,7 +111,7 @@ export default function HotelDetailCard({
 
   const CoTraveller = ({name}) => (
     <View style={Styles.coTravellerContainer}>
-      <Feather name="user" size={DP._14} color={Color.GREY_PURPLE} />
+      <Icon.User width={DP._14} height={DP._14} stroke={Color.GREY_PURPLE} />
       <FText style={{marginLeft: DP._8}}>{name}</FText>
     </View>
   );
@@ -138,7 +134,7 @@ export default function HotelDetailCard({
                 onPress={() => onActionPress(item)}>
                 <View style={Styles.postTripButtonContainer}>
                   <FText style={{color: Color.DODGER_BLUE}}>{item.name}</FText>
-                  <Feather name="chevron-right" size={DP._14} />
+                  <Icon.ChevronRight width={DP._14} height={DP._14} />
                 </View>
                 {item.type === HotelSubTripActions.SUBMIT_REVIEW && (
                   <FText
@@ -179,11 +175,10 @@ export default function HotelDetailCard({
                   style={Styles.hotelImage}
                   source={{uri: item.imageBaseUrl + item.mainImage}}
                 />
-                <FontAwesome5
-                  name="search-plus"
+                <Icon.ZooomIn
+                  width={DP._18}
+                  height={DP._18}
                   style={Styles.searchIcon}
-                  size={DP._18}
-                  color={Color.WHITE}
                 />
               </FTouchableOpacity>
             )}
@@ -208,10 +203,9 @@ export default function HotelDetailCard({
                 style={[Styles.flexRowWithAlignCenter]}
                 onPress={() => onActionPress?.(directionAction)}
                 disabled={item.reduceOpacity}>
-                <MaterialCommunityIcons
-                  name="navigation"
-                  size={DP._18}
-                  color={Color.DODGER_BLUE}
+                <Icon.Navigation
+                  width={DP._16}
+                  height={DP._16}
                   style={Styles.directionIcon}
                 />
                 <FText
@@ -307,11 +301,7 @@ export default function HotelDetailCard({
                     Styles.halfFlex,
                     {alignItems: 'center'},
                   ]}>
-                  <Feather
-                    name="credit-card"
-                    size={DP._16}
-                    color={Color.GREY_PURPLE}
-                  />
+                  <Icon.CreditCard width={DP._16} height={DP._16} />
                   <FText style={{marginLeft: DP._8, fontSize: DP._12}}>
                     {item?.paymentMode ? item.paymentMode : Strings.NA}
                   </FText>
@@ -319,11 +309,12 @@ export default function HotelDetailCard({
                 {item.paymentStatus && (
                   <View
                     style={[Styles.paymentStatusContainer, Styles.halfFlex]}>
-                    <Feather
+                    {/* TODO: Need to discuss*/}
+                    {/* <Feather
                       name={item.paymentStatus.icon}
                       style={{marginRight: DP._4}}
                       color={item.paymentStatus.color}
-                    />
+                    /> */}
                     <FText
                       style={{
                         fontSize: DP._10,
@@ -367,10 +358,10 @@ export default function HotelDetailCard({
                 {Strings.viewDetails(expanded)}
               </FText>
               <Animated.View style={{transform: [{rotate: spin}]}}>
-                <AntDesign
-                  name="down"
-                  size={DP._12}
-                  color={Color.DODGER_BLUE}
+                <Icon.ChevronDown
+                  width={DP._12}
+                  height={DP._12}
+                  stroke={Color.DODGER_BLUE}
                 />
               </Animated.View>
             </FTouchableOpacity>
@@ -384,10 +375,10 @@ export default function HotelDetailCard({
                 <FTouchableOpacity
                   onPress={() => onActionPress?.(cancelAction)}
                   style={Styles.cancelButtonStyle}>
-                  <AntDesign
-                    name="close"
-                    size={DP._18}
-                    color={Color.PASTEL_RED}
+                  <Icon.Cross
+                    width={DP._16}
+                    height={DP._16}
+                    stroke={Color.PASTEL_RED}
                   />
                   <FText style={Styles.cancel}>{cancelAction.name}</FText>
                 </FTouchableOpacity>
@@ -396,10 +387,7 @@ export default function HotelDetailCard({
                 <FTouchableOpacity
                   onPress={() => onActionPress?.(modifyAction)}
                   style={Styles.modifyButtonStyle}>
-                  <FImage
-                    style={Styles.rescheduleIcon}
-                    source={ImageConst.rescheduleIcon}
-                  />
+                  <Icon.Reschedule width={DP._16} height={DP._16} />
                   <FText style={Styles.modify}>{modifyAction.name}</FText>
                 </FTouchableOpacity>
               )}

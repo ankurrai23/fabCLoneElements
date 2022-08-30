@@ -89,7 +89,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  directionIcon: {transform: [{rotateZ: '45deg'}], bottom: 2, right: 2},
+  directionIcon: {bottom: 2, right: 2},
   checkInAndDirectionContainer: {
     marginBottom: DP._16,
     flexDirection: 'row',

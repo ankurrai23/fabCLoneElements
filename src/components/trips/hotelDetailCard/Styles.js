@@ -99,7 +99,7 @@ export default StyleSheet.create({
     borderRadius: DP._8,
     backgroundColor: Color.GREY_PURPLE + '1a',
   },
-  directionIcon: {transform: [{rotateZ: '45deg'}], bottom: 2, right: 2},
+  directionIcon: {bottom: 2, right: 2},
   searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
   bookingDetailsContainer: {flex: 1, marginBottom: DP._8},
   flexRow: {flexDirection: 'row'},

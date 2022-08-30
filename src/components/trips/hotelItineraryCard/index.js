@@ -2,14 +2,9 @@ import React from 'react';
 import {View} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {ImageConst} from '../../../utils/imageConst';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
 
 import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
-import FImage from '../../../common/rn/FImage';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import TripStatus from '../tripStatus';
@@ -19,6 +14,7 @@ import InfoBox from '../components/infoBox';
 import {HotelSubTripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {TRIP_STATUS} from '../../../utils/Constants';
+import Icon from '../../../assets/icons/Icon';
 
 const HotelItineraryCard = ({
   item,
@@ -76,10 +72,10 @@ const HotelItineraryCard = ({
               <FTouchableOpacity
                 onPress={() => onActionPress(cancelAction)}
                 style={Styles.flexRowAndAlignCenter}>
-                <AntDesign
-                  name="close"
-                  size={DP._18}
-                  color={Color.PASTEL_RED}
+                <Icon.Cross
+                  width={DP._16}
+                  height={DP._16}
+                  stroke={Color.PASTEL_RED}
                 />
                 <FText style={Styles.cancel}>{cancelAction.name}</FText>
               </FTouchableOpacity>
@@ -88,10 +84,7 @@ const HotelItineraryCard = ({
               <FTouchableOpacity
                 onPress={() => onActionPress(modifyAction)}
                 style={Styles.primaryButtonStyle}>
-                <FImage
-                  style={Styles.rescheduleIcon}
-                  source={ImageConst.rescheduleIcon}
-                />
+                <Icon.Reschedule width={DP._16} height={DP._16} />
                 <FText style={Styles.reschedule}>{modifyAction.name}</FText>
               </FTouchableOpacity>
             )}
@@ -104,16 +97,20 @@ const HotelItineraryCard = ({
   return (
     <View style={[Styles.flexRow, style]}>
       <View>
-        {!hideIcon && (
-          <FImage
-            style={Styles.icon}
-            source={
-              timelineGreyed
-                ? ImageConst.grayHotelIconWithBorder
-                : ImageConst.hotelIconWithBorder
-            }
-          />
-        )}
+        {!hideIcon &&
+          (timelineGreyed ? (
+            <Icon.HotelItineraryGreyed
+              width={DP._30}
+              height={DP._30}
+              style={Styles.icon}
+            />
+          ) : (
+            <Icon.HotelItinerary
+              width={DP._30}
+              height={DP._30}
+              style={Styles.icon}
+            />
+          ))}
         {showLine && (
           <View style={Styles.dashedLineContainer}>
             <DashedLine
@@ -158,10 +155,10 @@ const HotelItineraryCard = ({
               <TripStatus statusObj={item.status} />
             ) : (
               processed && (
-                <Feather
-                  name="chevron-right"
-                  size={DP._18}
-                  color={Color.BATTLESHIP_GREY_TWO}
+                <Icon.ChevronRight
+                  width={DP._18}
+                  height={DP._18}
+                  stroke={Color.BATTLESHIP_GREY_TWO}
                 />
               )
             )}
@@ -181,10 +178,9 @@ const HotelItineraryCard = ({
                 <FTouchableOpacity
                   style={[Styles.flexRowWithAlignCenter]}
                   onPress={() => onActionPress(directionAction)}>
-                  <MaterialCommunityIcons
-                    name="navigation"
-                    size={DP._18}
-                    color={Color.DODGER_BLUE}
+                  <Icon.Navigation
+                    width={DP._16}
+                    height={DP._16}
                     style={Styles.directionIcon}
                   />
                   <FText

@@ -1,6 +1,5 @@
 import React from 'react';
 import {View} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -11,6 +10,7 @@ import {Color} from '../../../utils/color';
 import Styles from './Styles';
 import Separator from '../../../common/components/separator';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 function ItineraryHeader(props) {
   return (
@@ -19,7 +19,7 @@ function ItineraryHeader(props) {
         <FTouchableOpacity
           onPress={props.onBackClick}
           hitSlop={{left: 50, right: 20, bottom: 20, top: 20}}>
-          <Feather name="chevron-left" size={DP._24} color={Color.BLACK} />
+          <Icon.ChevronLeft stroke={Color.BLACK} />
         </FTouchableOpacity>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
           {props.itinerary}

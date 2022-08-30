@@ -9,10 +9,10 @@ import Styles from './Styles';
 import {Color} from '../../../utils/color';
 import Separator from '../../../common/components/separator';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const HotelPreferenceLoadingState = ({offline = false, onBackClick}) => {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -113,7 +113,7 @@ const HotelPreferenceLoadingState = ({offline = false, onBackClick}) => {
         style={Styles.headerContainer}>
         <View style={[Styles.flexRow, Styles.headerStyle]}>
           <FTouchableOpacity onPress={onBackClick}>
-            <Feather name="chevron-left" size={DP._24} color={Color.WHITE} />
+            <Icon.ChevronLeft color={Color.WHITE} />
           </FTouchableOpacity>
           <Placeholder style={Styles.headerTitleLoader} />
         </View>

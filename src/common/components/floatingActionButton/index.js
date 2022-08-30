@@ -1,17 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {Animated, Easing, View, TouchableNativeFeedback} from 'react-native';
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {BlurView} from '@react-native-community/blur';
 import Styles from './Styles';
 
-import FImage from '../../rn/FImage';
 import FText from '../../rn/FText';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 
 import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color/index.travelPlus';
-import {ImageConst} from '../../../utils/imageConst/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const FloatingAction = ({
   onPressTripRequest,
@@ -107,11 +104,7 @@ const FloatingAction = ({
           onPress={_onPressTripRequest}>
           <Animated.View style={[Styles.newView, bagStyle]}>
             <Animated.View style={Styles.optionView}>
-              <MaterialCommunityIcons
-                name="briefcase"
-                size={DP._18}
-                color={Color.TWILIGHT_BLUE}
-              />
+              <Icon.Briefcase width={DP._20} height={DP._20} />
             </Animated.View>
             <Animated.View style={Styles.textPosition}>
               <FText type="medium">{' Raise a trip request '}</FText>
@@ -124,7 +117,7 @@ const FloatingAction = ({
           onPress={_onPressExpenseClaim}>
           <Animated.View style={[Styles.newView, rupeesStyle]}>
             <Animated.View style={Styles.optionView}>
-              <FImage source={ImageConst.rupees} />
+              <Icon.Rupee />
             </Animated.View>
             <Animated.View style={Styles.textPosition}>
               <FText type="medium">{' Add expense claim '}</FText>
@@ -137,11 +130,7 @@ const FloatingAction = ({
           onPress={() => toggleOpen(!isVisible)}>
           <Animated.View style={[Styles.button, Styles.addBtn]}>
             <Animated.View style={{transform: [{rotate: spin}]}}>
-              <MaterialCommunityIcons
-                name="plus"
-                size={DP._30}
-                color={Color.BLACK}
-              />
+              <Icon.Plus />
             </Animated.View>
           </Animated.View>
         </TouchableNativeFeedback>

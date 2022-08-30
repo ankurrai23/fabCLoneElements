@@ -4,23 +4,15 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
 import Styles from './Styles';
-import FImage from '../../../common/rn/FImage';
 import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
 import InfoBox from '../components/infoBox';
-import {ImageConst} from '../../../utils/imageConst';
 import TripStatus from '../tripStatus';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
-/*
-TODO:
-1. Cancelled state prop
-2. Actions in non itinerary view
-*/
+import Icon from '../../../assets/icons/Icon';
+
 const FlightItineraryCard = ({
   item,
   onActionPress,
@@ -65,10 +57,10 @@ const FlightItineraryCard = ({
               <FTouchableOpacity
                 onPress={() => onActionPress(cancelAction)}
                 style={Styles.flexRowAndAlignCenter}>
-                <AntDesign
-                  name="close"
-                  size={DP._18}
-                  color={Color.PASTEL_RED}
+                <Icon.Cross
+                  width={DP._16}
+                  height={DP._16}
+                  stroke={Color.PASTEL_RED}
                 />
                 <FText style={Styles.cancel}>{cancelAction.name}</FText>
               </FTouchableOpacity>
@@ -77,10 +69,7 @@ const FlightItineraryCard = ({
               <FTouchableOpacity
                 onPress={() => onActionPress(rescheduleAction)}
                 style={Styles.primaryButtonStyle}>
-                <FImage
-                  style={Styles.rescheduleIcon}
-                  source={ImageConst.rescheduleIcon}
-                />
+                <Icon.Reschedule width={DP._16} height={DP._16} />
                 <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
               </FTouchableOpacity>
             )}
@@ -92,16 +81,20 @@ const FlightItineraryCard = ({
   return (
     <View style={[Styles.flexRow, style]}>
       <View>
-        {!hideIcon && (
-          <FImage
-            style={Styles.icon}
-            source={
-              timelineGreyed
-                ? ImageConst.grayFlightIconWithBorder
-                : ImageConst.flightIconWithBorder
-            }
-          />
-        )}
+        {!hideIcon &&
+          (timelineGreyed ? (
+            <Icon.FlightItineraryGreyed
+              width={DP._30}
+              height={DP._30}
+              style={Styles.icon}
+            />
+          ) : (
+            <Icon.FlightItinerary
+              width={DP._30}
+              height={DP._30}
+              style={Styles.icon}
+            />
+          ))}
         {showLine && (
           <View style={Styles.dashedLineContainer}>
             <DashedLine
@@ -130,10 +123,10 @@ const FlightItineraryCard = ({
             {item.showStatus ? (
               <TripStatus statusObj={item.status} />
             ) : processed ? (
-              <Feather
-                name="chevron-right"
-                size={DP._18}
-                color={Color.BATTLESHIP_GREY_TWO}
+              <Icon.ChevronRight
+                width={DP._18}
+                height={DP._18}
+                stroke={Color.BATTLESHIP_GREY_TWO}
               />
             ) : (
               <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
@@ -160,10 +153,10 @@ const FlightItineraryCard = ({
                 Styles.justifyContent_around(item.duration),
                 Styles.flex,
               ]}>
-              <MaterialCommunityIcon
-                name="airplane"
-                size={DP._18}
-                color={Color.LIGHT_BLUEY_GREY}
+              <Icon.Aeroplane
+                width={DP._18}
+                height={DP._18}
+                fill={Color.LIGHT_BLUEY_GREY}
                 style={Styles.airplane}
               />
               {item.duration && (

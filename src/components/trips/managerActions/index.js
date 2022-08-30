@@ -4,13 +4,12 @@ import React, {useState} from 'react';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Button from '../../../common/components/button';
-import FImage from '../../../common/rn/FImage';
 
 import {DP} from '../../../utils/Dimen';
-import {ImageConst} from '../../../utils/imageConst';
 import Styles from './Styles';
 import ReasonModal from '../../../common/components/reasonModal';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 export const MANAGER_ACTIONS = {
   APPROVE: 'APPROVE',
@@ -53,7 +52,7 @@ export default function ManagerActions({actions, onActionPress}) {
             {Strings.requestForModification}
           </FText>
           <FTouchableOpacity onPress={() => setModificationModal(true)}>
-            <FImage source={ImageConst.editIcon} style={Styles.editIcon} />
+            <Icon.EditWithBlueBackground width={DP._36} height={DP._36} />
           </FTouchableOpacity>
         </View>
       )}

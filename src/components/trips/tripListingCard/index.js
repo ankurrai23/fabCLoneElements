@@ -2,26 +2,37 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import FImage from '../../../common/rn/FImage';
 import Separator from '../../../common/components/separator';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {ImageConst} from '../../../utils/imageConst';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import {SUB_TRIP_TYPE} from '../../../utils/Constants';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const TripListingCard = ({item, onCardPress, style}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
 
   const tripIcons = (requestType) => {
     let icons = [];
-    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
-      icons.push(ImageConst.hotelIcon);
     if (requestType.includes(SUB_TRIP_TYPE.FLIGHT))
-      icons.push(ImageConst.flightIcon);
+      icons.push(
+        <Icon.Aeroplane
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />,
+      );
+    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
+      icons.push(
+        <Icon.Hotel
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />,
+      );
     return icons;
   };
 
@@ -36,19 +47,16 @@ const TripListingCard = ({item, onCardPress, style}) => {
         style={[Styles.container, {...style}]}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
-            {tripIcons(item.tripRequestType).map((asset, index) => (
-              <FImage
-                source={asset}
-                style={Styles.imageStyle}
-                key={`${index}abc`}
-              />
+            {tripIcons(item.tripRequestType).map((asset) => (
+              <View style={Styles.iconStyle}>{asset}</View>
             ))}
           </View>
-          {item.isProcessing && (
+          {!item.isProcessing && (
             <View style={Styles.flexRowAndAlignCenter}>
-              <FImage
-                source={ImageConst.rescheduleIcon}
-                style={Styles.rescheduleIcon}
+              <Icon.Reschedule
+                width={DP._14}
+                height={DP._14}
+                stroke={Color.GREY_PURPLE}
               />
               <FText style={Styles.tripId}>{Strings.processing}</FText>
             </View>

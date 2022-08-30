@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import FText from '../../../../common/rn/FText';
-import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../../utils/Dimen';
 import {Color} from '../../../../utils/color';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
+import Icon from '../../../../assets/icons/Icon';
 
 export default function InfoBox({
   isAlert,
@@ -18,18 +18,25 @@ export default function InfoBox({
       style={styles.container(isAlert)}
       onPress={onPress}
       disabled={disablePressEvent}>
-      <Feather
-        name={isAlert ? 'info' : 'check-circle'}
-        size={DP._16}
-        color={isAlert ? Color.TWILIGHT_BLUE : Color.DARK_SEA_FOAM}
-        style={styles.icon}
-      />
+      {isAlert ? (
+        <Icon.Info
+          width={DP._16}
+          height={DP._16}
+          style={styles.icon}
+          stroke={Color.TWILIGHT_BLUE}
+        />
+      ) : (
+        <Icon.CheckCircle
+          width={DP._16}
+          height={DP._16}
+          style={styles.icon}
+          stroke={Color.DARK_SEA_FOAM}
+        />
+      )}
       <FText style={styles.text(isAlert)}>{text}</FText>
       {showChevron && (
-        <Feather
-          name="chevron-right"
-          size={DP._24}
-          color={Color.DODGER_BLUE}
+        <Icon.ChevronRight
+          stroke={Color.DODGER_BLUE}
           style={styles.alignCenter}
         />
       )}
@@ -60,6 +67,6 @@ const styles = StyleSheet.create({
   alignCenter: {alignSelf: 'center'},
   icon: {
     marginRight: DP._8,
-    paddingTop: DP._2,
+    marginTop: DP._2,
   },
 });

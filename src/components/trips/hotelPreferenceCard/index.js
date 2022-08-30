@@ -4,12 +4,11 @@ import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import Separator from '../../../common/components/separator';
 import FImage from '../../../common/rn/FImage';
 import Styles from './Styles';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
-import Feather from 'react-native-vector-icons/Feather';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
   <>
@@ -89,12 +88,11 @@ const NonRichHotelView = ({
 
 const Stars = ({item}) => {
   return [...Array(item.starRating)].map((_, index) => (
-    <AntDesign
-      name="star"
-      style={Styles.icon}
-      size={DP._10}
-      color={Color.DARK_SLATE_BLUE}
+    <Icon.RatingStar
+      width={DP._16}
+      height={DP._16}
       key={`${index}`}
+      style={Styles.icon}
     />
   ));
 };
@@ -122,11 +120,11 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
     </View>
     <View style={Styles.subContainer}>
       <View style={Styles.starContainer}>
-        <AntDesign
-          name="star"
+        <Icon.RatingStar
           style={Styles.icon}
-          size={DP._12}
-          color={Color.MANGO}
+          width={DP._16}
+          height={DP._16}
+          fill={Color.MANGO}
         />
         <FText style={Styles.hotelStar(offline)}>
           {Strings.starHotel(item.starRating)}
@@ -155,7 +153,11 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         <View style={[Styles.flexCol]}>
           {item.mealTypeText && (
             <View style={[Styles.flexRow]}>
-              <Feather name="check" size={DP._16} color={Color.DARK_SEA_FOAM} />
+              <Icon.Check
+                width={DP._16}
+                height={DP._16}
+                stroke={Color.DARK_SEA_FOAM}
+              />
               <FText type={FONT_TYPE.MEDIUM} style={Styles.inclusions}>
                 {item.mealTypeText}
               </FText>

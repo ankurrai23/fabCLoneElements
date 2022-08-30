@@ -7,12 +7,8 @@ import FImage from '../../../common/rn/FImage';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.fabhotel';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Strings} from '../../../utils/strings/index.travelPlus';
-
-const AnimatedMaterialCommunityIcon = Animated.createAnimatedComponent(
-  MaterialCommunityIcons,
-);
+import Icon from '../../../assets/icons/Icon';
 
 export default function FlightPreferenceCard({
   width,
@@ -46,12 +42,13 @@ export default function FlightPreferenceCard({
           </FText>
           {/*<Animated.View style={[Styles.dot, {opacity: opacity}]} />*/}
           {/*<Animated.View style={[Styles.line, {opacity: opacity}]} />*/}
-          <AnimatedMaterialCommunityIcon
-            name="airplane"
-            size={DP._20}
-            color={Color.LIGHT_BLUEY_GREY}
-            style={[Styles.airplane, {opacity: opacity}]}
-          />
+          <Animated.View style={[Styles.airplane, {opacity: opacity}]}>
+            <Icon.Aeroplane
+              width={DP._20}
+              height={DP._20}
+              fill={Color.LIGHT_BLUEY_GREY}
+            />
+          </Animated.View>
           {/*<Animated.View style={[Styles.line, {opacity: opacity}]} />*/}
           {/*<Animated.View style={[Styles.whiteDot, {opacity: opacity}]} />*/}
           <Animated.Text

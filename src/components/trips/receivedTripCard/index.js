@@ -3,21 +3,19 @@ import {View} from 'react-native';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import FImage from '../../../common/rn/FImage';
 import Separator from '../../../common/components/separator';
 
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {ImageConst} from '../../../utils/imageConst';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import TripStatus from '../tripStatus';
 import ReasonModal from '../../../common/components/reasonModal';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {MANAGER_ACTIONS} from '../managerActions';
 import {SUB_TRIP_TYPE} from '../../../utils/Constants';
+import Icon from '../../../assets/icons/Icon';
 
 const ReceivedCard = ({item, onCardPress, onActionPress}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
@@ -26,10 +24,22 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
 
   const tripIcons = (requestType) => {
     let icons = [];
-    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
-      icons.push(ImageConst.hotelIcon);
     if (requestType.includes(SUB_TRIP_TYPE.FLIGHT))
-      icons.push(ImageConst.flightIcon);
+      icons.push(
+        <Icon.Aeroplane
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />,
+      );
+    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
+      icons.push(
+        <Icon.Hotel
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />,
+      );
     return icons;
   };
 
@@ -55,7 +65,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
             {tripIcons(item.requestType).map((asset) => (
-              <FImage source={asset} style={Styles.imageStyle} />
+              <View style={Styles.iconStyle}>{asset}</View>
             ))}
           </View>
           <TripStatus statusObj={item.status} />
@@ -122,11 +132,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               activeOpacity={1}
               style={[Styles.btn]}
               onPress={() => setRejectModal(true)}>
-              <AntDesign
-                name="closesquare"
-                size={DP._16}
-                color={Color.PASTEL_RED}
-              />
+              <Icon.Reject width={DP._16} height={DP._16} />
               <FText style={Styles.actionText(Color.PASTEL_RED)}>
                 {item.actions?.[1].name}
               </FText>
@@ -137,11 +143,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               activeOpacity={1}
               style={[Styles.btn]}
               onPress={() => setApproveModal(true)}>
-              <AntDesign
-                name="checksquare"
-                size={DP._16}
-                color={Color.DARK_SEA_FOAM}
-              />
+              <Icon.Approve width={DP._16} height={DP._16} />
               <FText style={Styles.actionText(Color.DARK_SEA_FOAM)}>
                 {item.actions?.[0].name}
               </FText>

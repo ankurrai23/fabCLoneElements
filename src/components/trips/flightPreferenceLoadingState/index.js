@@ -8,11 +8,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import Styles from './Styles';
 import {Color} from '../../../utils/color';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import Feather from 'react-native-vector-icons/Feather';
 import {DP} from '../../../utils/Dimen';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -47,10 +46,10 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
         </View>
         <View style={Styles.aiportCodeWithIconContainer}>
           <Placeholder style={Styles.commonPlaceholder2(DP._52, DP._21)} />
-          <MaterialCommunityIcons
-            name="airplane"
-            size={DP._20}
-            color={Color.LIGHT_BLUEY_GREY}
+          <Icon.Aeroplane
+            width={DP._18}
+            height={DP._18}
+            fill={Color.LIGHT_BLUEY_GREY}
             style={Styles.airplane}
           />
           <Placeholder style={Styles.commonPlaceholder2(DP._52, DP._21)} />
@@ -93,7 +92,7 @@ const FlightPreferenceLoadingState = ({includeReturnFlight, onBackClick}) => {
         style={Styles.headerContainer}>
         <View style={[Styles.flexRow, Styles.headerStyle]}>
           <FTouchableOpacity onPress={onBackClick}>
-            <Feather name="chevron-left" size={DP._24} color={Color.WHITE} />
+            <Icon.ChevronLeft stroke={Color.WHITE} />
           </FTouchableOpacity>
           <Placeholder style={Styles.headerTitleLoader} />
         </View>

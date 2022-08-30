@@ -8,7 +8,7 @@ import {
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from '../../../assets/icons/Icon';
 
 export default function FlightDetailLoadingState() {
   const animatedComponent = (cardColor, secondaryColor) => {
@@ -42,10 +42,10 @@ export default function FlightDetailLoadingState() {
               />
             </View>
             <View style={Styles.subContainerStyle('center')}>
-              <MaterialCommunityIcon
-                name="airplane"
-                size={DP._18}
-                color={Color.LIGHT_BLUEY_GREY}
+              <Icon.Aeroplane
+                width={DP._18}
+                height={DP._18}
+                fill={Color.LIGHT_BLUEY_GREY}
                 style={Styles.airplane}
               />
               <Placeholder

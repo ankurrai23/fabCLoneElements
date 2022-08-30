@@ -10,15 +10,15 @@ import {Color} from '../../../utils/color';
 import Separator from '../../../common/components/separator';
 import {DP} from '../../../utils/Dimen';
 import ListTypeFilter from '../listTypeFilter';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FText from '../../../common/rn/FText';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import Icon from '../../../assets/icons/Icon';
 
 const TripCardLoadingState = ({
   data,
   selected,
   onChange,
-  showSortAndFilter,
+  showSortAndFilter = true,
 }) => {
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
@@ -52,7 +52,11 @@ const TripCardLoadingState = ({
 
   const ButtonWithIcon = ({iconName, text, style}) => (
     <View style={Styles.button}>
-      <MaterialIcons name={iconName} color={Color.DODGER_BLUE} size={DP._18} />
+      {iconName === 'filter' ? (
+        <Icon.Filter width={DP._18} height={DP._18} />
+      ) : (
+        <Icon.Sort width={DP._18} height={DP._18} />
+      )}
       <FText style={[Styles.buttonTextStyle, style]}>{text}</FText>
     </View>
   );
@@ -68,7 +72,7 @@ const TripCardLoadingState = ({
               text={Strings.sort}
               style={{marginRight: DP._24}}
             />
-            <ButtonWithIcon iconName={'tune'} text={Strings.filter} />
+            <ButtonWithIcon iconName={'filter'} text={Strings.filter} />
           </View>
         )}
       </View>
