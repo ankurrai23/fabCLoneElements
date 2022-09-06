@@ -127,7 +127,7 @@ export default StyleSheet.create({
   modalHeading: {
     fontSize: DP._20,
     color: Color.BLACK,
-    textAlign: 'center',
+    textAlign: 'left',
     marginVertical: DP._20,
   },
   bell: {width: DP._24, height: DP._24, resizeMode: 'contain'},

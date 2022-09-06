@@ -26,16 +26,6 @@ const BottomSheet = ({style, ...props}) => {
         enabled={Utils.isPlatformIos()}
         behavior={'padding'}>
         <View style={[Styles.containerSheet, style]}>
-          {props.crossBtn === false ? null : props.crossBtn ? (
-            props.crossBtn
-          ) : (
-            <FTouchableOpacity
-              activeOpacity={1}
-              onPress={closeModal}
-              style={Styles.crossIcon}>
-              <Icon.Cross stroke={Color.GREY_PURPLE} />
-            </FTouchableOpacity>
-          )}
           {props.children}
         </View>
       </KeyboardAvoidingView>

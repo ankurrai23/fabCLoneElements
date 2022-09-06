@@ -9,7 +9,8 @@ export default StyleSheet.create({
   },
   head: {
     color: Color.DARK_BLUE,
-    textAlign: 'center',
+    textAlign: 'left',
+    marginLeft: DP._24,
     fontSize: DP._16,
     lineHeight: DP._24,
     marginBottom: DP._20,

@@ -31,13 +31,6 @@ const SupportDialog = (props) => {
       modalVisible={props.visible}
       ContentModal={
         <View style={styles.paddingView}>
-          <FTouchableOpacity style={styles.closeView} onPress={props.onClose}>
-            <Icon.Cross
-              width={DP._26}
-              height={DP._26}
-              stroke={Color.BROWN_GREY}
-            />
-          </FTouchableOpacity>
           <FText style={styles.heading}>{Strings.support}</FText>
           <View style={{paddingHorizontal: DP._10}}>
             <FlatList
@@ -60,7 +53,8 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: DP._20,
     color: Color.BLACK,
-    textAlign: 'center',
+    textAlign: 'left',
+    marginLeft: DP._16,
     marginVertical: DP._18,
   },
   renderItem: {

@@ -75,15 +75,6 @@ export default function OtherTravelDetails(props) {
           modalVisible={visible}
           ContentModal={
             <View style={Styles.paddingView}>
-              <FTouchableOpacity
-                style={Styles.closeView}
-                onPress={() => setVisible(false)}>
-                <Icon.Cross
-                  width={DP._26}
-                  height={DP._26}
-                  stroke={Color.BROWN_GREY}
-                />
-              </FTouchableOpacity>
               <FText style={Styles.heading}>{Strings.purposeOfTravel}</FText>
               <View style={{paddingHorizontal: DP._20}}>
                 <FlatList
