@@ -51,7 +51,7 @@ const TripListingCard = ({item, onCardPress, style}) => {
               <View style={Styles.iconStyle}>{asset}</View>
             ))}
           </View>
-          {!item.isProcessing && (
+          {item.isProcessing && (
             <View style={Styles.flexRowAndAlignCenter}>
               <Icon.Reschedule
                 width={DP._14}
