@@ -5,7 +5,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DashedLine from '../../../common/components/dashedLine';
 
-const ApproverChain = ({data, inItinerary}) => {
+const ApproverChain = ({data, inItinerary, title}) => {
   const ManagerDetail = ({
     hideLine,
     primaryText,
@@ -34,7 +34,7 @@ const ApproverChain = ({data, inItinerary}) => {
             />
           </View>
         )}
-        <View>
+        <View style={{marginTop: DP._1}}>
           <FText weight={'500'} style={styles.managerName(inItinerary)}>
             {primaryText}
           </FText>
@@ -54,6 +54,9 @@ const ApproverChain = ({data, inItinerary}) => {
 
   return (
     <>
+      <FText style={styles.titleTextStyle} weight={'500'}>
+        {title}
+      </FText>
       {data.map((item, index) => (
         <ManagerDetail {...item} hideLine={index === data.length - 1} />
       ))}
@@ -68,7 +71,6 @@ const styles = StyleSheet.create({
     color: Color.DARK,
     lineHeight: inItinerary ? DP._16 : DP._18,
     fontSize: inItinerary ? DP._12 : DP._14,
-    marginBottom: DP._2,
   }),
   designation: (inItinerary) => ({
     lineHeight: inItinerary ? DP._14 : DP._18,
@@ -110,5 +112,10 @@ const styles = StyleSheet.create({
   }),
   designationAndTimeStampContainer: {
     flexDirection: 'row',
+  },
+  titleTextStyle: {
+    fontSize: DP._14,
+    lineHeight: DP._16,
+    marginVertical: DP._16,
   },
 });
