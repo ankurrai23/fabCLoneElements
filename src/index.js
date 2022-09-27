@@ -46,6 +46,7 @@ import FlightDetailCard from './components/trips/flightDetailCard';
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
+import ApproverChain from './components/trips/approverChain';
 
 //Constants
 import {FlightSubTripActions} from './utils/SubTripActions';
@@ -133,6 +134,7 @@ export {
   FlightDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
+  ApproverChain,
   // Trip Creation
   HotelDetails,
   FlightDetails,

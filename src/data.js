@@ -28,6 +28,7 @@ import coTravellersProps from './components/trips/coTravellers/data';
 import flightDetailCardProps from './components/trips/flightDetailCard/data';
 import listTypeFilterProps from './components/trips/listTypeFilter/data';
 import floatingActionProps from './common/components/floatingActionButton/data';
+import approverChainProps from './components/trips/approverChain/data';
 
 //trip creation props
 import coTravellersDetailProps from './components/tripCreation/coTravelersDetails/data';
@@ -103,4 +104,5 @@ export {
   itineraryCardProps,
   contactSupportProps,
   dropDownProps,
+  approverChainProps,
 };
