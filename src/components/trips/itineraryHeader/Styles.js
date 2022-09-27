@@ -37,7 +37,7 @@ export default StyleSheet.create({
     marginRight: DP._16,
   },
   subContainer: {
-    marginTop: DP._24,
+    marginTop: DP._16,
     paddingHorizontal: DP._16,
   },
   detailsContainer: {
@@ -54,5 +54,25 @@ export default StyleSheet.create({
   container: {
     paddingTop: isPlatformIos() ? DP._10 : DP._20,
     backgroundColor: 'white',
+  },
+  approvalPendingInfoContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._8,
+    alignItems: 'center',
+    backgroundColor: Color.DEEP_SAFFRON + '1a',
+    marginTop: DP._8,
+  },
+  approvalPendingInfoText: {
+    fontSize: DP._10,
+    linHeight: DP._12,
+  },
+  approvalPendingInfoTextContainer: {
+    flexDirection: 'row',
+    flexGrow: 1,
+  },
+  trackButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
