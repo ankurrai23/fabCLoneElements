@@ -5,6 +5,12 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DashedLine from '../../../common/components/dashedLine';
 
+export const MANAGER_APPROVAL_STATUS = {
+  approvalPending: 'APPROVAL_PENDING',
+  approved: 'APPROVED',
+  rejected: 'REJECTED',
+};
+
 const ApproverChain = ({data, inItinerary, title, style}) => {
   const ManagerDetail = ({
     hideLine,
@@ -13,22 +19,29 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
     timeOfStatusUpdate,
     waiting,
     status,
+    managerName,
   }) => {
-    let statusColor = status
-      ? status === 'APPROVED'
-        ? Color.DARK_SEA_FOAM
-        : Color.PASTEL_RED
-      : Color.GREY_5;
-
+    let statusColor = () => {
+      switch (status) {
+        case MANAGER_APPROVAL_STATUS.approvalPending:
+          return Color.GREY_5;
+        case MANAGER_APPROVAL_STATUS.approved:
+          return Color.DARK_SEA_FOAM;
+        case MANAGER_APPROVAL_STATUS.rejected:
+          return Color.PASTEL_RED;
+        default:
+          return Color.DARK;
+      }
+    };
     return (
       <View style={styles.itemContainer}>
-        <View style={styles.radio(waiting, status, statusColor)}>
-          <View style={styles.radioFill(status, statusColor)} />
+        <View style={styles.radio(waiting, status, statusColor())}>
+          <View style={styles.radioFill(status, statusColor())} />
         </View>
         {!hideLine && (
           <View style={styles.dashLineStyle}>
             <DashedLine
-              dashColor={waiting ? Color.GREY_5 : statusColor}
+              dashColor={waiting ? Color.GREY_5 : statusColor()}
               dashSize={DP._3}
               dashWidth={DP._1_5}
             />
@@ -36,17 +49,16 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
         )}
         <View style={{marginTop: DP._1}}>
           <FText weight={'500'} style={styles.managerName(inItinerary)}>
-            {primaryText}
+            {primaryText || managerName}
           </FText>
-          <View style={styles.designationAndTimeStampContainer}>
-            <FText style={styles.designation(inItinerary)}>{designation}</FText>
+          <FText numberOfLines={1} style={styles.designation(inItinerary)}>
+            {designation}
             {!!timeOfStatusUpdate && (
-              <FText style={styles.timeOfStatusUpdate}>
-                {' '}
-                | {timeOfStatusUpdate}
+              <FText style={styles.timeOfStatusUpdate} numberOfLines={1}>
+                {` | ${timeOfStatusUpdate}`}
               </FText>
             )}
-          </View>
+          </FText>
         </View>
       </View>
     );
@@ -71,6 +83,7 @@ const styles = StyleSheet.create({
     color: Color.DARK,
     lineHeight: inItinerary ? DP._16 : DP._18,
     fontSize: inItinerary ? DP._12 : DP._14,
+    marginBottom: DP._4,
   }),
   designation: (inItinerary) => ({
     lineHeight: inItinerary ? DP._14 : DP._18,
@@ -87,7 +100,10 @@ const styles = StyleSheet.create({
     borderWidth: DP._1_5,
     marginRight: DP._16,
     borderRadius: DP._12,
-    borderColor: waiting && !status ? Color.DARK_SEA_FOAM : statusColor,
+    borderColor:
+      waiting && status === MANAGER_APPROVAL_STATUS.approvalPending
+        ? Color.DARK_SEA_FOAM
+        : statusColor,
     backgroundColor: Color.WHITE,
     justifyContent: 'center',
     alignItems: 'center',
@@ -102,12 +118,15 @@ const styles = StyleSheet.create({
   timeOfStatusUpdate: {
     color: Color.GREY_PURPLE,
     fontSize: DP._12,
-    lineHeight: DP._16,
+    lineHeight: DP._14,
   },
   radioFill: (status, statusColor) => ({
     width: DP._8,
     height: DP._8,
-    backgroundColor: status ? statusColor : Color.WHITE,
+    backgroundColor:
+      status !== MANAGER_APPROVAL_STATUS.approvalPending
+        ? statusColor
+        : Color.WHITE,
     borderRadius: DP._4,
   }),
   designationAndTimeStampContainer: {

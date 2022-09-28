@@ -20,7 +20,7 @@ export default function ApprovalManager(props) {
           <FText type={FONT_TYPE.MEDIUM} style={Styles.managerName}>
             {props.managerName}
           </FText>
-          <FText style={Styles.designation}>{props.managerDesignation}</FText>
+          <FText style={Styles.designation}>{props.designation}</FText>
         </View>
       </View>
     </View>
