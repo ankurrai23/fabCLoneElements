@@ -35,9 +35,7 @@ function ItineraryHeader(props) {
             <FText style={Styles.approvalPendingInfoText}>
               {props.approvalInfo.primaryText}
             </FText>
-            <FText
-              weight={'500'}
-              style={[Styles.approvalPendingInfoText, {marginLeft: DP._4}]}>
+            <FText weight={'500'} style={Styles.approvalPendingInfoText}>
               {props.approvalInfo.managerName}
             </FText>
           </View>
