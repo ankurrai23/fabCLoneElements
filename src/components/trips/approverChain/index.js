@@ -5,7 +5,7 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DashedLine from '../../../common/components/dashedLine';
 
-const ApproverChain = ({data, inItinerary, title}) => {
+const ApproverChain = ({data, inItinerary, title, style}) => {
   const ManagerDetail = ({
     hideLine,
     primaryText,
@@ -53,14 +53,14 @@ const ApproverChain = ({data, inItinerary, title}) => {
   };
 
   return (
-    <>
+    <View style={style}>
       <FText style={styles.titleTextStyle} weight={'500'}>
         {title}
       </FText>
       {data.map((item, index) => (
         <ManagerDetail {...item} hideLine={index === data.length - 1} />
       ))}
-    </>
+    </View>
   );
 };
 
