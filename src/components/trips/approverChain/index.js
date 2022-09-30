@@ -13,7 +13,7 @@ export const MANAGER_APPROVAL_STATUS = {
 
 const ApproverChain = ({data, inItinerary, title, style}) => {
   const ManagerDetail = ({
-    hideLine,
+    lastItem,
     primaryText,
     designation,
     timeOfStatusUpdate,
@@ -34,11 +34,11 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
       }
     };
     return (
-      <View style={styles.itemContainer}>
+      <View style={styles.itemContainer(lastItem)}>
         <View style={styles.radio(waiting, status, statusColor())}>
           <View style={styles.radioFill(status, statusColor())} />
         </View>
-        {!hideLine && (
+        {!lastItem && (
           <View style={styles.dashLineStyle}>
             <DashedLine
               dashColor={waiting ? Color.GREY_5 : statusColor()}
@@ -47,8 +47,11 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
             />
           </View>
         )}
-        <View style={{marginTop: DP._1}}>
-          <FText weight={'500'} style={styles.managerName(inItinerary)}>
+        <View style={styles.managerNameAndDesignationContainer}>
+          <FText
+            weight={'500'}
+            style={styles.managerName(inItinerary)}
+            numberOfLines={1}>
             {primaryText || managerName}
           </FText>
           <FText numberOfLines={1} style={styles.designation(inItinerary)}>
@@ -65,12 +68,12 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
   };
 
   return (
-    <View style={style}>
+    <View style={[style]}>
       <FText style={styles.titleTextStyle} weight={'500'}>
         {title}
       </FText>
       {data.map((item, index) => (
-        <ManagerDetail {...item} hideLine={index === data.length - 1} />
+        <ManagerDetail {...item} lastItem={index === data.length - 1} />
       ))}
     </View>
   );
@@ -90,10 +93,10 @@ const styles = StyleSheet.create({
     fontSize: inItinerary ? DP._12 : DP._14,
     color: inItinerary ? Color.DARK : Color.GREY_PURPLE,
   }),
-  itemContainer: {
-    marginBottom: DP._16,
+  itemContainer: (lastItem) => ({
+    marginBottom: lastItem ? 0 : DP._16,
     flexDirection: 'row',
-  },
+  }),
   radio: (waiting, status, statusColor) => ({
     width: DP._16,
     height: DP._16,
@@ -112,7 +115,7 @@ const styles = StyleSheet.create({
   dashLineStyle: {
     position: 'absolute',
     height: '100%',
-    top: DP._16,
+    top: DP._18,
     left: DP._7,
   },
   timeOfStatusUpdate: {
@@ -136,5 +139,9 @@ const styles = StyleSheet.create({
     fontSize: DP._14,
     lineHeight: DP._16,
     marginVertical: DP._16,
+  },
+  managerNameAndDesignationContainer: {
+    marginTop: DP._1,
+    flex: 1,
   },
 });

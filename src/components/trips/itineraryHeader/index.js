@@ -31,14 +31,11 @@ function ItineraryHeader(props) {
       </View>
       {props.showApprovalStatus && (
         <View style={Styles.approvalPendingInfoContainer}>
-          <View style={Styles.approvalPendingInfoTextContainer}>
-            <FText style={Styles.approvalPendingInfoText}>
-              {props.approvalInfo.primaryText}
-            </FText>
-            <FText weight={'500'} style={Styles.approvalPendingInfoText}>
-              {props.approvalInfo.managerName}
-            </FText>
-          </View>
+          <FText
+            style={[Styles.approvalPendingInfoText, Styles.approvalText]}
+            numberOfLines={1}>
+            {props.approvalInfo.primaryText}
+          </FText>
           <FTouchableOpacity
             style={Styles.trackButton}
             onPress={props.onPressTrack}>

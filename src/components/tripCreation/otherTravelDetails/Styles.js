@@ -26,7 +26,7 @@ export default StyleSheet.create({
   heading: {
     fontSize: DP._20,
     color: Color.BLACK,
-    textAlign: 'center',
+    marginHorizontal: DP._24,
     marginVertical: DP._15,
     ...Specs.fontRegular,
   },

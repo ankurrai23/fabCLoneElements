@@ -60,6 +60,7 @@ export default StyleSheet.create({
     paddingHorizontal: DP._16,
     paddingVertical: DP._8,
     alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: Color.DEEP_SAFFRON + '1a',
     marginTop: DP._8,
   },
@@ -67,12 +68,9 @@ export default StyleSheet.create({
     fontSize: DP._10,
     linHeight: DP._12,
   },
-  approvalPendingInfoTextContainer: {
-    flexDirection: 'row',
-    flexGrow: 1,
-  },
   trackButton: {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  approvalText: {width: '85%', flexGrow: 1, paddingRight: DP._8},
 });
