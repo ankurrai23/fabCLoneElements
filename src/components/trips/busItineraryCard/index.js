@@ -9,7 +9,7 @@ import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
 import InfoBox from '../components/infoBox';
 import TripStatus from '../tripStatus';
-import {FlightSubTripActions} from '../../../utils/SubTripActions';
+import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 
@@ -26,14 +26,14 @@ const BusItineraryCard = ({
 }) => {
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
-  const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
+  const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
+  const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
+  const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
   const shortlistingAction = isActionEnabled(
-    FlightSubTripActions.SHORTLIST_FLIGHT_TRIPS,
+    BusSubtripActions.SHORTLIST_FLIGHT_TRIPS,
   );
   const viewShortlistedFlightAction = isActionEnabled(
-    FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
+    BusSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
   );
 
   const ActionsInItinerary = () => (

@@ -1,4 +1,4 @@
-import {FlightSubTripActions} from '../../../utils/SubTripActions';
+import {TrainSubtripActions} from '../../../utils/SubTripActions';
 
 const trainItineraryCardProps = {
   item: {
@@ -35,7 +35,7 @@ const trainItineraryCardProps = {
         name: 'Cancel',
       },
       {
-        type: FlightSubTripActions.CANCELLATION_REQUESTED,
+        type: TrainSubtripActions.CANCELLATION_REQUESTED,
         name: 'You have sent a modification request for this booking.',
       },
     ],

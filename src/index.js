@@ -52,7 +52,12 @@ import ListTypeFilter from './components/trips/listTypeFilter';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
 
 //Constants
-import {FlightSubTripActions} from './utils/SubTripActions';
+import {
+  FlightSubTripActions,
+  TrainSubtripActions,
+  BusSubtripActions,
+  CabSubtripActions,
+} from './utils/SubTripActions';
 import {HotelSubTripActions} from './utils/SubTripActions';
 import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
@@ -149,6 +154,9 @@ export {
   RemoveItinerary,
   // constants
   FlightSubTripActions,
+  TrainSubtripActions,
+  BusSubtripActions,
+  CabSubtripActions,
   HotelSubTripActions,
   FieldNamesEnum,
   // Home

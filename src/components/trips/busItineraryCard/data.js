@@ -1,4 +1,4 @@
-import {FlightSubTripActions} from '../../../utils/SubTripActions';
+import {BusSubtripActions} from '../../../utils/SubTripActions';
 
 const busItineraryCardProps = {
   item: {
@@ -29,7 +29,7 @@ const busItineraryCardProps = {
         name: 'Cancel',
       },
       {
-        type: FlightSubTripActions.CANCELLATION_REQUESTED,
+        type: BusSubtripActions.CANCELLATION_REQUESTED,
         name: 'You have sent a modification request for this booking.',
       },
     ],
@@ -39,10 +39,10 @@ const busItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: true,
   hideIcon: false,
-  showInfo: true,
+  showInfo: false,
   isAlert: true,
-  timelineGreyed: true,
-  processed: true,
+  timelineGreyed: false,
+  processed: false,
 };
 
 export default busItineraryCardProps;
