@@ -47,7 +47,7 @@ const busItineraryCardProps = {
   hideIcon: false,
   showInfo: true,
   isAlert: true,
-  timelineGreyed: false,
+  timelineGreyed: true,
   processed: true,
 };
 

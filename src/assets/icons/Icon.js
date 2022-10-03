@@ -22,8 +22,14 @@ import Sort from './sort.svg';
 import EditWithBlueBackground from './edit-with-blue-background.svg';
 import Bell from './bell.svg';
 import FlightItineraryGreyed from './flight-itinerary-greyed.svg';
+import BusItineraryGreyed from './bus-itinerary-greyed.svg';
+import CabItineraryGreyed from './cab-itinerary-greyed.svg';
+import TrainItineraryGreyed from './train-itinerary-greyed.svg';
 import HotelItineraryGreyed from './hotel-itinerary-greyed.svg';
 import FlightItinerary from './flight-itinerary.svg';
+import BusItinerary from './bus-itinerary.svg';
+import CabItinerary from './cab-itinerary.svg';
+import TrainItinerary from './train-itinerary.svg';
 import HotelItinerary from './hotel-itinerary.svg';
 import Briefcase from './briefcase.svg';
 import Rupee from './rupee.svg';
@@ -385,7 +391,13 @@ const Icon = {
   Bell,
   Hotel,
   FlightItinerary,
+  BusItinerary,
+  TrainItinerary,
+  CabItinerary,
   FlightItineraryGreyed,
+  BusItineraryGreyed,
+  TrainItineraryGreyed,
+  CabItineraryGreyed,
   HotelItinerary,
   HotelItineraryGreyed,
   Briefcase,
