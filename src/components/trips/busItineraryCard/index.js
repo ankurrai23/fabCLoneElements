@@ -123,76 +123,47 @@ const BusItineraryCard = ({
             {item.showStatus ? (
               <TripStatus statusObj={item.status} />
             ) : processed ? (
-              <Icon.ChevronRight
-                width={DP._18}
-                height={DP._18}
-                stroke={Color.BATTLESHIP_GREY_TWO}
-              />
+              <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
+                  {Strings.pickupTime} {item.pickupTime}
+                </FText>
+                <Icon.ChevronRight
+                  width={DP._18}
+                  height={DP._18}
+                  stroke={Color.BATTLESHIP_GREY_TWO}
+                />
+              </View>
             ) : (
               <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
                 {item.slotDetail}
               </FText>
             )}
           </View>
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+
+          {processed && (
+            <View style={Styles.marginTop_12}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {console.log({item})}
+                {item.travelCompany}
+              </FText>
+              <FText style={Styles.time}>{item.busInfo}</FText>
+            </View>
+          )}
+
+          <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
             <View style={Styles.flex}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {processed
-                  ? item.sourceAirportCode +
-                    (item.sourceAirportTerminal
-                      ? ` - ${item.sourceAirportTerminal}`
-                      : '')
-                  : item.source}
+                {item.source}
               </FText>
-              <FText style={Styles.time}>
-                {processed ? item.departureTime : item.sourceAirportCode}
-              </FText>
-            </View>
-            <View
-              style={[
-                Styles.justifyContent_around(item.duration),
-                Styles.flex,
-              ]}>
-              <Icon.Aeroplane
-                width={DP._18}
-                height={DP._18}
-                fill={Color.LIGHT_BLUEY_GREY}
-                style={Styles.airplane}
-              />
-              {item.duration && (
-                <View style={Styles.durationContainer}>
-                  <FText style={Styles.duration}>{item.duration}</FText>
-                  <View style={Styles.dot_two} />
-                  <FText style={Styles.duration}>{item.stop}</FText>
-                </View>
-              )}
+              <FText style={Styles.time}>{item.sourceBusStop}</FText>
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {processed
-                  ? item.destinationAirportCode +
-                    (item.destinationAirportTerminal
-                      ? ` - ${item.destinationAirportTerminal}`
-                      : '')
-                  : item.destination}
+                {item.destination}
               </FText>
-              <FText style={Styles.time}>
-                {processed ? item.arrivalTime : item.destinationAirportCode}
-              </FText>
+              <FText style={Styles.time}>{item.destinationBusStop}</FText>
             </View>
           </View>
-          {processed && (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-              <View>
-                <FText style={Styles.portName}>{item.airline}</FText>
-                <FText style={Styles.time}>{item.flightNumber}</FText>
-              </View>
-              <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>{Strings.pnr}</FText>
-                <FText style={Styles.time}>{item.pnr}</FText>
-              </View>
-            </View>
-          )}
         </FTouchableOpacity>
         {(rescheduleAction || cancelAction || viewRemarksAction) && (
           <ActionsInItinerary />

@@ -95,4 +95,5 @@ export default {
   addAStop: 'Add a stop',
   class: 'Class',
   preferredTrain: 'Preferred train',
+  pickupTime: 'Pickup time: ',
 };
