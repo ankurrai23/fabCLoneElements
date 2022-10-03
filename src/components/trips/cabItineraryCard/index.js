@@ -83,13 +83,13 @@ const CabItineraryCard = ({
       <View>
         {!hideIcon &&
           (timelineGreyed ? (
-            <Icon.BusItineraryGreyed
+            <Icon.CabItineraryGreyed
               width={DP._30}
               height={DP._30}
               style={Styles.icon}
             />
           ) : (
-            <Icon.BusItinerary
+            <Icon.CabItinerary
               width={DP._30}
               height={DP._30}
               style={Styles.icon}

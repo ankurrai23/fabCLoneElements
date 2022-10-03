@@ -37,10 +37,11 @@ export default StyleSheet.create({
   },
   portName: {
     color: Color.DARK,
+    fontSize: DP._14,
   },
   time: {
     marginTop: DP._4,
-    fontSize: DP._16,
+    fontSize: DP._12,
     color: Color.GREY_PURPLE,
   },
   date: {
