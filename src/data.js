@@ -16,6 +16,9 @@ import flightPreferenceCardProps from './components/trips/flightPreferenceCard/d
 import hotelDetailCardProps from './components/trips/hotelDetailCard/data';
 import tripStatusProps from './components/trips/tripStatus/data';
 import flightItineraryCardProps from './components/trips/flightItineraryCard/data';
+import busItineraryCardProps from './components/trips/busItineraryCard/data';
+import trainItineraryCardProps from './components/trips/trainItineraryCard/data';
+import cabItineraryCardProps from './components/trips/cabItineraryCard/data';
 import hotelItineraryCardProps from './components/trips/hotelItineraryCard/data';
 import remarksContainerProps from './components/trips/remarksContainer/data';
 import itineraryHeaderProps from './components/trips/itineraryHeader/data';
@@ -64,6 +67,9 @@ export {
   hotelDetailCardProps,
   tripStatusProps,
   flightItineraryCardProps,
+  busItineraryCardProps,
+  trainItineraryCardProps,
+  cabItineraryCardProps,
   hotelItineraryCardProps,
   remarksContainerProps,
   coTravellersDetailProps,

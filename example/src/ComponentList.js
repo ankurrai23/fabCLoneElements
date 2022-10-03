@@ -10,6 +10,9 @@ import {
   HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
+  BusItineraryCard,
+  TrainItineraryCard,
+  CabItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
   CoTravelersDetails,
@@ -116,6 +119,18 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightItineraryCard',
     component: <FlightItineraryCard {...data.flightItineraryCardProps} />,
+  },
+  {
+    name: 'BusItineraryCard',
+    component: <BusItineraryCard {...data.busItineraryCardProps} />,
+  },
+  {
+    name: 'TrainItineraryCard',
+    component: <TrainItineraryCard {...data.trainItineraryCardProps} />,
+  },
+  {
+    name: 'CabItineraryCard',
+    component: <CabItineraryCard {...data.cabItineraryCardProps} />,
   },
   {
     name: 'HotelItineraryCard',

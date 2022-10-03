@@ -29,6 +29,10 @@ import FlightPreferenceCard from './components/trips/flightPreferenceCard';
 import HotelDetailCard from './components/trips/hotelDetailCard';
 import TripStatus from './components/trips/tripStatus';
 import FlightItineraryCard from './components/trips/flightItineraryCard';
+import BusItineraryCard from './components/trips/busItineraryCard';
+import CabItineraryCard from './components/trips/cabItineraryCard';
+import TrainItineraryCard from './components/trips/trainItineraryCard';
+
 import HotelItineraryCard from './components/trips/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';
 import CoTravellers from './components/trips/coTravellers';
@@ -116,6 +120,9 @@ export {
   HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
+  BusItineraryCard,
+  CabItineraryCard,
+  TrainItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
   EmptyScreen,
