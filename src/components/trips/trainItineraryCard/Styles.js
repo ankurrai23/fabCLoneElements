@@ -36,11 +36,12 @@ export default StyleSheet.create({
     transform: [{rotate: '90deg'}],
   },
   portName: {
-    color: Color.GREYISH_PURPLE,
+    color: Color.DARK,
   },
   time: {
     marginTop: DP._4,
     fontSize: DP._16,
+    color: Color.GREY_PURPLE,
   },
   date: {
     fontSize: DP._18,

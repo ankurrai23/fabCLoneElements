@@ -83,13 +83,13 @@ const TrainItineraryCard = ({
       <View>
         {!hideIcon &&
           (timelineGreyed ? (
-            <Icon.FlightItineraryGreyed
+            <Icon.TrainItineraryGreyed
               width={DP._30}
               height={DP._30}
               style={Styles.icon}
             />
           ) : (
-            <Icon.FlightItinerary
+            <Icon.TrainItinerary
               width={DP._30}
               height={DP._30}
               style={Styles.icon}
@@ -137,15 +137,10 @@ const TrainItineraryCard = ({
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
             <View style={Styles.flex}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {processed
-                  ? item.sourceAirportCode +
-                    (item.sourceAirportTerminal
-                      ? ` - ${item.sourceAirportTerminal}`
-                      : '')
-                  : item.source}
+                {processed ? item.sourceStationCode : item.source}
               </FText>
               <FText style={Styles.time}>
-                {processed ? item.departureTime : item.sourceAirportCode}
+                {processed ? item.departureTime : item.sourceStationCode}
               </FText>
             </View>
             <View
@@ -153,43 +148,45 @@ const TrainItineraryCard = ({
                 Styles.justifyContent_around(item.duration),
                 Styles.flex,
               ]}>
-              <Icon.Aeroplane
-                width={DP._18}
-                height={DP._18}
-                fill={Color.LIGHT_BLUEY_GREY}
-                style={Styles.airplane}
-              />
               {item.duration && (
                 <View style={Styles.durationContainer}>
-                  <FText style={Styles.duration}>{item.duration}</FText>
-                  <View style={Styles.dot_two} />
-                  <FText style={Styles.duration}>{item.stop}</FText>
+                  <FText style={Styles.duration} weight={400}>
+                    {item.duration}
+                  </FText>
                 </View>
               )}
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {processed
-                  ? item.destinationAirportCode +
-                    (item.destinationAirportTerminal
-                      ? ` - ${item.destinationAirportTerminal}`
-                      : '')
-                  : item.destination}
+                {processed ? item.destinationStationCode : item.destination}
               </FText>
               <FText style={Styles.time}>
-                {processed ? item.arrivalTime : item.destinationAirportCode}
+                {processed ? item.arrivalTime : item.destinationStationCode}
               </FText>
             </View>
           </View>
-          {processed && (
+          {processed ? (
             <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
               <View>
-                <FText style={Styles.portName}>{item.airline}</FText>
-                <FText style={Styles.time}>{item.flightNumber}</FText>
+                <FText style={Styles.portName}>{item.trainName}</FText>
+                <FText style={Styles.time}>
+                  {item.seatNumber} {item.trainNumber}
+                </FText>
               </View>
               <View style={Styles.alignItem_flexEnd}>
                 <FText style={Styles.portName}>{Strings.pnr}</FText>
                 <FText style={Styles.time}>{item.pnr}</FText>
+              </View>
+            </View>
+          ) : (
+            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+              <View>
+                <FText style={Styles.portName}>{Strings.preferredTrain}</FText>
+                <FText style={Styles.time}>{item.preferredTrain}</FText>
+              </View>
+              <View style={Styles.alignItem_flexEnd}>
+                <FText style={Styles.portName}>{Strings.class}</FText>
+                <FText style={Styles.time}>{item.preferredClass}</FText>
               </View>
             </View>
           )}

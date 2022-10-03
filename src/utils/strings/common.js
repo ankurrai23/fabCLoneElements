@@ -93,4 +93,6 @@ export default {
   processing: 'Processsing',
   viewdetails: 'View details',
   addAStop: 'Add a stop',
+  class: 'Class',
+  preferredTrain: 'Preferred train',
 };
