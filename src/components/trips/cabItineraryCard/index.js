@@ -83,13 +83,13 @@ const CabItineraryCard = ({
       <View>
         {!hideIcon &&
           (timelineGreyed ? (
-            <Icon.CabItineraryGreyed
+            <Icon.BusItineraryGreyed
               width={DP._30}
               height={DP._30}
               style={Styles.icon}
             />
           ) : (
-            <Icon.CabItinerary
+            <Icon.BusItinerary
               width={DP._30}
               height={DP._30}
               style={Styles.icon}
@@ -123,76 +123,49 @@ const CabItineraryCard = ({
             {item.showStatus ? (
               <TripStatus statusObj={item.status} />
             ) : processed ? (
-              <Icon.ChevronRight
-                width={DP._18}
-                height={DP._18}
-                stroke={Color.BATTLESHIP_GREY_TWO}
-              />
+              <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
+                  {Strings.pickupTime} {item.pickupTime}
+                </FText>
+                <Icon.ChevronRight
+                  width={DP._18}
+                  height={DP._18}
+                  stroke={Color.BATTLESHIP_GREY_TWO}
+                />
+              </View>
             ) : (
               <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
                 {item.slotDetail}
               </FText>
             )}
           </View>
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-            <View style={Styles.flex}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {processed
-                  ? item.sourceAirportCode +
-                    (item.sourceAirportTerminal
-                      ? ` - ${item.sourceAirportTerminal}`
-                      : '')
-                  : item.source}
-              </FText>
-              <FText style={Styles.time}>
-                {processed ? item.departureTime : item.sourceAirportCode}
-              </FText>
-            </View>
-            <View
-              style={[
-                Styles.justifyContent_around(item.duration),
-                Styles.flex,
-              ]}>
-              <Icon.Aeroplane
-                width={DP._18}
-                height={DP._18}
-                fill={Color.LIGHT_BLUEY_GREY}
-                style={Styles.airplane}
-              />
-              {item.duration && (
-                <View style={Styles.durationContainer}>
-                  <FText style={Styles.duration}>{item.duration}</FText>
-                  <View style={Styles.dot_two} />
-                  <FText style={Styles.duration}>{item.stop}</FText>
-                </View>
-              )}
-            </View>
-            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {processed
-                  ? item.destinationAirportCode +
-                    (item.destinationAirportTerminal
-                      ? ` - ${item.destinationAirportTerminal}`
-                      : '')
-                  : item.destination}
-              </FText>
-              <FText style={Styles.time}>
-                {processed ? item.arrivalTime : item.destinationAirportCode}
-              </FText>
-            </View>
-          </View>
+
           {processed && (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-              <View>
-                <FText style={Styles.portName}>{item.airline}</FText>
-                <FText style={Styles.time}>{item.flightNumber}</FText>
-              </View>
-              <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>{Strings.pnr}</FText>
-                <FText style={Styles.time}>{item.pnr}</FText>
+            <View style={Styles.marginTop_12}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {item.carName}
+              </FText>
+              <View style={Styles.flexDirectionRow}>
+                <FText style={Styles.time}>{item.carNumber}</FText>
+                <FText style={Styles.time}>{item.carDetails}</FText>
               </View>
             </View>
           )}
+
+          <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+            <View style={Styles.flex}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {item.sourceCity}
+              </FText>
+              <FText style={Styles.time}>{item.sourceLocation}</FText>
+            </View>
+            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {item.destinationCity}
+              </FText>
+              <FText style={Styles.time}>{item.destinationLocation}</FText>
+            </View>
+          </View>
         </FTouchableOpacity>
         {(rescheduleAction || cancelAction || viewRemarksAction) && (
           <ActionsInItinerary />

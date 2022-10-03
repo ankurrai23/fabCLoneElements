@@ -36,11 +36,13 @@ export default StyleSheet.create({
     transform: [{rotate: '90deg'}],
   },
   portName: {
-    color: Color.GREYISH_PURPLE,
+    color: Color.DARK,
+    fontSize: DP._14,
   },
   time: {
     marginTop: DP._4,
-    fontSize: DP._16,
+    fontSize: DP._12,
+    color: Color.GREY_PURPLE,
   },
   date: {
     fontSize: DP._18,
@@ -49,7 +51,7 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.TWILIGHT_BLUE,
   },
-  marginTop_16: {
+  marginTop_12: {
     marginTop: DP._16,
   },
   duration: {
@@ -57,7 +59,7 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'center'},
-  card: {padding: DP._16},
+  card: {padding: DP._16, paddingBottom: DP._12},
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },
