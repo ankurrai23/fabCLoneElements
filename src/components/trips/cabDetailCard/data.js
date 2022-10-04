@@ -14,12 +14,7 @@ const cabItineraryCardProps = {
     carName: 'White Hyundai Grand i10 Nios',
     carNumber: 'MH 12A 2345',
     carDetails: 'Sedan | AC | 4 seats',
-    status: {
-      key: 'PROCESSED',
-      value: 'Processed',
-      textColor: '#d65656',
-      bgColor: '#d656561a',
-    },
+    carBookingStatus: 'CONFIRMED',
     actions: [
       {
         type: 'RESCHEDULE',
@@ -28,10 +23,6 @@ const cabItineraryCardProps = {
       {
         type: 'CANCEL',
         name: 'Cancel',
-      },
-      {
-        type: CabSubtripActions.CANCELLATION_REQUESTED,
-        name: 'You have sent a modification request for this booking.',
       },
     ],
     showStatus: false,

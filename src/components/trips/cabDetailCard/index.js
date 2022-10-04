@@ -12,29 +12,14 @@ import TripStatus from '../tripStatus';
 import {CabSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
+import {getStatusObject} from '../../../utils/Utils';
 
-const CabItineraryCard = ({
-  item,
-  onActionPress,
-  onCardPress,
-  style,
-  hideIcon,
-  showLine,
-  showInfo,
-  timelineGreyed,
-  processed,
-}) => {
+const CabItineraryCard = ({item, onActionPress, onCardPress, style}) => {
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
-  const shortlistingAction = isActionEnabled(
-    CabSubtripActions.SHORTLIST_FLIGHT_TRIPS,
-  );
-  const viewShortlistedFlightAction = isActionEnabled(
-    CabSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
-  );
 
   const ActionsInItinerary = () => (
     <>
@@ -80,33 +65,6 @@ const CabItineraryCard = ({
   );
   return (
     <View style={[Styles.flexRow, style]}>
-      <View>
-        {!hideIcon &&
-          (timelineGreyed ? (
-            <Icon.CabItineraryGreyed
-              width={DP._30}
-              height={DP._30}
-              style={Styles.icon}
-            />
-          ) : (
-            <Icon.CabItinerary
-              width={DP._30}
-              height={DP._30}
-              style={Styles.icon}
-            />
-          ))}
-        {showLine && (
-          <View style={Styles.dashedLineContainer}>
-            <DashedLine
-              dashSize={3}
-              dashWidth={1}
-              dashColor={
-                timelineGreyed ? Color.LIGHT_BLUEY_GREY : Color.DODGER_BLUE
-              }
-            />
-          </View>
-        )}
-      </View>
       <View style={Styles.container}>
         <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
@@ -120,37 +78,20 @@ const CabItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item.showStatus ? (
-              <TripStatus statusObj={item.status} />
-            ) : processed ? (
-              <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-                <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
-                  {Strings.pickupTime} {item.pickupTime}
-                </FText>
-                <Icon.ChevronRight
-                  width={DP._18}
-                  height={DP._18}
-                  stroke={Color.BATTLESHIP_GREY_TWO}
-                />
-              </View>
-            ) : (
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
-                {item.slotDetail}
-              </FText>
+            {!!item.carBookingStatus && (
+              <TripStatus statusObj={getStatusObject(item.carBookingStatus)} />
             )}
           </View>
 
-          {processed && (
-            <View style={Styles.marginTop_12}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {item.carName}
-              </FText>
-              <View style={Styles.flexDirectionRow}>
-                <FText style={Styles.time}>{item.carNumber}</FText>
-                <FText style={Styles.time}>{item.carDetails}</FText>
-              </View>
+          <View style={Styles.marginTop_12}>
+            <FText style={Styles.portName} numberOfLines={1}>
+              {item.carName}
+            </FText>
+            <View style={Styles.flexDirectionRow}>
+              <FText style={Styles.time}>{item.carNumber}</FText>
+              <FText style={Styles.time}>{item.carDetails}</FText>
             </View>
-          )}
+          </View>
 
           <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
             <View style={Styles.flex}>
@@ -169,21 +110,6 @@ const CabItineraryCard = ({
         </FTouchableOpacity>
         {(rescheduleAction || cancelAction || viewRemarksAction) && (
           <ActionsInItinerary />
-        )}
-        {showInfo && (
-          <InfoBox
-            isAlert={shortlistingAction || !!item.notificationText}
-            text={
-              viewShortlistedFlightAction?.name ||
-              shortlistingAction?.name ||
-              item.notificationText
-            }
-            showChevron={!!shortlistingAction}
-            disablePressEvent={!!item.notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedFlightAction || shortlistingAction)
-            }
-          />
         )}
       </View>
     </View>
