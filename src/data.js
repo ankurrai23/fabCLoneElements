@@ -29,6 +29,9 @@ import hotelPreferenceCardProps from './components/trips/hotelPreferenceCard/dat
 import managerActionsProps from './components/trips/managerActions/data';
 import coTravellersProps from './components/trips/coTravellers/data';
 import flightDetailCardProps from './components/trips/flightDetailCard/data';
+import busDetailCardProps from './components/trips/busDetailCard/data';
+import cabDetailCardProps from './components/trips/cabDetailCard/data';
+import trainDetailCardProps from './components/trips/trainDetailCard/data';
 import listTypeFilterProps from './components/trips/listTypeFilter/data';
 import floatingActionProps from './common/components/floatingActionButton/data';
 
@@ -86,6 +89,9 @@ export {
   approvalManagerProps,
   coTravellersProps,
   flightDetailCardProps,
+  busDetailCardProps,
+  cabDetailCardProps,
+  trainDetailCardProps,
   listTypeFilterProps,
   homeHeaderProps,
   claimsCardProps,
