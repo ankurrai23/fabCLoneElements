@@ -56,12 +56,12 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
           </FText>
           <FText numberOfLines={1} style={styles.designation(inItinerary)}>
             {designation}
-            {!!timeOfStatusUpdate && (
-              <FText style={styles.timeOfStatusUpdate} numberOfLines={1}>
-                {` | ${timeOfStatusUpdate}`}
-              </FText>
-            )}
           </FText>
+          {!!timeOfStatusUpdate && (
+            <FText style={styles.timeOfStatusUpdate} numberOfLines={1}>
+              {timeOfStatusUpdate}
+            </FText>
+          )}
         </View>
       </View>
     );
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     marginBottom: DP._4,
   }),
   designation: (inItinerary) => ({
-    lineHeight: inItinerary ? DP._14 : DP._18,
+    lineHeight: inItinerary ? DP._12 : DP._18,
     fontSize: inItinerary ? DP._12 : DP._14,
     color: inItinerary ? Color.DARK : Color.GREY_PURPLE,
   }),
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     color: Color.GREY_PURPLE,
     fontSize: DP._12,
     lineHeight: DP._14,
+    marginTop: DP._4,
   },
   radioFill: (status, statusColor) => ({
     width: DP._8,
