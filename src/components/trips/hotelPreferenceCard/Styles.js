@@ -66,7 +66,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginBottom: DP._16,
   },
-  viewOnMap: {fontSize: DP._10, color: Color.DODGER_BLUE},
+  viewOnMap: {fontSize: DP._10, color: Color.DODGER_BLUE, marginTop: DP._4},
   priceDetail: {
     fontSize: DP._12,
     color: Color.BATTLESHIP_GREY_TWO,

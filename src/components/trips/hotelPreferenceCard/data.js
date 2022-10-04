@@ -12,7 +12,7 @@ const hotelPreferenceCardProps = {
     hotelAddress:
       'Andheri - Kurla Rd, opposite Mittal Industrial Estate, Gamdevi, Marol, …',
     distanceToProperty: '220 m from Marol naka Metro Station',
-    cost: '₹260923',
+    cost: '₹2603',
     ratingScore: 4.1,
     reviewsCount: '4.5/5 (134 reviews)',
     colleaguesCount: 0,
@@ -22,7 +22,7 @@ const hotelPreferenceCardProps = {
     mealTypeText: 'Free breakfast',
     cancellationText: 'Free cancellation before 12 Nov',
     disablePref: true,
-    gstIncluded: false,
+    gstIncluded: true,
   },
   onTapToSetPreferences: () => console.log('preferences tapped'),
   onViewMapPress: (item) => console.log(item),
