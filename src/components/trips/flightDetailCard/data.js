@@ -21,12 +21,6 @@ const flightDetailCardProps = {
     actionsDisabled: false,
     flightBookingStatus: 'CONFIRMED',
     stop: 'Non stop',
-    status: {
-      key: 'PROCESSED',
-      value: 'Confirmed',
-      textColor: Color.DARK_SEA_FOAM,
-      bgColor: Color.DARK_SEA_FOAM + '1a',
-    },
     actions: [
       {
         type: 'RESCHEDULE',

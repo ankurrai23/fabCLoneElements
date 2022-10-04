@@ -29,10 +29,6 @@ const trainItineraryCardProps = {
         type: 'CANCEL',
         name: 'Cancel',
       },
-      {
-        type: TrainSubtripActions.CANCELLATION_REQUESTED,
-        name: 'You have sent a modification request for this booking.',
-      },
     ],
     showStatus: true,
   },

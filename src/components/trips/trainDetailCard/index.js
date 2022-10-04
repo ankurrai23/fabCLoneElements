@@ -76,7 +76,7 @@ const TrainItineraryCard = ({item, onActionPress, onCardPress, style}) => {
                   fontSize: DP._12,
                 }}>{` ${item.month}`}</FText>
             </FText>
-            {item.trainBookingStatus && (
+            {!!item.trainBookingStatus && (
               <TripStatus
                 statusObj={getStatusObject(item.trainBookingStatus)}
               />
