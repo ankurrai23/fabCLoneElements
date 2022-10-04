@@ -134,9 +134,11 @@ const CabItineraryCard = ({
                 />
               </View>
             ) : (
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
-                {item.slotDetail}
-              </FText>
+              item.pickupTime && (
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
+                  {Strings.pickupTime} {item.pickupTime}
+                </FText>
+              )
             )}
           </View>
 

@@ -4,7 +4,6 @@ const cabItineraryCardProps = {
   item: {
     date: '22',
     month: 'Nov',
-    slotDetail: 'Slot: 6PM - 9PM',
     sourceCity: 'Delhi',
     destinationCity: 'Mumbai',
     sourceLocation: 'Kashmiri Gate',
@@ -43,7 +42,7 @@ const cabItineraryCardProps = {
   showInfo: true,
   isAlert: true,
   timelineGreyed: true,
-  processed: true,
+  processed: false,
 };
 
 export default cabItineraryCardProps;

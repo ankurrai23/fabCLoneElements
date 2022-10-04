@@ -1,6 +1,7 @@
 import {CabSubtripActions} from '../../../utils/SubTripActions';
 
 const cabItineraryCardProps = {
+  title: 'Itinerary 1',
   item: {
     date: '22',
     month: 'Nov',

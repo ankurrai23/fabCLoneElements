@@ -9,6 +9,10 @@ export default StyleSheet.create({
     ...shadowObj,
     ...cardStyleObj,
   },
+  heading: {
+    marginBottom: DP._16,
+    fontSize: DP._14,
+  },
   actionContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',

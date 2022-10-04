@@ -14,7 +14,7 @@ import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {getStatusObject} from '../../../utils/Utils';
 
-const CabItineraryCard = ({item, onActionPress, onCardPress, style}) => {
+const CabItineraryCard = ({item, onActionPress, onCardPress, style, title}) => {
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
@@ -64,55 +64,64 @@ const CabItineraryCard = ({item, onActionPress, onCardPress, style}) => {
     </>
   );
   return (
-    <View style={[Styles.flexRow, style]}>
-      <View style={Styles.container}>
-        <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
-          <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-            <FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {item.date}
+    <>
+      {title && (
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.heading}>
+          {title}
+        </FText>
+      )}
+      <View style={[Styles.flexRow, style]}>
+        <View style={[Styles.container, style]}>
+          <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+            <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+              <FText>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                  {item.date}
+                </FText>
+                <FText
+                  style={{
+                    color: Color.BLUEY_GREY,
+                    fontSize: DP._12,
+                  }}>{` ${item.month}`}</FText>
               </FText>
-              <FText
-                style={{
-                  color: Color.BLUEY_GREY,
-                  fontSize: DP._12,
-                }}>{` ${item.month}`}</FText>
-            </FText>
-            {!!item.carBookingStatus && (
-              <TripStatus statusObj={getStatusObject(item.carBookingStatus)} />
-            )}
-          </View>
+              {!!item.carBookingStatus && (
+                <TripStatus
+                  statusObj={getStatusObject(item.carBookingStatus)}
+                />
+              )}
+            </View>
 
-          <View style={Styles.marginTop_12}>
-            <FText style={Styles.portName} numberOfLines={1}>
-              {item.carName}
-            </FText>
-            <View style={Styles.flexDirectionRow}>
-              <FText style={Styles.time}>{item.carNumber}</FText>
-              <FText style={Styles.time}>{item.carDetails}</FText>
+            <View style={Styles.marginTop_12}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {item.carName}
+              </FText>
+              <View style={Styles.flexDirectionRow}>
+                <FText style={Styles.time}>{item.carNumber}</FText>
+                <FText style={Styles.time}>{item.carDetails}</FText>
+              </View>
             </View>
-          </View>
 
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-            <View style={Styles.flex}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {item.sourceCity}
-              </FText>
-              <FText style={Styles.time}>{item.sourceLocation}</FText>
+            <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+              <View style={Styles.flex}>
+                <FText style={Styles.portName} numberOfLines={1}>
+                  {item.sourceCity}
+                </FText>
+                <FText style={Styles.time}>{item.sourceLocation}</FText>
+              </View>
+              <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+                <FText style={Styles.portName} numberOfLines={1}>
+                  {item.destinationCity}
+                </FText>
+                <FText style={Styles.time}>{item.destinationLocation}</FText>
+              </View>
             </View>
-            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {item.destinationCity}
-              </FText>
-              <FText style={Styles.time}>{item.destinationLocation}</FText>
-            </View>
-          </View>
-        </FTouchableOpacity>
-        {(rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
+          </FTouchableOpacity>
+          {(rescheduleAction || cancelAction || viewRemarksAction) && (
+            <ActionsInItinerary />
+          )}
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
