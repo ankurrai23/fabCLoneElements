@@ -13,12 +13,8 @@ const busItineraryCardProps = {
     actionDisabled: false,
     travelCompany: 'Dolphin Tour and Travel',
     busInfo: 'Capella A/C Sleeper (2+1)',
-    status: {
-      key: 'PROCESSED',
-      value: 'Processed',
-      textColor: '#d65656',
-      bgColor: '#d656561a',
-    },
+    busBookingStatus: 'CONFIRMED',
+    duration: '3h 20 mins',
     actions: [
       {
         type: 'RESCHEDULE',
@@ -27,10 +23,6 @@ const busItineraryCardProps = {
       {
         type: 'CANCEL',
         name: 'Cancel',
-      },
-      {
-        type: BusSubtripActions.CANCELLATION_REQUESTED,
-        name: 'You have sent a modification request for this booking.',
       },
     ],
     showStatus: false,
