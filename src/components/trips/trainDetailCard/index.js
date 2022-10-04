@@ -94,12 +94,24 @@ const TrainItineraryCard = ({
                 />
               )}
             </View>
+            <View style={Styles.marginTop_16}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {item.trainName}
+              </FText>
+              <View style={Styles.flexDirectionRow}>
+                <FText style={Styles.time}>
+                  {item.pnr} | {item.seatType}
+                </FText>
+              </View>
+            </View>
             <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
               <View style={Styles.flex}>
                 <FText style={Styles.portName} numberOfLines={1}>
-                  {item.source} ({item.sourceStationCode})
+                  {item.source}
                 </FText>
-                <FText style={Styles.time}>{item.departureTime}</FText>
+                <FText style={Styles.time}>
+                  {item.sourceStationCode} | {item.departureTime}
+                </FText>
               </View>
               <View
                 style={[
@@ -116,22 +128,11 @@ const TrainItineraryCard = ({
               </View>
               <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
                 <FText style={Styles.portName} numberOfLines={1}>
-                  {item.destination} ({item.destinationStationCode})
+                  {item.destination}
                 </FText>
-                <FText style={Styles.time}>{item.arrivalTime}</FText>
-              </View>
-            </View>
-
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-              <View>
-                <FText style={Styles.portName}>{item.trainName}</FText>
                 <FText style={Styles.time}>
-                  {item.seatNumber} {item.trainNumber}
+                  {item.arrivalTime} | {item.destinationStationCode}
                 </FText>
-              </View>
-              <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>{Strings.pnr}</FText>
-                <FText style={Styles.time}>{item.pnr}</FText>
               </View>
             </View>
           </FTouchableOpacity>

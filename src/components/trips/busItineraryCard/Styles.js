@@ -52,7 +52,7 @@ export default StyleSheet.create({
     color: Color.TWILIGHT_BLUE,
   },
   marginTop_12: {
-    marginTop: DP._16,
+    marginTop: DP._12,
   },
   duration: {
     fontSize: DP._10,

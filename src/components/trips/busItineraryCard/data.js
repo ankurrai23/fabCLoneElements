@@ -42,7 +42,7 @@ const busItineraryCardProps = {
   showInfo: false,
   isAlert: true,
   timelineGreyed: false,
-  processed: false,
+  processed: true,
 };
 
 export default busItineraryCardProps;

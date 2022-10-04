@@ -13,6 +13,9 @@ export default StyleSheet.create({
     marginBottom: DP._16,
     fontSize: DP._14,
   },
+  marginTop_12: {
+    marginTop: DP._12,
+  },
   actionContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',

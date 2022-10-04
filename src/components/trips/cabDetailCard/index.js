@@ -91,7 +91,7 @@ const CabItineraryCard = ({item, onActionPress, onCardPress, style, title}) => {
               )}
             </View>
 
-            <View style={Styles.marginTop_12}>
+            <View style={Styles.marginTop_16}>
               <FText style={Styles.portName} numberOfLines={1}>
                 {item.carName}
               </FText>
@@ -101,7 +101,7 @@ const CabItineraryCard = ({item, onActionPress, onCardPress, style, title}) => {
               </View>
             </View>
 
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
               <View style={Styles.flex}>
                 <FText style={Styles.portName} numberOfLines={1}>
                   {item.sourceCity}

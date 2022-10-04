@@ -134,62 +134,38 @@ const TrainItineraryCard = ({
               </FText>
             )}
           </View>
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-            <View style={Styles.flex}>
+          {processed && (
+            <View style={Styles.marginTop_12}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {processed ? item.sourceStationCode : item.source}
+                {item.trainName}
               </FText>
-              <FText style={Styles.time}>
-                {processed ? item.departureTime : item.sourceStationCode}
-              </FText>
-            </View>
-            <View
-              style={[
-                Styles.justifyContent_around(item.duration),
-                Styles.flex,
-              ]}>
-              {item.duration && (
-                <View style={Styles.durationContainer}>
-                  <FText style={Styles.duration} weight={400}>
-                    {item.duration}
-                  </FText>
-                </View>
-              )}
-            </View>
-            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {processed ? item.destinationStationCode : item.destination}
-              </FText>
-              <FText style={Styles.time}>
-                {processed ? item.arrivalTime : item.destinationStationCode}
-              </FText>
-            </View>
-          </View>
-          {processed ? (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-              <View>
-                <FText style={Styles.portName}>{item.trainName}</FText>
+              <View style={Styles.flexDirectionRow}>
                 <FText style={Styles.time}>
-                  {item.seatNumber} {item.trainNumber}
+                  {item.pnr} | {item.seatType}
                 </FText>
-              </View>
-              <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>{Strings.pnr}</FText>
-                <FText style={Styles.time}>{item.pnr}</FText>
-              </View>
-            </View>
-          ) : (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-              <View>
-                <FText style={Styles.portName}>{Strings.preferredTrain}</FText>
-                <FText style={Styles.time}>{item.preferredTrain}</FText>
-              </View>
-              <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>{Strings.class}</FText>
-                <FText style={Styles.time}>{item.preferredClass}</FText>
               </View>
             </View>
           )}
+          <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+            <View style={Styles.flex}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {item.source}
+              </FText>
+              <FText style={Styles.time}>
+                {item.sourceStationCode}
+                {processed ? ` | ${item.departureTime}` : ''}
+              </FText>
+            </View>
+            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {item.destination}
+              </FText>
+              <FText style={Styles.time}>
+                {item.destinationStationCode}
+                {processed ? ` | ${item.arrivalTime}` : ''}
+              </FText>
+            </View>
+          </View>
         </FTouchableOpacity>
         {(rescheduleAction || cancelAction || viewRemarksAction) && (
           <ActionsInItinerary />

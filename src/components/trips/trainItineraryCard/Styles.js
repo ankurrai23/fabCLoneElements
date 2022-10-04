@@ -39,6 +39,9 @@ export default StyleSheet.create({
     color: Color.DARK,
     fontSize: DP._14,
   },
+  marginTop_12: {
+    marginTop: DP._12,
+  },
   time: {
     marginTop: DP._4,
     fontSize: DP._12,
@@ -59,7 +62,7 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'center'},
-  card: {padding: DP._16},
+  card: {padding: DP._16, paddingBottom: DP._12},
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },

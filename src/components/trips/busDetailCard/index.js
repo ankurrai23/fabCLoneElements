@@ -88,14 +88,14 @@ const BusItineraryCard = ({item, onActionPress, onCardPress, style, title}) => {
               )}
             </View>
 
-            <View style={Styles.marginTop_12}>
+            <View style={Styles.marginTop_16}>
               <FText style={Styles.portName} numberOfLines={1}>
                 {item.travelCompany}
               </FText>
               <FText style={Styles.time}>{item.busInfo}</FText>
             </View>
 
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
               <View style={Styles.flex}>
                 <FText style={Styles.portName} numberOfLines={1}>
                   {item.source}

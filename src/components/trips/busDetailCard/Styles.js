@@ -55,7 +55,7 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.TWILIGHT_BLUE,
   },
-  marginTop_12: {
+  marginTop_16: {
     marginTop: DP._16,
   },
   duration: {
@@ -63,7 +63,7 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'center'},
-  card: {padding: DP._16, paddingBottom: DP._12},
+  card: {padding: DP._16},
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },
