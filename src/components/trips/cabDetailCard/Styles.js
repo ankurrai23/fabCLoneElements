@@ -36,6 +36,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  flowRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   airplane: {
     transform: [{rotate: '90deg'}],
   },
@@ -55,8 +59,8 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.TWILIGHT_BLUE,
   },
-  marginTop_16: {
-    marginTop: DP._16,
+  marginTop_12: {
+    marginTop: DP._12,
   },
   duration: {
     fontSize: DP._10,

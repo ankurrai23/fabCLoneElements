@@ -1,35 +1,39 @@
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 
-const busItineraryCardProps = {
+const trainItineraryCardProps = {
   title: 'Itinerary 1',
-  item: {
+  bookingDetails: {
     date: '22',
     month: 'Nov',
-    slotDetail: 'Slot: 6PM - 9PM',
-    source: 'Delhi',
-    destination: 'Mumbai',
-    sourceBusStop: 'Kashmiri Gate',
-    destinationBusStop: 'Andheri Bus Stop',
-    pickupTime: '07:00 PM',
-    actionDisabled: false,
+    source: 'Mumbai',
+    destination: 'Lonavala',
+    sourceBusStop: 'Mumbai Airport',
+    destinationBusStop: 'Tungarli road',
+    departureTime: '18:30',
+    arrivalTime: '22:30',
+    duration: '1h 50min',
     travelCompany: 'Dolphin Tour and Travel',
+    coordinatorName: 'Mr. Arvind Swami',
+    driverContact: '+91 986856778',
+    busNumber: 'MH 12A 2345',
     busInfo: 'Capella A/C Sleeper (2+1)',
-    busBookingStatus: 'CONFIRMED',
-    duration: '3h 20 mins',
-    actions: [
-      {
-        type: 'RESCHEDULE',
-        name: 'Reschedule',
-      },
-      {
-        type: 'CANCEL',
-        name: 'Cancel',
-      },
-    ],
-    showStatus: false,
+    seatNumber: 'L23',
+    bookingStatus: 'Confirmed',
   },
+  actions: [
+    {
+      type: 'RESCHEDULE',
+      name: 'Reschedule',
+    },
+    {
+      type: 'CANCEL',
+      name: 'Cancel',
+    },
+  ],
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
+  showStatus: true,
+  actionDisabled: false,
 };
 
-export default busItineraryCardProps;
+export default trainItineraryCardProps;

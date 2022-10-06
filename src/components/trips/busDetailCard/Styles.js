@@ -55,8 +55,12 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.TWILIGHT_BLUE,
   },
-  marginTop_16: {
-    marginTop: DP._16,
+  marginTop_12: {
+    marginTop: DP._12,
+  },
+  flowRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   duration: {
     fontSize: DP._10,

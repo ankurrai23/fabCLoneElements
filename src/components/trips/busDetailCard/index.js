@@ -10,9 +10,17 @@ import TripStatus from '../tripStatus';
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 import Icon from '../../../assets/icons/Icon';
 import {getStatusObject} from '../../../utils/Utils';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
-const BusItineraryCard = ({item, onActionPress, onCardPress, style, title}) => {
-  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
+const BusItineraryCard = ({
+  bookingDetails,
+  onActionPress,
+  onCardPress,
+  style,
+  title,
+  actions,
+}) => {
+  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
@@ -73,53 +81,99 @@ const BusItineraryCard = ({item, onActionPress, onCardPress, style, title}) => {
             <View style={[Styles.flexDirectionRow, Styles.baseline]}>
               <FText>
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                  {item.date}
+                  {bookingDetails.date}
                 </FText>
                 <FText
                   style={{
                     color: Color.BLUEY_GREY,
                     fontSize: DP._12,
-                  }}>{` ${item.month}`}</FText>
+                  }}>{` ${bookingDetails.month}`}</FText>
               </FText>
-              {item.busBookingStatus && (
+              {bookingDetails?.bookingStatus && (
                 <TripStatus
-                  statusObj={getStatusObject(item.busBookingStatus)}
+                  statusObj={getStatusObject(bookingDetails?.bookingStatus)}
                 />
               )}
             </View>
 
-            <View style={Styles.marginTop_16}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {item.travelCompany}
-              </FText>
-              <FText style={Styles.time}>{item.busInfo}</FText>
+            <View style={[Styles.marginTop_12]}>
+              <View style={[Styles.flexDirectionRow]}>
+                <FText style={Styles.portName} numberOfLines={1}>
+                  {bookingDetails.source}
+                </FText>
+                <FText style={Styles.duration}>{bookingDetails.duration}</FText>
+                <FText style={Styles.portName} numberOfLines={1}>
+                  {bookingDetails.destination}
+                </FText>
+              </View>
+              <View style={[Styles.flexDirectionRow]}>
+                <View>
+                  <FText style={Styles.time}>
+                    {bookingDetails.sourceBusStop}
+                  </FText>
+                  <FText style={Styles.time}>
+                    {bookingDetails.departureTime}
+                  </FText>
+                </View>
+                <View style={Styles.alignItem_flexEnd}>
+                  <FText style={Styles.time}>
+                    {bookingDetails.destinationBusStop}
+                  </FText>
+                  <FText style={Styles.time}>
+                    {bookingDetails.arrivalTime}
+                  </FText>
+                </View>
+              </View>
             </View>
 
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-              <View style={Styles.flex}>
-                <FText style={Styles.portName} numberOfLines={1}>
-                  {item.source}
+            <View style={Styles.marginTop_12}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {bookingDetails.travelCompany}
+              </FText>
+              <FText style={Styles.time}>{bookingDetails.busNumber}</FText>
+              <FText style={Styles.time}>{bookingDetails.busInfo}</FText>
+              <FText style={Styles.time}>
+                {Strings.seatNumber}: {bookingDetails.seatNumber}
+              </FText>
+            </View>
+            <Separator
+              style={{
+                marginTop: DP._12,
+                backgroundColor: Color.LIGHT_PERIWINKLE,
+              }}
+            />
+            <View style={Styles.marginTop_12}>
+              <View style={[Styles.flexDirectionRow, Styles.alignItem_flexEnd]}>
+                <View style={Styles.flowRow}>
+                  <Icon.Person width={DP._16} height={DP._16} />
+                  <FText
+                    style={{
+                      marginLeft: DP._10,
+                      fontSize: DP._12,
+                      color: Color.GREY_PURPLE,
+                    }}>
+                    {Strings.coordinatorName}
+                  </FText>
+                </View>
+                <FText style={{fontSize: DP._12, color: Color.DARK}}>
+                  {bookingDetails.coordinatorName}
                 </FText>
-                <FText style={Styles.time}>{item.sourceBusStop}</FText>
               </View>
-              <View
-                style={[
-                  Styles.justifyContent_around(item.duration),
-                  Styles.flex,
-                ]}>
-                {item.duration && (
-                  <View style={Styles.durationContainer}>
-                    <FText style={Styles.duration} weight={400}>
-                      {item.duration}
-                    </FText>
-                  </View>
-                )}
-              </View>
-              <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-                <FText style={Styles.portName} numberOfLines={1}>
-                  {item.destination}
+              <View style={[Styles.flexDirectionRow, Styles.alignItem_flexEnd]}>
+                <View style={[Styles.flowRow, Styles.marginTop_12]}>
+                  <Icon.PhoneIcon width={DP._16} height={DP._16} />
+                  <FText
+                    style={{
+                      marginLeft: DP._10,
+                      fontSize: DP._12,
+                      color: Color.GREY_PURPLE,
+                    }}>
+                    {Strings.phoneNo}
+                  </FText>
+                </View>
+                <FText style={Styles.driverContact}>
+                  {bookingDetails.driverContact}
                 </FText>
-                <FText style={Styles.time}>{item.destinationBusStop}</FText>
               </View>
             </View>
           </FTouchableOpacity>

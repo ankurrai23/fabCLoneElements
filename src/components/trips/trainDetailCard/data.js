@@ -1,6 +1,7 @@
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 
 const trainItineraryCardProps = {
+  title: 'Itinerary 1',
   bookingDetails: {
     date: '22',
     month: 'Nov',
@@ -33,6 +34,7 @@ const trainItineraryCardProps = {
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
   actionDisabled: false,
+  showStatus: false,
 };
 
 export default trainItineraryCardProps;

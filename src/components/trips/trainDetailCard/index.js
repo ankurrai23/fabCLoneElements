@@ -90,18 +90,10 @@ const TrainItineraryCard = ({
                     fontSize: DP._12,
                   }}>{` ${bookingDetails.month}`}</FText>
               </FText>
-              {showStatus ? (
+              {bookingDetails?.trainStatus && (
                 <TripStatus
                   statusObj={getStatusObject(bookingDetails.trainStatus)}
                 />
-              ) : (
-                <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-                  <Icon.ChevronRight
-                    width={DP._18}
-                    height={DP._18}
-                    stroke={Color.BATTLESHIP_GREY_TWO}
-                  />
-                </View>
               )}
             </View>
 
