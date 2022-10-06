@@ -14,7 +14,11 @@ import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 
 const FlightItineraryCard = ({
-  item,
+  status,
+  tripRequest,
+  bookingDetails,
+  showStatus,
+  actions,
   onActionPress,
   onCardPress,
   style,
@@ -22,9 +26,10 @@ const FlightItineraryCard = ({
   showLine,
   showInfo,
   timelineGreyed,
-  processed,
+  showPreBookingCard,
+  notificationText,
 }) => {
-  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
+  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
@@ -78,6 +83,175 @@ const FlightItineraryCard = ({
       </View>
     </>
   );
+
+  const FlightPreBookingCard = () => (
+    <View style={Styles.container}>
+      <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+        <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+          <FText>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+              {tripRequest.date}
+            </FText>
+            <FText
+              style={{
+                color: Color.BLUEY_GREY,
+                fontSize: DP._12,
+              }}>{` ${tripRequest.month}`}</FText>
+          </FText>
+          {showStatus ? (
+            <TripStatus statusObj={status} />
+          ) : (
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
+              {tripRequest.slotDetail}
+            </FText>
+          )}
+        </View>
+        <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+          <View style={Styles.flex}>
+            <FText style={Styles.portName} numberOfLines={1}>
+              {tripRequest.source}
+            </FText>
+            <FText style={Styles.time}>{tripRequest.sourceAirportCode}</FText>
+          </View>
+          <View
+            style={[
+              Styles.justifyContent_around(tripRequest.duration),
+              Styles.flex,
+            ]}>
+            <Icon.Aeroplane
+              width={DP._18}
+              height={DP._18}
+              fill={Color.LIGHT_BLUEY_GREY}
+              style={Styles.airplane}
+            />
+          </View>
+          <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+            <FText style={Styles.portName} numberOfLines={1}>
+              {tripRequest.destination}
+            </FText>
+            <FText style={Styles.time}>
+              {tripRequest.destinationAirportCode}
+            </FText>
+          </View>
+        </View>
+      </FTouchableOpacity>
+
+      {(rescheduleAction || cancelAction || viewRemarksAction) && (
+        <ActionsInItinerary />
+      )}
+      {showInfo && (
+        <InfoBox
+          isAlert={shortlistingAction || !!notificationText}
+          text={
+            viewShortlistedFlightAction?.name ||
+            shortlistingAction?.name ||
+            notificationText
+          }
+          showChevron={!!shortlistingAction}
+          disablePressEvent={!!notificationText}
+          onPress={() =>
+            onActionPress(viewShortlistedFlightAction || shortlistingAction)
+          }
+        />
+      )}
+    </View>
+  );
+
+  const FlightPostBookingCard = () => (
+    <View style={Styles.container}>
+      <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+        <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+          <FText>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+              {bookingDetails.date}
+            </FText>
+            <FText
+              style={{
+                color: Color.BLUEY_GREY,
+                fontSize: DP._12,
+              }}>{` ${bookingDetails.month}`}</FText>
+          </FText>
+          {showStatus ? (
+            <TripStatus statusObj={status} />
+          ) : (
+            <Icon.ChevronRight
+              width={DP._18}
+              height={DP._18}
+              stroke={Color.BATTLESHIP_GREY_TWO}
+            />
+          )}
+        </View>
+        <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+          <View style={Styles.flex}>
+            <FText style={Styles.portName} numberOfLines={1}>
+              {bookingDetails.sourceAirportCode +
+                (bookingDetails.sourceAirportTerminal
+                  ? ` - ${bookingDetails.sourceAirportTerminal}`
+                  : '')}
+            </FText>
+            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+          </View>
+          <View
+            style={[
+              Styles.justifyContent_around(bookingDetails.duration),
+              Styles.flex,
+            ]}>
+            <Icon.Aeroplane
+              width={DP._18}
+              height={DP._18}
+              fill={Color.LIGHT_BLUEY_GREY}
+              style={Styles.airplane}
+            />
+            {bookingDetails.duration && (
+              <View style={Styles.durationContainer}>
+                <FText style={Styles.duration}>{bookingDetails.duration}</FText>
+                <View style={Styles.dot_two} />
+                <FText style={Styles.duration}>{bookingDetails.stop}</FText>
+              </View>
+            )}
+          </View>
+          <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+            <FText style={Styles.portName} numberOfLines={1}>
+              {bookingDetails.destinationAirportCode +
+                (bookingDetails.destinationAirportTerminal
+                  ? ` - ${bookingDetails.destinationAirportTerminal}`
+                  : '')}
+            </FText>
+            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+          </View>
+        </View>
+        <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+          <View>
+            <FText style={Styles.portName}>{bookingDetails.airline}</FText>
+            <FText style={Styles.time}>{bookingDetails.flightNumber}</FText>
+          </View>
+          <View style={Styles.alignItem_flexEnd}>
+            <FText style={Styles.portName}>{Strings.pnr}</FText>
+            <FText style={Styles.time}>{bookingDetails.pnr}</FText>
+          </View>
+        </View>
+      </FTouchableOpacity>
+      {(rescheduleAction || cancelAction || viewRemarksAction) && (
+        <ActionsInItinerary />
+      )}
+      {showInfo && (
+        <InfoBox
+          isAlert={shortlistingAction || !!notificationText}
+          text={
+            viewShortlistedFlightAction?.name ||
+            shortlistingAction?.name ||
+            notificationText
+          }
+          showChevron={!!shortlistingAction}
+          disablePressEvent={!!notificationText}
+          onPress={() =>
+            onActionPress(viewShortlistedFlightAction || shortlistingAction)
+          }
+        />
+      )}
+    </View>
+  );
+
   return (
     <View style={[Styles.flexRow, style]}>
       <View>
@@ -107,112 +281,11 @@ const FlightItineraryCard = ({
           </View>
         )}
       </View>
-      <View style={Styles.container}>
-        <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
-          <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-            <FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {item.date}
-              </FText>
-              <FText
-                style={{
-                  color: Color.BLUEY_GREY,
-                  fontSize: DP._12,
-                }}>{` ${item.month}`}</FText>
-            </FText>
-            {item.showStatus ? (
-              <TripStatus statusObj={item.status} />
-            ) : processed ? (
-              <Icon.ChevronRight
-                width={DP._18}
-                height={DP._18}
-                stroke={Color.BATTLESHIP_GREY_TWO}
-              />
-            ) : (
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
-                {item.slotDetail}
-              </FText>
-            )}
-          </View>
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-            <View style={Styles.flex}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {processed
-                  ? item.sourceAirportCode +
-                    (item.sourceAirportTerminal
-                      ? ` - ${item.sourceAirportTerminal}`
-                      : '')
-                  : item.source}
-              </FText>
-              <FText style={Styles.time}>
-                {processed ? item.departureTime : item.sourceAirportCode}
-              </FText>
-            </View>
-            <View
-              style={[
-                Styles.justifyContent_around(item.duration),
-                Styles.flex,
-              ]}>
-              <Icon.Aeroplane
-                width={DP._18}
-                height={DP._18}
-                fill={Color.LIGHT_BLUEY_GREY}
-                style={Styles.airplane}
-              />
-              {item.duration && (
-                <View style={Styles.durationContainer}>
-                  <FText style={Styles.duration}>{item.duration}</FText>
-                  <View style={Styles.dot_two} />
-                  <FText style={Styles.duration}>{item.stop}</FText>
-                </View>
-              )}
-            </View>
-            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {processed
-                  ? item.destinationAirportCode +
-                    (item.destinationAirportTerminal
-                      ? ` - ${item.destinationAirportTerminal}`
-                      : '')
-                  : item.destination}
-              </FText>
-              <FText style={Styles.time}>
-                {processed ? item.arrivalTime : item.destinationAirportCode}
-              </FText>
-            </View>
-          </View>
-          {processed && (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-              <View>
-                <FText style={Styles.portName}>{item.airline}</FText>
-                <FText style={Styles.time}>{item.flightNumber}</FText>
-              </View>
-              <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>{Strings.pnr}</FText>
-                <FText style={Styles.time}>{item.pnr}</FText>
-              </View>
-            </View>
-          )}
-        </FTouchableOpacity>
-        {(rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
-        {showInfo && (
-          <InfoBox
-            isAlert={shortlistingAction || !!item.notificationText}
-            text={
-              viewShortlistedFlightAction?.name ||
-              shortlistingAction?.name ||
-              item.notificationText
-            }
-            showChevron={!!shortlistingAction}
-            disablePressEvent={!!item.notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedFlightAction || shortlistingAction)
-            }
-          />
-        )}
-      </View>
+      {showPreBookingCard ? (
+        <FlightPreBookingCard />
+      ) : (
+        <FlightPostBookingCard />
+      )}
     </View>
   );
 };
