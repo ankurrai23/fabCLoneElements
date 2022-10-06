@@ -35,6 +35,8 @@ import Briefcase from './briefcase.svg';
 import Rupee from './rupee.svg';
 import Approve from './approve.svg';
 import Reject from './reject.svg';
+import Person from './personIcon.svg';
+import PhoneIcon from './phoneIcon.svg';
 
 const ChevronLeft = ({width, height, size, stroke, strokeWidth, ...props}) => (
   <Svg
@@ -405,6 +407,8 @@ const Icon = {
   Approve,
   Reject,
   RatingStar,
+  Person,
+  PhoneIcon,
 };
 
 export default Icon;

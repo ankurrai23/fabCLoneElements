@@ -31,6 +31,11 @@ export default StyleSheet.create({
   flexDirectionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  flowRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   airplane: {
     transform: [{rotate: '90deg'}],
@@ -54,6 +59,9 @@ export default StyleSheet.create({
   marginTop_12: {
     marginTop: DP._12,
   },
+  marginTop_14: {
+    marginTop: DP._14,
+  },
   duration: {
     fontSize: DP._10,
     color: Color.GREYISH_PURPLE,
@@ -62,6 +70,10 @@ export default StyleSheet.create({
   card: {padding: DP._16, paddingBottom: DP._12},
   alignItem_flexEnd: {
     alignItems: 'flex-end',
+  },
+  driverContact: {
+    fontSize: DP._12,
+    color: Color.DODGER_BLUE,
   },
   icon: {
     width: DP._30,
@@ -79,8 +91,8 @@ export default StyleSheet.create({
   },
   flexRow: {flexDirection: 'row'},
   justifyContent_around: (duration) => ({
-    justifyContent: duration ? 'space-around' : 'flex-start',
-    alignItems: 'center',
+    justifyItem: duration ? 'space-around' : 'flex-start',
+    // alignItems: 'center',
   }),
   flexRowAndAlignCenter: {flexDirection: 'row', alignItems: 'center'},
   primaryButtonStyle: {
@@ -110,6 +122,7 @@ export default StyleSheet.create({
   durationContainer: {
     flexDirection: 'row',
     flexGrow: 1,
-    alignItems: 'center',
+    paddingTop: DP._2,
+    // alignItems: 'center',
   },
 });

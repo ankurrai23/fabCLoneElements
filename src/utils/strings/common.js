@@ -96,4 +96,8 @@ export default {
   class: 'Class',
   preferredTrain: 'Preferred train',
   pickupTime: 'Pickup time: ',
+  driverName: 'Driver Name',
+  phoneNo: 'Phone no.',
+  seatNumber: 'Seat no',
+  coordinatorName: 'Coordinator Name',
 };
