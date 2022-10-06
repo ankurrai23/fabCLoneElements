@@ -35,6 +35,7 @@ export default StyleSheet.create({
   flexDirectionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   flowRow: {
     flexDirection: 'row',
@@ -67,7 +68,7 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'center'},
-  card: {padding: DP._16},
+  card: {padding: DP._16, paddingBottom: DP._12},
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },
