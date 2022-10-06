@@ -100,4 +100,5 @@ export default {
   phoneNo: 'Phone no.',
   seatNumber: 'Seat no',
   coordinatorName: 'Coordinator Name',
+  berth: 'Berth',
 };

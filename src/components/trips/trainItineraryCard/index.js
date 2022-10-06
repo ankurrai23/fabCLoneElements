@@ -9,31 +9,152 @@ import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
 import InfoBox from '../components/infoBox';
 import TripStatus from '../tripStatus';
-import {TrainSubtripActions} from '../../../utils/SubTripActions';
+import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 
-const TrainItineraryCard = ({
-  item,
+const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
+  return (
+    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+      <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+        <FText>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            {tripRequest.date}
+          </FText>
+          <FText
+            style={{
+              color: Color.BLUEY_GREY,
+              fontSize: DP._12,
+            }}>{` ${tripRequest.month}`}</FText>
+        </FText>
+        {showStatus ? (
+          <TripStatus statusObj={status} />
+        ) : (
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
+            {tripRequest.slotDetail}
+          </FText>
+        )}
+      </View>
+
+      <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+        <View style={Styles.flex}>
+          <FText style={Styles.portName} numberOfLines={1}>
+            {tripRequest.sourceStationCode}
+          </FText>
+
+          <FText style={Styles.time}>{tripRequest.sourceCity}</FText>
+          <FText style={Styles.time}>{tripRequest.TravelDate}</FText>
+        </View>
+        <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+          <FText style={Styles.portName} numberOfLines={1}>
+            {tripRequest.destinationStationCode}
+          </FText>
+          <FText style={Styles.time}>{tripRequest.destinationCity}</FText>
+          <FText style={Styles.time}>{tripRequest.arrivalDate}</FText>
+        </View>
+      </View>
+    </FTouchableOpacity>
+  );
+};
+
+const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
+  return (
+    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+      <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+        <FText>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            {bookingDetails.date}
+          </FText>
+          <FText
+            style={{
+              color: Color.BLUEY_GREY,
+              fontSize: DP._12,
+            }}>{` ${bookingDetails.month}`}</FText>
+        </FText>
+        {showStatus ? (
+          <TripStatus statusObj={status} />
+        ) : (
+          <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+            <Icon.ChevronRight
+              width={DP._18}
+              height={DP._18}
+              stroke={Color.BATTLESHIP_GREY_TWO}
+            />
+          </View>
+        )}
+      </View>
+
+      <View style={[Styles.marginTop_12]}>
+        <View style={[Styles.flexDirectionRow]}>
+          <FText style={Styles.portName} numberOfLines={1}>
+            {bookingDetails.sourceStationCode}
+          </FText>
+          <FText style={Styles.duration}>{bookingDetails.duration}</FText>
+          <FText style={Styles.portName} numberOfLines={1}>
+            {bookingDetails.destinationStationCode}
+          </FText>
+        </View>
+        <View style={[Styles.flexDirectionRow]}>
+          <View>
+            <FText style={Styles.time} numberOfLines={1}>
+              {bookingDetails.sourceCity}
+            </FText>
+            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+          </View>
+          <View style={Styles.alignItem_flexEnd}>
+            <FText style={Styles.time} numberOfLines={1}>
+              {bookingDetails.destinationCity}
+            </FText>
+            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+          </View>
+        </View>
+      </View>
+
+      <View style={Styles.marginTop_12}>
+        <FText style={Styles.portName} numberOfLines={1}>
+          {bookingDetails.trainName}
+        </FText>
+        <FText style={Styles.time}>
+          {Strings.pnr}: {bookingDetails.pnr}
+        </FText>
+        <FText style={Styles.time}>
+          {Strings.class}: {bookingDetails.class}
+        </FText>
+        <FText style={Styles.time}>
+          {Strings.berth}: {bookingDetails.berth}
+        </FText>
+      </View>
+    </FTouchableOpacity>
+  );
+};
+
+const BusItineraryCard = ({
+  tripRequest,
   onActionPress,
   onCardPress,
   style,
   hideIcon,
   showLine,
   showInfo,
+  showStatus,
+  status,
   timelineGreyed,
-  processed,
+  showPreBookingCard,
+  bookingDetails,
+  actions,
+  notificationText,
 }) => {
-  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
+  console.log({showPreBookingCard, tripRequest});
+  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
-  const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(TrainSubtripActions.VIEW_REMARKS);
+  const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
+  const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
+  const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
   const shortlistingAction = isActionEnabled(
-    TrainSubtripActions.SHORTLIST_FLIGHT_TRIPS,
+    BusSubtripActions.SHORTLIST_FLIGHT_TRIPS,
   );
   const viewShortlistedFlightAction = isActionEnabled(
-    TrainSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
+    BusSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
   );
 
   const ActionsInItinerary = () => (
@@ -108,78 +229,34 @@ const TrainItineraryCard = ({
         )}
       </View>
       <View style={Styles.container}>
-        <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
-          <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-            <FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {item.date}
-              </FText>
-              <FText
-                style={{
-                  color: Color.BLUEY_GREY,
-                  fontSize: DP._12,
-                }}>{` ${item.month}`}</FText>
-            </FText>
-            {item.showStatus ? (
-              <TripStatus statusObj={item.status} />
-            ) : processed ? (
-              <Icon.ChevronRight
-                width={DP._18}
-                height={DP._18}
-                stroke={Color.BATTLESHIP_GREY_TWO}
-              />
-            ) : (
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
-                {item.slotDetail}
-              </FText>
-            )}
-          </View>
-          {processed && (
-            <View style={Styles.marginTop_12}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {item.trainName}
-              </FText>
-              <View style={Styles.flexDirectionRow}>
-                <FText style={Styles.time}>
-                  {item.pnr} | {item.seatType}
-                </FText>
-              </View>
-            </View>
-          )}
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-            <View style={Styles.flex}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {item.source}
-              </FText>
-              <FText style={Styles.time}>
-                {item.sourceStationCode}
-                {processed ? ` | ${item.departureTime}` : ''}
-              </FText>
-            </View>
-            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {item.destination}
-              </FText>
-              <FText style={Styles.time}>
-                {item.destinationStationCode}
-                {processed ? ` | ${item.arrivalTime}` : ''}
-              </FText>
-            </View>
-          </View>
-        </FTouchableOpacity>
+        {showPreBookingCard ? (
+          <PreBookingCard
+            onCardPress={onCardPress}
+            tripRequest={tripRequest}
+            showStatus={showStatus}
+            status={status}
+          />
+        ) : (
+          <PostBookingCard
+            onCardPress={onCardPress}
+            bookingDetails={bookingDetails}
+            showStatus={showStatus}
+            status={status}
+          />
+        )}
         {(rescheduleAction || cancelAction || viewRemarksAction) && (
           <ActionsInItinerary />
         )}
         {showInfo && (
           <InfoBox
-            isAlert={shortlistingAction || !!item.notificationText}
+            isAlert={shortlistingAction || !!notificationText}
             text={
               viewShortlistedFlightAction?.name ||
               shortlistingAction?.name ||
-              item.notificationText
+              notificationText
             }
             showChevron={!!shortlistingAction}
-            disablePressEvent={!!item.notificationText}
+            disablePressEvent={!!notificationText}
             onPress={() =>
               onActionPress(viewShortlistedFlightAction || shortlistingAction)
             }
@@ -190,4 +267,4 @@ const TrainItineraryCard = ({
   );
 };
 
-export default TrainItineraryCard;
+export default BusItineraryCard;

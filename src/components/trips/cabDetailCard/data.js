@@ -26,7 +26,6 @@ const cabItineraryCardProps = {
         name: 'Cancel',
       },
     ],
-    showStatus: false,
   },
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),

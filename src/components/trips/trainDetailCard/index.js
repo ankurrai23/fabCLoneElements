@@ -13,13 +13,15 @@ import Icon from '../../../assets/icons/Icon';
 import {getStatusObject} from '../../../utils/Utils';
 
 const TrainItineraryCard = ({
-  item,
+  bookingDetails,
   onActionPress,
   onCardPress,
+  showStatus,
   style,
   title,
+  actions,
 }) => {
-  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
+  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
@@ -80,60 +82,72 @@ const TrainItineraryCard = ({
             <View style={[Styles.flexDirectionRow, Styles.baseline]}>
               <FText>
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                  {item.date}
+                  {bookingDetails.date}
                 </FText>
                 <FText
                   style={{
                     color: Color.BLUEY_GREY,
                     fontSize: DP._12,
-                  }}>{` ${item.month}`}</FText>
+                  }}>{` ${bookingDetails.month}`}</FText>
               </FText>
-              {!!item.trainBookingStatus && (
+              {showStatus ? (
                 <TripStatus
-                  statusObj={getStatusObject(item.trainBookingStatus)}
+                  statusObj={getStatusObject(bookingDetails.trainStatus)}
                 />
+              ) : (
+                <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+                  <Icon.ChevronRight
+                    width={DP._18}
+                    height={DP._18}
+                    stroke={Color.BATTLESHIP_GREY_TWO}
+                  />
+                </View>
               )}
             </View>
-            <View style={Styles.marginTop_16}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {item.trainName}
-              </FText>
-              <View style={Styles.flexDirectionRow}>
-                <FText style={Styles.time}>
-                  {item.pnr} | {item.seatType}
+
+            <View style={[Styles.marginTop_12]}>
+              <View style={[Styles.flexDirectionRow]}>
+                <FText style={Styles.portName} numberOfLines={1}>
+                  {bookingDetails.sourceStationCode}
                 </FText>
+                <FText style={Styles.duration}>{bookingDetails.duration}</FText>
+                <FText style={Styles.portName} numberOfLines={1}>
+                  {bookingDetails.destinationStationCode}
+                </FText>
+              </View>
+              <View style={[Styles.flexDirectionRow]}>
+                <View>
+                  <FText style={Styles.time} numberOfLines={1}>
+                    {bookingDetails.sourceCity}
+                  </FText>
+                  <FText style={Styles.time}>
+                    {bookingDetails.departureTime}
+                  </FText>
+                </View>
+                <View style={Styles.alignItem_flexEnd}>
+                  <FText style={Styles.time} numberOfLines={1}>
+                    {bookingDetails.destinationCity}
+                  </FText>
+                  <FText style={Styles.time}>
+                    {bookingDetails.arrivalTime}
+                  </FText>
+                </View>
               </View>
             </View>
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
-              <View style={Styles.flex}>
-                <FText style={Styles.portName} numberOfLines={1}>
-                  {item.source}
-                </FText>
-                <FText style={Styles.time}>
-                  {item.sourceStationCode} | {item.departureTime}
-                </FText>
-              </View>
-              <View
-                style={[
-                  Styles.justifyContent_around(item.duration),
-                  Styles.flex,
-                ]}>
-                {item.duration && (
-                  <View style={Styles.durationContainer}>
-                    <FText style={Styles.duration} weight={400}>
-                      {item.duration}
-                    </FText>
-                  </View>
-                )}
-              </View>
-              <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-                <FText style={Styles.portName} numberOfLines={1}>
-                  {item.destination}
-                </FText>
-                <FText style={Styles.time}>
-                  {item.arrivalTime} | {item.destinationStationCode}
-                </FText>
-              </View>
+
+            <View style={Styles.marginTop_12}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {bookingDetails.trainName}
+              </FText>
+              <FText style={Styles.time}>
+                {Strings.pnr}: {bookingDetails.pnr}
+              </FText>
+              <FText style={Styles.time}>
+                {Strings.class}: {bookingDetails.class}
+              </FText>
+              <FText style={Styles.time}>
+                {Strings.berth}: {bookingDetails.berth}
+              </FText>
             </View>
           </FTouchableOpacity>
           {(rescheduleAction || cancelAction || viewRemarksAction) && (

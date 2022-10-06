@@ -1,40 +1,38 @@
-import {TrainSubtripActions} from '../../../utils/SubTripActions';
+import {BusSubtripActions} from '../../../utils/SubTripActions';
 
 const trainItineraryCardProps = {
-  title: 'Itinerary 1',
-  item: {
+  bookingDetails: {
     date: '22',
     month: 'Nov',
-    slotDetail: 'Slot: 6PM - 9PM',
-    source: 'Delhi',
-    destination: 'Mumbai',
-    sourceStationCode: 'BOM',
-    destinationStationCode: 'BLR',
-    departureTime: '18:30',
-    arrivalTime: '22:30',
-    seatType: '6E',
-    trainNumber: '717',
-    pnr: '256-9877567',
-    preferredTrain: 'Rajdhani Express',
-    preferredClass: '2A',
+    sourceStationCode: 'CSTM',
+    sourceCity: 'Mumbai',
+    TravelDate: 'Tue, 22 Nov',
+    destinationStationCode: 'TVC',
+    destinationCity: 'Thiruvanthapuram',
+    departureTime: '21:00, Tue, 22 Nov',
+    arrivalTime: '09:00, Wed, 23 Nov',
     duration: '1h 50min',
-    trainName: 'Mumbai - Lonavala Superfast Express',
-    actionDisabled: false,
-    trainBookingStatus: 'CONFIRMED',
-    actions: [
-      {
-        type: 'RESCHEDULE',
-        name: 'Reschedule',
-      },
-      {
-        type: 'CANCEL',
-        name: 'Cancel',
-      },
-    ],
-    showStatus: true,
+    sourcePlatform: '',
+    destinationPlatform: '',
+    trainName: 'Mumbai - Madras Superfast Express',
+    pnr: '256-99589',
+    class: 'AC 3 Tier Sleeper',
+    berth: '42, Side upper',
+    trainStatus: 'CONFIRMED',
   },
+  actions: [
+    {
+      type: 'RESCHEDULE',
+      name: 'Reschedule',
+    },
+    {
+      type: 'CANCEL',
+      name: 'Cancel',
+    },
+  ],
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
+  actionDisabled: false,
 };
 
 export default trainItineraryCardProps;
