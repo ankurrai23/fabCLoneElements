@@ -88,6 +88,7 @@ import {FONT_TYPE} from './common/rn/FText';
 import {BUTTON_TYPE} from './common/components/button';
 import {CLAIM_CARD_TYPE} from './common/components/claimsCard';
 import {EXPENSE_CLAIM_STATUS} from './components/expense/expenseCard';
+import {MANAGER_APPROVAL_STATUS} from './utils/Constants';
 
 export {
   data,
@@ -172,4 +173,5 @@ export {
   BUTTON_TYPE,
   CLAIM_CARD_TYPE,
   EXPENSE_CLAIM_STATUS,
+  MANAGER_APPROVAL_STATUS,
 };

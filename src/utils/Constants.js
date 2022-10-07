@@ -28,3 +28,10 @@ export const SUB_TRIP_TYPE = {
 export const EMPLOYEE_ACTIONS = {
   SEND_REMINDER: 'SEND_REMINDER',
 };
+
+export const MANAGER_APPROVAL_STATUS = {
+  approvalPending: 'APPROVAL_PENDING',
+  approved: 'APPROVED',
+  rejected: 'REJECTED',
+  modificationRequested: 'MODIFICATION_REQUESTED',
+};

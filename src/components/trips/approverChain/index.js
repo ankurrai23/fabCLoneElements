@@ -4,12 +4,7 @@ import FText from '../../../common/rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DashedLine from '../../../common/components/dashedLine';
-
-export const MANAGER_APPROVAL_STATUS = {
-  approvalPending: 'APPROVAL_PENDING',
-  approved: 'APPROVED',
-  rejected: 'REJECTED',
-};
+import {MANAGER_APPROVAL_STATUS} from '../../../utils/Constants';
 
 const ApproverChain = ({data, inItinerary, title, style}) => {
   const ManagerDetail = ({
@@ -26,6 +21,7 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
         case MANAGER_APPROVAL_STATUS.approvalPending:
           return Color.GREY_5;
         case MANAGER_APPROVAL_STATUS.approved:
+        case MANAGER_APPROVAL_STATUS.modificationRequested:
           return Color.DARK_SEA_FOAM;
         case MANAGER_APPROVAL_STATUS.rejected:
           return Color.PASTEL_RED;
