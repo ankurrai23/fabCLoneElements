@@ -1,6 +1,6 @@
 const hotelItineraryCardProps = {
   status: {
-    key: 'PROCESSED',
+    key: 'CANCELLED',
     value: 'Cancelled',
     textColor: '#d65656',
     bgColor: '#d656561a',
@@ -39,8 +39,9 @@ const hotelItineraryCardProps = {
   showLine: true,
   showInfo: false,
   timelineGreyed: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   showConfirmedStatus: false,
+  hideChevron: false,
 };
 
 export default hotelItineraryCardProps;

@@ -50,6 +50,7 @@ const flightItineraryCardProps = {
   showStatus: false,
   notificationText: null,
   showPreBookingCard: false,
+  hideChevron: false,
 };
 
 export default flightItineraryCardProps;

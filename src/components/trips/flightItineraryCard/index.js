@@ -28,6 +28,7 @@ const FlightItineraryCard = ({
   timelineGreyed,
   showPreBookingCard,
   notificationText,
+  hideChevron,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -174,11 +175,13 @@ const FlightItineraryCard = ({
           {showStatus ? (
             <TripStatus statusObj={status} />
           ) : (
-            <Icon.ChevronRight
-              width={DP._18}
-              height={DP._18}
-              stroke={Color.BATTLESHIP_GREY_TWO}
-            />
+            !hideChevron && (
+              <Icon.ChevronRight
+                width={DP._18}
+                height={DP._18}
+                stroke={Color.BATTLESHIP_GREY_TWO}
+              />
+            )
           )}
         </View>
         <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>

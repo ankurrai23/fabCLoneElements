@@ -32,6 +32,7 @@ const HotelItineraryCard = ({
   timelineGreyed,
   showPreBookingCard,
   showConfirmedStatus,
+  hideChevron,
 }) => {
   const sameMonthDates =
     tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
@@ -128,9 +129,12 @@ const HotelItineraryCard = ({
               <FText style={Styles.month}> {tripRequest.checkOut.month}</FText>
             </View>
           )}
-          {showConfirmedStatus && <TripStatus statusObj={confirmedStatus} />}
-          {tripRequest?.status?.key === TRIP_STATUS.CANCELLED && (
-            <TripStatus statusObj={status} />
+          {showConfirmedStatus ? (
+            <TripStatus statusObj={confirmedStatus} />
+          ) : (
+            status?.key === TRIP_STATUS.CANCELLED && (
+              <TripStatus statusObj={status} />
+            )
           )}
         </View>
         <View style={{paddingHorizontal: DP._16}}>
@@ -200,11 +204,13 @@ const HotelItineraryCard = ({
           ) : showConfirmedStatus ? (
             <TripStatus statusObj={confirmedStatus} />
           ) : (
-            <Icon.ChevronRight
-              width={DP._18}
-              height={DP._18}
-              stroke={Color.BATTLESHIP_GREY_TWO}
-            />
+            !hideChevron && (
+              <Icon.ChevronRight
+                width={DP._18}
+                height={DP._18}
+                stroke={Color.BATTLESHIP_GREY_TWO}
+              />
+            )
           )}
         </View>
         <View style={{paddingHorizontal: DP._16}}>
