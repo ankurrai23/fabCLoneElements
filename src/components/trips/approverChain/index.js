@@ -4,12 +4,7 @@ import FText from '../../../common/rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DashedLine from '../../../common/components/dashedLine';
-
-export const MANAGER_APPROVAL_STATUS = {
-  approvalPending: 'APPROVAL_PENDING',
-  approved: 'APPROVED',
-  rejected: 'REJECTED',
-};
+import {MANAGER_APPROVAL_STATUS} from '../../../utils/Constants';
 
 const ApproverChain = ({data, inItinerary, title, style}) => {
   const ManagerDetail = ({
@@ -27,6 +22,8 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
           return Color.GREY_5;
         case MANAGER_APPROVAL_STATUS.approved:
           return Color.DARK_SEA_FOAM;
+        case MANAGER_APPROVAL_STATUS.modificationRequested:
+          return Color.DEEP_SAFFRON;
         case MANAGER_APPROVAL_STATUS.rejected:
           return Color.PASTEL_RED;
         default:
@@ -43,7 +40,7 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
             <DashedLine
               dashColor={waiting ? Color.GREY_5 : statusColor()}
               dashSize={DP._3}
-              dashWidth={DP._1_5}
+              dashWidth={DP._1}
             />
           </View>
         )}
@@ -116,7 +113,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: '100%',
     top: DP._18,
-    left: DP._7,
+    left: DP._7_5,
   },
   timeOfStatusUpdate: {
     color: Color.GREY_PURPLE,
