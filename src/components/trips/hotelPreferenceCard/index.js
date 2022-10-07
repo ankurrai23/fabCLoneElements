@@ -66,18 +66,22 @@ const NonRichHotelView = ({
       <FText style={Styles.hotelAddress} numberOfLines={2}>
         {item.hotelAddress}
       </FText>
-      <FText type={FONT_TYPE.BOLD} style={Styles.costOfHotel}>
-        {item.cost}
-      </FText>
+      {item.cost && (
+        <FText type={FONT_TYPE.BOLD} style={Styles.costOfHotel}>
+          {item.cost}
+        </FText>
+      )}
     </View>
     <View style={Styles.mapAndCostInfoContainer}>
       <TouchableOpacity onPress={() => onViewMapPress(item.googleMapUrl)}>
         <FText style={Styles.viewOnMap}>{Strings.viewOnMap}</FText>
       </TouchableOpacity>
       {/*TODO: Need to discuss */}
-      <FText style={Styles.priceDetail}>{`price/night${
-        !item.gstIncluded ? ' (Ex GST)' : ''
-      }`}</FText>
+      {item.cost && (
+        <FText style={Styles.priceDetail}>{`price/night${
+          !item.gstIncluded ? ' (Ex GST)' : ''
+        }`}</FText>
+      )}
     </View>
     <SetOrResetPreference
       onTapToSetPreferences={onTapToSetPreferences}
@@ -165,15 +169,17 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
           )}
           <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
         </View>
-        <View>
-          <FText type={FONT_TYPE.BOLD} style={Styles.costOfHotel}>
-            {item.cost}
-          </FText>
-          {/*TODO: Need to discuss */}
-          <FText style={Styles.priceDetail}>{`price/night${
-            !item.gstIncluded ? ' (Ex GST)' : ''
-          }`}</FText>
-        </View>
+        {item.cost && (
+          <View>
+            <FText type={FONT_TYPE.BOLD} style={Styles.costOfHotel}>
+              {item.cost}
+            </FText>
+            {/*TODO: Need to discuss */}
+            <FText style={Styles.priceDetail}>{`price/night${
+              !item.gstIncluded ? ' (Ex GST)' : ''
+            }`}</FText>
+          </View>
+        )}
       </View>
       <View style={Styles.buttonContainer}>
         <SetOrResetPreference

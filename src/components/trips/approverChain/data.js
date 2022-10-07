@@ -3,7 +3,7 @@ const approverChainProps = {
     {
       primaryText: 'Sahil Malhan',
       designation: 'Manager',
-      // timeOfStatusUpdate: "11 Sep'22, 02:30",
+      timeOfStatusUpdate: "11 Sep'22, 02:30",
       waiting: false,
       status: null,
     },
@@ -12,7 +12,7 @@ const approverChainProps = {
       designation: 'Senior Manager',
       waiting: false,
       status: null,
-      // timeOfStatusUpdate: "11 Sep'22, 02:30",
+      timeOfStatusUpdate: "11 Sep'22, 02:30",
     },
   ],
   inItinerary: true,
