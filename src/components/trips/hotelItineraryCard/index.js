@@ -34,7 +34,7 @@ const HotelItineraryCard = ({
   showConfirmedStatus,
 }) => {
   const sameMonthDates =
-    tripRequest.checkIn.month === tripRequest.checkOut.month;
+    tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
 
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -195,9 +195,10 @@ const HotelItineraryCard = ({
               </FText>
             </View>
           )}
-          {showConfirmedStatus && <TripStatus statusObj={confirmedStatus} />}
           {status?.key === TRIP_STATUS.CANCELLED ? (
             <TripStatus statusObj={status} />
+          ) : showConfirmedStatus ? (
+            <TripStatus statusObj={confirmedStatus} />
           ) : (
             <Icon.ChevronRight
               width={DP._18}
