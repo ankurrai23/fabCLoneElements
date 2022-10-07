@@ -85,76 +85,110 @@ const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
 
       <View style={[Styles.marginTop_12]}>
         <View style={[Styles.flexDirectionRow]}>
-          <FText style={Styles.portName} numberOfLines={1}>
+          <FText
+            style={[Styles.portName, {width: '40%', textAlign: 'left'}]}
+            numberOfLines={1}>
             {bookingDetails.source}
           </FText>
-          <FText style={Styles.duration}>{bookingDetails.duration}</FText>
-          <FText style={Styles.portName} numberOfLines={1}>
+          <FText style={[Styles.duration, {width: '20%', textAlign: 'center'}]}>
+            {bookingDetails.duration}
+          </FText>
+          <FText
+            style={[Styles.portName, {width: '40%', textAlign: 'right'}]}
+            numberOfLines={1}>
             {bookingDetails.destination}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
-          <View>
+          <View style={{width: '50%', textAlign: 'left'}}>
             <FText style={Styles.time}>{bookingDetails.sourceStop}</FText>
             <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
           </View>
-          <View style={Styles.alignItem_flexEnd}>
+          <View
+            style={[
+              Styles.alignItem_flexEnd,
+              {width: '50%', textAlign: 'right'},
+            ]}>
             <FText style={Styles.time}>{bookingDetails.destinationStop}</FText>
             <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
           </View>
         </View>
       </View>
 
-      <View style={Styles.marginTop_12}>
-        <FText style={Styles.portName} numberOfLines={1}>
-          {bookingDetails.carName}
-        </FText>
-        <FText style={Styles.time}>{bookingDetails.carNumber}</FText>
-        <FText style={Styles.time}>{bookingDetails.carInfo}</FText>
-        <FText style={Styles.time}>
-          {Strings.bookingId}: {bookingDetails.bookingId}
-        </FText>
-      </View>
-      <Separator
-        style={{
-          marginTop: DP._12,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
-      />
-      <View style={Styles.marginTop_12}>
-        <View style={Styles.flexDirectionRow}>
-          <View style={Styles.flowRow}>
-            <Icon.Person width={DP._16} height={DP._16} />
-            <FText
-              style={{
-                marginLeft: DP._10,
-                fontSize: DP._12,
-                color: Color.GREY_PURPLE,
-              }}>
-              {Strings.driverName}
-            </FText>
-          </View>
-          <FText style={{fontSize: DP._12, color: Color.DARK}}>
-            {bookingDetails.driverName}
+      {bookingDetails?.carName && (
+        <View style={Styles.marginTop_12}>
+          <FText style={Styles.portName} numberOfLines={1}>
+            {bookingDetails.carName}
           </FText>
-        </View>
-        <View style={[Styles.flexDirectionRow, Styles.alignItem_flexEnd]}>
-          <View style={[Styles.flowRow, Styles.marginTop_12]}>
-            <Icon.PhoneIcon width={DP._16} height={DP._16} />
-            <FText
-              style={{
-                marginLeft: DP._10,
-                fontSize: DP._12,
-                color: Color.GREY_PURPLE,
-              }}>
-              {Strings.phoneNo}
+          {bookingDetails?.carNumber && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {bookingDetails.carNumber}
             </FText>
-          </View>
-          <FText style={Styles.driverContact}>
-            {bookingDetails.driverContact}
-          </FText>
+          )}
+          {bookingDetails.carInfo && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {bookingDetails.carInfo}
+            </FText>
+          )}
+          {bookingDetails?.bookingId && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {Strings.bookingId}: {bookingDetails.bookingId}
+            </FText>
+          )}
         </View>
-      </View>
+      )}
+      {(bookingDetails?.driverContact || bookingDetails?.driverName) && (
+        <>
+          <Separator
+            style={{
+              marginTop: DP._12,
+              backgroundColor: Color.LIGHT_PERIWINKLE,
+            }}
+          />
+          <View style={Styles.marginTop_12}>
+            {bookingDetails?.driverName && (
+              <View style={Styles.flexDirectionRow}>
+                <View style={Styles.flowRow}>
+                  <Icon.Person width={DP._16} height={DP._16} />
+                  <FText
+                    style={{
+                      marginLeft: DP._10,
+                      fontSize: DP._12,
+                      color: Color.GREY_PURPLE,
+                    }}>
+                    {Strings.driverName}
+                  </FText>
+                </View>
+                <FText style={{fontSize: DP._12, color: Color.DARK}}>
+                  {bookingDetails.driverName}
+                </FText>
+              </View>
+            )}
+            {bookingDetails?.driverContact && (
+              <View style={[Styles.flexDirectionRow, Styles.alignItem_flexEnd]}>
+                <View
+                  style={[
+                    Styles.flowRow,
+                    bookingDetails?.driverName && Styles.marginTop_12,
+                  ]}>
+                  <Icon.PhoneIcon width={DP._16} height={DP._16} />
+                  <FText
+                    style={{
+                      marginLeft: DP._10,
+                      fontSize: DP._12,
+                      color: Color.GREY_PURPLE,
+                    }}>
+                    {Strings.phoneNo}
+                  </FText>
+                </View>
+                <FText style={Styles.driverContact}>
+                  {bookingDetails.driverContact}
+                </FText>
+              </View>
+            )}
+          </View>
+        </>
+      )}
     </FTouchableOpacity>
   );
 };
