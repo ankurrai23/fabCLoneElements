@@ -21,8 +21,9 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
         case MANAGER_APPROVAL_STATUS.approvalPending:
           return Color.GREY_5;
         case MANAGER_APPROVAL_STATUS.approved:
-        case MANAGER_APPROVAL_STATUS.modificationRequested:
           return Color.DARK_SEA_FOAM;
+        case MANAGER_APPROVAL_STATUS.modificationRequested:
+          return Color.DEEP_SAFFRON;
         case MANAGER_APPROVAL_STATUS.rejected:
           return Color.PASTEL_RED;
         default:
@@ -39,7 +40,7 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
             <DashedLine
               dashColor={waiting ? Color.GREY_5 : statusColor()}
               dashSize={DP._3}
-              dashWidth={DP._1_5}
+              dashWidth={DP._1}
             />
           </View>
         )}
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: '100%',
     top: DP._18,
-    left: DP._7,
+    left: DP._7_5,
   },
   timeOfStatusUpdate: {
     color: Color.GREY_PURPLE,
