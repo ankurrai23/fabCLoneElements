@@ -33,9 +33,6 @@ import {
   ApprovalManager,
   CoTravellers,
   FlightDetailCard,
-  BusDetailCard,
-  CabDetailCard,
-  TrainDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
   HomeHeader,
@@ -174,18 +171,6 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightDetailCard',
     component: <FlightDetailCard {...data.flightDetailCardProps} />,
-  },
-  {
-    name: 'BusDetailCard',
-    component: <BusDetailCard {...data.busDetailCardProps} />,
-  },
-  {
-    name: 'CabDetailCard',
-    component: <CabDetailCard {...data.cabDetailCardProps} />,
-  },
-  {
-    name: 'TrainDetailCard',
-    component: <TrainDetailCard {...data.trainDetailCardProps} />,
   },
   {
     name: 'TripCardLoadingState',
