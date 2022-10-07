@@ -101,4 +101,5 @@ export default {
   seatNumber: 'Seat no',
   coordinatorName: 'Coordinator Name',
   berth: 'Berth',
+  platform: 'PF',
 };

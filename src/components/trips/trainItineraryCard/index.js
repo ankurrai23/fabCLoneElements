@@ -86,44 +86,76 @@ const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
 
       <View style={[Styles.marginTop_12]}>
         <View style={[Styles.flexDirectionRow]}>
-          <FText style={Styles.portName} numberOfLines={1}>
+          <FText
+            style={[Styles.portName, {width: '40%', textAlign: 'left'}]}
+            numberOfLines={1}>
             {bookingDetails.sourceStationCode}
           </FText>
-          <FText style={Styles.duration}>{bookingDetails.duration}</FText>
-          <FText style={Styles.portName} numberOfLines={1}>
+          <FText
+            style={[
+              Styles.duration,
+              {width: '20%', textAlign: 'center', alignSelf: 'center'},
+            ]}>
+            {bookingDetails.duration}
+          </FText>
+          <FText
+            style={[Styles.portName, {width: '40%', textAlign: 'right'}]}
+            numberOfLines={1}>
             {bookingDetails.destinationStationCode}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
-          <View>
+          <View style={{width: '50%'}}>
             <FText style={Styles.time} numberOfLines={1}>
               {bookingDetails.sourceCity}
             </FText>
             <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+            {bookingDetails?.sourcePF && (
+              <FText style={Styles.time}>
+                {Strings.platform}: {bookingDetails.sourcePF}
+              </FText>
+            )}
           </View>
-          <View style={Styles.alignItem_flexEnd}>
+          <View
+            style={[
+              Styles.alignItem_flexEnd,
+              {width: '50%', justifyContent: 'flex-start', flex: 1},
+            ]}>
             <FText style={Styles.time} numberOfLines={1}>
               {bookingDetails.destinationCity}
             </FText>
             <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+            {bookingDetails?.destinationPF && (
+              <FText style={Styles.time}>
+                {Strings.platform}: {bookingDetails.destinationPF}
+              </FText>
+            )}
           </View>
         </View>
       </View>
 
-      <View style={Styles.marginTop_12}>
-        <FText style={Styles.portName} numberOfLines={1}>
-          {bookingDetails.trainName}
-        </FText>
-        <FText style={Styles.time}>
-          {Strings.pnr}: {bookingDetails.pnr}
-        </FText>
-        <FText style={Styles.time}>
-          {Strings.class}: {bookingDetails.class}
-        </FText>
-        <FText style={Styles.time}>
-          {Strings.berth}: {bookingDetails.berth}
-        </FText>
-      </View>
+      {bookingDetails?.trainName && (
+        <View style={Styles.marginTop_12}>
+          <FText style={Styles.portName} numberOfLines={1}>
+            {bookingDetails.trainName}
+          </FText>
+          {bookingDetails?.pnr && (
+            <FText style={Styles.time}>
+              {Strings.pnr}: {bookingDetails.pnr}
+            </FText>
+          )}
+          {bookingDetails?.class && (
+            <FText style={Styles.time}>
+              {Strings.class}: {bookingDetails.class}
+            </FText>
+          )}
+          {bookingDetails?.berth && (
+            <FText style={Styles.time}>
+              {Strings.berth}: {bookingDetails.berth}
+            </FText>
+          )}
+        </View>
+      )}
     </FTouchableOpacity>
   );
 };

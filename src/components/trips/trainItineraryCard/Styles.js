@@ -31,7 +31,7 @@ export default StyleSheet.create({
   flexDirectionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   flowRow: {
     flexDirection: 'row',
