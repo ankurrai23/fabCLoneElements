@@ -6,10 +6,10 @@ const busItineraryCardProps = {
     month: 'Nov',
     slotDetail: 'Slot: 6PM - 9PM',
     sourceStationCode: 'CSTM',
-    sourceCity: 'Mumbai',
-    TravelDate: 'Tue, 22 Nov',
+    sourceCity: 'Mumbaisdkjflskdjflsdkfjlsdkfjslkdfjslj',
+    departureDate: 'Tue, 22 Nov',
     destinationStationCode: 'TVC',
-    destinationCity: 'Thiruvanthapuram',
+    destinationCity: 'Thiruvanthapuramslkdfjsldkfjsldkfjsdlkfjs',
     arrivalDate: 'Wed, 23 Nov',
   },
   status: {

@@ -37,20 +37,32 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
       </View>
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-        <View style={Styles.flex}>
+        <View style={[{width: '48%'}]}>
           <FText style={Styles.portName} numberOfLines={1}>
-            {tripRequest.sourceStationCode}
+            {tripRequest?.sourceStationCode ?? tripRequest.sourceCity}
           </FText>
 
-          <FText style={Styles.time}>{tripRequest.sourceCity}</FText>
-          <FText style={Styles.time}>{tripRequest.TravelDate}</FText>
+          {(tripRequest?.destinationCity || tripRequest?.sourceCity) && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.sourceCity}
+            </FText>
+          )}
+          {(tripRequest?.arrivalDate || tripRequest?.departureDate) && (
+            <FText style={Styles.time}>{tripRequest.departureDate}</FText>
+          )}
         </View>
-        <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+        <View style={[Styles.alignItem_flexEnd, {width: '48%'}]}>
           <FText style={Styles.portName} numberOfLines={1}>
-            {tripRequest.destinationStationCode}
+            {tripRequest?.destinationStationCode ?? tripRequest.destinationCity}
           </FText>
-          <FText style={Styles.time}>{tripRequest.destinationCity}</FText>
-          <FText style={Styles.time}>{tripRequest.arrivalDate}</FText>
+          {(tripRequest?.destinationCity || tripRequest?.sourceCity) && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.destinationCity}
+            </FText>
+          )}
+          {(tripRequest.arrivalDate || tripRequest.departureDate) && (
+            <FText style={Styles.time}>{tripRequest.arrivalDate}</FText>
+          )}
         </View>
       </View>
     </FTouchableOpacity>
@@ -105,11 +117,13 @@ const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
-          <View style={{width: '50%'}}>
+          <View style={{width: '48%'}}>
             <FText style={Styles.time} numberOfLines={1}>
               {bookingDetails.sourceCity}
             </FText>
-            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+            {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
+              <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+            )}
             {bookingDetails?.sourcePF && (
               <FText style={Styles.time}>
                 {Strings.platform}: {bookingDetails.sourcePF}
@@ -119,12 +133,14 @@ const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
           <View
             style={[
               Styles.alignItem_flexEnd,
-              {width: '50%', justifyContent: 'flex-start', flex: 1},
+              {width: '48%', justifyContent: 'flex-start', flex: 1},
             ]}>
             <FText style={Styles.time} numberOfLines={1}>
               {bookingDetails.destinationCity}
             </FText>
-            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+            {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
+              <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+            )}
             {bookingDetails?.destinationPF && (
               <FText style={Styles.time}>
                 {Strings.platform}: {bookingDetails.destinationPF}

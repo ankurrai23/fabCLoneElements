@@ -39,17 +39,21 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
       </View>
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-        <View style={Styles.flex}>
+        <View style={{width: '48%'}}>
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.source}
           </FText>
-          <FText style={Styles.time}>{tripRequest.sourceStop}</FText>
+          <FText style={Styles.time} numberOfLines={1}>
+            {tripRequest.sourceStop}
+          </FText>
         </View>
-        <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+        <View style={[Styles.alignItem_flexEnd, {width: '48%'}]}>
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.destination}
           </FText>
-          <FText style={Styles.time}>{tripRequest.destinationStop}</FText>
+          <FText style={Styles.time} numberOfLines={1}>
+            {tripRequest.destinationStop}
+          </FText>
         </View>
       </View>
     </FTouchableOpacity>
@@ -100,17 +104,31 @@ const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
-          <View style={{width: '50%', textAlign: 'left'}}>
-            <FText style={Styles.time}>{bookingDetails.sourceStop}</FText>
-            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+          <View style={{width: '40%', textAlign: 'left'}}>
+            {(bookingDetails?.sourceStop ||
+              bookingDetails?.destinationStop) && (
+              <FText style={Styles.time} numberOfLines={1}>
+                {bookingDetails.sourceStop}
+              </FText>
+            )}
+            {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
+              <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+            )}
           </View>
           <View
             style={[
               Styles.alignItem_flexEnd,
-              {width: '50%', textAlign: 'right'},
+              {width: '40%', textAlign: 'right'},
             ]}>
-            <FText style={Styles.time}>{bookingDetails.destinationStop}</FText>
-            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+            {(bookingDetails?.sourceStop ||
+              bookingDetails?.destinationStop) && (
+              <FText style={Styles.time} numberOfLines={1}>
+                {bookingDetails.destinationStop}
+              </FText>
+            )}
+            {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
+              <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+            )}
           </View>
         </View>
       </View>
