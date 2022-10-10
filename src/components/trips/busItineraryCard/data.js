@@ -5,8 +5,8 @@ const busItineraryCardProps = {
     date: '22',
     month: 'Nov',
     slotDetail: 'Slot: 6PM - 9PM',
-    source: 'Mumbai fldksflsfjldjfsllskdjflsdkfj',
-    destination: 'Lonavalalksdjflksjdflskdfjsl',
+    source: 'Mumbailkjsdflkdsjflsdkfjsd',
+    destination: 'Lonavala slkdjflsdkfjldsfj',
     sourceBusStop: 'Mumbai Airport sfjlsfjsdlfsldkjfsl',
     destinationBusStop: 'Tungarli road lsdkfjslkfjsldkjf',
   },
@@ -26,11 +26,11 @@ const busItineraryCardProps = {
     departureTime: '18:30',
     arrivalTime: '22:30',
     duration: '1h 50min',
-    travelCompany: 'Dolphin Tour and Travel',
+    travelCompany: 'Dolphin Tour and Travell fslkjfldskjflskdjflskjflsdjfl',
     coordinatorName: 'Mr. Arvind Swami',
     contact: '+91 986856778',
-    busNumber: 'MH 12A 2345',
-    busInfo: 'Capella A/C Sleeper (2+1)',
+    busNumber: null,
+    busInfo: null,
     seatNumber: 'L23',
   },
   actions: [
@@ -56,9 +56,9 @@ const busItineraryCardProps = {
   notificationText: 'This is notification text',
   timelineGreyed: false,
   actionDisabled: false,
-  showStatus: false,
+  showStatus: true,
   showPreBookingCard: true,
-  hideChevron: false,
+  hideChevron: true,
 };
 
 export default busItineraryCardProps;

@@ -27,7 +27,7 @@ const cabItineraryCardProps = {
     arrivalTime: '22:30',
     duration: '1h 50min',
     carName: 'White Hyundai Grand i10 Nios',
-    driverName: 'Mr. Arvind Swami',
+    driverName: 'Mr. Arvind Swami ',
     driverContact: '+91 986856778',
     carNumber: 'MH 12A 2345',
     carInfo: 'Capella A/C Sleeper (2+1)',

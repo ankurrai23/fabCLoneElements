@@ -103,4 +103,7 @@ export default {
   berth: 'Berth',
   platform: 'PF',
   track: 'Track',
+  carNa: 'Car - Na',
+  trainNa: 'Train - Na',
+  busNa: 'Travel company - Na',
 };

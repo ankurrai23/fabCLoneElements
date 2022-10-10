@@ -74,6 +74,8 @@ export default StyleSheet.create({
   driverContact: {
     fontSize: DP._12,
     color: Color.DODGER_BLUE,
+    width: '50%',
+    textAlign: 'right',
   },
   icon: {
     width: DP._30,
@@ -124,5 +126,31 @@ export default StyleSheet.create({
     flexGrow: 1,
     paddingTop: DP._2,
     // alignItems: 'center',
+  },
+  width_20: {
+    width: '20%',
+  },
+  width_40: {
+    width: '40%',
+  },
+  width_50: {
+    width: '50%',
+  },
+  textAlign_left: {
+    textAlign: 'left',
+  },
+  textAlign_right: {
+    textAlign: 'right',
+  },
+  textAlign_center: {
+    textAlign: 'center',
+  },
+  fontSize_12: {
+    fontSize: DP._12,
+  },
+  detailLableStyle: {
+    marginLeft: DP._10,
+    fontSize: DP._12,
+    color: Color.GREY_PURPLE,
   },
 });

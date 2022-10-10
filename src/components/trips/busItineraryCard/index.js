@@ -109,8 +109,7 @@ const PostBookingCard = ({
           </FText>
           <FText
             style={[Styles.portName, {width: '40%', textAlign: 'right'}]}
-            numberOfLines={1}
-            ellipsizeMode="head">
+            numberOfLines={1}>
             {bookingDetails.destination}
           </FText>
         </View>
@@ -131,7 +130,7 @@ const PostBookingCard = ({
           <View style={[Styles.alignItem_flexEnd, {width: '40%'}]}>
             {(bookingDetails?.destinationBusStop ||
               bookingDetails?.sourceBusStop) && (
-              <FText style={Styles.time} numberOfLines={1} ellipsizeMode="head">
+              <FText style={Styles.time} numberOfLines={1}>
                 {bookingDetails.destinationBusStop}
               </FText>
             )}

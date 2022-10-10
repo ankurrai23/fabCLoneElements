@@ -98,21 +98,22 @@ const PostBookingCard = ({
       <View style={[Styles.marginTop_12]}>
         <View style={[Styles.flexDirectionRow]}>
           <FText
-            style={[Styles.portName, {width: '40%', textAlign: 'left'}]}
+            style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
             {bookingDetails.source}
           </FText>
-          <FText style={[Styles.duration, {width: '20%', textAlign: 'center'}]}>
+          <FText
+            style={[Styles.duration, Styles.width_20, Styles.textAlign_center]}>
             {bookingDetails.duration}
           </FText>
           <FText
-            style={[Styles.portName, {width: '40%', textAlign: 'right'}]}
+            style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
             {bookingDetails.destination}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
-          <View style={{width: '40%', textAlign: 'left'}}>
+          <View style={[Styles.width_40, Styles.textAlign_left]}>
             {(bookingDetails?.sourceStop ||
               bookingDetails?.destinationStop) && (
               <FText style={Styles.time} numberOfLines={1}>
@@ -126,7 +127,8 @@ const PostBookingCard = ({
           <View
             style={[
               Styles.alignItem_flexEnd,
-              {width: '40%', textAlign: 'right'},
+              Styles.width_40,
+              Styles.textAlign_right,
             ]}>
             {(bookingDetails?.sourceStop ||
               bookingDetails?.destinationStop) && (
@@ -141,28 +143,27 @@ const PostBookingCard = ({
         </View>
       </View>
 
-      {bookingDetails?.carName && (
-        <View style={Styles.marginTop_12}>
-          <FText style={Styles.portName} numberOfLines={1}>
-            {bookingDetails.carName}
+      <View style={Styles.marginTop_12}>
+        <FText style={Styles.portName} numberOfLines={1}>
+          {bookingDetails?.carName ?? Strings.carNa}
+        </FText>
+        {bookingDetails?.carNumber && (
+          <FText style={Styles.time} numberOfLines={1}>
+            {bookingDetails.carNumber}
           </FText>
-          {bookingDetails?.carNumber && (
-            <FText style={Styles.time} numberOfLines={1}>
-              {bookingDetails.carNumber}
-            </FText>
-          )}
-          {bookingDetails.carInfo && (
-            <FText style={Styles.time} numberOfLines={1}>
-              {bookingDetails.carInfo}
-            </FText>
-          )}
-          {bookingDetails?.bookingId && (
-            <FText style={Styles.time} numberOfLines={1}>
-              {Strings.bookingId}: {bookingDetails.bookingId}
-            </FText>
-          )}
-        </View>
-      )}
+        )}
+        {bookingDetails.carInfo && (
+          <FText style={Styles.time} numberOfLines={1}>
+            {bookingDetails.carInfo}
+          </FText>
+        )}
+        {bookingDetails?.bookingId && (
+          <FText style={Styles.time} numberOfLines={1}>
+            {Strings.bookingId}: {bookingDetails.bookingId}
+          </FText>
+        )}
+      </View>
+
       {(bookingDetails?.driverContact || bookingDetails?.driverName) && (
         <>
           <Separator
@@ -176,16 +177,15 @@ const PostBookingCard = ({
               <View style={Styles.flexDirectionRow}>
                 <View style={Styles.flowRow}>
                   <Icon.Person width={DP._16} height={DP._16} />
-                  <FText
-                    style={{
-                      marginLeft: DP._10,
-                      fontSize: DP._12,
-                      color: Color.GREY_PURPLE,
-                    }}>
-                    {Strings.driverName}
-                  </FText>
+                  <FText style={Styles.detailLableStyle}>{Strings.driverName}</FText>
                 </View>
-                <FText style={{fontSize: DP._12, color: Color.DARK}}>
+                <FText
+                  style={[
+                    Styles.fontSize_12,
+                    Styles.width_50,
+                    Styles.textAlign_right,
+                  ]}
+                  numberOfLines={1}>
                   {bookingDetails.driverName}
                 </FText>
               </View>
@@ -198,16 +198,16 @@ const PostBookingCard = ({
                     bookingDetails?.driverName && Styles.marginTop_12,
                   ]}>
                   <Icon.PhoneIcon width={DP._16} height={DP._16} />
-                  <FText
-                    style={{
-                      marginLeft: DP._10,
-                      fontSize: DP._12,
-                      color: Color.GREY_PURPLE,
-                    }}>
+                  <FText style={Styles.detailLableStyle}>
                     {Strings.phoneNo}
                   </FText>
                 </View>
-                <FText style={Styles.driverContact}>
+                <FText
+                  style={[
+                    Styles.driverContact,
+                    Styles.width_50,
+                    Styles.textAlign_right,
+                  ]}>
                   {bookingDetails.driverContact}
                 </FText>
               </View>

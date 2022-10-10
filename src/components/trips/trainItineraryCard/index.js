@@ -37,9 +37,9 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
       </View>
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-        <View style={[{width: '48%'}]}>
+        <View style={Styles.width_48}>
           <FText style={Styles.portName} numberOfLines={1}>
-            {tripRequest?.sourceStationCode ?? tripRequest.sourceCity}
+            {tripRequest?.sourceStationCode}
           </FText>
 
           {(tripRequest?.destinationCity || tripRequest?.sourceCity) && (
@@ -48,12 +48,14 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
             </FText>
           )}
           {(tripRequest?.arrivalDate || tripRequest?.departureDate) && (
-            <FText style={Styles.time}>{tripRequest.departureDate}</FText>
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.departureDate}
+            </FText>
           )}
         </View>
-        <View style={[Styles.alignItem_flexEnd, {width: '48%'}]}>
+        <View style={[Styles.alignItem_flexEnd, Styles.width_48]}>
           <FText style={Styles.portName} numberOfLines={1}>
-            {tripRequest?.destinationStationCode ?? tripRequest.destinationCity}
+            {tripRequest?.destinationStationCode}
           </FText>
           {(tripRequest?.destinationCity || tripRequest?.sourceCity) && (
             <FText style={Styles.time} numberOfLines={1}>
@@ -61,7 +63,9 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
             </FText>
           )}
           {(tripRequest.arrivalDate || tripRequest.departureDate) && (
-            <FText style={Styles.time}>{tripRequest.arrivalDate}</FText>
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.arrivalDate}
+            </FText>
           )}
         </View>
       </View>
@@ -107,50 +111,52 @@ const PostBookingCard = ({
       <View style={[Styles.marginTop_12]}>
         <View style={[Styles.flexDirectionRow]}>
           <FText
-            style={[Styles.portName, {width: '40%', textAlign: 'left'}]}
+            style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
             {bookingDetails.sourceStationCode}
           </FText>
           <FText
             style={[
               Styles.duration,
-              {width: '20%', textAlign: 'center', alignSelf: 'center'},
+              Styles.width_20,
+              Styles.textAlign_center,
+              Styles.selfAlign_center,
             ]}>
             {bookingDetails.duration}
           </FText>
           <FText
-            style={[Styles.portName, {width: '40%', textAlign: 'right'}]}
+            style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
             {bookingDetails.destinationStationCode}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
-          <View style={{width: '48%'}}>
+          <View style={Styles.width_40}>
             <FText style={Styles.time} numberOfLines={1}>
               {bookingDetails.sourceCity}
             </FText>
             {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
-              <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+              <FText style={Styles.time} numberOfLines={1}>
+                {bookingDetails.departureTime}
+              </FText>
             )}
             {bookingDetails?.sourcePF && (
-              <FText style={Styles.time}>
+              <FText style={Styles.time} numberOfLines={1}>
                 {Strings.platform}: {bookingDetails.sourcePF}
               </FText>
             )}
           </View>
-          <View
-            style={[
-              Styles.alignItem_flexEnd,
-              {width: '48%', justifyContent: 'flex-start', flex: 1},
-            ]}>
+          <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
             <FText style={Styles.time} numberOfLines={1}>
               {bookingDetails.destinationCity}
             </FText>
             {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
-              <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+              <FText style={Styles.time} numberOfLines={1}>
+                {bookingDetails.arrivalTime}
+              </FText>
             )}
             {bookingDetails?.destinationPF && (
-              <FText style={Styles.time}>
+              <FText style={Styles.time} numberOfLines={1}>
                 {Strings.platform}: {bookingDetails.destinationPF}
               </FText>
             )}
@@ -158,28 +164,26 @@ const PostBookingCard = ({
         </View>
       </View>
 
-      {bookingDetails?.trainName && (
-        <View style={Styles.marginTop_12}>
-          <FText style={Styles.portName} numberOfLines={1}>
-            {bookingDetails.trainName}
+      <View style={Styles.marginTop_12}>
+        <FText style={Styles.portName} numberOfLines={1}>
+          {bookingDetails?.trainName ?? Strings.trainNa}
+        </FText>
+        {bookingDetails?.pnr && (
+          <FText style={Styles.time} numberOfLines={1}>
+            {Strings.pnr}: {bookingDetails.pnr}
           </FText>
-          {bookingDetails?.pnr && (
-            <FText style={Styles.time}>
-              {Strings.pnr}: {bookingDetails.pnr}
-            </FText>
-          )}
-          {bookingDetails?.class && (
-            <FText style={Styles.time}>
-              {Strings.class}: {bookingDetails.class}
-            </FText>
-          )}
-          {bookingDetails?.berth && (
-            <FText style={Styles.time}>
-              {Strings.berth}: {bookingDetails.berth}
-            </FText>
-          )}
-        </View>
-      )}
+        )}
+        {bookingDetails?.class && (
+          <FText style={Styles.time} numberOfLines={1}>
+            {Strings.class}: {bookingDetails.class}
+          </FText>
+        )}
+        {bookingDetails?.berth && (
+          <FText style={Styles.time} numberOfLines={1}>
+            {Strings.berth}: {bookingDetails.berth}
+          </FText>
+        )}
+      </View>
     </FTouchableOpacity>
   );
 };
