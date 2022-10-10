@@ -58,6 +58,7 @@ const cabItineraryCardProps = {
   actionDisabled: false,
   showStatus: false,
   showPreBookingCard: false,
+  hideChevron: false,
 };
 
 export default cabItineraryCardProps;

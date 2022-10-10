@@ -60,7 +60,13 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   );
 };
 
-const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
+const PostBookingCard = ({
+  onCardPress,
+  bookingDetails,
+  showStatus,
+  status,
+  hideChevron,
+}) => {
   return (
     <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
@@ -78,11 +84,13 @@ const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
           <TripStatus statusObj={status} />
         ) : (
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-            <Icon.ChevronRight
-              width={DP._18}
-              height={DP._18}
-              stroke={Color.BATTLESHIP_GREY_TWO}
-            />
+            {!hideChevron && (
+              <Icon.ChevronRight
+                width={DP._18}
+                height={DP._18}
+                stroke={Color.BATTLESHIP_GREY_TWO}
+              />
+            )}
           </View>
         )}
       </View>
@@ -226,6 +234,7 @@ const cabItineraryCard = ({
   bookingDetails,
   actions,
   notificationText,
+  hideChevron,
 }) => {
   console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -325,6 +334,7 @@ const cabItineraryCard = ({
             bookingDetails={bookingDetails}
             showStatus={showStatus}
             status={status}
+            hideChevron={hideChevron}
           />
         )}
         {(rescheduleAction || cancelAction || viewRemarksAction) && (

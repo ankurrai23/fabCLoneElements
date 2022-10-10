@@ -58,6 +58,7 @@ const busItineraryCardProps = {
   actionDisabled: false,
   showStatus: false,
   showPreBookingCard: true,
+  hideChevron: false,
 };
 
 export default busItineraryCardProps;
