@@ -37,17 +37,25 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
       </View>
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-        <View style={Styles.flex}>
+        <View style={[{width: '48%'}]}>
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.source}
           </FText>
-          <FText style={Styles.time}>{tripRequest.sourceBusStop}</FText>
+          {(tripRequest?.sourceBusStop || tripRequest?.destinationBusStop) && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.sourceBusStop}
+            </FText>
+          )}
         </View>
-        <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+        <View style={[Styles.alignItem_flexEnd, {width: '48%'}]}>
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.destination}
           </FText>
-          <FText style={Styles.time}>{tripRequest.destinationBusStop}</FText>
+          {(tripRequest?.sourceBusStop || tripRequest?.destinationBusStop) && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.destinationBusStop}
+            </FText>
+          )}
         </View>
       </View>
     </FTouchableOpacity>
@@ -99,17 +107,29 @@ const PostBookingCard = ({onCardPress, bookingDetails, showStatus, status}) => {
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
-          <View style={{width: '50%'}}>
-            <FText style={[Styles.time, {textAlign: 'left'}]} numberOfLines={1}>
-              {bookingDetails.sourceBusStop}
-            </FText>
-            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+          <View style={{width: '40%'}}>
+            {(bookingDetails?.sourceBusStop ||
+              bookingDetails?.destinationBusStop) && (
+              <FText
+                style={[Styles.time, {textAlign: 'left'}]}
+                numberOfLines={1}>
+                {bookingDetails.sourceBusStop}
+              </FText>
+            )}
+            {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
+              <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+            )}
           </View>
-          <View style={[Styles.alignItem_flexEnd, {width: '50%'}]}>
-            <FText style={Styles.time} numberOfLines={1} ellipsizeMode="head">
-              {bookingDetails.destinationBusStop}
-            </FText>
-            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+          <View style={[Styles.alignItem_flexEnd, {width: '40%'}]}>
+            {(bookingDetails?.destinationBusStop ||
+              bookingDetails?.sourceBusStop) && (
+              <FText style={Styles.time} numberOfLines={1} ellipsizeMode="head">
+                {bookingDetails.destinationBusStop}
+              </FText>
+            )}
+            {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
+              <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+            )}
           </View>
         </View>
       </View>
@@ -201,6 +221,7 @@ const BusItineraryCard = ({
   bookingDetails,
   actions,
   notificationText,
+  actionDisabled,
 }) => {
   console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -302,12 +323,13 @@ const BusItineraryCard = ({
             status={status}
           />
         )}
-        {(rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
+        {!actionDisabled &&
+          (rescheduleAction || cancelAction || viewRemarksAction) && (
+            <ActionsInItinerary />
+          )}
         {showInfo && (
           <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
+            isAlert={!!notificationText}
             text={
               viewShortlistedFlightAction?.name ||
               shortlistingAction?.name ||
