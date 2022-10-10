@@ -37,7 +37,7 @@ export default StyleSheet.create({
     marginRight: DP._16,
   },
   subContainer: {
-    marginTop: DP._24,
+    marginTop: DP._16,
     paddingHorizontal: DP._16,
   },
   detailsContainer: {
@@ -55,4 +55,22 @@ export default StyleSheet.create({
     paddingTop: isPlatformIos() ? DP._10 : DP._20,
     backgroundColor: 'white',
   },
+  approvalPendingInfoContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._8,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: Color.DEEP_SAFFRON + '1a',
+    marginTop: DP._8,
+  },
+  approvalPendingInfoText: {
+    fontSize: DP._10,
+    linHeight: DP._12,
+  },
+  trackButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  approvalText: {width: '85%', flexGrow: 1, paddingRight: DP._8},
 });

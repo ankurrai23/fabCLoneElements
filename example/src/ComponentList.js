@@ -59,6 +59,7 @@ import {
   DropDown,
   ItineraryCard,
   FieldStates,
+  ApproverChain,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -195,6 +196,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightDetailLoadingState',
     component: <FlightDetailLoadingState />,
+  },
+  {
+    name: 'Approver Chain',
+    component: <ApproverChain {...data.approverChainProps} />,
   },
 ];
 

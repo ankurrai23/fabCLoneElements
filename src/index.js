@@ -51,6 +51,7 @@ import FlightDetailCard from './components/trips/flightDetailCard';
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
+import ApproverChain from './components/trips/approverChain';
 
 //Constants
 import {
@@ -97,6 +98,7 @@ import {FONT_TYPE} from './common/rn/FText';
 import {BUTTON_TYPE} from './common/components/button';
 import {CLAIM_CARD_TYPE} from './common/components/claimsCard';
 import {EXPENSE_CLAIM_STATUS} from './components/expense/expenseCard';
+import {MANAGER_APPROVAL_STATUS} from './utils/Constants';
 
 export {
   data,
@@ -146,6 +148,7 @@ export {
   FlightDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
+  ApproverChain,
   // Trip Creation
   HotelDetails,
   FlightDetails,
@@ -186,4 +189,5 @@ export {
   BUTTON_TYPE,
   CLAIM_CARD_TYPE,
   EXPENSE_CLAIM_STATUS,
+  MANAGER_APPROVAL_STATUS,
 };

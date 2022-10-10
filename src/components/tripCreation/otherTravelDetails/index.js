@@ -76,7 +76,7 @@ export default function OtherTravelDetails(props) {
           ContentModal={
             <View style={Styles.paddingView}>
               <FText style={Styles.heading}>{Strings.purposeOfTravel}</FText>
-              <View style={{paddingHorizontal: DP._20}}>
+              <View style={{paddingHorizontal: DP._24}}>
                 <FlatList
                   data={purposeOfTravel}
                   renderItem={renderItem}

@@ -29,6 +29,32 @@ function ItineraryHeader(props) {
         <FText style={Styles.tripId}>{props.tripId}</FText>
         {props.status && <TripStatus statusObj={props.status} />}
       </View>
+      {props.showApprovalStatus && (
+        <View style={Styles.approvalPendingInfoContainer}>
+          <FText
+            style={[Styles.approvalPendingInfoText, Styles.approvalText]}
+            numberOfLines={1}>
+            {props.approvalInfo.primaryText}
+          </FText>
+          <FTouchableOpacity
+            style={Styles.trackButton}
+            onPress={props.onPressTrack}>
+            <FText
+              weight={'500'}
+              style={[
+                Styles.approvalPendingInfoText,
+                {color: Color.DEEP_SAFFRON},
+              ]}>
+              {Strings.track}
+            </FText>
+            <Icon.ChevronRight
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.DEEP_SAFFRON}
+            />
+          </FTouchableOpacity>
+        </View>
+      )}
       {props.cancelledMessage && (
         <FText style={Styles.cancelMessage}>{props.cancelledMessage}</FText>
       )}

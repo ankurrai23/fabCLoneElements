@@ -102,4 +102,5 @@ export default {
   coordinatorName: 'Coordinator Name',
   berth: 'Berth',
   platform: 'PF',
+  track: 'Track',
 };
