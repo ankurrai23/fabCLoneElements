@@ -125,4 +125,37 @@ export default StyleSheet.create({
     paddingTop: DP._2,
     // alignItems: 'center',
   },
+  width_40: {
+    width: '40%',
+  },
+  width_48: {
+    width: '48%',
+  },
+  width_20: {
+    width: '20%',
+  },
+  textAlign_left: {
+    textAlign: 'left',
+  },
+  textAlign_right: {
+    textAlign: 'right',
+  },
+  textAlign_center: {
+    textAlign: 'center',
+  },
+  selfAlign_center: {
+    alignSelf: 'center',
+  },
+  fontSize_12: {
+    fontSize: DP._12,
+  },
+  detailLableStyle: {
+    marginLeft: DP._10,
+    fontSize: DP._12,
+    color: Color.GREY_PURPLE,
+  },
+  sepratorStyle: {
+    marginTop: DP._12,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
 });

@@ -177,7 +177,9 @@ const PostBookingCard = ({
               <View style={Styles.flexDirectionRow}>
                 <View style={Styles.flowRow}>
                   <Icon.Person width={DP._16} height={DP._16} />
-                  <FText style={Styles.detailLableStyle}>{Strings.driverName}</FText>
+                  <FText style={Styles.detailLableStyle}>
+                    {Strings.driverName}
+                  </FText>
                 </View>
                 <FText
                   style={[
@@ -207,7 +209,8 @@ const PostBookingCard = ({
                     Styles.driverContact,
                     Styles.width_50,
                     Styles.textAlign_right,
-                  ]}>
+                  ]}
+                  numberOfLines={1}>
                   {bookingDetails.driverContact}
                 </FText>
               </View>

@@ -27,11 +27,11 @@ const busItineraryCardProps = {
     arrivalTime: '22:30',
     duration: '1h 50min',
     travelCompany: 'Dolphin Tour and Travell fslkjfldskjflskdjflskjflsdjfl',
-    coordinatorName: 'Mr. Arvind Swami',
+    coordinatorName: 'Mr. Arvind Swami ',
     contact: '+91 986856778',
-    busNumber: null,
-    busInfo: null,
-    seatNumber: 'L23',
+    busNumber: 'lskflsdkfjsdlfjsdlfkjdslfkdsjflsdjalsdkjfal;skdfjaliejflasldfkjlkajfalsj',
+    busInfo: 'sldfksdlfjpoeirvnv,zf;z.zfjlifaoifkejaf;ldjgogurfafalfufjal;fjd',
+    seatNumber: 'L23flkasjdflaskdjflasdkjflasdkfjalsdkfjlasdkfjalksjdf',
   },
   actions: [
     {
@@ -57,7 +57,7 @@ const busItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: true,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: true,
 };
 
