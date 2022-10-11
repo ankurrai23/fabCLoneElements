@@ -121,7 +121,9 @@ const PostBookingCard = ({
               </FText>
             )}
             {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
-              <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+              <FText style={Styles.time} numberOfLines={1}>
+                {bookingDetails.departureTime}
+              </FText>
             )}
           </View>
           <View
@@ -137,7 +139,9 @@ const PostBookingCard = ({
               </FText>
             )}
             {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
-              <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+              <FText style={Styles.time} numberOfLines={1}>
+                {bookingDetails.arrivalTime}
+              </FText>
             )}
           </View>
         </View>

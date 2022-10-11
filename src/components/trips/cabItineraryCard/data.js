@@ -1,4 +1,4 @@
-import {BusSubtripActions} from '../../../utils/SubTripActions';
+import {CabSubtripActions} from '../../../utils/SubTripActions';
 
 const cabItineraryCardProps = {
   tripRequest: {
@@ -23,15 +23,15 @@ const cabItineraryCardProps = {
     destination: 'Lonavalafl dfkdsjflsdjflksdjflskdfj',
     sourceStop: 'Mumbai Airport lkdjfsdjfldksjflsdkfj',
     destinationStop: 'Tungarli road flkdsjflsdkjflsdkfjlsdfj',
-    departureTime: '18:30',
-    arrivalTime: '22:30',
+    departureTime: '18:30 fldfla;kdjfa;dklfja;lkdjfas;lfkdj',
+    arrivalTime: '22:30 flsakjf;aslkfdja;lkdfjakdlfja;lkfdja;lsdfkj;;;;;',
     duration: '1h 50min',
-    carName: 'White Hyundai Grand i10 Nios',
-    driverName: 'Mr. Arvind Swami ',
-    driverContact: '+91 986856778',
-    carNumber: 'MH 12A 2345',
-    carInfo: 'Capella A/C Sleeper (2+1)',
-    bookingId: '12345',
+    carName: 'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
+    driverName: 'Mr. Arvind Swami fkajs;dflajsdf;lkajsdfl;kajfl;askdjfa;lskfdj',
+    driverContact: '+91 986856778 alskdfja;dlfkja;ldfkja;lfkjas;lkfja;lsfkj',
+    carNumber: 'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
+    carInfo: 'Capella A/C Sleeper (2+1) lsa;jf;skdjfa;lkdfjalkdfja;lskdjfl;akdjf',
+    bookingId: '12345;fasldkfjasdlfkja;dlfkjas;dlfkja;sldkjfa;slkdjfa;lsdjkf',
   },
   actions: [
     {

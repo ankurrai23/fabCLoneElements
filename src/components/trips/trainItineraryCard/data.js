@@ -1,6 +1,6 @@
-import {BusSubtripActions} from '../../../utils/SubTripActions';
+import {TrainSubtripActions} from '../../../utils/SubTripActions';
 
-const busItineraryCardProps = {
+const TrainItineraryCardProps = {
   tripRequest: {
     date: '22',
     month: 'Nov',
@@ -61,8 +61,8 @@ const busItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
 };
 
-export default busItineraryCardProps;
+export default TrainItineraryCardProps;
