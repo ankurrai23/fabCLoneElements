@@ -41,8 +41,6 @@ const busDetailCardProps = {
           '+91 986856778 alskdfja;dlfkja;ldfkja;lfkjas;lkfja;lsfkj',
         carNumber:
           'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
-        carInfo:
-          'Capella A/C Sleeper (2+1) lsa;jf;skdjfa;lkdfjalkdfja;lskdjfl;akdjf',
         bookingId:
           '12345;fasldkfjasdlfkja;dlfkjas;dlfkja;sldkjfa;slkdjfa;lsdjkf',
       },
@@ -53,8 +51,6 @@ const busDetailCardProps = {
     driverContact: '+91 986856778 alskdfja;dlfkja;ldfkja;lfkjas;lkfja;lsfkj',
     carNumber:
       'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
-    carInfo:
-      'Capella A/C Sleeper (2+1) lsa;jf;skdjfa;lkdfjalkdfja;lskdjfl;akdjf',
     bookingId: '12345;fasldkfjasdlfkja;dlfkjas;dlfkja;sldkjfa;slkdjfa;lsdjkf',
     travellersDetails: [
       {

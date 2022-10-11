@@ -175,16 +175,16 @@ const BusItineraryCard = ({
                   <FText style={Styles.portName} numberOfLines={1}>
                     {cabDetails?.carName ?? Strings.carNa}
                   </FText>
-                  {bookingDetails?.bookingId && (
+                  {cabDetails?.carNumber && (
                     <FText style={Styles.time} numberOfLines={1}>
-                      {cabDetails.bookingId}
+                      {cabDetails.carNumber}
                     </FText>
                   )}
-                  {cabDetails?.carNumber && (
+                  {bookingDetails?.bookingId && (
                     <FText
                       style={[Styles.time, Styles.marginBottom_16]}
                       numberOfLines={1}>
-                      {cabDetails.carNumber}
+                      {Strings.bookingId}: {cabDetails.bookingId}
                     </FText>
                   )}
 
