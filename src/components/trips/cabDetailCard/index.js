@@ -157,36 +157,38 @@ const BusItineraryCard = ({
             </View>
           </View>
           {bookingDetails.cabsData &&
-            bookingDetails.cabsData.length &&
+            bookingDetails.cabsData.length > 0 &&
             bookingDetails.cabsData.map((cabDetails, index) => (
               <>
                 <Separator style={Styles.sepratorStyle} />
                 <View style={Styles.marginTop_12}>
-                  <FText
-                    numberOfLines={1}
-                    style={[
-                      Styles.marginBottom_8,
-                      Styles.fontSize_12,
-                      Styles.color_grey,
-                    ]}>
-                    {Strings.cab} {index + 1} {Strings.details}
-                  </FText>
-
-                  <FText style={Styles.portName} numberOfLines={1}>
-                    {cabDetails?.carName ?? Strings.carNa}
-                  </FText>
-                  {cabDetails?.carNumber && (
-                    <FText style={Styles.time} numberOfLines={1}>
-                      {cabDetails.carNumber}
-                    </FText>
-                  )}
-                  {bookingDetails?.bookingId && (
+                  <View style={Styles.marginBottom_16}>
                     <FText
-                      style={[Styles.time, Styles.marginBottom_16]}
-                      numberOfLines={1}>
-                      {Strings.bookingId}: {cabDetails.bookingId}
+                      numberOfLines={1}
+                      style={[
+                        Styles.marginBottom_8,
+                        Styles.fontSize_12,
+                        Styles.color_grey,
+                      ]}>
+                      {Strings.cab}{' '}
+                      {bookingDetails.cabsData.length > 1 && index + 1}{' '}
+                      {Strings.details}
                     </FText>
-                  )}
+
+                    <FText style={Styles.portName} numberOfLines={1}>
+                      {cabDetails?.carName ?? Strings.carNa}
+                    </FText>
+                    {cabDetails?.carNumber && (
+                      <FText style={Styles.time} numberOfLines={1}>
+                        {cabDetails.carNumber}
+                      </FText>
+                    )}
+                    {cabDetails?.bookingId && (
+                      <FText style={Styles.time} numberOfLines={1}>
+                        {Strings.bookingId}: {cabDetails.bookingId}
+                      </FText>
+                    )}
+                  </View>
 
                   <FText
                     numberOfLines={1}

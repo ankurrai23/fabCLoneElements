@@ -108,7 +108,7 @@ export default {
   busNa: 'Travel company - Na',
   name: 'Name',
   coordinatorDetails: 'Coordinator details',
-  travelerDetails: 'Traveler details',
+  travelersDetails: 'Travelers details',
   driverDetails: 'Driver details',
   cab: 'Cab',
   details: 'details',

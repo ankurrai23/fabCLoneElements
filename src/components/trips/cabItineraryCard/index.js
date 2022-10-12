@@ -147,7 +147,7 @@ const PostBookingCard = ({
         </View>
       </View>
       {bookingDetails.cabsData &&
-        bookingDetails.cabsData.length &&
+        bookingDetails.cabsData.length > 0 &&
         bookingDetails.cabsData.map((details, index) => (
           <>
             <Separator
@@ -163,7 +163,8 @@ const PostBookingCard = ({
                 Styles.fontSize_12,
                 Styles.color_grey,
               ]}>
-              {Strings.cab} {index + 1} {Strings.details}
+              {Strings.cab} {bookingDetails.cabsData.length > 1 && index + 1}{' '}
+              {Strings.details}
             </FText>
             <View style={Styles.marginTop_8}>
               <FText style={Styles.portName} numberOfLines={1}>

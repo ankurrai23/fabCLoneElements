@@ -161,4 +161,7 @@ export default StyleSheet.create({
   marginTop_8: {
     marginTop: DP._8,
   },
+  color_grey: {
+    color: Color.GREY_PURPLE,
+  },
 });

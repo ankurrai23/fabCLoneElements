@@ -187,7 +187,7 @@ const BusItineraryCard = ({
             )}
           </View>
           {bookingDetails.travellersDetails &&
-            bookingDetails.travellersDetails.length && (
+            bookingDetails.travellersDetails.length > 0 && (
               <>
                 <Separator style={Styles.sepratorStyle} />
 
@@ -198,7 +198,7 @@ const BusItineraryCard = ({
                     Styles.fontSize_12,
                     Styles.color_grey,
                   ]}>
-                  {Strings.travelerDetails}
+                  {Strings.travelersDetails}
                 </FText>
                 {bookingDetails.travellersDetails.map((detail, index) => (
                   <TravellerSeat

@@ -175,5 +175,5 @@ export default StyleSheet.create({
   },
   marginBottom_16: {
     marginBottom: DP._16,
-  }
+  },
 });
