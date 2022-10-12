@@ -100,7 +100,7 @@ const PostBookingCard = ({
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
-            {bookingDetails.source}
+            {bookingDetails.sourceStop}
           </FText>
           <FText
             style={[Styles.duration, Styles.width_20, Styles.textAlign_center]}>
@@ -109,7 +109,7 @@ const PostBookingCard = ({
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
-            {bookingDetails.destination}
+            {bookingDetails.destinationStop}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
@@ -117,7 +117,7 @@ const PostBookingCard = ({
             {(bookingDetails?.sourceStop ||
               bookingDetails?.destinationStop) && (
               <FText style={Styles.time} numberOfLines={1}>
-                {bookingDetails.sourceStop}
+                {bookingDetails.source}
               </FText>
             )}
             {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
@@ -135,7 +135,7 @@ const PostBookingCard = ({
             {(bookingDetails?.sourceStop ||
               bookingDetails?.destinationStop) && (
               <FText style={Styles.time} numberOfLines={1}>
-                {bookingDetails.destinationStop}
+                {bookingDetails.destination}
               </FText>
             )}
             {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
@@ -146,82 +146,37 @@ const PostBookingCard = ({
           </View>
         </View>
       </View>
-
-      <View style={Styles.marginTop_12}>
-        <FText style={Styles.portName} numberOfLines={1}>
-          {bookingDetails?.carName ?? Strings.carNa}
-        </FText>
-        {bookingDetails?.carNumber && (
-          <FText style={Styles.time} numberOfLines={1}>
-            {bookingDetails.carNumber}
-          </FText>
-        )}
-        {bookingDetails.carInfo && (
-          <FText style={Styles.time} numberOfLines={1}>
-            {bookingDetails.carInfo}
-          </FText>
-        )}
-        {bookingDetails?.bookingId && (
-          <FText style={Styles.time} numberOfLines={1}>
-            {Strings.bookingId}: {bookingDetails.bookingId}
-          </FText>
-        )}
-      </View>
-
-      {(bookingDetails?.driverContact || bookingDetails?.driverName) && (
-        <>
-          <Separator
-            style={{
-              marginTop: DP._12,
-              backgroundColor: Color.LIGHT_PERIWINKLE,
-            }}
-          />
-          <View style={Styles.marginTop_12}>
-            {bookingDetails?.driverName && (
-              <View style={Styles.flexDirectionRow}>
-                <View style={Styles.flowRow}>
-                  <Icon.Person width={DP._16} height={DP._16} />
-                  <FText style={Styles.detailLableStyle}>
-                    {Strings.driverName}
-                  </FText>
-                </View>
-                <FText
-                  style={[
-                    Styles.fontSize_12,
-                    Styles.width_50,
-                    Styles.textAlign_right,
-                  ]}
-                  numberOfLines={1}>
-                  {bookingDetails.driverName}
+      {bookingDetails.cabsData &&
+        bookingDetails.cabsData.length &&
+        bookingDetails.cabsData.map((details, index) => (
+          <>
+            <Separator
+              style={{
+                backgroundColor: Color.LIGHT_PERIWINKLE,
+                marginTop: DP._12,
+              }}
+            />
+            <FText
+              numberOfLines={1}
+              style={[
+                Styles.marginTop_12,
+                Styles.fontSize_12,
+                Styles.color_grey,
+              ]}>
+              {Strings.cab} {index + 1} {Strings.details}
+            </FText>
+            <View style={Styles.marginTop_8}>
+              <FText style={Styles.portName} numberOfLines={1}>
+                {details?.carName ?? Strings.carNa}
+              </FText>
+              {details?.carNumber && (
+                <FText style={Styles.time} numberOfLines={1}>
+                  {details.carNumber}
                 </FText>
-              </View>
-            )}
-            {bookingDetails?.driverContact && (
-              <View style={[Styles.flexDirectionRow, Styles.alignItem_flexEnd]}>
-                <View
-                  style={[
-                    Styles.flowRow,
-                    bookingDetails?.driverName && Styles.marginTop_12,
-                  ]}>
-                  <Icon.PhoneIcon width={DP._16} height={DP._16} />
-                  <FText style={Styles.detailLableStyle}>
-                    {Strings.phoneNo}
-                  </FText>
-                </View>
-                <FText
-                  style={[
-                    Styles.driverContact,
-                    Styles.width_50,
-                    Styles.textAlign_right,
-                  ]}
-                  numberOfLines={1}>
-                  {bookingDetails.driverContact}
-                </FText>
-              </View>
-            )}
-          </View>
-        </>
-      )}
+              )}
+            </View>
+          </>
+        ))}
     </FTouchableOpacity>
   );
 };

@@ -153,4 +153,10 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
   },
+  marginTop_8: {
+    marginTop: DP._8,
+  },
+  color_grey: {
+    color: Color.GREY_PURPLE,
+  }
 });
