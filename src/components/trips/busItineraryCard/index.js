@@ -102,7 +102,7 @@ const PostBookingCard = ({
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
-            {bookingDetails.source}
+            {bookingDetails.sourceBusStop}
           </FText>
           <FText
             style={[Styles.duration, Styles.width_20, Styles.textAlign_center]}>
@@ -111,17 +111,16 @@ const PostBookingCard = ({
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
-            {bookingDetails.destination}
+            {bookingDetails.destinationBusStop}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
           <View style={Styles.width_40}>
-            {(bookingDetails?.sourceBusStop ||
-              bookingDetails?.destinationBusStop) && (
+            {(bookingDetails?.source || bookingDetails?.destination) && (
               <FText
                 style={[Styles.time, Styles.textAlign_left]}
                 numberOfLines={1}>
-                {bookingDetails.sourceBusStop}
+                {bookingDetails.source}
               </FText>
             )}
             {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
@@ -131,10 +130,9 @@ const PostBookingCard = ({
             )}
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-            {(bookingDetails?.destinationBusStop ||
-              bookingDetails?.sourceBusStop) && (
+            {(bookingDetails?.destination || bookingDetails?.source) && (
               <FText style={Styles.time} numberOfLines={1}>
-                {bookingDetails.destinationBusStop}
+                {bookingDetails.destination}
               </FText>
             )}
             {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
@@ -160,61 +158,7 @@ const PostBookingCard = ({
             {bookingDetails.busInfo}
           </FText>
         )}
-        {bookingDetails?.seatNumber && (
-          <FText style={Styles.time} numberOfLines={1}>
-            {Strings.seatNumber}: {bookingDetails.seatNumber}
-          </FText>
-        )}
       </View>
-      {(bookingDetails?.contact || bookingDetails?.coordinatorName) && (
-        <>
-          <Separator style={Styles.sepratorStyle} />
-          <View style={Styles.marginTop_12}>
-            {bookingDetails?.coordinatorName && (
-              <View style={Styles.flexDirectionRow}>
-                <View style={Styles.flowRow}>
-                  <Icon.Person width={DP._16} height={DP._16} />
-                  <FText style={Styles.detailLableStyle}>
-                    {Strings.coordinatorName}
-                  </FText>
-                </View>
-                <FText
-                  style={[
-                    Styles.fontSize_12,
-                    Styles.width_48,
-                    Styles.textAlign_right,
-                  ]}
-                  numberOfLines={1}>
-                  {bookingDetails.coordinatorName}
-                </FText>
-              </View>
-            )}
-            {bookingDetails?.contact && (
-              <View style={[Styles.flexDirectionRow, Styles.alignItem_flexEnd]}>
-                <View
-                  style={[
-                    Styles.flowRow,
-                    bookingDetails?.coordinatorName && Styles.marginTop_12,
-                  ]}>
-                  <Icon.PhoneIcon width={DP._16} height={DP._16} />
-                  <FText style={Styles.detailLableStyle}>
-                    {Strings.phoneNo}
-                  </FText>
-                </View>
-                <FText
-                  style={[
-                    Styles.driverContact,
-                    Styles.width_48,
-                    Styles.textAlign_right,
-                  ]}
-                  numberOfLines={1}>
-                  {bookingDetails.contact}
-                </FText>
-              </View>
-            )}
-          </View>
-        </>
-      )}
     </FTouchableOpacity>
   );
 };

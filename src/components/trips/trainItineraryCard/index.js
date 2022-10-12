@@ -175,12 +175,7 @@ const PostBookingCard = ({
         )}
         {bookingDetails?.class && (
           <FText style={Styles.time} numberOfLines={1}>
-            {Strings.class}: {bookingDetails.class}
-          </FText>
-        )}
-        {bookingDetails?.berth && (
-          <FText style={Styles.time} numberOfLines={1}>
-            {Strings.berth}: {bookingDetails.berth}
+            {bookingDetails.class}
           </FText>
         )}
       </View>

@@ -35,7 +35,6 @@ const TrainItineraryCardProps = {
       'Mumbai - Madras Superfast Express dkfjdlsflskfjldskfjlskfjsdlkjf',
     pnr: '256-99589lskjfldsjfldskfjlsdkfjlsdkfjsldfjslsdkfjlsdkfjlsdkfjlsdkfj',
     class: 'AC 3 Tier Sleeper flasfjldsfjlasdkjflasdkjflasdkfjlsadkfj',
-    berth: '42, Side upperlfsdjlfksjlfksdjlfksjlfksdjflksdjflsdkfjlsdkfj',
   },
   actions: [
     {
@@ -61,7 +60,7 @@ const TrainItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: false,
 };
 
