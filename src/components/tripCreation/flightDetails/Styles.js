@@ -8,25 +8,9 @@ export default StyleSheet.create({
   container: (request) => ({
     backgroundColor: Color.WHITE,
   }),
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  title: {
-    fontSize: DP._14,
-    color: Color.DARK,
-    lineHeight: DP._20,
-  },
   flexRow: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  addDetails: {
-    fontSize: DP._12,
-    color: Color.DODGER_BLUE,
-    marginLeft: DP._4,
-    lineHeight: DP._16,
   },
   renderRoute: {
     backgroundColor: Color.WHITE,

@@ -10,6 +10,7 @@ import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {TRIP_TYPE} from '../../../utils/Constants';
 import Icon from '../../../assets/icons/Icon';
+import SubTripTitle from '../subTripTitle';
 
 const DATE = 'DD'; // 12, 13
 const MONTH = 'MMM'; // Jan, Feb
@@ -71,28 +72,11 @@ export default function FlightDetails(props) {
     <View
       onLayout={props.onLayout}
       style={[Styles.container, {...props.style}]}>
-      <View style={Styles.titleContainer}>
-        <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
-          {Strings.flights}
-        </FText>
-        <FTouchableOpacity
-          style={Styles.flexRow}
-          hitSlop={Styles.hitSlop}
-          onPress={props.onPress}>
-          {props.data?.length ? (
-            <Icon.EditFilled width={DP._10} height={DP._10} />
-          ) : (
-            <Icon.Plus
-              width={DP._16}
-              height={DP._16}
-              stroke={Color.DODGER_BLUE}
-            />
-          )}
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.addDetails}>
-            {props.data?.length > 0 ? Strings.edit : Strings.add}
-          </FText>
-        </FTouchableOpacity>
-      </View>
+      <SubTripTitle
+        title={Strings.flights}
+        dataLength={props.data?.length}
+        onPress={props.onPress}
+      />
       {!!props.error === true ? (
         <FText style={Styles.errorDetailTxt}>{props.error}</FText>
       ) : null}
