@@ -38,6 +38,9 @@ import otherTravelDetailsProps from './components/tripCreation/otherTravelDetail
 import approvalManagerProps from './components/tripCreation/approvalManager/data';
 import removeItineraryProps from './components/tripCreation/removeItinerary/data';
 import itineraryCardProps from './components/tripCreation/itinerary/data';
+import trainDetailsProps from './components/tripCreation/trainDetails/data';
+import busDetailsProps from './components/tripCreation/busDetails/data';
+import cabDetailsProps from './components/tripCreation/cabDetails/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -105,4 +108,7 @@ export {
   contactSupportProps,
   dropDownProps,
   approverChainProps,
+  trainDetailsProps,
+  busDetailsProps,
+  cabDetailsProps,
 };

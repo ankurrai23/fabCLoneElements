@@ -61,6 +61,9 @@ import ApprovalManager from './components/tripCreation/approvalManager';
 import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
 import RemoveItinerary from './components/tripCreation/removeItinerary';
 import ItineraryCard from './components/tripCreation/itinerary';
+import TrainDetails from './components/tripCreation/trainDetails';
+import BusDetails from './components/tripCreation/busDetails';
+import CabDetails from './components/tripCreation/cabDetails';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -143,6 +146,9 @@ export {
   CoTravelersDetails,
   ApprovalManager,
   RemoveItinerary,
+  TrainDetails,
+  BusDetails,
+  CabDetails,
   // constants
   FlightSubTripActions,
   HotelSubTripActions,

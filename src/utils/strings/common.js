@@ -94,4 +94,7 @@ export default {
   viewdetails: 'View details',
   addAStop: 'Add a stop',
   track: 'Track',
+  trains: 'Trains',
+  buses: 'Buses',
+  cabs: 'Cabs',
 };

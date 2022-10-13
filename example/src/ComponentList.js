@@ -57,6 +57,9 @@ import {
   ItineraryCard,
   FieldStates,
   ApproverChain,
+  TrainDetails,
+  BusDetails,
+  CabDetails,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -217,6 +220,18 @@ const TRIP_CREATION = [
   {
     name: 'Remove Itinerary',
     component: <RemoveItinerary {...data.removeItineraryProps} />,
+  },
+  {
+    name: 'TrainDetails',
+    component: <TrainDetails {...data.trainDetailsProps} />,
+  },
+  {
+    name: 'BusDetails',
+    component: <BusDetails {...data.busDetailsProps} />,
+  },
+  {
+    name: 'CabDetails',
+    component: <CabDetails {...data.cabDetailsProps} />,
   },
 ];
 
