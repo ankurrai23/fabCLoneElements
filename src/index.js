@@ -29,6 +29,10 @@ import FlightPreferenceCard from './components/trips/flightPreferenceCard';
 import HotelDetailCard from './components/trips/hotelDetailCard';
 import TripStatus from './components/trips/tripStatus';
 import FlightItineraryCard from './components/trips/flightItineraryCard';
+import BusItineraryCard from './components/trips/busItineraryCard';
+import CabItineraryCard from './components/trips/cabItineraryCard';
+import TrainItineraryCard from './components/trips/trainItineraryCard';
+
 import HotelItineraryCard from './components/trips/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';
 import CoTravellers from './components/trips/coTravellers';
@@ -43,13 +47,22 @@ import HotelPreferenceLoadingState from './components/trips/hotelPreferenceLoadi
 import HotelDetailLoadingState from './components/trips/hotelDetailLoadingState';
 import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoadingState';
 import FlightDetailCard from './components/trips/flightDetailCard';
+import BusDetailCard from './components/trips/busDetailCard';
+import TrainDetailCard from './components/trips/trainDetailCard';
+import CabDetailCard from './components/trips/cabDetailCard';
+
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
 import ApproverChain from './components/trips/approverChain';
 
 //Constants
-import {FlightSubTripActions} from './utils/SubTripActions';
+import {
+  FlightSubTripActions,
+  TrainSubtripActions,
+  BusSubtripActions,
+  CabSubtripActions,
+} from './utils/SubTripActions';
 import {HotelSubTripActions} from './utils/SubTripActions';
 import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
@@ -121,6 +134,9 @@ export {
   HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
+  BusItineraryCard,
+  CabItineraryCard,
+  TrainItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
   EmptyScreen,
@@ -136,6 +152,9 @@ export {
   FlightPreferenceLoadingState,
   CoTravellers,
   FlightDetailCard,
+  BusDetailCard,
+  TrainDetailCard,
+  CabDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
   ApproverChain,
@@ -151,6 +170,9 @@ export {
   CabDetails,
   // constants
   FlightSubTripActions,
+  TrainSubtripActions,
+  BusSubtripActions,
+  CabSubtripActions,
   HotelSubTripActions,
   FieldNamesEnum,
   // Home

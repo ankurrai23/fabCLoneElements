@@ -10,6 +10,9 @@ import {
   HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
+  BusItineraryCard,
+  TrainItineraryCard,
+  CabItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
   CoTravelersDetails,
@@ -30,6 +33,9 @@ import {
   ApprovalManager,
   CoTravellers,
   FlightDetailCard,
+  BusDetailCard,
+  CabDetailCard,
+  TrainDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
   HomeHeader,
@@ -122,6 +128,18 @@ const TRIP_COMPONENTS = [
     component: <FlightItineraryCard {...data.flightItineraryCardProps} />,
   },
   {
+    name: 'BusItineraryCard',
+    component: <BusItineraryCard {...data.busItineraryCardProps} />,
+  },
+  {
+    name: 'TrainItineraryCard',
+    component: <TrainItineraryCard {...data.trainItineraryCardProps} />,
+  },
+  {
+    name: 'CabItineraryCard',
+    component: <CabItineraryCard {...data.cabItineraryCardProps} />,
+  },
+  {
     name: 'HotelItineraryCard',
     component: <HotelItineraryCard {...data.hotelItineraryCardProps} />,
   },
@@ -160,6 +178,18 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightDetailCard',
     component: <FlightDetailCard {...data.flightDetailCardProps} />,
+  },
+  {
+    name: 'BusDetailCard',
+    component: <BusDetailCard {...data.busDetailCardProps} />,
+  },
+  {
+    name: 'CabDetailCard',
+    component: <CabDetailCard {...data.cabDetailCardProps} />,
+  },
+  {
+    name: 'TrainDetailCard',
+    component: <TrainDetailCard {...data.trainDetailCardProps} />,
   },
   {
     name: 'TripCardLoadingState',

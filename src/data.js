@@ -16,6 +16,9 @@ import flightPreferenceCardProps from './components/trips/flightPreferenceCard/d
 import hotelDetailCardProps from './components/trips/hotelDetailCard/data';
 import tripStatusProps from './components/trips/tripStatus/data';
 import flightItineraryCardProps from './components/trips/flightItineraryCard/data';
+import busItineraryCardProps from './components/trips/busItineraryCard/data';
+import trainItineraryCardProps from './components/trips/trainItineraryCard/data';
+import cabItineraryCardProps from './components/trips/cabItineraryCard/data';
 import hotelItineraryCardProps from './components/trips/hotelItineraryCard/data';
 import remarksContainerProps from './components/trips/remarksContainer/data';
 import itineraryHeaderProps from './components/trips/itineraryHeader/data';
@@ -26,6 +29,9 @@ import hotelPreferenceCardProps from './components/trips/hotelPreferenceCard/dat
 import managerActionsProps from './components/trips/managerActions/data';
 import coTravellersProps from './components/trips/coTravellers/data';
 import flightDetailCardProps from './components/trips/flightDetailCard/data';
+import busDetailCardProps from './components/trips/busDetailCard/data';
+import cabDetailCardProps from './components/trips/cabDetailCard/data';
+import trainDetailCardProps from './components/trips/trainDetailCard/data';
 import listTypeFilterProps from './components/trips/listTypeFilter/data';
 import floatingActionProps from './common/components/floatingActionButton/data';
 import approverChainProps from './components/trips/approverChain/data';
@@ -68,6 +74,9 @@ export {
   hotelDetailCardProps,
   tripStatusProps,
   flightItineraryCardProps,
+  busItineraryCardProps,
+  trainItineraryCardProps,
+  cabItineraryCardProps,
   hotelItineraryCardProps,
   remarksContainerProps,
   coTravellersDetailProps,
@@ -84,6 +93,9 @@ export {
   approvalManagerProps,
   coTravellersProps,
   flightDetailCardProps,
+  busDetailCardProps,
+  trainDetailCardProps,
+  cabDetailCardProps,
   listTypeFilterProps,
   homeHeaderProps,
   claimsCardProps,

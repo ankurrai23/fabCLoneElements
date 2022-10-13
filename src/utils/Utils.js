@@ -113,6 +113,42 @@ export function convertOpacityPercentIntoHex(percent) {
   throw Error('Invalid opacity percentage');
 }
 
+export const getStatusObject = (status) => {
+  const capitalize = () => {
+    return `${status[0]}${status.slice(1).toLowerCase()}`;
+  };
+  switch (status) {
+    case 'CANCELLED':
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.PASTEL_RED + '1a',
+        textColor: Color.PASTEL_RED,
+      };
+    case 'NO_SHOW':
+      return {
+        key: status,
+        value: 'No show',
+        bgColor: Color.PASTEL_RED + '1a',
+        textColor: Color.PASTEL_RED,
+      };
+    case 'TENTATIVE':
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.MANGO + '1a',
+        textColor: Color.MANGO,
+      };
+    default:
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.DARK_SEA_FOAM + '1a',
+        textColor: Color.DARK_SEA_FOAM,
+      };
+  }
+};
+
 export default {
   FontFamily,
   Specs,
