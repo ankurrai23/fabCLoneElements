@@ -5,9 +5,7 @@ import {Color} from '../../../utils/color';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
-import InfoBox from '../components/infoBox';
 import TripStatus from '../tripStatus';
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
@@ -23,6 +21,7 @@ const BusItineraryCard = ({
   bookingDetails,
   actions,
   actionDisabled,
+  onPhoneNumberClicked,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -38,12 +37,7 @@ const BusItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
-      />
+      <Separator style={Styles.actionsSeperator} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
@@ -216,6 +210,7 @@ const BusItineraryCard = ({
                       leftDefaultData={Strings.phoneNo}
                       // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                       rightDataStyle={Styles.color_blue}
+                      onClickRightData={onPhoneNumberClicked}
                       style={cabDetails.driverName && Styles.marginTop_12}
                     />
                   )}

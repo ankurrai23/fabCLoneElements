@@ -5,9 +5,7 @@ import {Color} from '../../../utils/color';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
-import InfoBox from '../components/infoBox';
 import TripStatus from '../tripStatus';
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
@@ -39,10 +37,7 @@ const BusItineraryCard = ({
   const ActionsInItinerary = () => (
     <>
       <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
+        style={Styles.actionsSeparator}
       />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (

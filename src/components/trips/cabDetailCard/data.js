@@ -23,8 +23,7 @@ const busDetailCardProps = {
           'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
         driverName:
           'Mr. Arvind Swami fkajs;dflajsdf;lkajsdfl;kajfl;askdjfa;lskfdj',
-        driverContact:
-          '+91 986856778 alskdfja;dlfkja;ldfkja;lfkjas;lkfja;lsfkj',
+        driverContact: '+91 7988380849',
         carNumber:
           'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
         bookingId:
@@ -35,10 +34,8 @@ const busDetailCardProps = {
           'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
         driverName:
           'Mr. Arvind Swami fkajs;dflajsdf;lkajsdfl;kajfl;askdjfa;lskfdj',
-        driverContact:
-          '+91 986856778 alskdfja;dlfkja;ldfkja;lfkjas;lkfja;lsfkj',
-        carNumber:
-          'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
+        driverContact: '+91 986856778 ',
+        carNumber: 'MH 12A 2345',
         bookingId:
           '12345;fasldkfjasdlfkja;dlfkjas;dlfkja;sldkjfa;slkdjfa;lsdjkf',
       },
@@ -61,6 +58,7 @@ const busDetailCardProps = {
 
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
+  onPhoneNumberClicked: () => console.log('phoneNumber clicked'),
   actionDisabled: false,
   showStatus: true,
 };

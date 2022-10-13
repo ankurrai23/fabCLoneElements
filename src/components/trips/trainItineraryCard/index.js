@@ -216,10 +216,7 @@ const BusItineraryCard = ({
   const ActionsInItinerary = () => (
     <>
       <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
+        style={Styles.actionsSeparator}
       />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (

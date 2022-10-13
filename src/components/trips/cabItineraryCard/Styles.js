@@ -136,6 +136,9 @@ export default StyleSheet.create({
   width_50: {
     width: '50%',
   },
+  width_48: {
+    width: '48%',
+  },
   textAlign_left: {
     textAlign: 'left',
   },
@@ -158,5 +161,9 @@ export default StyleSheet.create({
   },
   color_grey: {
     color: Color.GREY_PURPLE,
-  }
+  },
+  actionsSeperator: {
+    marginHorizontal: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
 });

@@ -27,23 +27,23 @@ const trainDetailCardProps = {
     berth: '42, Side upperlfsdjlfksjlfksdjlfksjlfksdjflksdjflsdkfjlsdkfj',
     travellersDetails: [
       {
-        name: 'person 1 flsdkfjdlkkdfjkddk',
+        name: 'person something having',
         seat: 'L23 fldkfjsdlfjlfksdjfldskfjldskfjsdlkfj',
       },
       {
-        name: 'person 2 slkfjsldkfjslfjsdsjldfkj',
+        name: 'person alsdkfjlsda slkfjsldkfjslfjsdsjldfkj',
         seat: 'L23 flskdfjlsdkfjsldfkjsdlfkjsldf',
       },
       {
-        name: 'person 3 slkdfjldsfjsdlfjdslfjdslkfj',
+        name: 'person dkfjalsdjf slkdfjldsfjsdlfjdslfjdslkfj',
         seat: 'L23 ldksflsdkjflsdkjflsdkfjlsdkfjsldjf',
       },
       {
-        name: 'person 4 ldksfjlsdfkjdlskfj',
+        name: 'person sdlkfjsdlfj ldksfjlsdfkjdlskfj',
         seat: 'L23 flskfjlsdkfjldsfjlsdkfjsdlkfjslfj',
       },
       {
-        name: 'person 5 lsdjflsdjfdlkfjsdlkjfs',
+        name: 'person lskdfjdlkfjs lsdjflsdjfdlkfjsdlkjfs',
         seat: 'L23 lfsdkjflsdkjflsdkjflsdkj',
       },
     ],

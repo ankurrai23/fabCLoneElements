@@ -39,7 +39,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
       </View>
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-        <View style={{width: '48%'}}>
+        <View style={Styles.width_48}>
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.source}
           </FText>
@@ -47,7 +47,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
             {tripRequest.sourceStop}
           </FText>
         </View>
-        <View style={[Styles.alignItem_flexEnd, {width: '48%'}]}>
+        <View style={[Styles.alignItem_flexEnd, Styles.width_48]}>
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.destination}
           </FText>
@@ -214,12 +214,7 @@ const cabItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
-      />
+      <Separator style={Styles.actionsSeperator} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity

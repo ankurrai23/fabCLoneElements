@@ -158,4 +158,8 @@ export default StyleSheet.create({
     marginTop: DP._12,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
+  actionsSeperator: {
+    marginHorizontal: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
 });

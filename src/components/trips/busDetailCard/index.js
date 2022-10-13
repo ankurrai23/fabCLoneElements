@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Linking} from 'react-native';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
@@ -23,6 +23,7 @@ const BusItineraryCard = ({
   bookingDetails,
   actions,
   actionDisabled,
+  onPhoneNumberClicked,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -38,12 +39,7 @@ const BusItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
-      />
+      <Separator style={Styles.actionsSeperator} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
@@ -238,6 +234,7 @@ const BusItineraryCard = ({
                     leftDefaultData={Strings.phoneNo}
                     // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                     rightDataStyle={Styles.color_blue}
+                    onClickRightData={onPhoneNumberClicked}
                     style={
                       bookingDetails.coordinatorName && Styles.marginTop_12
                     }

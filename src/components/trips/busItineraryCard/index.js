@@ -196,12 +196,7 @@ const BusItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
-      />
+      <Separator style={Styles.actionsSeperator} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity

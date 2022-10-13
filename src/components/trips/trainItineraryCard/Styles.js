@@ -146,4 +146,8 @@ export default StyleSheet.create({
   selfAlign_center: {
     alignSelf: 'center',
   },
+  actionsSeparator: {
+    marginHorizontal: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
 });

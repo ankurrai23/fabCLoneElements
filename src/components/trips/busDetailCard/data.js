@@ -66,6 +66,7 @@ const busDetailCardProps = {
 
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
+  onPhoneNumberClicked: () => console.log('phoneNumber clicked'),
   actionDisabled: false,
   showStatus: true,
 };

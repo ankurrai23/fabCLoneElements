@@ -164,4 +164,8 @@ export default StyleSheet.create({
   color_grey: {
     color: Color.GREY_PURPLE,
   },
+  actionsSeparator: {
+    marginHorizontal: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
 });
