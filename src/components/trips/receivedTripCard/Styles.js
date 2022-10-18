@@ -144,4 +144,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderRadius: DP._10,
   },
+  flex_1: {
+    flex: 1,
+  },
 });
