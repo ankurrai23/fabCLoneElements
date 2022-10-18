@@ -41,9 +41,9 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.source}
           </FText>
-          {(tripRequest?.sourceBusStop || tripRequest?.destinationBusStop) && (
+          {(tripRequest?.sourceLocality || tripRequest?.destinationLocality) && (
             <FText style={Styles.time} numberOfLines={1}>
-              {tripRequest.sourceBusStop}
+              {tripRequest.sourceLocality}
             </FText>
           )}
         </View>
@@ -51,9 +51,9 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.destination}
           </FText>
-          {(tripRequest?.sourceBusStop || tripRequest?.destinationBusStop) && (
+          {(tripRequest?.sourceLocality || tripRequest?.destinationLocality) && (
             <FText style={Styles.time} numberOfLines={1}>
-              {tripRequest.destinationBusStop}
+              {tripRequest.destinationLocality}
             </FText>
           )}
         </View>
@@ -102,16 +102,16 @@ const PostBookingCard = ({
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
-            {bookingDetails.sourceBusStop}
+            {bookingDetails.sourceLocality}
           </FText>
           <FText
             style={[Styles.duration, Styles.width_20, Styles.textAlign_center]}>
-            {bookingDetails.duration}
+            {bookingDetails.estimateDuration}
           </FText>
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
-            {bookingDetails.destinationBusStop}
+            {bookingDetails.destinationLocality}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
@@ -146,7 +146,7 @@ const PostBookingCard = ({
 
       <View style={Styles.marginTop_12}>
         <FText style={Styles.portName} numberOfLines={1}>
-          {bookingDetails?.travelCompany ?? Strings.busNa}
+          {bookingDetails?.busName ?? Strings.busNa}
         </FText>
         {bookingDetails?.busNumber && (
           <FText style={Styles.time} numberOfLines={1}>

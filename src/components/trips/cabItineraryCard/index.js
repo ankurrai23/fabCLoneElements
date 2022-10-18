@@ -44,7 +44,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
             {tripRequest.source}
           </FText>
           <FText style={Styles.time} numberOfLines={1}>
-            {tripRequest.sourceStop}
+            {tripRequest.sourceLocality}
           </FText>
         </View>
         <View style={[Styles.alignItem_flexEnd, Styles.width_48]}>
@@ -52,7 +52,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
             {tripRequest.destination}
           </FText>
           <FText style={Styles.time} numberOfLines={1}>
-            {tripRequest.destinationStop}
+            {tripRequest.destinationLocality}
           </FText>
         </View>
       </View>
@@ -100,22 +100,22 @@ const PostBookingCard = ({
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
-            {bookingDetails.sourceStop}
+            {bookingDetails.sourceLocality}
           </FText>
           <FText
             style={[Styles.duration, Styles.width_20, Styles.textAlign_center]}>
-            {bookingDetails.duration}
+            {bookingDetails.estimateDuration}
           </FText>
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
-            {bookingDetails.destinationStop}
+            {bookingDetails.destinationLocality}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
           <View style={[Styles.width_40, Styles.textAlign_left]}>
-            {(bookingDetails?.sourceStop ||
-              bookingDetails?.destinationStop) && (
+            {(bookingDetails?.sourceLocality ||
+              bookingDetails?.destinationLocality) && (
               <FText style={Styles.time} numberOfLines={1}>
                 {bookingDetails.source}
               </FText>
@@ -132,8 +132,8 @@ const PostBookingCard = ({
               Styles.width_40,
               Styles.textAlign_right,
             ]}>
-            {(bookingDetails?.sourceStop ||
-              bookingDetails?.destinationStop) && (
+            {(bookingDetails?.sourceLocality ||
+              bookingDetails?.destinationLocality) && (
               <FText style={Styles.time} numberOfLines={1}>
                 {bookingDetails.destination}
               </FText>

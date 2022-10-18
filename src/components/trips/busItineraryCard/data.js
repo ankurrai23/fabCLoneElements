@@ -1,14 +1,12 @@
-import {BusSubtripActions} from '../../../utils/SubTripActions';
-
 const busItineraryCardProps = {
   tripRequest: {
     date: '22',
     month: 'Nov',
     slotDetail: 'Slot: 6PM - 9PM',
-    source: 'Mumbailkjsdflkdsjflsdkfjsd',
-    destination: 'Lonavala slkdjflsdkfjldsfj',
-    sourceBusStop: 'Mumbai Airport sfjlsfjsdlfsldkjfsl',
-    destinationBusStop: 'Tungarli road lsdkfjslkfjsldkjf',
+    source: 'Mumbai',
+    destination: 'Lonavala',
+    sourceLocality: 'Mumbai Airport',
+    destinationLocality: 'Tungarli road',
   },
   status: {
     key: 'PROCESSED',
@@ -19,16 +17,16 @@ const busItineraryCardProps = {
   bookingDetails: {
     date: '22',
     month: 'Nov',
-    source: 'Mumbaisdfsfssdfslskdfjlsk',
-    destination: 'Lonavalasfsdfssfsdf',
-    sourceBusStop: 'Mumbai Airport lsdfjlsfjlskdfjlsdfj ',
-    destinationBusStop: 'Tungarli road akldfjlakdjflakdjflakj',
-    departureTime: '18:30 laksdjfasldkfj;askdfja;lskfj',
-    arrivalTime: '22:30 fa;dlkjfa;lskdfja;ldjf;alskfj',
-    duration: '1h 50min',
-    travelCompany: 'Dolphin Tour and Travell fslkjfldskjflskdjflskjflsdjfl',
-    busNumber: 'lskflsdkfjsdlfjsdlfkjdslfkdsjflsdjalsdkjfal;skdfjaliejflasldfkjlkajfalsj',
-    busInfo: 'sldfksdlfjpoeirvnv,zf;z.zfjlifaoifkejaf;ldjgogurfafalfufjal;fjd',
+    source: 'Mumbai',
+    destination: 'Lonavala',
+    sourceLocality: 'Mumbai Airport lsdfjlsfjlskdfjlsdfj ',
+    destinationLocality: 'Tungarli road akldfjlakdjflakdjflakj',
+    departureTime: '18:30',
+    arrivalTime: '22:30',
+    estimateDuration: '1h 50min',
+    busName: 'Dolphins Tour and Travels',
+    busNumber: 'MH 12A 2345',
+    busType: 'Sleeper',
     seatNumber: 'L23flkasjdflaskdjflasdkjflasdkfjalsdkfjlasdkfjalksjdf',
   },
   actions: [

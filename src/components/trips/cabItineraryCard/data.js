@@ -7,8 +7,8 @@ const cabItineraryCardProps = {
     pickupTime: '07:00 PM',
     source: 'Mumbai flsfjldkfjlsdkjflsdfjlsdjffjlskdfj',
     destination: 'Lonavala fjlskfjsdlfjdslkfjsd ',
-    sourceStop: 'Mumbai Airport fdkfjsldjfsldfjs',
-    destinationStop: 'Tungarli road skfjsdlfjsldfjsdlkfj',
+    sourceLocality: 'Mumbai Airport fdkfjsldjfsldfjs',
+    destinationLocality: 'Tungarli road skfjsdlfjsldfjsdlkfj',
   },
   status: {
     key: 'PROCESSED',
@@ -21,11 +21,11 @@ const cabItineraryCardProps = {
     month: 'Nov',
     source: 'Mumbai klsdjfldskfjlsdfjlsdfj',
     destination: 'Lonavalafl dfkdsjflsdjflksdjflskdfj',
-    sourceStop: 'Mumbai Airport lkdjfsdjfldksjflsdkfj',
-    destinationStop: 'Tungarli road flkdsjflsdkjflsdkfjlsdfj',
+    sourceLocality: 'Mumbai Airport lkdjfsdjfldksjflsdkfj',
+    destinationLocality: 'Tungarli road flkdsjflsdkjflsdkfjlsdfj',
     departureTime: '18:30 fldfla;kdjfa;dklfja;lkdjfas;lfkdj',
     arrivalTime: '22:30 flsakjf;aslkfdja;lkdfjakdlfja;lkfdja;lsdfkj;;;;;',
-    duration: '1h 50min',
+    estimateDuration: '1h 50min',
     cabsData: [
       {
         carName:

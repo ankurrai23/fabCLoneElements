@@ -40,6 +40,7 @@ export default StyleSheet.create({
   airplane: {
     transform: [{rotate: '90deg'}],
   },
+  //fixme port name?
   portName: {
     color: Color.DARK,
     fontSize: DP._14,
