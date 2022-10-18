@@ -76,7 +76,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
           </FText>
           <FText
             numberOfLines={1}
-            style={Styles.destination}
+            style={[Styles.destination, Styles.flex_1]}
             type={FONT_TYPE.MEDIUM}>
             {item.requestedBy}
           </FText>
