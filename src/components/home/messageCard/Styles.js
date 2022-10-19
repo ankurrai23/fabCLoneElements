@@ -1,14 +1,11 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 
-const {width} = Dimensions.get('window');
-
 export default StyleSheet.create({
   container: {
-    height: DP._111,
     padding: DP._16,
     marginTop: DP._12,
     marginHorizontal: DP._16,
