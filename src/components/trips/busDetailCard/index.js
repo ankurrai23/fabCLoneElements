@@ -5,21 +5,18 @@ import {Color} from '../../../utils/color';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import DashedLine from '../../../common/components/dashedLine';
 import Separator from '../../../common/components/separator';
-import InfoBox from '../components/infoBox';
 import TripStatus from '../tripStatus';
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import TravellerSeat from '../../../common/components/travellerSeat';
+import {getStatusObject} from '../../../utils/Utils';
 
-const BusItineraryCard = ({
+const BusDetailCard = ({
   onActionPress,
   onCardPress,
   style,
-  showStatus,
-  status,
   bookingDetails,
   actions,
   actionDisabled,
@@ -30,12 +27,6 @@ const BusItineraryCard = ({
   const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
-  const shortlistingAction = isActionEnabled(
-    BusSubtripActions.SHORTLIST_FLIGHT_TRIPS,
-  );
-  const viewShortlistedFlightAction = isActionEnabled(
-    BusSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
-  );
 
   const ActionsInItinerary = () => (
     <>
@@ -89,7 +80,11 @@ const BusItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${bookingDetails.month}`}</FText>
             </FText>
-            {showStatus && <TripStatus statusObj={status} />}
+            {!!bookingDetails.busBookingStatus && (
+              <TripStatus
+                statusObj={getStatusObject(bookingDetails.busBookingStatus)}
+              />
+            )}
           </View>
 
           <View style={[Styles.marginTop_12]}>
@@ -109,7 +104,7 @@ const BusItineraryCard = ({
                   Styles.width_20,
                   Styles.textAlign_center,
                 ]}>
-                {bookingDetails.duration}
+                {bookingDetails.estimateDuration}
               </FText>
               <FText
                 style={[
@@ -123,12 +118,12 @@ const BusItineraryCard = ({
             </View>
             <View style={[Styles.flexDirectionRow]}>
               <View style={Styles.width_40}>
-                {(bookingDetails?.sourceBusStop ||
-                  bookingDetails?.destinationBusStop) && (
+                {(bookingDetails?.sourceLocality ||
+                  bookingDetails?.destinationLocality) && (
                   <FText
                     style={[Styles.time, Styles.textAlign_left]}
                     numberOfLines={1}>
-                    {bookingDetails.sourceBusStop}
+                    {bookingDetails.sourceLocality}
                   </FText>
                 )}
                 {(bookingDetails?.departureTime ||
@@ -139,10 +134,10 @@ const BusItineraryCard = ({
                 )}
               </View>
               <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-                {(bookingDetails?.destinationBusStop ||
-                  bookingDetails?.sourceBusStop) && (
+                {(bookingDetails?.destinationLocality ||
+                  bookingDetails?.sourceLocality) && (
                   <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.destinationBusStop}
+                    {bookingDetails.destinationLocality}
                   </FText>
                 )}
                 {(bookingDetails?.arrivalTime ||
@@ -157,14 +152,14 @@ const BusItineraryCard = ({
 
           <View style={Styles.marginTop_12}>
             <FText style={Styles.portName} numberOfLines={1}>
-              {bookingDetails?.travelCompany ?? Strings.busNa}
+              {bookingDetails?.busName ?? Strings.busNa}
             </FText>
-            {(bookingDetails.busNo || bookingDetails.pnr) && (
+            {(bookingDetails.busNumber || bookingDetails.pnr) && (
               <View style={[Styles.flexDirectionRow]}>
                 <FText
                   style={[Styles.time, Styles.textAlign_left, Styles.width_40]}
                   numberOfLines={1}>
-                  {bookingDetails.busNo}
+                  {bookingDetails.busNumber}
                 </FText>
 
                 <FText
@@ -174,9 +169,9 @@ const BusItineraryCard = ({
                 </FText>
               </View>
             )}
-            {bookingDetails?.busInfo && (
+            {bookingDetails?.busType && (
               <FText style={Styles.time} numberOfLines={1}>
-                {bookingDetails.busInfo}
+                {bookingDetails.busType}
               </FText>
             )}
           </View>
@@ -197,8 +192,8 @@ const BusItineraryCard = ({
                 {bookingDetails.travellersDetails.map((detail, index) => (
                   <TravellerSeat
                     dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
-                    rightData={detail.seat}
-                    leftData={detail.name}
+                    rightData={detail.seatNo}
+                    leftData={detail.travellerName}
                     style={
                       index === 0 ? Styles.marginTop_12 : Styles.marginTop_8
                     }
@@ -206,7 +201,8 @@ const BusItineraryCard = ({
                 ))}
               </>
             )}
-          {(bookingDetails?.contact || bookingDetails?.coordinatorName) && (
+          {(bookingDetails?.CoordinatorNo ||
+            bookingDetails?.CoordinatorName) && (
             <>
               <Separator style={Styles.sepratorStyle} />
               <View style={Styles.marginTop_12}>
@@ -219,24 +215,24 @@ const BusItineraryCard = ({
                   ]}>
                   {Strings.coordinatorDetails}
                 </FText>
-                {bookingDetails?.coordinatorName && (
+                {bookingDetails?.CoordinatorName && (
                   <TravellerSeat
                     dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
-                    rightData={bookingDetails.coordinatorName}
+                    rightData={bookingDetails.CoordinatorName}
                     leftDefaultData={Strings.name}
                     // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                   />
                 )}
-                {bookingDetails?.contact && (
+                {bookingDetails?.CoordinatorNo && (
                   <TravellerSeat
                     dataIcon={<Icon.PhoneIcon width={DP._16} height={DP._16} />}
-                    rightData={bookingDetails.contact}
+                    rightData={bookingDetails.CoordinatorNo}
                     leftDefaultData={Strings.phoneNo}
                     // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                     rightDataStyle={Styles.color_blue}
                     onClickRightData={onPhoneNumberClicked}
                     style={
-                      bookingDetails.coordinatorName && Styles.marginTop_12
+                      bookingDetails.CoordinatorName && Styles.marginTop_12
                     }
                   />
                 )}
@@ -253,4 +249,4 @@ const BusItineraryCard = ({
   );
 };
 
-export default BusItineraryCard;
+export default BusDetailCard;
