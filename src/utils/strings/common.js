@@ -110,6 +110,6 @@ export default {
   coordinatorDetails: 'Coordinator details',
   travelersDetails: 'Travelers details',
   driverDetails: 'Driver details',
-  cab: 'Cab',
+  vehicle: 'Vehicle',
   details: 'details',
 };
