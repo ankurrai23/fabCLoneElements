@@ -42,9 +42,9 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
             {tripRequest?.sourceStationCode}
           </FText>
 
-          {(tripRequest?.destinationCity || tripRequest?.sourceCity) && (
+          {(tripRequest?.destination || tripRequest?.source) && (
             <FText style={Styles.time} numberOfLines={1}>
-              {tripRequest.sourceCity}
+              {tripRequest.source}
             </FText>
           )}
           {(tripRequest?.arrivalDate || tripRequest?.departureDate) && (
@@ -57,9 +57,9 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest?.destinationStationCode}
           </FText>
-          {(tripRequest?.destinationCity || tripRequest?.sourceCity) && (
+          {(tripRequest?.destination || tripRequest?.source) && (
             <FText style={Styles.time} numberOfLines={1}>
-              {tripRequest.destinationCity}
+              {tripRequest.destination}
             </FText>
           )}
           {(tripRequest.arrivalDate || tripRequest.departureDate) && (
@@ -97,7 +97,7 @@ const PostBookingCard = ({
           <TripStatus statusObj={status} />
         ) : (
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-            {hideChevron && (
+            {!hideChevron && (
               <Icon.ChevronRight
                 width={DP._18}
                 height={DP._18}
@@ -122,7 +122,7 @@ const PostBookingCard = ({
               Styles.textAlign_center,
               Styles.selfAlign_center,
             ]}>
-            {bookingDetails.duration}
+            {bookingDetails.estimateDuration}
           </FText>
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
@@ -133,31 +133,31 @@ const PostBookingCard = ({
         <View style={[Styles.flexDirectionRow]}>
           <View style={Styles.width_40}>
             <FText style={Styles.time} numberOfLines={1}>
-              {bookingDetails.sourceCity}
+              {bookingDetails.source}
             </FText>
             {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
               <FText style={Styles.time} numberOfLines={1}>
                 {bookingDetails.departureTime}
               </FText>
             )}
-            {bookingDetails?.sourcePF && (
+            {bookingDetails?.departurePlatform && (
               <FText style={Styles.time} numberOfLines={1}>
-                {Strings.platform}: {bookingDetails.sourcePF}
+                {Strings.platform}: {bookingDetails.departurePlatform}
               </FText>
             )}
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
             <FText style={Styles.time} numberOfLines={1}>
-              {bookingDetails.destinationCity}
+              {bookingDetails.destination}
             </FText>
             {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
               <FText style={Styles.time} numberOfLines={1}>
                 {bookingDetails.arrivalTime}
               </FText>
             )}
-            {bookingDetails?.destinationPF && (
+            {bookingDetails?.arrivalPlatform && (
               <FText style={Styles.time} numberOfLines={1}>
-                {Strings.platform}: {bookingDetails.destinationPF}
+                {Strings.platform}: {bookingDetails.arrivalPlatform}
               </FText>
             )}
           </View>
@@ -173,9 +173,9 @@ const PostBookingCard = ({
             {Strings.pnr}: {bookingDetails.pnr}
           </FText>
         )}
-        {bookingDetails?.class && (
+        {bookingDetails?.trainClass && (
           <FText style={Styles.time} numberOfLines={1}>
-            {bookingDetails.class}
+            {bookingDetails.trainClass}
           </FText>
         )}
       </View>
@@ -183,7 +183,7 @@ const PostBookingCard = ({
   );
 };
 
-const BusItineraryCard = ({
+const TrainItineraryCard = ({
   tripRequest,
   onActionPress,
   onCardPress,
@@ -215,9 +215,7 @@ const BusItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator
-        style={Styles.actionsSeparator}
-      />
+      <Separator style={Styles.actionsSeparator} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
@@ -321,4 +319,4 @@ const BusItineraryCard = ({
   );
 };
 
-export default BusItineraryCard;
+export default TrainItineraryCard;

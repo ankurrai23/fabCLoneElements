@@ -1,5 +1,3 @@
-import {trainSubtripActions} from '../../../utils/SubTripActions';
-
 const trainDetailCardProps = {
   status: {
     key: 'PROCESSED',
@@ -11,40 +9,29 @@ const trainDetailCardProps = {
     date: '22',
     month: 'Nov',
     sourceStationCode: 'CSTM',
-    sourceCity: 'Mumbailfkdjslfkjdslfksdjlkjflslkj',
+    source: 'Mumbai',
     destinationStationCode: 'TVC',
-    destinationCity:
-      'Thiruvanthapuramlsdkjflsdkfjdlskfjsdlkfjsldkfjlksjflskjfslkdjfls',
-    departureTime: '21:00, Tue, 22 Nov fjsdlkfjslk',
-    arrivalTime: '09:00, Wed, 23 Nov fldskjflsdkfjs',
-    sourcePF: '01',
-    destinationPF: '03',
-    duration: '1h 50min',
+    destination: 'Thiruvanthapuram',
+    departureTime: '21:00, Tue, 22 Nov',
+    arrivalTime: '09:00, Wed, 23 Nov',
+    departurePlatform: '01',
+    arrivalPlatform: '03',
+    estimateDuration: '1h 50min',
     trainName:
       'Mumbai - Madras Superfast Express dkfjdlsflskfjldskfjlskfjsdlkjf',
     pnr: '256-99589lskjfldsjfldskfjlsdkfjlsdkfjsldfjslsdkfjlsdkfjlsdkfjlsdkfj',
-    class: 'AC 3 Tier Sleeper flasfjldsfjlasdkjflasdkjflasdkfjlsadkfj',
+    trainClass: 'AC 3 Tier Sleeper flasfjldsfjlasdkjflasdkjflasdkfjlsadkfj',
     berth: '42, Side upperlfsdjlfksjlfksdjlfksjlfksdjflksdjflsdkfjlsdkfj',
     travellersDetails: [
       {
-        name: 'person something having',
-        seat: 'L23 fldkfjsdlfjlfksdjfldskfjldskfjsdlkfj',
+        travellerName: 'Sahil Malhan',
+        coach: 'b1',
+        birth: '42',
       },
       {
-        name: 'person alsdkfjlsda slkfjsldkfjslfjsdsjldfkj',
-        seat: 'L23 flskdfjlsdkfjsldfkjsdlfkjsldf',
-      },
-      {
-        name: 'person dkfjalsdjf slkdfjldsfjsdlfjdslfjdslkfj',
-        seat: 'L23 ldksflsdkjflsdkjflsdkfjlsdkfjsldjf',
-      },
-      {
-        name: 'person sdlkfjsdlfj ldksfjlsdfkjdlskfj',
-        seat: 'L23 flskfjlsdkfjldsfjlsdkfjsdlkfjslfj',
-      },
-      {
-        name: 'person lskdfjdlkfjs lsdjflsdjfdlkfjsdlkjfs',
-        seat: 'L23 lfsdkjflsdkjflsdkjflsdkj',
+        travellerName: 'Vaibhav Agrawal',
+        coach: 'c1',
+        birth: '48',
       },
     ],
   },
