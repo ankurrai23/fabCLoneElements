@@ -26,23 +26,23 @@ const cabItineraryCardProps = {
     departureTime: '18:30 fldfla;kdjfa;dklfja;lkdjfas;lfkdj',
     arrivalTime: '22:30 flsakjf;aslkfdja;lkdfjakdlfja;lkfdja;lsdfkj;;;;;',
     estimateDuration: '1h 50min',
-    cabsData: [
+    vehicleDetails: [
       {
-        carName:
+        vehicleName:
           'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
-        carNumber:
+        vehicleNumber:
           'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
       },
       {
-        carName:
+        vehicleName:
           'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
-        carNumber:
+        vehicleNumber:
           'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
       },
       {
-        carName:
+        vehicleName:
           'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
-        carNumber:
+        vehicleNumber:
           'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
       },
     ],

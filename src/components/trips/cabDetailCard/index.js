@@ -11,13 +11,12 @@ import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import TravellerSeat from '../../../common/components/travellerSeat';
+import {getStatusObject} from '../../../utils/Utils';
 
-const BusItineraryCard = ({
+const CabDetailCard = ({
   onActionPress,
   onCardPress,
   style,
-  showStatus,
-  status,
   bookingDetails,
   actions,
   actionDisabled,
@@ -28,12 +27,6 @@ const BusItineraryCard = ({
   const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
-  const shortlistingAction = isActionEnabled(
-    BusSubtripActions.SHORTLIST_FLIGHT_TRIPS,
-  );
-  const viewShortlistedFlightAction = isActionEnabled(
-    BusSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
-  );
 
   const ActionsInItinerary = () => (
     <>
@@ -87,7 +80,11 @@ const BusItineraryCard = ({
                   fontSize: DP._12,
                 }}>{` ${bookingDetails.month}`}</FText>
             </FText>
-            {showStatus && <TripStatus statusObj={status} />}
+            {!!bookingDetails.cabBookingStatus && (
+              <TripStatus
+                statusObj={getStatusObject(bookingDetails.cabBookingStatus)}
+              />
+            )}
           </View>
 
           <View style={[Styles.marginTop_12]}>
@@ -99,7 +96,7 @@ const BusItineraryCard = ({
                   Styles.textAlign_left,
                 ]}
                 numberOfLines={1}>
-                {bookingDetails.sourceStop}
+                {bookingDetails.sourceLocality}
               </FText>
               <FText
                 style={[
@@ -107,7 +104,7 @@ const BusItineraryCard = ({
                   Styles.width_20,
                   Styles.textAlign_center,
                 ]}>
-                {bookingDetails.duration}
+                {bookingDetails.estimateDuration}
               </FText>
               <FText
                 style={[
@@ -116,7 +113,7 @@ const BusItineraryCard = ({
                   Styles.textAlign_right,
                 ]}
                 numberOfLines={1}>
-                {bookingDetails.destinationStop}
+                {bookingDetails.destinationLocality}
               </FText>
             </View>
             <View style={[Styles.flexDirectionRow]}>
@@ -150,9 +147,9 @@ const BusItineraryCard = ({
               </View>
             </View>
           </View>
-          {bookingDetails.cabsData &&
-            bookingDetails.cabsData.length > 0 &&
-            bookingDetails.cabsData.map((cabDetails, index) => (
+          {bookingDetails.vehicleDetails &&
+            bookingDetails.vehicleDetails.length > 0 &&
+            bookingDetails.vehicleDetails.map((cabDetails, index) => (
               <>
                 <Separator style={Styles.sepratorStyle} />
                 <View style={Styles.marginTop_12}>
@@ -164,17 +161,17 @@ const BusItineraryCard = ({
                         Styles.fontSize_12,
                         Styles.color_grey,
                       ]}>
-                      {Strings.cab}{' '}
-                      {bookingDetails.cabsData.length > 1 && index + 1}{' '}
+                      {Strings.vehicle}{' '}
+                      {bookingDetails.vehicleDetails.length > 1 && index + 1}{' '}
                       {Strings.details}
                     </FText>
 
                     <FText style={Styles.portName} numberOfLines={1}>
-                      {cabDetails?.carName ?? Strings.carNa}
+                      {cabDetails?.vehicleName ?? Strings.carNa}
                     </FText>
-                    {cabDetails?.carNumber && (
+                    {cabDetails?.vehicleNumber && (
                       <FText style={Styles.time} numberOfLines={1}>
-                        {cabDetails.carNumber}
+                        {cabDetails.vehicleNumber}
                       </FText>
                     )}
                     {cabDetails?.bookingId && (
@@ -201,12 +198,12 @@ const BusItineraryCard = ({
                       // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                     />
                   )}
-                  {cabDetails?.driverContact && (
+                  {cabDetails?.driverPhone && (
                     <TravellerSeat
                       dataIcon={
                         <Icon.PhoneIcon width={DP._16} height={DP._16} />
                       }
-                      rightData={cabDetails.driverContact}
+                      rightData={cabDetails.driverPhone}
                       leftDefaultData={Strings.phoneNo}
                       // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                       rightDataStyle={Styles.color_blue}
@@ -227,4 +224,4 @@ const BusItineraryCard = ({
   );
 };
 
-export default BusItineraryCard;
+export default CabDetailCard;

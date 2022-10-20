@@ -146,9 +146,9 @@ const PostBookingCard = ({
           </View>
         </View>
       </View>
-      {bookingDetails.cabsData &&
-        bookingDetails.cabsData.length > 0 &&
-        bookingDetails.cabsData.map((details, index) => (
+      {bookingDetails.vehicleDetails &&
+        bookingDetails.vehicleDetails.length > 0 &&
+        bookingDetails.vehicleDetails.map((details, index) => (
           <>
             <Separator
               style={{
@@ -163,16 +163,16 @@ const PostBookingCard = ({
                 Styles.fontSize_12,
                 Styles.color_grey,
               ]}>
-              {Strings.cab} {bookingDetails.cabsData.length > 1 && index + 1}{' '}
+              {Strings.vehicle} {bookingDetails.vehicleDetails.length > 1 && index + 1}{' '}
               {Strings.details}
             </FText>
             <View style={Styles.marginTop_8}>
               <FText style={Styles.portName} numberOfLines={1}>
-                {details?.carName ?? Strings.carNa}
+                {details?.vehicleName ?? Strings.carNa}
               </FText>
-              {details?.carNumber && (
+              {details?.vehicleNumber && (
                 <FText style={Styles.time} numberOfLines={1}>
-                  {details.carNumber}
+                  {details.vehicleNumber}
                 </FText>
               )}
             </View>

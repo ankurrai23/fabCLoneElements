@@ -12,32 +12,25 @@ const busDetailCardProps = {
     month: 'Nov',
     source: 'Mumbai klsdjfldskfjlsdfjlsdfj',
     destination: 'Lonavalafl dfkdsjflsdjflksdjflskdfj',
-    sourceStop: 'Mumbai Airport lkdjfsdjfldksjflsdkfj',
-    destinationStop: 'Tungarli road flkdsjflsdkjflsdkfjlsdfj',
+    sourceLocality: 'Mumbai Airport lkdjfsdjfldksjflsdkfj',
+    destinationLocality: 'Tungarli road flkdsjflsdkjflsdkfjlsdfj',
     departureTime: '18:30 fldfla;kdjfa;dklfja;lkdjfas;lfkdj',
     arrivalTime: '22:30 flsakjf;aslkfdja;lkdfjakdlfja;lkfdja;lsdfkj;;;;;',
-    duration: '1h 50min',
-    cabsData: [
+    estimateDuration: '1h 50min',
+    vehicleDetails: [
       {
-        carName:
-          'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
-        driverName:
-          'Mr. Arvind Swami fkajs;dflajsdf;lkajsdfl;kajfl;askdjfa;lskfdj',
-        driverContact: '+91 7988380849',
-        carNumber:
-          'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
-        bookingId:
-          '12345;fasldkfjasdlfkja;dlfkjas;dlfkja;sldkjfa;slkdjfa;lsdjkf',
+        carName: 'White Hyundai Grand i10',
+        vehicleNumber: 'MH 12A 2345',
+        driverName: 'Mr. Arvind Swami',
+        driverPhone: '+91 7988380849',
+        bookingId: '12345',
       },
       {
-        carName:
-          'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
-        driverName:
-          'Mr. Arvind Swami fkajs;dflajsdf;lkajsdfl;kajfl;askdjfa;lskfdj',
-        driverContact: '+91 986856778 ',
-        carNumber: 'MH 12A 2345',
-        bookingId:
-          '12345;fasldkfjasdlfkja;dlfkjas;dlfkja;sldkjfa;slkdjfa;lsdjkf',
+        carName: 'White Hyundai Grand i10',
+        vehicleNumber: 'MH 12A 2345',
+        driverName: 'Mr. Arvind Swami',
+        driverPhone: '+91 7988380849',
+        bookingId: '12345',
       },
     ],
   },
