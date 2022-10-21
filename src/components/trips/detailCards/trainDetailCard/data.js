@@ -1,10 +1,4 @@
 const trainDetailCardProps = {
-  status: {
-    key: 'PROCESSED',
-    value: 'Processed',
-    textColor: '#d65656',
-    bgColor: '#d656561a',
-  },
   bookingDetails: {
     date: '22',
     month: 'Nov',
@@ -21,6 +15,7 @@ const trainDetailCardProps = {
     pnr: '256-99589',
     trainClass: 'AC 3 Tier Sleeper ',
     berth: '42, Side upper',
+    trainBookingStatus: 'CONFIRMED',
     travellersDetails: [
       {
         travellerName: 'Sahil Malhan',
@@ -50,8 +45,8 @@ const trainDetailCardProps = {
   ],
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
+  notificationText: 'Some thing to notify',
   actionDisabled: false,
-  showStatus: true,
 };
 
 export default trainDetailCardProps;

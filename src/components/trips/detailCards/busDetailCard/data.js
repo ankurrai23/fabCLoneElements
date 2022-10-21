@@ -1,13 +1,8 @@
 import {BusSubtripActions} from '../../../../utils/SubTripActions';
 
 const busDetailCardProps = {
-  status: {
-    key: 'PROCESSED',
-    value: 'Processed',
-    textColor: '#d65656',
-    bgColor: '#d656561a',
-  },
   bookingDetails: {
+    busBookingStatus: 'CONFIRMED',
     date: '22',
     month: 'Nov',
     source: 'Mumbai',
@@ -54,7 +49,7 @@ const busDetailCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   onPhoneNumberClicked: () => console.log('phoneNumber clicked'),
   actionDisabled: false,
-  showStatus: true,
+  notificationText: 'Some thing to notify',
 };
 
 export default busDetailCardProps;

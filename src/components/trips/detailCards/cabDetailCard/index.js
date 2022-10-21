@@ -10,6 +10,7 @@ import TripStatus from '../../tripStatus';
 import {BusSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import ModificationAlertBox from '../../components/modificationAlertBox';
 import {getStatusObject} from '../../../../utils/Utils';
 
 const DetailRow = ({
@@ -55,6 +56,7 @@ const CabDetailCard = ({
   actions,
   actionDisabled,
   onPhoneNumberClicked,
+  notificationText,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -100,157 +102,166 @@ const CabDetailCard = ({
     </>
   );
   return (
-    <View style={[Styles.flexRow, style]}>
-      <View style={Styles.container}>
-        <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
-          <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-            <FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {bookingDetails.date}
+    <>
+      {!!notificationText && <ModificationAlertBox msg={notificationText} />}
+      <View style={[Styles.flexRow, style]}>
+        <View style={Styles.container}>
+          <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+            <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+              <FText>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                  {bookingDetails.date}
+                </FText>
+                <FText
+                  style={{
+                    color: Color.BLUEY_GREY,
+                    fontSize: DP._12,
+                  }}>{` ${bookingDetails.month}`}</FText>
               </FText>
-              <FText
-                style={{
-                  color: Color.BLUEY_GREY,
-                  fontSize: DP._12,
-                }}>{` ${bookingDetails.month}`}</FText>
-            </FText>
-            {!!bookingDetails.cabBookingStatus && (
-              <TripStatus
-                statusObj={getStatusObject(bookingDetails.cabBookingStatus)}
-              />
-            )}
-          </View>
+              {!!bookingDetails.cabBookingStatus && (
+                <TripStatus
+                  statusObj={getStatusObject(bookingDetails.cabBookingStatus)}
+                />
+              )}
+            </View>
 
-          <View style={[Styles.marginTop_12]}>
-            <View style={[Styles.flexDirectionRow]}>
-              <FText
-                style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
-                numberOfLines={1}>
-                {bookingDetails.departureTime}
-              </FText>
-              <FText
-                style={[
-                  Styles.duration,
-                  Styles.width_20,
-                  Styles.textAlign_center,
-                ]}>
-                {bookingDetails.estimateDuration}
-              </FText>
-              <FText
-                style={[
-                  Styles.heading,
-                  Styles.width_40,
-                  Styles.textAlign_right,
-                ]}
-                numberOfLines={1}>
-                {bookingDetails.arrivalTime}
-              </FText>
-            </View>
-            <View style={[Styles.flexDirectionRow]}>
-              <View style={Styles.width_40}>
-                {(bookingDetails?.sourceLocality ||
-                  bookingDetails?.destinationLocality) && (
-                  <FText style={Styles.detail} numberOfLines={1}>
-                    {bookingDetails.sourceLocality}
-                  </FText>
-                )}
-                {(bookingDetails?.source || bookingDetails?.destination) && (
-                  <FText
-                    style={[Styles.detail, Styles.textAlign_left]}
-                    numberOfLines={1}>
-                    {bookingDetails.source}
-                  </FText>
-                )}
+            <View style={[Styles.marginTop_12]}>
+              <View style={[Styles.flexDirectionRow]}>
+                <FText
+                  style={[
+                    Styles.heading,
+                    Styles.width_40,
+                    Styles.textAlign_left,
+                  ]}
+                  numberOfLines={1}>
+                  {bookingDetails.departureTime}
+                </FText>
+                <FText
+                  style={[
+                    Styles.duration,
+                    Styles.width_20,
+                    Styles.textAlign_center,
+                  ]}>
+                  {bookingDetails.estimateDuration}
+                </FText>
+                <FText
+                  style={[
+                    Styles.heading,
+                    Styles.width_40,
+                    Styles.textAlign_right,
+                  ]}
+                  numberOfLines={1}>
+                  {bookingDetails.arrivalTime}
+                </FText>
               </View>
-              <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-                {(bookingDetails?.sourceLocality ||
-                  bookingDetails?.destinationLocality) && (
-                  <FText style={Styles.detail} numberOfLines={1}>
-                    {bookingDetails.destinationLocality}
-                  </FText>
-                )}
-                {(bookingDetails?.destination || bookingDetails?.source) && (
-                  <FText style={Styles.detail} numberOfLines={1}>
-                    {bookingDetails.destination}
-                  </FText>
-                )}
+              <View style={[Styles.flexDirectionRow]}>
+                <View style={Styles.width_40}>
+                  {(bookingDetails?.sourceLocality ||
+                    bookingDetails?.destinationLocality) && (
+                    <FText style={Styles.detail} numberOfLines={1}>
+                      {bookingDetails.sourceLocality}
+                    </FText>
+                  )}
+                  {(bookingDetails?.source || bookingDetails?.destination) && (
+                    <FText
+                      style={[Styles.detail, Styles.textAlign_left]}
+                      numberOfLines={1}>
+                      {bookingDetails.source}
+                    </FText>
+                  )}
+                </View>
+                <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
+                  {(bookingDetails?.sourceLocality ||
+                    bookingDetails?.destinationLocality) && (
+                    <FText style={Styles.detail} numberOfLines={1}>
+                      {bookingDetails.destinationLocality}
+                    </FText>
+                  )}
+                  {(bookingDetails?.destination || bookingDetails?.source) && (
+                    <FText style={Styles.detail} numberOfLines={1}>
+                      {bookingDetails.destination}
+                    </FText>
+                  )}
+                </View>
               </View>
             </View>
-          </View>
-          {bookingDetails.vehicleDetails &&
-            bookingDetails.vehicleDetails.length > 0 &&
-            bookingDetails.vehicleDetails.map((cabDetails, index) => (
-              <>
-                <Separator style={Styles.sepratorStyle} />
-                <View style={Styles.marginTop_12}>
-                  <View style={Styles.marginBottom_16}>
+            {bookingDetails.vehicleDetails &&
+              bookingDetails.vehicleDetails.length > 0 &&
+              bookingDetails.vehicleDetails.map((cabDetails, index) => (
+                <>
+                  <Separator style={Styles.sepratorStyle} />
+                  <View style={Styles.marginTop_12}>
+                    <View style={Styles.marginBottom_16}>
+                      <FText
+                        numberOfLines={1}
+                        style={[
+                          Styles.marginBottom_8,
+                          Styles.fontSize_12,
+                          Styles.color_grey,
+                        ]}>
+                        {Strings.vehicle}{' '}
+                        {bookingDetails.vehicleDetails.length > 1 && index + 1}{' '}
+                        {Strings.details}
+                      </FText>
+
+                      <FText style={Styles.heading} numberOfLines={1}>
+                        {cabDetails?.vehicleName ?? Strings.carNa}
+                      </FText>
+                      {cabDetails?.vehicleNumber && (
+                        <FText style={Styles.detail} numberOfLines={1}>
+                          {cabDetails.vehicleNumber}
+                        </FText>
+                      )}
+                      {cabDetails?.bookingId && (
+                        <FText style={Styles.detail} numberOfLines={1}>
+                          {Strings.bookingId}: {cabDetails.bookingId}
+                        </FText>
+                      )}
+                    </View>
+
                     <FText
                       numberOfLines={1}
                       style={[
-                        Styles.marginBottom_8,
+                        Styles.marginBottom_12,
                         Styles.fontSize_12,
                         Styles.color_grey,
                       ]}>
-                      {Strings.vehicle}{' '}
-                      {bookingDetails.vehicleDetails.length > 1 && index + 1}{' '}
-                      {Strings.details}
+                      {Strings.driverDetails}
                     </FText>
-
-                    <FText style={Styles.heading} numberOfLines={1}>
-                      {cabDetails?.vehicleName ?? Strings.carNa}
-                    </FText>
-                    {cabDetails?.vehicleNumber && (
-                      <FText style={Styles.detail} numberOfLines={1}>
-                        {cabDetails.vehicleNumber}
-                      </FText>
+                    {cabDetails?.driverName && (
+                      <DetailRow
+                        dataIcon={
+                          <Icon.Person width={DP._16} height={DP._16} />
+                        }
+                        rightData={cabDetails.driverName}
+                        leftDefaultData={Strings.name}
+                        // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
+                      />
                     )}
-                    {cabDetails?.bookingId && (
-                      <FText style={Styles.detail} numberOfLines={1}>
-                        {Strings.bookingId}: {cabDetails.bookingId}
-                      </FText>
+                    {cabDetails?.driverPhone && (
+                      <DetailRow
+                        dataIcon={
+                          <Icon.PhoneIcon width={DP._16} height={DP._16} />
+                        }
+                        rightData={cabDetails.driverPhone}
+                        leftDefaultData={Strings.phoneNo}
+                        // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
+                        rightDataStyle={Styles.color_blue}
+                        onClickRightData={onPhoneNumberClicked}
+                        style={cabDetails.driverName && Styles.marginTop_12}
+                      />
                     )}
                   </View>
-
-                  <FText
-                    numberOfLines={1}
-                    style={[
-                      Styles.marginBottom_12,
-                      Styles.fontSize_12,
-                      Styles.color_grey,
-                    ]}>
-                    {Strings.driverDetails}
-                  </FText>
-                  {cabDetails?.driverName && (
-                    <DetailRow
-                      dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
-                      rightData={cabDetails.driverName}
-                      leftDefaultData={Strings.name}
-                      // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
-                    />
-                  )}
-                  {cabDetails?.driverPhone && (
-                    <DetailRow
-                      dataIcon={
-                        <Icon.PhoneIcon width={DP._16} height={DP._16} />
-                      }
-                      rightData={cabDetails.driverPhone}
-                      leftDefaultData={Strings.phoneNo}
-                      // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
-                      rightDataStyle={Styles.color_blue}
-                      onClickRightData={onPhoneNumberClicked}
-                      style={cabDetails.driverName && Styles.marginTop_12}
-                    />
-                  )}
-                </View>
-              </>
-            ))}
-        </FTouchableOpacity>
-        {!actionDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+                </>
+              ))}
+          </FTouchableOpacity>
+          {!actionDisabled &&
+            (rescheduleAction || cancelAction || viewRemarksAction) && (
+              <ActionsInItinerary />
+            )}
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
