@@ -10,8 +10,43 @@ import TripStatus from '../tripStatus';
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
-import TravellerSeat from '../../../common/components/travellerSeat';
+
 import {getStatusObject} from '../../../utils/Utils';
+
+const DetialRow = ({
+  dataIcon,
+  leftData,
+  rightData,
+  leftDefaultData,
+  rightDefaultData,
+  style,
+  rightDataStyle,
+  leftDataStyle,
+  onClickRightData,
+  onClickLeftData,
+}) => {
+  return (
+    <View style={[Styles.flexDirectionRow, style]}>
+      <FTouchableOpacity
+        style={[Styles.flexRow, Styles.width_48]}
+        onPress={onClickLeftData}>
+        {dataIcon}
+        <FText
+          style={[Styles.detailLableStyle, leftDataStyle]}
+          numberOfLines={1}>
+          {leftData ?? leftDefaultData}
+        </FText>
+      </FTouchableOpacity>
+      <FTouchableOpacity onPress={onClickRightData} style={Styles.width_48}>
+        <FText
+          style={[Styles.fontSize_12, Styles.textAlign_right, rightDataStyle]}
+          numberOfLines={1}>
+          {rightData ?? rightDefaultData}
+        </FText>
+      </FTouchableOpacity>
+    </View>
+  );
+};
 
 const BusDetailCard = ({
   onActionPress,
@@ -90,13 +125,9 @@ const BusDetailCard = ({
           <View style={[Styles.marginTop_12]}>
             <View style={[Styles.flexDirectionRow]}>
               <FText
-                style={[
-                  Styles.portName,
-                  Styles.width_40,
-                  Styles.textAlign_left,
-                ]}
+                style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
                 numberOfLines={1}>
-                {bookingDetails.source}
+                {bookingDetails.departureTime}
               </FText>
               <FText
                 style={[
@@ -108,12 +139,12 @@ const BusDetailCard = ({
               </FText>
               <FText
                 style={[
-                  Styles.portName,
+                  Styles.heading,
                   Styles.width_40,
                   Styles.textAlign_right,
                 ]}
                 numberOfLines={1}>
-                {bookingDetails.destination}
+                {bookingDetails.arrivalTime}
               </FText>
             </View>
             <View style={[Styles.flexDirectionRow]}>
@@ -121,29 +152,27 @@ const BusDetailCard = ({
                 {(bookingDetails?.sourceLocality ||
                   bookingDetails?.destinationLocality) && (
                   <FText
-                    style={[Styles.time, Styles.textAlign_left]}
+                    style={[Styles.detail, Styles.textAlign_left]}
                     numberOfLines={1}>
                     {bookingDetails.sourceLocality}
                   </FText>
                 )}
-                {(bookingDetails?.departureTime ||
-                  bookingDetails?.arrivalTime) && (
-                  <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.departureTime}
+                {(bookingDetails?.source || bookingDetails?.destination) && (
+                  <FText style={Styles.detail} numberOfLines={1}>
+                    {bookingDetails.source}
                   </FText>
                 )}
               </View>
               <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
                 {(bookingDetails?.destinationLocality ||
                   bookingDetails?.sourceLocality) && (
-                  <FText style={Styles.time} numberOfLines={1}>
+                  <FText style={Styles.detail} numberOfLines={1}>
                     {bookingDetails.destinationLocality}
                   </FText>
                 )}
-                {(bookingDetails?.arrivalTime ||
-                  bookingDetails?.departureTime) && (
-                  <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.arrivalTime}
+                {(bookingDetails?.source || bookingDetails?.destination) && (
+                  <FText style={Styles.detail} numberOfLines={1}>
+                    {bookingDetails.destination}
                   </FText>
                 )}
               </View>
@@ -151,26 +180,34 @@ const BusDetailCard = ({
           </View>
 
           <View style={Styles.marginTop_12}>
-            <FText style={Styles.portName} numberOfLines={1}>
+            <FText style={Styles.heading} numberOfLines={1}>
               {bookingDetails?.busName ?? Strings.busNa}
             </FText>
             {(bookingDetails.busNumber || bookingDetails.pnr) && (
               <View style={[Styles.flexDirectionRow]}>
                 <FText
-                  style={[Styles.time, Styles.textAlign_left, Styles.width_40]}
+                  style={[
+                    Styles.detail,
+                    Styles.textAlign_left,
+                    Styles.width_40,
+                  ]}
                   numberOfLines={1}>
                   {bookingDetails.busNumber}
                 </FText>
 
                 <FText
-                  style={[Styles.time, Styles.textAlign_right, Styles.width_40]}
+                  style={[
+                    Styles.detail,
+                    Styles.textAlign_right,
+                    Styles.width_40,
+                  ]}
                   numberOfLines={1}>
                   {Strings.pnr}: {bookingDetails.pnr}
                 </FText>
               </View>
             )}
             {bookingDetails?.busType && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.busType}
               </FText>
             )}
@@ -190,7 +227,7 @@ const BusDetailCard = ({
                   {Strings.travelersDetails}
                 </FText>
                 {bookingDetails.travellersDetails.map((detail, index) => (
-                  <TravellerSeat
+                  <DetialRow
                     dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
                     rightData={detail.seatNo}
                     leftData={detail.travellerName}
@@ -216,7 +253,7 @@ const BusDetailCard = ({
                   {Strings.coordinatorDetails}
                 </FText>
                 {bookingDetails?.CoordinatorName && (
-                  <TravellerSeat
+                  <DetialRow
                     dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
                     rightData={bookingDetails.CoordinatorName}
                     leftDefaultData={Strings.name}
@@ -224,7 +261,7 @@ const BusDetailCard = ({
                   />
                 )}
                 {bookingDetails?.CoordinatorNo && (
-                  <TravellerSeat
+                  <DetialRow
                     dataIcon={<Icon.PhoneIcon width={DP._16} height={DP._16} />}
                     rightData={bookingDetails.CoordinatorNo}
                     leftDefaultData={Strings.phoneNo}

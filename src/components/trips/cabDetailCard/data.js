@@ -10,12 +10,12 @@ const busDetailCardProps = {
   bookingDetails: {
     date: '22',
     month: 'Nov',
-    source: 'Mumbai klsdjfldskfjlsdfjlsdfj',
-    destination: 'Lonavalafl dfkdsjflsdjflksdjflskdfj',
-    sourceLocality: 'Mumbai Airport lkdjfsdjfldksjflsdkfj',
-    destinationLocality: 'Tungarli road flkdsjflsdkjflsdkfjlsdfj',
-    departureTime: '18:30 fldfla;kdjfa;dklfja;lkdjfas;lfkdj',
-    arrivalTime: '22:30 flsakjf;aslkfdja;lkdfjakdlfja;lkfdja;lsdfkj;;;;;',
+    source: 'Mumbai',
+    destination: 'Lonavala',
+    sourceLocality: 'Mumbai Airport',
+    destinationLocality: 'Tungarli road',
+    departureTime: '18:30',
+    arrivalTime: '22:30',
     estimateDuration: '1h 50min',
     vehicleDetails: [
       {

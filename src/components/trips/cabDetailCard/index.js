@@ -10,8 +10,42 @@ import TripStatus from '../tripStatus';
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
-import TravellerSeat from '../../../common/components/travellerSeat';
 import {getStatusObject} from '../../../utils/Utils';
+
+const DetailRow = ({
+  dataIcon,
+  leftData,
+  rightData,
+  leftDefaultData,
+  rightDefaultData,
+  style,
+  rightDataStyle,
+  leftDataStyle,
+  onClickRightData,
+  onClickLeftData,
+}) => {
+  return (
+    <View style={[Styles.flexDirectionRow, style]}>
+      <FTouchableOpacity
+        style={[Styles.flexRow, Styles.width_48]}
+        onPress={onClickLeftData}>
+        {dataIcon}
+        <FText
+          style={[Styles.detailLableStyle, leftDataStyle]}
+          numberOfLines={1}>
+          {leftData ?? leftDefaultData}
+        </FText>
+      </FTouchableOpacity>
+      <FTouchableOpacity onPress={onClickRightData} style={Styles.width_48}>
+        <FText
+          style={[Styles.fontSize_12, Styles.textAlign_right, rightDataStyle]}
+          numberOfLines={1}>
+          {rightData ?? rightDefaultData}
+        </FText>
+      </FTouchableOpacity>
+    </View>
+  );
+};
 
 const CabDetailCard = ({
   onActionPress,
@@ -90,13 +124,9 @@ const CabDetailCard = ({
           <View style={[Styles.marginTop_12]}>
             <View style={[Styles.flexDirectionRow]}>
               <FText
-                style={[
-                  Styles.portName,
-                  Styles.width_40,
-                  Styles.textAlign_left,
-                ]}
+                style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
                 numberOfLines={1}>
-                {bookingDetails.sourceLocality}
+                {bookingDetails.departureTime}
               </FText>
               <FText
                 style={[
@@ -108,40 +138,40 @@ const CabDetailCard = ({
               </FText>
               <FText
                 style={[
-                  Styles.portName,
+                  Styles.heading,
                   Styles.width_40,
                   Styles.textAlign_right,
                 ]}
                 numberOfLines={1}>
-                {bookingDetails.destinationLocality}
+                {bookingDetails.arrivalTime}
               </FText>
             </View>
             <View style={[Styles.flexDirectionRow]}>
               <View style={Styles.width_40}>
+                {(bookingDetails?.sourceLocality ||
+                  bookingDetails?.destinationLocality) && (
+                  <FText style={Styles.detail} numberOfLines={1}>
+                    {bookingDetails.sourceLocality}
+                  </FText>
+                )}
                 {(bookingDetails?.source || bookingDetails?.destination) && (
                   <FText
-                    style={[Styles.time, Styles.textAlign_left]}
+                    style={[Styles.detail, Styles.textAlign_left]}
                     numberOfLines={1}>
                     {bookingDetails.source}
                   </FText>
                 )}
-                {(bookingDetails?.departureTime ||
-                  bookingDetails?.arrivalTime) && (
-                  <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.departureTime}
-                  </FText>
-                )}
               </View>
               <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-                {(bookingDetails?.destination || bookingDetails?.source) && (
-                  <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.destination}
+                {(bookingDetails?.sourceLocality ||
+                  bookingDetails?.destinationLocality) && (
+                  <FText style={Styles.detail} numberOfLines={1}>
+                    {bookingDetails.destinationLocality}
                   </FText>
                 )}
-                {(bookingDetails?.arrivalTime ||
-                  bookingDetails?.departureTime) && (
-                  <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.arrivalTime}
+                {(bookingDetails?.destination || bookingDetails?.source) && (
+                  <FText style={Styles.detail} numberOfLines={1}>
+                    {bookingDetails.destination}
                   </FText>
                 )}
               </View>
@@ -166,16 +196,16 @@ const CabDetailCard = ({
                       {Strings.details}
                     </FText>
 
-                    <FText style={Styles.portName} numberOfLines={1}>
+                    <FText style={Styles.heading} numberOfLines={1}>
                       {cabDetails?.vehicleName ?? Strings.carNa}
                     </FText>
                     {cabDetails?.vehicleNumber && (
-                      <FText style={Styles.time} numberOfLines={1}>
+                      <FText style={Styles.detail} numberOfLines={1}>
                         {cabDetails.vehicleNumber}
                       </FText>
                     )}
                     {cabDetails?.bookingId && (
-                      <FText style={Styles.time} numberOfLines={1}>
+                      <FText style={Styles.detail} numberOfLines={1}>
                         {Strings.bookingId}: {cabDetails.bookingId}
                       </FText>
                     )}
@@ -191,7 +221,7 @@ const CabDetailCard = ({
                     {Strings.driverDetails}
                   </FText>
                   {cabDetails?.driverName && (
-                    <TravellerSeat
+                    <DetailRow
                       dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
                       rightData={cabDetails.driverName}
                       leftDefaultData={Strings.name}
@@ -199,7 +229,7 @@ const CabDetailCard = ({
                     />
                   )}
                   {cabDetails?.driverPhone && (
-                    <TravellerSeat
+                    <DetailRow
                       dataIcon={
                         <Icon.PhoneIcon width={DP._16} height={DP._16} />
                       }

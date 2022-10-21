@@ -10,8 +10,42 @@ import TripStatus from '../tripStatus';
 import {BusSubtripActions} from '../../../utils/SubTripActions';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
-import TravellerSeat from '../../../common/components/travellerSeat';
 import {getStatusObject} from '../../../utils/Utils';
+
+const DetailRow = ({
+  dataIcon,
+  leftData,
+  rightData,
+  leftDefaultData,
+  rightDefaultData,
+  style,
+  rightDataStyle,
+  leftDataStyle,
+  onClickRightData,
+  onClickLeftData,
+}) => {
+  return (
+    <View style={[Styles.flexDirectionRow, style]}>
+      <FTouchableOpacity
+        style={[Styles.flexRow, Styles.width_48]}
+        onPress={onClickLeftData}>
+        {dataIcon}
+        <FText
+          style={[Styles.detailLableStyle, leftDataStyle]}
+          numberOfLines={1}>
+          {leftData ?? leftDefaultData}
+        </FText>
+      </FTouchableOpacity>
+      <FTouchableOpacity onPress={onClickRightData} style={Styles.width_48}>
+        <FText
+          style={[Styles.fontSize_12, Styles.textAlign_right, rightDataStyle]}
+          numberOfLines={1}>
+          {rightData ?? rightDefaultData}
+        </FText>
+      </FTouchableOpacity>
+    </View>
+  );
+};
 
 const TrainDetailCard = ({
   onActionPress,
@@ -89,13 +123,9 @@ const TrainDetailCard = ({
           <View style={[Styles.marginTop_12]}>
             <View style={[Styles.flexDirectionRow]}>
               <FText
-                style={[
-                  Styles.portName,
-                  Styles.width_40,
-                  Styles.textAlign_left,
-                ]}
+                style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
                 numberOfLines={1}>
-                {bookingDetails.sourceStationCode}
+                {bookingDetails.departureTime}
               </FText>
               <FText
                 style={[
@@ -107,51 +137,51 @@ const TrainDetailCard = ({
               </FText>
               <FText
                 style={[
-                  Styles.portName,
+                  Styles.heading,
                   Styles.width_40,
                   Styles.textAlign_right,
                 ]}
                 numberOfLines={1}>
-                {bookingDetails.destinationStationCode}
+                {bookingDetails.arrivalTime}
               </FText>
             </View>
             <View style={[Styles.flexDirectionRow]}>
               <View style={Styles.width_40}>
+                {(bookingDetails?.departureTime ||
+                  bookingDetails?.arrivalTime) && (
+                  <FText style={Styles.detail} numberOfLines={1}>
+                    {bookingDetails.sourceStationCode}
+                  </FText>
+                )}
                 {(bookingDetails?.source || bookingDetails?.destination) && (
                   <FText
-                    style={[Styles.time, Styles.textAlign_left]}
+                    style={[Styles.detail, Styles.textAlign_left]}
                     numberOfLines={1}>
                     {bookingDetails.source}
                   </FText>
                 )}
-                {(bookingDetails?.departureTime ||
-                  bookingDetails?.arrivalTime) && (
-                  <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.departureTime}
-                  </FText>
-                )}
                 {(bookingDetails?.departurePlatform ||
                   bookingDetails?.arrivalPlatform) && (
-                  <FText style={Styles.time} numberOfLines={1}>
+                  <FText style={Styles.detail} numberOfLines={1}>
                     {Strings.platform} {bookingDetails.departurePlatform}
                   </FText>
                 )}
               </View>
               <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-                {(bookingDetails?.destination) && (
-                  <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.destination}
-                  </FText>
-                )}
                 {(bookingDetails?.arrivalTime ||
                   bookingDetails?.departureTime) && (
-                  <FText style={Styles.time} numberOfLines={1}>
-                    {bookingDetails.arrivalTime}
+                  <FText style={Styles.detail} numberOfLines={1}>
+                    {bookingDetails.destinationStationCode}
+                  </FText>
+                )}
+                {bookingDetails?.destination && (
+                  <FText style={Styles.detail} numberOfLines={1}>
+                    {bookingDetails.destination}
                   </FText>
                 )}
                 {(bookingDetails?.departurePlatform ||
                   bookingDetails?.arrivalPlatform) && (
-                  <FText style={Styles.time} numberOfLines={1}>
+                  <FText style={Styles.detail} numberOfLines={1}>
                     {Strings.platform} {bookingDetails.arrivalPlatform}
                   </FText>
                 )}
@@ -160,16 +190,16 @@ const TrainDetailCard = ({
           </View>
 
           <View style={Styles.marginTop_12}>
-            <FText style={Styles.portName} numberOfLines={1}>
+            <FText style={Styles.heading} numberOfLines={1}>
               {bookingDetails?.trainName ?? Strings.trainNa}
             </FText>
             {bookingDetails?.pnr && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {Strings.pnr}: {bookingDetails.pnr}
               </FText>
             )}
             {bookingDetails?.trainClass && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.trainClass}
               </FText>
             )}
@@ -189,7 +219,7 @@ const TrainDetailCard = ({
                   {Strings.travelersDetails}
                 </FText>
                 {bookingDetails.travellersDetails.map((detail, index) => (
-                  <TravellerSeat
+                  <DetailRow
                     dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
                     rightData={`${detail.coach}, ${detail.birth}`}
                     leftData={detail.travellerName}

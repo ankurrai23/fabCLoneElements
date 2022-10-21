@@ -12,16 +12,15 @@ const trainDetailCardProps = {
     source: 'Mumbai',
     destinationStationCode: 'TVC',
     destination: 'Thiruvanthapuram',
-    departureTime: '21:00, Tue, 22 Nov',
-    arrivalTime: '09:00, Wed, 23 Nov',
+    departureTime: '21:00',
+    arrivalTime: '09:00',
     departurePlatform: '01',
     arrivalPlatform: '03',
     estimateDuration: '1h 50min',
-    trainName:
-      'Mumbai - Madras Superfast Express dkfjdlsflskfjldskfjlskfjsdlkjf',
-    pnr: '256-99589lskjfldsjfldskfjlsdkfjlsdkfjsldfjslsdkfjlsdkfjlsdkfjlsdkfj',
-    trainClass: 'AC 3 Tier Sleeper flasfjldsfjlasdkjflasdkjflasdkfjlsadkfj',
-    berth: '42, Side upperlfsdjlfksjlfksdjlfksjlfksdjflksdjflsdkfjlsdkfj',
+    trainName: '22928, Mumbai-Madras Superfast Express',
+    pnr: '256-99589',
+    trainClass: 'AC 3 Tier Sleeper ',
+    berth: '42, Side upper',
     travellersDetails: [
       {
         travellerName: 'Sahil Malhan',
