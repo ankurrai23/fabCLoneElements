@@ -47,9 +47,9 @@ import HotelPreferenceLoadingState from './components/trips/hotelPreferenceLoadi
 import HotelDetailLoadingState from './components/trips/hotelDetailLoadingState';
 import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoadingState';
 import FlightDetailCard from './components/trips/flightDetailCard';
-import BusDetailCard from './components/trips/busDetailCard';
-import TrainDetailCard from './components/trips/trainDetailCard';
-import CabDetailCard from './components/trips/cabDetailCard';
+import BusDetailCard from './components/trips/detailCards/busDetailCard';
+import TrainDetailCard from './components/trips/detailCards/trainDetailCard';
+import CabDetailCard from './components/trips/detailCards/cabDetailCard';
 
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';

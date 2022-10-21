@@ -1,19 +1,18 @@
 import React from 'react';
-import {View, Linking} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import {View} from 'react-native';
+import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import Separator from '../../../common/components/separator';
-import TripStatus from '../tripStatus';
-import {BusSubtripActions} from '../../../utils/SubTripActions';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
+import Separator from '../../../../common/components/separator';
+import TripStatus from '../../tripStatus';
+import {BusSubtripActions} from '../../../../utils/SubTripActions';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
-import {getStatusObject} from '../../../utils/Utils';
-
-const DetialRow = ({
+const DetailRow = ({
   dataIcon,
   leftData,
   rightData,
@@ -48,7 +47,7 @@ const DetialRow = ({
   );
 };
 
-const BusDetailCard = ({
+const CabDetailCard = ({
   onActionPress,
   onCardPress,
   style,
@@ -115,9 +114,9 @@ const BusDetailCard = ({
                   fontSize: DP._12,
                 }}>{` ${bookingDetails.month}`}</FText>
             </FText>
-            {!!bookingDetails.busBookingStatus && (
+            {!!bookingDetails.cabBookingStatus && (
               <TripStatus
-                statusObj={getStatusObject(bookingDetails.busBookingStatus)}
+                statusObj={getStatusObject(bookingDetails.cabBookingStatus)}
               />
             )}
           </View>
@@ -151,26 +150,26 @@ const BusDetailCard = ({
               <View style={Styles.width_40}>
                 {(bookingDetails?.sourceLocality ||
                   bookingDetails?.destinationLocality) && (
-                  <FText
-                    style={[Styles.detail, Styles.textAlign_left]}
-                    numberOfLines={1}>
+                  <FText style={Styles.detail} numberOfLines={1}>
                     {bookingDetails.sourceLocality}
                   </FText>
                 )}
                 {(bookingDetails?.source || bookingDetails?.destination) && (
-                  <FText style={Styles.detail} numberOfLines={1}>
+                  <FText
+                    style={[Styles.detail, Styles.textAlign_left]}
+                    numberOfLines={1}>
                     {bookingDetails.source}
                   </FText>
                 )}
               </View>
               <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-                {(bookingDetails?.destinationLocality ||
-                  bookingDetails?.sourceLocality) && (
+                {(bookingDetails?.sourceLocality ||
+                  bookingDetails?.destinationLocality) && (
                   <FText style={Styles.detail} numberOfLines={1}>
                     {bookingDetails.destinationLocality}
                   </FText>
                 )}
-                {(bookingDetails?.source || bookingDetails?.destination) && (
+                {(bookingDetails?.destination || bookingDetails?.source) && (
                   <FText style={Styles.detail} numberOfLines={1}>
                     {bookingDetails.destination}
                   </FText>
@@ -178,104 +177,73 @@ const BusDetailCard = ({
               </View>
             </View>
           </View>
-
-          <View style={Styles.marginTop_12}>
-            <FText style={Styles.heading} numberOfLines={1}>
-              {bookingDetails?.busName ?? Strings.busNa}
-            </FText>
-            {(bookingDetails.busNumber || bookingDetails.pnr) && (
-              <View style={[Styles.flexDirectionRow]}>
-                <FText
-                  style={[
-                    Styles.detail,
-                    Styles.textAlign_left,
-                    Styles.width_40,
-                  ]}
-                  numberOfLines={1}>
-                  {bookingDetails.busNumber}
-                </FText>
-
-                <FText
-                  style={[
-                    Styles.detail,
-                    Styles.textAlign_right,
-                    Styles.width_40,
-                  ]}
-                  numberOfLines={1}>
-                  {Strings.pnr}: {bookingDetails.pnr}
-                </FText>
-              </View>
-            )}
-            {bookingDetails?.busType && (
-              <FText style={Styles.detail} numberOfLines={1}>
-                {bookingDetails.busType}
-              </FText>
-            )}
-          </View>
-          {bookingDetails.travellersDetails &&
-            bookingDetails.travellersDetails.length > 0 && (
+          {bookingDetails.vehicleDetails &&
+            bookingDetails.vehicleDetails.length > 0 &&
+            bookingDetails.vehicleDetails.map((cabDetails, index) => (
               <>
                 <Separator style={Styles.sepratorStyle} />
+                <View style={Styles.marginTop_12}>
+                  <View style={Styles.marginBottom_16}>
+                    <FText
+                      numberOfLines={1}
+                      style={[
+                        Styles.marginBottom_8,
+                        Styles.fontSize_12,
+                        Styles.color_grey,
+                      ]}>
+                      {Strings.vehicle}{' '}
+                      {bookingDetails.vehicleDetails.length > 1 && index + 1}{' '}
+                      {Strings.details}
+                    </FText>
 
-                <FText
-                  numberOfLines={1}
-                  style={[
-                    Styles.marginTop_12,
-                    Styles.fontSize_12,
-                    Styles.color_grey,
-                  ]}>
-                  {Strings.travelersDetails}
-                </FText>
-                {bookingDetails.travellersDetails.map((detail, index) => (
-                  <DetialRow
-                    dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
-                    rightData={detail.seatNo}
-                    leftData={detail.travellerName}
-                    style={
-                      index === 0 ? Styles.marginTop_12 : Styles.marginTop_8
-                    }
-                  />
-                ))}
+                    <FText style={Styles.heading} numberOfLines={1}>
+                      {cabDetails?.vehicleName ?? Strings.carNa}
+                    </FText>
+                    {cabDetails?.vehicleNumber && (
+                      <FText style={Styles.detail} numberOfLines={1}>
+                        {cabDetails.vehicleNumber}
+                      </FText>
+                    )}
+                    {cabDetails?.bookingId && (
+                      <FText style={Styles.detail} numberOfLines={1}>
+                        {Strings.bookingId}: {cabDetails.bookingId}
+                      </FText>
+                    )}
+                  </View>
+
+                  <FText
+                    numberOfLines={1}
+                    style={[
+                      Styles.marginBottom_12,
+                      Styles.fontSize_12,
+                      Styles.color_grey,
+                    ]}>
+                    {Strings.driverDetails}
+                  </FText>
+                  {cabDetails?.driverName && (
+                    <DetailRow
+                      dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
+                      rightData={cabDetails.driverName}
+                      leftDefaultData={Strings.name}
+                      // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
+                    />
+                  )}
+                  {cabDetails?.driverPhone && (
+                    <DetailRow
+                      dataIcon={
+                        <Icon.PhoneIcon width={DP._16} height={DP._16} />
+                      }
+                      rightData={cabDetails.driverPhone}
+                      leftDefaultData={Strings.phoneNo}
+                      // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
+                      rightDataStyle={Styles.color_blue}
+                      onClickRightData={onPhoneNumberClicked}
+                      style={cabDetails.driverName && Styles.marginTop_12}
+                    />
+                  )}
+                </View>
               </>
-            )}
-          {(bookingDetails?.CoordinatorNo ||
-            bookingDetails?.CoordinatorName) && (
-            <>
-              <Separator style={Styles.sepratorStyle} />
-              <View style={Styles.marginTop_12}>
-                <FText
-                  numberOfLines={1}
-                  style={[
-                    Styles.marginBottom_12,
-                    Styles.fontSize_12,
-                    Styles.color_grey,
-                  ]}>
-                  {Strings.coordinatorDetails}
-                </FText>
-                {bookingDetails?.CoordinatorName && (
-                  <DetialRow
-                    dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
-                    rightData={bookingDetails.CoordinatorName}
-                    leftDefaultData={Strings.name}
-                    // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
-                  />
-                )}
-                {bookingDetails?.CoordinatorNo && (
-                  <DetialRow
-                    dataIcon={<Icon.PhoneIcon width={DP._16} height={DP._16} />}
-                    rightData={bookingDetails.CoordinatorNo}
-                    leftDefaultData={Strings.phoneNo}
-                    // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
-                    rightDataStyle={Styles.color_blue}
-                    onClickRightData={onPhoneNumberClicked}
-                    style={
-                      bookingDetails.CoordinatorName && Styles.marginTop_12
-                    }
-                  />
-                )}
-              </View>
-            </>
-          )}
+            ))}
         </FTouchableOpacity>
         {!actionDisabled &&
           (rescheduleAction || cancelAction || viewRemarksAction) && (
@@ -286,4 +254,4 @@ const BusDetailCard = ({
   );
 };
 
-export default BusDetailCard;
+export default CabDetailCard;

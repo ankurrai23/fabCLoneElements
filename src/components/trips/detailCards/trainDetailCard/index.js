@@ -1,16 +1,16 @@
 import React from 'react';
 import {View} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import Separator from '../../../common/components/separator';
-import TripStatus from '../tripStatus';
-import {BusSubtripActions} from '../../../utils/SubTripActions';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
-import {getStatusObject} from '../../../utils/Utils';
+import Separator from '../../../../common/components/separator';
+import TripStatus from '../../tripStatus';
+import {BusSubtripActions} from '../../../../utils/SubTripActions';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
 const DetailRow = ({
   dataIcon,

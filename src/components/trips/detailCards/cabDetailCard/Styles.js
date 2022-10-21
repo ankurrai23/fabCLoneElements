@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import {cardStyleObj, shadowObj} from '../../../utils/Utils';
+import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
@@ -36,9 +36,6 @@ export default StyleSheet.create({
   flowRow: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  airplane: {
-    transform: [{rotate: '90deg'}],
   },
   heading: {
     color: Color.DARK,
@@ -132,9 +129,6 @@ export default StyleSheet.create({
   fontSize_12: {
     fontSize: DP._12,
   },
-  color_grey: {
-    color: Color.GREY_PURPLE,
-  },
   detailLableStyle: {
     marginLeft: DP._10,
     fontSize: DP._12,
@@ -152,6 +146,15 @@ export default StyleSheet.create({
   },
   marginTop_8: {
     marginTop: DP._8,
+  },
+  color_grey: {
+    color: Color.GREY_PURPLE,
+  },
+  marginBottom_8: {
+    marginBottom: DP._8,
+  },
+  marginBottom_16: {
+    marginBottom: DP._16,
   },
   actionsSeperator: {
     marginHorizontal: DP._16,

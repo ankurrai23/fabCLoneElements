@@ -1,4 +1,4 @@
-import {BusSubtripActions} from '../../../utils/SubTripActions';
+import {BusSubtripActions} from '../../../../utils/SubTripActions';
 
 const busDetailCardProps = {
   status: {
