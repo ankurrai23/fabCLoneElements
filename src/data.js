@@ -28,7 +28,7 @@ import receivedTripCardProps from './components/trips/receivedTripCard/data';
 import hotelPreferenceCardProps from './components/trips/hotelPreferenceCard/data';
 import managerActionsProps from './components/trips/managerActions/data';
 import coTravellersProps from './components/trips/coTravellers/data';
-import flightDetailCardProps from './components/trips/flightDetailCard/data';
+import flightDetailCardProps from './components/trips/detailCards/flightDetailCard/data';
 import busDetailCardProps from './components/trips/detailCards/busDetailCard/data';
 import cabDetailCardProps from './components/trips/detailCards/cabDetailCard/data';
 import trainDetailCardProps from './components/trips/detailCards/trainDetailCard/data';

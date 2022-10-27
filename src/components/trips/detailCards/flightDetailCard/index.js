@@ -1,18 +1,19 @@
 import React from 'react';
 import {View} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import {DP} from '../../../../utils/Dimen';
+// import {Color} from '../../../utils/color';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import Separator from '../../../common/components/separator';
-import TripStatus from '../tripStatus';
-import {FlightSubTripActions} from '../../../utils/SubTripActions';
-import ModificationAlertBox from '../components/modificationAlertBox';
-import {getStatusObject} from '../hotelDetailCard';
-import ContactSupport from '../../../common/components/contactSupport';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
+import Separator from '../../../../common/components/separator';
+import TripStatus from '../../tripStatus';
+import {FlightSubTripActions} from '../../../../utils/SubTripActions';
+import ModificationAlertBox from '../../components/modificationAlertBox';
+import {getStatusObject} from '../../hotelDetailCard';
+import ContactSupport from '../../../../common/components/contactSupport';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import Icon from '../../../../assets/icons/Icon';
 
 const FlightDetailCard = ({
   title,
