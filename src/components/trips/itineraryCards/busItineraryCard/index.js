@@ -1,17 +1,17 @@
 import React from 'react';
 import {View} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import DashedLine from '../../../common/components/dashedLine';
-import Separator from '../../../common/components/separator';
-import InfoBox from '../components/infoBox';
-import TripStatus from '../tripStatus';
-import {BusSubtripActions} from '../../../utils/SubTripActions';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
+import DashedLine from '../../../../common/components/dashedLine';
+import Separator from '../../../../common/components/separator';
+import InfoBox from '../../components/infoBox';
+import TripStatus from '../../tripStatus';
+import {BusSubtripActions} from '../../../../utils/SubTripActions';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import Icon from '../../../../assets/icons/Icon';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
@@ -41,7 +41,8 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.source}
           </FText>
-          {(tripRequest?.sourceLocality || tripRequest?.destinationLocality) && (
+          {(tripRequest?.sourceLocality ||
+            tripRequest?.destinationLocality) && (
             <FText style={Styles.time} numberOfLines={1}>
               {tripRequest.sourceLocality}
             </FText>
@@ -51,7 +52,8 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.portName} numberOfLines={1}>
             {tripRequest.destination}
           </FText>
-          {(tripRequest?.sourceLocality || tripRequest?.destinationLocality) && (
+          {(tripRequest?.sourceLocality ||
+            tripRequest?.destinationLocality) && (
             <FText style={Styles.time} numberOfLines={1}>
               {tripRequest.destinationLocality}
             </FText>

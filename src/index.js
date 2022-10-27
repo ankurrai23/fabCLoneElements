@@ -28,10 +28,10 @@ import FieldStates from './common/components/fieldStates';
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
 import HotelDetailCard from './components/trips/hotelDetailCard';
 import TripStatus from './components/trips/tripStatus';
-import FlightItineraryCard from './components/trips/flightItineraryCard';
-import BusItineraryCard from './components/trips/busItineraryCard';
-import CabItineraryCard from './components/trips/cabItineraryCard';
-import TrainItineraryCard from './components/trips/trainItineraryCard';
+import FlightItineraryCard from './components/trips/itineraryCards/flightItineraryCard';
+import BusItineraryCard from './components/trips/itineraryCards/busItineraryCard';
+import CabItineraryCard from './components/trips/itineraryCards/cabItineraryCard';
+import TrainItineraryCard from './components/trips/itineraryCards/trainItineraryCard';
 
 import HotelItineraryCard from './components/trips/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';

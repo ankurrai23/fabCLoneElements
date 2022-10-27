@@ -1,17 +1,17 @@
 import React from 'react';
 import {View} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import DashedLine from '../../../common/components/dashedLine';
-import Separator from '../../../common/components/separator';
-import InfoBox from '../components/infoBox';
-import TripStatus from '../tripStatus';
-import {CabSubtripActions} from '../../../utils/SubTripActions';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
+import DashedLine from '../../../../common/components/dashedLine';
+import Separator from '../../../../common/components/separator';
+import InfoBox from '../../components/infoBox';
+import TripStatus from '../../tripStatus';
+import {BusSubtripActions} from '../../../../utils/SubTripActions';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import Icon from '../../../../assets/icons/Icon';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
@@ -30,30 +30,43 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
         {showStatus ? (
           <TripStatus statusObj={status} />
         ) : (
-          tripRequest?.pickupTime && (
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
-              {Strings.pickupTime} {tripRequest.pickupTime}
-            </FText>
-          )
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
+            {tripRequest.slotDetail}
+          </FText>
         )}
       </View>
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
         <View style={Styles.width_48}>
           <FText style={Styles.portName} numberOfLines={1}>
-            {tripRequest.source}
+            {tripRequest?.sourceStationCode}
           </FText>
-          <FText style={Styles.time} numberOfLines={1}>
-            {tripRequest.sourceLocality}
-          </FText>
+
+          {(tripRequest?.destination || tripRequest?.source) && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.source}
+            </FText>
+          )}
+          {(tripRequest?.arrivalDate || tripRequest?.departureDate) && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.departureDate}
+            </FText>
+          )}
         </View>
         <View style={[Styles.alignItem_flexEnd, Styles.width_48]}>
           <FText style={Styles.portName} numberOfLines={1}>
-            {tripRequest.destination}
+            {tripRequest?.destinationStationCode}
           </FText>
-          <FText style={Styles.time} numberOfLines={1}>
-            {tripRequest.destinationLocality}
-          </FText>
+          {(tripRequest?.destination || tripRequest?.source) && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.destination}
+            </FText>
+          )}
+          {(tripRequest.arrivalDate || tripRequest.departureDate) && (
+            <FText style={Styles.time} numberOfLines={1}>
+              {tripRequest.arrivalDate}
+            </FText>
+          )}
         </View>
       </View>
     </FTouchableOpacity>
@@ -100,89 +113,77 @@ const PostBookingCard = ({
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
-            {bookingDetails.sourceLocality}
+            {bookingDetails.sourceStationCode}
           </FText>
           <FText
-            style={[Styles.duration, Styles.width_20, Styles.textAlign_center]}>
+            style={[
+              Styles.duration,
+              Styles.width_20,
+              Styles.textAlign_center,
+              Styles.selfAlign_center,
+            ]}>
             {bookingDetails.estimateDuration}
           </FText>
           <FText
             style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
-            {bookingDetails.destinationLocality}
+            {bookingDetails.destinationStationCode}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
-          <View style={[Styles.width_40, Styles.textAlign_left]}>
-            {(bookingDetails?.sourceLocality ||
-              bookingDetails?.destinationLocality) && (
-              <FText style={Styles.time} numberOfLines={1}>
-                {bookingDetails.source}
-              </FText>
-            )}
-            {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
+          <View style={Styles.width_40}>
+            <FText style={Styles.time} numberOfLines={1}>
+              {bookingDetails.source}
+            </FText>
+            {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
               <FText style={Styles.time} numberOfLines={1}>
                 {bookingDetails.departureTime}
               </FText>
             )}
-          </View>
-          <View
-            style={[
-              Styles.alignItem_flexEnd,
-              Styles.width_40,
-              Styles.textAlign_right,
-            ]}>
-            {(bookingDetails?.sourceLocality ||
-              bookingDetails?.destinationLocality) && (
+            {bookingDetails?.departurePlatform && (
               <FText style={Styles.time} numberOfLines={1}>
-                {bookingDetails.destination}
+                {Strings.platform}: {bookingDetails.departurePlatform}
               </FText>
             )}
-            {(bookingDetails?.arrivalTime || bookingDetails?.departureTime) && (
+          </View>
+          <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
+            <FText style={Styles.time} numberOfLines={1}>
+              {bookingDetails.destination}
+            </FText>
+            {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
               <FText style={Styles.time} numberOfLines={1}>
                 {bookingDetails.arrivalTime}
+              </FText>
+            )}
+            {bookingDetails?.arrivalPlatform && (
+              <FText style={Styles.time} numberOfLines={1}>
+                {Strings.platform}: {bookingDetails.arrivalPlatform}
               </FText>
             )}
           </View>
         </View>
       </View>
-      {bookingDetails.vehicleDetails &&
-        bookingDetails.vehicleDetails.length > 0 &&
-        bookingDetails.vehicleDetails.map((details, index) => (
-          <>
-            <Separator
-              style={{
-                backgroundColor: Color.LIGHT_PERIWINKLE,
-                marginTop: DP._12,
-              }}
-            />
-            <FText
-              numberOfLines={1}
-              style={[
-                Styles.marginTop_12,
-                Styles.fontSize_12,
-                Styles.color_grey,
-              ]}>
-              {Strings.vehicle} {bookingDetails.vehicleDetails.length > 1 && index + 1}{' '}
-              {Strings.details}
-            </FText>
-            <View style={Styles.marginTop_8}>
-              <FText style={Styles.portName} numberOfLines={1}>
-                {details?.vehicleName ?? Strings.carNa}
-              </FText>
-              {details?.vehicleNumber && (
-                <FText style={Styles.time} numberOfLines={1}>
-                  {details.vehicleNumber}
-                </FText>
-              )}
-            </View>
-          </>
-        ))}
+
+      <View style={Styles.marginTop_12}>
+        <FText style={Styles.portName} numberOfLines={1}>
+          {bookingDetails?.trainName ?? Strings.trainNa}
+        </FText>
+        {bookingDetails?.pnr && (
+          <FText style={Styles.time} numberOfLines={1}>
+            {Strings.pnr}: {bookingDetails.pnr}
+          </FText>
+        )}
+        {bookingDetails?.trainClass && (
+          <FText style={Styles.time} numberOfLines={1}>
+            {bookingDetails.trainClass}
+          </FText>
+        )}
+      </View>
     </FTouchableOpacity>
   );
 };
 
-const cabItineraryCard = ({
+const TrainItineraryCard = ({
   tripRequest,
   onActionPress,
   onCardPress,
@@ -202,19 +203,19 @@ const cabItineraryCard = ({
   console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
-  const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
+  const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
+  const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
+  const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
   const shortlistingAction = isActionEnabled(
-    CabSubtripActions.SHORTLIST_FLIGHT_TRIPS,
+    BusSubtripActions.SHORTLIST_FLIGHT_TRIPS,
   );
   const viewShortlistedFlightAction = isActionEnabled(
-    CabSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
+    BusSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
   );
 
   const ActionsInItinerary = () => (
     <>
-      <Separator style={Styles.actionsSeperator} />
+      <Separator style={Styles.actionsSeparator} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
@@ -254,13 +255,13 @@ const cabItineraryCard = ({
       <View>
         {!hideIcon &&
           (timelineGreyed ? (
-            <Icon.CabItineraryGreyed
+            <Icon.TrainItineraryGreyed
               width={DP._30}
               height={DP._30}
               style={Styles.icon}
             />
           ) : (
-            <Icon.CabItinerary
+            <Icon.TrainItinerary
               width={DP._30}
               height={DP._30}
               style={Styles.icon}
@@ -318,4 +319,4 @@ const cabItineraryCard = ({
   );
 };
 
-export default cabItineraryCard;
+export default TrainItineraryCard;

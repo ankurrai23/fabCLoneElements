@@ -1,4 +1,4 @@
-import {CabSubtripActions} from '../../../utils/SubTripActions';
+import {CabSubtripActions} from '../../../../utils/SubTripActions';
 
 const cabItineraryCardProps = {
   tripRequest: {
@@ -19,31 +19,25 @@ const cabItineraryCardProps = {
   bookingDetails: {
     date: '22',
     month: 'Nov',
-    source: 'Mumbai klsdjfldskfjlsdfjlsdfj',
-    destination: 'Lonavalafl dfkdsjflsdjflksdjflskdfj',
-    sourceLocality: 'Mumbai Airport lkdjfsdjfldksjflsdkfj',
-    destinationLocality: 'Tungarli road flkdsjflsdkjflsdkfjlsdfj',
-    departureTime: '18:30 fldfla;kdjfa;dklfja;lkdjfas;lfkdj',
-    arrivalTime: '22:30 flsakjf;aslkfdja;lkdfjakdlfja;lkfdja;lsdfkj;;;;;',
+    source: 'Mumbai',
+    destination: 'Lonavala',
+    sourceLocality: 'Mumbai Airport',
+    destinationLocality: 'Tungarli road',
+    departureTime: '18:30',
+    arrivalTime: '22:30',
     estimateDuration: '1h 50min',
     vehicleDetails: [
       {
-        vehicleName:
-          'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
-        vehicleNumber:
-          'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
+        vehicleName: 'White Hyundai Grand i10 Nios ',
+        vehicleNumber: 'MH 12A 2345 ',
       },
       {
-        vehicleName:
-          'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
-        vehicleNumber:
-          'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
+        vehicleName: 'White Hyundai Grand i10 Nios ',
+        vehicleNumber: 'MH 12A 2345 ',
       },
       {
-        vehicleName:
-          'White Hyundai Grand i10 Nios jfa;sdkfjadkfja;dkfjalskdfja;lsdkfjas;lkdfj',
-        vehicleNumber:
-          'MH 12A 2345 fdksflaskdjflsadkjflaskfjalsfjasdlfkja;lfkjasl;fkjaslfkja;lkfjas;lfjslkjafl;fjk',
+        vehicleName: 'White Hyundai Grand i10 Nios ',
+        vehicleNumber: 'MH 12A 2345 ',
       },
     ],
   },

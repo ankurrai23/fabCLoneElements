@@ -1,4 +1,4 @@
-import {TrainSubtripActions} from '../../../utils/SubTripActions';
+import {TrainSubtripActions} from '../../../../utils/SubTripActions';
 
 const TrainItineraryCardProps = {
   tripRequest: {
