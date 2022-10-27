@@ -40,12 +40,11 @@ export default StyleSheet.create({
   airplane: {
     transform: [{rotate: '90deg'}],
   },
-  //fixme port name?
-  portName: {
+  heading: {
     color: Color.DARK,
     fontSize: DP._14,
   },
-  time: {
+  details: {
     marginTop: DP._4,
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
@@ -91,10 +90,6 @@ export default StyleSheet.create({
     paddingBottom: DP._10,
   },
   flexRow: {flexDirection: 'row'},
-  justifyContent_around: (duration) => ({
-    justifyItem: duration ? 'space-around' : 'flex-start',
-    // alignItems: 'center',
-  }),
   flexRowAndAlignCenter: {flexDirection: 'row', alignItems: 'center'},
   primaryButtonStyle: {
     flexDirection: 'row',
@@ -114,17 +109,10 @@ export default StyleSheet.create({
   flex: {
     flex: 1,
   },
-  dot_two: {
-    padding: DP._3,
-    borderRadius: DP._4,
-    backgroundColor: Color.LIGHT_BLUEY_GREY,
-    marginHorizontal: DP._5,
-  },
   durationContainer: {
     flexDirection: 'row',
     flexGrow: 1,
     paddingTop: DP._2,
-    // alignItems: 'center',
   },
   width_40: {
     width: '40%',

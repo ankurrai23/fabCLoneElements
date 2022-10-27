@@ -19,15 +19,15 @@ const busItineraryCardProps = {
     month: 'Nov',
     source: 'Mumbai',
     destination: 'Lonavala',
-    sourceLocality: 'Mumbai Airport lsdfjlsfjlskdfjlsdfj ',
-    destinationLocality: 'Tungarli road akldfjlakdjflakdjflakj',
+    sourceLocality: 'Mumbai Airport',
+    destinationLocality: 'Tungarli road',
     departureTime: '18:30',
     arrivalTime: '22:30',
     estimateDuration: '1h 50min',
     busName: 'Dolphins Tour and Travels',
     busNumber: 'MH 12A 2345',
     busType: 'Sleeper',
-    seatNumber: 'L23flkasjdflaskdjflasdkjflasdkfjalsdkfjlasdkfjalksjdf',
+    seatNumber: 'L23',
   },
   actions: [
     {

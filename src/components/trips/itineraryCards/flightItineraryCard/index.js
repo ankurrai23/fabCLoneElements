@@ -186,13 +186,14 @@ const FlightItineraryCard = ({
         </View>
         <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
           <View style={Styles.flex}>
+            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+
             <FText style={Styles.portName} numberOfLines={1}>
               {bookingDetails.sourceAirportCode +
                 (bookingDetails.sourceAirportTerminal
                   ? ` - ${bookingDetails.sourceAirportTerminal}`
                   : '')}
             </FText>
-            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
           </View>
           <View
             style={[
@@ -214,23 +215,24 @@ const FlightItineraryCard = ({
             )}
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+
             <FText style={Styles.portName} numberOfLines={1}>
               {bookingDetails.destinationAirportCode +
                 (bookingDetails.destinationAirportTerminal
                   ? ` - ${bookingDetails.destinationAirportTerminal}`
                   : '')}
             </FText>
-            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
           </View>
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
           <View>
-            <FText style={Styles.portName}>{bookingDetails.airline}</FText>
-            <FText style={Styles.time}>{bookingDetails.flightNumber}</FText>
+            <FText style={Styles.time}>{bookingDetails.airline}</FText>
+            <FText style={Styles.portName}>{bookingDetails.flightNumber}</FText>
           </View>
           <View style={Styles.alignItem_flexEnd}>
-            <FText style={Styles.portName}>{Strings.pnr}</FText>
-            <FText style={Styles.time}>{bookingDetails.pnr}</FText>
+            <FText style={Styles.time}>{Strings.pnr}</FText>
+            <FText style={Styles.portName}>{bookingDetails.pnr}</FText>
           </View>
         </View>
       </FTouchableOpacity>

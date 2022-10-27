@@ -38,32 +38,32 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
         <View style={Styles.width_48}>
-          <FText style={Styles.portName} numberOfLines={1}>
+          <FText style={Styles.heading} numberOfLines={1}>
             {tripRequest?.sourceStationCode}
           </FText>
 
           {(tripRequest?.destination || tripRequest?.source) && (
-            <FText style={Styles.time} numberOfLines={1}>
+            <FText style={Styles.details} numberOfLines={1}>
               {tripRequest.source}
             </FText>
           )}
           {(tripRequest?.arrivalDate || tripRequest?.departureDate) && (
-            <FText style={Styles.time} numberOfLines={1}>
+            <FText style={Styles.details} numberOfLines={1}>
               {tripRequest.departureDate}
             </FText>
           )}
         </View>
         <View style={[Styles.alignItem_flexEnd, Styles.width_48]}>
-          <FText style={Styles.portName} numberOfLines={1}>
+          <FText style={Styles.heading} numberOfLines={1}>
             {tripRequest?.destinationStationCode}
           </FText>
           {(tripRequest?.destination || tripRequest?.source) && (
-            <FText style={Styles.time} numberOfLines={1}>
+            <FText style={Styles.details} numberOfLines={1}>
               {tripRequest.destination}
             </FText>
           )}
           {(tripRequest.arrivalDate || tripRequest.departureDate) && (
-            <FText style={Styles.time} numberOfLines={1}>
+            <FText style={Styles.details} numberOfLines={1}>
               {tripRequest.arrivalDate}
             </FText>
           )}
@@ -111,9 +111,9 @@ const PostBookingCard = ({
       <View style={[Styles.marginTop_12]}>
         <View style={[Styles.flexDirectionRow]}>
           <FText
-            style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
+            style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
-            {bookingDetails.sourceStationCode}
+            {bookingDetails.departureTime}
           </FText>
           <FText
             style={[
@@ -125,38 +125,38 @@ const PostBookingCard = ({
             {bookingDetails.estimateDuration}
           </FText>
           <FText
-            style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
+            style={[Styles.heading, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
-            {bookingDetails.destinationStationCode}
+            {bookingDetails.arrivalTime}
           </FText>
         </View>
         <View style={[Styles.flexDirectionRow]}>
           <View style={Styles.width_40}>
-            <FText style={Styles.time} numberOfLines={1}>
-              {bookingDetails.source}
-            </FText>
             {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
-              <FText style={Styles.time} numberOfLines={1}>
-                {bookingDetails.departureTime}
+              <FText style={Styles.details} numberOfLines={1}>
+                {bookingDetails.sourceStationCode}
               </FText>
             )}
+            <FText style={Styles.details} numberOfLines={1}>
+              {bookingDetails.source}
+            </FText>
             {bookingDetails?.departurePlatform && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.details} numberOfLines={1}>
                 {Strings.platform}: {bookingDetails.departurePlatform}
               </FText>
             )}
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-            <FText style={Styles.time} numberOfLines={1}>
-              {bookingDetails.destination}
-            </FText>
             {(bookingDetails?.departureTime || bookingDetails?.arrivalTime) && (
-              <FText style={Styles.time} numberOfLines={1}>
-                {bookingDetails.arrivalTime}
+              <FText style={Styles.details} numberOfLines={1}>
+                {bookingDetails.destinationStationCode}
               </FText>
             )}
+            <FText style={Styles.details} numberOfLines={1}>
+              {bookingDetails.destination}
+            </FText>
             {bookingDetails?.arrivalPlatform && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.details} numberOfLines={1}>
                 {Strings.platform}: {bookingDetails.arrivalPlatform}
               </FText>
             )}
@@ -165,16 +165,16 @@ const PostBookingCard = ({
       </View>
 
       <View style={Styles.marginTop_12}>
-        <FText style={Styles.portName} numberOfLines={1}>
+        <FText style={Styles.heading} numberOfLines={1}>
           {bookingDetails?.trainName ?? Strings.trainNa}
         </FText>
         {bookingDetails?.pnr && (
-          <FText style={Styles.time} numberOfLines={1}>
+          <FText style={Styles.details} numberOfLines={1}>
             {Strings.pnr}: {bookingDetails.pnr}
           </FText>
         )}
         {bookingDetails?.trainClass && (
-          <FText style={Styles.time} numberOfLines={1}>
+          <FText style={Styles.details} numberOfLines={1}>
             {bookingDetails.trainClass}
           </FText>
         )}

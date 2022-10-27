@@ -49,7 +49,7 @@ const flightItineraryCardProps = {
   actionDisabled: false,
   showStatus: false,
   notificationText: null,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: false,
 };
 

@@ -40,18 +40,18 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
         <View style={Styles.width_48}>
-          <FText style={Styles.portName} numberOfLines={1}>
+          <FText style={Styles.heading} numberOfLines={1}>
             {tripRequest.source}
           </FText>
-          <FText style={Styles.time} numberOfLines={1}>
+          <FText style={Styles.details} numberOfLines={1}>
             {tripRequest.sourceLocality}
           </FText>
         </View>
         <View style={[Styles.alignItem_flexEnd, Styles.width_48]}>
-          <FText style={Styles.portName} numberOfLines={1}>
+          <FText style={Styles.heading} numberOfLines={1}>
             {tripRequest.destination}
           </FText>
-          <FText style={Styles.time} numberOfLines={1}>
+          <FText style={Styles.details} numberOfLines={1}>
             {tripRequest.destinationLocality}
           </FText>
         </View>
@@ -98,7 +98,7 @@ const PostBookingCard = ({
       <View style={[Styles.marginTop_12]}>
         <View style={[Styles.flexDirectionRow]}>
           <FText
-            style={[Styles.portName, Styles.width_40, Styles.textAlign_left]}
+            style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
             {bookingDetails.departureTime}
           </FText>
@@ -107,7 +107,7 @@ const PostBookingCard = ({
             {bookingDetails.estimateDuration}
           </FText>
           <FText
-            style={[Styles.portName, Styles.width_40, Styles.textAlign_right]}
+            style={[Styles.heading, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
             {bookingDetails.arrivalTime}
           </FText>
@@ -116,13 +116,13 @@ const PostBookingCard = ({
           <View style={[Styles.width_40, Styles.textAlign_left]}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.details} numberOfLines={1}>
                 {bookingDetails.sourceLocality}
               </FText>
             )}
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.details} numberOfLines={1}>
                 {bookingDetails.source}
               </FText>
             )}
@@ -135,13 +135,13 @@ const PostBookingCard = ({
             ]}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.details} numberOfLines={1}>
                 {bookingDetails.destinationLocality}
               </FText>
             )}
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.time} numberOfLines={1}>
+              <FText style={Styles.details} numberOfLines={1}>
                 {bookingDetails.destination}
               </FText>
             )}
@@ -170,11 +170,11 @@ const PostBookingCard = ({
               {Strings.details}
             </FText>
             <View style={Styles.marginTop_8}>
-              <FText style={Styles.portName} numberOfLines={1}>
+              <FText style={Styles.heading} numberOfLines={1}>
                 {details?.vehicleName ?? Strings.carNa}
               </FText>
               {details?.vehicleNumber && (
-                <FText style={Styles.time} numberOfLines={1}>
+                <FText style={Styles.details} numberOfLines={1}>
                   {details.vehicleNumber}
                 </FText>
               )}

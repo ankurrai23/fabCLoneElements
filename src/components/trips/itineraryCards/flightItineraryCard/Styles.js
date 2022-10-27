@@ -37,10 +37,11 @@ export default StyleSheet.create({
   },
   portName: {
     color: Color.GREYISH_PURPLE,
+    fontSize: DP._12,
   },
   time: {
     marginTop: DP._4,
-    fontSize: DP._16,
+    fontSize: DP._14,
   },
   date: {
     fontSize: DP._18,
@@ -109,5 +110,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     alignItems: 'center',
+  },
+  marginTop_12: {
+    marginTop: DP._12,
   },
 });

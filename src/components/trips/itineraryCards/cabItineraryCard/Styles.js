@@ -37,11 +37,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  portName: {
+  heading: {
     color: Color.DARK,
     fontSize: DP._14,
   },
-  time: {
+  details: {
     marginTop: DP._4,
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
