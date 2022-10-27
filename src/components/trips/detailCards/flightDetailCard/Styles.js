@@ -50,6 +50,9 @@ export default StyleSheet.create({
   marginTop_16: {
     marginTop: DP._16,
   },
+  marginTop_12: {
+    marginTop: DP._12,
+  },
   duration: {
     fontSize: DP._10,
     color: Color.GREYISH_PURPLE,

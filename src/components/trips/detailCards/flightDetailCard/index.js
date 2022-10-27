@@ -138,7 +138,7 @@ const FlightDetailCard = ({
             </View>
           </View>
           {tripDetails.pnr && (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+            <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
               <View>
                 <FText style={Styles.time}>{tripDetails.airline}</FText>
                 <FText style={Styles.portName}>
