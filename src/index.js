@@ -23,6 +23,7 @@ import ScrollableTabBar from './common/components/scrollableTabBar';
 import ContactSupport from './common/components/contactSupport';
 import DropDown from './common/components/dropDown';
 import FieldStates from './common/components/fieldStates';
+import ProgressBar from './common/components/progressBar';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -113,6 +114,7 @@ export {
   DropDown,
   ContactSupport,
   FieldStates,
+  ProgressBar,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
