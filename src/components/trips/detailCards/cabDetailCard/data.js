@@ -1,5 +1,3 @@
-import {BusSubtripActions} from '../../../utils/SubTripActions';
-
 const cabDetailCardProps = {
   bookingDetails: {
     cabBookingStatus: 'CONFIRMED',

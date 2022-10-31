@@ -1,5 +1,3 @@
-import {Color} from '../../../utils/color';
-
 const flightDetailCardProps = {
   title: 'Return Flight',
   tripDetails: {
