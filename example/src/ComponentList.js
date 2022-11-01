@@ -61,42 +61,112 @@ import {
 
 const COMMON_COMPONENTS = [
   {name: 'Components'},
-  {name: 'Button', component: <Button {...data.buttonProps} />},
-  {name: 'TextField', component: <TextField {...data.textFieldProps} />},
-  {name: 'PickerField', component: <PickerField {...data.pickerFieldProps} />},
-  {name: 'DashedLine', component: <DashedLine {...data.dashLineProps} />},
-  {name: 'EmptyScreen', component: <EmptyScreen {...data.emptyScreenProps} />},
+  {
+    name: 'Button',
+    component: (props) => {
+      return props ? <Button {...props} /> : <Button {...data.buttonProps} />;
+    },
+  },
+  {
+    name: 'TextField',
+    component: (props) => {
+      return props ? (
+        <TextField {...props} />
+      ) : (
+        <TextField {...data.textFieldProps} />
+      );
+    },
+  },
+  {
+    name: 'PickerField',
+    component: (props) =>
+      props ? (
+        <PickerField {...props} />
+      ) : (
+        <PickerField {...data.pickerFieldProps} />
+      ),
+  },
+  {
+    name: 'DashedLine',
+    component: (props) =>
+      props ? (
+        <DashedLine {...props} />
+      ) : (
+        <DashedLine {...data.dashLineProps} />
+      ),
+  },
+  {
+    name: 'EmptyScreen',
+    component: (props) =>
+      props ? (
+        <EmptyScreen {...props} />
+      ) : (
+        <EmptyScreen {...data.emptyScreenProps} />
+      ),
+  },
   {
     name: 'ClaimsCard',
-    component: <ClaimsCard {...data.claimsCardProps} />,
+    component: (props) =>
+      props ? (
+        <ClaimsCard {...props} />
+      ) : (
+        <ClaimsCard {...data.claimsCardProps} />
+      ),
   },
   {
     name: 'FloatingAction',
-    component: <FloatingAction {...data.floatingActionProps} />,
+    component: (props) =>
+      props ? (
+        <FloatingAction {...props} />
+      ) : (
+        <FloatingAction {...data.floatingActionProps} />
+      ),
   },
   {
     name: 'Checkbox',
-    component: <Checkbox {...data.checkboxProps} />,
+    component: (props) =>
+      props ? <Checkbox {...props} /> : <Checkbox {...data.checkboxProps} />,
   },
   {
     name: 'StackHeader',
-    component: <StackHeader {...data.stackHeaderProps} />,
+    component: (props) =>
+      props ? (
+        <StackHeader {...props} />
+      ) : (
+        <StackHeader {...data.stackHeaderProps} />
+      ),
   },
   {
     name: 'ScrollableTabBar',
-    component: <ScrollableTabBar {...data.scrollableTabBarProps} />,
+    component: (props) =>
+      props ? (
+        <ScrollableTabBar {...props} />
+      ) : (
+        <ScrollableTabBar {...data.scrollableTabBarProps} />
+      ),
   },
   {
     name: 'Contact Support',
-    component: <ContactSupport {...data.contactSupportProps} />,
+    component: (props) =>
+      props ? (
+        <ContactSupport {...props} />
+      ) : (
+        <ContactSupport {...data.contactSupportProps} />
+      ),
   },
   {
     name: 'DropDown',
-    component: <DropDown {...data.dropDownProps} />,
+    component: (props) =>
+      props ? <DropDown {...props} /> : <DropDown {...data.dropDownProps} />,
   },
   {
     name: 'FieldStates',
-    component: <FieldStates />,
+    component: (props) =>
+      props ? (
+        <FieldStates {...props} />
+      ) : (
+        <FieldStates {...data.fieldStatesProps} />
+      ),
   },
 ];
 
@@ -104,87 +174,192 @@ const TRIP_COMPONENTS = [
   {name: 'Trips'},
   {
     name: 'FlightPreferenceCard',
-    component: <FlightPreferenceCard {...data.flightPreferenceCardProps} />,
+    component: (props) =>
+      props ? (
+        <FlightPreferenceCard {...props} />
+      ) : (
+        <FlightPreferenceCard {...data.flightPreferenceCardProps} />
+      ),
   },
   {
     name: 'HotelDetailCard',
-    component: <HotelDetailCard {...data.hotelDetailCardProps} />,
+    component: (props) =>
+      props ? (
+        <HotelDetailCard {...props} />
+      ) : (
+        <HotelDetailCard {...data.hotelDetailCardProps} />
+      ),
   },
   {
     name: 'TripStatus',
-    component: <TripStatus {...data.tripStatusProps} />,
+    component: (props) =>
+      props ? (
+        <TripStatus {...props} />
+      ) : (
+        <TripStatus {...data.tripStatusProps} />
+      ),
   },
   {
     name: 'FlightItineraryCard',
-    component: <FlightItineraryCard {...data.flightItineraryCardProps} />,
+    component: (props) =>
+      props ? (
+        <FlightItineraryCard {...props} />
+      ) : (
+        <FlightItineraryCard {...data.flightItineraryCardProps} />
+      ),
   },
   {
     name: 'HotelItineraryCard',
-    component: <HotelItineraryCard {...data.hotelItineraryCardProps} />,
+    component: (props) =>
+      props ? (
+        <HotelItineraryCard {...props} />
+      ) : (
+        <HotelItineraryCard {...data.hotelItineraryCardProps} />
+      ),
   },
   {
     name: 'RemarksContainer',
-    component: <RemarksContainer {...data.remarksContainerProps} />,
+    component: (props) =>
+      props ? (
+        <RemarksContainer {...props} />
+      ) : (
+        <RemarksContainer {...data.remarksContainerProps} />
+      ),
   },
   {
     name: 'CoTravellers',
-    component: <CoTravellers {...data.coTravellersProps} />,
+    component: (props) =>
+      props ? (
+        <CoTravellers {...props} />
+      ) : (
+        <CoTravellers {...data.coTravellersProps} />
+      ),
   },
   {
     name: 'ItineraryHeader',
-    component: <ItineraryHeader {...data.itineraryHeaderProps} />,
+    component: (props) =>
+      props ? (
+        <ItineraryHeader {...props} />
+      ) : (
+        <ItineraryHeader {...data.itineraryHeaderProps} />
+      ),
   },
   {
     name: 'TripListingCard',
-    component: <TripListingCard {...data.tripListingCardProps} />,
+    component: (props) =>
+      props ? (
+        <TripListingCard {...props} />
+      ) : (
+        <TripListingCard {...data.tripListingCardProps} />
+      ),
   },
   {
     name: 'SubmittedTripCard',
-    component: <SubmittedTripCard {...data.submittedTripCardProps} />,
+    component: (props) =>
+      props ? (
+        <SubmittedTripCard {...props} />
+      ) : (
+        <SubmittedTripCard {...data.submittedTripCardProps} />
+      ),
   },
   {
     name: 'ReceivedTripCard',
-    component: <ReceivedTripCard {...data.receivedTripCardProps} />,
+    component: (props) =>
+      props ? (
+        <ReceivedTripCard {...props} />
+      ) : (
+        <ReceivedTripCard {...data.receivedTripCardProps} />
+      ),
   },
   {
     name: 'HotelPreferenceCard',
-    component: <HotelPreferenceCard {...data.hotelPreferenceCardProps} />,
+    component: (props) =>
+      props ? (
+        <HotelPreferenceCard {...props} />
+      ) : (
+        <HotelPreferenceCard {...data.hotelPreferenceCardProps} />
+      ),
   },
   {
     name: 'ManagerActions',
-    component: <ManagerActions {...data.managerActionsProps} />,
+    component: (props) =>
+      props ? (
+        <ManagerActions {...props} />
+      ) : (
+        <ManagerActions {...data.managerActionsProps} />
+      ),
   },
   {
     name: 'FlightDetailCard',
-    component: <FlightDetailCard {...data.flightDetailCardProps} />,
+    component: (props) =>
+      props ? (
+        <FlightDetailCard {...props} />
+      ) : (
+        <FlightDetailCard {...data.flightDetailCardProps} />
+      ),
   },
   {
     name: 'TripCardLoadingState',
-    component: <TripCardLoadingState {...data.listTypeFilterProps} />,
+    component: (props) =>
+      props ? (
+        <TripCardLoadingState {...props} />
+      ) : (
+        <TripCardLoadingState {...data.listTypeFilterProps} />
+      ),
   },
   {
     name: 'HotelPreferenceLoadingState',
-    component: <HotelPreferenceLoadingState />,
+    component: (props) =>
+      props ? (
+        <HotelPreferenceLoadingState {...props} />
+      ) : (
+        <HotelPreferenceLoadingState />
+      ),
   },
   {
     name: 'HotelDetailLoadingState',
-    component: <HotelDetailLoadingState />,
+    component: (props) =>
+      props ? (
+        <HotelDetailLoadingState {...props} />
+      ) : (
+        <HotelDetailLoadingState />
+      ),
   },
   {
     name: 'FlightPreferenceLoadingState',
-    component: <FlightPreferenceLoadingState />,
+    component: (props) =>
+      props ? (
+        <FlightPreferenceLoadingState {...props} />
+      ) : (
+        <FlightPreferenceLoadingState />
+      ),
   },
   {
     name: 'ListTypeFilter',
-    component: <ListTypeFilter {...data.listTypeFilterProps} />,
+    component: (props) =>
+      props ? (
+        <ListTypeFilter {...props} />
+      ) : (
+        <ListTypeFilter {...data.listTypeFilterProps} />
+      ),
   },
   {
     name: 'FlightDetailLoadingState',
-    component: <FlightDetailLoadingState />,
+    component: (props) =>
+      props ? (
+        <FlightDetailLoadingState {...props} />
+      ) : (
+        <FlightDetailLoadingState />
+      ),
   },
   {
     name: 'Approver Chain',
-    component: <ApproverChain {...data.approverChainProps} />,
+    component: (props) =>
+      props ? (
+        <ApproverChain {...props} />
+      ) : (
+        <ApproverChain {...data.approverChainProps} />
+      ),
   },
 ];
 
@@ -192,31 +367,66 @@ const TRIP_CREATION = [
   {name: 'Trips Creation'},
   {
     name: 'CoTravelersDetails',
-    component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
+    component: (props) =>
+      props ? (
+        <CoTravelersDetails {...props} />
+      ) : (
+        <CoTravelersDetails {...data.coTravellersDetailProps} />
+      ),
   },
   {
     name: 'HotelDetails',
-    component: <HotelDetails {...data.hotelDetailsProps} />,
+    component: (props) =>
+      props ? (
+        <HotelDetails {...props} />
+      ) : (
+        <HotelDetails {...data.hotelDetailsProps} />
+      ),
   },
   {
     name: 'ItineraryCard',
-    component: <ItineraryCard {...data.itineraryCardProps} />,
+    component: (props) =>
+      props ? (
+        <ItineraryCard {...props} />
+      ) : (
+        <ItineraryCard {...data.itineraryCardProps} />
+      ),
   },
   {
     name: 'FlightDetails',
-    component: <FlightDetails {...data.flightDetailsProps} />,
+    component: (props) =>
+      props ? (
+        <FlightDetails {...props} />
+      ) : (
+        <FlightDetails {...data.flightDetailsProps} />
+      ),
   },
   {
     name: 'OtherTravelDetails',
-    component: <OtherTravelDetails {...data.otherTravelDetailsProps} />,
+    component: (props) =>
+      props ? (
+        <OtherTravelDetails {...props} />
+      ) : (
+        <OtherTravelDetails {...data.otherTravelDetailsProps} />
+      ),
   },
   {
     name: 'ApprovalManager',
-    component: <ApprovalManager {...data.approvalManagerProps} />,
+    component: (props) =>
+      props ? (
+        <ApprovalManager {...props} />
+      ) : (
+        <ApprovalManager {...data.approvalManagerProps} />
+      ),
   },
   {
     name: 'Remove Itinerary',
-    component: <RemoveItinerary {...data.removeItineraryProps} />,
+    component: (props) =>
+      props ? (
+        <RemoveItinerary {...props} />
+      ) : (
+        <RemoveItinerary {...data.removeItineraryProps} />
+      ),
   },
 ];
 
@@ -224,19 +434,35 @@ const HOME = [
   {name: 'Home'},
   {
     name: 'HomeHeader',
-    component: <HomeHeader {...data.homeHeaderProps} />,
+    component: (props) =>
+      props ? (
+        <HomeHeader {...props} />
+      ) : (
+        <HomeHeader {...data.homeHeaderProps} />
+      ),
   },
   {
     name: 'ClaimList',
-    component: <ClaimsList {...data.claimsListProps} />,
+    component: (props) =>
+      props ? (
+        <ClaimsList {...props} />
+      ) : (
+        <ClaimsList {...data.claimsListProps} />
+      ),
   },
   {
     name: 'MessageCard',
-    component: <MessageCard {...data.messageCardProps} />,
+    component: (props) =>
+      props ? (
+        <MessageCard {...props} />
+      ) : (
+        <MessageCard {...data.messageCardProps} />
+      ),
   },
   {
     name: 'HomeLoadingState',
-    component: <HomeLoadingState />,
+    component: (props) =>
+      props ? <HomeLoadingState {...props} /> : <HomeLoadingState />,
   },
 ];
 
@@ -244,43 +470,89 @@ const EXPENSE = [
   {name: 'Expense'},
   {
     name: 'ExpenseCard',
-    component: <ExpenseCard {...data.expenseCardProps} />,
+    component: (props) =>
+      props ? (
+        <ExpenseCard {...props} />
+      ) : (
+        <ExpenseCard {...data.expenseCardProps} />
+      ),
   },
   {
     name: 'ExpenseDetailCard',
-    component: <ExpenseDetailCard {...data.expenseDetailCardProps} />,
+    component: (props) =>
+      props ? (
+        <ExpenseDetailCard {...props} />
+      ) : (
+        <ExpenseDetailCard {...data.expenseDetailCardProps} />
+      ),
   },
   {
     name: 'StopDetailList',
-    component: <StopDetailList {...data.stopDetailListProps} />,
+    component: (props) =>
+      props ? (
+        <StopDetailList {...props} />
+      ) : (
+        <StopDetailList {...data.stopDetailListProps} />
+      ),
   },
   {
     name: 'ExpenseApprovalCard',
-    component: <ExpenseApprovalCard {...data.expenseApprovalCardProps} />,
+    component: (props) =>
+      props ? (
+        <ExpenseApprovalCard {...props} />
+      ) : (
+        <ExpenseApprovalCard {...data.expenseApprovalCardProps} />
+      ),
   },
   {
     name: 'ExpenseApprovalHeader',
-    component: <ExpenseApprovalHeader {...data.expenseApprovalHeaderProps} />,
+    component: (props) =>
+      props ? (
+        <ExpenseApprovalHeader {...props} />
+      ) : (
+        <ExpenseApprovalHeader {...data.expenseApprovalHeaderProps} />
+      ),
   },
   {
     name: 'LocationInputBox',
-    component: <LocationInputBox {...data.locationInputBoxProps} />,
+    component: (props) =>
+      props ? (
+        <LocationInputBox {...props} />
+      ) : (
+        <LocationInputBox {...data.locationInputBoxProps} />
+      ),
   },
   {
     name: 'Swiper',
-    component: <Swiper {...data.swiperProps} />,
+    component: (props) =>
+      props ? <Swiper {...props} /> : <Swiper {...data.swiperProps} />,
   },
   {
     name: 'MonthPicker',
-    component: <MonthPicker {...data.monthPickerProps} />,
+    component: (props) =>
+      props ? (
+        <MonthPicker {...props} />
+      ) : (
+        <MonthPicker {...data.monthPickerProps} />
+      ),
   },
   {
     name: 'ReceiptsList',
-    component: <ReceiptsList {...data.receiptsListProps} />,
+    component: (props) =>
+      props ? (
+        <ReceiptsList {...props} />
+      ) : (
+        <ReceiptsList {...data.receiptsListProps} />
+      ),
   },
   {
     name: 'ReceiptListView',
-    component: <ReceiptListView {...data.receiptListViewProps} />,
+    component: (props) =>
+      props ? (
+        <ReceiptListView {...props} />
+      ) : (
+        <ReceiptListView {...data.receiptListViewProps} />
+      ),
   },
 ];
 
