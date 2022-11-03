@@ -1,5 +1,3 @@
-import {TrainSubtripActions} from '../../../../utils/SubTripActions';
-
 const TrainItineraryCardProps = {
   tripRequest: {
     date: '22',
@@ -7,10 +5,8 @@ const TrainItineraryCardProps = {
     slotDetail: 'Slot: 6PM - 9PM',
     sourceStationCode: 'CSTM',
     source: 'Mumbai',
-    departureDate: 'Tue, 22 Nov',
     destinationStationCode: 'TVC',
     destination: 'Thiruvanthapuram',
-    arrivalDate: 'Wed, 23 Nov',
   },
   status: {
     key: 'PROCESSED',
@@ -52,13 +48,13 @@ const TrainItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: false,
   hideIcon: true,
-  showInfo: true,
+  showInfo: false,
   isAlert: true,
   notificationText: 'This is notification text',
   timelineGreyed: false,
-  actionDisabled: false,
+  actionDisabled: true,
   showStatus: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
 };
 

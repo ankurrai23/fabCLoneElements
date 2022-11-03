@@ -47,11 +47,6 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
               {tripRequest.source}
             </FText>
           )}
-          {(tripRequest?.arrivalDate || tripRequest?.departureDate) && (
-            <FText style={Styles.details} numberOfLines={1}>
-              {tripRequest.departureDate}
-            </FText>
-          )}
         </View>
         <View style={[Styles.alignItem_flexEnd, Styles.width_48]}>
           <FText style={Styles.heading} numberOfLines={1}>
@@ -60,11 +55,6 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           {(tripRequest?.destination || tripRequest?.source) && (
             <FText style={Styles.details} numberOfLines={1}>
               {tripRequest.destination}
-            </FText>
-          )}
-          {(tripRequest.arrivalDate || tripRequest.departureDate) && (
-            <FText style={Styles.details} numberOfLines={1}>
-              {tripRequest.arrivalDate}
             </FText>
           )}
         </View>
@@ -199,6 +189,7 @@ const TrainItineraryCard = ({
   actions,
   notificationText,
   hideChevron,
+  actionDisabled,
 }) => {
   console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -296,9 +287,10 @@ const TrainItineraryCard = ({
             hideChevron={hideChevron}
           />
         )}
-        {(rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
+        {!actionDisabled &&
+          (rescheduleAction || cancelAction || viewRemarksAction) && (
+            <ActionsInItinerary />
+          )}
         {showInfo && (
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}
