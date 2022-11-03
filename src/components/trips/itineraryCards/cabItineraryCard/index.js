@@ -30,7 +30,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
         {showStatus ? (
           <TripStatus statusObj={status} />
         ) : (
-          tripRequest?.pickupTime && (
+          !!tripRequest?.pickupTime && (
             <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
               {Strings.pickupTime} {tripRequest.pickupTime}
             </FText>
@@ -201,6 +201,7 @@ const cabItineraryCard = ({
   actions,
   notificationText,
   hideChevron,
+  actionDisabled,
 }) => {
   console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -298,9 +299,10 @@ const cabItineraryCard = ({
             hideChevron={hideChevron}
           />
         )}
-        {(rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
+        {!actionDisabled &&
+          (rescheduleAction || cancelAction || viewRemarksAction) && (
+            <ActionsInItinerary />
+          )}
         {showInfo && (
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}
