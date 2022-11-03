@@ -7,9 +7,9 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 
-export default function SubTripTitle({title, dataLength, onPress}) {
+export default function SubTripTitle({title, dataLength, onPress, style}) {
   return (
-    <View style={Styles.titleContainer}>
+    <View style={[Styles.titleContainer, style]}>
       <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
         {title}
       </FText>
