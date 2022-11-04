@@ -66,6 +66,7 @@ import {
   TrainDetails,
   BusDetails,
   CabDetails,
+  Selector,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -106,6 +107,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'FieldStates',
     component: <FieldStates />,
+  },
+  {
+    name: 'Selector',
+    component: <Selector {...data.selectorProps} />,
   },
 ];
 

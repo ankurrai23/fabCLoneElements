@@ -10,6 +10,7 @@ import stackHeaderProps from './common/components/stackHeader/data';
 import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 import contactSupportProps from './common/components/contactSupport/data';
 import dropDownProps from './common/components/dropDown/data';
+import selectorProps from './common/components/selector/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -123,4 +124,5 @@ export {
   trainDetailsProps,
   busDetailsProps,
   cabDetailsProps,
+  selectorProps,
 };
