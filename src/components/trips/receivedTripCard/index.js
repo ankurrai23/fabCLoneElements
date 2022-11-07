@@ -23,6 +23,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
   const [rejectModal, setRejectModal] = useState(false);
 
   const tripIcons = (requestType) => {
+    requestType = requestType.map((tripType) => tripType.key);
     let icons = [];
     if (requestType.includes(SUB_TRIP_TYPE.FLIGHT))
       icons.push(
@@ -40,6 +41,18 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
           height={DP._16}
         />,
       );
+    if (requestType.includes(SUB_TRIP_TYPE.CAB))
+      icons.push(
+        <Icon.Cab
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />,
+      );
+    if (requestType.includes(SUB_TRIP_TYPE.BUS))
+      icons.push(<Icon.Bus fill={Color.DARK_SLATE_BLUE_TWO} />);
+    if (requestType.includes(SUB_TRIP_TYPE.TRAIN))
+      icons.push(<Icon.Train fill={Color.DARK_SLATE_BLUE_TWO} />);
     return icons;
   };
 
@@ -56,7 +69,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
       comments,
     });
   }
-
+  const subtripsIcon = tripIcons(item.subtripsIcon.slice(0, 3));
   return (
     <>
       <FTouchableOpacity
@@ -64,9 +77,14 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
-            {tripIcons(item.requestType).map((asset) => (
+            {subtripsIcon.map((asset) => (
               <View style={Styles.iconStyle}>{asset}</View>
             ))}
+            {item.subtripsIcon.length > 3 && (
+              <FText weight={500} style={{fontSize: DP._14}}>
+                +{item.subtripsIcon.length - 3}
+              </FText>
+            )}
           </View>
           <TripStatus statusObj={item.status} />
         </View>
