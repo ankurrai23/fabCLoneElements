@@ -19,13 +19,11 @@ const trainDetailCardProps = {
     travellersDetails: [
       {
         travellerName: 'Sahil Malhan',
-        coach: 'b1',
-        birth: '42',
+        seatNo: 'b1, 42',
       },
       {
         travellerName: 'Vaibhav Agrawal',
-        coach: 'c1',
-        birth: '48',
+        seatNo: 'b1, 42',
       },
     ],
   },

@@ -17,9 +17,9 @@ const busDetailCardProps = {
     busType: 'Sleeper',
     seatNumber: 'L23',
     pnr: '12344556',
-    CoordinatorName: 'Mr. Arvind Swami',
-    CoordinatorNo: '+91 9868567789',
-    travellersDetails: [
+    coordinatorName: 'Mr. Arvind Swami',
+    coordinatorNo: '+91 9868567789',
+    travellerDetails: [
       {
         travellerName: 'Sahil Malhan',
         seatNo: 'b1',
