@@ -8,7 +8,7 @@ const submittedTripCardProps = {
     tripStartDate: 'Thu, 22 Nov',
     tripEndDate: 'Thu, 23 Nov',
     bookingStatus: 'CONFIRMED',
-    subtripsIcon: [
+    subTripsIcon: [
       {key: 'TRAIN'},
       {key: 'HOTEL'},
       {key: 'CAB'},
