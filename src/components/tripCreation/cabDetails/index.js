@@ -5,8 +5,9 @@ import {Strings} from '../../../utils/strings/index.travelPlus';
 import CabItineraryCard from '../../trips/itineraryCards/cabItineraryCard';
 import Styles from './Styles';
 import moment from 'moment';
+import FText from '../../../common/rn/FText';
 
-export default function CabDetails({onPress, data, style}) {
+export default function CabDetails({onPress, data, style, error}) {
   const generateRequestInfo = (item) => ({
     date: moment(item.departureDate).format('DD'),
     month: moment(item.departureDate).format('MMM'),
@@ -24,6 +25,7 @@ export default function CabDetails({onPress, data, style}) {
         dataLength={data?.length}
         style={Styles.headerStyle(data)}
       />
+      {!!error && <FText style={Styles.errorDetailText}>{error}</FText>}
       {data?.map((item, index) => (
         <CabItineraryCard
           tripRequest={generateRequestInfo(item)}

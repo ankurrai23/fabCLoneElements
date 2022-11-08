@@ -5,8 +5,9 @@ import {Strings} from '../../../utils/strings/index.travelPlus';
 import BusItineraryCard from '../../trips/itineraryCards/busItineraryCard';
 import Styles from './Styles';
 import moment from 'moment';
+import FText from '../../../common/rn/FText';
 
-export default function BusDetails({onPress, data, style}) {
+export default function BusDetails({onPress, data, style, error}) {
   const generateRequestInfo = (item) => ({
     date: moment(item.departureDate).format('DD'),
     month: moment(item.departureDate).format('MMM'),
@@ -25,6 +26,7 @@ export default function BusDetails({onPress, data, style}) {
         dataLength={data?.length}
         style={Styles.headerStyle(data)}
       />
+      {!!error && <FText style={Styles.errorDetailText}>{error}</FText>}
       {data?.map((item, index) => (
         <BusItineraryCard
           tripRequest={generateRequestInfo(item)}
