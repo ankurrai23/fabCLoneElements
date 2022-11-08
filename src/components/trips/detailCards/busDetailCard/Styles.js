@@ -135,12 +135,12 @@ export default StyleSheet.create({
   color_grey: {
     color: Color.GREY_PURPLE,
   },
-  detailLableStyle: {
+  detailLabelStyle: {
     marginLeft: DP._10,
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
   },
-  sepratorStyle: {
+  separatorStyle: {
     marginTop: DP._12,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
@@ -153,7 +153,7 @@ export default StyleSheet.create({
   marginTop_8: {
     marginTop: DP._8,
   },
-  actionsSeperator: {
+  actionsSeparator: {
     marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },

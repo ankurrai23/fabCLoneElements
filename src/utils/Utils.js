@@ -4,6 +4,9 @@ import Config from './config';
 import {DP} from './Dimen';
 import percentToHexChart from './color/percent-to-hex-chart.json';
 import {Color} from './color';
+import {SUB_TRIP_TYPE} from './Constants';
+import Icon from '../assets/icons/Icon';
+import React from 'react';
 
 export const FontFamily = Config.fontFamily || 'Metropolis';
 
@@ -23,6 +26,40 @@ export const Specs = {
   bold: {
     fontFamily: `${FontFamily}-Bold`,
   },
+};
+
+export const getSubTripIcon = (key) => {
+  switch (key) {
+    case SUB_TRIP_TYPE.BUS:
+      return <Icon.Bus fill={Color.DARK_SLATE_BLUE_TWO} />;
+    case SUB_TRIP_TYPE.TRAIN:
+      return <Icon.Train fill={Color.DARK_SLATE_BLUE_TWO} />;
+    case SUB_TRIP_TYPE.CAB:
+      return (
+        <Icon.Cab
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
+
+    case SUB_TRIP_TYPE.HOTEL:
+      return (
+        <Icon.Hotel
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
+    case SUB_TRIP_TYPE.FLIGHT:
+      return (
+        <Icon.Aeroplane
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
+  }
 };
 
 export const shadowObj = {

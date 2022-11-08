@@ -8,7 +8,13 @@ const submittedTripCardProps = {
     tripStartDate: 'Thu, 22 Nov',
     tripEndDate: 'Thu, 23 Nov',
     bookingStatus: 'CONFIRMED',
-    tripIcons: [{}, {}, {}],
+    subTripsIcon: [
+      {key: 'TRAIN'},
+      {key: 'HOTEL'},
+      {key: 'CAB'},
+      {key: 'BUS'},
+      {key: 'FLIGHT'},
+    ],
     isCancelled: false,
     cancelMsg: 'This trip is cancelled',
     status: {
