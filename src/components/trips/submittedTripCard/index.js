@@ -36,13 +36,13 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexDirectionRow}>
-            {item.subTripsIcon.slice(0, 3).map((asset) => {
+            {item?.subTripsIcon?.slice(0, 3)?.map((asset) => {
               const subTripIcon = getSubTripIcon(asset.key);
               return <View style={Styles.iconStyle}>{subTripIcon}</View>;
             })}
-            {item.subTripsIcon.length > 3 && (
+            {item?.subTripsIcon?.length > 3 && (
               <FText weight={500} style={{fontSize: DP._14}}>
-                +{item.subTripsIcon.length - 3}
+                +{item?.subTripsIcon?.length - 3}
               </FText>
             )}
           </View>
