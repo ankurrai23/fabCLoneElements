@@ -32,7 +32,7 @@ const DetialRow = ({
         onPress={onClickLeftData}>
         {dataIcon}
         <FText
-          style={[Styles.detailLableStyle, leftDataStyle]}
+          style={[Styles.detailLabelStyle, leftDataStyle]}
           numberOfLines={1}>
           {leftData ?? leftDefaultData}
         </FText>
@@ -66,7 +66,7 @@ const BusDetailCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator style={Styles.actionsSeperator} />
+      <Separator style={Styles.actionsSeparator} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
@@ -220,10 +220,10 @@ const BusDetailCard = ({
                 </FText>
               )}
             </View>
-            {bookingDetails.travellersDetails &&
-              bookingDetails.travellersDetails.length > 0 && (
+            {bookingDetails.travellerDetails &&
+              bookingDetails.travellerDetails.length > 0 && (
                 <>
-                  <Separator style={Styles.sepratorStyle} />
+                  <Separator style={Styles.separatorStyle} />
 
                   <FText
                     numberOfLines={1}
@@ -234,7 +234,7 @@ const BusDetailCard = ({
                     ]}>
                     {Strings.travelersDetails}
                   </FText>
-                  {bookingDetails.travellersDetails.map((detail, index) => (
+                  {bookingDetails.travellerDetails.map((detail, index) => (
                     <DetialRow
                       dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
                       rightData={detail.seatNo}
@@ -246,10 +246,10 @@ const BusDetailCard = ({
                   ))}
                 </>
               )}
-            {(bookingDetails?.CoordinatorNo ||
-              bookingDetails?.CoordinatorName) && (
+            {(bookingDetails?.coordinatorNo ||
+              bookingDetails?.coordinatorName) && (
               <>
-                <Separator style={Styles.sepratorStyle} />
+                <Separator style={Styles.separatorStyle} />
                 <View style={Styles.marginTop_12}>
                   <FText
                     numberOfLines={1}
@@ -260,26 +260,24 @@ const BusDetailCard = ({
                     ]}>
                     {Strings.coordinatorDetails}
                   </FText>
-                  {bookingDetails?.CoordinatorName && (
+                  {bookingDetails?.coordinatorName && (
                     <DetialRow
                       dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
-                      rightData={bookingDetails.CoordinatorName}
+                      rightData={bookingDetails.coordinatorName}
                       leftDefaultData={Strings.name}
-                      // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                     />
                   )}
-                  {bookingDetails?.CoordinatorNo && (
+                  {bookingDetails?.coordinatorNo && (
                     <DetialRow
                       dataIcon={
                         <Icon.PhoneIcon width={DP._16} height={DP._16} />
                       }
-                      rightData={bookingDetails.CoordinatorNo}
+                      rightData={bookingDetails.coordinatorNo}
                       leftDefaultData={Strings.phoneNo}
-                      // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                       rightDataStyle={Styles.color_blue}
                       onClickRightData={onPhoneNumberClicked}
                       style={
-                        bookingDetails.CoordinatorName && Styles.marginTop_12
+                        bookingDetails.coordinatorName && Styles.marginTop_12
                       }
                     />
                   )}

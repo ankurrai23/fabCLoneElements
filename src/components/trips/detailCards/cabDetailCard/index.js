@@ -235,7 +235,6 @@ const CabDetailCard = ({
                         }
                         rightData={cabDetails.driverName}
                         leftDefaultData={Strings.name}
-                        // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                       />
                     )}
                     {cabDetails?.driverPhone && (
@@ -245,7 +244,6 @@ const CabDetailCard = ({
                         }
                         rightData={cabDetails.driverPhone}
                         leftDefaultData={Strings.phoneNo}
-                        // leftData={'lskdflskfjslkfjsldjflsdkfjsdlkfj'}
                         rightDataStyle={Styles.color_blue}
                         onClickRightData={onPhoneNumberClicked}
                         style={cabDetails.driverName && Styles.marginTop_12}

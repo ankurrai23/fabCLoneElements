@@ -229,7 +229,7 @@ const TrainDetailCard = ({
                   {bookingDetails.travellersDetails.map((detail, index) => (
                     <DetailRow
                       dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
-                      rightData={`${detail.coach}, ${detail.birth}`}
+                      rightData={detail.seatNo}
                       leftData={detail.travellerName}
                       style={
                         index === 0 ? Styles.marginTop_12 : Styles.marginTop_8
