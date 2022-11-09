@@ -105,7 +105,7 @@ const BusDetailCard = ({
     <View style={style}>
       {!!notificationText && <ModificationAlertBox msg={notificationText} />}
       <View style={Styles.flexRow}>
-        <View style={[Styles.container, Styles.flexRow]}>
+        <View style={[Styles.container]}>
           <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
             <View style={[Styles.flexDirectionRow, Styles.baseline]}>
               <FText>
