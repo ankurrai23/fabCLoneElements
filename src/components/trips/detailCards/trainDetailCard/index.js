@@ -103,141 +103,146 @@ const TrainDetailCard = ({
   return (
     <View style={[style]}>
       {!!notificationText && <ModificationAlertBox msg={notificationText} />}
-      <View style={Styles.container}>
-        <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
-          <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-            <FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {bookingDetails.date}
-              </FText>
-              <FText
-                style={{
-                  color: Color.BLUEY_GREY,
-                  fontSize: DP._12,
-                }}>{` ${bookingDetails.month}`}</FText>
-            </FText>
-            {!!bookingDetails.trainBookingStatus && (
-              <TripStatus
-                statusObj={getStatusObject(bookingDetails.trainBookingStatus)}
-              />
-            )}
-          </View>
-
-          <View style={[Styles.marginTop_12]}>
-            <View style={[Styles.flexDirectionRow]}>
-              <FText
-                style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
-                numberOfLines={1}>
-                {bookingDetails.departureTime}
-              </FText>
-              <FText
-                style={[
-                  Styles.duration,
-                  Styles.width_20,
-                  Styles.textAlign_center,
-                ]}>
-                {bookingDetails.estimateDuration}
-              </FText>
-              <FText
-                style={[
-                  Styles.heading,
-                  Styles.width_40,
-                  Styles.textAlign_right,
-                ]}
-                numberOfLines={1}>
-                {bookingDetails.arrivalTime}
-              </FText>
-            </View>
-            <View style={[Styles.flexDirectionRow]}>
-              <View style={Styles.width_40}>
-                {(bookingDetails?.departureTime ||
-                  bookingDetails?.arrivalTime) && (
-                  <FText style={Styles.detail} numberOfLines={1}>
-                    {bookingDetails.sourceStationCode}
-                  </FText>
-                )}
-                {(bookingDetails?.source || bookingDetails?.destination) && (
-                  <FText
-                    style={[Styles.detail, Styles.textAlign_left]}
-                    numberOfLines={1}>
-                    {bookingDetails.source}
-                  </FText>
-                )}
-                {(bookingDetails?.departurePlatform ||
-                  bookingDetails?.arrivalPlatform) && (
-                  <FText style={Styles.detail} numberOfLines={1}>
-                    {Strings.platform} {bookingDetails.departurePlatform}
-                  </FText>
-                )}
-              </View>
-              <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-                {(bookingDetails?.arrivalTime ||
-                  bookingDetails?.departureTime) && (
-                  <FText style={Styles.detail} numberOfLines={1}>
-                    {bookingDetails.destinationStationCode}
-                  </FText>
-                )}
-                {bookingDetails?.destination && (
-                  <FText style={Styles.detail} numberOfLines={1}>
-                    {bookingDetails.destination}
-                  </FText>
-                )}
-                {(bookingDetails?.departurePlatform ||
-                  bookingDetails?.arrivalPlatform) && (
-                  <FText style={Styles.detail} numberOfLines={1}>
-                    {Strings.platform} {bookingDetails.arrivalPlatform}
-                  </FText>
-                )}
-              </View>
-            </View>
-          </View>
-
-          <View style={Styles.marginTop_12}>
-            <FText style={Styles.heading} numberOfLines={1}>
-              {bookingDetails?.trainName ?? Strings.trainNa}
-            </FText>
-            {bookingDetails?.pnr && (
-              <FText style={Styles.detail} numberOfLines={1}>
-                {Strings.pnr}: {bookingDetails.pnr}
-              </FText>
-            )}
-            {bookingDetails?.trainClass && (
-              <FText style={Styles.detail} numberOfLines={1}>
-                {bookingDetails.trainClass}
-              </FText>
-            )}
-          </View>
-          {bookingDetails.travellersDetails &&
-            bookingDetails.travellersDetails.length > 0 && (
-              <>
-                <Separator style={Styles.sepratorStyle} />
-
-                <FText
-                  numberOfLines={1}
-                  style={[
-                    Styles.marginTop_12,
-                    Styles.fontSize_12,
-                    Styles.color_grey,
-                  ]}>
-                  {Strings.travelersDetails}
+      <View style={Styles.flexRow}>
+        <View style={Styles.container}>
+          <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+            <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+              <FText>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                  {bookingDetails.date}
                 </FText>
-                {bookingDetails.travellersDetails.map((detail, index) => (
-                  <DetailRow
-                    dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
-                    rightData={detail.seatNo}
-                    leftData={detail.travellerName}
-                    style={
-                      index === 0 ? Styles.marginTop_12 : Styles.marginTop_8
-                    }
-                  />
-                ))}
-              </>
+                <FText
+                  style={
+                    Styles.headerMonth
+                  }>{` ${bookingDetails.month}`}</FText>
+              </FText>
+              {!!bookingDetails.trainBookingStatus && (
+                <TripStatus
+                  statusObj={getStatusObject(bookingDetails.trainBookingStatus)}
+                />
+              )}
+            </View>
+
+            <View style={[Styles.marginTop_12]}>
+              <View style={[Styles.flexDirectionRow]}>
+                <FText
+                  style={[
+                    Styles.heading,
+                    Styles.width_40,
+                    Styles.textAlign_left,
+                  ]}
+                  numberOfLines={1}>
+                  {bookingDetails.departureTime}
+                </FText>
+                <FText
+                  style={[
+                    Styles.duration,
+                    Styles.width_20,
+                    Styles.textAlign_center,
+                  ]}>
+                  {bookingDetails.estimateDuration}
+                </FText>
+                <FText
+                  style={[
+                    Styles.heading,
+                    Styles.width_40,
+                    Styles.textAlign_right,
+                  ]}
+                  numberOfLines={1}>
+                  {bookingDetails.arrivalTime}
+                </FText>
+              </View>
+              <View style={[Styles.flexDirectionRow]}>
+                <View style={Styles.width_40}>
+                  {(bookingDetails?.departureTime ||
+                    bookingDetails?.arrivalTime) && (
+                    <FText style={Styles.detail} numberOfLines={1}>
+                      {bookingDetails.sourceStationCode}
+                    </FText>
+                  )}
+                  {(bookingDetails?.source || bookingDetails?.destination) && (
+                    <FText
+                      style={[Styles.detail, Styles.textAlign_left]}
+                      numberOfLines={1}>
+                      {bookingDetails.source}
+                    </FText>
+                  )}
+                  {(bookingDetails?.departurePlatform ||
+                    bookingDetails?.arrivalPlatform) && (
+                    <FText style={Styles.detail} numberOfLines={1}>
+                      {Strings.platform} {bookingDetails.departurePlatform}
+                    </FText>
+                  )}
+                </View>
+                <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
+                  {(bookingDetails?.arrivalTime ||
+                    bookingDetails?.departureTime) && (
+                    <FText style={Styles.detail} numberOfLines={1}>
+                      {bookingDetails.destinationStationCode}
+                    </FText>
+                  )}
+                  {bookingDetails?.destination && (
+                    <FText style={Styles.detail} numberOfLines={1}>
+                      {bookingDetails.destination}
+                    </FText>
+                  )}
+                  {(bookingDetails?.departurePlatform ||
+                    bookingDetails?.arrivalPlatform) && (
+                    <FText style={Styles.detail} numberOfLines={1}>
+                      {Strings.platform} {bookingDetails.arrivalPlatform}
+                    </FText>
+                  )}
+                </View>
+              </View>
+            </View>
+
+            <View style={Styles.marginTop_12}>
+              <FText style={Styles.heading} numberOfLines={1}>
+                {bookingDetails?.trainName ?? Strings.trainNa}
+              </FText>
+              {bookingDetails?.pnr && (
+                <FText style={Styles.detail} numberOfLines={1}>
+                  {Strings.pnr}: {bookingDetails.pnr}
+                </FText>
+              )}
+              {bookingDetails?.trainClass && (
+                <FText style={Styles.detail} numberOfLines={1}>
+                  {bookingDetails.trainClass}
+                </FText>
+              )}
+            </View>
+            {bookingDetails.travellersDetails &&
+              bookingDetails.travellersDetails.length > 0 && (
+                <>
+                  <Separator style={Styles.sepratorStyle} />
+
+                  <FText
+                    numberOfLines={1}
+                    style={[
+                      Styles.marginTop_12,
+                      Styles.fontSize_12,
+                      Styles.color_grey,
+                    ]}>
+                    {Strings.travelersDetails}
+                  </FText>
+                  {bookingDetails.travellersDetails.map((detail, index) => (
+                    <DetailRow
+                      dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
+                      rightData={detail.seatNo}
+                      leftData={detail.travellerName}
+                      style={
+                        index === 0 ? Styles.marginTop_12 : Styles.marginTop_8
+                      }
+                    />
+                  ))}
+                </>
+              )}
+          </FTouchableOpacity>
+          {!actionDisabled &&
+            (rescheduleAction || cancelAction || viewRemarksAction) && (
+              <ActionsInItinerary />
             )}
-        </FTouchableOpacity>
-        {!actionDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+        </View>
       </View>
     </View>
   );

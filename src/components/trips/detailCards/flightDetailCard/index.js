@@ -89,10 +89,7 @@ const FlightDetailCard = ({
                 {tripDetails.date}
               </FText>
               <FText
-                style={{
-                  color: Color.BLUEY_GREY,
-                  fontSize: DP._12,
-                }}>{` ${tripDetails.month}`}</FText>
+                style={Styles.headerMonth}>{` ${tripDetails.month}`}</FText>
             </FText>
             {!!tripDetails.flightBookingStatus && (
               <TripStatus

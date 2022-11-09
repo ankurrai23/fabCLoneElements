@@ -77,11 +77,7 @@ const PostBookingCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {bookingDetails.date}
           </FText>
-          <FText
-            style={{
-              color: Color.BLUEY_GREY,
-              fontSize: DP._12,
-            }}>{` ${bookingDetails.month}`}</FText>
+          <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
         </FText>
         {showStatus ? (
           <TripStatus statusObj={status} />

@@ -80,6 +80,10 @@ export default StyleSheet.create({
     height: DP._30,
     marginRight: DP._8,
   },
+  headerMonth: {
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+  },
   flexRow: {flexDirection: 'row'},
   justifyContent_around: (duration) => ({
     justifyItem: duration ? 'space-around' : 'flex-start',

@@ -129,6 +129,10 @@ export default StyleSheet.create({
   fontSize_12: {
     fontSize: DP._12,
   },
+  headerMonth: {
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+  },
   detailLableStyle: {
     marginLeft: DP._10,
     fontSize: DP._12,

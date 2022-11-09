@@ -23,6 +23,10 @@ export default StyleSheet.create({
     marginLeft: DP._4,
     fontSize: DP._12,
   },
+  headerMonth: {
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+  },
   reschedule: {
     color: Color.DODGER_BLUE,
     marginLeft: DP._4,

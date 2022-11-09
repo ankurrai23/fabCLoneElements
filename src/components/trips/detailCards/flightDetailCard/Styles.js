@@ -47,6 +47,10 @@ export default StyleSheet.create({
   date: {
     fontSize: DP._18,
   },
+  headerMonth: {
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+  },
   marginTop_16: {
     marginTop: DP._16,
   },

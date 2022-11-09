@@ -135,4 +135,8 @@ export default StyleSheet.create({
     marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
+  headerMonth: {
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+  },
 });

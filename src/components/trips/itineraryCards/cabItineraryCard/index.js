@@ -21,11 +21,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {tripRequest.date}
           </FText>
-          <FText
-            style={{
-              color: Color.BLUEY_GREY,
-              fontSize: DP._12,
-            }}>{` ${tripRequest.month}`}</FText>
+          <FText style={Styles.headerMonth}>{` ${tripRequest.month}`}</FText>
         </FText>
         {showStatus ? (
           <TripStatus statusObj={status} />
@@ -74,11 +70,7 @@ const PostBookingCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {bookingDetails.date}
           </FText>
-          <FText
-            style={{
-              color: Color.BLUEY_GREY,
-              fontSize: DP._12,
-            }}>{` ${bookingDetails.month}`}</FText>
+          <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
         </FText>
         {showStatus ? (
           <TripStatus statusObj={status} />

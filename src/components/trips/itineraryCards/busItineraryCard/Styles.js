@@ -75,6 +75,10 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.DODGER_BLUE,
   },
+  headerMonth: {
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+  },
   icon: {
     width: DP._30,
     height: DP._30,

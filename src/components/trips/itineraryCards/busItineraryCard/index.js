@@ -21,11 +21,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {tripRequest.date}
           </FText>
-          <FText
-            style={{
-              color: Color.BLUEY_GREY,
-              fontSize: DP._12,
-            }}>{` ${tripRequest.month}`}</FText>
+          <FText style={Styles.headerMonth}>{` ${tripRequest.month}`}</FText>
         </FText>
         {showStatus ? (
           <TripStatus statusObj={status} />
@@ -78,11 +74,7 @@ const PostBookingCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {bookingDetails.date}
           </FText>
-          <FText
-            style={{
-              color: Color.BLUEY_GREY,
-              fontSize: DP._12,
-            }}>{` ${bookingDetails.month}`}</FText>
+          <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
         </FText>
         {showStatus ? (
           <TripStatus statusObj={status} />
@@ -99,8 +91,8 @@ const PostBookingCard = ({
         )}
       </View>
 
-      <View style={[Styles.marginTop_12]}>
-        <View style={[Styles.flexDirectionRow]}>
+      <View style={Styles.marginTop_12}>
+        <View style={Styles.flexDirectionRow}>
           <FText
             style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
@@ -116,7 +108,7 @@ const PostBookingCard = ({
             {bookingDetails.arrivalTime}
           </FText>
         </View>
-        <View style={[Styles.flexDirectionRow]}>
+        <View style={Styles.flexDirectionRow}>
           <View style={Styles.width_40}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
