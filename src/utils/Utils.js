@@ -31,9 +31,21 @@ export const Specs = {
 export const getSubTripIcon = (key) => {
   switch (key) {
     case SUB_TRIP_TYPE.BUS:
-      return <Icon.Bus fill={Color.DARK_SLATE_BLUE_TWO} />;
+      return (
+        <Icon.Bus
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
     case SUB_TRIP_TYPE.TRAIN:
-      return <Icon.Train fill={Color.DARK_SLATE_BLUE_TWO} />;
+      return (
+        <Icon.Train
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
     case SUB_TRIP_TYPE.CAB:
       return (
         <Icon.Cab

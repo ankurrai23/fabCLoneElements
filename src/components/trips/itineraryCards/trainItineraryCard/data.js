@@ -46,15 +46,15 @@ const TrainItineraryCardProps = {
   ],
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
-  showLine: false,
-  hideIcon: true,
+  showLine: true,
+  hideIcon: false,
   showInfo: false,
   isAlert: true,
   notificationText: 'This is notification text',
   timelineGreyed: false,
   actionDisabled: true,
   showStatus: false,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: false,
 };
 
