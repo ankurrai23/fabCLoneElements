@@ -35,7 +35,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
         onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
-          <View style={Styles.flexDirectionRow}>
+          <View style={Styles.flexRowAndAlignCenter}>
             {item?.subTripsIcon?.slice(0, 3)?.map((asset) => {
               const subTripIcon = getSubTripIcon(asset.key);
               return <View style={Styles.iconStyle}>{subTripIcon}</View>;
