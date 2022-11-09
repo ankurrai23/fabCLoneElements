@@ -10,12 +10,16 @@ import stackHeaderProps from './common/components/stackHeader/data';
 import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 import contactSupportProps from './common/components/contactSupport/data';
 import dropDownProps from './common/components/dropDown/data';
+import selectorProps from './common/components/selector/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
 import hotelDetailCardProps from './components/trips/hotelDetailCard/data';
 import tripStatusProps from './components/trips/tripStatus/data';
-import flightItineraryCardProps from './components/trips/flightItineraryCard/data';
+import flightItineraryCardProps from './components/trips/itineraryCards/flightItineraryCard/data';
+import busItineraryCardProps from './components/trips/itineraryCards/busItineraryCard/data';
+import trainItineraryCardProps from './components/trips/itineraryCards/trainItineraryCard/data';
+import cabItineraryCardProps from './components/trips/itineraryCards/cabItineraryCard/data';
 import hotelItineraryCardProps from './components/trips/hotelItineraryCard/data';
 import remarksContainerProps from './components/trips/remarksContainer/data';
 import itineraryHeaderProps from './components/trips/itineraryHeader/data';
@@ -25,7 +29,10 @@ import receivedTripCardProps from './components/trips/receivedTripCard/data';
 import hotelPreferenceCardProps from './components/trips/hotelPreferenceCard/data';
 import managerActionsProps from './components/trips/managerActions/data';
 import coTravellersProps from './components/trips/coTravellers/data';
-import flightDetailCardProps from './components/trips/flightDetailCard/data';
+import flightDetailCardProps from './components/trips/detailCards/flightDetailCard/data';
+import busDetailCardProps from './components/trips/detailCards/busDetailCard/data';
+import cabDetailCardProps from './components/trips/detailCards/cabDetailCard/data';
+import trainDetailCardProps from './components/trips/detailCards/trainDetailCard/data';
 import listTypeFilterProps from './components/trips/listTypeFilter/data';
 import floatingActionProps from './common/components/floatingActionButton/data';
 import approverChainProps from './components/trips/approverChain/data';
@@ -38,6 +45,9 @@ import otherTravelDetailsProps from './components/tripCreation/otherTravelDetail
 import approvalManagerProps from './components/tripCreation/approvalManager/data';
 import removeItineraryProps from './components/tripCreation/removeItinerary/data';
 import itineraryCardProps from './components/tripCreation/itinerary/data';
+import trainDetailsProps from './components/tripCreation/trainDetails/data';
+import busDetailsProps from './components/tripCreation/busDetails/data';
+import cabDetailsProps from './components/tripCreation/cabDetails/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -65,6 +75,9 @@ export {
   hotelDetailCardProps,
   tripStatusProps,
   flightItineraryCardProps,
+  busItineraryCardProps,
+  trainItineraryCardProps,
+  cabItineraryCardProps,
   hotelItineraryCardProps,
   remarksContainerProps,
   coTravellersDetailProps,
@@ -81,6 +94,9 @@ export {
   approvalManagerProps,
   coTravellersProps,
   flightDetailCardProps,
+  busDetailCardProps,
+  trainDetailCardProps,
+  cabDetailCardProps,
   listTypeFilterProps,
   homeHeaderProps,
   claimsCardProps,
@@ -105,4 +121,8 @@ export {
   contactSupportProps,
   dropDownProps,
   approverChainProps,
+  trainDetailsProps,
+  busDetailsProps,
+  cabDetailsProps,
+  selectorProps,
 };

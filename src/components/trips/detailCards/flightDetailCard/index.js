@@ -1,30 +1,34 @@
 import React from 'react';
 import {View} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import {DP} from '../../../../utils/Dimen';
+// import {Color} from '../../../utils/color';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
-import Separator from '../../../common/components/separator';
-import TripStatus from '../tripStatus';
-import {FlightSubTripActions} from '../../../utils/SubTripActions';
-import ModificationAlertBox from '../components/modificationAlertBox';
-import {getStatusObject} from '../hotelDetailCard';
-import ContactSupport from '../../../common/components/contactSupport';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
+import Separator from '../../../../common/components/separator';
+import TripStatus from '../../tripStatus';
+import {FlightSubTripActions} from '../../../../utils/SubTripActions';
+import ModificationAlertBox from '../../components/modificationAlertBox';
+import {getStatusObject} from '../../hotelDetailCard';
+import ContactSupport from '../../../../common/components/contactSupport';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import Icon from '../../../../assets/icons/Icon';
 
 const FlightDetailCard = ({
   title,
-  item,
+  tripDetails,
   onActionPress,
   onCardPress,
   style,
   supportDetails,
   onContactSupportPress,
   onClose,
+  actions,
+  notificationText,
+  actionsDisabled,
 }) => {
-  const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
+  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
@@ -58,7 +62,7 @@ const FlightDetailCard = ({
       </View>
     </>
   );
-  if (!item) {
+  if (!tripDetails) {
     return null;
   }
   return (
@@ -68,47 +72,44 @@ const FlightDetailCard = ({
           {title}
         </FText>
       )}
-      {!!item.notificationText && (
+      {!!notificationText && (
         <ModificationAlertBox
-          msg={item.notificationText}
+          msg={notificationText}
           style={{marginHorizontal: DP._16}}
         />
       )}
       <View style={[Styles.container, style]}>
         <FTouchableOpacity
-          activeOpacity={item.reduceOpacity ? 0.6 : 1}
-          style={Styles.card(item.reduceOpacity)}
+          activeOpacity={tripDetails.reduceOpacity ? 0.6 : 1}
+          style={Styles.card(tripDetails.reduceOpacity)}
           onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             <FText>
               <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {item.date}
+                {tripDetails.date}
               </FText>
               <FText
-                style={{
-                  color: Color.BLUEY_GREY,
-                  fontSize: DP._12,
-                }}>{` ${item.month}`}</FText>
+                style={Styles.headerMonth}>{` ${tripDetails.month}`}</FText>
             </FText>
-            {!!item.flightBookingStatus && (
+            {!!tripDetails.flightBookingStatus && (
               <TripStatus
-                statusObj={getStatusObject(item.flightBookingStatus)}
+                statusObj={getStatusObject(tripDetails.flightBookingStatus)}
               />
             )}
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
             <View style={Styles.flex}>
+              <FText style={Styles.time}>{tripDetails.departureTime}</FText>
               <FText style={Styles.portName}>
-                {`${item.sourceAirportCode}` +
-                  (item.sourceAirportTerminal
-                    ? ` - ${item.sourceAirportTerminal}`
+                {`${tripDetails.sourceAirportCode}` +
+                  (tripDetails.sourceAirportTerminal
+                    ? ` - ${tripDetails.sourceAirportTerminal}`
                     : '')}
               </FText>
-              <FText style={Styles.time}>{item.departureTime}</FText>
             </View>
             <View
               style={[
-                Styles.justifyContent_around(item.duration),
+                Styles.justifyContent_around(tripDetails.duration),
                 Styles.flex,
               ]}>
               <Icon.Aeroplane
@@ -118,30 +119,32 @@ const FlightDetailCard = ({
                 style={Styles.airplane}
               />
               <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>{item.duration}</FText>
+                <FText style={Styles.duration}>{tripDetails.duration}</FText>
                 <View style={Styles.dot_two} />
-                <FText style={Styles.duration}>{item.stop}</FText>
+                <FText style={Styles.duration}>{tripDetails.stop}</FText>
               </View>
             </View>
             <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
+              <FText style={Styles.time}>{tripDetails.arrivalTime}</FText>
               <FText style={Styles.portName}>
-                {`${item.destinationAirportCode}` +
-                  (item.destinationAirportTerminal
-                    ? ` - ${item.destinationAirportTerminal}`
+                {`${tripDetails.destinationAirportCode}` +
+                  (tripDetails.destinationAirportTerminal
+                    ? ` - ${tripDetails.destinationAirportTerminal}`
                     : '')}
               </FText>
-              <FText style={Styles.time}>{item.arrivalTime}</FText>
             </View>
           </View>
-          {item.pnr && (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+          {tripDetails.pnr && (
+            <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
               <View>
-                <FText style={Styles.portName}>{item.airline}</FText>
-                <FText style={Styles.time}>{item.flightNumber}</FText>
+                <FText style={Styles.time}>{tripDetails.airline}</FText>
+                <FText style={Styles.portName}>
+                  {tripDetails.flightNumber}
+                </FText>
               </View>
               <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.portName}>{Strings.pnr}</FText>
-                <FText style={Styles.time}>{item.pnr}</FText>
+                <FText style={Styles.time}>{Strings.pnr}</FText>
+                <FText style={Styles.portName}>{tripDetails.pnr}</FText>
               </View>
             </View>
           )}
@@ -156,7 +159,10 @@ const FlightDetailCard = ({
             </>
           )}
         </FTouchableOpacity>
-        {(rescheduleAction || cancelAction || viewRemarksAction) && <Actions />}
+        {!actionsDisabled &&
+          (rescheduleAction || cancelAction || viewRemarksAction) && (
+            <Actions />
+          )}
       </View>
     </>
   );

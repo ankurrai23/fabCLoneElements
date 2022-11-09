@@ -23,6 +23,9 @@ export const TRIP_STATUS = {
 export const SUB_TRIP_TYPE = {
   HOTEL: 'HOTEL',
   FLIGHT: 'FLIGHT',
+  CAB: 'CAB',
+  BUS: 'BUS',
+  TRAIN: 'TRAIN',
 };
 
 export const EMPLOYEE_ACTIONS = {

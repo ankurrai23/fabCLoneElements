@@ -1,7 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import {cardStyleObj, shadowObj} from '../../../utils/Utils';
+import {DP} from '../../../../utils/Dimen';
+// import {Color} from '../../../utils/color';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
 export default StyleSheet.create({
   container: {
     marginHorizontal: DP._16,
@@ -37,16 +38,24 @@ export default StyleSheet.create({
   },
   portName: {
     color: Color.GREYISH_PURPLE,
+    fontSize: DP._12,
   },
   time: {
     marginTop: DP._4,
-    fontSize: DP._16,
+    fontSize: DP._14,
   },
   date: {
     fontSize: DP._18,
   },
+  headerMonth: {
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+  },
   marginTop_16: {
     marginTop: DP._16,
+  },
+  marginTop_12: {
+    marginTop: DP._12,
   },
   duration: {
     fontSize: DP._10,

@@ -23,12 +23,17 @@ import ScrollableTabBar from './common/components/scrollableTabBar';
 import ContactSupport from './common/components/contactSupport';
 import DropDown from './common/components/dropDown';
 import FieldStates from './common/components/fieldStates';
+import Selector from './common/components/selector';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
 import HotelDetailCard from './components/trips/hotelDetailCard';
 import TripStatus from './components/trips/tripStatus';
-import FlightItineraryCard from './components/trips/flightItineraryCard';
+import FlightItineraryCard from './components/trips/itineraryCards/flightItineraryCard';
+import BusItineraryCard from './components/trips/itineraryCards/busItineraryCard';
+import CabItineraryCard from './components/trips/itineraryCards/cabItineraryCard';
+import TrainItineraryCard from './components/trips/itineraryCards/trainItineraryCard';
+
 import HotelItineraryCard from './components/trips/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';
 import CoTravellers from './components/trips/coTravellers';
@@ -42,14 +47,23 @@ import TripCardLoadingState from './components/trips/tripCardLoadingState';
 import HotelPreferenceLoadingState from './components/trips/hotelPreferenceLoadingState';
 import HotelDetailLoadingState from './components/trips/hotelDetailLoadingState';
 import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoadingState';
-import FlightDetailCard from './components/trips/flightDetailCard';
+import FlightDetailCard from './components/trips/detailCards/flightDetailCard';
+import BusDetailCard from './components/trips/detailCards/busDetailCard';
+import TrainDetailCard from './components/trips/detailCards/trainDetailCard';
+import CabDetailCard from './components/trips/detailCards/cabDetailCard';
+
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
 import ApproverChain from './components/trips/approverChain';
 
 //Constants
-import {FlightSubTripActions} from './utils/SubTripActions';
+import {
+  FlightSubTripActions,
+  TrainSubtripActions,
+  BusSubtripActions,
+  CabSubtripActions,
+} from './utils/SubTripActions';
 import {HotelSubTripActions} from './utils/SubTripActions';
 import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
@@ -61,6 +75,9 @@ import ApprovalManager from './components/tripCreation/approvalManager';
 import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
 import RemoveItinerary from './components/tripCreation/removeItinerary';
 import ItineraryCard from './components/tripCreation/itinerary';
+import TrainDetails from './components/tripCreation/trainDetails';
+import BusDetails from './components/tripCreation/busDetails';
+import CabDetails from './components/tripCreation/cabDetails';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -113,11 +130,15 @@ export {
   DropDown,
   ContactSupport,
   FieldStates,
+  Selector,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
+  BusItineraryCard,
+  CabItineraryCard,
+  TrainItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
   EmptyScreen,
@@ -133,6 +154,9 @@ export {
   FlightPreferenceLoadingState,
   CoTravellers,
   FlightDetailCard,
+  BusDetailCard,
+  TrainDetailCard,
+  CabDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
   ApproverChain,
@@ -143,8 +167,14 @@ export {
   CoTravelersDetails,
   ApprovalManager,
   RemoveItinerary,
+  TrainDetails,
+  BusDetails,
+  CabDetails,
   // constants
   FlightSubTripActions,
+  TrainSubtripActions,
+  BusSubtripActions,
+  CabSubtripActions,
   HotelSubTripActions,
   FieldNamesEnum,
   // Home

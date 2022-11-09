@@ -10,6 +10,9 @@ import {
   HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
+  BusItineraryCard,
+  TrainItineraryCard,
+  CabItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
   CoTravelersDetails,
@@ -30,6 +33,9 @@ import {
   ApprovalManager,
   CoTravellers,
   FlightDetailCard,
+  BusDetailCard,
+  CabDetailCard,
+  TrainDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
   HomeHeader,
@@ -57,6 +63,10 @@ import {
   ItineraryCard,
   FieldStates,
   ApproverChain,
+  TrainDetails,
+  BusDetails,
+  CabDetails,
+  Selector,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -98,6 +108,10 @@ const COMMON_COMPONENTS = [
     name: 'FieldStates',
     component: <FieldStates />,
   },
+  {
+    name: 'Selector',
+    component: <Selector {...data.selectorProps} />,
+  },
 ];
 
 const TRIP_COMPONENTS = [
@@ -117,6 +131,18 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightItineraryCard',
     component: <FlightItineraryCard {...data.flightItineraryCardProps} />,
+  },
+  {
+    name: 'BusItineraryCard',
+    component: <BusItineraryCard {...data.busItineraryCardProps} />,
+  },
+  {
+    name: 'TrainItineraryCard',
+    component: <TrainItineraryCard {...data.trainItineraryCardProps} />,
+  },
+  {
+    name: 'CabItineraryCard',
+    component: <CabItineraryCard {...data.cabItineraryCardProps} />,
   },
   {
     name: 'HotelItineraryCard',
@@ -157,6 +183,18 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightDetailCard',
     component: <FlightDetailCard {...data.flightDetailCardProps} />,
+  },
+  {
+    name: 'BusDetailCard',
+    component: <BusDetailCard {...data.busDetailCardProps} />,
+  },
+  {
+    name: 'CabDetailCard',
+    component: <CabDetailCard {...data.cabDetailCardProps} />,
+  },
+  {
+    name: 'TrainDetailCard',
+    component: <TrainDetailCard {...data.trainDetailCardProps} />,
   },
   {
     name: 'TripCardLoadingState',
@@ -217,6 +255,18 @@ const TRIP_CREATION = [
   {
     name: 'Remove Itinerary',
     component: <RemoveItinerary {...data.removeItineraryProps} />,
+  },
+  {
+    name: 'TrainDetails',
+    component: <TrainDetails {...data.trainDetailsProps} />,
+  },
+  {
+    name: 'BusDetails',
+    component: <BusDetails {...data.busDetailsProps} />,
+  },
+  {
+    name: 'CabDetails',
+    component: <CabDetails {...data.cabDetailsProps} />,
   },
 ];
 

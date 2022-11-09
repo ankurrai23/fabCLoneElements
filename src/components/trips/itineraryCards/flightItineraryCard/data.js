@@ -1,4 +1,4 @@
-import {FlightSubTripActions} from '../../../utils/SubTripActions';
+import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 
 const flightItineraryCardProps = {
   status: {

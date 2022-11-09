@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import {cardStyleObj, shadowObj} from '../../../utils/Utils';
+import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
@@ -31,16 +31,20 @@ export default StyleSheet.create({
   flexDirectionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  airplane: {
-    transform: [{rotate: '90deg'}],
+  flowRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  portName: {
-    color: Color.GREYISH_PURPLE,
+  heading: {
+    color: Color.DARK,
+    fontSize: DP._14,
   },
-  time: {
+  details: {
     marginTop: DP._4,
-    fontSize: DP._16,
+    fontSize: DP._12,
+    color: Color.GREY_PURPLE,
   },
   date: {
     fontSize: DP._18,
@@ -49,17 +53,26 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.TWILIGHT_BLUE,
   },
-  marginTop_16: {
-    marginTop: DP._16,
+  marginTop_12: {
+    marginTop: DP._12,
+  },
+  marginTop_14: {
+    marginTop: DP._14,
   },
   duration: {
     fontSize: DP._10,
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'center'},
-  card: {padding: DP._16},
+  card: {padding: DP._16, paddingBottom: DP._12},
   alignItem_flexEnd: {
     alignItems: 'flex-end',
+  },
+  driverContact: {
+    fontSize: DP._12,
+    color: Color.DODGER_BLUE,
+    width: '50%',
+    textAlign: 'right',
   },
   icon: {
     width: DP._30,
@@ -76,10 +89,6 @@ export default StyleSheet.create({
     paddingBottom: DP._10,
   },
   flexRow: {flexDirection: 'row'},
-  justifyContent_around: (duration) => ({
-    justifyContent: duration ? 'space-around' : 'flex-start',
-    alignItems: 'center',
-  }),
   flexRowAndAlignCenter: {flexDirection: 'row', alignItems: 'center'},
   primaryButtonStyle: {
     flexDirection: 'row',
@@ -99,15 +108,52 @@ export default StyleSheet.create({
   flex: {
     flex: 1,
   },
-  dot_two: {
-    padding: DP._3,
-    borderRadius: DP._4,
-    backgroundColor: Color.LIGHT_BLUEY_GREY,
-    marginHorizontal: DP._5,
-  },
   durationContainer: {
     flexDirection: 'row',
     flexGrow: 1,
-    alignItems: 'center',
+    paddingTop: DP._2,
+  },
+  width_20: {
+    width: '20%',
+  },
+  width_40: {
+    width: '40%',
+  },
+  width_50: {
+    width: '50%',
+  },
+  width_48: {
+    width: '48%',
+  },
+  textAlign_left: {
+    textAlign: 'left',
+  },
+  textAlign_right: {
+    textAlign: 'right',
+  },
+  textAlign_center: {
+    textAlign: 'center',
+  },
+  fontSize_12: {
+    fontSize: DP._12,
+  },
+  detailLableStyle: {
+    marginLeft: DP._10,
+    fontSize: DP._12,
+    color: Color.GREY_PURPLE,
+  },
+  marginTop_8: {
+    marginTop: DP._8,
+  },
+  color_grey: {
+    color: Color.GREY_PURPLE,
+  },
+  actionsSeperator: {
+    marginHorizontal: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
+  headerMonth: {
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
   },
 });
