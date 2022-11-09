@@ -7,7 +7,7 @@ import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
 import Separator from '../../../../common/components/separator';
 import TripStatus from '../../tripStatus';
-import {BusSubtripActions} from '../../../../utils/SubTripActions';
+import {CabSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import ModificationAlertBox from '../../components/modificationAlertBox';
@@ -60,9 +60,9 @@ const CabDetailCard = ({
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
-  const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
+  const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
+  const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
+  const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
 
   const ActionsInItinerary = () => (
     <>
