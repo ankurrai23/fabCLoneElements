@@ -267,7 +267,9 @@ const BusDetailCard = ({
                     rightData={bookingDetails.coordinatorNo}
                     leftDefaultData={Strings.phoneNo}
                     rightDataStyle={Styles.color_blue}
-                    onClickRightData={onPhoneNumberClicked}
+                    onClickRightData={() =>
+                      onPhoneNumberClicked(bookingDetails.coordinatorNo)
+                    }
                     style={
                       bookingDetails.coordinatorName && Styles.marginTop_12
                     }
