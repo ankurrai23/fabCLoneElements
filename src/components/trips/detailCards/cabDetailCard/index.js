@@ -238,7 +238,9 @@ const CabDetailCard = ({
                       rightData={cabDetails.driverPhone}
                       leftDefaultData={Strings.phoneNo}
                       rightDataStyle={Styles.color_blue}
-                      onClickRightData={onPhoneNumberClicked}
+                      onClickRightData={() =>
+                        onPhoneNumberClicked(cabDetails.driverPhone)
+                      }
                       style={cabDetails.driverName && Styles.marginTop_12}
                     />
                   )}
