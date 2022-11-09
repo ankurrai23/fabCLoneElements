@@ -3,12 +3,10 @@ import {View} from 'react-native';
 import moment from 'moment';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {DP} from '../../../utils/Dimen';
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
-import {TRIP_TYPE} from '../../../utils/Constants';
 import Icon from '../../../assets/icons/Icon';
 import SubTripTitle from '../subTripTitle';
 
@@ -82,15 +80,6 @@ export default function FlightDetails(props) {
       ) : null}
       {props.data?.length > 0 ? (
         <View style={Styles.itemContainer}>{renderRoute()}</View>
-      ) : null}
-      {props.data?.length === 1 && props.tripType === TRIP_TYPE.ROUND_TRIP ? (
-        <FTouchableOpacity
-          onPress={props.onPress}
-          style={Styles.renderNewRoute}>
-          <View style={Styles.innerViewFlight}>
-            <FText style={Styles.addFlightTxt}>{Strings.addReturnFlight}</FText>
-          </View>
-        </FTouchableOpacity>
       ) : null}
     </View>
   );
