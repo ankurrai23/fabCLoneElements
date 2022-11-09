@@ -30,7 +30,7 @@ const TripListingCard = ({item, onCardPress, style}) => {
               return <View style={Styles.iconStyle}>{subTripIcon}</View>;
             })}
             {item?.subTripsIcon?.length > 3 && (
-              <FText weight={500} style={{fontSize: DP._14}}>
+              <FText weight={500} style={Styles.fontSize_14}>
                 +{item?.subTripsIcon?.length - 3}
               </FText>
             )}

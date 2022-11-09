@@ -11,10 +11,10 @@ const receivedTripCardProps = {
     bookingStatus: 'CONFIRMED',
     subTripsIcon: [
       {key: 'TRAIN'},
-      // {key: 'HOTEL'},
+      {key: 'HOTEL'},
       {key: 'CAB'},
       {key: 'BUS'},
-      // {key: 'FLIGHT'},
+      {key: 'FLIGHT'},
     ],
     isCancelled: false,
     cancelMsg: 'This trip is cancelled',
