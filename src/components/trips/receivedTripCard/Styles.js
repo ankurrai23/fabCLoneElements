@@ -146,5 +146,7 @@ export default StyleSheet.create({
   },
   fontSize_14: {
     fontSize: DP._14,
+  flex_1: {
+    flex: 1,
   },
 });
