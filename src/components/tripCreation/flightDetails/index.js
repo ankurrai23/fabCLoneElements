@@ -19,19 +19,15 @@ export default function FlightDetails(props) {
       return (
         <View key={index} style={Styles.renderRoute}>
           <View style={Styles.flexDirectionRow}>
-            <View style={Styles.Flex}>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.renderValue}>
-                {moment(item.departureDate).format(DATE) + ' '}
-                <FText style={Styles.monthlabel}>
-                  {moment(item.departureDate).format(MONTH)}
-                </FText>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.renderValue}>
+              {moment(item.departureDate).format(DATE) + ' '}
+              <FText style={Styles.monthlabel}>
+                {moment(item.departureDate).format(MONTH)}
               </FText>
-            </View>
-            <View style={Styles.slotContainer}>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.slotText}>
-                {Strings.slotInfo(item.startTime, item.endTime)}
-              </FText>
-            </View>
+            </FText>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.slotText}>
+              {Strings.slotInfo(item.startTime, item.endTime)}
+            </FText>
           </View>
           <View style={Styles.routeContainer}>
             <View style={Styles.Flex}>
