@@ -38,6 +38,9 @@ import {
   TrainDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
+  CabDetailLoadingState,
+  BusDetailLoadingState,
+  TrainDetailLoadingState,
   HomeHeader,
   ClaimsCard,
   ClaimsList,
@@ -219,6 +222,18 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightDetailLoadingState',
     component: <FlightDetailLoadingState />,
+  },
+  {
+    name: 'CabDetailLoadingState',
+    component: <CabDetailLoadingState />,
+  },
+  {
+    name: 'BusDetailLoadingState',
+    component: <BusDetailLoadingState />,
+  },
+  {
+    name: 'TrainDetailLoadingState',
+    component: <TrainDetailLoadingState />,
   },
   {
     name: 'Approver Chain',

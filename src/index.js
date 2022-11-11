@@ -55,6 +55,9 @@ import CabDetailCard from './components/trips/detailCards/cabDetailCard';
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
 import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
+import CabDetailLoadingState from './components/trips/cabDetailLoadingState';
+import BusDetailLoadingState from './components/trips/busDetailLoadingState';
+import TrainDetailLoadingState from './components/trips/trainDetailLoadingState';
 import ApproverChain from './components/trips/approverChain';
 
 //Constants
@@ -159,6 +162,9 @@ export {
   CabDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
+  CabDetailLoadingState,
+  BusDetailLoadingState,
+  TrainDetailLoadingState,
   ApproverChain,
   // Trip Creation
   HotelDetails,

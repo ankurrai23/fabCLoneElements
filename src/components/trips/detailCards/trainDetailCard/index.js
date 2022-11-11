@@ -211,8 +211,8 @@ const TrainDetailCard = ({
                 </FText>
               )}
             </View>
-            {bookingDetails.travellersDetails &&
-              bookingDetails.travellersDetails.length > 0 && (
+            {bookingDetails.travellerDetails &&
+              bookingDetails.travellerDetails.length > 0 && (
                 <>
                   <Separator style={Styles.sepratorStyle} />
 
@@ -225,7 +225,7 @@ const TrainDetailCard = ({
                     ]}>
                     {Strings.travelersDetails}
                   </FText>
-                  {bookingDetails.travellersDetails.map((detail, index) => (
+                  {bookingDetails.travellerDetails.map((detail, index) => (
                     <DetailRow
                       dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
                       rightData={detail.seatNo}
