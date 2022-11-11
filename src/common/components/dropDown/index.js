@@ -1,5 +1,5 @@
 import {View, FlatList} from 'react-native';
-import React, {forwardRef, useImperativeHandle, useRef} from 'react';
+import React, {forwardRef, useEffect, useImperativeHandle, useRef} from 'react';
 import FText, {FONT_TYPE} from '../../rn/FText';
 import TextField from '../textField';
 import {DP} from '../../../utils/Dimen';
@@ -24,6 +24,7 @@ function DropDown(
   ref,
 ) {
   const inputFieldRef = useRef();
+  const flatlistRef = useRef();
 
   useImperativeHandle(ref, () => ({
     blur: () => {
@@ -33,6 +34,12 @@ function DropDown(
       inputFieldRef.current.focus();
     },
   }));
+
+  useEffect(() => {
+    if (data?.length > 3) {
+      flatlistRef.current.flashScrollIndicators();
+    }
+  });
 
   const Item = ({
     entity: {title, subTitle, insideBracket, img},
@@ -90,13 +97,15 @@ function DropDown(
         onFocus={() => onFocusChange(true)}
         onBlur={() => onFocusChange(false)}
       />
-      <View style={Styles.flatlistContainer(data?.length > 1)}>
+      <View style={Styles.flatlistContainer}>
         <FlatList
+          ref={flatlistRef}
           data={data}
           renderItem={({item, index}) => <Item entity={item} index={index} />}
           contentContainerStyle={Styles.contentContainer}
           bounces={false}
           keyboardShouldPersistTaps="always"
+          persistentScrollbar={true}
         />
       </View>
     </View>
