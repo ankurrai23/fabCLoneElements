@@ -47,6 +47,7 @@ export default StyleSheet.create({
   flexDirectionRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   renderValue: {
     fontSize: DP._16,

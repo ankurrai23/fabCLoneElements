@@ -7,6 +7,11 @@ import Styles from './Styles';
 import moment from 'moment';
 import FText from '../../../common/rn/FText';
 
+const CAB_TYPE = {
+  outstation: 'OUTSTATION',
+  airportTransfer: 'AIRPORT_TRANSFER',
+};
+
 export default function CabDetails({onPress, data, style, error}) {
   const generateRequestInfo = (item) => ({
     date: moment(item.departureDate).format('DD'),
@@ -15,7 +20,7 @@ export default function CabDetails({onPress, data, style, error}) {
     destination: item.destination,
     sourceLocality: item.sourceLocality,
     destinationLocality: item.destinationLocality,
-    pickupTime: item.startTime,
+    pickupTime: item.cabType === CAB_TYPE.outstation ? item.startTime : null,
   });
   return (
     <View style={style}>

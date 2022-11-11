@@ -144,6 +144,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderRadius: DP._10,
   },
+  fontSize_14: {
+    fontSize: DP._14,
+  },
   flex_1: {
     flex: 1,
   },

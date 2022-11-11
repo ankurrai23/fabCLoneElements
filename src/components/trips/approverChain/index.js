@@ -51,9 +51,11 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
             numberOfLines={1}>
             {primaryText || managerName}
           </FText>
-          <FText numberOfLines={1} style={styles.designation(inItinerary)}>
-            {designation}
-          </FText>
+          {!!designation && (
+            <FText numberOfLines={1} style={styles.designation(inItinerary)}>
+              {designation}
+            </FText>
+          )}
           {!!timeOfStatusUpdate && (
             <FText style={styles.timeOfStatusUpdate} numberOfLines={1}>
               {timeOfStatusUpdate}
@@ -83,9 +85,9 @@ const styles = StyleSheet.create({
     color: Color.DARK,
     lineHeight: inItinerary ? DP._16 : DP._18,
     fontSize: inItinerary ? DP._12 : DP._14,
-    marginBottom: DP._4,
   }),
   designation: (inItinerary) => ({
+    marginTop: DP._4,
     lineHeight: inItinerary ? DP._12 : DP._18,
     fontSize: inItinerary ? DP._12 : DP._14,
     color: inItinerary ? Color.DARK : Color.GREY_PURPLE,
