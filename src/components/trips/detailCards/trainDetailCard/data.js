@@ -16,7 +16,7 @@ const trainDetailCardProps = {
     trainClass: 'AC 3 Tier Sleeper ',
     berth: '42, Side upper',
     trainBookingStatus: 'CONFIRMED',
-    travellersDetails: [
+    travellerDetails: [
       {
         travellerName: 'Sahil Malhan',
         seatNo: 'b1, 42',
