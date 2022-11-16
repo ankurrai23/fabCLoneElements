@@ -10,6 +10,7 @@ const hotelItineraryCardProps = {
     checkOut: {date: '29', month: 'Nov'},
     title: 'Mumbai',
     location: 'Andheri East',
+    reduceOpacity: false,
   },
   bookingDetails: {
     checkIn: {date: '8', month: 'Oct'},
@@ -17,6 +18,7 @@ const hotelItineraryCardProps = {
     title: 'Mumbai',
     location: 'Andheri East',
     checkInTime: '1AM',
+    reduceOpacity: false,
   },
   actionsDisabled: false,
   actions: [

@@ -9,6 +9,7 @@ const cabItineraryCardProps = {
     destination: 'Lonavala fjlskfjsdlfjdslkfjsd ',
     sourceLocality: 'Mumbai Airport fdkfjsldjfsldfjs',
     destinationLocality: 'Tungarli road skfjsdlfjsldfjsdlkfj',
+    reduceOpacity: false,
   },
   status: {
     key: 'PROCESSED',
@@ -40,6 +41,7 @@ const cabItineraryCardProps = {
         vehicleNumber: 'MH 12A 2345 ',
       },
     ],
+    reduceOpacity: false,
   },
   actions: [
     {
@@ -59,7 +61,7 @@ const cabItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: true,
   hideIcon: false,
-  showInfo: true,
+  showInfo: false,
   isAlert: true,
   notificationText: 'This is notification text',
   timelineGreyed: false,

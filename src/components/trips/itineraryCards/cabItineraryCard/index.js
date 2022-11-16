@@ -15,7 +15,10 @@ import Icon from '../../../../assets/icons/Icon';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
-    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+    <FTouchableOpacity
+      activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
+      style={Styles.card(tripRequest.reduceOpacity)}
+      onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
@@ -64,7 +67,10 @@ const PostBookingCard = ({
   hideChevron,
 }) => {
   return (
-    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+    <FTouchableOpacity
+      activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
+      style={Styles.card(bookingDetails.reduceOpacity)}
+      onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>

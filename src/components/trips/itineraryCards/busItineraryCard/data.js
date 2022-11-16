@@ -7,6 +7,7 @@ const busItineraryCardProps = {
     destination: 'Lonavala',
     sourceLocality: 'Mumbai Airport',
     destinationLocality: 'Tungarli road',
+    reduceOpacity: false,
   },
   status: {
     key: 'PROCESSED',
@@ -28,6 +29,7 @@ const busItineraryCardProps = {
     busNumber: 'MH 12A 2345',
     busType: 'Sleeper',
     seatNumber: 'L23',
+    reduceOpacity: false,
   },
   actions: [
     {
@@ -47,7 +49,7 @@ const busItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: true,
   hideIcon: false,
-  showInfo: true,
+  showInfo: false,
   isAlert: false,
   notificationText: 'This is notification text',
   timelineGreyed: false,
