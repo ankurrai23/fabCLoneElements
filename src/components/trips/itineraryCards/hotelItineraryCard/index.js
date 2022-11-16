@@ -138,8 +138,12 @@ const HotelItineraryCard = ({
           )}
         </View>
         <View style={{paddingHorizontal: DP._16}}>
-          <FText style={Styles.hotelName}>{tripRequest.title}</FText>
-          <FText style={Styles.hotelLocation}>{tripRequest.location}</FText>
+          <FText style={Styles.hotelName} numberOfLines={1}>
+            {tripRequest.title}
+          </FText>
+          <FText style={Styles.hotelLocation} numberOfLines={1}>
+            {tripRequest.location}
+          </FText>
         </View>
       </FTouchableOpacity>
       {!actionsDisabled &&
