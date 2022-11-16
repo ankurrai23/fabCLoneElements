@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {DP} from '../../../../utils/Dimen';
-import {Color} from '../../../utils/color';
+import {Color} from '../../../../utils/color';
 
 import DashedLine from '../../../../common/components/dashedLine';
 import Separator from '../../../../common/components/separator';

@@ -6,7 +6,7 @@ import {
   PlaceholderContainer,
 } from 'react-native-loading-placeholder';
 import {DP} from '../../../../../utils/Dimen';
-import {Color} from '../../../utils/color';
+import {Color} from '../../../../../utils/color';
 import Styles from './Styles';
 
 export default function TrainDetailLoadingState() {

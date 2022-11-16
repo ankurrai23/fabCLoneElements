@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Color} from '../../../utils/color';
+import {Color} from '../../../../utils/color';
 import {DP} from '../../../../utils/Dimen';
 import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
 

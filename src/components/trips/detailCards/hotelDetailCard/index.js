@@ -4,7 +4,7 @@ import FText, {FONT_TYPE} from '../../../../common/rn/FText';
 import FImage from '../../../../common/rn/FImage';
 import Styles from './Styles';
 import {DP} from '../../../../utils/Dimen';
-import {Color} from '../../../utils/color';
+import {Color} from '../../../../utils/color';
 import Separator from '../../../../common/components/separator';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import DialogBox from '../../../../common/components/dialogBox';
