@@ -1,20 +1,20 @@
 import React from 'react';
 import {View} from 'react-native';
-import {DP} from '../../../utils/Dimen';
+import {DP} from '../../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 
-import DashedLine from '../../../common/components/dashedLine';
-import Separator from '../../../common/components/separator';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import TripStatus from '../tripStatus';
+import DashedLine from '../../../../common/components/dashedLine';
+import Separator from '../../../../common/components/separator';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
+import TripStatus from '../../tripStatus';
 
 import Styles from './Styles';
-import InfoBox from '../components/infoBox';
-import {HotelSubTripActions} from '../../../utils/SubTripActions';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import {TRIP_STATUS} from '../../../utils/Constants';
-import Icon from '../../../assets/icons/Icon';
+import InfoBox from '../../components/infoBox';
+import {HotelSubTripActions} from '../../../../utils/SubTripActions';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import {TRIP_STATUS} from '../../../../utils/Constants';
+import Icon from '../../../../assets/icons/Icon';
 
 const HotelItineraryCard = ({
   status,

@@ -34,7 +34,7 @@ import BusItineraryCard from './components/trips/itineraryCards/busItineraryCard
 import CabItineraryCard from './components/trips/itineraryCards/cabItineraryCard';
 import TrainItineraryCard from './components/trips/itineraryCards/trainItineraryCard';
 
-import HotelItineraryCard from './components/trips/hotelItineraryCard';
+import HotelItineraryCard from './components/trips/itineraryCards/hotelItineraryCard';
 import RemarksContainer from './components/trips/remarksContainer';
 import CoTravellers from './components/trips/coTravellers';
 import ItineraryHeader from './components/trips/itineraryHeader';
