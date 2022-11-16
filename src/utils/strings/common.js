@@ -35,7 +35,7 @@ export default {
   approvalManager: 'Approval manager',
   cotravelerOptional: 'Co-travelers (optional)',
   coTravellerInfoText:
-    'Same hotel and flight details as filled above shall be applicable to all travelers.',
+    'Booking details as filled above shall be applicable to all travelers.',
   edit: 'Edit',
   slotInfo: (startTime, endTime) => `Slot: ${startTime} - ${endTime}`,
   addReturnFlight: 'Add return flight detail',
