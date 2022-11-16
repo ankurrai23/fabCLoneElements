@@ -11,7 +11,7 @@ export default function BusDetails({onPress, data, style, error}) {
   const generateRequestInfo = (item) => ({
     date: moment(item.departureDate).format('DD'),
     month: moment(item.departureDate).format('MMM'),
-    slotDetail: `Slot: ${item.startTime} - ${item.endTime}`,
+    slotDetail: Strings.slotInfo(item.startTime, item.endTime),
     source: item.source,
     destination: item.destination,
     sourceLocality: item.sourceLocality,

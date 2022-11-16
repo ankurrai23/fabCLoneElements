@@ -1,82 +1,47 @@
 import React from 'react';
 import {View} from 'react-native';
-import moment from 'moment';
 
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import {Color} from '../../../utils/color/index.travelPlus';
-import {DP} from '../../../utils/Dimen';
+import FText from '../../../common/rn/FText';
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
 import SubTripTitle from '../subTripTitle';
+import FlightItineraryCard from '../../trips/itineraryCards/flightItineraryCard';
+import moment from 'moment';
 
 const DATE = 'DD'; // 12, 13
 const MONTH = 'MMM'; // Jan, Feb
 
 export default function FlightDetails(props) {
-  function renderRoute() {
-    return props.data?.map((item, index) => {
-      return (
-        <View key={index} style={Styles.renderRoute}>
-          <View style={Styles.flexDirectionRow}>
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.renderValue}>
-              {moment(item.departureDate).format(DATE) + ' '}
-              <FText style={Styles.monthlabel}>
-                {moment(item.departureDate).format(MONTH)}
-              </FText>
-            </FText>
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.slotText}>
-              {Strings.slotInfo(item.startTime, item.endTime)}
-            </FText>
-          </View>
-          <View style={Styles.routeContainer}>
-            <View style={Styles.Flex}>
-              <FText style={Styles.cityName}>{item.source}</FText>
-            </View>
-            <View style={Styles.iconView}>
-              <Icon.Aeroplane
-                width={DP._16}
-                height={DP._16}
-                fill={Color.GREY_PURPLE}
-                style={Styles.airplane}
-              />
-            </View>
-            <View style={Styles.slotContainer}>
-              <FText style={Styles.cityName}>{item.destination}</FText>
-            </View>
-          </View>
-          <View style={Styles.cityCodeContainer}>
-            <View>
-              <FText style={Styles.cityCodeLabel}>
-                {item.sourceAirportCode}
-              </FText>
-            </View>
-            <View>
-              <FText style={Styles.cityCodeLabel}>
-                {item.destinationAirportCode}
-              </FText>
-            </View>
-          </View>
-        </View>
-      );
-    });
-  }
-
+  const {data} = props;
+  const generateRequestInfo = (item) => ({
+    date: moment(item.departureDate).format(DATE),
+    month: moment(item.departureDate).format(MONTH),
+    slotDetail: Strings.slotInfo(item.startTime, item.endTime),
+    source: item.source,
+    destination: item.destination,
+    sourceAirportCode: item.sourceAirportCode,
+    destinationAirportCode: item.destinationAirportCode,
+  });
   return (
-    <View
-      onLayout={props.onLayout}
-      style={[Styles.container, {...props.style}]}>
+    <View onLayout={props.onLayout} style={props.style}>
       <SubTripTitle
         title={Strings.flights}
         dataLength={props.data?.length}
         onPress={props.onPress}
+        style={Styles.headerStyle(data)}
       />
-      {!!props.error === true ? (
+      {!!props.error && (
         <FText style={Styles.errorDetailTxt}>{props.error}</FText>
-      ) : null}
-      {props.data?.length > 0 ? (
-        <View style={Styles.itemContainer}>{renderRoute()}</View>
-      ) : null}
+      )}
+      {data?.map((item, index) => (
+        <FlightItineraryCard
+          tripRequest={generateRequestInfo(item)}
+          showPreBookingCard={true}
+          actionDisabled={true}
+          hideIcon
+          style={Styles.cardStyle(data, index)}
+        />
+      ))}
     </View>
   );
 }
