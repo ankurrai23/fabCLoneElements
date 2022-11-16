@@ -16,6 +16,7 @@ const TrainItineraryCardProps = {
     bgColor: '#d656561a',
   },
   bookingDetails: {
+    trainBookingStatus: 'CONFIRMED',
     date: '22',
     month: 'Nov',
     sourceStationCode: 'CSTM',

@@ -12,6 +12,7 @@ import TripStatus from '../../tripStatus';
 import {CabSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
@@ -78,8 +79,8 @@ const PostBookingCard = ({
           </FText>
           <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
         </FText>
-        {showStatus ? (
-          <TripStatus statusObj={status} />
+        {showStatus && status ? (
+          <TripStatus statusObj={getStatusObject(status)} />
         ) : (
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             {!hideChevron && (
@@ -287,7 +288,7 @@ const cabItineraryCard = ({
             onCardPress={onCardPress}
             bookingDetails={bookingDetails}
             showStatus={showStatus}
-            status={status}
+            status={bookingDetails.cabBookingStatus}
             hideChevron={hideChevron}
           />
         )}

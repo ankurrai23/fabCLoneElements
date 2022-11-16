@@ -18,6 +18,7 @@ const flightItineraryCardProps = {
     reduceOpacity: false,
   },
   bookingDetails: {
+    flightBookingStatus: 'CONFIRMED',
     date: '22',
     month: 'Nov',
     sourceAirportCode: 'BOM',

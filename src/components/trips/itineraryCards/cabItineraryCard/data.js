@@ -18,6 +18,7 @@ const cabItineraryCardProps = {
     bgColor: '#d656561a',
   },
   bookingDetails: {
+    cabBookingStatus: 'CONFIRMED',
     date: '22',
     month: 'Nov',
     source: 'Mumbai',

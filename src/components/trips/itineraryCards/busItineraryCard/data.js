@@ -16,6 +16,7 @@ const busItineraryCardProps = {
     bgColor: '#d656561a',
   },
   bookingDetails: {
+    busBookingStatus: 'CONFIRMED',
     date: '22',
     month: 'Nov',
     source: 'Mumbai',
