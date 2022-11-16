@@ -149,9 +149,9 @@ const PostBookingCard = ({
             {bookingDetails.busNumber}
           </FText>
         )}
-        {bookingDetails?.busInfo && (
+        {bookingDetails?.busType && (
           <FText style={Styles.details} numberOfLines={1}>
-            {bookingDetails.busInfo}
+            {bookingDetails.busType}
           </FText>
         )}
       </View>
