@@ -171,10 +171,10 @@ const TrainDetailCard = ({
                       {bookingDetails.source}
                     </FText>
                   )}
-                  {(bookingDetails?.departurePlatform ||
-                    bookingDetails?.sourcePlatform) && (
+                  {(bookingDetails?.sourcePlatform ||
+                    bookingDetails?.destinationPlatform) && (
                     <FText style={Styles.detail} numberOfLines={1}>
-                      {Strings.platform} {bookingDetails.departurePlatform}
+                      {Strings.platform} {bookingDetails.sourcePlatform}
                     </FText>
                   )}
                 </View>
@@ -190,10 +190,10 @@ const TrainDetailCard = ({
                       {bookingDetails.destination}
                     </FText>
                   )}
-                  {(bookingDetails?.departurePlatform ||
-                    bookingDetails?.sourcePlatform) && (
+                  {(bookingDetails?.sourcePlatform ||
+                    bookingDetails?.destinationPlatform) && (
                     <FText style={Styles.detail} numberOfLines={1}>
-                      {Strings.platform} {bookingDetails.sourcePlatform}
+                      {Strings.platform} {bookingDetails.destinationPlatform}
                     </FText>
                   )}
                 </View>

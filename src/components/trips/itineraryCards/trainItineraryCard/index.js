@@ -140,9 +140,9 @@ const PostBookingCard = ({
             <FText style={Styles.details} numberOfLines={1}>
               {bookingDetails.source}
             </FText>
-            {bookingDetails?.departurePlatform && (
+            {bookingDetails?.sourcePlatform && (
               <FText style={Styles.details} numberOfLines={1}>
-                {Strings.platform}: {bookingDetails.departurePlatform}
+                {Strings.platform}: {bookingDetails.sourcePlatform}
               </FText>
             )}
           </View>
@@ -155,9 +155,9 @@ const PostBookingCard = ({
             <FText style={Styles.details} numberOfLines={1}>
               {bookingDetails.destination}
             </FText>
-            {bookingDetails?.sourcePlatform && (
+            {bookingDetails?.destinationPlatform && (
               <FText style={Styles.details} numberOfLines={1}>
-                {Strings.platform} {bookingDetails.sourcePlatform}
+                {Strings.platform} {bookingDetails.destinationPlatform}
               </FText>
             )}
           </View>
