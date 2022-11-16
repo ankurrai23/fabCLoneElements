@@ -9,9 +9,10 @@ export default StyleSheet.create({
     borderColor: Color.DODGER_BLUE,
     backgroundColor: Color.WHITE,
     marginBottom: marginBottom ? marginBottom : DP._32,
+    borderRadius: DP._24,
   }),
   btnTextStyle: {
-    lineHeight: DP._18,
+    lineHeight: DP._16,
     color: Color.DODGER_BLUE,
   },
   container: {
