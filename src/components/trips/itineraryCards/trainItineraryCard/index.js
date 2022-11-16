@@ -9,11 +9,10 @@ import DashedLine from '../../../../common/components/dashedLine';
 import Separator from '../../../../common/components/separator';
 import InfoBox from '../../components/infoBox';
 import TripStatus from '../../tripStatus';
-import {
-  TrainSubtripActions,
-} from '../../../../utils/SubTripActions';
+import {TrainSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
@@ -93,8 +92,8 @@ const PostBookingCard = ({
           </FText>
           <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
         </FText>
-        {showStatus ? (
-          <TripStatus statusObj={status} />
+        {showStatus && status ? (
+          <TripStatus statusObj={getStatusObject(status)} />
         ) : (
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             {!hideChevron && (
@@ -290,7 +289,7 @@ const TrainItineraryCard = ({
             onCardPress={onCardPress}
             bookingDetails={bookingDetails}
             showStatus={showStatus}
-            status={status}
+            status={bookingDetails.trainBookingStatus}
             hideChevron={hideChevron}
           />
         )}
