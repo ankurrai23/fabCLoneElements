@@ -207,12 +207,6 @@ const cabItineraryCard = ({
   const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
-  const shortlistingAction = isActionEnabled(
-    CabSubtripActions.SHORTLIST_FLIGHT_TRIPS,
-  );
-  const viewShortlistedFlightAction = isActionEnabled(
-    CabSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
-  );
 
   const ActionsInItinerary = () => (
     <>
@@ -303,17 +297,10 @@ const cabItineraryCard = ({
           )}
         {showInfo && (
           <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
-            text={
-              viewShortlistedFlightAction?.name ||
-              shortlistingAction?.name ||
-              notificationText
-            }
-            showChevron={!!shortlistingAction}
+            isAlert={!!notificationText}
+            text={notificationText}
+            showChevron={false}
             disablePressEvent={!!notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedFlightAction || shortlistingAction)
-            }
           />
         )}
       </View>

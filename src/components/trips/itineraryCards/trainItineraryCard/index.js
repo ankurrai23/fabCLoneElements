@@ -9,7 +9,9 @@ import DashedLine from '../../../../common/components/dashedLine';
 import Separator from '../../../../common/components/separator';
 import InfoBox from '../../components/infoBox';
 import TripStatus from '../../tripStatus';
-import {BusSubtripActions} from '../../../../utils/SubTripActions';
+import {
+  TrainSubtripActions,
+} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 
@@ -205,15 +207,9 @@ const TrainItineraryCard = ({
   console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
-  const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
-  const shortlistingAction = isActionEnabled(
-    BusSubtripActions.SHORTLIST_FLIGHT_TRIPS,
-  );
-  const viewShortlistedFlightAction = isActionEnabled(
-    BusSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
-  );
+  const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
+  const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
+  const viewRemarksAction = isActionEnabled(TrainSubtripActions.VIEW_REMARKS);
 
   const ActionsInItinerary = () => (
     <>
@@ -304,17 +300,10 @@ const TrainItineraryCard = ({
           )}
         {showInfo && (
           <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
-            text={
-              viewShortlistedFlightAction?.name ||
-              shortlistingAction?.name ||
-              notificationText
-            }
-            showChevron={!!shortlistingAction}
+            isAlert={!!notificationText}
+            text={notificationText}
+            showChevron={false}
             disablePressEvent={!!notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedFlightAction || shortlistingAction)
-            }
           />
         )}
       </View>

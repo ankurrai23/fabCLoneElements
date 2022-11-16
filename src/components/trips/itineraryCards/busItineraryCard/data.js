@@ -54,9 +54,9 @@ const busItineraryCardProps = {
   notificationText: 'This is notification text',
   timelineGreyed: false,
   actionDisabled: false,
-  showStatus: true,
+  showStatus: false,
   showPreBookingCard: false,
-  hideChevron: true,
+  hideChevron: false,
 };
 
 export default busItineraryCardProps;
