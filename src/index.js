@@ -27,7 +27,7 @@ import Selector from './common/components/selector';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
-import HotelDetailCard from './components/trips/hotelDetailCard';
+import HotelDetailCard from './components/trips/detailCards/hotelDetailCard';
 import TripStatus from './components/trips/tripStatus';
 import FlightItineraryCard from './components/trips/itineraryCards/flightItineraryCard';
 import BusItineraryCard from './components/trips/itineraryCards/busItineraryCard';

@@ -1,21 +1,21 @@
 import {View, Animated} from 'react-native';
 import React, {useState} from 'react';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FImage from '../../../common/rn/FImage';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FImage from '../../../../common/rn/FImage';
 import Styles from './Styles';
-import {DP} from '../../../utils/Dimen';
+import {DP} from '../../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import Separator from '../../../common/components/separator';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import DialogBox from '../../../common/components/dialogBox';
+import Separator from '../../../../common/components/separator';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
+import DialogBox from '../../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
-import Button from '../../../common/components/button';
-import {HotelSubTripActions} from '../../../utils/SubTripActions';
-import ModificationAlertBox from '../components/modificationAlertBox';
-import TripStatus from '../tripStatus';
-import ContactSupport from '../../../common/components/contactSupport';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
+import Button from '../../../../common/components/button';
+import {HotelSubTripActions} from '../../../../utils/SubTripActions';
+import ModificationAlertBox from '../../components/modificationAlertBox';
+import TripStatus from '../../tripStatus';
+import ContactSupport from '../../../../common/components/contactSupport';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import Icon from '../../../../assets/icons/Icon';
 
 export const getStatusObject = (status) => {
   const capitalize = () => {
