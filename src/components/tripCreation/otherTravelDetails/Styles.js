@@ -33,13 +33,12 @@ export default StyleSheet.create({
   separator: {
     backgroundColor: Color.PALE_GREY,
     height: DP._1,
-    marginVertical: DP._7,
   },
   renderItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: DP._12,
+    paddingVertical: DP._18,
     borderBottomColor: Color.SILVER,
   },
   itemText: {
