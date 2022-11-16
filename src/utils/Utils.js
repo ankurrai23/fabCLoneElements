@@ -203,9 +203,6 @@ export default {
   Specs,
   shadowObj,
   dialogBoxStyle,
-  formattedDate,
   isEmpty,
   isPlatformIos,
-  getPluralText,
-  convertOpacityPercentIntoHex,
 };
