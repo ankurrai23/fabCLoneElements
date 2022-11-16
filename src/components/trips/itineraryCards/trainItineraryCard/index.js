@@ -63,6 +63,12 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   );
 };
 
+const formatTrainNameNo = (name, no) => {
+  return !name && !no
+    ? Strings.trainNa
+    : [no, name].filter((e) => e).join(', ');
+};
+
 const PostBookingCard = ({
   onCardPress,
   bookingDetails,
@@ -152,7 +158,10 @@ const PostBookingCard = ({
 
       <View style={Styles.marginTop_12}>
         <FText style={Styles.heading} numberOfLines={1}>
-          {bookingDetails?.trainName ?? Strings.trainNa}
+          {formatTrainNameNo(
+            bookingDetails.trainName,
+            bookingDetails.trainNumber,
+          )}
         </FText>
         {bookingDetails?.pnr && (
           <FText style={Styles.details} numberOfLines={1}>
