@@ -87,7 +87,9 @@ const FlightItineraryCard = ({
 
   const FlightPreBookingCard = () => (
     <View style={Styles.container}>
-      <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+      <FTouchableOpacity
+        style={Styles.card(tripRequest.reduceOpacity)}
+        onPress={onCardPress}>
         <View style={[Styles.flexDirectionRow, Styles.baseline]}>
           <FText>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>

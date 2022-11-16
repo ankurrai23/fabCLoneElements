@@ -168,7 +168,7 @@ const TrainDetailCard = ({
                     </FText>
                   )}
                   {(bookingDetails?.departurePlatform ||
-                    bookingDetails?.arrivalPlatform) && (
+                    bookingDetails?.sourcePlatform) && (
                     <FText style={Styles.detail} numberOfLines={1}>
                       {Strings.platform} {bookingDetails.departurePlatform}
                     </FText>
@@ -187,9 +187,9 @@ const TrainDetailCard = ({
                     </FText>
                   )}
                   {(bookingDetails?.departurePlatform ||
-                    bookingDetails?.arrivalPlatform) && (
+                    bookingDetails?.sourcePlatform) && (
                     <FText style={Styles.detail} numberOfLines={1}>
-                      {Strings.platform} {bookingDetails.arrivalPlatform}
+                      {Strings.platform} {bookingDetails.sourcePlatform}
                     </FText>
                   )}
                 </View>

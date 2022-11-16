@@ -9,7 +9,7 @@ const trainDetailCardProps = {
     departureTime: '21:00',
     arrivalTime: '09:00',
     departurePlatform: '01',
-    arrivalPlatform: '03',
+    sourcePlatform: '03',
     estimateDuration: '1h 50min',
     trainName: '22928, Mumbai-Madras Superfast Express',
     pnr: '256-99589',

@@ -15,6 +15,7 @@ const flightItineraryCardProps = {
     destination: 'Mumbai',
     sourceAirportCode: 'BOM',
     destinationAirportCode: 'BLR',
+    reduceOpacity: false,
   },
   bookingDetails: {
     date: '22',
@@ -28,6 +29,7 @@ const flightItineraryCardProps = {
     duration: '1h 50min',
     airline: 'Indigo',
     stop: 'Non stop',
+    reduceOpacity: false,
   },
   actions: [
     {
