@@ -45,7 +45,7 @@ import ManagerActions from './components/trips/managerActions';
 import ReceivedTripCard from './components/trips/receivedTripCard';
 import TripCardLoadingState from './components/trips/tripCardLoadingState';
 import HotelPreferenceLoadingState from './components/trips/hotelPreferenceLoadingState';
-import HotelDetailLoadingState from './components/trips/hotelDetailLoadingState';
+import HotelDetailLoadingState from './components/trips/detailCards/loadingStates/hotelDetailLoadingState';
 import FlightPreferenceLoadingState from './components/trips/flightPreferenceLoadingState';
 import FlightDetailCard from './components/trips/detailCards/flightDetailCard';
 import BusDetailCard from './components/trips/detailCards/busDetailCard';
@@ -54,10 +54,10 @@ import CabDetailCard from './components/trips/detailCards/cabDetailCard';
 
 import ModificationAlertBox from './components/trips/components/modificationAlertBox';
 import ListTypeFilter from './components/trips/listTypeFilter';
-import FlightDetailLoadingState from './components/trips/flightDetailLoadingState';
-import CabDetailLoadingState from './components/trips/cabDetailLoadingState';
-import BusDetailLoadingState from './components/trips/busDetailLoadingState';
-import TrainDetailLoadingState from './components/trips/trainDetailLoadingState';
+import FlightDetailLoadingState from './components/trips/detailCards/loadingStates/flightDetailLoadingState';
+import CabDetailLoadingState from './components/trips/detailCards/loadingStates/cabDetailLoadingState';
+import BusDetailLoadingState from './components/trips/detailCards/loadingStates/busDetailLoadingState';
+import TrainDetailLoadingState from './components/trips/detailCards/loadingStates/trainDetailLoadingState';
 import ApproverChain from './components/trips/approverChain';
 
 //Constants

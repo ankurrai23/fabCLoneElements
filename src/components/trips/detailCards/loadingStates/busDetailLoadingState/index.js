@@ -5,11 +5,11 @@ import {
   Placeholder,
   PlaceholderContainer,
 } from 'react-native-loading-placeholder';
-import {DP} from '../../../utils/Dimen';
+import {DP} from '../../../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
 
-export default function TrainDetailLoadingState() {
+export default function BusDetailLoadingState() {
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -21,7 +21,7 @@ export default function TrainDetailLoadingState() {
     );
   };
 
-  const TrainCard = () => {
+  const BusCard = () => {
     return (
       <View style={Styles.card}>
         <PlaceholderContainer
@@ -44,7 +44,7 @@ export default function TrainDetailLoadingState() {
           </View>
           <Placeholder
             style={[
-              Styles.commonPlaceholder('100%', DP._72),
+              Styles.commonPlaceholder('100%', DP._54),
               Styles.marginBottom(DP._16),
             ]}
           />
@@ -72,7 +72,25 @@ export default function TrainDetailLoadingState() {
               Styles.marginBottom(DP._14),
             ]}
           />
-          <Placeholder style={[Styles.commonPlaceholder('100%', DP._16)]} />
+          <Placeholder
+            style={[
+              Styles.commonPlaceholder('100%', DP._16),
+              Styles.marginBottom(DP._12),
+            ]}
+          />
+          <Placeholder
+            style={[
+              Styles.commonPlaceholder('100%', DP._1),
+              Styles.marginBottom(DP._12),
+            ]}
+          />
+          <Placeholder
+            style={[
+              Styles.commonPlaceholder('45%', DP._16),
+              Styles.marginBottom(DP._14),
+            ]}
+          />
+          <Placeholder style={[Styles.commonPlaceholder('100%', DP._45)]} />
         </PlaceholderContainer>
       </View>
     );
@@ -100,9 +118,9 @@ export default function TrainDetailLoadingState() {
   return (
     <View style={Styles.cardContainer}>
       <Header />
-      <TrainCard />
+      <BusCard />
       <Header />
-      <TrainCard />
+      <BusCard />
     </View>
   );
 }

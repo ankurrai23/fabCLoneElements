@@ -5,11 +5,11 @@ import {
   Placeholder,
   PlaceholderContainer,
 } from 'react-native-loading-placeholder';
-import {DP} from '../../../utils/Dimen';
+import {DP} from '../../../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
 
-export default function BusDetailLoadingState() {
+export default function CabDetailLoadingState() {
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -21,7 +21,7 @@ export default function BusDetailLoadingState() {
     );
   };
 
-  const BusCard = () => {
+  const CabCard = () => {
     return (
       <View style={Styles.card}>
         <PlaceholderContainer
@@ -45,18 +45,6 @@ export default function BusDetailLoadingState() {
           <Placeholder
             style={[
               Styles.commonPlaceholder('100%', DP._54),
-              Styles.marginBottom(DP._16),
-            ]}
-          />
-          <Placeholder
-            style={[
-              Styles.commonPlaceholder('100%', DP._16),
-              Styles.marginBottom(DP._4),
-            ]}
-          />
-          <Placeholder
-            style={[
-              Styles.commonPlaceholder('55%', DP._34),
               Styles.marginBottom(DP._12),
             ]}
           />
@@ -69,25 +57,25 @@ export default function BusDetailLoadingState() {
           <Placeholder
             style={[
               Styles.commonPlaceholder('40%', DP._16),
-              Styles.marginBottom(DP._14),
-            ]}
-          />
-          <Placeholder
-            style={[
-              Styles.commonPlaceholder('100%', DP._16),
               Styles.marginBottom(DP._12),
             ]}
           />
           <Placeholder
             style={[
-              Styles.commonPlaceholder('100%', DP._1),
-              Styles.marginBottom(DP._12),
+              Styles.commonPlaceholder('60%', DP._16),
+              Styles.marginBottom(DP._20),
             ]}
           />
           <Placeholder
             style={[
-              Styles.commonPlaceholder('45%', DP._16),
-              Styles.marginBottom(DP._14),
+              Styles.commonPlaceholder('48%', DP._18),
+              Styles.marginBottom(DP._16),
+            ]}
+          />
+          <Placeholder
+            style={[
+              Styles.commonPlaceholder('35%', DP._16),
+              Styles.marginBottom(DP._12),
             ]}
           />
           <Placeholder style={[Styles.commonPlaceholder('100%', DP._45)]} />
@@ -118,9 +106,9 @@ export default function BusDetailLoadingState() {
   return (
     <View style={Styles.cardContainer}>
       <Header />
-      <BusCard />
+      <CabCard />
       <Header />
-      <BusCard />
+      <CabCard />
     </View>
   );
 }
