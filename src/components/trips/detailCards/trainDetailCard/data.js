@@ -12,6 +12,7 @@ const trainDetailCardProps = {
     sourcePlatform: '03',
     estimateDuration: '1h 50min',
     trainName: '22928, Mumbai-Madras Superfast Express',
+    trainNumber: '2222',
     pnr: '256-99589',
     trainClass: 'AC 3 Tier Sleeper ',
     berth: '42, Side upper',

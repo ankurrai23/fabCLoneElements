@@ -12,6 +12,7 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import ModificationAlertBox from '../../components/modificationAlertBox';
+import {formatTrainNameNo} from '../../itineraryCards/trainItineraryCard';
 
 const DetailRow = ({
   dataIcon,
@@ -198,7 +199,10 @@ const TrainDetailCard = ({
 
             <View style={Styles.marginTop_12}>
               <FText style={Styles.heading} numberOfLines={1}>
-                {bookingDetails?.trainName ?? Strings.trainNa}
+                {formatTrainNameNo(
+                  bookingDetails.trainName,
+                  bookingDetails.trainNumber,
+                )}
               </FText>
               {bookingDetails?.pnr && (
                 <FText style={Styles.detail} numberOfLines={1}>

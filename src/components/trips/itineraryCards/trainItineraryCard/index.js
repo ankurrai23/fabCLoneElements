@@ -63,7 +63,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   );
 };
 
-const formatTrainNameNo = (name, no) => {
+export const formatTrainNameNo = (name, no) => {
   return !name && !no
     ? Strings.trainNa
     : [no, name].filter((e) => e).join(', ');
