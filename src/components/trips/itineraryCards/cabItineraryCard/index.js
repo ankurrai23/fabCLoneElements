@@ -164,6 +164,7 @@ const PostBookingCard = ({
                 Styles.marginTop_12,
                 Styles.fontSize_12,
                 Styles.color_grey,
+                Styles.lineHeight_16,
               ]}>
               {Strings.vehicle}{' '}
               {bookingDetails.vehicleDetails.length > 1 && index + 1}{' '}

@@ -39,14 +39,17 @@ export default StyleSheet.create({
   heading: {
     color: Color.DARK,
     fontSize: DP._14,
+    lineHeight: DP._20,
   },
   details: {
-    marginTop: DP._4,
+    marginTop: DP._2,
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
+    lineHeight: DP._16,
   },
   date: {
-    fontSize: DP._18,
+    fontSize: DP._14,
+    lineHeight: DP._20,
   },
   slotDetail: {
     fontSize: DP._12,
@@ -141,6 +144,8 @@ export default StyleSheet.create({
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
-    fontSize: DP._12,
+    fontSize: DP._14,
+    lineHeight: DP._20,
+    marginLeft: DP._2,
   },
 });

@@ -38,13 +38,16 @@ export default StyleSheet.create({
   portName: {
     marginTop: DP._2,
     color: Color.GREYISH_PURPLE,
+    lineHeight: DP._16,
     fontSize: DP._12,
   },
   time: {
     fontSize: DP._14,
+    lineHeight: DP._20,
   },
   date: {
-    fontSize: DP._18,
+    fontSize: DP._14,
+    lineHeight: DP._20,
   },
   slotDetail: {
     fontSize: DP._12,
@@ -122,8 +125,10 @@ export default StyleSheet.create({
     marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
-  headingMonth: {
+  headerMonth: {
     color: Color.BLUEY_GREY,
-    fontSize: DP._12,
+    fontSize: DP._14,
+    lineHeight: DP._20,
+    marginLeft: DP._2,
   },
 });

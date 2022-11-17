@@ -40,6 +40,7 @@ export default StyleSheet.create({
   heading: {
     color: Color.DARK,
     fontSize: DP._14,
+    lineHeight: DP._20,
   },
   date: {
     fontSize: DP._14,
@@ -148,6 +149,7 @@ export default StyleSheet.create({
   detail: {
     marginTop: DP._2,
     fontSize: DP._12,
+    lineHeight: DP._16,
     color: Color.GREY_PURPLE,
   },
   color_grey: {
@@ -162,5 +164,8 @@ export default StyleSheet.create({
     fontSize: DP._14,
     lineHeight: DP._20,
     marginLeft: DP._2,
+  },
+  lineHeight_16: {
+    lineHeight: DP._16,
   },
 });

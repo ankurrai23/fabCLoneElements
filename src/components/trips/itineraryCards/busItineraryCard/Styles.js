@@ -43,10 +43,12 @@ export default StyleSheet.create({
   heading: {
     color: Color.DARK,
     fontSize: DP._14,
+    lineHeight: DP._20,
   },
   details: {
     marginTop: DP._2,
     fontSize: DP._12,
+    lineHeight: DP._16,
     color: Color.GREY_PURPLE,
   },
   date: {
