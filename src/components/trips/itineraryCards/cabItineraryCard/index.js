@@ -65,12 +65,13 @@ const PostBookingCard = ({
   bookingDetails,
   showStatus,
   status,
+  reduceOpacity,
   hideChevron,
 }) => {
   return (
     <FTouchableOpacity
-      activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
-      style={Styles.card(bookingDetails.reduceOpacity)}
+      activeOpacity={reduceOpacity ? 0.6 : 1}
+      style={Styles.card(reduceOpacity)}
       onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <FText>
@@ -289,6 +290,7 @@ const cabItineraryCard = ({
             bookingDetails={bookingDetails}
             showStatus={showStatus}
             status={bookingDetails.cabBookingStatus}
+            reduceOpacity={tripRequest.reduceOpacity}
             hideChevron={hideChevron}
           />
         )}

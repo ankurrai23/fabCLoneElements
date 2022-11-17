@@ -12,6 +12,7 @@ import TripStatus from '../../tripStatus';
 import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
 const FlightItineraryCard = ({
   status,
@@ -166,8 +167,8 @@ const FlightItineraryCard = ({
   const FlightPostBookingCard = () => (
     <View style={Styles.container}>
       <FTouchableOpacity
-        activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(bookingDetails.reduceOpacity)}
+        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(tripRequest.reduceOpacity)}
         onPress={onCardPress}>
         <View style={[Styles.flexDirectionRow, Styles.baseline]}>
           <FText>
@@ -180,8 +181,10 @@ const FlightItineraryCard = ({
                 fontSize: DP._12,
               }}>{` ${bookingDetails.month}`}</FText>
           </FText>
-          {showStatus ? (
-            <TripStatus statusObj={status} />
+          {showStatus && bookingDetails.flightBookingStatus ? (
+            <TripStatus
+              statusObj={getStatusObject(bookingDetails.flightBookingStatus)}
+            />
           ) : (
             !hideChevron && (
               <Icon.ChevronRight
