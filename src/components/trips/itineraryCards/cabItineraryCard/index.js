@@ -12,10 +12,14 @@ import TripStatus from '../../tripStatus';
 import {CabSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
-    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+    <FTouchableOpacity
+      activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
+      style={Styles.card(tripRequest.reduceOpacity)}
+      onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
@@ -64,7 +68,10 @@ const PostBookingCard = ({
   hideChevron,
 }) => {
   return (
-    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+    <FTouchableOpacity
+      activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
+      style={Styles.card(bookingDetails.reduceOpacity)}
+      onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
@@ -72,8 +79,8 @@ const PostBookingCard = ({
           </FText>
           <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
         </FText>
-        {showStatus ? (
-          <TripStatus statusObj={status} />
+        {showStatus && status ? (
+          <TripStatus statusObj={getStatusObject(status)} />
         ) : (
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             {!hideChevron && (
@@ -201,12 +208,6 @@ const cabItineraryCard = ({
   const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
-  const shortlistingAction = isActionEnabled(
-    CabSubtripActions.SHORTLIST_FLIGHT_TRIPS,
-  );
-  const viewShortlistedFlightAction = isActionEnabled(
-    CabSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
-  );
 
   const ActionsInItinerary = () => (
     <>
@@ -287,7 +288,7 @@ const cabItineraryCard = ({
             onCardPress={onCardPress}
             bookingDetails={bookingDetails}
             showStatus={showStatus}
-            status={status}
+            status={bookingDetails.cabBookingStatus}
             hideChevron={hideChevron}
           />
         )}
@@ -297,17 +298,10 @@ const cabItineraryCard = ({
           )}
         {showInfo && (
           <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
-            text={
-              viewShortlistedFlightAction?.name ||
-              shortlistingAction?.name ||
-              notificationText
-            }
-            showChevron={!!shortlistingAction}
+            isAlert={!!notificationText}
+            text={notificationText}
+            showChevron={false}
             disablePressEvent={!!notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedFlightAction || shortlistingAction)
-            }
           />
         )}
       </View>

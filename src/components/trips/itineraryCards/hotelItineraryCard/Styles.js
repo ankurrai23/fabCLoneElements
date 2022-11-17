@@ -9,6 +9,9 @@ export default StyleSheet.create({
     ...shadowObj,
     ...cardStyleObj,
   },
+  card: (reduceOpacity) => ({
+    opacity: reduceOpacity ? 0.6 : 1,
+  }),
   dateAndStatusContainer: {
     flexDirection: 'row',
     marginBottom: DP._16,

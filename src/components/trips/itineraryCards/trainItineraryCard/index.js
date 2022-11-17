@@ -9,13 +9,17 @@ import DashedLine from '../../../../common/components/dashedLine';
 import Separator from '../../../../common/components/separator';
 import InfoBox from '../../components/infoBox';
 import TripStatus from '../../tripStatus';
-import {BusSubtripActions} from '../../../../utils/SubTripActions';
+import {TrainSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
-    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+    <FTouchableOpacity
+      activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
+      style={Styles.card(tripRequest.reduceOpacity)}
+      onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
@@ -63,7 +67,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   );
 };
 
-const formatTrainNameNo = (name, no) => {
+export const formatTrainNameNo = (name, no) => {
   return !name && !no
     ? Strings.trainNa
     : [no, name].filter((e) => e).join(', ');
@@ -77,7 +81,10 @@ const PostBookingCard = ({
   hideChevron,
 }) => {
   return (
-    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+    <FTouchableOpacity
+      activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
+      style={Styles.card(bookingDetails.reduceOpacity)}
+      onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
@@ -85,8 +92,8 @@ const PostBookingCard = ({
           </FText>
           <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
         </FText>
-        {showStatus ? (
-          <TripStatus statusObj={status} />
+        {showStatus && status ? (
+          <TripStatus statusObj={getStatusObject(status)} />
         ) : (
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
             {!hideChevron && (
@@ -132,9 +139,9 @@ const PostBookingCard = ({
             <FText style={Styles.details} numberOfLines={1}>
               {bookingDetails.source}
             </FText>
-            {bookingDetails?.departurePlatform && (
+            {bookingDetails?.sourcePlatform && (
               <FText style={Styles.details} numberOfLines={1}>
-                {Strings.platform}: {bookingDetails.departurePlatform}
+                {Strings.platform}: {bookingDetails.sourcePlatform}
               </FText>
             )}
           </View>
@@ -147,9 +154,9 @@ const PostBookingCard = ({
             <FText style={Styles.details} numberOfLines={1}>
               {bookingDetails.destination}
             </FText>
-            {bookingDetails?.arrivalPlatform && (
+            {bookingDetails?.destinationPlatform && (
               <FText style={Styles.details} numberOfLines={1}>
-                {Strings.platform}: {bookingDetails.arrivalPlatform}
+                {Strings.platform} {bookingDetails.destinationPlatform}
               </FText>
             )}
           </View>
@@ -199,15 +206,9 @@ const TrainItineraryCard = ({
   console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
-  const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
-  const shortlistingAction = isActionEnabled(
-    BusSubtripActions.SHORTLIST_FLIGHT_TRIPS,
-  );
-  const viewShortlistedFlightAction = isActionEnabled(
-    BusSubtripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
-  );
+  const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
+  const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
+  const viewRemarksAction = isActionEnabled(TrainSubtripActions.VIEW_REMARKS);
 
   const ActionsInItinerary = () => (
     <>
@@ -288,7 +289,7 @@ const TrainItineraryCard = ({
             onCardPress={onCardPress}
             bookingDetails={bookingDetails}
             showStatus={showStatus}
-            status={status}
+            status={bookingDetails.trainBookingStatus}
             hideChevron={hideChevron}
           />
         )}
@@ -298,17 +299,10 @@ const TrainItineraryCard = ({
           )}
         {showInfo && (
           <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
-            text={
-              viewShortlistedFlightAction?.name ||
-              shortlistingAction?.name ||
-              notificationText
-            }
-            showChevron={!!shortlistingAction}
+            isAlert={!!notificationText}
+            text={notificationText}
+            showChevron={false}
             disablePressEvent={!!notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedFlightAction || shortlistingAction)
-            }
           />
         )}
       </View>

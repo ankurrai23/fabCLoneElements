@@ -163,6 +163,7 @@ export function convertOpacityPercentIntoHex(percent) {
 }
 
 export const getStatusObject = (status) => {
+  if (!status) return null;
   const capitalize = () => {
     return `${status[0]}${status.slice(1).toLowerCase()}`;
   };
@@ -203,9 +204,6 @@ export default {
   Specs,
   shadowObj,
   dialogBoxStyle,
-  formattedDate,
   isEmpty,
   isPlatformIos,
-  getPluralText,
-  convertOpacityPercentIntoHex,
 };

@@ -8,10 +8,11 @@ const trainDetailCardProps = {
     destination: 'Thiruvanthapuram',
     departureTime: '21:00',
     arrivalTime: '09:00',
-    departurePlatform: '01',
-    arrivalPlatform: '03',
+    sourcePlatform: 1,
+    destinationPlatform: 2,
     estimateDuration: '1h 50min',
     trainName: '22928, Mumbai-Madras Superfast Express',
+    trainNumber: '2222',
     pnr: '256-99589',
     trainClass: 'AC 3 Tier Sleeper ',
     berth: '42, Side upper',
@@ -26,6 +27,7 @@ const trainDetailCardProps = {
         seatNo: 'b1, 42',
       },
     ],
+    reduceOpacity: false,
   },
   actions: [
     {

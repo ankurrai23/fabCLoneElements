@@ -103,7 +103,10 @@ const HotelItineraryCard = ({
 
   const HotelPreBookingCard = () => (
     <View style={Styles.container}>
-      <FTouchableOpacity onPress={onCardPress}>
+      <FTouchableOpacity
+        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(tripRequest.reduceOpacity)}
+        onPress={onCardPress}>
         <View style={Styles.dateAndStatusContainer}>
           {sameMonthDates ? (
             <View style={Styles.datesContainer}>
@@ -170,7 +173,10 @@ const HotelItineraryCard = ({
 
   const HotelPostBookingCard = () => (
     <View style={Styles.container}>
-      <FTouchableOpacity onPress={onCardPress}>
+      <FTouchableOpacity
+        activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(bookingDetails.reduceOpacity)}
+        onPress={onCardPress}>
         <View style={Styles.dateAndStatusContainer}>
           {sameMonthDates ? (
             <View style={Styles.datesContainer}>
