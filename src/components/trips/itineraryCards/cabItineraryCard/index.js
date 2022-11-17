@@ -43,7 +43,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.heading} numberOfLines={1}>
             {tripRequest.source}
           </FText>
-          <FText style={Styles.details} numberOfLines={1}>
+          <FText style={Styles.detail} numberOfLines={1}>
             {tripRequest.sourceLocality}
           </FText>
         </View>
@@ -51,7 +51,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.heading} numberOfLines={1}>
             {tripRequest.destination}
           </FText>
-          <FText style={Styles.details} numberOfLines={1}>
+          <FText style={Styles.detail} numberOfLines={1}>
             {tripRequest.destinationLocality}
           </FText>
         </View>
@@ -116,13 +116,13 @@ const PostBookingCard = ({
           <View style={[Styles.width_40, Styles.textAlign_left]}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.details} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.sourceLocality}
               </FText>
             )}
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.details} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.source}
               </FText>
             )}
@@ -135,13 +135,13 @@ const PostBookingCard = ({
             ]}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.details} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.destinationLocality}
               </FText>
             )}
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.details} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.destination}
               </FText>
             )}
