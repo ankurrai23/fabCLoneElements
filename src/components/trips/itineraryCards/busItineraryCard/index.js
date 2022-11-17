@@ -66,6 +66,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
 
 const PostBookingCard = ({
   onCardPress,
+  reduceOpacity,
   bookingDetails,
   showStatus,
   status,
@@ -73,8 +74,8 @@ const PostBookingCard = ({
 }) => {
   return (
     <FTouchableOpacity
-      activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
-      style={Styles.card(bookingDetails.reduceOpacity)}
+      activeOpacity={reduceOpacity ? 0.6 : 1}
+      style={Styles.card(reduceOpacity)}
       onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <FText>
@@ -267,6 +268,7 @@ const BusItineraryCard = ({
           />
         ) : (
           <PostBookingCard
+            reduceOpacity={tripRequest.reduceOpacity}
             onCardPress={onCardPress}
             bookingDetails={bookingDetails}
             showStatus={showStatus}
