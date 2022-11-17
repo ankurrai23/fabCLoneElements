@@ -5,11 +5,11 @@ import {
   Placeholder,
   PlaceholderContainer,
 } from 'react-native-loading-placeholder';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
+import {DP} from '../../../../../utils/Dimen';
+import {Color} from '../../../../../utils/color';
 import Styles from './Styles';
 
-export default function BusDetailLoadingState() {
+export default function TrainDetailLoadingState() {
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -21,7 +21,7 @@ export default function BusDetailLoadingState() {
     );
   };
 
-  const BusCard = () => {
+  const TrainCard = () => {
     return (
       <View style={Styles.card}>
         <PlaceholderContainer
@@ -44,7 +44,7 @@ export default function BusDetailLoadingState() {
           </View>
           <Placeholder
             style={[
-              Styles.commonPlaceholder('100%', DP._54),
+              Styles.commonPlaceholder('100%', DP._72),
               Styles.marginBottom(DP._16),
             ]}
           />
@@ -72,25 +72,7 @@ export default function BusDetailLoadingState() {
               Styles.marginBottom(DP._14),
             ]}
           />
-          <Placeholder
-            style={[
-              Styles.commonPlaceholder('100%', DP._16),
-              Styles.marginBottom(DP._12),
-            ]}
-          />
-          <Placeholder
-            style={[
-              Styles.commonPlaceholder('100%', DP._1),
-              Styles.marginBottom(DP._12),
-            ]}
-          />
-          <Placeholder
-            style={[
-              Styles.commonPlaceholder('45%', DP._16),
-              Styles.marginBottom(DP._14),
-            ]}
-          />
-          <Placeholder style={[Styles.commonPlaceholder('100%', DP._45)]} />
+          <Placeholder style={[Styles.commonPlaceholder('100%', DP._16)]} />
         </PlaceholderContainer>
       </View>
     );
@@ -118,9 +100,9 @@ export default function BusDetailLoadingState() {
   return (
     <View style={Styles.cardContainer}>
       <Header />
-      <BusCard />
+      <TrainCard />
       <Header />
-      <BusCard />
+      <TrainCard />
     </View>
   );
 }

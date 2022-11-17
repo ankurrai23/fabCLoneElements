@@ -10,10 +10,10 @@ import Separator from '../../../../common/components/separator';
 import TripStatus from '../../tripStatus';
 import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 import ModificationAlertBox from '../../components/modificationAlertBox';
-import {getStatusObject} from '../../hotelDetailCard';
 import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
 const FlightDetailCard = ({
   title,

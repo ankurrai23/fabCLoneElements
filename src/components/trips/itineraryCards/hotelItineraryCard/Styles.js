@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {Color} from '../../../utils/color';
-import {DP} from '../../../utils/Dimen';
-import {cardStyleObj, shadowObj} from '../../../utils/Utils';
+import {Color} from '../../../../utils/color';
+import {DP} from '../../../../utils/Dimen';
+import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
 
 export default StyleSheet.create({
   container: {
@@ -9,6 +9,9 @@ export default StyleSheet.create({
     ...shadowObj,
     ...cardStyleObj,
   },
+  card: (reduceOpacity) => ({
+    opacity: reduceOpacity ? 0.6 : 1,
+  }),
   dateAndStatusContainer: {
     flexDirection: 'row',
     marginBottom: DP._16,

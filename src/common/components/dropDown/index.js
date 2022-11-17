@@ -42,7 +42,7 @@ function DropDown(
   });
 
   const Item = ({
-    entity: {title, subTitle, insideBracket, img},
+    entity: {titleTextBold, subTitle, titleText, img},
     entity,
     index,
   }) => {
@@ -56,9 +56,9 @@ function DropDown(
             type={FONT_TYPE.BOLD}
             style={Styles.titleText}
             numberOfLines={1}>
-            {title}
-            {insideBracket ? (
-              <FText type={FONT_TYPE.LIGHT}>{` (${insideBracket})`}</FText>
+            {`${titleTextBold} `}
+            {titleText ? (
+              <FText type={FONT_TYPE.REGULAR}>{titleText}</FText>
             ) : null}
           </FText>
         </View>

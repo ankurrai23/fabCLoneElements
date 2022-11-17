@@ -6,11 +6,11 @@ import {
 } from 'react-native-loading-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
 import Styles from './Styles';
-import {Color} from '../../../utils/color';
-import Separator from '../../../common/components/separator';
-import {DP} from '../../../utils/Dimen';
-import FText from '../../../common/rn/FText';
-import {Strings} from '../../../utils/strings/index.travelPlus';
+import {Color} from '../../../../../utils/color';
+import Separator from '../../../../../common/components/separator';
+import {DP} from '../../../../../utils/Dimen';
+import FText from '../../../../../common/rn/FText';
+import {Strings} from '../../../../../utils/strings/index.travelPlus';
 
 const HotelDetailLoadingState = () => {
   const animatedComponent = (cardColor, secondaryColor) => {

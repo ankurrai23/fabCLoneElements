@@ -5,10 +5,10 @@ import {
   Placeholder,
   PlaceholderContainer,
 } from 'react-native-loading-placeholder';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
+import {DP} from '../../../../../utils/Dimen';
+import {Color} from '../../../../../utils/color';
 import Styles from './Styles';
-import Icon from '../../../assets/icons/Icon';
+import Icon from '../../../../../assets/icons/Icon';
 
 export default function FlightDetailLoadingState() {
   const animatedComponent = (cardColor, secondaryColor) => {

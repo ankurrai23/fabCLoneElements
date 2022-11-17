@@ -1,20 +1,20 @@
 import React from 'react';
 import {View} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
+import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../../utils/color';
 
-import DashedLine from '../../../common/components/dashedLine';
-import Separator from '../../../common/components/separator';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import TripStatus from '../tripStatus';
+import DashedLine from '../../../../common/components/dashedLine';
+import Separator from '../../../../common/components/separator';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
+import TripStatus from '../../tripStatus';
 
 import Styles from './Styles';
-import InfoBox from '../components/infoBox';
-import {HotelSubTripActions} from '../../../utils/SubTripActions';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import {TRIP_STATUS} from '../../../utils/Constants';
-import Icon from '../../../assets/icons/Icon';
+import InfoBox from '../../components/infoBox';
+import {HotelSubTripActions} from '../../../../utils/SubTripActions';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import {TRIP_STATUS} from '../../../../utils/Constants';
+import Icon from '../../../../assets/icons/Icon';
 
 const HotelItineraryCard = ({
   status,
@@ -103,7 +103,10 @@ const HotelItineraryCard = ({
 
   const HotelPreBookingCard = () => (
     <View style={Styles.container}>
-      <FTouchableOpacity onPress={onCardPress}>
+      <FTouchableOpacity
+        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(tripRequest.reduceOpacity)}
+        onPress={onCardPress}>
         <View style={Styles.dateAndStatusContainer}>
           {sameMonthDates ? (
             <View style={Styles.datesContainer}>
@@ -138,8 +141,12 @@ const HotelItineraryCard = ({
           )}
         </View>
         <View style={{paddingHorizontal: DP._16}}>
-          <FText style={Styles.hotelName}>{tripRequest.title}</FText>
-          <FText style={Styles.hotelLocation}>{tripRequest.location}</FText>
+          <FText style={Styles.hotelName} numberOfLines={1}>
+            {tripRequest.title}
+          </FText>
+          <FText style={Styles.hotelLocation} numberOfLines={1}>
+            {tripRequest.location}
+          </FText>
         </View>
       </FTouchableOpacity>
       {!actionsDisabled &&
@@ -166,7 +173,10 @@ const HotelItineraryCard = ({
 
   const HotelPostBookingCard = () => (
     <View style={Styles.container}>
-      <FTouchableOpacity onPress={onCardPress}>
+      <FTouchableOpacity
+        activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(bookingDetails.reduceOpacity)}
+        onPress={onCardPress}>
         <View style={Styles.dateAndStatusContainer}>
           {sameMonthDates ? (
             <View style={Styles.datesContainer}>

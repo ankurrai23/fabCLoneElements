@@ -260,17 +260,14 @@ const ItineraryCard = (props) => {
       </View>
       {props?.showSaveButton && (
         <Button
-          disabled={!props?.isDirty}
+          // disabled={!props?.isDirty}
           onPress={() => {
             props?.saveClicked(props?.index);
           }}
           type={BUTTON_TYPE.SECONDARY}
           textFont={FONT_TYPE.MEDIUM}
-          style={Styles.btnStyle(
-            props?.isDirty,
-            props?.expandedItineraryMargin,
-          )}
-          textStyle={Styles.btnTextStyle(props?.isDirty)}>
+          style={Styles.btnStyle(props?.expandedItineraryMargin)}
+          textStyle={Styles.btnTextStyle}>
           Save
         </Button>
       )}

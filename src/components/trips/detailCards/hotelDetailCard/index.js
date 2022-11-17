@@ -1,57 +1,21 @@
 import {View, Animated} from 'react-native';
 import React, {useState} from 'react';
-import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import FImage from '../../../common/rn/FImage';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import FImage from '../../../../common/rn/FImage';
 import Styles from './Styles';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import Separator from '../../../common/components/separator';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import DialogBox from '../../../common/components/dialogBox';
+import {DP} from '../../../../utils/Dimen';
+import {Color} from '../../../../utils/color';
+import Separator from '../../../../common/components/separator';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
+import DialogBox from '../../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
-import Button from '../../../common/components/button';
-import {HotelSubTripActions} from '../../../utils/SubTripActions';
-import ModificationAlertBox from '../components/modificationAlertBox';
-import TripStatus from '../tripStatus';
-import ContactSupport from '../../../common/components/contactSupport';
-import {Strings} from '../../../utils/strings/index.travelPlus';
-import Icon from '../../../assets/icons/Icon';
-
-export const getStatusObject = (status) => {
-  const capitalize = () => {
-    return `${status[0]}${status.slice(1).toLowerCase()}`;
-  };
-  switch (status) {
-    case 'CANCELLED':
-      return {
-        key: status,
-        value: capitalize(),
-        bgColor: Color.PASTEL_RED + '1a',
-        textColor: Color.PASTEL_RED,
-      };
-    case 'NO_SHOW':
-      return {
-        key: status,
-        value: 'No show',
-        bgColor: Color.PASTEL_RED + '1a',
-        textColor: Color.PASTEL_RED,
-      };
-    case 'TENTATIVE':
-      return {
-        key: status,
-        value: capitalize(),
-        bgColor: Color.MANGO + '1a',
-        textColor: Color.MANGO,
-      };
-    default:
-      return {
-        key: status,
-        value: capitalize(),
-        bgColor: Color.DARK_SEA_FOAM + '1a',
-        textColor: Color.DARK_SEA_FOAM,
-      };
-  }
-};
+import Button from '../../../../common/components/button';
+import {HotelSubTripActions} from '../../../../utils/SubTripActions';
+import ModificationAlertBox from '../../components/modificationAlertBox';
+import TripStatus from '../../tripStatus';
+import ContactSupport from '../../../../common/components/contactSupport';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import Icon from '../../../../assets/icons/Icon';
 
 export default function HotelDetailCard({
   item,

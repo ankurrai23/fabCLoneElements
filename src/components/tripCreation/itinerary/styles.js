@@ -4,17 +4,17 @@ import {Color} from '../../../utils/color/index.fabhotel';
 import {DP} from '../../../utils/Dimen';
 
 export default StyleSheet.create({
-  btnStyle: (isDirty, marginBottom) => ({
+  btnStyle: (marginBottom) => ({
     borderWidth: 1,
-    borderColor: !isDirty ? Color.HAWKES_BLUE : Color.DODGER_BLUE,
+    borderColor: Color.DODGER_BLUE,
     backgroundColor: Color.WHITE,
     marginBottom: marginBottom ? marginBottom : DP._32,
+    borderRadius: DP._24,
   }),
-  btnTextStyle: (isDirty) => ({
-    fontSize: !isDirty ? DP._16 : DP._14,
-    lineHeight: DP._18,
-    color: !isDirty ? Color.HAWKES_BLUE : Color.DODGER_BLUE,
-  }),
+  btnTextStyle: {
+    lineHeight: DP._16,
+    color: Color.DODGER_BLUE,
+  },
   container: {
     backgroundColor: Color.WHITE,
     // paddingHorizontal: DP._16,

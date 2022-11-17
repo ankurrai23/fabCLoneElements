@@ -14,13 +14,13 @@ import selectorProps from './common/components/selector/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
-import hotelDetailCardProps from './components/trips/hotelDetailCard/data';
+import hotelDetailCardProps from './components/trips/detailCards/hotelDetailCard/data';
 import tripStatusProps from './components/trips/tripStatus/data';
 import flightItineraryCardProps from './components/trips/itineraryCards/flightItineraryCard/data';
 import busItineraryCardProps from './components/trips/itineraryCards/busItineraryCard/data';
 import trainItineraryCardProps from './components/trips/itineraryCards/trainItineraryCard/data';
 import cabItineraryCardProps from './components/trips/itineraryCards/cabItineraryCard/data';
-import hotelItineraryCardProps from './components/trips/hotelItineraryCard/data';
+import hotelItineraryCardProps from './components/trips/itineraryCards/hotelItineraryCard/data';
 import remarksContainerProps from './components/trips/remarksContainer/data';
 import itineraryHeaderProps from './components/trips/itineraryHeader/data';
 import tripListingCardProps from './components/trips/tripListingCard/data';

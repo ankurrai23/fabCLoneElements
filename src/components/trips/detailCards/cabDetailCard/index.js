@@ -106,7 +106,10 @@ const CabDetailCard = ({
       {!!notificationText && <ModificationAlertBox msg={notificationText} />}
       <View style={Styles.flexRow}>
         <View style={Styles.container}>
-          <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+          <FTouchableOpacity
+            activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
+            style={Styles.card(bookingDetails.reduceOpacity)}
+            onPress={onCardPress}>
             <View style={[Styles.flexDirectionRow, Styles.baseline]}>
               <FText>
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>

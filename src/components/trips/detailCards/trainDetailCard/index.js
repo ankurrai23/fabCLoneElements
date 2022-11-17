@@ -12,6 +12,7 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import ModificationAlertBox from '../../components/modificationAlertBox';
+import {formatTrainNameNo} from '../../itineraryCards/trainItineraryCard';
 
 const DetailRow = ({
   dataIcon,
@@ -105,7 +106,10 @@ const TrainDetailCard = ({
       {!!notificationText && <ModificationAlertBox msg={notificationText} />}
       <View style={Styles.flexRow}>
         <View style={Styles.container}>
-          <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
+          <FTouchableOpacity
+            activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
+            style={Styles.card(bookingDetails.reduceOpacity)}
+            onPress={onCardPress}>
             <View style={[Styles.flexDirectionRow, Styles.baseline]}>
               <FText>
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
@@ -167,10 +171,10 @@ const TrainDetailCard = ({
                       {bookingDetails.source}
                     </FText>
                   )}
-                  {(bookingDetails?.departurePlatform ||
-                    bookingDetails?.arrivalPlatform) && (
+                  {(bookingDetails?.sourcePlatform ||
+                    bookingDetails?.destinationPlatform) && (
                     <FText style={Styles.detail} numberOfLines={1}>
-                      {Strings.platform} {bookingDetails.departurePlatform}
+                      {Strings.platform} {bookingDetails.sourcePlatform}
                     </FText>
                   )}
                 </View>
@@ -186,10 +190,10 @@ const TrainDetailCard = ({
                       {bookingDetails.destination}
                     </FText>
                   )}
-                  {(bookingDetails?.departurePlatform ||
-                    bookingDetails?.arrivalPlatform) && (
+                  {(bookingDetails?.sourcePlatform ||
+                    bookingDetails?.destinationPlatform) && (
                     <FText style={Styles.detail} numberOfLines={1}>
-                      {Strings.platform} {bookingDetails.arrivalPlatform}
+                      {Strings.platform} {bookingDetails.destinationPlatform}
                     </FText>
                   )}
                 </View>
@@ -198,7 +202,10 @@ const TrainDetailCard = ({
 
             <View style={Styles.marginTop_12}>
               <FText style={Styles.heading} numberOfLines={1}>
-                {bookingDetails?.trainName ?? Strings.trainNa}
+                {formatTrainNameNo(
+                  bookingDetails.trainName,
+                  bookingDetails.trainNumber,
+                )}
               </FText>
               {bookingDetails?.pnr && (
                 <FText style={Styles.detail} numberOfLines={1}>

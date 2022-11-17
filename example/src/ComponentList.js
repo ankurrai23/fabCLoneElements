@@ -7,7 +7,6 @@ import {
   DashedLine,
   PickerField,
   FlightPreferenceCard,
-  HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
   BusItineraryCard,
@@ -32,6 +31,7 @@ import {
   OtherTravelDetails,
   ApprovalManager,
   CoTravellers,
+  HotelDetailCard,
   FlightDetailCard,
   BusDetailCard,
   CabDetailCard,
@@ -124,10 +124,6 @@ const TRIP_COMPONENTS = [
     component: <FlightPreferenceCard {...data.flightPreferenceCardProps} />,
   },
   {
-    name: 'HotelDetailCard',
-    component: <HotelDetailCard {...data.hotelDetailCardProps} />,
-  },
-  {
     name: 'TripStatus',
     component: <TripStatus {...data.tripStatusProps} />,
   },
@@ -182,6 +178,10 @@ const TRIP_COMPONENTS = [
   {
     name: 'ManagerActions',
     component: <ManagerActions {...data.managerActionsProps} />,
+  },
+  {
+    name: 'HotelDetailCard',
+    component: <HotelDetailCard {...data.hotelDetailCardProps} />,
   },
   {
     name: 'FlightDetailCard',

@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color';
-import {shadowObj} from '../../../utils/Utils';
+import {DP} from '../../../../../utils/Dimen';
+import {Color} from '../../../../../utils/color';
+import {shadowObj} from '../../../../../utils/Utils';
 
 export default StyleSheet.create({
   animatedComponent: {
