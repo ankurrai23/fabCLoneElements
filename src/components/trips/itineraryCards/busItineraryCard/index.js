@@ -21,12 +21,12 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
       style={Styles.card(tripRequest.reduceOpacity)}
       onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-        <FText>
+        <View style={Styles.flexDirectionRow}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {tripRequest.date}
           </FText>
-          <FText style={Styles.headerMonth}>{` ${tripRequest.month}`}</FText>
-        </FText>
+          <FText style={Styles.headerMonth}>{`${tripRequest.month}`}</FText>
+        </View>
         {showStatus ? (
           <TripStatus statusObj={status} />
         ) : (
@@ -78,12 +78,12 @@ const PostBookingCard = ({
       style={Styles.card(reduceOpacity)}
       onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-        <FText>
+        <View style={Styles.flexDirectionRow}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {bookingDetails.date}
           </FText>
-          <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
-        </FText>
+          <FText style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+        </View>
         {showStatus && status ? (
           <TripStatus statusObj={getStatusObject(status)} />
         ) : (

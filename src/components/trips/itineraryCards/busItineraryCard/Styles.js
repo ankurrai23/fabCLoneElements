@@ -50,7 +50,8 @@ export default StyleSheet.create({
     color: Color.GREY_PURPLE,
   },
   date: {
-    fontSize: DP._18,
+    fontSize: DP._14,
+    lineHeight: DP._20,
   },
   slotDetail: {
     fontSize: DP._12,
@@ -81,7 +82,9 @@ export default StyleSheet.create({
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
-    fontSize: DP._12,
+    fontSize: DP._14,
+    lineHeight: DP._20,
+    marginLeft: DP._2,
   },
   icon: {
     width: DP._30,
