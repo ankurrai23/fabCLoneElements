@@ -244,8 +244,9 @@ const BusDetailCard = ({
                   ))}
                 </>
               )}
-            {(bookingDetails?.coordinatorNo ||
-              bookingDetails?.coordinatorName) && (
+            {!!(
+              bookingDetails?.coordinatorNo || bookingDetails?.coordinatorName
+            ) && (
               <>
                 <Separator style={Styles.separatorStyle} />
                 <View style={Styles.marginTop_12}>
