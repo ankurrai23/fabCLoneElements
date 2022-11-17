@@ -14,9 +14,9 @@ export default StyleSheet.create({
   }),
   dateAndStatusContainer: {
     flexDirection: 'row',
-    marginBottom: DP._16,
+    marginBottom: DP._12,
     justifyContent: 'space-between',
-    paddingTop: DP._16,
+    paddingTop: DP._12,
     paddingHorizontal: DP._16,
   },
   datesContainer: {
@@ -38,12 +38,13 @@ export default StyleSheet.create({
     fontSize: DP._12,
   },
   hotelName: {
-    fontSize: DP._16,
-    marginBottom: DP._4,
+    fontSize: DP._14,
+    marginBottom: DP._2,
   },
   hotelLocation: {
     color: Color.GREYISH_PURPLE,
-    marginBottom: DP._16,
+    fontSize: DP._12,
+    marginBottom: DP._12,
   },
   date: {
     fontSize: DP._18,
@@ -94,7 +95,7 @@ export default StyleSheet.create({
   },
   directionIcon: {bottom: 2, right: 2},
   checkInAndDirectionContainer: {
-    marginBottom: DP._16,
+    marginBottom: DP._12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -103,7 +104,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._13,
+    paddingVertical: DP._12,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -133,5 +134,16 @@ export default StyleSheet.create({
     backgroundColor: Color.DODGER_BLUE + '12',
     padding: DP._3,
     borderRadius: DP._12,
+  },
+  paddingHorizontal_16: {
+    paddingHorizontal: DP._16,
+  },
+  seperatorStyle: {
+    marginHorizontal: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
+  direction: {
+    fontSize: DP._12,
+    color: Color.DODGER_BLUE,
   },
 });

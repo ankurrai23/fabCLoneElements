@@ -23,6 +23,7 @@ const FlightItineraryCard = ({
   onActionPress,
   onCardPress,
   style,
+  actionDisabled,
   hideIcon,
   showLine,
   showInfo,
@@ -45,12 +46,7 @@ const FlightItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
-      />
+      <Separator style={Styles.seperatorStyle} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
@@ -97,11 +93,7 @@ const FlightItineraryCard = ({
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {tripRequest.date}
             </FText>
-            <FText
-              style={{
-                color: Color.BLUEY_GREY,
-                fontSize: DP._12,
-              }}>{` ${tripRequest.month}`}</FText>
+            <FText style={Styles.headingMonth}>{` ${tripRequest.month}`}</FText>
           </FText>
           {showStatus ? (
             <TripStatus statusObj={status} />
@@ -111,7 +103,7 @@ const FlightItineraryCard = ({
             </FText>
           )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
           <View style={Styles.flex}>
             <FText style={Styles.time} numberOfLines={1}>
               {tripRequest.source}
@@ -143,9 +135,10 @@ const FlightItineraryCard = ({
         </View>
       </FTouchableOpacity>
 
-      {(rescheduleAction || cancelAction || viewRemarksAction) && (
-        <ActionsInItinerary />
-      )}
+      {!actionDisabled &&
+        (rescheduleAction || cancelAction || viewRemarksAction) && (
+          <ActionsInItinerary />
+        )}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -176,10 +169,7 @@ const FlightItineraryCard = ({
               {bookingDetails.date}
             </FText>
             <FText
-              style={{
-                color: Color.BLUEY_GREY,
-                fontSize: DP._12,
-              }}>{` ${bookingDetails.month}`}</FText>
+              style={Styles.headingMonth}>{` ${bookingDetails.month}`}</FText>
           </FText>
           {showStatus && bookingDetails.flightBookingStatus ? (
             <TripStatus
@@ -247,9 +237,10 @@ const FlightItineraryCard = ({
           </View>
         </View>
       </FTouchableOpacity>
-      {(rescheduleAction || cancelAction || viewRemarksAction) && (
-        <ActionsInItinerary />
-      )}
+      {!actionDisabled &&
+        (rescheduleAction || cancelAction || viewRemarksAction) && (
+          <ActionsInItinerary />
+        )}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}

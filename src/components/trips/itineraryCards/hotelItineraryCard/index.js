@@ -60,12 +60,7 @@ const HotelItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
-      />
+      <Separator style={Styles.seperatorStyle} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
@@ -140,7 +135,7 @@ const HotelItineraryCard = ({
             )
           )}
         </View>
-        <View style={{paddingHorizontal: DP._16}}>
+        <View style={Styles.paddingHorizontal_16}>
           <FText style={Styles.hotelName} numberOfLines={1}>
             {tripRequest.title}
           </FText>
@@ -223,7 +218,7 @@ const HotelItineraryCard = ({
             )
           )}
         </View>
-        <View style={{paddingHorizontal: DP._16}}>
+        <View style={Styles.paddingHorizontal_16}>
           <FText style={Styles.hotelName}>{bookingDetails.title}</FText>
           <FText style={Styles.hotelLocation}>{bookingDetails.location}</FText>
           <View style={Styles.checkInAndDirectionContainer}>
@@ -243,13 +238,7 @@ const HotelItineraryCard = ({
                   height={DP._16}
                   style={Styles.directionIcon}
                 />
-                <FText
-                  style={{
-                    fontSize: DP._12,
-                    color: Color.DODGER_BLUE,
-                  }}>
-                  {directionAction.name}
-                </FText>
+                <FText style={Styles.direction}>{directionAction.name}</FText>
               </FTouchableOpacity>
             )}
           </View>
