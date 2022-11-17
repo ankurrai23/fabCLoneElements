@@ -12,6 +12,7 @@ import TripStatus from '../../tripStatus';
 import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {getStatusObject} from '../../../../utils/Utils';
 
 const FlightItineraryCard = ({
   status,
@@ -180,8 +181,10 @@ const FlightItineraryCard = ({
                 fontSize: DP._12,
               }}>{` ${bookingDetails.month}`}</FText>
           </FText>
-          {showStatus ? (
-            <TripStatus statusObj={status} />
+          {showStatus && bookingDetails.flightBookingStatus ? (
+            <TripStatus
+              statusObj={getStatusObject(bookingDetails.flightBookingStatus)}
+            />
           ) : (
             !hideChevron && (
               <Icon.ChevronRight
