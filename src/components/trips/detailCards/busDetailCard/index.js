@@ -63,7 +63,7 @@ const BusDetailCard = ({
   const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
-
+  const completePhoneNo = `${bookingDetails.countryCode} ${bookingDetails.coordinatorNo}`;
   const ActionsInItinerary = () => (
     <>
       <Separator style={Styles.actionsSeparator} />
@@ -269,16 +269,16 @@ const BusDetailCard = ({
                       leftDefaultData={Strings.name}
                     />
                   )}
-                  {bookingDetails?.coordinatorNo && (
+                  {completePhoneNo && (
                     <DetailRow
                       dataIcon={
                         <Icon.PhoneIcon width={DP._16} height={DP._16} />
                       }
-                      rightData={bookingDetails.coordinatorNo}
+                      rightData={completePhoneNo}
                       leftDefaultData={Strings.phoneNo}
                       rightDataStyle={Styles.color_blue}
                       onClickRightData={() =>
-                        onPhoneNumberClicked(bookingDetails.coordinatorNo)
+                        onPhoneNumberClicked(completePhoneNo)
                       }
                       style={
                         bookingDetails.coordinatorName && Styles.marginTop_12
