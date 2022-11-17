@@ -81,10 +81,10 @@ export default StyleSheet.create({
     paddingBottom: DP._10,
   },
   flexRow: {flexDirection: 'row'},
-  justifyContent_around: (duration) => ({
-    justifyContent: duration ? 'space-around' : 'flex-start',
+  justifyContent_around: {
+    justifyContent: 'center',
     alignItems: 'center',
-  }),
+  },
   flexRowAndAlignCenter: {flexDirection: 'row', alignItems: 'center'},
   primaryButtonStyle: {
     flexDirection: 'row',

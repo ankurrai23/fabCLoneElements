@@ -112,11 +112,7 @@ const FlightItineraryCard = ({
               {tripRequest.sourceAirportCode}
             </FText>
           </View>
-          <View
-            style={[
-              Styles.justifyContent_around(tripRequest.duration),
-              Styles.flex,
-            ]}>
+          <View style={[Styles.justifyContent_around, Styles.flex]}>
             <Icon.Aeroplane
               width={DP._18}
               height={DP._18}
@@ -185,7 +181,7 @@ const FlightItineraryCard = ({
             )
           )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
           <View style={Styles.flex}>
             <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
 
@@ -196,11 +192,7 @@ const FlightItineraryCard = ({
                   : '')}
             </FText>
           </View>
-          <View
-            style={[
-              Styles.justifyContent_around(bookingDetails.duration),
-              Styles.flex,
-            ]}>
+          <View style={[Styles.justifyContent_around, Styles.flex]}>
             <Icon.Aeroplane
               width={DP._18}
               height={DP._18}
