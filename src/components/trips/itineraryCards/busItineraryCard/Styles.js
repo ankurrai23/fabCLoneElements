@@ -45,7 +45,7 @@ export default StyleSheet.create({
     fontSize: DP._14,
   },
   details: {
-    marginTop: DP._4,
+    marginTop: DP._2,
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
   },

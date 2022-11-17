@@ -30,6 +30,7 @@ const busItineraryCardProps = {
     busNumber: 'MH 12A 2345',
     busType: 'Sleeper',
     seatNumber: 'L23',
+    pnr: '123456',
     reduceOpacity: false,
   },
   actions: [

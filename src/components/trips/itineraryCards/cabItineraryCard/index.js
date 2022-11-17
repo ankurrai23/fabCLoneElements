@@ -174,8 +174,13 @@ const PostBookingCard = ({
                 {details?.vehicleName ?? Strings.carNa}
               </FText>
               {details?.vehicleNumber && (
-                <FText style={Styles.details} numberOfLines={1}>
+                <FText style={Styles.detail} numberOfLines={1}>
                   {details.vehicleNumber}
+                </FText>
+              )}
+              {details?.bookingId && (
+                <FText style={Styles.detail} numberOfLines={1}>
+                  {Strings.bookingId}: {details.bookingId}
                 </FText>
               )}
             </View>

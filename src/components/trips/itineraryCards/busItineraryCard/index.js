@@ -152,10 +152,20 @@ const PostBookingCard = ({
         <FText style={Styles.heading} numberOfLines={1}>
           {bookingDetails?.busName ?? Strings.busNa}
         </FText>
-        {bookingDetails?.busNumber && (
-          <FText style={Styles.details} numberOfLines={1}>
-            {bookingDetails.busNumber}
-          </FText>
+        {(bookingDetails.busNumber || bookingDetails.pnr) && (
+          <View style={Styles.flexDirectionRow}>
+            <FText
+              style={[Styles.details, Styles.textAlign_left, Styles.width_40]}
+              numberOfLines={1}>
+              {bookingDetails.busNumber}
+            </FText>
+
+            <FText
+              style={[Styles.details, Styles.textAlign_right, Styles.width_40]}
+              numberOfLines={1}>
+              {Strings.pnr}: {bookingDetails.pnr}
+            </FText>
+          </View>
         )}
         {bookingDetails?.busType && (
           <FText style={Styles.details} numberOfLines={1}>

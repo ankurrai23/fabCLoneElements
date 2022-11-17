@@ -41,11 +41,6 @@ export default StyleSheet.create({
     color: Color.DARK,
     fontSize: DP._14,
   },
-  details: {
-    marginTop: DP._4,
-    fontSize: DP._12,
-    color: Color.GREY_PURPLE,
-  },
   date: {
     fontSize: DP._18,
   },
@@ -148,6 +143,11 @@ export default StyleSheet.create({
   },
   marginTop_8: {
     marginTop: DP._8,
+  },
+  detail: {
+    marginTop: DP._2,
+    fontSize: DP._12,
+    color: Color.GREY_PURPLE,
   },
   color_grey: {
     color: Color.GREY_PURPLE,
