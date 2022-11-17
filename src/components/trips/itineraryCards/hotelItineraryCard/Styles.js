@@ -40,18 +40,21 @@ export default StyleSheet.create({
   hotelName: {
     fontSize: DP._14,
     marginBottom: DP._2,
+    lineHeight: DP._20,
   },
   hotelLocation: {
     color: Color.GREYISH_PURPLE,
     fontSize: DP._12,
     marginBottom: DP._12,
+    lineHeight: DP._16,
   },
   date: {
-    fontSize: DP._18,
+    fontSize: DP._14,
+    lineHeight: DP._20,
   },
   month: {
-    fontSize: DP._12,
-    lineHeight: 18,
+    fontSize: DP._14,
+    lineHeight: 20,
     color: Color.BLUEY_GREY,
   },
   checkIn: {
@@ -62,6 +65,7 @@ export default StyleSheet.create({
     paddingVertical: DP._1,
     borderRadius: DP._10,
     overflow: 'hidden',
+    lineHeight: DP._12,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -145,5 +149,6 @@ export default StyleSheet.create({
   direction: {
     fontSize: DP._12,
     color: Color.DODGER_BLUE,
+    lineHeight: DP._16,
   },
 });
