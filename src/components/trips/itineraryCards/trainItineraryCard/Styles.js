@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._13,
+    paddingVertical: DP._12,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -72,8 +72,8 @@ export default StyleSheet.create({
   },
   baseline: {alignItems: 'center'},
   card: (reduceOpacity) => ({
-    padding: DP._16,
-    paddingBottom: DP._12,
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._12,
     opacity: reduceOpacity ? 0.6 : 1,
   }),
   alignItem_flexEnd: {
