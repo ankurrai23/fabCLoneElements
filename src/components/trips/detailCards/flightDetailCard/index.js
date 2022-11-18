@@ -84,20 +84,19 @@ const FlightDetailCard = ({
           style={Styles.card(tripDetails.reduceOpacity)}
           onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-            <FText>
+            <View style={Styles.flexDirectionRow}>
               <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                 {tripDetails.date}
               </FText>
-              <FText
-                style={Styles.headerMonth}>{` ${tripDetails.month}`}</FText>
-            </FText>
+              <FText style={Styles.headerMonth}>{`${tripDetails.month}`}</FText>
+            </View>
             {!!tripDetails.flightBookingStatus && (
               <TripStatus
                 statusObj={getStatusObject(tripDetails.flightBookingStatus)}
               />
             )}
           </View>
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+          <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
             <View style={Styles.flex}>
               <FText style={Styles.time}>{tripDetails.departureTime}</FText>
               <FText style={Styles.portName}>

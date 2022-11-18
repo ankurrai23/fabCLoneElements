@@ -39,17 +39,21 @@ export default StyleSheet.create({
   portName: {
     color: Color.GREYISH_PURPLE,
     fontSize: DP._12,
+    marginTop: DP._2,
   },
   time: {
-    marginTop: DP._4,
     fontSize: DP._14,
+    lineHeight: DP._20,
   },
   date: {
-    fontSize: DP._18,
+    fontSize: DP._14,
+    lineHeight: DP._20,
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
     fontSize: DP._12,
+    marginLeft: DP._2,
+    lineHeight: DP._20,
   },
   marginTop_16: {
     marginTop: DP._16,
@@ -62,7 +66,11 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'baseline'},
-  card: (modified) => ({padding: DP._16, opacity: modified ? 0.6 : 1}),
+  card: (modified) => ({
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._12,
+    opacity: modified ? 0.6 : 1,
+  }),
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },
