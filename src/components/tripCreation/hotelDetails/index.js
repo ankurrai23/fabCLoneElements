@@ -35,7 +35,7 @@ export default function HotelDetails(props) {
         onPress={props.onPress}
         style={Styles.headerStyle(data)}
       />
-      {!!error && <FText style={Styles.errorDetailTxt}>{error}</FText>}
+      {!!error && <FText style={Styles.errorDetailText}>{error}</FText>}
       {data?.map((item, index) => (
         <HotelItineraryCard
           tripRequest={generateRequestInfo(item)}
