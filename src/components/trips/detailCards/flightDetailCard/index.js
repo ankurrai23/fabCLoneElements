@@ -37,7 +37,7 @@ const FlightDetailCard = ({
 
   const Actions = () => (
     <>
-      <Separator style={{backgroundColor: Color.VERY_LIGHT_BLUE}} />
+      <Separator style={Styles.actionsSeperator} />
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity

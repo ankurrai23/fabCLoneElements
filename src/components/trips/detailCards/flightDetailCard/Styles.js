@@ -13,11 +13,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._13,
+    paddingVertical: DP._12,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
-    backgroundColor: Color.DODGER_BLUE + '12',
+    // backgroundColor: Color.DODGER_BLUE + '12',
   },
   cancel: {
     color: Color.PASTEL_RED,
@@ -125,5 +125,9 @@ export default StyleSheet.create({
   },
   separator: {
     marginVertical: DP._16,
+  },
+  actionsSeperator: {
+    marginHorizontal: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
   },
 });

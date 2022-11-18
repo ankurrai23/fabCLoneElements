@@ -6,8 +6,9 @@ export default StyleSheet.create({
   text: (color) => ({
     fontSize: DP._12,
     color: color,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
+    paddingVertical: DP._4,
+    paddingHorizontal: DP._8,
+    lineHeight: DP._16,
   }),
   gradientStyle: {
     position: 'absolute',
