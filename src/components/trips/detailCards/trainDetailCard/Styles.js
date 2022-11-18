@@ -39,6 +39,11 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  hyphen: {
+    alignSelf: 'center',
+    fontSize: DP._12,
+    color: Color.BLUEY_GREY,
+  },
   flowRow: {
     flexDirection: 'row',
     alignItems: 'center',

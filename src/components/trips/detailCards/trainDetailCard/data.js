@@ -1,7 +1,7 @@
 const trainDetailCardProps = {
   bookingDetails: {
-    date: '22',
-    month: 'Nov',
+    arrivalDate: {date: '22', month: 'Dec'},
+    departureDate: {date: '22', month: 'Nov'},
     sourceStationCode: 'CSTM',
     source: 'Mumbai',
     destinationStationCode: 'TVC',
