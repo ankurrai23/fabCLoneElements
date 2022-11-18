@@ -3,8 +3,8 @@ import {BusSubtripActions} from '../../../../utils/SubTripActions';
 const busDetailCardProps = {
   bookingDetails: {
     busBookingStatus: 'CONFIRMED',
-    date: '22',
-    month: 'Nov',
+    arrivalDate: {date: '22', month: 'Dec'},
+    departureDate: {date: '22', month: 'Nov'},
     source: 'Mumbai',
     destination: 'Lonaval',
     sourceLocality: 'Mumbai Airport',

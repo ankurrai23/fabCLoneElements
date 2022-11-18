@@ -94,6 +94,11 @@ export default StyleSheet.create({
     lineHeight: DP._20,
     marginLeft: DP._2,
   },
+  hyphen: {
+    alignSelf: 'center',
+    fontSize: DP._12,
+    color: Color.BLUEY_GREY,
+  },
   flexRow: {flexDirection: 'row'},
   justifyContent_around: (duration) => ({
     justifyItem: duration ? 'space-around' : 'flex-start',
