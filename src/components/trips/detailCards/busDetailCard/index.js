@@ -32,14 +32,19 @@ const DetailRow = ({
         onPress={onClickLeftData}>
         {dataIcon}
         <FText
-          style={[Styles.detailLabelStyle, leftDataStyle]}
+          style={[Styles.detailLabelStyle, Styles.lineHeight_16, leftDataStyle]}
           numberOfLines={1}>
           {leftData ?? leftDefaultData}
         </FText>
       </FTouchableOpacity>
       <FTouchableOpacity onPress={onClickRightData} style={Styles.width_48}>
         <FText
-          style={[Styles.fontSize_12, Styles.textAlign_right, rightDataStyle]}
+          style={[
+            Styles.fontSize_12,
+            Styles.textAlign_right,
+            Styles.lineHeight_16,
+            rightDataStyle,
+          ]}
           numberOfLines={1}>
           {rightData ?? rightDefaultData}
         </FText>
@@ -111,7 +116,7 @@ const BusDetailCard = ({
             style={Styles.card(bookingDetails.reduceOpacity)}
             onPress={onCardPress}>
             <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-              <FText>
+              <View style={Styles.flexDirectionRow}>
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                   {bookingDetails.date}
                 </FText>
@@ -119,7 +124,7 @@ const BusDetailCard = ({
                   style={
                     Styles.headerMonth
                   }>{` ${bookingDetails.month}`}</FText>
-              </FText>
+              </View>
               {!!bookingDetails.busBookingStatus && (
                 <TripStatus
                   statusObj={getStatusObject(bookingDetails.busBookingStatus)}
@@ -232,6 +237,7 @@ const BusDetailCard = ({
                       Styles.marginTop_12,
                       Styles.fontSize_12,
                       Styles.color_grey,
+                      Styles.lineHeight_16,
                     ]}>
                     {Strings.travelersDetails}
                   </FText>
@@ -259,6 +265,7 @@ const BusDetailCard = ({
                       Styles.marginBottom_12,
                       Styles.fontSize_12,
                       Styles.color_grey,
+                      Styles.lineHeight_16,
                     ]}>
                     {Strings.coordinatorDetails}
                   </FText>
