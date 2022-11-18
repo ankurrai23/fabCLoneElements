@@ -333,7 +333,7 @@ export default function HotelDetailCard({
         </View>
         {(cancelAction || modifyAction) && (
           <>
-            <Separator style={{backgroundColor: Color.VERY_LIGHT_BLUE}} />
+            <Separator style={{backgroundColor: Color.PALE_GREY_THREE}} />
             <View style={Styles.buttonContainer}>
               {cancelAction && (
                 <FTouchableOpacity
