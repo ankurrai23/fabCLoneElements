@@ -37,10 +37,10 @@ export default StyleSheet.create({
     fontSize: DP._12,
   },
   buttonContainer: {
-    padding: DP._16,
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._12,
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    backgroundColor: Color.DODGER_BLUE + '12',
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
   },
