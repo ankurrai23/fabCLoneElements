@@ -31,7 +31,7 @@ export default function FlightDetails(props) {
         style={Styles.headerStyle(data)}
       />
       {!!props.error && (
-        <FText style={Styles.errorDetailTxt}>{props.error}</FText>
+        <FText style={Styles.errorDetailText}>{props.error}</FText>
       )}
       {data?.map((item, index) => (
         <FlightItineraryCard

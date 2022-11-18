@@ -21,12 +21,12 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
       style={Styles.card(tripRequest.reduceOpacity)}
       onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-        <FText>
+        <View style={Styles.flexDirectionRow}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {tripRequest.date}
           </FText>
-          <FText style={Styles.headerMonth}>{` ${tripRequest.month}`}</FText>
-        </FText>
+          <FText style={Styles.headerMonth}>{`${tripRequest.month}`}</FText>
+        </View>
         {showStatus ? (
           <TripStatus statusObj={status} />
         ) : (
@@ -43,7 +43,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.heading} numberOfLines={1}>
             {tripRequest.source}
           </FText>
-          <FText style={Styles.details} numberOfLines={1}>
+          <FText style={Styles.detail} numberOfLines={1}>
             {tripRequest.sourceLocality}
           </FText>
         </View>
@@ -51,7 +51,7 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText style={Styles.heading} numberOfLines={1}>
             {tripRequest.destination}
           </FText>
-          <FText style={Styles.details} numberOfLines={1}>
+          <FText style={Styles.detail} numberOfLines={1}>
             {tripRequest.destinationLocality}
           </FText>
         </View>
@@ -74,12 +74,12 @@ const PostBookingCard = ({
       style={Styles.card(reduceOpacity)}
       onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-        <FText>
+        <View style={Styles.flexDirectionRow}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {bookingDetails.date}
           </FText>
-          <FText style={Styles.headerMonth}>{` ${bookingDetails.month}`}</FText>
-        </FText>
+          <FText style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+        </View>
         {showStatus && status ? (
           <TripStatus statusObj={getStatusObject(status)} />
         ) : (
@@ -116,13 +116,13 @@ const PostBookingCard = ({
           <View style={[Styles.width_40, Styles.textAlign_left]}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.details} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.sourceLocality}
               </FText>
             )}
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.details} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.source}
               </FText>
             )}
@@ -135,13 +135,13 @@ const PostBookingCard = ({
             ]}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.details} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.destinationLocality}
               </FText>
             )}
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.details} numberOfLines={1}>
+              <FText style={Styles.detail} numberOfLines={1}>
                 {bookingDetails.destination}
               </FText>
             )}
@@ -164,6 +164,7 @@ const PostBookingCard = ({
                 Styles.marginTop_12,
                 Styles.fontSize_12,
                 Styles.color_grey,
+                Styles.lineHeight_16,
               ]}>
               {Strings.vehicle}{' '}
               {bookingDetails.vehicleDetails.length > 1 && index + 1}{' '}
@@ -174,8 +175,13 @@ const PostBookingCard = ({
                 {details?.vehicleName ?? Strings.carNa}
               </FText>
               {details?.vehicleNumber && (
-                <FText style={Styles.details} numberOfLines={1}>
+                <FText style={Styles.detail} numberOfLines={1}>
                   {details.vehicleNumber}
+                </FText>
+              )}
+              {details?.bookingId && (
+                <FText style={Styles.detail} numberOfLines={1}>
+                  {Strings.bookingId}: {details.bookingId}
                 </FText>
               )}
             </View>

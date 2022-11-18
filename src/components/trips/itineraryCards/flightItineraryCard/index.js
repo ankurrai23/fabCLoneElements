@@ -23,6 +23,7 @@ const FlightItineraryCard = ({
   onActionPress,
   onCardPress,
   style,
+  actionDisabled,
   hideIcon,
   showLine,
   showInfo,
@@ -45,12 +46,7 @@ const FlightItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator
-        style={{
-          marginHorizontal: DP._16,
-          backgroundColor: Color.LIGHT_PERIWINKLE,
-        }}
-      />
+      <Separator style={Styles.seperatorStyle} />
       <View style={Styles.actionContainer}>
         {viewRemarksAction ? (
           <FTouchableOpacity
@@ -93,16 +89,12 @@ const FlightItineraryCard = ({
         style={Styles.card(tripRequest.reduceOpacity)}
         onPress={onCardPress}>
         <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-          <FText>
+          <View style={Styles.flexDirectionRow}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {tripRequest.date}
             </FText>
-            <FText
-              style={{
-                color: Color.BLUEY_GREY,
-                fontSize: DP._12,
-              }}>{` ${tripRequest.month}`}</FText>
-          </FText>
+            <FText style={Styles.headerMonth}>{`${tripRequest.month}`}</FText>
+          </View>
           {showStatus ? (
             <TripStatus statusObj={status} />
           ) : (
@@ -111,7 +103,7 @@ const FlightItineraryCard = ({
             </FText>
           )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
           <View style={Styles.flex}>
             <FText style={Styles.time} numberOfLines={1}>
               {tripRequest.source}
@@ -120,11 +112,7 @@ const FlightItineraryCard = ({
               {tripRequest.sourceAirportCode}
             </FText>
           </View>
-          <View
-            style={[
-              Styles.justifyContent_around(tripRequest.duration),
-              Styles.flex,
-            ]}>
+          <View style={[Styles.justifyContent_around, Styles.flex]}>
             <Icon.Aeroplane
               width={DP._18}
               height={DP._18}
@@ -143,9 +131,10 @@ const FlightItineraryCard = ({
         </View>
       </FTouchableOpacity>
 
-      {(rescheduleAction || cancelAction || viewRemarksAction) && (
-        <ActionsInItinerary />
-      )}
+      {!actionDisabled &&
+        (rescheduleAction || cancelAction || viewRemarksAction) && (
+          <ActionsInItinerary />
+        )}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -171,16 +160,13 @@ const FlightItineraryCard = ({
         style={Styles.card(tripRequest.reduceOpacity)}
         onPress={onCardPress}>
         <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-          <FText>
+          <View style={Styles.flexDirectionRow}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {bookingDetails.date}
             </FText>
             <FText
-              style={{
-                color: Color.BLUEY_GREY,
-                fontSize: DP._12,
-              }}>{` ${bookingDetails.month}`}</FText>
-          </FText>
+              style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+          </View>
           {showStatus && bookingDetails.flightBookingStatus ? (
             <TripStatus
               statusObj={getStatusObject(bookingDetails.flightBookingStatus)}
@@ -195,7 +181,7 @@ const FlightItineraryCard = ({
             )
           )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_16]}>
+        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
           <View style={Styles.flex}>
             <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
 
@@ -206,11 +192,7 @@ const FlightItineraryCard = ({
                   : '')}
             </FText>
           </View>
-          <View
-            style={[
-              Styles.justifyContent_around(bookingDetails.duration),
-              Styles.flex,
-            ]}>
+          <View style={[Styles.justifyContent_around, Styles.flex]}>
             <Icon.Aeroplane
               width={DP._18}
               height={DP._18}
@@ -247,9 +229,10 @@ const FlightItineraryCard = ({
           </View>
         </View>
       </FTouchableOpacity>
-      {(rescheduleAction || cancelAction || viewRemarksAction) && (
-        <ActionsInItinerary />
-      )}
+      {!actionDisabled &&
+        (rescheduleAction || cancelAction || viewRemarksAction) && (
+          <ActionsInItinerary />
+        )}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}

@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._13,
+    paddingVertical: DP._12,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -39,14 +39,22 @@ export default StyleSheet.create({
   heading: {
     color: Color.DARK,
     fontSize: DP._14,
+    lineHeight: DP._20,
   },
   details: {
-    marginTop: DP._4,
+    marginTop: DP._2,
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
+    lineHeight: DP._16,
+  },
+  hyphen: {
+    alignSelf: 'center',
+    fontSize: DP._12,
+    color: Color.BLUEY_GREY,
   },
   date: {
-    fontSize: DP._18,
+    fontSize: DP._14,
+    lineHeight: DP._20,
   },
   slotDetail: {
     fontSize: DP._12,
@@ -64,8 +72,8 @@ export default StyleSheet.create({
   },
   baseline: {alignItems: 'center'},
   card: (reduceOpacity) => ({
-    padding: DP._16,
-    paddingBottom: DP._12,
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._12,
     opacity: reduceOpacity ? 0.6 : 1,
   }),
   alignItem_flexEnd: {
@@ -141,6 +149,8 @@ export default StyleSheet.create({
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
-    fontSize: DP._12,
+    fontSize: DP._14,
+    lineHeight: DP._20,
+    marginLeft: DP._2,
   },
 });

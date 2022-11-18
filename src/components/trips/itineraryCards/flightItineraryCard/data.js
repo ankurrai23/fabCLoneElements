@@ -44,15 +44,15 @@ const flightItineraryCardProps = {
   ],
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
-  showLine: true,
-  hideIcon: false,
+  showLine: false,
+  hideIcon: true,
   showInfo: false,
   isAlert: true,
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
   notificationText: null,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
 };
 

@@ -18,7 +18,8 @@ const busDetailCardProps = {
     seatNumber: 'L23',
     pnr: '12344556',
     coordinatorName: 'Mr. Arvind Swami',
-    coordinatorNo: '+91 9868567789',
+    countryCode: '+91',
+    coordinatorNo: '9868567789',
     travellerDetails: [
       {
         travellerName: 'Sahil Malhan',

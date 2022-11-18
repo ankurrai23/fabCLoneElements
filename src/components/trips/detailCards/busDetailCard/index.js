@@ -32,14 +32,19 @@ const DetailRow = ({
         onPress={onClickLeftData}>
         {dataIcon}
         <FText
-          style={[Styles.detailLabelStyle, leftDataStyle]}
+          style={[Styles.detailLabelStyle, Styles.lineHeight_16, leftDataStyle]}
           numberOfLines={1}>
           {leftData ?? leftDefaultData}
         </FText>
       </FTouchableOpacity>
       <FTouchableOpacity onPress={onClickRightData} style={Styles.width_48}>
         <FText
-          style={[Styles.fontSize_12, Styles.textAlign_right, rightDataStyle]}
+          style={[
+            Styles.fontSize_12,
+            Styles.textAlign_right,
+            Styles.lineHeight_16,
+            rightDataStyle,
+          ]}
           numberOfLines={1}>
           {rightData ?? rightDefaultData}
         </FText>
@@ -63,7 +68,7 @@ const BusDetailCard = ({
   const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
-
+  const completePhoneNo = `${bookingDetails.countryCode} ${bookingDetails.coordinatorNo}`;
   const ActionsInItinerary = () => (
     <>
       <Separator style={Styles.actionsSeparator} />
@@ -111,15 +116,13 @@ const BusDetailCard = ({
             style={Styles.card(bookingDetails.reduceOpacity)}
             onPress={onCardPress}>
             <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-              <FText>
+              <View style={Styles.flexDirectionRow}>
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                   {bookingDetails.date}
                 </FText>
                 <FText
-                  style={
-                    Styles.headerMonth
-                  }>{` ${bookingDetails.month}`}</FText>
-              </FText>
+                  style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+              </View>
               {!!bookingDetails.busBookingStatus && (
                 <TripStatus
                   statusObj={getStatusObject(bookingDetails.busBookingStatus)}
@@ -232,6 +235,7 @@ const BusDetailCard = ({
                       Styles.marginTop_12,
                       Styles.fontSize_12,
                       Styles.color_grey,
+                      Styles.lineHeight_16,
                     ]}>
                     {Strings.travelersDetails}
                   </FText>
@@ -259,6 +263,7 @@ const BusDetailCard = ({
                       Styles.marginBottom_12,
                       Styles.fontSize_12,
                       Styles.color_grey,
+                      Styles.lineHeight_16,
                     ]}>
                     {Strings.coordinatorDetails}
                   </FText>
@@ -269,16 +274,16 @@ const BusDetailCard = ({
                       leftDefaultData={Strings.name}
                     />
                   )}
-                  {bookingDetails?.coordinatorNo && (
+                  {completePhoneNo && (
                     <DetailRow
                       dataIcon={
                         <Icon.PhoneIcon width={DP._16} height={DP._16} />
                       }
-                      rightData={bookingDetails.coordinatorNo}
+                      rightData={completePhoneNo}
                       leftDefaultData={Strings.phoneNo}
                       rightDataStyle={Styles.color_blue}
                       onClickRightData={() =>
-                        onPhoneNumberClicked(bookingDetails.coordinatorNo)
+                        onPhoneNumberClicked(completePhoneNo)
                       }
                       style={
                         bookingDetails.coordinatorName && Styles.marginTop_12

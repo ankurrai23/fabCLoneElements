@@ -17,8 +17,8 @@ const busItineraryCardProps = {
   },
   bookingDetails: {
     busBookingStatus: 'CONFIRMED',
-    date: '22',
-    month: 'Nov',
+    arrivalDate: {date: '22', month: 'Dec'},
+    departureDate: {date: '22', month: 'Nov'},
     source: 'Mumbai',
     destination: 'Lonavala',
     sourceLocality: 'Mumbai Airport',
@@ -30,6 +30,7 @@ const busItineraryCardProps = {
     busNumber: 'MH 12A 2345',
     busType: 'Sleeper',
     seatNumber: 'L23',
+    pnr: '123456',
     reduceOpacity: false,
   },
   actions: [

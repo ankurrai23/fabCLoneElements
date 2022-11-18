@@ -43,14 +43,17 @@ export default StyleSheet.create({
   heading: {
     color: Color.DARK,
     fontSize: DP._14,
+    lineHeight: DP._20,
   },
   detail: {
-    marginTop: DP._4,
+    marginTop: DP._2,
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
+    lineHeight: DP._16,
   },
   date: {
-    fontSize: DP._18,
+    fontSize: DP._14,
+    lineHeight: DP._20,
   },
   slotDetail: {
     fontSize: DP._12,
@@ -65,11 +68,12 @@ export default StyleSheet.create({
   duration: {
     fontSize: DP._10,
     color: Color.GREYISH_PURPLE,
+    lineHeight: DP._12,
   },
   baseline: {alignItems: 'center'},
   card: (reduceOpacity) => ({
-    padding: DP._16,
-    paddingBottom: DP._12,
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._12,
     opacity: reduceOpacity ? 0.6 : 1,
   }),
   alignItem_flexEnd: {
@@ -86,7 +90,9 @@ export default StyleSheet.create({
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
-    fontSize: DP._12,
+    fontSize: DP._14,
+    lineHeight: DP._20,
+    marginLeft: DP._2,
   },
   flexRow: {flexDirection: 'row'},
   justifyContent_around: (duration) => ({
@@ -144,7 +150,7 @@ export default StyleSheet.create({
     color: Color.GREY_PURPLE,
   },
   detailLabelStyle: {
-    marginLeft: DP._10,
+    marginLeft: DP._8,
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
   },
@@ -164,5 +170,8 @@ export default StyleSheet.create({
   actionsSeparator: {
     marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
+  lineHeight_16: {
+    lineHeight: DP._16,
   },
 });

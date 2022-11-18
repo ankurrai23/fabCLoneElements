@@ -16,7 +16,9 @@ const ModificationAlertBox = ({icon, msg, style}) => {
           style={{marginTop: DP._3}}
         />
       )}
-      <FText style={Styles.modifyText}>{msg}</FText>
+      <FText style={Styles.modifyText} weight={400}>
+        {msg}
+      </FText>
     </View>
   );
 };
@@ -36,6 +38,6 @@ const Styles = StyleSheet.create({
     flex: 1,
     marginLeft: DP._8,
     fontSize: DP._12,
-    lineHeight: DP._20,
+    lineHeight: DP._16,
   },
 });

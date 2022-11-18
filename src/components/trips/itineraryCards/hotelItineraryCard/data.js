@@ -41,7 +41,7 @@ const hotelItineraryCardProps = {
   showLine: true,
   showInfo: false,
   timelineGreyed: false,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   showConfirmedStatus: false,
   hideChevron: false,
 };

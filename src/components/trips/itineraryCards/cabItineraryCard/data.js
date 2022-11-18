@@ -32,14 +32,17 @@ const cabItineraryCardProps = {
       {
         vehicleName: 'White Hyundai Grand i10 Nios ',
         vehicleNumber: 'MH 12A 2345 ',
+        bookingId: '1234567',
       },
       {
         vehicleName: 'White Hyundai Grand i10 Nios ',
         vehicleNumber: 'MH 12A 2345 ',
+        bookingId: '1234567',
       },
       {
         vehicleName: 'White Hyundai Grand i10 Nios ',
         vehicleNumber: 'MH 12A 2345 ',
+        bookingId: '1234567',
       },
     ],
     reduceOpacity: false,
