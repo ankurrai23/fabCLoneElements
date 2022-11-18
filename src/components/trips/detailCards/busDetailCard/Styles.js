@@ -92,6 +92,7 @@ export default StyleSheet.create({
     color: Color.BLUEY_GREY,
     fontSize: DP._14,
     lineHeight: DP._20,
+    marginLeft: DP._2,
   },
   flexRow: {flexDirection: 'row'},
   justifyContent_around: (duration) => ({

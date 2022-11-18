@@ -121,9 +121,7 @@ const BusDetailCard = ({
                   {bookingDetails.date}
                 </FText>
                 <FText
-                  style={
-                    Styles.headerMonth
-                  }>{` ${bookingDetails.month}`}</FText>
+                  style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
               </View>
               {!!bookingDetails.busBookingStatus && (
                 <TripStatus
