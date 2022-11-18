@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {ScrollView} from 'react-native-gesture-handler';
 import {
   data,
   Button,
@@ -181,7 +181,11 @@ const TRIP_COMPONENTS = [
   },
   {
     name: 'HotelDetailCard',
-    component: <HotelDetailCard {...data.hotelDetailCardProps} />,
+    component: (
+      <ScrollView>
+        <HotelDetailCard {...data.hotelDetailCardProps} />
+      </ScrollView>
+    ),
   },
   {
     name: 'FlightDetailCard',
