@@ -6,6 +6,7 @@ import Icon from '../../../assets/icons/Icon';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import Separator from '../separator';
 import Styles from './Styles';
+import {dialogBoxStyle} from '../../../utils/Utils';
 
 const Selector = ({
   title,
@@ -37,7 +38,11 @@ const Selector = ({
                 </FTouchableOpacity>
               );
             }}
-            ItemSeparatorComponent={() => <Separator />}
+            ItemSeparatorComponent={() => (
+              <Separator style={Styles.separator} />
+            )}
+            style={{...dialogBoxStyle}}
+            bounces={false}
           />
         </View>
       }
