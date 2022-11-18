@@ -77,6 +77,49 @@ const PostBookingCard = ({
   reduceOpacity,
   hideChevron,
 }) => {
+  const renderDate = (departureDate, arrivalDate) => {
+    const depArrDateSame = departureDate.date === arrivalDate.date;
+    const depArrMonthSame = departureDate.month === arrivalDate.month;
+    if (depArrMonthSame && depArrDateSame) {
+      return (
+        <>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            {departureDate.date}
+          </FText>
+          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+        </>
+      );
+    }
+    if (depArrMonthSame && !depArrDateSame) {
+      return (
+        <>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            {departureDate.date}
+          </FText>
+          <FText style={Styles.hyphen}>{' - '}</FText>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            {arrivalDate.date}
+          </FText>
+          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+        </>
+      );
+    }
+    if (!depArrMonthSame) {
+      return (
+        <>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            {departureDate.date}
+          </FText>
+          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+          <FText style={Styles.hyphen}>{' - '}</FText>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            {arrivalDate.date}
+          </FText>
+          <FText style={Styles.headerMonth}>{`${arrivalDate.month}`}</FText>
+        </>
+      );
+    }
+  };
   return (
     <FTouchableOpacity
       activeOpacity={reduceOpacity ? 0.6 : 1}
@@ -84,10 +127,7 @@ const PostBookingCard = ({
       onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <View style={Styles.flexDirectionRow}>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-            {bookingDetails.date}
-          </FText>
-          <FText style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+          {renderDate(bookingDetails.departureDate, bookingDetails.arrivalDate)}
         </View>
         {showStatus && status ? (
           <TripStatus statusObj={getStatusObject(status)} />

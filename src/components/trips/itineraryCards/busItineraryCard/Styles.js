@@ -51,6 +51,11 @@ export default StyleSheet.create({
     lineHeight: DP._16,
     color: Color.GREY_PURPLE,
   },
+  hyphen: {
+    alignSelf: 'center',
+    fontSize: DP._12,
+    color: Color.BLUEY_GREY,
+  },
   date: {
     fontSize: DP._14,
     lineHeight: DP._20,
