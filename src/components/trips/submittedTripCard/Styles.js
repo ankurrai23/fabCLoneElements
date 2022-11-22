@@ -15,7 +15,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: DP._8,
+    marginBottom: DP._16,
   },
   weatherContainer: {
     flexDirection: 'row',
@@ -119,5 +119,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: DP._10,
+  },
+  fontSize_14: {
+    fontSize: DP._14,
   },
 });

@@ -35,7 +35,7 @@ export default function CoTravelersDetails(props) {
           hitSlop={Styles.hitSlop}
           onPress={props.onPressCoTraveler}>
           {props.data?.length ? (
-            <Icon.EditFilled width={DP._12} height={DP._12} />
+            <Icon.EditFilled width={DP._16} height={DP._16} />
           ) : (
             <Icon.Plus
               width={DP._16}

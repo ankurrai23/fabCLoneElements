@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {ScrollView} from 'react-native-gesture-handler';
 import {
   data,
   Button,
@@ -7,9 +7,11 @@ import {
   DashedLine,
   PickerField,
   FlightPreferenceCard,
-  HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
+  BusItineraryCard,
+  TrainItineraryCard,
+  CabItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
   CoTravelersDetails,
@@ -29,9 +31,16 @@ import {
   OtherTravelDetails,
   ApprovalManager,
   CoTravellers,
+  HotelDetailCard,
   FlightDetailCard,
+  BusDetailCard,
+  CabDetailCard,
+  TrainDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
+  CabDetailLoadingState,
+  BusDetailLoadingState,
+  TrainDetailLoadingState,
   HomeHeader,
   ClaimsCard,
   ClaimsList,
@@ -57,6 +66,10 @@ import {
   ItineraryCard,
   FieldStates,
   ApproverChain,
+  TrainDetails,
+  BusDetails,
+  CabDetails,
+  Selector,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -168,6 +181,10 @@ const COMMON_COMPONENTS = [
         <FieldStates {...data.fieldStatesProps} />
       ),
   },
+  {
+    name: 'Selector',
+    component: <Selector {...data.selectorProps} />,
+  },
 ];
 
 const TRIP_COMPONENTS = [
@@ -183,12 +200,15 @@ const TRIP_COMPONENTS = [
   },
   {
     name: 'HotelDetailCard',
-    component: (props) =>
-      props && Object.keys(props).length !== 0 ? (
-        <HotelDetailCard {...props} />
-      ) : (
-        <HotelDetailCard {...data.hotelDetailCardProps} />
-      ),
+    component: (props) => (
+      <ScrollView>
+        {props && Object.keys(props).length !== 0 ? (
+          <HotelDetailCard {...props} />
+        ) : (
+          <HotelDetailCard {...data.hotelDetailCardProps} />
+        )}
+      </ScrollView>
+    ),
   },
   {
     name: 'TripStatus',
@@ -206,6 +226,33 @@ const TRIP_COMPONENTS = [
         <FlightItineraryCard {...props} />
       ) : (
         <FlightItineraryCard {...data.flightItineraryCardProps} />
+      ),
+  },
+  {
+    name: 'BusItineraryCard',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <BusItineraryCard {...props} />
+      ) : (
+        <BusItineraryCard {...data.busItineraryCardProps} />
+      ),
+  },
+  {
+    name: 'TrainItineraryCard',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <TrainItineraryCard {...props} />
+      ) : (
+        <TrainItineraryCard {...data.trainItineraryCardProps} />
+      ),
+  },
+  {
+    name: 'CabItineraryCard',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <CabItineraryCard {...props} />
+      ) : (
+        <CabItineraryCard {...data.cabItineraryCardProps} />
       ),
   },
   {
@@ -299,6 +346,33 @@ const TRIP_COMPONENTS = [
       ),
   },
   {
+    name: 'BusDetailCard',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <BusDetailCard {...props} />
+      ) : (
+        <BusDetailCard {...data.busDetailCardProps} />
+      ),
+  },
+  {
+    name: 'CabDetailCard',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <CabDetailCard {...props} />
+      ) : (
+        <CabDetailCard {...data.cabDetailCardProps} />
+      ),
+  },
+  {
+    name: 'TrainDetailCard',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <TrainDetailCard {...props} />
+      ) : (
+        <TrainDetailCard {...data.trainDetailCardProps} />
+      ),
+  },
+  {
     name: 'TripCardLoadingState',
     component: (props) =>
       props && Object.keys(props).length !== 0 ? (
@@ -350,6 +424,33 @@ const TRIP_COMPONENTS = [
         <FlightDetailLoadingState {...props} />
       ) : (
         <FlightDetailLoadingState />
+      ),
+  },
+  {
+    name: 'CabDetailLoadingState',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <CabDetailLoadingState {...props} />
+      ) : (
+        <CabDetailLoadingState />
+      ),
+  },
+  {
+    name: 'BusDetailLoadingState',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <BusDetailLoadingState {...props} />
+      ) : (
+        <BusDetailLoadingState />
+      ),
+  },
+  {
+    name: 'TrainDetailLoadingState',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <TrainDetailLoadingState {...props} />
+      ) : (
+        <TrainDetailLoadingState />
       ),
   },
   {
@@ -426,6 +527,33 @@ const TRIP_CREATION = [
         <RemoveItinerary {...props} />
       ) : (
         <RemoveItinerary {...data.removeItineraryProps} />
+      ),
+  },
+  {
+    name: 'TrainDetails',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <TrainDetails {...props} />
+      ) : (
+        <TrainDetails {...data.trainDetailsProps} />
+      ),
+  },
+  {
+    name: 'BusDetails',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <BusDetails {...props} />
+      ) : (
+        <BusDetails {...data.busDetailsProps} />
+      ),
+  },
+  {
+    name: 'CabDetails',
+    component: (props) =>
+      props && Object.keys(props).length !== 0 ? (
+        <CabDetails {...props} />
+      ) : (
+        <CabDetails {...data.cabDetailsProps} />
       ),
   },
 ];

@@ -5,6 +5,13 @@ const tripListingCardProps = {
     title: 'Trip to Gurgaon',
     isProcessing: false,
     coTravellers: null,
+    subTripsIcon: [
+      // {key: 'TRAIN'},
+      {key: 'HOTEL'},
+      // {key: 'CAB'},
+      {key: 'BUS'},
+      {key: 'FLIGHT'},
+    ],
     tripStartDate: 'Thu, 22 Nov',
     tripEndDate: 'Thu, 23 Nov',
     bookingStatus: 'CONFIRMED',
