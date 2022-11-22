@@ -8,33 +8,11 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import DialogBox from '../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
-import {SUB_TRIP_TYPE} from '../../../utils/Constants';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
-
+import {getSubTripIcon} from '../../../utils/Utils';
 const TripListingCard = ({item, onCardPress, style}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
-
-  const tripIcons = (requestType) => {
-    let icons = [];
-    if (requestType.includes(SUB_TRIP_TYPE.FLIGHT))
-      icons.push(
-        <Icon.Aeroplane
-          fill={Color.DARK_SLATE_BLUE_TWO}
-          width={DP._16}
-          height={DP._16}
-        />,
-      );
-    if (requestType.includes(SUB_TRIP_TYPE.HOTEL))
-      icons.push(
-        <Icon.Hotel
-          fill={Color.DARK_SLATE_BLUE_TWO}
-          width={DP._16}
-          height={DP._16}
-        />,
-      );
-    return icons;
-  };
 
   const renderItem = ({item: coTravelerName}) => {
     return <FText style={{fontSize: DP._16}}>{coTravelerName}</FText>;
@@ -46,10 +24,16 @@ const TripListingCard = ({item, onCardPress, style}) => {
         onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
         style={[Styles.container, {...style}]}>
         <View style={Styles.tripIdContainer}>
-          <View style={Styles.flexDirectionRow}>
-            {tripIcons(item.tripRequestType).map((asset) => (
-              <View style={Styles.iconStyle}>{asset}</View>
-            ))}
+          <View style={Styles.flexRowAndAlignCenter}>
+            {item?.subTripsIcon?.slice(0, 3)?.map((asset) => {
+              const subTripIcon = getSubTripIcon(asset.key);
+              return <View style={Styles.iconStyle}>{subTripIcon}</View>;
+            })}
+            {item?.subTripsIcon?.length > 3 && (
+              <FText weight={500} style={Styles.fontSize_14}>
+                +{item?.subTripsIcon?.length - 3}
+              </FText>
+            )}
           </View>
           {item.isProcessing && (
             <View style={Styles.flexRowAndAlignCenter}>

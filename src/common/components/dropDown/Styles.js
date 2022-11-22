@@ -4,14 +4,13 @@ import {DP} from '../../../utils/Dimen';
 import {shadowObj} from '../../../utils/Utils';
 
 export default StyleSheet.create({
-  flatlistContainer: (showPaddingBottom) => ({
-    maxHeight: DP._230,
+  flatlistContainer: {
+    maxHeight: DP._262,
     backgroundColor: 'white',
-    paddingBottom: showPaddingBottom ? DP._8 : 0,
     ...shadowObj,
     borderBottomLeftRadius: DP._8,
     borderBottomRightRadius: DP._8,
-  }),
+  },
   contentContainer: {
     backgroundColor: 'white',
   },

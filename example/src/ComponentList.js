@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {ScrollView} from 'react-native-gesture-handler';
 import {
   data,
   Button,
@@ -7,9 +7,11 @@ import {
   DashedLine,
   PickerField,
   FlightPreferenceCard,
-  HotelDetailCard,
   TripStatus,
   FlightItineraryCard,
+  BusItineraryCard,
+  TrainItineraryCard,
+  CabItineraryCard,
   HotelItineraryCard,
   RemarksContainer,
   CoTravelersDetails,
@@ -29,9 +31,16 @@ import {
   OtherTravelDetails,
   ApprovalManager,
   CoTravellers,
+  HotelDetailCard,
   FlightDetailCard,
+  BusDetailCard,
+  CabDetailCard,
+  TrainDetailCard,
   ListTypeFilter,
   FlightDetailLoadingState,
+  CabDetailLoadingState,
+  BusDetailLoadingState,
+  TrainDetailLoadingState,
   HomeHeader,
   ClaimsCard,
   ClaimsList,
@@ -57,6 +66,10 @@ import {
   ItineraryCard,
   FieldStates,
   ApproverChain,
+  TrainDetails,
+  BusDetails,
+  CabDetails,
+  Selector,
 } from 'react-native-fab-elements';
 import {ProgressBar} from '../../src';
 
@@ -103,6 +116,10 @@ const COMMON_COMPONENTS = [
     name: 'ProgressBar',
     component: <ProgressBar />,
   },
+  {
+    name: 'Selector',
+    component: <Selector {...data.selectorProps} />,
+  },
 ];
 
 const TRIP_COMPONENTS = [
@@ -112,16 +129,24 @@ const TRIP_COMPONENTS = [
     component: <FlightPreferenceCard {...data.flightPreferenceCardProps} />,
   },
   {
-    name: 'HotelDetailCard',
-    component: <HotelDetailCard {...data.hotelDetailCardProps} />,
-  },
-  {
     name: 'TripStatus',
     component: <TripStatus {...data.tripStatusProps} />,
   },
   {
     name: 'FlightItineraryCard',
     component: <FlightItineraryCard {...data.flightItineraryCardProps} />,
+  },
+  {
+    name: 'BusItineraryCard',
+    component: <BusItineraryCard {...data.busItineraryCardProps} />,
+  },
+  {
+    name: 'TrainItineraryCard',
+    component: <TrainItineraryCard {...data.trainItineraryCardProps} />,
+  },
+  {
+    name: 'CabItineraryCard',
+    component: <CabItineraryCard {...data.cabItineraryCardProps} />,
   },
   {
     name: 'HotelItineraryCard',
@@ -160,8 +185,28 @@ const TRIP_COMPONENTS = [
     component: <ManagerActions {...data.managerActionsProps} />,
   },
   {
+    name: 'HotelDetailCard',
+    component: (
+      <ScrollView>
+        <HotelDetailCard {...data.hotelDetailCardProps} />
+      </ScrollView>
+    ),
+  },
+  {
     name: 'FlightDetailCard',
     component: <FlightDetailCard {...data.flightDetailCardProps} />,
+  },
+  {
+    name: 'BusDetailCard',
+    component: <BusDetailCard {...data.busDetailCardProps} />,
+  },
+  {
+    name: 'CabDetailCard',
+    component: <CabDetailCard {...data.cabDetailCardProps} />,
+  },
+  {
+    name: 'TrainDetailCard',
+    component: <TrainDetailCard {...data.trainDetailCardProps} />,
   },
   {
     name: 'TripCardLoadingState',
@@ -186,6 +231,18 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightDetailLoadingState',
     component: <FlightDetailLoadingState />,
+  },
+  {
+    name: 'CabDetailLoadingState',
+    component: <CabDetailLoadingState />,
+  },
+  {
+    name: 'BusDetailLoadingState',
+    component: <BusDetailLoadingState />,
+  },
+  {
+    name: 'TrainDetailLoadingState',
+    component: <TrainDetailLoadingState />,
   },
   {
     name: 'Approver Chain',
@@ -222,6 +279,18 @@ const TRIP_CREATION = [
   {
     name: 'Remove Itinerary',
     component: <RemoveItinerary {...data.removeItineraryProps} />,
+  },
+  {
+    name: 'TrainDetails',
+    component: <TrainDetails {...data.trainDetailsProps} />,
+  },
+  {
+    name: 'BusDetails',
+    component: <BusDetails {...data.busDetailsProps} />,
+  },
+  {
+    name: 'CabDetails',
+    component: <CabDetails {...data.cabDetailsProps} />,
   },
 ];
 

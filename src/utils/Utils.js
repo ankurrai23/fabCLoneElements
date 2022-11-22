@@ -4,6 +4,9 @@ import Config from './config';
 import {DP} from './Dimen';
 import percentToHexChart from './color/percent-to-hex-chart.json';
 import {Color} from './color';
+import {SUB_TRIP_TYPE} from './Constants';
+import Icon from '../assets/icons/Icon';
+import React from 'react';
 
 export const FontFamily = Config.fontFamily || 'Metropolis';
 
@@ -23,6 +26,52 @@ export const Specs = {
   bold: {
     fontFamily: `${FontFamily}-Bold`,
   },
+};
+
+export const getSubTripIcon = (key) => {
+  switch (key) {
+    case SUB_TRIP_TYPE.BUS:
+      return (
+        <Icon.Bus
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
+    case SUB_TRIP_TYPE.TRAIN:
+      return (
+        <Icon.Train
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
+    case SUB_TRIP_TYPE.CAB:
+      return (
+        <Icon.Cab
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
+
+    case SUB_TRIP_TYPE.HOTEL:
+      return (
+        <Icon.Hotel
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
+    case SUB_TRIP_TYPE.FLIGHT:
+      return (
+        <Icon.Aeroplane
+          fill={Color.DARK_SLATE_BLUE_TWO}
+          width={DP._16}
+          height={DP._16}
+        />
+      );
+  }
 };
 
 export const shadowObj = {
@@ -113,14 +162,48 @@ export function convertOpacityPercentIntoHex(percent) {
   throw Error('Invalid opacity percentage');
 }
 
+export const getStatusObject = (status) => {
+  if (!status) return null;
+  const capitalize = () => {
+    return `${status[0]}${status.slice(1).toLowerCase()}`;
+  };
+  switch (status) {
+    case 'CANCELLED':
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.PASTEL_RED + '1a',
+        textColor: Color.PASTEL_RED,
+      };
+    case 'NO_SHOW':
+      return {
+        key: status,
+        value: 'No show',
+        bgColor: Color.PASTEL_RED + '1a',
+        textColor: Color.PASTEL_RED,
+      };
+    case 'TENTATIVE':
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.MANGO + '1a',
+        textColor: Color.MANGO,
+      };
+    default:
+      return {
+        key: status,
+        value: capitalize(),
+        bgColor: Color.DARK_SEA_FOAM + '1a',
+        textColor: Color.DARK_SEA_FOAM,
+      };
+  }
+};
+
 export default {
   FontFamily,
   Specs,
   shadowObj,
   dialogBoxStyle,
-  formattedDate,
   isEmpty,
   isPlatformIos,
-  getPluralText,
-  convertOpacityPercentIntoHex,
 };
