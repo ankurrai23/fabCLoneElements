@@ -70,7 +70,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'TextField',
     component: (props) => {
-      return props ? (
+      return props && Object.keys(props).length !== 0 ? (
         <TextField {...props} />
       ) : (
         <TextField {...data.textFieldProps} />
@@ -80,7 +80,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'PickerField',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <PickerField {...props} />
       ) : (
         <PickerField {...data.pickerFieldProps} />
@@ -89,7 +89,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'DashedLine',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <DashedLine {...props} />
       ) : (
         <DashedLine {...data.dashLineProps} />
@@ -98,7 +98,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'EmptyScreen',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <EmptyScreen {...props} />
       ) : (
         <EmptyScreen {...data.emptyScreenProps} />
@@ -107,7 +107,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'ClaimsCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ClaimsCard {...props} />
       ) : (
         <ClaimsCard {...data.claimsCardProps} />
@@ -116,7 +116,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'FloatingAction',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <FloatingAction {...props} />
       ) : (
         <FloatingAction {...data.floatingActionProps} />
@@ -130,7 +130,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'StackHeader',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <StackHeader {...props} />
       ) : (
         <StackHeader {...data.stackHeaderProps} />
@@ -139,7 +139,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'ScrollableTabBar',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ScrollableTabBar {...props} />
       ) : (
         <ScrollableTabBar {...data.scrollableTabBarProps} />
@@ -148,7 +148,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'Contact Support',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ContactSupport {...props} />
       ) : (
         <ContactSupport {...data.contactSupportProps} />
@@ -162,7 +162,7 @@ const COMMON_COMPONENTS = [
   {
     name: 'FieldStates',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <FieldStates {...props} />
       ) : (
         <FieldStates {...data.fieldStatesProps} />
@@ -175,7 +175,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightPreferenceCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <FlightPreferenceCard {...props} />
       ) : (
         <FlightPreferenceCard {...data.flightPreferenceCardProps} />
@@ -184,7 +184,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'HotelDetailCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <HotelDetailCard {...props} />
       ) : (
         <HotelDetailCard {...data.hotelDetailCardProps} />
@@ -193,7 +193,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'TripStatus',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <TripStatus {...props} />
       ) : (
         <TripStatus {...data.tripStatusProps} />
@@ -202,7 +202,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightItineraryCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <FlightItineraryCard {...props} />
       ) : (
         <FlightItineraryCard {...data.flightItineraryCardProps} />
@@ -211,7 +211,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'HotelItineraryCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <HotelItineraryCard {...props} />
       ) : (
         <HotelItineraryCard {...data.hotelItineraryCardProps} />
@@ -220,7 +220,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'RemarksContainer',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <RemarksContainer {...props} />
       ) : (
         <RemarksContainer {...data.remarksContainerProps} />
@@ -229,7 +229,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'CoTravellers',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <CoTravellers {...props} />
       ) : (
         <CoTravellers {...data.coTravellersProps} />
@@ -238,7 +238,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'ItineraryHeader',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ItineraryHeader {...props} />
       ) : (
         <ItineraryHeader {...data.itineraryHeaderProps} />
@@ -247,7 +247,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'TripListingCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <TripListingCard {...props} />
       ) : (
         <TripListingCard {...data.tripListingCardProps} />
@@ -256,7 +256,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'SubmittedTripCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <SubmittedTripCard {...props} />
       ) : (
         <SubmittedTripCard {...data.submittedTripCardProps} />
@@ -265,7 +265,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'ReceivedTripCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ReceivedTripCard {...props} />
       ) : (
         <ReceivedTripCard {...data.receivedTripCardProps} />
@@ -274,7 +274,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'HotelPreferenceCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <HotelPreferenceCard {...props} />
       ) : (
         <HotelPreferenceCard {...data.hotelPreferenceCardProps} />
@@ -283,7 +283,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'ManagerActions',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ManagerActions {...props} />
       ) : (
         <ManagerActions {...data.managerActionsProps} />
@@ -292,7 +292,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightDetailCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <FlightDetailCard {...props} />
       ) : (
         <FlightDetailCard {...data.flightDetailCardProps} />
@@ -301,7 +301,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'TripCardLoadingState',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <TripCardLoadingState {...props} />
       ) : (
         <TripCardLoadingState {...data.listTypeFilterProps} />
@@ -310,7 +310,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'HotelPreferenceLoadingState',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <HotelPreferenceLoadingState {...props} />
       ) : (
         <HotelPreferenceLoadingState />
@@ -319,7 +319,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'HotelDetailLoadingState',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <HotelDetailLoadingState {...props} />
       ) : (
         <HotelDetailLoadingState />
@@ -328,7 +328,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightPreferenceLoadingState',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <FlightPreferenceLoadingState {...props} />
       ) : (
         <FlightPreferenceLoadingState />
@@ -337,7 +337,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'ListTypeFilter',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ListTypeFilter {...props} />
       ) : (
         <ListTypeFilter {...data.listTypeFilterProps} />
@@ -346,7 +346,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'FlightDetailLoadingState',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <FlightDetailLoadingState {...props} />
       ) : (
         <FlightDetailLoadingState />
@@ -355,7 +355,7 @@ const TRIP_COMPONENTS = [
   {
     name: 'Approver Chain',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ApproverChain {...props} />
       ) : (
         <ApproverChain {...data.approverChainProps} />
@@ -368,7 +368,7 @@ const TRIP_CREATION = [
   {
     name: 'CoTravelersDetails',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <CoTravelersDetails {...props} />
       ) : (
         <CoTravelersDetails {...data.coTravellersDetailProps} />
@@ -377,7 +377,7 @@ const TRIP_CREATION = [
   {
     name: 'HotelDetails',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <HotelDetails {...props} />
       ) : (
         <HotelDetails {...data.hotelDetailsProps} />
@@ -386,7 +386,7 @@ const TRIP_CREATION = [
   {
     name: 'ItineraryCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ItineraryCard {...props} />
       ) : (
         <ItineraryCard {...data.itineraryCardProps} />
@@ -395,7 +395,7 @@ const TRIP_CREATION = [
   {
     name: 'FlightDetails',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <FlightDetails {...props} />
       ) : (
         <FlightDetails {...data.flightDetailsProps} />
@@ -404,7 +404,7 @@ const TRIP_CREATION = [
   {
     name: 'OtherTravelDetails',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <OtherTravelDetails {...props} />
       ) : (
         <OtherTravelDetails {...data.otherTravelDetailsProps} />
@@ -413,7 +413,7 @@ const TRIP_CREATION = [
   {
     name: 'ApprovalManager',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ApprovalManager {...props} />
       ) : (
         <ApprovalManager {...data.approvalManagerProps} />
@@ -422,7 +422,7 @@ const TRIP_CREATION = [
   {
     name: 'Remove Itinerary',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <RemoveItinerary {...props} />
       ) : (
         <RemoveItinerary {...data.removeItineraryProps} />
@@ -435,7 +435,7 @@ const HOME = [
   {
     name: 'HomeHeader',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <HomeHeader {...props} />
       ) : (
         <HomeHeader {...data.homeHeaderProps} />
@@ -444,7 +444,7 @@ const HOME = [
   {
     name: 'ClaimList',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ClaimsList {...props} />
       ) : (
         <ClaimsList {...data.claimsListProps} />
@@ -453,7 +453,7 @@ const HOME = [
   {
     name: 'MessageCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <MessageCard {...props} />
       ) : (
         <MessageCard {...data.messageCardProps} />
@@ -471,7 +471,7 @@ const EXPENSE = [
   {
     name: 'ExpenseCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ExpenseCard {...props} />
       ) : (
         <ExpenseCard {...data.expenseCardProps} />
@@ -480,7 +480,7 @@ const EXPENSE = [
   {
     name: 'ExpenseDetailCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ExpenseDetailCard {...props} />
       ) : (
         <ExpenseDetailCard {...data.expenseDetailCardProps} />
@@ -489,7 +489,7 @@ const EXPENSE = [
   {
     name: 'StopDetailList',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <StopDetailList {...props} />
       ) : (
         <StopDetailList {...data.stopDetailListProps} />
@@ -498,7 +498,7 @@ const EXPENSE = [
   {
     name: 'ExpenseApprovalCard',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ExpenseApprovalCard {...props} />
       ) : (
         <ExpenseApprovalCard {...data.expenseApprovalCardProps} />
@@ -507,7 +507,7 @@ const EXPENSE = [
   {
     name: 'ExpenseApprovalHeader',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ExpenseApprovalHeader {...props} />
       ) : (
         <ExpenseApprovalHeader {...data.expenseApprovalHeaderProps} />
@@ -516,7 +516,7 @@ const EXPENSE = [
   {
     name: 'LocationInputBox',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <LocationInputBox {...props} />
       ) : (
         <LocationInputBox {...data.locationInputBoxProps} />
@@ -530,7 +530,7 @@ const EXPENSE = [
   {
     name: 'MonthPicker',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <MonthPicker {...props} />
       ) : (
         <MonthPicker {...data.monthPickerProps} />
@@ -539,7 +539,7 @@ const EXPENSE = [
   {
     name: 'ReceiptsList',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ReceiptsList {...props} />
       ) : (
         <ReceiptsList {...data.receiptsListProps} />
@@ -548,7 +548,7 @@ const EXPENSE = [
   {
     name: 'ReceiptListView',
     component: (props) =>
-      props ? (
+      props && Object.keys(props).length !== 0 ? (
         <ReceiptListView {...props} />
       ) : (
         <ReceiptListView {...data.receiptListViewProps} />
