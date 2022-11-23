@@ -30,8 +30,10 @@ const RenderComponent = ({
       const propsObj = JSON.parse(propsString);
       return item.component(propsObj ?? null);
     } catch (e) {
-      setShowProperties((currentState) => !currentState);
-      Alert.alert("You provide a value in json that can't be parsed");
+      Alert.alert(
+        `You provide a value in json that can't be parsed, ${e} rendergin component with default props`,
+      );
+      return item.component(data[compPropsObjName] ?? null);
     }
   };
 
