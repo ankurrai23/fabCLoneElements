@@ -209,7 +209,6 @@ const cabItineraryCard = ({
   hideChevron,
   actionDisabled,
 }) => {
-  console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
