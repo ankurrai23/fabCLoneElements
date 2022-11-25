@@ -75,7 +75,7 @@ export default {
   viewDetails: (expanded) => `View ${expanded ? 'less' : 'more'} details`,
   starHotel: (starRating) => `${starRating} star hotel`,
   viewOnMap: 'View on map',
-  your: 'Your',
+  your: 'Your ',
   colleagueAvgRating: (rating) => ` colleagues rated it ${rating} (avg)`,
   requestBy: 'Request by: ',
   department: 'Department: ',
