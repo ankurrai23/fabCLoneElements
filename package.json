@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "17.0.3",
-    "@react-native-community/blur": "3.6.0",
+    "@react-native-community/blur": "4.2.0",
     "@react-native-community/eslint-config": "2.0.0",
     "@release-it/conventional-changelog": "5.0.0",
     "@types/jest": "26.0.0",
@@ -68,7 +68,7 @@
     "react-native-svg": "12.3.0"
   },
   "peerDependencies": {
-    "@react-native-community/blur": "3.6.0",
+    "@react-native-community/blur": "4.2.0",
     "react": "*",
     "react-native": "*",
     "react-native-gesture-handler": "2.3.2",
