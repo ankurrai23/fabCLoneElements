@@ -101,11 +101,6 @@ const ItineraryCard = (props) => {
     ifCitiesAndDepartureDateNull
       ? Strings.basicTravelDetails
       : '';
-  console.log({
-    ifCitiesAndDepartureDateNull,
-    ifEveryFieldisEmpty,
-    showReturn: props?.showReturnDate,
-  });
 
   const departureDateStyle = props?.showReturnDate
     ? {flex: 0.5, marginRight: DP._8}
