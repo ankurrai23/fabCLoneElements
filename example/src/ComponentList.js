@@ -71,6 +71,7 @@ import {
   CabDetails,
   Selector,
 } from 'react-native-fab-elements';
+import {ProgressBar} from '../../src';
 
 const COMMON_COMPONENTS = [
   {name: 'Components'},
@@ -110,6 +111,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'FieldStates',
     component: <FieldStates />,
+  },
+  {
+    name: 'ProgressBar',
+    component: <ProgressBar />,
   },
   {
     name: 'Selector',
