@@ -207,12 +207,12 @@ const PostBookingCard = ({
             bookingDetails.trainNumber,
           )}
         </FText>
-        {bookingDetails?.pnr && (
+        {!!bookingDetails?.pnr && (
           <FText style={Styles.details} numberOfLines={1}>
             {Strings.pnr}: {bookingDetails.pnr}
           </FText>
         )}
-        {bookingDetails?.trainClass && (
+        {!!bookingDetails?.trainClass && (
           <FText style={Styles.details} numberOfLines={1}>
             {bookingDetails.trainClass}
           </FText>
