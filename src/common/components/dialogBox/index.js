@@ -15,8 +15,7 @@ import FTouchableOpacity from '../../rn/FTouchableOpacity';
 
 const {height} = Dimensions.get('window');
 
-const DialogBox = (props) => {
-  const {onClose, modalVisible, ContentModal, onRequestClose} = props;
+const DialogBox = ({modalVisible, onClose, ContentModal}) => {
   const TIMING = {
     duration: 250,
     easing: Easing.linear,
