@@ -1,5 +1,4 @@
 import React from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
 import {
   data,
   Button,
@@ -70,8 +69,10 @@ import {
   BusDetails,
   CabDetails,
   Selector,
+  ProgressBar,
+  FlightFilter,
+  HotelFilter,
 } from 'react-native-fab-elements';
-import {ProgressBar} from '../../src';
 
 const COMMON_COMPONENTS = [
   {name: 'Components'},
@@ -186,11 +187,7 @@ const TRIP_COMPONENTS = [
   },
   {
     name: 'HotelDetailCard',
-    component: (
-      <ScrollView>
-        <HotelDetailCard {...data.hotelDetailCardProps} />
-      </ScrollView>
-    ),
+    component: <HotelDetailCard {...data.hotelDetailCardProps} />,
   },
   {
     name: 'FlightDetailCard',
@@ -291,6 +288,14 @@ const TRIP_CREATION = [
   {
     name: 'CabDetails',
     component: <CabDetails {...data.cabDetailsProps} />,
+  },
+  {
+    name: 'FlightFilter',
+    component: <FlightFilter {...data.flightFilterProps} />,
+  },
+  {
+    name: 'HotelFilter',
+    component: <HotelFilter {...data.hotelFilterProps} />,
   },
 ];
 

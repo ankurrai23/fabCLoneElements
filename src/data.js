@@ -48,6 +48,8 @@ import itineraryCardProps from './components/tripCreation/itinerary/data';
 import trainDetailsProps from './components/tripCreation/trainDetails/data';
 import busDetailsProps from './components/tripCreation/busDetails/data';
 import cabDetailsProps from './components/tripCreation/cabDetails/data';
+import flightFilterProps from './components/tripCreation/srp/filters/flightFilter/data';
+import hotelFilterProps from './components/tripCreation/srp/filters/hotelFilter/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -125,4 +127,6 @@ export {
   busDetailsProps,
   cabDetailsProps,
   selectorProps,
+  flightFilterProps,
+  hotelFilterProps,
 };

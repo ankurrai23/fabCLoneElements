@@ -82,6 +82,8 @@ import ItineraryCard from './components/tripCreation/itinerary';
 import TrainDetails from './components/tripCreation/trainDetails';
 import BusDetails from './components/tripCreation/busDetails';
 import CabDetails from './components/tripCreation/cabDetails';
+import FlightFilter from './components/tripCreation/srp/filters/flightFilter';
+import HotelFilter from './components/tripCreation/srp/filters/hotelFilter';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -178,6 +180,8 @@ export {
   TrainDetails,
   BusDetails,
   CabDetails,
+  FlightFilter,
+  HotelFilter,
   // constants
   FlightSubTripActions,
   TrainSubtripActions,
