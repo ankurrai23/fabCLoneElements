@@ -8,6 +8,8 @@ import Icon from '../../../../../assets/icons/Icon';
 import DialogBox from '../../../../../common/components/dialogBox';
 import Button from '../../../../../common/components/button';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
+import {dialogBoxStyle} from '../../../../../utils/Utils';
+import {DP} from '../../../../../utils/Dimen';
 
 const SortOption = ({item, onPress}) => {
   return (
@@ -49,14 +51,18 @@ const SortAndFilter = ({
         modalVisible={filterModal}
         onClose={() => showFilterModal(false)}
         ContentModal={
-          <View style={Styles.mainContainer}>
+          <>
             <View style={Styles.titleContainer}>
               <FText style={Styles.filterText}>{Strings.filter}</FText>
               <FTouchableOpacity onPress={onClearAll}>
                 <FText style={Styles.clearAllText}>{Strings.clearAll}</FText>
               </FTouchableOpacity>
             </View>
-            {children}
+            <ScrollView
+              style={[dialogBoxStyle, {paddingHorizontal: DP._24}]}
+              bounces={false}>
+              {children}
+            </ScrollView>
             <Button
               onPress={onApply}
               style={Styles.applyButton}
@@ -64,7 +70,7 @@ const SortAndFilter = ({
               textFont={FONT_TYPE.MEDIUM}>
               {Strings.apply}
             </Button>
-          </View>
+          </>
         }
       />
     </>
@@ -72,3 +78,27 @@ const SortAndFilter = ({
 };
 
 export default SortAndFilter;
+
+export const FilterSection = ({title, children, style}) => {
+  return (
+    <View style={[{marginBottom: DP._24}, style]}>
+      <FText style={Styles.sectionTitle}>{title}</FText>
+      {children}
+    </View>
+  );
+};
+
+export const FilterButton = ({
+  isSelected,
+  children,
+  onPress,
+  addMarginRight,
+}) => {
+  return (
+    <FTouchableOpacity
+      style={Styles.button(isSelected, addMarginRight)}
+      onPress={onPress}>
+      <FText style={Styles.buttonText(isSelected)}>{children}</FText>
+    </FTouchableOpacity>
+  );
+};

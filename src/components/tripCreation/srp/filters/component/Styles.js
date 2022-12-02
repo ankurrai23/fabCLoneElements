@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {Color} from '../../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../../utils/Dimen';
+import {shadowObj} from '../../../../../utils/Utils';
 
 export default StyleSheet.create({
   filterContainer: {
@@ -39,11 +40,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: DP._16,
+    marginHorizontal: DP._24,
     marginBottom: DP._24,
-  },
-  mainContainer: {
-    paddingHorizontal: DP._24,
-    paddingBottom: DP._24,
   },
   filterText: {
     fontSize: DP._18,
@@ -56,9 +54,34 @@ export default StyleSheet.create({
   },
   applyButton: {
     borderRadius: DP._24,
+    marginHorizontal: DP._24,
+    marginVertical: DP._8,
+    marginBottom: DP._24,
   },
   applyText: {
     fontSize: DP._16,
     lineHeight: DP._24,
+  },
+  button: (isSelected, addMarginRight) => ({
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: DP._0_5,
+    // paddingVertical: DP._8,
+    flex: 1,
+    borderRadius: DP._8,
+    borderColor: isSelected ? Color.DODGER_BLUE : Color.LIGHT_PERIWINKLE,
+    backgroundColor: isSelected ? Color.ICE_BLUE : Color.WHITE,
+    marginRight: addMarginRight ? DP._8 : 0,
+    height: DP._52,
+    ...shadowObj,
+  }),
+  buttonText: (isSelected) => ({
+    color: isSelected ? Color.DODGER_BLUE : Color.DARK,
+  }),
+  sectionTitle: {
+    fontSize: DP._14,
+    lineHeight: DP._16,
+    color: Color.GREY_PURPLE,
+    marginBottom: DP._8,
   },
 });
