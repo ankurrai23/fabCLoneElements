@@ -115,4 +115,9 @@ export default {
   driverDetails: 'Driver details',
   vehicle: 'Vehicle',
   details: 'details',
+  selectStops: 'Select stops',
+  airlines: 'Airlines',
+  showMoreAirlines: (moreFlights) =>
+    `Show ${moreFlights ? 'less' : 'more'} airlines`,
+  selectEntitlement: 'Select entitlement',
 };
