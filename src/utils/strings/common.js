@@ -120,4 +120,6 @@ export default {
   showMoreAirlines: (moreFlights) =>
     `Show ${moreFlights ? 'less' : 'more'} airlines`,
   selectEntitlement: 'Select entitlement',
+  preferredType: 'Preferred type',
+  hotelRating: 'Hotel rating',
 };

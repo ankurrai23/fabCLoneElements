@@ -93,12 +93,17 @@ export const FilterButton = ({
   children,
   onPress,
   addMarginRight,
+  viewStyle,
 }) => {
   return (
     <FTouchableOpacity
       style={Styles.button(isSelected, addMarginRight)}
       onPress={onPress}>
-      <FText style={Styles.buttonText(isSelected)}>{children}</FText>
+      {typeof children === 'string' ? (
+        <FText style={Styles.buttonText(isSelected)}>{children}</FText>
+      ) : (
+        <View style={viewStyle}>{children}</View>
+      )}
     </FTouchableOpacity>
   );
 };
