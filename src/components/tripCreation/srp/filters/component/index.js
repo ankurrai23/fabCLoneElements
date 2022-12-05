@@ -28,7 +28,7 @@ const SortAndFilter = ({
   onSortSelect,
   onApply,
 }) => {
-  const [filterModal, showFilterModal] = useState(true);
+  const [filterModal, showFilterModal] = useState(false);
   return (
     <>
       <View style={Styles.filterContainer}>
