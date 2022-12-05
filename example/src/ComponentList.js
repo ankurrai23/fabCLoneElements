@@ -72,6 +72,7 @@ import {
   ProgressBar,
   FlightFilter,
   HotelFilter,
+  Slider,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -120,6 +121,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'Selector',
     component: <Selector {...data.selectorProps} />,
+  },
+  {
+    name: 'Slider',
+    component: <Slider {...data.sliderProps} />,
   },
 ];
 

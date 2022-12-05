@@ -25,6 +25,7 @@ import DropDown from './common/components/dropDown';
 import FieldStates from './common/components/fieldStates';
 import ProgressBar from './common/components/progressBar';
 import Selector from './common/components/selector';
+import Slider from './common/components/slider';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -138,6 +139,7 @@ export {
   FieldStates,
   ProgressBar,
   Selector,
+  Slider,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,

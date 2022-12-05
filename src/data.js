@@ -11,6 +11,7 @@ import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 import contactSupportProps from './common/components/contactSupport/data';
 import dropDownProps from './common/components/dropDown/data';
 import selectorProps from './common/components/selector/data';
+import sliderProps from './common/components/slider/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -129,4 +130,5 @@ export {
   selectorProps,
   flightFilterProps,
   hotelFilterProps,
+  sliderProps,
 };
