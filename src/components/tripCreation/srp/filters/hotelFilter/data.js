@@ -62,6 +62,13 @@ const hotelFilterProps = {
       starRating: '5',
     },
   ],
+  priceData: {
+    initialLimit: 2000,
+    finalLimit: 40000,
+    initialPrice: 5000,
+    finalPrice: 20000,
+    granularity: 500,
+  },
 };
 
 export default hotelFilterProps;

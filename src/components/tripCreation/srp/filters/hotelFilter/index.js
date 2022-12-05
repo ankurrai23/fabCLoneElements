@@ -5,8 +5,9 @@ import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {DP} from '../../../../../utils/Dimen';
 import Styles from './Styles';
 import Icon from '../../../../../assets/icons/Icon';
-import FText from '../../../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../../../common/rn/FText';
 import {Color} from '../../../../../utils/color/index.travelPlus';
+import Slider from '../../../../../common/components/slider';
 
 const HotelFilter = ({
   sortData,
@@ -16,6 +17,7 @@ const HotelFilter = ({
   preferredTypeData,
   onPreferredTypeSelect,
   hotelRatingData,
+  priceData,
   onApply,
   onClearAll,
   onHotelRatingSelect,
@@ -26,7 +28,17 @@ const HotelFilter = ({
       onSortSelect={onSortSelect}
       onApply={onApply}
       onClearAll={onClearAll}>
-      <FilterSection title={'Price'} />
+      <FilterSection title={'Price'}>
+        <View style={Styles.sliderContainerStyle}>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.initialPrice}>
+            {priceData.initialPrice}
+          </FText>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.finalPrice}>
+            {priceData.finalPrice}
+          </FText>
+        </View>
+        <Slider />
+      </FilterSection>
       <FilterSection title={Strings.hotelRating}>
         <View style={Styles.buttonContainer}>
           {hotelRatingData.map((item, index) => (

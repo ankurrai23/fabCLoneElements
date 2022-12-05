@@ -76,4 +76,16 @@ export default StyleSheet.create({
     color: isSelected ? Color.DODGER_BLUE : Color.DARK,
     marginLeft: DP._4,
   }),
+  sliderContainerStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  initialPrice: {
+    marginBottom: DP._18,
+    fontSize: DP._16,
+  },
+  finalPrice: {
+    marginBottom: DP._18,
+    fontSize: DP._16,
+  },
 });
