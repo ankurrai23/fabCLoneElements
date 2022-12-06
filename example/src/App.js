@@ -8,8 +8,24 @@ import CustomDrawer from './CustomDrawer';
 import RenderComponent from './RenderComponent';
 
 const Drawer = createDrawerNavigator();
+
+const headerRightText = (onPress, showProperties) => {
+  return () => (
+    <TouchableOpacity onPress={onPress}>
+      <Text style={styles.rightHeaderText} numberOfLines={2}>
+        {showProperties ? 'Show Component' : 'Change Properties'}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+
 export default function App() {
   const [showProperties, setShowProperties] = useState(false);
+
+  const onHeaderTextPress = () => {
+    setShowProperties((currentState) => !currentState);
+  };
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -18,35 +34,21 @@ export default function App() {
         detachInactiveScreens={true}>
         {ComponentList.map((item, index) => {
           if (item.component) {
+            // noinspection JSUnusedGlobalSymbols
             return (
               <Drawer.Screen
                 name={item.name}
                 key={`abc${index}`}
                 options={{
-                  headerRight: () => (
-                    <TouchableOpacity
-                      onPress={() => {
-                        setShowProperties((currentState) => !currentState);
-                        // if (showProperties) setOnSave(true);
-                      }}>
-                      <Text style={styles.rightHeaderText} numberOfLines={2}>
-                        {showProperties
-                          ? 'Show Component'
-                          : 'Change Properties'}
-                      </Text>
-                    </TouchableOpacity>
+                  headerRight: headerRightText(
+                    onHeaderTextPress,
+                    showProperties,
                   ),
                 }}>
                 {() => (
                   <RenderComponent
                     showProperties={showProperties}
                     item={item}
-                    setShowProperties={setShowProperties}
-                    compPropsObjName={
-                      item.name.charAt(0).toLowerCase() +
-                      item.name.slice(1) +
-                      'Props'
-                    }
                   />
                 )}
               </Drawer.Screen>

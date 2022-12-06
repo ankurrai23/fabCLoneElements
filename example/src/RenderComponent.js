@@ -6,36 +6,47 @@ import {
   TextInput,
   View,
   Alert,
+  Button,
 } from 'react-native';
-import {data} from 'react-native-fab-elements';
+
 import {DP} from '../../src/utils/Dimen';
 
-const RenderComponent = ({
-  showProperties,
-  item,
-  compPropsObjName,
-  setShowProperties,
-}) => {
-  const [compProps, setCompProps] = useState(
-    JSON.stringify(data[compPropsObjName]),
-  );
+const RenderComponent = ({showProperties, item}) => {
+  function encodeProps(props) {
+    return JSON.stringify(props, function (key, value) {
+      if (typeof value === 'function' || React.isValidElement(value)) {
+        return undefined;
+      } else {
+        return value;
+      }
+    });
+  }
 
-  useEffect(() => {
-    setCompProps(JSON.stringify(data[compPropsObjName]));
-  }, [compPropsObjName]);
-
-  const checkAndRenderComponent = (propsString) => {
+  function decodeProps(propsString) {
     try {
       if (!propsString) propsString = '{}';
-      const propsObj = JSON.parse(propsString);
-      return item.component(propsObj ?? null);
+      return {...item.defaultProps, ...JSON.parse(propsString)};
     } catch (e) {
       Alert.alert(
-        `Invalid properties set in json, ${e} rendering component with default values`,
+        `Invalid properties set in json, ${e} resetting and rendering component with default values`,
       );
-      return item.component(data[compPropsObjName] ?? null);
+      setCompProps(encodeProps(item.defaultProps));
+      return item.defaultProps;
     }
+  }
+
+  const [compProps, setCompProps] = useState(encodeProps(item.defaultProps));
+
+  useEffect(() => {
+    setCompProps(encodeProps(item.defaultProps));
+  }, [item.defaultProps]);
+
+  const checkAndRenderComponent = (propsString) => {
+    let propsObj = decodeProps(propsString);
+    return item.component(propsObj);
   };
+
+  console.log('Rendering comp', item.name);
 
   return (
     <SafeAreaView style={styles.flexGrow}>
