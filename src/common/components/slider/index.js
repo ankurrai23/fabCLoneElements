@@ -5,27 +5,62 @@ import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Animated, {
   Extrapolation,
   interpolate,
+  runOnJS,
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
 } from 'react-native-reanimated';
 import {Color} from '../../../utils/color/index.travelPlus';
 
-const LeftThumb = ({style, initialPosition, finalPosition, thumbPosition}) => {
+const getPositionFromValue = (initialLimit, value, valuePerPixel) => {
+  'worklet';
+  return (value - initialLimit) / valuePerPixel;
+};
+
+const getValueFromPosition = (
+  position,
+  initialLimit,
+  granularity,
+  pixelPerGranule,
+) => {
+  if (granularity > 0) {
+    const numOfGranules = Math.round(position / pixelPerGranule);
+    return numOfGranules * granularity + initialLimit;
+  }
+};
+
+const Thumb = ({
+  style,
+  lowerLimit,
+  upperLimit,
+  currentPosition,
+  finalOffset,
+  onChange,
+}) => {
   const offsetX = useSharedValue(0);
-  const position = thumbPosition;
   const panGesture = Gesture.Pan()
+    .onStart(() => {
+      offsetX.value = currentPosition.value;
+    })
     .onUpdate((e) => {
-      position.value = offsetX.value + e.translationX;
+      let calculatedValue = offsetX.value + e.translationX;
+      if (
+        calculatedValue > lowerLimit.value &&
+        calculatedValue < upperLimit.value
+      ) {
+        currentPosition.value = calculatedValue;
+        runOnJS(onChange)();
+      }
     })
     .onEnd(() => {
-      offsetX.value = position.value;
+      finalOffset.value = currentPosition.value;
     });
 
   const animatedStyle = useAnimatedStyle(() => {
     const translateX = interpolate(
-      position.value,
-      [0, finalPosition.value],
-      [0, finalPosition.value],
+      currentPosition.value,
+      [lowerLimit.value, upperLimit.value],
+      [lowerLimit.value, upperLimit.value],
       {
         extrapolateLeft: Extrapolation.CLAMP,
         extrapolateRight: Extrapolation.CLAMP,
@@ -41,62 +76,88 @@ const LeftThumb = ({style, initialPosition, finalPosition, thumbPosition}) => {
   });
 
   return (
-    <GestureDetector gesture={panGesture} require>
+    <GestureDetector gesture={panGesture}>
       <Animated.View style={[Styles.thumbStyle, animatedStyle, style]} />
     </GestureDetector>
   );
 };
 
-const RightThumb = ({style, viewWidth, thumbPosition, finalPosition}) => {
-  const offsetX = useSharedValue(0);
-  const position = thumbPosition;
-  const panGesture = Gesture.Pan()
-    .onStart((e) => {
-      offsetX.value = position.value;
-    })
-    .onUpdate((e) => {
-      position.value = offsetX.value + e.translationX;
-    })
-    .onEnd(() => {
-      offsetX.value = position.value;
-    });
+const Slider = ({
+  initialValue,
+  finalValue,
+  initialLimit,
+  finalLimit,
+  granularity,
+  onChange,
+}) => {
+  const barWidth = useSharedValue(0);
 
-  const animatedStyle = useAnimatedStyle(() => {
-    const translateX = interpolate(
-      position.value,
-      [viewWidth.value + 48, finalPosition.value - 24],
-      [viewWidth.value + 48, finalPosition.value - 24],
-      {
-        extrapolateLeft: Extrapolation.CLAMP,
-        extrapolateRight: Extrapolation.CLAMP,
-      },
+  const valuePerPixel = useDerivedValue(() => {
+    return (finalLimit - initialLimit) / barWidth.value;
+  }, [barWidth]);
+
+  const pixelCountPerGranularity = useDerivedValue(() => {
+    return granularity / valuePerPixel.value;
+  }, [valuePerPixel]);
+
+  const leftThumbPosition = useDerivedValue(() => {
+    return getPositionFromValue(
+      initialLimit,
+      initialValue,
+      valuePerPixel.value,
     );
-    return {
-      transform: [
-        {
-          translateX: translateX,
-        },
-      ],
-    };
-  }, [viewWidth]);
+  });
 
-  return (
-    <GestureDetector gesture={panGesture} shouldCancelWhenOutside={true}>
-      <Animated.View style={[Styles.thumbStyle, animatedStyle, style]} />
-    </GestureDetector>
-  );
-};
+  const leftThumbOffset = useDerivedValue(() => {
+    return getPositionFromValue(
+      initialLimit,
+      initialValue,
+      valuePerPixel.value,
+    );
+  });
 
-const Slider = () => {
-  const widthRef = useSharedValue(0);
-  const leftThumbPosition = useSharedValue(0);
-  const rightThumbPosition = useSharedValue(0);
+  const rightThumbOffset = useDerivedValue(() => {
+    return getPositionFromValue(initialLimit, finalValue, valuePerPixel.value);
+  });
 
+  const leftThumbLowerLimit = useSharedValue(0);
+
+  const leftThumbUpperLimit = useDerivedValue(() => {
+    return rightThumbOffset.value - 24;
+  }, [rightThumbOffset]);
+
+  const rightThumbPosition = useDerivedValue(() => {
+    return getPositionFromValue(initialLimit, finalValue, valuePerPixel.value);
+  });
+
+  const rightThumbLowerLimit = useDerivedValue(() => {
+    return leftThumbOffset.value + 24;
+  }, [leftThumbOffset]);
+
+  const rightThumbUpperLimit = useDerivedValue(() => {
+    return barWidth.value;
+  }, [barWidth]);
+
+  const onThumbPositionChange = () => {
+    let initialPosition = getValueFromPosition(
+      leftThumbPosition.value,
+      initialLimit,
+      granularity,
+      pixelCountPerGranularity.value,
+    );
+    let finalPosition = getValueFromPosition(
+      rightThumbPosition.value,
+      initialLimit,
+      granularity,
+      pixelCountPerGranularity.value,
+    );
+    onChange(initialPosition, finalPosition);
+  };
   const filledPortionFromLeft = useAnimatedStyle(() => ({
     width: interpolate(
       leftThumbPosition.value,
-      [0, rightThumbPosition.value],
-      [0, rightThumbPosition.value],
+      [0, rightThumbOffset.value],
+      [0, rightThumbOffset.value],
       {
         extrapolateLeft: Extrapolation.CLAMP,
         extrapolateRight: Extrapolation.CLAMP,
@@ -107,14 +168,13 @@ const Slider = () => {
   const filledPortionFromRight = useAnimatedStyle(() => ({
     width: interpolate(
       rightThumbPosition.value,
-      [leftThumbPosition.value + 48, widthRef.value],
-      [leftThumbPosition.value + 48, widthRef.value],
+      [leftThumbOffset.value, barWidth.value],
+      [leftThumbOffset.value, barWidth.value],
       {
         extrapolateLeft: Extrapolation.CLAMP,
         extrapolateRight: Extrapolation.CLAMP,
       },
     ),
-    transform: [{scaleX: -1}],
   }));
 
   return (
@@ -122,9 +182,8 @@ const Slider = () => {
       <View
         style={Styles.unfilledBar}
         onLayout={(e) => {
-          console.log('size', e.nativeEvent.layout.width);
-          widthRef.value = e.nativeEvent.layout.width;
-          rightThumbPosition.value = e.nativeEvent.layout.width - 24;
+          barWidth.value = e.nativeEvent.layout.width - 24;
+          rightThumbOffset.value = e.nativeEvent.layout.width - 12;
         }}
       />
       <Animated.View
@@ -135,16 +194,21 @@ const Slider = () => {
         ]}
       />
       <Animated.View style={[Styles.filledBarStyle, filledPortionFromLeft]} />
-      <LeftThumb
+      <Thumb
         style={Styles.leftThumbStyle}
-        thumbPosition={leftThumbPosition}
-        finalPosition={rightThumbPosition}
+        currentPosition={leftThumbPosition}
+        lowerLimit={leftThumbLowerLimit}
+        upperLimit={leftThumbUpperLimit}
+        finalOffset={leftThumbOffset}
+        onChange={onThumbPositionChange}
       />
-      <RightThumb
+      <Thumb
         style={Styles.rightThumbStyle}
-        thumbPosition={rightThumbPosition}
-        viewWidth={leftThumbPosition}
-        finalPosition={widthRef}
+        lowerLimit={rightThumbLowerLimit}
+        currentPosition={rightThumbPosition}
+        upperLimit={rightThumbUpperLimit}
+        finalOffset={rightThumbOffset}
+        onChange={onThumbPositionChange}
       />
     </View>
   );

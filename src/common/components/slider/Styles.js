@@ -29,7 +29,7 @@ export default StyleSheet.create({
   },
   rightThumbStyle: {
     position: 'absolute',
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
     // right: 0,
   },
 });
