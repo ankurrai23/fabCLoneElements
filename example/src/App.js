@@ -9,7 +9,7 @@ import RenderComponent from './RenderComponent';
 
 const Drawer = createDrawerNavigator();
 export default function App() {
-  const [showProperties, setShowProperties] = useState(true);
+  const [showProperties, setShowProperties] = useState(false);
   return (
     <NavigationContainer>
       <Drawer.Navigator

@@ -31,7 +31,7 @@ const RenderComponent = ({
       return item.component(propsObj ?? null);
     } catch (e) {
       Alert.alert(
-        `You provide a value in json that can't be parsed, ${e} rendergin component with default props`,
+        `Invalid properties set in json, ${e} rendering component with default values`,
       );
       return item.component(data[compPropsObjName] ?? null);
     }
