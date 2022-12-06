@@ -25,6 +25,8 @@ import DropDown from './common/components/dropDown';
 import FieldStates from './common/components/fieldStates';
 import ProgressBar from './common/components/progressBar';
 import Selector from './common/components/selector';
+import Slider from './common/components/slider';
+import RangeSlider from './common/components/rangeSlider';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -82,6 +84,8 @@ import ItineraryCard from './components/tripCreation/itinerary';
 import TrainDetails from './components/tripCreation/trainDetails';
 import BusDetails from './components/tripCreation/busDetails';
 import CabDetails from './components/tripCreation/cabDetails';
+import FlightFilter from './components/tripCreation/srp/filters/flightFilter';
+import HotelFilter from './components/tripCreation/srp/filters/hotelFilter';
 import FlightFarePlanCard from './components/tripCreation/srp/farePlans/flightFarePlan';
 import HotelFarePlanCard from './components/tripCreation/srp/farePlans/hotelFarePlan';
 
@@ -138,6 +142,8 @@ export {
   FieldStates,
   ProgressBar,
   Selector,
+  Slider,
+  RangeSlider,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
@@ -180,6 +186,8 @@ export {
   TrainDetails,
   BusDetails,
   CabDetails,
+  FlightFilter,
+  HotelFilter,
   FlightFarePlanCard,
   HotelFarePlanCard,
   // constants

@@ -68,9 +68,13 @@ import {
   BusDetails,
   CabDetails,
   Selector,
+  ProgressBar,
+  FlightFilter,
+  HotelFilter,
+  Slider,
+  RangeSlider,
   FlightFarePlanCard,
   HotelFarePlanCard,
-  ProgressBar,
   data,
 } from 'react-native-fab-elements';
 
@@ -150,6 +154,16 @@ const COMMON_COMPONENTS = [
     name: 'Selector',
     component: (props) => <Selector {...props} />,
     defaultProps: data.selectorProps,
+  },
+  {
+    name: 'Slider',
+    component: (props) => <Slider {...props} />,
+    defaultProps: data.sliderProps,
+  },
+  {
+    name: 'RangeSlider',
+    component: (props) => <RangeSlider {...props} />,
+    defaultProps: data.rangeSliderProps,
   },
 ];
 
@@ -358,6 +372,16 @@ const TRIP_CREATION = [
     name: 'CabDetails',
     component: (props) => <CabDetails {...props} />,
     defaultProps: data.cabDetailsProps,
+  },
+  {
+    name: 'FlightFilter',
+    component: (props) => <FlightFilter {...props} />,
+    defaultProps: data.flightFilterProps,
+  },
+  {
+    name: 'HotelFilter',
+    component: (props) => <HotelFilter {...props} />,
+    defaultProps: data.hotelFilterProps,
   },
   {
     name: 'FlightFarePlan',

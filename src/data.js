@@ -11,6 +11,8 @@ import scrollableTabBarProps from './common/components/scrollableTabBar/data';
 import contactSupportProps from './common/components/contactSupport/data';
 import dropDownProps from './common/components/dropDown/data';
 import selectorProps from './common/components/selector/data';
+import sliderProps from './common/components/slider/data';
+import rangeSliderProps from './common/components/rangeSlider/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -48,6 +50,8 @@ import itineraryCardProps from './components/tripCreation/itinerary/data';
 import trainDetailsProps from './components/tripCreation/trainDetails/data';
 import busDetailsProps from './components/tripCreation/busDetails/data';
 import cabDetailsProps from './components/tripCreation/cabDetails/data';
+import flightFilterProps from './components/tripCreation/srp/filters/flightFilter/data';
+import hotelFilterProps from './components/tripCreation/srp/filters/hotelFilter/data';
 import flightFarePlanProps from './components/tripCreation/srp/farePlans/flightFarePlan/data';
 import hotelFarePlanProps from './components/tripCreation/srp/farePlans/hotelFarePlan/data';
 
@@ -127,6 +131,10 @@ export {
   busDetailsProps,
   cabDetailsProps,
   selectorProps,
+  flightFilterProps,
+  hotelFilterProps,
+  sliderProps,
+  rangeSliderProps,
   flightFarePlanProps,
   hotelFarePlanProps,
 };

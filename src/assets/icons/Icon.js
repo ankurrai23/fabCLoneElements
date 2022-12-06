@@ -1,5 +1,5 @@
 import React from 'react';
-import {Svg, Path} from 'react-native-svg';
+import {Svg, Path, Line} from 'react-native-svg';
 import {Color} from '../../utils/color/index.travelPlus';
 
 //Svg files
@@ -17,7 +17,6 @@ import File from './file.svg';
 import CreditCard from './credit-card.svg';
 import ZooomIn from './zoom-in.svg';
 import Navigation from './navigation.svg';
-import Filter from './filter.svg';
 import Sort from './sort.svg';
 import EditWithBlueBackground from './edit-with-blue-background.svg';
 import Bell from './bell.svg';
@@ -459,6 +458,98 @@ const Train = ({width, height, fill, ...props}) => (
     <Path
       d="M16.9474 7.63821C16.9474 8.07835 16.9474 8.51849 16.9474 8.9682C16.9474 9.37963 16.758 9.53272 16.3508 9.48488C15.3661 9.37006 14.3814 9.26481 13.4061 9.15956C13.1978 9.14042 12.999 9.11172 12.7907 9.08301C12.5539 9.04474 12.4309 8.90122 12.4214 8.66201C12.4214 7.70519 12.4214 6.74837 12.4214 5.79154C12.4214 5.49493 12.6013 5.34184 12.9138 5.36097C13.3398 5.39925 13.7659 5.44709 14.2015 5.49493C14.959 5.58104 15.7164 5.66716 16.4834 5.75327C16.7959 5.79154 16.9474 5.93507 16.9474 6.25082C16.9474 6.71009 16.9474 7.16937 16.9474 7.63821Z"
       fill="white"
+    />
+  </Svg>
+);
+
+const Filter = ({width, height, stroke, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    fill="none"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Line
+      x1={3.75}
+      y1={5.42676}
+      x2={13.5}
+      y2={5.42676}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={16.125}
+      y1={5.42676}
+      x2={20.25}
+      y2={5.42676}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={16.125}
+      y1={3.75}
+      x2={16.125}
+      y2={7.54412}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={3.75}
+      y1={18.1328}
+      x2={13.5}
+      y2={18.1328}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={16.125}
+      y1={18.1333}
+      x2={20.25}
+      y2={18.1333}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={16.125}
+      y1={16.4561}
+      x2={16.125}
+      y2={20.2502}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={20.25}
+      y1={12.2212}
+      x2={10.5}
+      y2={12.2212}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={7.875}
+      y1={12.2207}
+      x2={3.75}
+      y2={12.2207}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={7.875}
+      y1={13.897}
+      x2={7.875}
+      y2={10.1029}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
     />
   </Svg>
 );
