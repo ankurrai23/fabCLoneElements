@@ -44,7 +44,9 @@ export default function CustomDrawer({navigation, state}) {
           onChangeText={setSearchText}
         />
         <FlatList
-          data={ComponentList.filter((item) => item.name.includes(searchText))}
+          data={ComponentList.filter((item) =>
+            item.name.toLowerCase().includes(searchText.toLowerCase()),
+          )}
           renderItem={renderItem}
           keyExtractor={() => `${Math.random()}`}
           contentContainerStyle={styles.container}
