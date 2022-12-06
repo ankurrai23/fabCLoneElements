@@ -6,7 +6,6 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
 import ComponentList from './ComponentList';
-import {FlatList} from 'react-native-gesture-handler';
 import CustomDrawer from './CustomDrawer';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -15,7 +14,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator
         drawerContent={(props) => <CustomDrawer {...props} />}
-        screenOptions={{drawerStyle: {width: 250}}}
+        screenOptions={{drawerStyle: {width: '70%'}}}
         detachInactiveScreens={true}>
         {ComponentList.map((item, index) => {
           if (item.component)
