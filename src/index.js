@@ -86,6 +86,8 @@ import BusDetails from './components/tripCreation/busDetails';
 import CabDetails from './components/tripCreation/cabDetails';
 import FlightFilter from './components/tripCreation/srp/filters/flightFilter';
 import HotelFilter from './components/tripCreation/srp/filters/hotelFilter';
+import FlightFarePlanCard from './components/tripCreation/srp/farePlans/flightFarePlan';
+import HotelFarePlanCard from './components/tripCreation/srp/farePlans/hotelFarePlan';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -186,6 +188,8 @@ export {
   CabDetails,
   FlightFilter,
   HotelFilter,
+  FlightFarePlanCard,
+  HotelFarePlanCard,
   // constants
   FlightSubTripActions,
   TrainSubtripActions,

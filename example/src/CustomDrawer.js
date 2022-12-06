@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {FText, FTouchableOpacity} from 'react-native-fab-elements';
 
 import Feather from 'react-native-vector-icons/Feather';
 import ComponentList from './ComponentList';
+import {TextField} from 'react-native-fab-elements';
 
 export default function CustomDrawer({navigation, state}) {
+  let [searchText, setSearchText] = useState('C');
+
   const renderItem = ({item}) => {
     const selected = state.routeNames[state.index] === item.name;
     if (item.component) {
@@ -34,13 +37,20 @@ export default function CustomDrawer({navigation, state}) {
 
   return (
     <SafeAreaView>
-      <FlatList
-        data={ComponentList}
-        renderItem={renderItem}
-        keyExtractor={() => `${Math.random()}`}
-        contentContainerStyle={styles.container}
-        bounces={false}
-      />
+      <>
+        <TextField
+          containerStyle={styles.searchMargin}
+          label={'Search component'}
+          onChangeText={setSearchText}
+        />
+        <FlatList
+          data={ComponentList.filter((item) => item.name.includes(searchText))}
+          renderItem={renderItem}
+          keyExtractor={() => `${Math.random()}`}
+          contentContainerStyle={styles.container}
+          bounces={false}
+        />
+      </>
     </SafeAreaView>
   );
 }
@@ -48,6 +58,9 @@ export default function CustomDrawer({navigation, state}) {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 8,
+  },
+  searchMargin: {
+    margin: 10,
   },
   buttonStyle: (selected) => ({
     flexDirection: 'row',

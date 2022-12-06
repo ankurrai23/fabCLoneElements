@@ -52,6 +52,8 @@ import busDetailsProps from './components/tripCreation/busDetails/data';
 import cabDetailsProps from './components/tripCreation/cabDetails/data';
 import flightFilterProps from './components/tripCreation/srp/filters/flightFilter/data';
 import hotelFilterProps from './components/tripCreation/srp/filters/hotelFilter/data';
+import flightFarePlanProps from './components/tripCreation/srp/farePlans/flightFarePlan/data';
+import hotelFarePlanProps from './components/tripCreation/srp/farePlans/hotelFarePlan/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -133,4 +135,6 @@ export {
   hotelFilterProps,
   sliderProps,
   rangeSliderProps,
+  flightFarePlanProps,
+  hotelFarePlanProps,
 };

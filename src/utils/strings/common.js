@@ -123,4 +123,6 @@ export default {
   preferredType: 'Preferred type',
   hotelRating: 'Hotel rating',
   price: 'Price',
+  cancellationPolicy: 'View cancellation policy',
+  perNightInclGst: 'per night (Incl GST)',
 };

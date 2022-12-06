@@ -74,6 +74,8 @@ import {
   HotelFilter,
   Slider,
   RangeSlider,
+  FlightFarePlanCard,
+  HotelFarePlanCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -306,6 +308,14 @@ const TRIP_CREATION = [
   {
     name: 'HotelFilter',
     component: <HotelFilter {...data.hotelFilterProps} />,
+  },
+  {
+    name: 'FlightFarePlan',
+    component: <FlightFarePlanCard {...data.flightFarePlanProps} />,
+  },
+  {
+    name: 'HotelFarePlan',
+    component: <HotelFarePlanCard {...data.hotelFarePlanProps} />,
   },
 ];
 
