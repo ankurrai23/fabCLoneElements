@@ -1,4 +1,4 @@
-const coTravellersDetailProps = {
+const coTravelersDetailProps = {
   isCoTravellersEnabled: () => console.log('card pressed', true),
   onCoTravellersToggle: () => console.log('Info Pressed'),
   onPressCoTraveler: () => console.log('co travelers'),
@@ -14,4 +14,4 @@ const coTravellersDetailProps = {
   removeItem: (index) => console.log('remove item', index),
 };
 
-export default coTravellersDetailProps;
+export default coTravelersDetailProps;
