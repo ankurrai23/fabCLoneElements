@@ -122,4 +122,5 @@ export default {
   selectEntitlement: 'Select entitlement',
   preferredType: 'Preferred type',
   hotelRating: 'Hotel rating',
+  price: 'Price',
 };

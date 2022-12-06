@@ -28,16 +28,16 @@ const HotelFilter = ({
       onSortSelect={onSortSelect}
       onApply={onApply}
       onClearAll={onClearAll}>
-      <FilterSection title={'Price'}>
+      <FilterSection title={Strings.price}>
         <View style={Styles.sliderContainerStyle}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.initialPrice}>
-            {priceData.initialPrice}
+            {priceData.initialValue}
           </FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.finalPrice}>
-            {priceData.finalPrice}
+            {priceData.finalValue}
           </FText>
         </View>
-        <Slider />
+        <Slider {...priceData} />
       </FilterSection>
       <FilterSection title={Strings.hotelRating}>
         <View style={Styles.buttonContainer}>

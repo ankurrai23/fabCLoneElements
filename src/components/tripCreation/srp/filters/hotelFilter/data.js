@@ -65,9 +65,11 @@ const hotelFilterProps = {
   priceData: {
     initialLimit: 2000,
     finalLimit: 40000,
-    initialPrice: 5000,
-    finalPrice: 20000,
-    granularity: 500,
+    granularity: 400,
+    initialValue: 6000,
+    finalValue: 13000,
+    onChange: (initialValue, finalValue) =>
+      console.log('slider moved', initialValue, finalValue),
   },
 };
 
