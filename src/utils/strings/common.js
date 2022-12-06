@@ -115,4 +115,6 @@ export default {
   driverDetails: 'Driver details',
   vehicle: 'Vehicle',
   details: 'details',
+  cancellationPolicy: 'View cancellation policy',
+  perNightInclGst: 'per night (Incl GST)',
 };

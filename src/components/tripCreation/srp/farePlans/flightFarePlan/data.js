@@ -4,7 +4,7 @@ const flightFarePlanProps = {
   planTitle: 'Economy basic',
   planPrice: '₹2,500',
   isSelected: false,
-  isAbovePricePolicy: true,
+  isOutOfPolicy: true,
   planDetails: [
     {
       icon: 'https://picsum.photos/20/20',

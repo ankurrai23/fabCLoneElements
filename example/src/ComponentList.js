@@ -72,7 +72,7 @@ import {
   Selector,
   FlightFarePlanCard,
 } from 'react-native-fab-elements';
-import {ProgressBar} from '../../src';
+import {HotelFarePlanCard, ProgressBar} from '../../src';
 
 const COMMON_COMPONENTS = [
   {name: 'Components'},
@@ -296,6 +296,10 @@ const TRIP_CREATION = [
   {
     name: 'FlightFarePlan',
     component: <FlightFarePlanCard {...data.flightFarePlanProps} />,
+  },
+  {
+    name: 'HotelFarePlan',
+    component: <HotelFarePlanCard {...data.hotelFarePlanProps} />,
   },
 ];
 

@@ -49,6 +49,7 @@ import trainDetailsProps from './components/tripCreation/trainDetails/data';
 import busDetailsProps from './components/tripCreation/busDetails/data';
 import cabDetailsProps from './components/tripCreation/cabDetails/data';
 import flightFarePlanProps from './components/tripCreation/srp/farePlans/flightFarePlan/data';
+import hotelFarePlanProps from './components/tripCreation/srp/farePlans/hotelFarePlan/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -127,4 +128,5 @@ export {
   cabDetailsProps,
   selectorProps,
   flightFarePlanProps,
+  hotelFarePlanProps,
 };

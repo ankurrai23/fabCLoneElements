@@ -15,7 +15,7 @@ const FlightFarePlanCard = ({
   planTitle,
   planPrice,
   isSelected,
-  isAbovePricePolicy,
+  isOutOfPolicy,
   planDetails,
   onPress,
   style,
@@ -31,7 +31,7 @@ const FlightFarePlanCard = ({
             <FText style={styles.planPrice} type={FONT_TYPE.MEDIUM}>
               {planPrice}
             </FText>
-            {isAbovePricePolicy && OOPTag()}
+            {isOutOfPolicy && OOPTag()}
           </View>
         </View>
         {isSelected ? <Icon.RadioActive /> : <Icon.RadioPassive />}
