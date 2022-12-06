@@ -73,6 +73,7 @@ import {
   FlightFilter,
   HotelFilter,
   Slider,
+  RangeSlider,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -125,6 +126,10 @@ const COMMON_COMPONENTS = [
   {
     name: 'Slider',
     component: <Slider {...data.sliderProps} />,
+  },
+  {
+    name: 'RangeSlider',
+    component: <RangeSlider {...data.rangeSliderProps} />,
   },
 ];
 

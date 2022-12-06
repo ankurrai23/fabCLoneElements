@@ -12,6 +12,7 @@ import contactSupportProps from './common/components/contactSupport/data';
 import dropDownProps from './common/components/dropDown/data';
 import selectorProps from './common/components/selector/data';
 import sliderProps from './common/components/slider/data';
+import rangeSliderProps from './common/components/rangeSlider/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -131,4 +132,5 @@ export {
   flightFilterProps,
   hotelFilterProps,
   sliderProps,
+  rangeSliderProps,
 };
