@@ -1,15 +1,31 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-
-const Drawer = createDrawerNavigator();
 import ComponentList from './ComponentList';
 import CustomDrawer from './CustomDrawer';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import RenderComponent from './RenderComponent';
+
+const Drawer = createDrawerNavigator();
+
+const headerRightText = (onPress, showProperties) => {
+  return () => (
+    <TouchableOpacity onPress={onPress}>
+      <Text style={styles.rightHeaderText} numberOfLines={2}>
+        {showProperties ? 'Show Component' : 'Change Properties'}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 export default function App() {
+  const [showProperties, setShowProperties] = useState(false);
+
+  const onHeaderTextPress = () => {
+    setShowProperties((currentState) => !currentState);
+  };
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -17,21 +33,27 @@ export default function App() {
         screenOptions={{drawerStyle: {width: '70%'}}}
         detachInactiveScreens={true}>
         {ComponentList.map((item, index) => {
-          if (item.component)
+          if (item.component) {
+            // noinspection JSUnusedGlobalSymbols
             return (
-              <Drawer.Screen name={item.name} key={`abc${index}`}>
+              <Drawer.Screen
+                name={item.name}
+                key={`abc${index}`}
+                options={{
+                  headerRight: headerRightText(
+                    onHeaderTextPress,
+                    showProperties,
+                  ),
+                }}>
                 {() => (
-                  // <FlatList
-                  //   contentContainerStyle={styles.container}
-                  //   showsVerticalScrollIndicator={false}
-                  //   ListHeaderComponent={item.component}
-                  // />
-                  <SafeAreaView style={styles.container}>
-                    {item.component}
-                  </SafeAreaView>
+                  <RenderComponent
+                    showProperties={showProperties}
+                    item={item}
+                  />
                 )}
               </Drawer.Screen>
             );
+          }
         })}
       </Drawer.Navigator>
     </NavigationContainer>
@@ -42,9 +64,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     paddingHorizontal: 24,
-    // justifyContent: 'center',
-    // // paddingVertical: 16,
-    // // paddingHorizontal: 16,
     flexGrow: 1,
+  },
+  rightHeaderText: {
+    paddingRight: 6,
+    color: 'blue',
   },
 });

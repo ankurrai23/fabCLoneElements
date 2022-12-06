@@ -1,5 +1,3 @@
-import {Color} from '../../../utils/color/index.travelPlus';
-
 const claimsListProps = {
   cardData: [
     {
