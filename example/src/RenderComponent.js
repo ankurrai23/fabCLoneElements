@@ -13,13 +13,17 @@ import {DP} from '../../src/utils/Dimen';
 
 const RenderComponent = ({showProperties, item}) => {
   function encodeProps(props) {
-    return JSON.stringify(props, function (key, value) {
-      if (typeof value === 'function' || React.isValidElement(value)) {
-        return undefined;
-      } else {
-        return value;
-      }
-    });
+    return JSON.stringify(
+      props,
+      function (key, value) {
+        if (typeof value === 'function' || React.isValidElement(value)) {
+          return undefined;
+        } else {
+          return value;
+        }
+      },
+      2,
+    );
   }
 
   function decodeProps(propsString) {
