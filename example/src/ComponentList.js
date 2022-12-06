@@ -68,9 +68,9 @@ import {
   BusDetails,
   CabDetails,
   Selector,
+  ProgressBar,
   data,
 } from 'react-native-fab-elements';
-import claimsListProps from '../../src/components/home/claimsList/data';
 
 const COMMON_COMPONENTS = [
   {name: 'Components'},
@@ -138,6 +138,11 @@ const COMMON_COMPONENTS = [
     name: 'FieldStates',
     component: (props) => <FieldStates {...props} />,
     defaultProps: data.fieldStatesProps,
+  },
+  {
+    name: 'ProgressBar',
+    component: (props) => <ProgressBar {...props} />,
+    defaultProps: data.progressBarProps,
   },
   {
     name: 'Selector',

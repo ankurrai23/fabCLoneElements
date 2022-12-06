@@ -205,23 +205,23 @@ class TextField extends React.Component {
     );
   };
 
-  // componentDidMount() {
-  //   this.keyboardDidHideListener = Keyboard.addListener(
-  //     'keyboardDidHide',
-  //     this._keyboardDidHide,
-  //   );
-  // }
+  componentDidMount() {
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this._keyboardDidHide,
+    );
+  }
 
-  // componentWillUnmount() {
-  //   this.keyboardDidHideListener.remove();
-  // }
+  componentWillUnmount() {
+    this.keyboardDidHideListener.remove();
+  }
 
-  // _keyboardDidHide = () => {
-  //   if (this.textInput.current.isFocused()) {
-  //     this.textInput.current.blur();
-  //     this.setState({isFocused: false});
-  //   }
-  // };
+  _keyboardDidHide = () => {
+    if (this.textInput.current.isFocused() && !isPlatformIos()) {
+      this.textInput.current.blur();
+      this.setState({isFocused: false});
+    }
+  };
 
   _onTextInput = (event) => {
     this.props.onTextInput && this.props.onTextInput(event.nativeEvent);

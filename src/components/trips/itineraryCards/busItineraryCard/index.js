@@ -235,7 +235,6 @@ const BusItineraryCard = ({
   actionDisabled,
   hideChevron,
 }) => {
-  console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const sameMonthDates =
     bookingDetails?.arrivalDate?.month === bookingDetails?.departureDate?.month;

@@ -21,7 +21,7 @@ export default StyleSheet.create({
   },
   datesContainer: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
   },
   hyphen: {
     alignSelf: 'center',

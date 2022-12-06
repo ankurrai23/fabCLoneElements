@@ -207,12 +207,12 @@ const PostBookingCard = ({
             bookingDetails.trainNumber,
           )}
         </FText>
-        {bookingDetails?.pnr && (
+        {!!bookingDetails?.pnr && (
           <FText style={Styles.details} numberOfLines={1}>
             {Strings.pnr}: {bookingDetails.pnr}
           </FText>
         )}
-        {bookingDetails?.trainClass && (
+        {!!bookingDetails?.trainClass && (
           <FText style={Styles.details} numberOfLines={1}>
             {bookingDetails.trainClass}
           </FText>
@@ -240,7 +240,6 @@ const TrainItineraryCard = ({
   hideChevron,
   actionDisabled,
 }) => {
-  console.log({showPreBookingCard, tripRequest});
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
   const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
