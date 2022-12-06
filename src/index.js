@@ -82,6 +82,7 @@ import ItineraryCard from './components/tripCreation/itinerary';
 import TrainDetails from './components/tripCreation/trainDetails';
 import BusDetails from './components/tripCreation/busDetails';
 import CabDetails from './components/tripCreation/cabDetails';
+import FlightFarePlanCard from './components/tripCreation/srp/farePlans/flightFarePlan';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -178,6 +179,7 @@ export {
   TrainDetails,
   BusDetails,
   CabDetails,
+  FlightFarePlanCard,
   // constants
   FlightSubTripActions,
   TrainSubtripActions,

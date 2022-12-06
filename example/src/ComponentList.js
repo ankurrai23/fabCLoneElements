@@ -70,6 +70,7 @@ import {
   BusDetails,
   CabDetails,
   Selector,
+  FlightFarePlanCard,
 } from 'react-native-fab-elements';
 import {ProgressBar} from '../../src';
 
@@ -291,6 +292,10 @@ const TRIP_CREATION = [
   {
     name: 'CabDetails',
     component: <CabDetails {...data.cabDetailsProps} />,
+  },
+  {
+    name: 'FlightFarePlan',
+    component: <FlightFarePlanCard {...data.flightFarePlanProps} />,
   },
 ];
 
