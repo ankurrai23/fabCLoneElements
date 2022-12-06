@@ -37,17 +37,6 @@ export default StyleSheet.create({
     marginEnd: DP._12,
     color: Color.DARK,
   },
-  abovePricePolicy: {
-    flexWrap: 'wrap',
-  },
-  abovePricePolicyText: {
-    fontSize: DP._10,
-    paddingVertical: DP._1,
-    paddingHorizontal: DP._4,
-    backgroundColor: Color.PASTEL_RED_10,
-    borderRadius: DP._2,
-    color: Color.PASTEL_RED,
-  },
   planDetailItem: {
     flexDirection: 'row',
     alignItems: 'center',

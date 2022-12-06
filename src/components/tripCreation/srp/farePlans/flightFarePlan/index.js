@@ -9,6 +9,7 @@ import {
 import styles from './Styles';
 import Icon from '../../../../../assets/icons/Icon';
 import Separator from '../../../../../common/components/separator';
+import OOPTag from '../../../../trips/components/OOPTag/OOPTag';
 
 const FlightFarePlanCard = ({
   planTitle,
@@ -30,13 +31,7 @@ const FlightFarePlanCard = ({
             <FText style={styles.planPrice} type={FONT_TYPE.MEDIUM}>
               {planPrice}
             </FText>
-            {isAbovePricePolicy && (
-              <View style={styles.abovePricePolicy}>
-                <FText style={styles.abovePricePolicyText}>
-                  {'Above price policy'}
-                </FText>
-              </View>
-            )}
+            {isAbovePricePolicy && OOPTag()}
           </View>
         </View>
         {isSelected ? <Icon.RadioActive /> : <Icon.RadioPassive />}
