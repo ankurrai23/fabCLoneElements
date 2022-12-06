@@ -12,6 +12,7 @@ import {
 import Styles from './Styles';
 import {BlurView} from '@react-native-community/blur';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
+import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 
 const {height} = Dimensions.get('window');
 
@@ -142,6 +143,34 @@ const DialogBox = ({modalVisible, onClose, ContentModal}) => {
     inputRange: [-height, 0, height],
     outputRange: [0, 1, 0],
   });
+
+  const GestureHandlerHOC = gestureHandlerRootHOC(() => (
+    <FTouchableOpacity style={Styles.absolute} onPress={() => onClose()}>
+      <BlurView
+        style={Styles.absolute}
+        blurType="light"
+        blurAmount={1}
+        reducedTransparencyFallbackColor="transparent"
+      />
+      <Animated.View style={handleMainBodyStyle(interpolateBackgroundOpacity)}>
+        <Animated.View
+          style={handleGetStyleBody(interpolateBackgroundOpacity)}
+          {...panResponder.panHandlers}>
+          <TouchableWithoutFeedback
+            onPress={() => Keyboard.dismiss()}
+            style={Styles.TouchWithoutFeedBack}>
+            <View style={Styles.mainContainer}>
+              <View style={Styles.dashView}>
+                <View style={Styles.headerView} />
+              </View>
+              {ContentModal}
+            </View>
+          </TouchableWithoutFeedback>
+        </Animated.View>
+      </Animated.View>
+    </FTouchableOpacity>
+  ));
+
   return (
     <>
       <Modal
@@ -159,31 +188,7 @@ const DialogBox = ({modalVisible, onClose, ContentModal}) => {
           });
         }}
         onRequestClose={onClose}>
-        <FTouchableOpacity style={Styles.absolute} onPress={() => onClose()}>
-          <BlurView
-            style={Styles.absolute}
-            blurType="light"
-            blurAmount={1}
-            reducedTransparencyFallbackColor="transparent"
-          />
-          <Animated.View
-            style={handleMainBodyStyle(interpolateBackgroundOpacity)}>
-            <Animated.View
-              style={handleGetStyleBody(interpolateBackgroundOpacity)}
-              {...panResponder.panHandlers}>
-              <TouchableWithoutFeedback
-                onPress={() => Keyboard.dismiss()}
-                style={Styles.TouchWithoutFeedBack}>
-                <View style={Styles.mainContainer}>
-                  <View style={Styles.dashView}>
-                    <View style={Styles.headerView} />
-                  </View>
-                  {ContentModal}
-                </View>
-              </TouchableWithoutFeedback>
-            </Animated.View>
-          </Animated.View>
-        </FTouchableOpacity>
+        <GestureHandlerHOC />
       </Modal>
     </>
   );
