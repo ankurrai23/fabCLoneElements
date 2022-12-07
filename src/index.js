@@ -88,6 +88,7 @@ import FlightFilter from './components/tripCreation/srp/filters/flightFilter';
 import HotelFilter from './components/tripCreation/srp/filters/hotelFilter';
 import FlightFarePlanCard from './components/tripCreation/srp/farePlans/flightFarePlan';
 import HotelFarePlanCard from './components/tripCreation/srp/farePlans/hotelFarePlan';
+import FlightSearchResultCard from './components/tripCreation/srp/flightSearchResultCard';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -190,6 +191,7 @@ export {
   HotelFilter,
   FlightFarePlanCard,
   HotelFarePlanCard,
+  FlightSearchResultCard,
   // constants
   FlightSubTripActions,
   TrainSubtripActions,

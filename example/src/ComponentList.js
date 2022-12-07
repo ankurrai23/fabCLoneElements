@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  data,
   Button,
   TextField,
   DashedLine,
@@ -75,7 +76,7 @@ import {
   RangeSlider,
   FlightFarePlanCard,
   HotelFarePlanCard,
-  data,
+  FlightSearchResultCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -392,6 +393,11 @@ const TRIP_CREATION = [
     name: 'HotelFarePlan',
     component: (props) => <HotelFarePlanCard {...props} />,
     defaultProps: data.hotelFarePlanProps,
+  },
+  {
+    name: 'FlightSearchResultCard',
+    component: (props) => <FlightSearchResultCard {...props} />,
+    defaultProps: data.flightSearchResultCardProps,
   },
 ];
 
