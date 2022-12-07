@@ -1,0 +1,103 @@
+import React from 'react';
+import {View} from 'react-native';
+import Styles from './Styles';
+import FImage from '../../../../common/rn/FImage';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
+import {Color} from '../../../../utils/color/index.travelPlus';
+import {DP} from '../../../../utils/Dimen';
+import Icon from '../../../../assets/icons/Icon';
+import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
+import {ratingsArray} from '../../../trips/hotelPreferenceCard';
+import Button from '../../../../common/components/button';
+
+export const renderHotelImage = ({item}) => {
+  return <FImage source={{uri: item}} style={Styles.hotelImageStyle} />;
+};
+
+export default function HotelSearchResultCard({onCardPress, item}) {
+  return (
+    <TouchableOpacity style={Styles.container} onPress={onCardPress}>
+      <View>
+        <FlatList
+          data={item.hotelImages}
+          renderItem={renderHotelImage}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(e) => `${e}`}
+        />
+        {!!item.rateType && (
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.rateType}>
+            {item.rateType}
+          </FText>
+        )}
+      </View>
+      <View style={Styles.subContainer}>
+        <View style={Styles.starContainer}>
+          {Array(item.starRating)
+            .fill(0)
+            .map((e) => {
+              return (
+                <Icon.RatingStar
+                  style={Styles.icon}
+                  width={DP._16}
+                  height={DP._16}
+                  fill={Color.DARK_SLATE_BLUE_TWO}
+                />
+              );
+            })}
+          <FText style={Styles.hotelStar}>
+            {Strings.starHotel(item.starRating)}
+          </FText>
+          {!!item.preferenceText && (
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.preferenceText}>
+              {item.preferenceText}
+            </FText>
+          )}
+        </View>
+        <FText type={FONT_TYPE.MEDIUM} style={Styles.hotelName}>
+          {item.hotelName}
+        </FText>
+        <FText
+          style={Styles.hotelAddress}
+          numberOfLines={3}
+          ellipsizeMode={'tail'}>
+          {item.hotelAddress}
+        </FText>
+        <View style={Styles.ratingsContainer}>
+          {ratingsArray(item.ratingScore).map((rating, index) => {
+            return (
+              <View style={Styles.ratingBarEmpty} key={`${index}`}>
+                <View style={Styles.ratingBarFill(rating)} />
+              </View>
+            );
+          })}
+          <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
+        </View>
+        {!!item.colleaguesCount && (
+          <FText style={Styles.ratingsText}>
+            {Strings.your}
+            <FText type={FONT_TYPE.MEDIUM}>{item.colleaguesCount}</FText>
+            {Strings.colleagueAvgRating(item.colleaguesRatingAvg)}
+          </FText>
+        )}
+        <View style={Styles.amountContainer}>
+          <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
+          {!!item.cost && (
+            <View style={Styles.priceAndGstContainer}>
+              <FText type={FONT_TYPE.MEDIUM} style={Styles.costOfHotel}>
+                {item.cost}
+              </FText>
+              <FText style={Styles.priceDetail}>
+                {item.gstIncluded ? Strings.inclGst : ''}
+              </FText>
+            </View>
+          )}
+        </View>
+        <Button textFont={FONT_TYPE.MEDIUM} onPress={onCardPress}>
+          {'Select room'}
+        </Button>
+      </View>
+    </TouchableOpacity>
+  );
+}

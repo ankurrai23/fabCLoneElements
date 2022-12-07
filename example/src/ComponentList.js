@@ -77,6 +77,7 @@ import {
   FlightFarePlanCard,
   HotelFarePlanCard,
   FlightSearchResultCard,
+  HotelSearchResultCard,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -398,6 +399,11 @@ const TRIP_CREATION = [
     name: 'FlightSearchResultCard',
     component: (props) => <FlightSearchResultCard {...props} />,
     defaultProps: data.flightSearchResultCardProps,
+  },
+  {
+    name: 'HotelSearchResultCard',
+    component: (props) => <HotelSearchResultCard {...props} />,
+    defaultProps: data.hotelSearchResultCardProps,
   },
 ];
 

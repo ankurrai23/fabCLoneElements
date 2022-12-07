@@ -55,6 +55,7 @@ import hotelFilterProps from './components/tripCreation/srp/filters/hotelFilter/
 import flightFarePlanProps from './components/tripCreation/srp/farePlans/flightFarePlan/data';
 import hotelFarePlanProps from './components/tripCreation/srp/farePlans/hotelFarePlan/data';
 import flightSearchResultCardProps from './components/tripCreation/srp/flightSearchResultCard/data';
+import hotelSearchResultCardProps from './components/tripCreation/srp/hotelSearchResultCard/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -139,4 +140,5 @@ export {
   flightFarePlanProps,
   hotelFarePlanProps,
   flightSearchResultCardProps,
+  hotelSearchResultCardProps,
 };

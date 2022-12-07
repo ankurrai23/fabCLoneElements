@@ -125,4 +125,5 @@ export default {
   price: 'Price',
   cancellationPolicy: 'View cancellation policy',
   perNightInclGst: 'per night (Incl GST)',
+  inclGst: '(Incl GST)',
 };
