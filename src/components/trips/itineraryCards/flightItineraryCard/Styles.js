@@ -36,7 +36,7 @@ export default StyleSheet.create({
     transform: [{rotate: '90deg'}],
   },
   portName: {
-    marginTop: DP._2,
+    marginTop: DP._8,
     color: Color.GREYISH_PURPLE,
     lineHeight: DP._16,
     fontSize: DP._14,

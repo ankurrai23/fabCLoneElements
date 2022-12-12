@@ -58,10 +58,10 @@ const flightItineraryCardProps = {
   showInfo: false,
   isAlert: true,
   timelineGreyed: false,
-  actionDisabled: false,
+  actionDisabled: true,
   showStatus: false,
   notificationText: null,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: false,
 };
 
