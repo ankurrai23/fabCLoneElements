@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._12,
+    paddingVertical: DP._8,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -39,10 +39,10 @@ export default StyleSheet.create({
     marginTop: DP._2,
     color: Color.GREYISH_PURPLE,
     lineHeight: DP._16,
-    fontSize: DP._12,
+    fontSize: DP._14,
   },
   time: {
-    fontSize: DP._14,
+    fontSize: DP._16,
     lineHeight: DP._20,
   },
   date: {
@@ -63,7 +63,8 @@ export default StyleSheet.create({
   baseline: {alignItems: 'center'},
   card: (reduceOpacity) => ({
     paddingHorizontal: DP._16,
-    paddingVertical: DP._12,
+    paddingTop: DP._12,
+    paddingBottom: DP._8,
     opacity: reduceOpacity ? 0.6 : 1,
   }),
   alignItem_flexEnd: {
@@ -122,13 +123,82 @@ export default StyleSheet.create({
     marginTop: DP._12,
   },
   seperatorStyle: {
-    marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
     fontSize: DP._14,
     lineHeight: DP._20,
-    marginLeft: DP._2,
+    marginLeft: DP._4,
+  },
+  animatedComponent: {
+    flex: 1,
+    width: DP._60,
+  },
+  priceLoading: {
+    height: DP._20,
+    width: DP._60,
+    backgroundColor: Color.VERY_LIGHT_PINK,
+    borderRadius: DP._2,
+  },
+  flightParticulars: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: DP._12,
+  },
+  imageStyle: {
+    width: DP._32,
+    height: DP._32,
+    borderRadius: DP._32,
+  },
+  nameAndNumberContainer: {flex: 1, marginStart: DP._8},
+  flightName: {
+    color: Color.DARK,
+  },
+  flightNumber: {
+    color: Color.BLUEY_GREY,
+    marginTop: DP._2,
+    fontSize: DP._12,
+  },
+  flightPrice: {
+    alignSelf: 'flex-end',
+    fontSize: DP._16,
+    lineHeight: DP._19,
+    color: Color.DARK,
+  },
+  oopMargin: {
+    marginTop: DP._20,
+  },
+  pnr: {
+    marginLeft: DP._16,
+    marginVertical: DP._4,
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+  },
+  modificationChargeText: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+    paddingLeft: DP._16,
+    paddingVertical: DP._8,
+    backgroundColor: Color.DODGER_BLUE + '12',
+  },
+  reasonBox: {
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._8,
+    backgroundColor: Color.DODGER_BLUE + '12',
+    borderBottomLeftRadius: DP._12,
+    borderBottomRightRadius: DP._12,
+  },
+  reasonTitle: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+  },
+  reasonText: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+  },
+  marginBottom_12: {
+    marginBottom: DP._12,
   },
 });
