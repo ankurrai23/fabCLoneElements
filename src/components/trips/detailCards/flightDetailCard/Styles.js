@@ -5,7 +5,7 @@ import {Color} from '../../../../utils/color/index.travelPlus';
 import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
 export default StyleSheet.create({
   container: {
-    marginHorizontal: DP._16,
+    // marginHorizontal: DP._16,
     ...shadowObj,
     ...cardStyleObj,
   },
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._12,
+    paddingVertical: DP._8,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -38,22 +38,23 @@ export default StyleSheet.create({
   },
   portName: {
     color: Color.GREYISH_PURPLE,
-    fontSize: DP._12,
-    marginTop: DP._2,
+    fontSize: DP._14,
+    lineHeight: DP._16,
+    marginTop: DP._8,
   },
   time: {
-    fontSize: DP._14,
-    lineHeight: DP._20,
+    fontSize: DP._16,
+    lineHeight: DP._18,
   },
   date: {
     fontSize: DP._14,
-    lineHeight: DP._20,
+    lineHeight: DP._16,
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
-    fontSize: DP._12,
+    fontSize: DP._14,
     marginLeft: DP._2,
-    lineHeight: DP._20,
+    lineHeight: DP._16,
   },
   marginTop_16: {
     marginTop: DP._16,
@@ -68,7 +69,8 @@ export default StyleSheet.create({
   baseline: {alignItems: 'baseline'},
   card: (modified) => ({
     paddingHorizontal: DP._16,
-    paddingVertical: DP._12,
+    paddingTop: DP._12,
+    paddingBottom: DP._8,
     opacity: modified ? 0.6 : 1,
   }),
   alignItem_flexEnd: {
@@ -110,7 +112,7 @@ export default StyleSheet.create({
   heading: {
     marginVertical: DP._16,
     marginTop: DP._24,
-    marginHorizontal: DP._16,
+    // marginHorizontal: DP._16,
   },
   dot_two: {
     padding: DP._3,
@@ -127,7 +129,41 @@ export default StyleSheet.create({
     marginVertical: DP._16,
   },
   actionsSeperator: {
-    marginHorizontal: DP._16,
+    // marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
+  travelerNameStyle: {
+    marginBottom: DP._8,
+    fontSize: DP._12,
+    lineHeight: DP._16,
+    marginLeft: DP._8,
+    color: Color.GREY_PURPLE,
+  },
+  contactSupport: {
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._8,
+  },
+  travelerDetailContainer: {
+    paddingHorizontal: DP._16,
+    paddingTop: DP._12,
+    paddingBottom: DP._8,
+  },
+  travelerDetailStyle: {
+    fontSize: DP._12,
+    marginBottom: DP._12,
+    lineHeight: DP._16,
+    color: Color.GREY_PURPLE,
+  },
+  bookingIdTitle: {
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._4,
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+  },
+  airlineIcon: {
+    width: DP._32,
+    height: DP._32,
+    borderRadius: DP._16,
   },
 });

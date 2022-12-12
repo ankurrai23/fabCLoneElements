@@ -14,6 +14,7 @@ import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
+import FImage from '../../../../common/rn/FImage';
 
 const FlightDetailCard = ({
   title,
@@ -27,6 +28,7 @@ const FlightDetailCard = ({
   actions,
   notificationText,
   actionsDisabled,
+  cardStyle,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -66,35 +68,58 @@ const FlightDetailCard = ({
     return null;
   }
   return (
-    <>
+    <View style={style}>
       {title && (
         <FText type={FONT_TYPE.MEDIUM} style={Styles.heading}>
           {title}
         </FText>
       )}
-      {!!notificationText && (
-        <ModificationAlertBox
-          msg={notificationText}
-          style={{marginHorizontal: DP._16}}
-        />
-      )}
-      <View style={[Styles.container, style]}>
+      {!!notificationText && <ModificationAlertBox msg={notificationText} />}
+      <View style={[Styles.container, cardStyle]}>
         <FTouchableOpacity
           activeOpacity={tripDetails.reduceOpacity ? 0.6 : 1}
           style={Styles.card(tripDetails.reduceOpacity)}
           onPress={onCardPress}>
-          <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+          <View style={[Styles.flexDirectionRow, Styles.flexRowAndAlignCenter]}>
             <View style={Styles.flexDirectionRow}>
               <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                 {tripDetails.date}
               </FText>
-              <FText style={Styles.headerMonth}>{`${tripDetails.month}`}</FText>
+              <FText
+                style={
+                  Styles.headerMonth
+                }>{`${tripDetails.monthAndYear} | `}</FText>
+              <FText>
+                {Strings.pnr}: {tripDetails.pnr}
+              </FText>
             </View>
             {!!tripDetails.flightBookingStatus && (
               <TripStatus
                 statusObj={getStatusObject(tripDetails.flightBookingStatus)}
               />
             )}
+          </View>
+          <View
+            style={[
+              Styles.flexDirectionRow,
+              Styles.flexRowAndAlignCenter,
+              {marginTop: DP._8},
+            ]}>
+            <View style={Styles.flexRowAndAlignCenter}>
+              <FImage
+                style={Styles.airlineIcon}
+                source={{uri: tripDetails.airlineIcon}}
+              />
+              <FText style={{marginLeft: DP._8, marginRight: DP._4}}>
+                {tripDetails.airline}
+              </FText>
+              <FText style={{fontSize: DP._12, color: Color.BLUEY_GREY}}>
+                | {tripDetails.airlineCode}-{tripDetails.flightNumber}
+              </FText>
+            </View>
+            <FText style={{fontSize: DP._18, lineHeight: DP._21}}>
+              {tripDetails.price}
+            </FText>
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
             <View style={Styles.flex}>
@@ -133,37 +158,48 @@ const FlightDetailCard = ({
               </FText>
             </View>
           </View>
-          {tripDetails.pnr && (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-              <View>
-                <FText style={Styles.time}>{tripDetails.airline}</FText>
-                <FText style={Styles.portName}>
-                  {tripDetails.flightNumber}
-                </FText>
-              </View>
-              <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.time}>{Strings.pnr}</FText>
-                <FText style={Styles.portName}>{tripDetails.pnr}</FText>
-              </View>
-            </View>
-          )}
-          {supportAction && (
-            <>
-              <Separator style={Styles.separator} />
-              <ContactSupport
-                supportDetails={supportDetails}
-                onContactSupportPress={onContactSupportPress}
-                onClose={onClose}
-              />
-            </>
-          )}
         </FTouchableOpacity>
+        <Separator style={Styles.actionsSeperator} />
+        <FText style={Styles.bookingIdTitle}>
+          {Strings.bookingId}
+          {': '}
+          <FText type={FONT_TYPE.MEDIUM}>{tripDetails.bookingId}</FText>
+        </FText>
+        {!!tripDetails.travelerNames.length && (
+          <>
+            <Separator style={Styles.actionsSeperator} />
+            <View style={Styles.travelerDetailContainer}>
+              <FText style={Styles.travelerDetailStyle}>
+                {Strings.travelerDetails}
+              </FText>
+              {tripDetails.travelerNames.map((item, index) => (
+                <View style={Styles.flexRow}>
+                  <Icon.Person />
+                  <FText key={index} style={Styles.travelerNameStyle}>
+                    {item.name}
+                  </FText>
+                </View>
+              ))}
+            </View>
+          </>
+        )}
+        {supportAction && (
+          <>
+            <Separator style={Styles.actionsSeperator} />
+            <ContactSupport
+              supportDetails={supportDetails}
+              onContactSupportPress={onContactSupportPress}
+              onClose={onClose}
+              style={Styles.contactSupport}
+            />
+          </>
+        )}
         {!actionsDisabled &&
           (rescheduleAction || cancelAction || viewRemarksAction) && (
             <Actions />
           )}
       </View>
-    </>
+    </View>
   );
 };
 
