@@ -1,6 +1,6 @@
 import {View, StyleSheet} from 'react-native';
 import React from 'react';
-import FText from '../../../common/rn/FText';
+import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DashedLine from '../../../common/components/dashedLine';
@@ -68,9 +68,11 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
 
   return (
     <View style={[style]}>
-      <FText style={styles.titleTextStyle} weight={'500'}>
-        {title}
-      </FText>
+      {!!title && (
+        <FText style={styles.titleTextStyle} type={FONT_TYPE.MEDIUM}>
+          {title}
+        </FText>
+      )}
       {data.map((item, index) => (
         <ManagerDetail {...item} lastItem={index === data.length - 1} />
       ))}
