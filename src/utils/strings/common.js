@@ -33,9 +33,10 @@ export default {
   updates: 'Updates',
   seeMore: 'See more',
   approvalManager: 'Approval manager',
-  cotravelerOptional: 'Co-travelers (optional)',
+  coTravelers: 'Co-travelers',
+  optional: '(optional)',
   coTravellerInfoText:
-    'Booking details as filled above shall be applicable to all travelers.',
+    'You can only add other TravelPlus users within your company.',
   edit: 'Edit',
   slotInfo: (startTime, endTime) => `Slot: ${startTime} - ${endTime}`,
   addReturnFlight: 'Add return flight detail',

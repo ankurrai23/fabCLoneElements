@@ -24,7 +24,11 @@ export default function CoTravelersDetails(props) {
       <View style={Styles.titleContainer}>
         <View style={Styles.titleSubContainer}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
-            {Strings.cotravelerOptional}
+            {Strings.coTravelers}
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.optional}>
+              {' '}
+              {Strings.optional}
+            </FText>
           </FText>
           {!props.data?.length && (
             <FText style={Styles.subText}>{Strings.coTravellerInfoText}</FText>
