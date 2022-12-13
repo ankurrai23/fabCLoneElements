@@ -13,6 +13,13 @@ import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
+import OOPTag from '../../components/OOPTag/OOPTag';
+import FImage from '../../../../common/rn/FImage';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  PlaceholderContainer,
+  Placeholder,
+} from 'react-native-loading-placeholder';
 
 const FlightItineraryCard = ({
   status,
@@ -43,6 +50,31 @@ const FlightItineraryCard = ({
   const viewShortlistedFlightAction = isActionEnabled(
     FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
   );
+
+  const animatedComponent = (cardColor, secondaryColor) => {
+    return (
+      <LinearGradient
+        style={Styles.animatedComponent}
+        colors={[cardColor, secondaryColor, cardColor]}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+      />
+    );
+  };
+
+  const PriceLoader = () => {
+    return (
+      <PlaceholderContainer
+        animatedComponent={animatedComponent(
+          Color.VERY_LIGHT_PINK,
+          Color.WHITE,
+        )}
+        duration={1500}
+        delay={500}>
+        <Placeholder style={Styles.priceLoading} />
+      </PlaceholderContainer>
+    );
+  };
 
   const ActionsInItinerary = () => (
     <>
@@ -93,7 +125,8 @@ const FlightItineraryCard = ({
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {tripRequest.date}
             </FText>
-            <FText style={Styles.headerMonth}>{`${tripRequest.month}`}</FText>
+            <FText
+              style={Styles.headerMonth}>{`${tripRequest.monthAndYear}`}</FText>
           </View>
           {showStatus ? (
             <TripStatus statusObj={status} />
@@ -159,13 +192,20 @@ const FlightItineraryCard = ({
         activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
         style={Styles.card(tripRequest.reduceOpacity)}
         onPress={onCardPress}>
-        <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+        <View
+          style={[
+            Styles.flexDirectionRow,
+            Styles.baseline,
+            Styles.marginBottom_12,
+          ]}>
           <View style={Styles.flexDirectionRow}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {bookingDetails.date}
             </FText>
             <FText
-              style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+              style={
+                Styles.headerMonth
+              }>{`${bookingDetails.monthAndYear}`}</FText>
           </View>
           {showStatus && bookingDetails.flightBookingStatus ? (
             <TripStatus
@@ -181,10 +221,41 @@ const FlightItineraryCard = ({
             )
           )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+        <View style={Styles.flightParticulars}>
+          <FImage
+            style={Styles.imageStyle}
+            source={{uri: bookingDetails.airlineIcon}}
+          />
+          <View style={Styles.nameAndNumberContainer}>
+            <FText
+              style={Styles.flightName}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {bookingDetails.airline}
+            </FText>
+            <FText
+              style={Styles.flightNumber}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {bookingDetails.airlineCode}-{bookingDetails.flightNumber}
+            </FText>
+          </View>
+          {bookingDetails.isPriceFetched ? (
+            <View>
+              <FText style={Styles.flightPrice} type={FONT_TYPE.REGULAR}>
+                {bookingDetails.price}
+              </FText>
+              {bookingDetails.isOutOfPolicy && (
+                <OOPTag style={Styles.oopMargin} />
+              )}
+            </View>
+          ) : (
+            <PriceLoader />
+          )}
+        </View>
+        <View style={Styles.flexDirectionRow}>
           <View style={Styles.flex}>
             <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
-
             <FText style={Styles.portName} numberOfLines={1}>
               {bookingDetails.sourceAirportCode +
                 (bookingDetails.sourceAirportTerminal
@@ -209,7 +280,6 @@ const FlightItineraryCard = ({
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
             <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
-
             <FText style={Styles.portName} numberOfLines={1}>
               {bookingDetails.destinationAirportCode +
                 (bookingDetails.destinationAirportTerminal
@@ -218,17 +288,38 @@ const FlightItineraryCard = ({
             </FText>
           </View>
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-          <View>
-            <FText style={Styles.time}>{bookingDetails.airline}</FText>
-            <FText style={Styles.portName}>{bookingDetails.flightNumber}</FText>
-          </View>
-          <View style={Styles.alignItem_flexEnd}>
-            <FText style={Styles.time}>{Strings.pnr}</FText>
-            <FText style={Styles.portName}>{bookingDetails.pnr}</FText>
-          </View>
-        </View>
       </FTouchableOpacity>
+      {!!bookingDetails.pnr && (
+        <>
+          <Separator style={Styles.seperatorStyle} />
+          <FText style={Styles.pnr}>
+            {Strings.pnr}:
+            <FText type={FONT_TYPE.MEDIUM}>{` ${bookingDetails.pnr}`}</FText>
+          </FText>
+        </>
+      )}
+      {!!bookingDetails.modificationCharge && (
+        <>
+          <FText style={Styles.modificationChargeText}>
+            {Strings.includeModificationCharge}
+            <FText
+              type={
+                FONT_TYPE.MEDIUM
+              }>{` ${bookingDetails.modificationCharge}.`}</FText>
+          </FText>
+          <Separator style={Styles.seperatorStyle} />
+        </>
+      )}
+      {!!bookingDetails.reasonDetails && (
+        <View style={Styles.reasonBox}>
+          <FText style={Styles.reasonTitle} type={FONT_TYPE.MEDIUM}>
+            {bookingDetails.reasonDetails.title}
+          </FText>
+          <FText style={Styles.reasonText}>
+            {bookingDetails.reasonDetails.text}
+          </FText>
+        </View>
+      )}
       {!actionDisabled &&
         (rescheduleAction || cancelAction || viewRemarksAction) && (
           <ActionsInItinerary />

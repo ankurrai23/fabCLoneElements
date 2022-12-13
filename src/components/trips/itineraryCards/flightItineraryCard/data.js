@@ -1,5 +1,3 @@
-import {FlightSubTripActions} from '../../../../utils/SubTripActions';
-
 const flightItineraryCardProps = {
   status: {
     key: 'PROCESSED',
@@ -9,7 +7,7 @@ const flightItineraryCardProps = {
   },
   tripRequest: {
     date: '22',
-    month: 'Nov',
+    monthAndYear: "Nov'22",
     slotDetail: 'Slot: 6PM - 9PM',
     source: 'Delhi',
     destination: 'Mumbai',
@@ -20,17 +18,28 @@ const flightItineraryCardProps = {
   bookingDetails: {
     flightBookingStatus: 'CONFIRMED',
     date: '22',
-    month: 'Nov',
+    monthAndYear: "Nov'22",
     sourceAirportCode: 'BOM',
     destinationAirportCode: 'BLR',
     departureTime: '18:30',
     arrivalTime: '22:30',
+    airlineCode: 'G8',
     flightNumber: '717',
-    pnr: 'GBLP6Q',
+    // pnr: 'GBLP6Q',
     duration: '1h 50min',
     airline: 'Indigo',
     stop: 'Non stop',
     reduceOpacity: false,
+    airlineIcon:
+      'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
+    isPriceFetched: true,
+    price: '₹2600',
+    modificationCharge: '₹600',
+    isOutOfPolicy: true,
+    reasonDetails: {
+      title: 'Reason for modification',
+      text: 'Meeting is postponed due to client unavailability',
+    },
   },
   actions: [
     {
@@ -49,10 +58,10 @@ const flightItineraryCardProps = {
   showInfo: false,
   isAlert: true,
   timelineGreyed: false,
-  actionDisabled: false,
+  actionDisabled: true,
   showStatus: false,
   notificationText: null,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: false,
 };
 

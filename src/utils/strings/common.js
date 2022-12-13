@@ -127,4 +127,6 @@ export default {
   cancellationPolicy: 'View cancellation policy',
   perNightInclGst: 'per night (Incl GST)',
   inclGst: '(Incl GST)',
+  includeModificationCharge: 'Includes modification charges',
+  travelerDetails: 'Traveler details',
 };
