@@ -97,6 +97,7 @@ import ClaimsList from './components/home/claimsList';
 import MessageCard from './components/home/messageCard';
 import HomeLoadingState from './components/home/homeLoadingState';
 import PendingPaymentSheet from './components/home/pendingPaymentSheet';
+import PendingPaymentCarousel from './components/home/pendingPaymentCarousel';
 
 //Expense Components
 import ExpenseCard from './components/expense/expenseCard';
@@ -210,6 +211,7 @@ export {
   HomeLoadingState,
   ItineraryCard,
   PendingPaymentSheet,
+  PendingPaymentCarousel,
   //Expense,
   ExpenseCard,
   ExpenseDetailCard,

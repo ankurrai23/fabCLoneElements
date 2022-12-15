@@ -132,4 +132,7 @@ export default {
   pay: 'Pay',
   tripId: 'Trip ID: ',
   inclGST: 'Incl GST',
+  payNow: 'Pay now',
+  tripPendingMakePayment: (title) =>
+    `${title} trip payment is pending. Make payment within `,
 };

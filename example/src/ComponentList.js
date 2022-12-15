@@ -79,6 +79,7 @@ import {
   FlightSearchResultCard,
   HotelSearchResultCard,
   PendingPaymentSheet,
+  PendingPaymentCarousel,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -434,6 +435,11 @@ const HOME = [
     name: 'PendingPaymentSheet',
     component: (props) => <PendingPaymentSheet {...props} />,
     defaultProps: data.pendingPaymentSheetProps,
+  },
+  {
+    name: 'PendingPaymentCarousel',
+    component: (props) => <PendingPaymentCarousel {...props} />,
+    defaultProps: data.pendingPaymentCarouselProps,
   },
 ];
 

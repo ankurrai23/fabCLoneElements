@@ -62,6 +62,7 @@ import homeHeaderProps from './components/home/homeHeader/data';
 import claimsListProps from './components/home/claimsList/data';
 import messageCardProps from './components/home/messageCard/data';
 import pendingPaymentSheetProps from './components/home/pendingPaymentSheet/data';
+import pendingPaymentCarouselProps from './components/home/pendingPaymentCarousel/data';
 
 //expense components props
 import expenseCardProps from './components/expense/expenseCard/data';
@@ -143,4 +144,5 @@ export {
   flightSearchResultCardProps,
   hotelSearchResultCardProps,
   pendingPaymentSheetProps,
+  pendingPaymentCarouselProps,
 };
