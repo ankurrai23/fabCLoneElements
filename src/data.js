@@ -61,6 +61,7 @@ import hotelSearchResultCardProps from './components/tripCreation/srp/hotelSearc
 import homeHeaderProps from './components/home/homeHeader/data';
 import claimsListProps from './components/home/claimsList/data';
 import messageCardProps from './components/home/messageCard/data';
+import pendingPaymentSheetProps from './components/home/pendingPaymentSheet/data';
 
 //expense components props
 import expenseCardProps from './components/expense/expenseCard/data';
@@ -141,4 +142,5 @@ export {
   hotelFarePlanProps,
   flightSearchResultCardProps,
   hotelSearchResultCardProps,
+  pendingPaymentSheetProps,
 };

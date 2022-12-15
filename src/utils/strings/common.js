@@ -70,7 +70,6 @@ export default {
   inclusions: 'Inclusions',
   rooms: 'Rooms',
   moreInclusions: (count) => ` +${count - 3} more`,
-  coTravelers: 'Co-travelers',
   paymentMode: 'Payment mode',
   NA: 'N.A',
   viewDetails: (expanded) => `View ${expanded ? 'less' : 'more'} details`,
@@ -129,4 +128,8 @@ export default {
   inclGst: '(Incl GST)',
   includeModificationCharge: 'Includes modification charges',
   travelerDetails: 'Traveler details',
+  paymentPending: 'Payment pending',
+  pay: 'Pay',
+  tripId: 'Trip ID: ',
+  inclGST: 'Incl GST',
 };

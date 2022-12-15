@@ -1,0 +1,93 @@
+const pendingPaymentSheetProps = {
+  paymentRequests: [
+    {
+      tripId: 'TPX23ND',
+      tripTitle: 'Delhi to Mumbai +2',
+      amount: '₹9,000',
+      tripStartDate: "28 Dec'22",
+      tripEndDate: "01 Jan'22",
+      deadline: '2022-12-15T17:05:00+05:30',
+    },
+    {
+      tripId: 'TPX23NE',
+      tripTitle: 'Delhi to Mumbai +2',
+      amount: '₹9,000',
+      tripStartDate: "28 Dec'22",
+      tripEndDate: "01 Jan'22",
+      deadline: '2022-12-15T15:40:00',
+    },
+    {
+      tripId: 'TPX23NF',
+      tripTitle: 'Delhi to Mumbai +2',
+      amount: '₹9,000',
+      tripStartDate: "28 Dec'22",
+      tripEndDate: "01 Jan'22",
+      deadline: '2022-12-15T15:45:00',
+    },
+    // {
+    //   tripId: 'TPX23ND',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+    // {
+    //   tripId: 'TPX23NE',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+    // {
+    //   tripId: 'TPX23NF',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+    // {
+    //   tripId: 'TPX23ND',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+    // {
+    //   tripId: 'TPX23NE',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+    // {
+    //   tripId: 'TPX23NF',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+    // {
+    //   tripId: 'TPX23ND',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+    // {
+    //   tripId: 'TPX23NE',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+    // {
+    //   tripId: 'TPX23NF',
+    //   tripTitle: 'Delhi to Mumbai +2',
+    //   amount: '₹9,000',
+    //   tripStartDate: "28 Dec'22",
+    //   tripEndDate: "01 Jan'22",
+    // },
+  ],
+};
+
+export default pendingPaymentSheetProps;

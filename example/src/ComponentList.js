@@ -78,6 +78,7 @@ import {
   HotelFarePlanCard,
   FlightSearchResultCard,
   HotelSearchResultCard,
+  PendingPaymentSheet,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -428,6 +429,11 @@ const HOME = [
     name: 'HomeLoadingState',
     component: (props) => <HomeLoadingState {...props} />,
     defaultProps: data.homeLoadingStateProps,
+  },
+  {
+    name: 'PendingPaymentSheet',
+    component: (props) => <PendingPaymentSheet {...props} />,
+    defaultProps: data.pendingPaymentSheetProps,
   },
 ];
 
