@@ -124,6 +124,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     alignItems: 'center',
+    marginBottom: DP._14,
   },
   separator: {
     marginVertical: DP._16,
@@ -165,5 +166,11 @@ export default StyleSheet.create({
     width: DP._32,
     height: DP._32,
     borderRadius: DP._16,
+  },
+  terminal: {
+    marginTop: DP._4,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREYISH_PURPLE,
   },
 });

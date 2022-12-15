@@ -39,8 +39,8 @@ const FlightItineraryCard = ({
   notificationText,
   hideChevron,
 }) => {
+  const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
@@ -117,33 +117,30 @@ const FlightItineraryCard = ({
   const FlightPreBookingCard = () => (
     <View style={Styles.container}>
       <FTouchableOpacity
-        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(tripRequest.reduceOpacity)}
+        activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(uiData.reduceOpacity)}
         onPress={onCardPress}>
         <View style={[Styles.flexDirectionRow, Styles.baseline]}>
           <View style={Styles.flexDirectionRow}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-              {tripRequest.date}
+              {uiData.date}
             </FText>
-            <FText
-              style={Styles.headerMonth}>{`${tripRequest.monthAndYear}`}</FText>
+            <FText style={Styles.headerMonth}>{`${uiData.monthAndYear}`}</FText>
           </View>
           {showStatus ? (
             <TripStatus statusObj={status} />
           ) : (
             <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
-              {tripRequest.slotDetail}
+              {uiData.slotDetail}
             </FText>
           )}
         </View>
         <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
           <View style={Styles.flex}>
             <FText style={Styles.time} numberOfLines={1}>
-              {tripRequest.source}
+              {uiData.source}
             </FText>
-            <FText style={Styles.portName}>
-              {tripRequest.sourceAirportCode}
-            </FText>
+            <FText style={Styles.portName}>{uiData.sourceAirportCode}</FText>
           </View>
           <View style={[Styles.justifyContent_around, Styles.flex]}>
             <Icon.Aeroplane
@@ -155,10 +152,10 @@ const FlightItineraryCard = ({
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
             <FText style={Styles.time} numberOfLines={1}>
-              {tripRequest.destination}
+              {uiData.destination}
             </FText>
             <FText style={Styles.portName}>
-              {tripRequest.destinationAirportCode}
+              {uiData.destinationAirportCode}
             </FText>
           </View>
         </View>
@@ -189,8 +186,8 @@ const FlightItineraryCard = ({
   const FlightPostBookingCard = () => (
     <View style={Styles.container}>
       <FTouchableOpacity
-        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(tripRequest.reduceOpacity)}
+        activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(uiData.reduceOpacity)}
         onPress={onCardPress}>
         <View
           style={[
@@ -200,16 +197,13 @@ const FlightItineraryCard = ({
           ]}>
           <View style={Styles.flexDirectionRow}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-              {bookingDetails.date}
+              {uiData.date}
             </FText>
-            <FText
-              style={
-                Styles.headerMonth
-              }>{`${bookingDetails.monthAndYear}`}</FText>
+            <FText style={Styles.headerMonth}>{`${uiData.monthAndYear}`}</FText>
           </View>
-          {showStatus && bookingDetails.flightBookingStatus ? (
+          {showStatus && uiData.flightBookingStatus ? (
             <TripStatus
-              statusObj={getStatusObject(bookingDetails.flightBookingStatus)}
+              statusObj={getStatusObject(uiData.flightBookingStatus)}
             />
           ) : (
             !hideChevron && (
@@ -224,30 +218,28 @@ const FlightItineraryCard = ({
         <View style={Styles.flightParticulars}>
           <FImage
             style={Styles.imageStyle}
-            source={{uri: bookingDetails.airlineIcon}}
+            source={{uri: uiData.airlineIcon}}
           />
           <View style={Styles.nameAndNumberContainer}>
             <FText
               style={Styles.flightName}
               numberOfLines={1}
               ellipsizeMode={'tail'}>
-              {bookingDetails.airline}
+              {uiData.airline}
             </FText>
             <FText
               style={Styles.flightNumber}
               numberOfLines={1}
               ellipsizeMode={'tail'}>
-              {bookingDetails.airlineCode}-{bookingDetails.flightNumber}
+              {uiData.airlineCode}-{uiData.flightNumber}
             </FText>
           </View>
-          {bookingDetails.isPriceFetched ? (
+          {uiData.isPriceFetched ? (
             <View>
               <FText style={Styles.flightPrice} type={FONT_TYPE.REGULAR}>
-                {bookingDetails.price}
+                {uiData.price}
               </FText>
-              {bookingDetails.isOutOfPolicy && (
-                <OOPTag style={Styles.oopMargin} />
-              )}
+              {uiData.isOutOfPolicy && <OOPTag style={Styles.oopMargin} />}
             </View>
           ) : (
             <PriceLoader />
@@ -255,12 +247,12 @@ const FlightItineraryCard = ({
         </View>
         <View style={Styles.flexDirectionRow}>
           <View style={Styles.flex}>
-            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
+            <FText style={Styles.time}>{uiData.departureTime}</FText>
             <FText style={Styles.portName} numberOfLines={1}>
-              {bookingDetails.sourceAirportCode +
-                (bookingDetails.sourceAirportTerminal
-                  ? ` - ${bookingDetails.sourceAirportTerminal}`
-                  : '')}
+              {uiData.sourceAirportCode}
+            </FText>
+            <FText style={Styles.terminal}>
+              {uiData.sourceAirportTerminal}
             </FText>
           </View>
           <View style={[Styles.justifyContent_around, Styles.flex]}>
@@ -270,54 +262,50 @@ const FlightItineraryCard = ({
               fill={Color.LIGHT_BLUEY_GREY}
               style={Styles.airplane}
             />
-            {bookingDetails.duration && (
+            {uiData.duration && (
               <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>{bookingDetails.duration}</FText>
+                <FText style={Styles.duration}>{uiData.duration}</FText>
                 <View style={Styles.dot_two} />
-                <FText style={Styles.duration}>{bookingDetails.stop}</FText>
+                <FText style={Styles.duration}>{uiData.stop}</FText>
               </View>
             )}
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
+            <FText style={Styles.time}>{uiData.arrivalTime}</FText>
             <FText style={Styles.portName} numberOfLines={1}>
-              {bookingDetails.destinationAirportCode +
-                (bookingDetails.destinationAirportTerminal
-                  ? ` - ${bookingDetails.destinationAirportTerminal}`
-                  : '')}
+              {uiData.destinationAirportCode}
+            </FText>
+            <FText style={Styles.terminal}>
+              {uiData.destinationAirportTerminal}
             </FText>
           </View>
         </View>
       </FTouchableOpacity>
-      {!!bookingDetails.pnr && (
+      {!!uiData.pnr && (
         <>
           <Separator style={Styles.seperatorStyle} />
           <FText style={Styles.pnr}>
             {Strings.pnr}:
-            <FText type={FONT_TYPE.MEDIUM}>{` ${bookingDetails.pnr}`}</FText>
+            <FText type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
           </FText>
         </>
       )}
-      {!!bookingDetails.modificationCharge && (
+      {!!uiData.modificationCharge && (
         <>
           <FText style={Styles.modificationChargeText}>
             {Strings.includeModificationCharge}
             <FText
-              type={
-                FONT_TYPE.MEDIUM
-              }>{` ${bookingDetails.modificationCharge}.`}</FText>
+              type={FONT_TYPE.MEDIUM}>{` ${uiData.modificationCharge}.`}</FText>
           </FText>
           <Separator style={Styles.seperatorStyle} />
         </>
       )}
-      {!!bookingDetails.reasonDetails && (
+      {!!uiData.reasonDetails && (
         <View style={Styles.reasonBox}>
           <FText style={Styles.reasonTitle} type={FONT_TYPE.MEDIUM}>
-            {bookingDetails.reasonDetails.title}
+            {uiData.reasonDetails.title}
           </FText>
-          <FText style={Styles.reasonText}>
-            {bookingDetails.reasonDetails.text}
-          </FText>
+          <FText style={Styles.reasonText}>{uiData.reasonDetails.text}</FText>
         </View>
       )}
       {!actionDisabled &&
@@ -371,7 +359,7 @@ const FlightItineraryCard = ({
           </View>
         )}
       </View>
-      {showPreBookingCard ? (
+      {showPreBookingCard && !uiData.price ? (
         <FlightPreBookingCard />
       ) : (
         <FlightPostBookingCard />

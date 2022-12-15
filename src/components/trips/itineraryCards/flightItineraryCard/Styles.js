@@ -109,15 +109,17 @@ export default StyleSheet.create({
     flex: 1,
   },
   dot_two: {
-    padding: DP._3,
-    borderRadius: DP._4,
+    width: DP._4,
+    height: DP._4,
+    borderRadius: DP._2,
     backgroundColor: Color.LIGHT_BLUEY_GREY,
-    marginHorizontal: DP._5,
+    marginHorizontal: DP._4,
   },
   durationContainer: {
     flexDirection: 'row',
     flexGrow: 1,
     alignItems: 'center',
+    marginBottom: DP._14,
   },
   marginTop_12: {
     marginTop: DP._12,
@@ -200,5 +202,11 @@ export default StyleSheet.create({
   },
   marginBottom_12: {
     marginBottom: DP._12,
+  },
+  terminal: {
+    marginTop: DP._4,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREYISH_PURPLE,
   },
 });
