@@ -50,7 +50,8 @@ const FlightItineraryCard = ({
   const viewShortlistedFlightAction = isActionEnabled(
     FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
   );
-
+  const editAction = isActionEnabled(FlightSubTripActions.EDIT);
+  const removeAction = isActionEnabled(FlightSubTripActions.REMOVE);
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -108,6 +109,22 @@ const FlightItineraryCard = ({
                 <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
               </FTouchableOpacity>
             )}
+            {removeAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(removeAction)}
+                style={Styles.flexRowAndAlignCenter}>
+                <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+                <FText style={Styles.cancel}>{removeAction.name}</FText>
+              </FTouchableOpacity>
+            )}
+            {editAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(editAction)}
+                style={Styles.primaryButtonStyle}>
+                <Icon.Edit />
+                <FText style={Styles.reschedule}>{editAction.name}</FText>
+              </FTouchableOpacity>
+            )}
           </>
         )}
       </View>
@@ -125,7 +142,11 @@ const FlightItineraryCard = ({
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {uiData.date}
             </FText>
-            <FText style={Styles.headerMonth}>{`${uiData.monthAndYear}`}</FText>
+            <FText
+              type={FONT_TYPE.MEDIUM}
+              style={
+                Styles.headerMonth
+              }>{`${uiData.month}'${uiData.year}`}</FText>
           </View>
           {showStatus ? (
             <TripStatus statusObj={status} />
@@ -162,9 +183,11 @@ const FlightItineraryCard = ({
       </FTouchableOpacity>
 
       {!actionDisabled &&
-        (rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
+        (rescheduleAction ||
+          cancelAction ||
+          viewRemarksAction ||
+          editAction ||
+          removeAction) && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -199,7 +222,11 @@ const FlightItineraryCard = ({
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {uiData.date}
             </FText>
-            <FText style={Styles.headerMonth}>{`${uiData.monthAndYear}`}</FText>
+            <FText
+              type={FONT_TYPE.MEDIUM}
+              style={
+                Styles.headerMonth
+              }>{`${uiData.month}'${uiData.year}`}</FText>
           </View>
           {showStatus && uiData.flightBookingStatus ? (
             <TripStatus
@@ -309,9 +336,11 @@ const FlightItineraryCard = ({
         </View>
       )}
       {!actionDisabled &&
-        (rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
+        (rescheduleAction ||
+          cancelAction ||
+          viewRemarksAction ||
+          editAction ||
+          removeAction) && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}

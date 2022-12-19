@@ -7,7 +7,8 @@ const flightItineraryCardProps = {
   },
   tripRequest: {
     date: '22',
-    monthAndYear: "Nov'22",
+    month: 'Nov',
+    year: '22',
     slotDetail: 'Slot: 6PM - 9PM',
     source: 'Delhi',
     destination: 'Mumbai',
@@ -32,7 +33,8 @@ const flightItineraryCardProps = {
   bookingDetails: {
     flightBookingStatus: 'CONFIRMED',
     date: '22',
-    monthAndYear: "Nov'22",
+    month: 'Nov',
+    year: '22',
     sourceAirportCode: 'BOM',
     destinationAirportCode: 'BLR',
     departureTime: '18:30',

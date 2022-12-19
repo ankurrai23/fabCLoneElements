@@ -3,6 +3,8 @@ const SubTripCommonActions = {
   SUPPORT: 'SUPPORT',
   CANCEL: 'CANCEL',
   RESCHEDULE: 'RESCHEDULE',
+  EDIT: 'EDIT',
+  REMOVE: 'REMOVE',
 };
 
 export const HotelSubTripActions = {
