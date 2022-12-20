@@ -8,21 +8,11 @@ import SubTripTitle from '../subTripTitle';
 import FlightItineraryCard from '../../trips/itineraryCards/flightItineraryCard';
 import moment from 'moment';
 import {FlightSubTripActions} from '../../../utils/SubTripActions';
+import {TRIP_CREATION_ACTIONS} from '../../../utils/Constants';
 
 const DATE = 'DD'; // 12, 13
 const MONTH = 'MMM'; // Jan, Feb
 const YEAR = 'YY';
-
-const DEFAULT_ACTIONS = [
-  {
-    type: 'EDIT',
-    name: 'Edit',
-  },
-  {
-    type: 'REMOVE',
-    name: 'Remove',
-  },
-];
 
 export default function FlightDetails({data, onLayout, style, onPress, error}) {
   const generateRequestInfo = (item) => ({
@@ -62,7 +52,7 @@ export default function FlightDetails({data, onLayout, style, onPress, error}) {
         <FlightItineraryCard
           tripRequest={generateRequestInfo(item)}
           showPreBookingCard={true}
-          actions={DEFAULT_ACTIONS}
+          actions={TRIP_CREATION_ACTIONS}
           hideIcon
           style={Styles.cardStyle(data, index)}
           onActionPress={(action) => handlePress(action, index)}

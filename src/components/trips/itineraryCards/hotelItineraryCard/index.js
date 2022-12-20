@@ -51,6 +51,8 @@ const HotelItineraryCard = ({
   const viewShortlistedHotelAction = isActionEnabled(
     HotelSubTripActions.VIEW_SHORTLISTED_HOTEL_TRIPS,
   );
+  const editAction = isActionEnabled(HotelSubTripActions.EDIT);
+  const removeAction = isActionEnabled(HotelSubTripActions.REMOVE);
 
   const confirmedStatus = {
     key: 'CONFIRMED',
@@ -89,6 +91,22 @@ const HotelItineraryCard = ({
                 style={Styles.primaryButtonStyle}>
                 <Icon.Reschedule width={DP._16} height={DP._16} />
                 <FText style={Styles.reschedule}>{modifyAction.name}</FText>
+              </FTouchableOpacity>
+            )}
+            {removeAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(removeAction)}
+                style={Styles.flexRowAndAlignCenter}>
+                <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+                <FText style={Styles.cancel}>{removeAction.name}</FText>
+              </FTouchableOpacity>
+            )}
+            {editAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(editAction)}
+                style={Styles.primaryButtonStyle}>
+                <Icon.Edit />
+                <FText style={Styles.reschedule}>{editAction.name}</FText>
               </FTouchableOpacity>
             )}
           </>
@@ -220,7 +238,7 @@ const HotelItineraryCard = ({
                 </View>
               </View>
             )}
-            <View style={{height: DP._12}}></View>
+            <View style={{height: DP._12}} />
             {!!uiData.bookingId && (
               <>
                 <Separator style={Styles.separatorStyle} />
@@ -237,9 +255,11 @@ const HotelItineraryCard = ({
           </View>
         </FTouchableOpacity>
         {!actionsDisabled &&
-          (modifyAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+          (modifyAction ||
+            cancelAction ||
+            viewRemarksAction ||
+            editAction ||
+            removeAction) && <ActionsInItinerary />}
         {showInfo && (
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}

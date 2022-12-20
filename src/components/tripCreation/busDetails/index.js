@@ -6,6 +6,8 @@ import BusItineraryCard from '../../trips/itineraryCards/busItineraryCard';
 import Styles from './Styles';
 import moment from 'moment';
 import FText from '../../../common/rn/FText';
+import {TRIP_CREATION_ACTIONS} from '../../../utils/Constants';
+import {BusSubtripActions} from '../../../utils/SubTripActions';
 
 export default function BusDetails({onPress, data, style, error}) {
   const generateRequestInfo = (item) => ({
@@ -18,11 +20,24 @@ export default function BusDetails({onPress, data, style, error}) {
     destinationLocality: item.destinationLocality,
   });
 
+  const handlePress = (action, index) => {
+    switch (action.type) {
+      case BusSubtripActions.EDIT:
+        onPress?.({requestType: 'BUS', action: 'EDIT', index: index});
+        break;
+      case BusSubtripActions.REMOVE:
+        onPress?.({requestType: 'BUS', action: 'REMOVE', index: index});
+        break;
+      default:
+        onPress?.({requestType: 'BUS', action: 'ADD', index: data.length});
+    }
+  };
+
   return (
     <View style={style}>
       <SubTripTitle
         title={Strings.buses}
-        onPress={onPress}
+        onPress={handlePress}
         dataLength={data?.length}
         style={Styles.headerStyle(data)}
       />
@@ -31,7 +46,8 @@ export default function BusDetails({onPress, data, style, error}) {
         <BusItineraryCard
           tripRequest={generateRequestInfo(item)}
           showPreBookingCard={true}
-          actionDisabled={true}
+          actions={TRIP_CREATION_ACTIONS}
+          onActionPress={(action) => handlePress(action, index)}
           hideIcon
           style={Styles.cardStyle(data, index)}
         />

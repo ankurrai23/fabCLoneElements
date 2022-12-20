@@ -245,6 +245,8 @@ const TrainItineraryCard = ({
   const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(TrainSubtripActions.VIEW_REMARKS);
+  const editAction = isActionEnabled(TrainSubtripActions.EDIT);
+  const removeAction = isActionEnabled(TrainSubtripActions.REMOVE);
 
   const ActionsInItinerary = () => (
     <>
@@ -276,6 +278,22 @@ const TrainItineraryCard = ({
                 style={Styles.primaryButtonStyle}>
                 <Icon.Reschedule width={DP._16} height={DP._16} />
                 <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+              </FTouchableOpacity>
+            )}
+            {removeAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(removeAction)}
+                style={Styles.flexRowAndAlignCenter}>
+                <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+                <FText style={Styles.cancel}>{removeAction.name}</FText>
+              </FTouchableOpacity>
+            )}
+            {editAction && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(editAction)}
+                style={Styles.primaryButtonStyle}>
+                <Icon.Edit />
+                <FText style={Styles.reschedule}>{editAction.name}</FText>
               </FTouchableOpacity>
             )}
           </>
@@ -331,9 +349,11 @@ const TrainItineraryCard = ({
           />
         )}
         {!actionDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+          (rescheduleAction ||
+            cancelAction ||
+            viewRemarksAction ||
+            editAction ||
+            removeAction) && <ActionsInItinerary />}
         {showInfo && (
           <InfoBox
             isAlert={!!notificationText}

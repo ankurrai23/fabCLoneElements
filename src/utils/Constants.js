@@ -38,3 +38,14 @@ export const MANAGER_APPROVAL_STATUS = {
   rejected: 'REJECTED',
   modificationRequested: 'MODIFICATION_REQUESTED',
 };
+
+export const TRIP_CREATION_ACTIONS = [
+  {
+    type: 'EDIT',
+    name: 'Edit',
+  },
+  {
+    type: 'REMOVE',
+    name: 'Remove',
+  },
+];
