@@ -12,8 +12,8 @@ import {Strings} from '../../../../../utils/strings/index.travelPlus';
 const FlightFilter = ({
   sortData,
   onSortSelect,
-  stopsData,
-  entitlementData,
+  stop,
+  entitlement,
   airlineData,
   onAirlineSelect,
   onEntitlementSelect,
@@ -32,20 +32,17 @@ const FlightFilter = ({
       onApply={onApply}>
       <FilterSection title={Strings.selectStops}>
         <View style={Styles.buttonContainer}>
-          {stopsData.map((item, index) => (
+          {stop.map((item, index) => (
             <FTouchableOpacity
               onPress={() => onStopSelect(item)}
-              style={Styles.button(
-                item.isSelected,
-                index < stopsData.length - 1,
-              )}>
+              style={Styles.button(item.selected, index < stop.length - 1)}>
               <FText
-                style={Styles.stopCountText(item.isSelected)}
+                style={Styles.stopCountText(item.selected)}
                 type={FONT_TYPE.MEDIUM}>
                 {item.noOfStops}
               </FText>
-              <FText style={Styles.stopDescText(item.isSelected)}>
-                {item.desc}
+              <FText style={Styles.stopDescText(item.selected)}>
+                {item.name}
               </FText>
             </FTouchableOpacity>
           ))}
@@ -60,11 +57,11 @@ const FlightFilter = ({
                 onPress={() => onAirlineSelect(item)}
                 style={Styles.airlineButton(index, array.length)}>
                 <FImage
-                  source={{uri: item.airlineIcon}}
+                  source={{uri: item.icon}}
                   style={Styles.airlineIconStyle}
                 />
-                <FText style={Styles.Flex}>{item.airlineName}</FText>
-                <Checkbox isChecked={item.isSelected} />
+                <FText style={Styles.Flex}>{item.name}</FText>
+                <Checkbox isChecked={item.selected} />
               </FTouchableOpacity>
               {index < array.length - 1 && <Separator />}
             </>
@@ -83,12 +80,12 @@ const FlightFilter = ({
         title={Strings.selectEntitlement}
         style={Styles.entitlementStyle}>
         <View style={Styles.buttonContainer}>
-          {entitlementData.map((item, index) => (
+          {entitlement.map((item, index) => (
             <FilterButton
               isSelected={item.isSelected}
               onPress={() => onEntitlementSelect(item)}
-              addMarginRight={index < entitlementData.length - 1}>
-              {item.value}
+              addMarginRight={index < entitlement.length - 1}>
+              {item.name}
             </FilterButton>
           ))}
         </View>
