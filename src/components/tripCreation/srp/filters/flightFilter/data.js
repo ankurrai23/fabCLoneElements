@@ -3,107 +3,112 @@ const flightFilterProps = {
     {
       key: 'NON_STOP',
       value: 'Non-stop',
-      isSelected: false,
+      selected: false,
     },
     {
       key: 'EARLIEST_FIRST',
       value: 'Earliest first',
-      isSelected: true,
+      selected: true,
     },
     {
       key: 'CHEAPEST_FIRST',
       value: 'Cheapest first',
-      isSelected: false,
+      selected: false,
     },
     {
       key: 'NON_STOP1',
       value: 'Non-stop',
-      isSelected: false,
+      selected: false,
     },
   ],
   stopsData: [
     {
       noOfStops: '0',
-      desc: 'Non stop',
-      isSelected: false,
+      name: 'Non stop',
+      selected: false,
     },
     {
       noOfStops: '1',
-      desc: 'Stop',
-      isSelected: true,
+      name: 'Stop',
+      selected: true,
     },
     {
       noOfStops: '1+',
-      desc: 'Stops',
-      isSelected: false,
+      name: 'Stops',
+      selected: false,
     },
   ],
-  entitlementData: [
+  entitlement: [
     {
-      key: 'IN_POLICY',
-      value: 'In policy',
-      isSelected: true,
+      id: 'IN_POLICY',
+      name: 'In policy',
+      selected: true,
     },
     {
-      key: 'OUT_OF_POLICY',
-      value: 'Out of policy',
-      isSelected: false,
+      id: 'OUT_OF_POLICY',
+      name: 'Out of policy',
+      selected: false,
     },
   ],
-  airlineData: [
+  airline: [
     {
-      airlineName: 'Air india',
-      airlineIcon:
+      id: 'SpiceJet',
+      icon:
         'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      isSelected: false,
+      name: 'SpiceJet',
+      selected: false,
     },
     {
-      airlineName: 'Indigo',
-      airlineIcon:
-        'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      isSelected: false,
+      id: 'Indigo',
+      icon:
+        'https://storage.googleapis.com/fabm-test-uploader/airline_logo/6E.png',
+      name: 'Indigo',
+      selected: false,
     },
     {
-      airlineName: 'Spice Jet',
-      airlineIcon:
+      id: 'AirIndia',
+      icon:
         'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      isSelected: true,
+      name: 'Air India',
+      selected: false,
     },
     {
-      airlineName: 'Air india',
-      airlineIcon:
-        'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      isSelected: false,
+      id: 'Vistara',
+      icon:
+        'https://storage.googleapis.com/fabm-test-uploader/airline_logo/6E.png',
+      name: 'Vistara',
+      selected: false,
     },
     {
-      airlineName: 'Indigo',
-      airlineIcon:
-        'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      isSelected: false,
+      id: 'GoAir',
+      icon:
+        'https://storage.googleapis.com/fabm-test-uploader/airline_logo/6E.png',
+      name: 'Go Air',
+      selected: false,
     },
     // {
     //   airlineName: 'Spice Jet',
     //   airlineIcon:
     //     'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-    //   isSelected: false,
+    //   selected: false,
     // },
     // {
     //   airlineName: 'Air india',
     //   airlineIcon:
     //     'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-    //   isSelected: false,
+    //   selected: false,
     // },
     // {
     //   airlineName: 'Indigo',
     //   airlineIcon:
     //     'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-    //   isSelected: false,
+    //   selected: false,
     // },
     // {
     //   airlineName: 'Spice Jet',
     //   airlineIcon:
     //     'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-    //   isSelected: false,
+    //   selected: false,
     // },
   ],
   onSortSelect: (item) => console.log('sort selected', item),
