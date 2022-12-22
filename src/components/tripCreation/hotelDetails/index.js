@@ -58,6 +58,7 @@ export default function HotelDetails({data, error, onLayout, style, onPress}) {
           showPreBookingCard={true}
           actions={TRIP_CREATION_ACTIONS}
           hideIcon
+          hideChevron
           onActionPress={(action) => handlePress(action, index)}
           style={Styles.cardStyle(data, index)}
         />
