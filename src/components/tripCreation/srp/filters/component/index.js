@@ -28,7 +28,12 @@ const SortAndFilter = ({
   onSortSelect,
   onApply,
 }) => {
-  const [filterModal, showFilterModal] = useState(false);
+  const [filterModal, setFilterModal] = useState(false);
+  const onApplyPress = () => {
+    setFilterModal(false);
+    onApply();
+  };
+  const onClose = () => setFilterModal(false);
   return (
     <>
       <View style={Styles.filterContainer}>
@@ -43,13 +48,13 @@ const SortAndFilter = ({
         </ScrollView>
         <FTouchableOpacity
           style={Styles.filterButton}
-          onPress={() => showFilterModal(true)}>
+          onPress={() => setFilterModal(true)}>
           <Icon.Filter stroke={Color.WHITE} />
         </FTouchableOpacity>
       </View>
       <DialogBox
         modalVisible={filterModal}
-        onClose={() => showFilterModal(false)}
+        onClose={onClose}
         ContentModal={
           <>
             <View style={Styles.titleContainer}>
@@ -64,7 +69,7 @@ const SortAndFilter = ({
               {children}
             </ScrollView>
             <Button
-              onPress={onApply}
+              onPress={onApplyPress}
               style={Styles.applyButton}
               textStyle={Styles.applyText}
               textFont={FONT_TYPE.MEDIUM}>
