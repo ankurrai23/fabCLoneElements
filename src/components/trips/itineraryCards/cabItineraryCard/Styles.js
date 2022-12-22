@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._12,
+    paddingVertical: DP._8,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -156,7 +156,6 @@ export default StyleSheet.create({
     color: Color.GREY_PURPLE,
   },
   actionsSeperator: {
-    marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   headerMonth: {
