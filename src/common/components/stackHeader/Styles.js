@@ -14,10 +14,17 @@ export default StyleSheet.create({
     zIndex: shadowVisible ? 1 : 0,
     ...(shadowVisible ? shadowObj : null),
   }),
-  title: {
+  titleContainer: {
     flex: 1,
-    fontSize: DP._16,
     marginLeft: DP._16,
+  },
+  title: {
+    fontSize: DP._16,
+    color: Color.WHITE,
+  },
+  subTitle: {
+    marginTop: DP._4,
+    fontSize: DP._12,
     color: Color.WHITE,
   },
 });

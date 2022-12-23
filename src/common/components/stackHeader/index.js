@@ -16,6 +16,7 @@ function StackHeader({
   containerStyle,
   textStyle,
   title,
+  subTitle,
   rightView,
   iconSize,
   iconColor,
@@ -31,9 +32,12 @@ function StackHeader({
           stroke={iconColor || Color.WHITE}
         />
       </FTouchableOpacity>
-      <FText type={FONT_TYPE.MEDIUM} style={[Styles.title, textStyle]}>
-        {title}
-      </FText>
+      <View style={Styles.titleContainer}>
+        <FText type={FONT_TYPE.MEDIUM} style={[Styles.title, textStyle]}>
+          {title}
+        </FText>
+        <FText style={[Styles.subTitle]}>{subTitle}</FText>
+      </View>
       {rightView}
     </View>
   );
