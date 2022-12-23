@@ -9,10 +9,12 @@ import Checkbox from '../../../../../common/components/checkbox';
 import Separator from '../../../../../common/components/separator';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
 
+const MINIMUM_FLIGHT_COUNT = 4;
+
 const Airlines = React.forwardRef(({airline}, ref) => {
   const [state, setState] = useState([...airline]);
-  const [moreFlights, showMoreFlights] = useState(false);
-  const airlinesCount = moreFlights ? state.length : 4;
+  const [allFlights, setAllFlights] = useState(false);
+  const airlinesCount = allFlights ? state.length : MINIMUM_FLIGHT_COUNT;
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
@@ -53,12 +55,12 @@ const Airlines = React.forwardRef(({airline}, ref) => {
             {index < array.length - 1 && <Separator />}
           </>
         ))}
-      {airline.length > 4 && (
+      {airline.length > MINIMUM_FLIGHT_COUNT && (
         <FTouchableOpacity
           style={Styles.showMoreAirlineButton}
-          onPress={() => showMoreFlights((prevState) => !prevState)}>
+          onPress={() => setAllFlights((prevState) => !prevState)}>
           <FText style={Styles.showMoreAirlineText}>
-            {Strings.showMoreAirlines(moreFlights)}
+            {Strings.showMoreAirlines(allFlights)}
           </FText>
         </FTouchableOpacity>
       )}
