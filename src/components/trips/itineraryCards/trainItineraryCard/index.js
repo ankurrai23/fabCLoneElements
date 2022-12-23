@@ -25,7 +25,11 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {tripRequest.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${tripRequest.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${tripRequest.month}'${tripRequest.year}`}</FText>
         </View>
         {showStatus ? (
           <TripStatus statusObj={status} />

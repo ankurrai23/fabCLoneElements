@@ -1,9 +1,8 @@
-import {CabSubtripActions} from '../../../../utils/SubTripActions';
-
 const cabItineraryCardProps = {
   tripRequest: {
     date: '22',
     month: 'Nov',
+    year: '22',
     pickupTime: '07:00 PM',
     source: 'Mumbai flsfjldkfjlsdkjflsdfjlsdjffjlskdfj',
     destination: 'Lonavala fjlskfjsdlfjdslkfjsd ',
@@ -71,7 +70,7 @@ const cabItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
 };
 

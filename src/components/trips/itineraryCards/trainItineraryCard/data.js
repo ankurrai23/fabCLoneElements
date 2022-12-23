@@ -2,6 +2,7 @@ const TrainItineraryCardProps = {
   tripRequest: {
     date: '22',
     month: 'Nov',
+    year: '22',
     slotDetail: 'Slot: 6PM - 9PM',
     sourceStationCode: 'CSTM',
     source: 'Mumbai',
@@ -58,7 +59,7 @@ const TrainItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
 };
 

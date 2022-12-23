@@ -2,6 +2,7 @@ const busItineraryCardProps = {
   tripRequest: {
     date: '22',
     month: 'Nov',
+    year: '22',
     slotDetail: 'Slot: 6PM - 9PM',
     source: 'Mumbai',
     destination: 'Lonavala',
@@ -57,7 +58,7 @@ const busItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
 };
 
