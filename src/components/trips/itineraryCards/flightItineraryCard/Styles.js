@@ -209,4 +209,14 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.GREYISH_PURPLE,
   },
+  preBookingSource: {
+    fontSize: DP._14,
+    lineHeight: DP._20,
+  },
+  preBookingPort: {
+    marginTop: DP._2,
+    fontSize: DP._12,
+    lineHeight: DP._16,
+    color: Color.GREYISH_PURPLE,
+  },
 });
