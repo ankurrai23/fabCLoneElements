@@ -5,13 +5,14 @@ import FText, {FONT_TYPE} from '../../rn/FText';
 import Styles from './Styles';
 
 const RangeSlider = ({
-  initialLimit,
-  finalLimit,
+  minLimit,
+  maxLimit,
   granularity,
-  initialValue,
-  finalValue,
+  minValue,
+  maxValue,
+  valueFormatter,
 }) => {
-  const [value, setValue] = useState({min: initialValue, max: finalValue});
+  const [value, setValue] = useState({min: minValue, max: maxValue});
 
   const callback = useCallback(
     (iV, fV) => setValue((prevState) => ({...prevState, min: iV, max: fV})),
@@ -21,18 +22,18 @@ const RangeSlider = ({
     <View>
       <View style={Styles.valueContainer}>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.valueText}>
-          {value.min}
+          {valueFormatter ? valueFormatter(value.min) : value.min}
         </FText>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.valueText}>
-          {value.max}
+          {valueFormatter ? valueFormatter(value.max) : value.max}
         </FText>
       </View>
       <Slider
-        initialLimit={initialLimit}
-        finalLimit={finalLimit}
+        minLimit={minLimit}
+        maxLimit={maxLimit}
         granularity={granularity}
-        initialValue={initialValue}
-        finalValue={finalValue}
+        minValue={minValue}
+        maxValue={maxValue}
         onChange={callback}
       />
     </View>
