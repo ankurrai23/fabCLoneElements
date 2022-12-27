@@ -1,75 +1,82 @@
 const hotelFilterProps = {
   sortData: [
     {
-      key: 'NON_STOP',
+      id: 'NON_STOP',
       value: 'Non-stop',
-      isSelected: false,
+      selected: false,
     },
     {
-      key: 'EARLIEST_FIRST',
+      id: 'EARLIEST_FIRST',
       value: 'Earliest first',
-      isSelected: true,
+      selected: true,
     },
     {
-      key: 'CHEAPEST_FIRST',
+      id: 'CHEAPEST_FIRST',
       value: 'Cheapest first',
-      isSelected: false,
+      selected: false,
     },
     {
-      key: 'NON_STOP1',
+      id: 'NON_STOP1',
       value: 'Non-stop',
-      isSelected: false,
+      selected: false,
     },
   ],
-  entitlementData: [
-    {
-      key: 'IN_POLICY',
-      value: 'In policy',
-      isSelected: true,
+  filterData: {
+    entitlement: [
+      {
+        id: 'IN_POLICY',
+        value: 'In policy',
+        selected: true,
+      },
+      {
+        id: 'OUT_OF_POLICY',
+        value: 'Out of policy',
+        selected: false,
+      },
+    ],
+    preferredType: [
+      {
+        id: 'CONTRACTED_RATE',
+        value: 'Contracted rate',
+        selected: false,
+      },
+      {
+        id: 'TRAVELPLUS_PREFERRED',
+        value: 'TravelPlus preferred',
+        selected: false,
+      },
+    ],
+    starRating: [
+      {
+        id: '2',
+        starRating: '<2',
+        selected: true,
+      },
+      {
+        id: '3',
+        starRating: '3',
+        selected: false,
+      },
+      {
+        id: '4',
+        starRating: '4',
+        selected: true,
+      },
+      {
+        id: '5',
+        starRating: '5',
+        selected: false,
+      },
+    ],
+    priceData: {
+      minLimit: 2000,
+      maxLimit: 40000,
+      granularity: 400,
+      minValue: 6000,
+      maxValue: 13000,
+      onChange: (initialValue, finalValue) =>
+        console.log('slider moved', initialValue, finalValue),
     },
-    {
-      key: 'OUT_OF_POLICY',
-      value: 'Out of policy',
-      isSelected: false,
-    },
-  ],
-  preferredTypeData: [
-    {
-      key: 'CONTRACTED_RATE',
-      value: 'Contracted rate',
-      isSelected: false,
-    },
-    {
-      key: 'TRAVELPLUS_PREFERRED',
-      value: 'TravelPlus preferred',
-      isSelected: false,
-    },
-  ],
-  hotelRatingData: [
-    {
-      starRating: '<2',
-      isSelected: true,
-    },
-    {
-      starRating: '3',
-      isSelected: false,
-    },
-    {
-      starRating: '4',
-      isSelected: true,
-    },
-    {
-      starRating: '5',
-    },
-  ],
-  priceData: {
-    initialLimit: 2000,
-    finalLimit: 40000,
-    granularity: 400,
-    initialValue: 6000,
-    finalValue: 13000,
-    onChange: (initialValue, finalValue) =>
-      console.log('slider moved', initialValue, finalValue),
   },
 };
 

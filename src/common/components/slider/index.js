@@ -12,20 +12,20 @@ import Animated, {
 } from 'react-native-reanimated';
 import {Color} from '../../../utils/color/index.travelPlus';
 
-const getPositionFromValue = (initialLimit, value, valuePerPixel) => {
+const getPositionFromValue = (minLimit, value, valuePerPixel) => {
   'worklet';
-  return (value - initialLimit) / valuePerPixel;
+  return (value - minLimit) / valuePerPixel;
 };
 
 const getValueFromPosition = (
   position,
-  initialLimit,
+  minLimit,
   granularity,
   pixelPerGranule,
 ) => {
   if (granularity > 0) {
     const numOfGranules = Math.round(position / pixelPerGranule);
-    return numOfGranules * granularity + initialLimit;
+    return numOfGranules * granularity + minLimit;
   }
 };
 
@@ -83,17 +83,17 @@ const Thumb = ({
 };
 
 const Slider = ({
-  initialValue,
-  finalValue,
-  initialLimit,
-  finalLimit,
+  minValue,
+  maxValue,
+  minLimit,
+  maxLimit,
   granularity,
   onChange,
 }) => {
   const barWidth = useSharedValue(0);
 
   const valuePerPixel = useDerivedValue(() => {
-    return (finalLimit - initialLimit) / barWidth.value;
+    return (maxLimit - minLimit) / barWidth.value;
   }, [barWidth]);
 
   const pixelCountPerGranularity = useDerivedValue(() => {
@@ -101,23 +101,15 @@ const Slider = ({
   }, [valuePerPixel]);
 
   const leftThumbPosition = useDerivedValue(() => {
-    return getPositionFromValue(
-      initialLimit,
-      initialValue,
-      valuePerPixel.value,
-    );
+    return getPositionFromValue(minLimit, minValue, valuePerPixel.value);
   });
 
   const leftThumbOffset = useDerivedValue(() => {
-    return getPositionFromValue(
-      initialLimit,
-      initialValue,
-      valuePerPixel.value,
-    );
+    return getPositionFromValue(minLimit, minValue, valuePerPixel.value);
   });
 
   const rightThumbOffset = useDerivedValue(() => {
-    return getPositionFromValue(initialLimit, finalValue, valuePerPixel.value);
+    return getPositionFromValue(minLimit, maxValue, valuePerPixel.value);
   });
 
   const leftThumbLowerLimit = useSharedValue(0);
@@ -127,7 +119,7 @@ const Slider = ({
   }, [rightThumbOffset]);
 
   const rightThumbPosition = useDerivedValue(() => {
-    return getPositionFromValue(initialLimit, finalValue, valuePerPixel.value);
+    return getPositionFromValue(minLimit, maxValue, valuePerPixel.value);
   });
 
   const rightThumbLowerLimit = useDerivedValue(() => {
@@ -141,13 +133,13 @@ const Slider = ({
   const onThumbPositionChange = () => {
     let initialPosition = getValueFromPosition(
       leftThumbPosition.value,
-      initialLimit,
+      minLimit,
       granularity,
       pixelCountPerGranularity.value,
     );
     let finalPosition = getValueFromPosition(
       rightThumbPosition.value,
-      initialLimit,
+      minLimit,
       granularity,
       pixelCountPerGranularity.value,
     );

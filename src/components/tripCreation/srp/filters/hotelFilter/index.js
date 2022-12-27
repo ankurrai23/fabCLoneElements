@@ -5,22 +5,23 @@ import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {DP} from '../../../../../utils/Dimen';
 import Styles from './Styles';
 import Icon from '../../../../../assets/icons/Icon';
-import FText, {FONT_TYPE} from '../../../../../common/rn/FText';
+import FText from '../../../../../common/rn/FText';
 import {Color} from '../../../../../utils/color/index.travelPlus';
-import Slider from '../../../../../common/components/slider';
+import RangeSlider from '../../../../../common/components/rangeSlider';
 
 const HotelFilter = ({
   sortData,
   onSortSelect,
-  entitlementData,
+  // entitlementData,
   onEntitlementSelect,
-  preferredTypeData,
+  // preferredTypeData,
   onPreferredTypeSelect,
-  hotelRatingData,
-  priceData,
+  // hotelRatingData,
+  // priceData,
   onApply,
   onClearAll,
-  onHotelRatingSelect,
+  filterData,
+  // onHotelRatingSelect,
 }) => {
   return (
     <SortAndFilter
@@ -29,30 +30,22 @@ const HotelFilter = ({
       onApply={onApply}
       onClearAll={onClearAll}>
       <FilterSection title={Strings.price}>
-        <View style={Styles.sliderContainerStyle}>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.initialPrice}>
-            {priceData.initialValue}
-          </FText>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.finalPrice}>
-            {priceData.finalValue}
-          </FText>
-        </View>
-        <Slider {...priceData} />
+        <RangeSlider {...filterData.priceData} />
       </FilterSection>
       <FilterSection title={Strings.hotelRating}>
         <View style={Styles.buttonContainer}>
-          {hotelRatingData.map((item, index) => (
+          {filterData.starRating.map((item, index) => (
             <FilterButton
-              isSelected={item.isSelected}
-              onPress={() => onHotelRatingSelect(item)}
+              isSelected={item.selected}
+              // onPress={() => onHotelRatingSelect(item)}
               viewStyle={Styles.flexRow}
-              addMarginRight={index < hotelRatingData.length - 1}>
+              addMarginRight={index < filterData.starRating.length - 1}>
               <Icon.RatingStar
                 width={DP._16}
                 height={DP._16}
-                fill={item.isSelected ? Color.DODGER_BLUE : null}
+                fill={item.selected ? Color.DODGER_BLUE : null}
               />
-              <FText style={Styles.ratingText(item.isSelected)}>
+              <FText style={Styles.ratingText(item.selected)}>
                 {item.starRating}
               </FText>
             </FilterButton>
@@ -61,11 +54,11 @@ const HotelFilter = ({
       </FilterSection>
       <FilterSection title={Strings.preferredType}>
         <View style={Styles.buttonContainer}>
-          {preferredTypeData.map((item, index) => (
+          {filterData.preferredType.map((item, index) => (
             <FilterButton
-              isSelected={item.isSelected}
+              isSelected={item.selected}
               onPress={() => onPreferredTypeSelect(item)}
-              addMarginRight={index < preferredTypeData.length - 1}>
+              addMarginRight={index < filterData.preferredType.length - 1}>
               {item.value}
             </FilterButton>
           ))}
@@ -75,11 +68,11 @@ const HotelFilter = ({
         title={Strings.selectEntitlement}
         style={{marginBottom: DP._16}}>
         <View style={Styles.buttonContainer}>
-          {entitlementData.map((item, index) => (
+          {filterData.entitlement.map((item, index) => (
             <FilterButton
-              isSelected={item.isSelected}
+              isSelected={item.selected}
               onPress={() => onEntitlementSelect(item)}
-              addMarginRight={index < entitlementData.length - 1}>
+              addMarginRight={index < filterData.entitlement.length - 1}>
               {item.value}
             </FilterButton>
           ))}

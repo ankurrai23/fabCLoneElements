@@ -158,10 +158,12 @@ const FlightItineraryCard = ({
         </View>
         <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
           <View style={Styles.flex}>
-            <FText style={Styles.time} numberOfLines={1}>
+            <FText style={Styles.preBookingSource} numberOfLines={1}>
               {uiData.source}
             </FText>
-            <FText style={Styles.portName}>{uiData.sourceAirportCode}</FText>
+            <FText style={Styles.preBookingPort}>
+              {uiData.sourceAirportCode}
+            </FText>
           </View>
           <View style={[Styles.justifyContent_around, Styles.flex]}>
             <Icon.Aeroplane
@@ -172,10 +174,10 @@ const FlightItineraryCard = ({
             />
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-            <FText style={Styles.time} numberOfLines={1}>
+            <FText style={Styles.preBookingSource} numberOfLines={1}>
               {uiData.destination}
             </FText>
-            <FText style={Styles.portName}>
+            <FText style={Styles.preBookingPort}>
               {uiData.destinationAirportCode}
             </FText>
           </View>
