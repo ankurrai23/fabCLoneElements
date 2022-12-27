@@ -93,11 +93,6 @@ const Stops = React.forwardRef(({stops}, ref) => {
           <FTouchableOpacity
             onPress={() => onStopSelect(item)}
             style={Styles.button(item.selected, index < state.length - 1)}>
-            <FText
-              style={Styles.stopCountText(item.selected)}
-              type={FONT_TYPE.MEDIUM}>
-              {item.noOfStops}
-            </FText>
             <FText style={Styles.stopDescText(item.selected)}>
               {item.name}
             </FText>
@@ -159,8 +154,8 @@ const FlightFilter = ({sortData, onSortSelect, filterData, onApply}) => {
 
   const onApplyPress = () => {
     const data = {
-      stops: stopsRef.current.data,
-      airline: airlineRef.current.data,
+      stop: stopsRef.current.data,
+      filterAirline: airlineRef.current.data,
       entitlement: entitlementRef.current.data,
     };
     onApply(data);
@@ -172,8 +167,8 @@ const FlightFilter = ({sortData, onSortSelect, filterData, onApply}) => {
       onSortSelect={onSortSelect}
       onClearAll={onClearAll}
       onApply={onApplyPress}>
-      <Stops stops={filterData.stops} ref={stopsRef} />
-      <Airlines airline={filterData.airline} ref={airlineRef} />
+      <Stops stops={filterData.stop} ref={stopsRef} />
+      <Airlines airline={filterData.filterAirline} ref={airlineRef} />
       <Entitlement entitlement={filterData.entitlement} ref={entitlementRef} />
     </SortAndFilter>
   );
