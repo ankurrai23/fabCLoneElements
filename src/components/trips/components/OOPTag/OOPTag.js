@@ -5,7 +5,7 @@ import {Color} from '../../../../utils/color/index.travelPlus';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
 
-export default function OOPTag(style) {
+export default function OOPTag({style}) {
   return (
     <View style={styles.container(style)}>
       <FText style={styles.text}>{Strings.outOfPolicy}</FText>

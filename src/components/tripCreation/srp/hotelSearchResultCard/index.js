@@ -10,6 +10,7 @@ import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {ratingsArray} from '../../../trips/hotelPreferenceCard';
 import Button from '../../../../common/components/button';
+import OOPTag from '../../../trips/components/OOPTag/OOPTag';
 
 export const renderHotelImage = ({item}) => {
   return <FImage source={{uri: item}} style={Styles.hotelImageStyle} />;
@@ -17,21 +18,23 @@ export const renderHotelImage = ({item}) => {
 
 export default function HotelSearchResultCard({onCardPress, item}) {
   return (
-    <TouchableOpacity style={Styles.container} onPress={onCardPress}>
-      <View>
-        <FlatList
-          data={item.hotelImages}
-          renderItem={renderHotelImage}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(e) => `${e}`}
-        />
-        {!!item.rateType && (
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.rateType}>
-            {item.rateType}
-          </FText>
-        )}
-      </View>
+    <View style={Styles.container}>
+      {!!item.hotelImages?.length && (
+        <View>
+          <FlatList
+            data={item.hotelImages}
+            renderItem={renderHotelImage}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(e) => `${e}`}
+          />
+          {!!item.rateType && (
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.rateType}>
+              {item.rateType}
+            </FText>
+          )}
+        </View>
+      )}
       <View style={Styles.subContainer}>
         <View style={Styles.starContainer}>
           {Array(item.starRating)
@@ -84,20 +87,23 @@ export default function HotelSearchResultCard({onCardPress, item}) {
         <View style={Styles.amountContainer}>
           <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
           {!!item.cost && (
-            <View style={Styles.priceAndGstContainer}>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.costOfHotel}>
-                {item.cost}
-              </FText>
-              <FText style={Styles.priceDetail}>
-                {item.gstIncluded ? Strings.inclGst : ''}
-              </FText>
+            <View style={{alignItems: 'flex-end'}}>
+              <View style={Styles.priceAndGstContainer}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.costOfHotel}>
+                  {item.cost}
+                </FText>
+                <FText style={Styles.priceDetail}>
+                  {item.gstIncluded ? Strings.inclGst : ''}
+                </FText>
+              </View>
+              {item.isOutOfPolicy && <OOPTag style={Styles.oopMargin} />}
             </View>
           )}
         </View>
         <Button textFont={FONT_TYPE.MEDIUM} onPress={onCardPress}>
-          {'Select room'}
+          {Strings.selectRoom}
         </Button>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
