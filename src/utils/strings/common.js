@@ -137,4 +137,6 @@ export default {
   tripPendingMakePayment: (title) =>
     `${title} trip payment is pending. Make payment within `,
   rupee: '₹',
+  notify: 'Notify',
+  requestModification: 'Request modification',
 };
