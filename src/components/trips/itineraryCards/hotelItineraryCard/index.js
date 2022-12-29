@@ -16,6 +16,11 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {TRIP_STATUS} from '../../../../utils/Constants';
 import Icon from '../../../../assets/icons/Icon';
 import OOPTag from '../../components/OOPTag/OOPTag';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  PlaceholderContainer,
+  Placeholder,
+} from 'react-native-loading-placeholder';
 
 const HotelItineraryCard = ({
   status,
@@ -59,6 +64,31 @@ const HotelItineraryCard = ({
     value: 'Confirmed',
     textColor: Color.DARK_SEA_FOAM,
     bgColor: Color.DARK_SEA_FOAM + '26',
+  };
+
+  const animatedComponent = (cardColor, secondaryColor) => {
+    return (
+      <LinearGradient
+        style={Styles.animatedComponent}
+        colors={[cardColor, secondaryColor, cardColor]}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+      />
+    );
+  };
+
+  const PriceLoader = () => {
+    return (
+      <PlaceholderContainer
+        animatedComponent={animatedComponent(
+          Color.VERY_LIGHT_PINK,
+          Color.WHITE,
+        )}
+        duration={1500}
+        delay={500}>
+        <Placeholder style={Styles.priceLoading} />
+      </PlaceholderContainer>
+    );
   };
 
   const ActionsInItinerary = () => (
@@ -182,6 +212,16 @@ const HotelItineraryCard = ({
                 {renderMonthYear(uiData.checkOut.month, uiData.checkOut.year)}
               </View>
             )}
+            {uiData.isProcessing && (
+              <View style={Styles.flexRowAndAlignCenter}>
+                <Icon.Reschedule
+                  width={DP._14}
+                  height={DP._14}
+                  stroke={Color.GREY_PURPLE}
+                />
+                <FText style={Styles.processing}>{Strings.processing}</FText>
+              </View>
+            )}
             {status?.key === TRIP_STATUS.CANCELLED ? (
               <TripStatus statusObj={status} />
             ) : showConfirmedStatus ? (
@@ -225,17 +265,21 @@ const HotelItineraryCard = ({
                     {uiData.includedMeals}
                   </FText>
                 </View>
-                <View style={Styles.priceContainer}>
-                  <View style={Styles.priceAndGstContainer}>
-                    <FText type={FONT_TYPE.MEDIUM} style={Styles.price}>
-                      {uiData.price}
-                    </FText>
-                    <FText style={Styles.priceDetail}>
-                      {uiData.gstIncluded ? Strings.inclGst : ''}
-                    </FText>
+                {uiData.isPriceFetched ? (
+                  <View style={Styles.priceContainer}>
+                    <View style={Styles.priceAndGstContainer}>
+                      <FText type={FONT_TYPE.MEDIUM} style={Styles.price}>
+                        {uiData.price}
+                      </FText>
+                      <FText style={Styles.priceDetail}>
+                        {uiData.gstIncluded ? Strings.inclGst : ''}
+                      </FText>
+                    </View>
+                    {uiData.isOOP && <OOPTag />}
                   </View>
-                  {uiData.isOOP && <OOPTag />}
-                </View>
+                ) : (
+                  <PriceLoader />
+                )}
               </View>
             )}
             <View style={{height: DP._12}} />

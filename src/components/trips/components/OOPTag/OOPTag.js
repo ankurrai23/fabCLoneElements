@@ -7,17 +7,16 @@ import {DP} from '../../../../utils/Dimen';
 
 export default function OOPTag(style) {
   return (
-    <View style={styles.container(style)}>
+    <View style={[styles.container, style]}>
       <FText style={styles.text}>{Strings.outOfPolicy}</FText>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: (style) => ({
+  container: {
     flexWrap: 'wrap',
-    ...(style ?? {}),
-  }),
+  },
   text: {
     fontSize: DP._10,
     paddingVertical: DP._1,
