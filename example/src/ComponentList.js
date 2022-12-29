@@ -80,6 +80,7 @@ import {
   HotelSearchResultCard,
   PendingPaymentSheet,
   PendingPaymentCarousel,
+  EmployeeActions,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -322,6 +323,11 @@ const TRIP_COMPONENTS = [
     name: 'Approver Chain',
     component: (props) => <ApproverChain {...props} />,
     defaultProps: data.approverChainProps,
+  },
+  {
+    name: 'Employee Actions',
+    component: (props) => <EmployeeActions {...props} />,
+    defaultProps: data.employeeActionsProps,
   },
 ];
 

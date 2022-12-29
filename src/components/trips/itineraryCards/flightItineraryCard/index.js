@@ -38,6 +38,7 @@ const FlightItineraryCard = ({
   showPreBookingCard,
   notificationText,
   hideChevron,
+  isProcessing,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -230,6 +231,16 @@ const FlightItineraryCard = ({
                 Styles.headerMonth
               }>{`${uiData.month}'${uiData.year}`}</FText>
           </View>
+          {isProcessing && (
+            <View style={Styles.flexRowAndAlignCenter}>
+              <Icon.Reschedule
+                width={DP._14}
+                height={DP._14}
+                stroke={Color.GREY_PURPLE}
+              />
+              <FText style={Styles.processing}>{Strings.processing}</FText>
+            </View>
+          )}
           {showStatus && uiData.flightBookingStatus ? (
             <TripStatus
               statusObj={getStatusObject(uiData.flightBookingStatus)}
@@ -264,11 +275,11 @@ const FlightItineraryCard = ({
             </FText>
           </View>
           {uiData.isPriceFetched ? (
-            <View>
+            <View style={Styles.priceContainer}>
               <FText style={Styles.flightPrice} type={FONT_TYPE.REGULAR}>
                 {uiData.price}
               </FText>
-              {uiData.isOutOfPolicy && <OOPTag style={Styles.oopMargin} />}
+              {uiData.isOutOfPolicy && <OOPTag />}
             </View>
           ) : (
             <PriceLoader />
@@ -280,9 +291,11 @@ const FlightItineraryCard = ({
             <FText style={Styles.portName} numberOfLines={1}>
               {uiData.sourceAirportCode}
             </FText>
-            <FText style={Styles.terminal}>
-              {uiData.sourceAirportTerminal}
-            </FText>
+            {!!uiData.sourceAirportTerminal && (
+              <FText style={Styles.terminal}>
+                {uiData.sourceAirportTerminal}
+              </FText>
+            )}
           </View>
           <View style={[Styles.justifyContent_around, Styles.flex]}>
             <Icon.Aeroplane
@@ -291,9 +304,9 @@ const FlightItineraryCard = ({
               fill={Color.LIGHT_BLUEY_GREY}
               style={Styles.airplane}
             />
-            {uiData.duration && (
+            {uiData.totalDuration && (
               <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>{uiData.duration}</FText>
+                <FText style={Styles.duration}>{uiData.totalDuration}</FText>
                 <View style={Styles.dot_two} />
                 <FText style={Styles.duration}>{uiData.stop}</FText>
               </View>
@@ -304,9 +317,11 @@ const FlightItineraryCard = ({
             <FText style={Styles.portName} numberOfLines={1}>
               {uiData.destinationAirportCode}
             </FText>
-            <FText style={Styles.terminal}>
-              {uiData.destinationAirportTerminal}
-            </FText>
+            {!!uiData.destinationAirportTerminal && (
+              <FText style={Styles.terminal}>
+                {uiData.destinationAirportTerminal}
+              </FText>
+            )}
           </View>
         </View>
       </FTouchableOpacity>

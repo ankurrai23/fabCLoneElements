@@ -9,11 +9,30 @@ import {CardDots} from '../pendingPaymentSheet';
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 
+const Card = React.memo(({item}) => (
+  <View style={Styles.itemStyle}>
+    <FText style={Styles.textStyle}>
+      {Strings.tripPendingMakePayment(item.title)}
+      <FText type={FONT_TYPE.MEDIUM}>{item.time}</FText> hours
+    </FText>
+    <FTouchableOpacity style={Styles.payNowButton}>
+      <FText type={FONT_TYPE.MEDIUM} style={Styles.payNowText}>
+        {Strings.payNow}
+      </FText>
+      <Icon.ChevronRight
+        width={DP._16}
+        height={DP._16}
+        stroke={Color.DODGER_BLUE}
+      />
+    </FTouchableOpacity>
+  </View>
+));
+
 const PendingPaymentCarousel = ({paymentRequests}) => {
   const cardDotsRef = useRef();
 
   const viewabilityConfig = {
-    itemVisiblePercentThreshold: 90,
+    itemVisiblePercentThreshold: 50,
     waitForInteraction: true,
   };
 
@@ -23,27 +42,7 @@ const PendingPaymentCarousel = ({paymentRequests}) => {
     }
   }, []);
 
-  const renderItem = useCallback(
-    ({item}) => (
-      <View style={Styles.itemStyle}>
-        <FText style={Styles.textStyle}>
-          {Strings.tripPendingMakePayment(item.title)}
-          <FText type={FONT_TYPE.MEDIUM}>{item.time}</FText> hours
-        </FText>
-        <FTouchableOpacity style={Styles.payNowButton}>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.payNowText}>
-            {Strings.payNow}
-          </FText>
-          <Icon.ChevronRight
-            width={DP._16}
-            height={DP._16}
-            stroke={Color.DODGER_BLUE}
-          />
-        </FTouchableOpacity>
-      </View>
-    ),
-    [],
-  );
+  const renderItem = ({item}) => <Card item={item} />;
 
   return (
     <View style={Styles.container}>

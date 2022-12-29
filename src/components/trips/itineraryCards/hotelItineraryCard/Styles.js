@@ -93,7 +93,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: DP._16,
     justifyContent: 'space-between',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   ratePlanContainer: {
     flex: 1,
@@ -176,5 +176,21 @@ export default StyleSheet.create({
   },
   separatorStyle: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
+  },
+  animatedComponent: {
+    flex: 1,
+    width: DP._60,
+  },
+  priceLoading: {
+    height: DP._20,
+    width: DP._60,
+    backgroundColor: Color.VERY_LIGHT_PINK,
+    borderRadius: DP._2,
+  },
+  processing: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREY_PURPLE,
+    marginLeft: DP._4,
   },
 });

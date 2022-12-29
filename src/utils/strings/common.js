@@ -136,5 +136,8 @@ export default {
   payNow: 'Pay now',
   tripPendingMakePayment: (title) =>
     `${title} trip payment is pending. Make payment within `,
+  rupee: '₹',
+  notify: 'Notify',
+  requestModification: 'Request modification',
   selectRoom: 'Select room',
 };

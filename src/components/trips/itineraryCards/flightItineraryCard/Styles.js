@@ -119,7 +119,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     alignItems: 'center',
-    marginBottom: DP._14,
+    // marginBottom: DP._14,
   },
   marginTop_12: {
     marginTop: DP._12,
@@ -167,9 +167,7 @@ export default StyleSheet.create({
     fontSize: DP._16,
     lineHeight: DP._19,
     color: Color.DARK,
-  },
-  oopMargin: {
-    marginTop: DP._20,
+    marginBottom: DP._2,
   },
   pnr: {
     marginLeft: DP._16,
@@ -218,5 +216,14 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._16,
     color: Color.GREYISH_PURPLE,
+  },
+  priceContainer: {
+    alignItems: 'flex-end',
+  },
+  processing: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREY_PURPLE,
+    marginLeft: DP._4,
   },
 });

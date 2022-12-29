@@ -7,7 +7,7 @@ import ComponentList from './ComponentList';
 import {TextField} from 'react-native-fab-elements';
 
 export default function CustomDrawer({navigation, state}) {
-  let [searchText, setSearchText] = useState('C');
+  let [searchText, setSearchText] = useState('');
 
   const renderItem = ({item}) => {
     const selected = state.routeNames[state.index] === item.name;
@@ -48,7 +48,6 @@ export default function CustomDrawer({navigation, state}) {
             item.name.toLowerCase().includes(searchText.toLowerCase()),
           )}
           renderItem={renderItem}
-          keyExtractor={() => `${Math.random()}`}
           contentContainerStyle={styles.container}
           bounces={false}
         />

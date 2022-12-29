@@ -38,6 +38,7 @@ import trainDetailCardProps from './components/trips/detailCards/trainDetailCard
 import listTypeFilterProps from './components/trips/listTypeFilter/data';
 import floatingActionProps from './common/components/floatingActionButton/data';
 import approverChainProps from './components/trips/approverChain/data';
+import employeeActionsProps from './components/trips/employeeActions/data';
 
 //trip creation props
 import coTravelersDetailProps from './components/tripCreation/coTravelersDetails/data';
@@ -145,4 +146,5 @@ export {
   hotelSearchResultCardProps,
   pendingPaymentSheetProps,
   pendingPaymentCarouselProps,
+  employeeActionsProps,
 };
