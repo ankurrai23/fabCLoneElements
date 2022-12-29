@@ -18,7 +18,9 @@ const Airlines = React.forwardRef(({airline}, ref) => {
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
-      setState((prevState) => prevState.map((item) => (item.selected = false)));
+      setState((prevState) =>
+        prevState.map((item) => ({...item, selected: false})),
+      );
     },
     data: state,
   }));
@@ -70,7 +72,9 @@ const Stops = React.forwardRef(({stops}, ref) => {
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
-      setState((prevState) => prevState.map((item) => (item.selected = false)));
+      setState((prevState) =>
+        prevState.map((item) => ({...item, selected: false})),
+      );
     },
     data: state,
   }));
@@ -104,7 +108,9 @@ const Entitlement = React.forwardRef(({entitlement}, ref) => {
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
-      setState((prevState) => prevState.map((item) => (item.selected = false)));
+      setState((prevState) =>
+        prevState.map((item) => ({...item, selected: false})),
+      );
     },
     data: state,
   }));
