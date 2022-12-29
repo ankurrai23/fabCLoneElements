@@ -139,4 +139,5 @@ export default {
   rupee: '₹',
   notify: 'Notify',
   requestModification: 'Request modification',
+  selectRoom: 'Select room',
 };

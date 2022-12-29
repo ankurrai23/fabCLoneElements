@@ -114,4 +114,7 @@ export default StyleSheet.create({
     fontSize: DP._10,
     color: Color.BATTLESHIP_GREY_TWO,
   },
+  oopMargin: {
+    marginTop: DP._2,
+  },
 });

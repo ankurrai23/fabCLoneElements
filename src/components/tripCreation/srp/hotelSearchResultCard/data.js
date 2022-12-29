@@ -19,9 +19,9 @@ const hotelSearchResultCardProps = {
     colleaguesRatingAvg: 4.2,
     googleMapUrl: 'https://www.google.com',
     preference: 5,
-    mealTypeText: 'Free breakfast',
     cancellationText: 'Free cancellation before 12 Nov',
     gstIncluded: true,
+    isOutOfPolicy: true,
   },
   onCardPress: (item) => console.log('Card pressed'),
 };

@@ -22,7 +22,7 @@ const flightFilterProps = {
     },
   ],
   filterData: {
-    stops: [
+    stop: [
       {
         id: 'NON_STOP',
         noOfStops: '0',
@@ -44,17 +44,17 @@ const flightFilterProps = {
     ],
     entitlement: [
       {
-        id: 'IN_POLICY',
+        id: 'INPOLICY',
         name: 'In policy',
         selected: true,
       },
       {
-        id: 'OUT_OF_POLICY',
+        id: 'OUTOFPOLICY',
         name: 'Out of policy',
         selected: false,
       },
     ],
-    airline: [
+    filterAirline: [
       {
         id: 'SpiceJet',
         icon:
