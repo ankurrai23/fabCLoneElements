@@ -38,6 +38,7 @@ const FlightItineraryCard = ({
   showPreBookingCard,
   notificationText,
   hideChevron,
+  isProcessing,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -230,7 +231,7 @@ const FlightItineraryCard = ({
                 Styles.headerMonth
               }>{`${uiData.month}'${uiData.year}`}</FText>
           </View>
-          {uiData.isProcessing && (
+          {isProcessing && (
             <View style={Styles.flexRowAndAlignCenter}>
               <Icon.Reschedule
                 width={DP._14}

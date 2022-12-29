@@ -39,6 +39,7 @@ const HotelItineraryCard = ({
   showPreBookingCard,
   showConfirmedStatus,
   hideChevron,
+  isProcessing,
 }) => {
   const sameMonthDates =
     tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
@@ -212,7 +213,7 @@ const HotelItineraryCard = ({
                 {renderMonthYear(uiData.checkOut.month, uiData.checkOut.year)}
               </View>
             )}
-            {uiData.isProcessing && (
+            {isProcessing && (
               <View style={Styles.flexRowAndAlignCenter}>
                 <Icon.Reschedule
                   width={DP._14}
