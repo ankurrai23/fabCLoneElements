@@ -109,4 +109,7 @@ export default StyleSheet.create({
   separator: {
     height: DP._8,
   },
+  infoIcon: {
+    transform: [{rotateZ: '180deg'}],
+  },
 });
