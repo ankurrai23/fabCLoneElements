@@ -125,7 +125,7 @@ export default {
   hotelRating: 'Hotel rating',
   price: 'Price',
   cancellationPolicy: 'View cancellation policy',
-  perNightInclGst: 'per night (Incl GST)',
+  perNight: 'per night',
   inclGst: '(Incl GST)',
   includeModificationCharge: 'Includes modification charges',
   travelerDetails: 'Traveler details',

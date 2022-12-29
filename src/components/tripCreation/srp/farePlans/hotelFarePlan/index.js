@@ -14,6 +14,7 @@ const HotelFarePlanCard = ({
   onViewPolicy,
   onPress,
   style,
+  gstIncluded,
 }) => {
   return (
     <FTouchableOpacity onPress={onPress} style={[styles.container, style]}>
@@ -30,7 +31,10 @@ const HotelFarePlanCard = ({
           <FText style={styles.planPrice} type={FONT_TYPE.MEDIUM}>
             {planPrice}
           </FText>
-          <FText style={styles.gstDetails}>{Strings.perNightInclGst}</FText>
+
+          <FText style={styles.gstDetails}>
+            {`${Strings.perNight} ${gstIncluded ? Strings.inclGst : ''}`}
+          </FText>
         </View>
         {isOutOfPolicy && OOPTag(styles.oopMargin)}
       </View>
