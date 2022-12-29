@@ -40,11 +40,7 @@ const FlightFarePlanCard = ({
       {planDetails.map((plan) => {
         return (
           <View style={styles.planDetailItem}>
-            <FImage
-              style={styles.planIcon}
-              source={{uri: plan.icon}}
-              resizeMode={'contain'}
-            />
+            {plan.icon}
             <FText
               style={styles.planDetailTitle}
               numberOfLines={1}

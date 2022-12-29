@@ -1,4 +1,6 @@
-import {Color} from '../../../../../utils/color/index.fabhotel';
+import React from 'react';
+import Icon from '../../../../../assets/icons/Icon';
+import {Color} from '../../../../../utils/color/index.travelPlus';
 
 const flightFarePlanProps = {
   planTitle: 'Economy basic',
@@ -7,30 +9,30 @@ const flightFarePlanProps = {
   isOutOfPolicy: true,
   planDetails: [
     {
-      icon: 'https://picsum.photos/20/20',
+      icon: <Icon.Briefcase />,
       title: 'Cabin bag',
       value: '7 Kgs',
     },
-    {icon: 'https://picsum.photos/20/20', title: 'Check-in', value: '7 Kgs'},
+    {icon: <Icon.Briefcase />, title: 'Check-in', value: '7 Kgs'},
     {
-      icon: 'https://picsum.photos/20/20',
+      icon: <Icon.Briefcase />,
       title: 'Seat',
       value: 'Free seat',
       textColor: Color.DARK_SEA_FOAM,
     },
     {
-      icon: 'https://picsum.photos/20/20',
+      icon: <Icon.Briefcase />,
       title: 'Meal',
       value: 'Free meal',
       textColor: Color.DARK_SEA_FOAM,
     },
     {
-      icon: 'https://picsum.photos/20/20',
+      icon: <Icon.Briefcase />,
       title: 'Date change fee',
       value: 'Starting from ₹900',
     },
     {
-      icon: 'https://picsum.photos/20/20',
+      icon: <Icon.Briefcase />,
       title: 'Cancellation fee',
       value: 'Starting from ₹1000',
     },
