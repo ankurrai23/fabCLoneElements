@@ -140,4 +140,9 @@ export default {
   notify: 'Notify',
   requestModification: 'Request modification',
   selectRoom: 'Select room',
+  contractedRate: 'Contracted rate',
+  travelPlusPreferred: 'TravelPlus preferred',
+  two: '2',
+  lessThanTwo: '<2',
+  one: '1',
 };
