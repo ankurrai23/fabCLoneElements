@@ -22,7 +22,7 @@ export default function FlightSearchResultCard({onPress, flightInfo}) {
             style={Styles.flightName}
             numberOfLines={1}
             ellipsizeMode={'tail'}>
-            {flightInfo.airline}
+            {flightInfo.airlineName}
           </FText>
           <FText
             style={Styles.flightNumber}
