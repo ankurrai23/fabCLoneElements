@@ -20,17 +20,17 @@ const hotelFilterProps = {
     entitlement: [
       {
         id: 'INPOLICY',
-        value: 'In policy',
+        name: 'In policy',
         selected: true,
       },
       {
         id: 'OUTOFPOLICY',
-        value: 'Out of policy',
+        name: 'Out of policy',
         selected: false,
       },
     ],
     travelPlusPreferredFilter: false,
-    contractedRatePreferredFilter: false,
+    contractedRatePreferredFilter: true,
     starRatings: [
       {
         id: '1',
@@ -60,13 +60,14 @@ const hotelFilterProps = {
     ],
     priceData: {
       minLimit: 0,
-      maxLimit: 1000000,
+      maxLimit: 100000,
       granularity: 100,
       minValue: 0,
-      maxValue: 1000000,
+      maxValue: 100000,
       changed: false,
     },
   },
+  onApply: (item) => console.log('on filter apply', item),
 };
 
 export default hotelFilterProps;
