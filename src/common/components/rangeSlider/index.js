@@ -20,8 +20,11 @@ const RangeSlider = React.forwardRef(
         setValue((prevState) => ({...prevState, min: minValue, max: maxValue}));
       },
       data: {
-        ...value,
-        sliderMoved: sliderMoved.current,
+        minLimit,
+        maxLimit,
+        minValue: value.min,
+        maxValue: value.max,
+        changed: sliderMoved.current,
       },
     }));
 

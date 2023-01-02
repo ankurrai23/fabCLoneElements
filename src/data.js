@@ -57,6 +57,7 @@ import flightFarePlanProps from './components/tripCreation/srp/farePlans/flightF
 import hotelFarePlanProps from './components/tripCreation/srp/farePlans/hotelFarePlan/data';
 import flightSearchResultCardProps from './components/tripCreation/srp/flightSearchResultCard/data';
 import hotelSearchResultCardProps from './components/tripCreation/srp/hotelSearchResultCard/data';
+import selectRoomSheetProps from './components/tripCreation/srp/selectRoomSheet/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -147,4 +148,5 @@ export {
   pendingPaymentSheetProps,
   pendingPaymentCarouselProps,
   employeeActionsProps,
+  selectRoomSheetProps,
 };

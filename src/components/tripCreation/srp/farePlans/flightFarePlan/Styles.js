@@ -1,13 +1,13 @@
 import {StyleSheet} from 'react-native';
 import {DP} from '../../../../../utils/Dimen';
-import {cardStyleObj, shadowObj} from '../../../../../utils/Utils';
+import {cardStyleObj} from '../../../../../utils/Utils';
 import {Color} from '../../../../../utils/color/index.fabhotel';
 
 export default StyleSheet.create({
   container: {
     paddingBottom: DP._18,
-    ...shadowObj,
     ...cardStyleObj,
+    borderRadius: DP._4,
   },
   flex: {
     flex: 1,

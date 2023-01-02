@@ -276,7 +276,7 @@ const FlightItineraryCard = ({
           </View>
           {uiData.isPriceFetched ? (
             <View style={Styles.priceContainer}>
-              <FText style={Styles.flightPrice} type={FONT_TYPE.REGULAR}>
+              <FText style={Styles.flightPrice} type={FONT_TYPE.MEDIUM}>
                 {uiData.price}
               </FText>
               {uiData.isOutOfPolicy && <OOPTag />}

@@ -145,4 +145,9 @@ export default {
   two: '2',
   lessThanTwo: '<2',
   one: '1',
+  selectRoomAndTraveler: 'No. of rooms and traveler(s)',
+  removeRoom: 'Remove room',
+  addRoom: 'Add room',
+  selectNoOfAdults: 'Select no. of adult(s)',
+  roomNo: (num) => `Room ${num}`,
 };

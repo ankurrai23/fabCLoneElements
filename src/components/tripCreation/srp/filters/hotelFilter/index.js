@@ -155,7 +155,7 @@ const HotelFilter = ({sortData, filterData, onSortSelect, onApply}) => {
     const data = {
       ...preferredTypeRef.current.data,
       starRatings: hotelRatingRef.current.data,
-      sliderRef: sliderRef.current.data,
+      priceData: sliderRef.current.data,
       entitlement: entitlementRef.current.data,
     };
     onApply(data);

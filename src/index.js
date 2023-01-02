@@ -91,6 +91,7 @@ import FlightFarePlanCard from './components/tripCreation/srp/farePlans/flightFa
 import HotelFarePlanCard from './components/tripCreation/srp/farePlans/hotelFarePlan';
 import FlightSearchResultCard from './components/tripCreation/srp/flightSearchResultCard';
 import HotelSearchResultCard from './components/tripCreation/srp/hotelSearchResultCard';
+import SelectRoomSheet from './components/tripCreation/srp/selectRoomSheet';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -198,6 +199,7 @@ export {
   HotelFarePlanCard,
   FlightSearchResultCard,
   HotelSearchResultCard,
+  SelectRoomSheet,
   // constants
   FlightSubTripActions,
   TrainSubtripActions,
