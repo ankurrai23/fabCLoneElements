@@ -25,6 +25,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
     const data = {
       masterTripId: item.masterTripId,
       actionType: actionType,
+      isSBT: item.requestType === 'SELF_BOOKING',
     };
     onActionPress(data);
   };

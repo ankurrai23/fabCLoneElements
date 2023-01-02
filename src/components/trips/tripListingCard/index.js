@@ -11,6 +11,7 @@ import {FlatList} from 'react-native-gesture-handler';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {getSubTripIcon} from '../../../utils/Utils';
+
 const TripListingCard = ({item, onCardPress, style}) => {
   const [sheetVisible, setSheetVisible] = useState(false);
 
@@ -21,7 +22,12 @@ const TripListingCard = ({item, onCardPress, style}) => {
   return (
     <>
       <FTouchableOpacity
-        onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
+        onPress={() =>
+          onCardPress({
+            masterTripId: item.masterTripId,
+            isSBT: item.requestType === 'SELF_BOOKING',
+          })
+        }
         style={[Styles.container, {...style}]}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexRowAndAlignCenter}>
