@@ -120,6 +120,9 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
             <FText style={Styles.titleText}>
               {Strings.selectRoomAndTraveler}
             </FText>
+            <FText style={Styles.subTitle}>
+              {Strings.selectRoomForTraveler(initialTravellerCount)}
+            </FText>
           </View>
           <FlatList
             data={roomState}

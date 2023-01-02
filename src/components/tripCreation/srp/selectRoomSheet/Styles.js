@@ -8,8 +8,6 @@ export default StyleSheet.create({
     paddingRight: DP._48,
   },
   titleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     marginTop: DP._16,
     marginHorizontal: DP._24,
     marginBottom: DP._24,
@@ -95,4 +93,9 @@ export default StyleSheet.create({
     lineHeight: DP._20,
     color: disabled ? Color.FORD_GRAY : Color.DODGER_BLUE,
   }),
+  subTitle: {
+    marginTop: DP._4,
+    lineHeight: DP._20,
+    color: Color.GREY_PURPLE,
+  },
 });
