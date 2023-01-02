@@ -81,6 +81,7 @@ import {
   PendingPaymentSheet,
   PendingPaymentCarousel,
   EmployeeActions,
+  SelectRoomSheet,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -412,6 +413,11 @@ const TRIP_CREATION = [
     name: 'HotelSearchResultCard',
     component: (props) => <HotelSearchResultCard {...props} />,
     defaultProps: data.hotelSearchResultCardProps,
+  },
+  {
+    name: 'SelectRoomSheet',
+    component: (props) => <SelectRoomSheet {...props} />,
+    defaultProps: data.selectRoomSheetProps,
   },
 ];
 

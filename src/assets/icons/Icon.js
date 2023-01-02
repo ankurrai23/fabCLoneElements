@@ -593,6 +593,24 @@ const Trash = ({width, height, stroke, strokeWidth, ...props}) => (
   </Svg>
 );
 
+const Minus = ({width, height, stroke, strokeWidth, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M5 12H19"
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={strokeWidth ?? 1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
 const Icon = {
   Reschedule,
   ChevronLeft,
@@ -646,6 +664,7 @@ const Icon = {
   Cab,
   Bus,
   Edit,
+  Minus,
 };
 
 export default Icon;
