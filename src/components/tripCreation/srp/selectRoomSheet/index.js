@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FText, {FONT_TYPE} from '../../../../common/rn/FText';
 import DialogBox from '../../../../common/components/dialogBox';
 import Button from '../../../../common/components/button';
@@ -18,9 +18,25 @@ const MAX_ROOMS = 6;
 const MIN_ROOMS = 1;
 
 const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
-  const [roomState, setRoomState] = useState([...roomData]);
-  const disableAddRoom = roomState.length === MAX_ROOMS;
+  const [roomState, setRoomState] = useState([]);
+  const initialTravellerCount = roomData?.reduce(
+    (prevValue, currentValue) => prevValue + currentValue,
+    0,
+  );
+  const finalTravellerCount = roomState.reduce(
+    (prevValue, currentValue) => prevValue + currentValue,
+    0,
+  );
+
+  const allowAdd = finalTravellerCount < initialTravellerCount;
+  const disableAddRoom = roomState.length === MAX_ROOMS || !allowAdd;
   const disableRemoveRoom = roomState.length === MIN_ROOMS;
+
+  useEffect(() => {
+    if (roomData) {
+      setRoomState([...roomData]);
+    }
+  }, [roomData]);
 
   const onRemoveRoomPress = () => {
     if (roomState.length > MIN_ROOMS) {
@@ -47,8 +63,8 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
   };
 
   const renderItem = ({item, index}) => {
-    const disabledMinusButton = item === MIN_ADULTS_PER_ROOM;
-    const disabledPlusButton = item === MAX_ADULTS_PER_ROOM;
+    const disableMinusButton = item === MIN_ADULTS_PER_ROOM;
+    const disablePlusButton = item === MAX_ADULTS_PER_ROOM || !allowAdd;
 
     const onAddPress = () => {
       if (item < MAX_ADULTS_PER_ROOM) {
@@ -70,18 +86,19 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
         </View>
         <View style={Styles.addRemoveAdultsContainer}>
           <FTouchableOpacity
-            style={Styles.addRemoveButtonStyle(disabledMinusButton)}
+            style={Styles.addRemoveButtonStyle(disableMinusButton)}
             onPress={onRemovePress}>
             <Icon.Minus
-              stroke={disabledMinusButton ? Color.FORD_GRAY : Color.DODGER_BLUE}
+              stroke={disableMinusButton ? Color.FORD_GRAY : Color.DODGER_BLUE}
             />
           </FTouchableOpacity>
           <FText style={Styles.adultCountText}>{item}</FText>
           <FTouchableOpacity
-            style={Styles.addRemoveButtonStyle(disabledPlusButton)}
+            disabled={disablePlusButton}
+            style={Styles.addRemoveButtonStyle(disablePlusButton)}
             onPress={onAddPress}>
             <Icon.Plus
-              stroke={disabledPlusButton ? Color.FORD_GRAY : Color.DODGER_BLUE}
+              stroke={disablePlusButton ? Color.FORD_GRAY : Color.DODGER_BLUE}
             />
           </FTouchableOpacity>
         </View>
@@ -121,7 +138,9 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
                 {Strings.removeRoom}
               </FText>
             </FTouchableOpacity>
-            <FTouchableOpacity onPress={onAddRoomPress}>
+            <FTouchableOpacity
+              disabled={disableAddRoom}
+              onPress={onAddRoomPress}>
               <FText
                 style={Styles.addRoomText(disableAddRoom)}
                 type={FONT_TYPE.MEDIUM}>
