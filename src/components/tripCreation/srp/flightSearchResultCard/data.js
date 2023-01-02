@@ -1,6 +1,6 @@
 const flightSearchResultCardProps = {
   flightInfo: {
-    airline: 'Air Asia',
+    airlineName: 'Air Asia',
     flightNumber: '113',
     airlineCode: 'G8',
     airlineIcon:
