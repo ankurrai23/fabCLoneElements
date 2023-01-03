@@ -20,6 +20,7 @@ import {
   PlaceholderContainer,
   Placeholder,
 } from 'react-native-loading-placeholder';
+import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
 
 const FlightItineraryCard = ({
   status,
@@ -245,6 +246,8 @@ const FlightItineraryCard = ({
             <TripStatus
               statusObj={getStatusObject(uiData.flightBookingStatus)}
             />
+          ) : uiData.isSoldOut ? (
+            <SoldOutTag />
           ) : (
             !hideChevron && (
               <Icon.ChevronRight
