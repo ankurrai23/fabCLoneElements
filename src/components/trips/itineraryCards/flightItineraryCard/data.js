@@ -23,6 +23,7 @@ const flightItineraryCardProps = {
     airlineCode: 'G8',
     flightNumber: '717',
     isOutOfPolicy: true,
+    isSoldOut: true,
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
     reasonDetails: {
@@ -54,6 +55,7 @@ const flightItineraryCardProps = {
     price: '₹2600',
     modificationCharge: '₹600',
     isOutOfPolicy: true,
+    isSoldOut: true,
     reasonDetails: {
       title: 'Reason for modification',
       text: 'Meeting is postponed due to client unavailability',

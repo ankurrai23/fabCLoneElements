@@ -32,13 +32,20 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
     onActionPress({
       actionType,
       masterTripId: item.masterTripId,
+      isSBT: item.requestType === 'SELF_BOOKING',
       comments,
     });
   }
+
   return (
     <>
       <FTouchableOpacity
-        onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
+        onPress={() =>
+          onCardPress({
+            masterTripId: item.masterTripId,
+            isSBT: item.requestType === 'SELF_BOOKING',
+          })
+        }
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexRowAndAlignCenter}>

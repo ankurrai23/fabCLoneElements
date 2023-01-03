@@ -21,6 +21,7 @@ import {
   PlaceholderContainer,
   Placeholder,
 } from 'react-native-loading-placeholder';
+import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
 
 const HotelItineraryCard = ({
   status,
@@ -50,7 +51,6 @@ const HotelItineraryCard = ({
   const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
 
   const viewRemarksAction = isActionEnabled(HotelSubTripActions.VIEW_REMARKS);
-  const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
   const shortlistingAction = isActionEnabled(
     HotelSubTripActions.SHORTLIST_HOTEL_TRIPS,
   );
@@ -154,6 +154,8 @@ const HotelItineraryCard = ({
 
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
 
+  console.log(uiData);
+
   return (
     <View style={[Styles.flexRow, style]}>
       <View>
@@ -185,8 +187,8 @@ const HotelItineraryCard = ({
       </View>
       <View style={Styles.container}>
         <FTouchableOpacity
-          activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
-          style={Styles.card(tripRequest.reduceOpacity)}
+          activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
+          style={Styles.card(uiData.reduceOpacity)}
           onPress={onCardPress}>
           <View style={Styles.dateAndStatusContainer}>
             {sameMonthDates ? (
@@ -227,6 +229,8 @@ const HotelItineraryCard = ({
               <TripStatus statusObj={status} />
             ) : showConfirmedStatus ? (
               <TripStatus statusObj={confirmedStatus} />
+            ) : uiData.isSoldOut ? (
+              <SoldOutTag />
             ) : (
               !hideChevron && (
                 <Icon.ChevronRight
@@ -276,7 +280,7 @@ const HotelItineraryCard = ({
                         {uiData.gstIncluded ? Strings.inclGst : ''}
                       </FText>
                     </View>
-                    {uiData.isOOP && <OOPTag />}
+                    {uiData.isOutOfPolicy && <OOPTag />}
                   </View>
                 ) : (
                   <PriceLoader />

@@ -15,6 +15,7 @@ export default {
   cancel: 'Cancel',
   apply: 'Apply',
   outOfPolicy: 'Out of policy',
+  soldOut: 'Sold out',
   viewReceipt: ' View receipt',
   viewReceipts: (receiptCount) => ` View ${receiptCount} receipts`,
   claim: 'claim',

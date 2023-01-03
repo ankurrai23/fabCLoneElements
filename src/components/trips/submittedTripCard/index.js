@@ -25,6 +25,7 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
     const data = {
       masterTripId: item.masterTripId,
       actionType: actionType,
+      isSBT: item.requestType === 'SELF_BOOKING',
     };
     onActionPress(data);
   };
@@ -32,7 +33,12 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
   return (
     <>
       <FTouchableOpacity
-        onPress={() => onCardPress({['masterTripId']: item.masterTripId})}
+        onPress={() =>
+          onCardPress({
+            masterTripId: item.masterTripId,
+            isSBT: item.requestType === 'SELF_BOOKING',
+          })
+        }
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexRowAndAlignCenter}>
