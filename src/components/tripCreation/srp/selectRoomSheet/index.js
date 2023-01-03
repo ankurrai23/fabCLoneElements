@@ -19,6 +19,7 @@ const MIN_ROOMS = 1;
 
 const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
   const [roomState, setRoomState] = useState([]);
+  const [error, setError] = useState('');
   const initialTravellerCount = roomData?.reduce(
     (prevValue, currentValue) => prevValue + currentValue,
     0,
@@ -33,10 +34,11 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
   const disableRemoveRoom = roomState.length === MIN_ROOMS;
 
   useEffect(() => {
+    setError('');
     if (roomData) {
       setRoomState([...roomData]);
     }
-  }, [roomData]);
+  }, [roomData, visible]);
 
   const onRemoveRoomPress = () => {
     if (roomState.length > MIN_ROOMS) {
@@ -107,7 +109,13 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
   };
 
   const onApplyPress = () => {
-    onApply([...roomState]);
+    const remaining = initialTravellerCount - finalTravellerCount;
+    if (remaining) {
+      setError(Strings.travellerError(remaining));
+    } else {
+      setError('');
+      onApply([...roomState]);
+    }
   };
 
   return (
@@ -116,13 +124,11 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
       onClose={onClose}
       ContentModal={
         <>
-          <View style={Styles.titleContainer}>
+          <View style={Styles.titleContainer(error)}>
             <FText style={Styles.titleText}>
-              {Strings.selectRoomAndTraveler}
-            </FText>
-            <FText style={Styles.subTitle}>
               {Strings.selectRoomForTraveler(initialTravellerCount)}
             </FText>
+            {!!error && <FText style={Styles.subTitle}>{error}</FText>}
           </View>
           <FlatList
             data={roomState}
