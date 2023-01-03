@@ -257,13 +257,13 @@ const HotelItineraryCard = ({
                     style={Styles.roomType}
                     numberOfLines={1}
                     ellipsizeMode={'tail'}>
-                    {uiData.roomType}
+                    {uiData.roomTypeName}
                   </FText>
                   <FText
                     style={Styles.mealType}
                     numberOfLines={1}
                     ellipsizeMode={'tail'}>
-                    {uiData.includedMeals}
+                    {uiData.ratePlanName}
                   </FText>
                 </View>
                 {uiData.isPriceFetched ? (
