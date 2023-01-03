@@ -22,7 +22,9 @@ const HotelFarePlanCard = ({
         <FText style={styles.planTitle} numberOfLines={1}>
           {planTitle}
         </FText>
-        <FTouchableOpacity onPress={onViewPolicy}>
+        <FTouchableOpacity
+          onPress={onViewPolicy}
+          style={styles.cancellationPolicyButton}>
           <FText style={styles.cancellationPolicy}>
             {Strings.cancellationPolicy}
           </FText>
