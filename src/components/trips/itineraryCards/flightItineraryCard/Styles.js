@@ -28,7 +28,7 @@ export default StyleSheet.create({
     marginLeft: DP._4,
     fontSize: DP._12,
   },
-  flexDirectionRow: {
+  flexRowAndJustifySpaceBetween: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -36,7 +36,6 @@ export default StyleSheet.create({
     transform: [{rotate: '90deg'}],
   },
   portName: {
-    marginTop: DP._8,
     color: Color.GREYISH_PURPLE,
     lineHeight: DP._16,
     fontSize: DP._14,
@@ -225,5 +224,14 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.GREY_PURPLE,
     marginLeft: DP._4,
+  },
+  durationAndStopsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    marginHorizontal: DP._8,
+  },
+  marginTop_8: {
+    marginTop: DP._8,
   },
 });

@@ -47,7 +47,7 @@ const flightItineraryCardProps = {
     // pnr: 'GBLP6Q',
     duration: '1h 50min',
     airline: 'Indigo',
-    stop: 'Non stop',
+    stop: 'Non stop (via Hyderabad)',
     reduceOpacity: false,
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
