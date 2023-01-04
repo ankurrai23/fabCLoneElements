@@ -138,7 +138,13 @@ const Entitlement = React.forwardRef(({entitlement}, ref) => {
   );
 });
 
-const HotelFilter = ({sortData, filterData, onSortSelect, onApply}) => {
+const HotelFilter = ({
+  sortData,
+  filterData,
+  onSortSelect,
+  onApply,
+  isFilterApplied,
+}) => {
   const sliderRef = useRef();
   const hotelRatingRef = useRef();
   const preferredTypeRef = useRef();
@@ -165,6 +171,7 @@ const HotelFilter = ({sortData, filterData, onSortSelect, onApply}) => {
     <SortAndFilter
       sortData={sortData}
       onSortSelect={onSortSelect}
+      isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
       onApply={onApplyPress}>
       <FilterSection title={Strings.price}>

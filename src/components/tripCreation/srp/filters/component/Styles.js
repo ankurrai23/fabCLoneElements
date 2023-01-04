@@ -9,13 +9,13 @@ export default StyleSheet.create({
     borderWidth: DP._0_5,
     borderRadius: DP._12,
     overflow: 'hidden',
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
   },
   filterButton: {
-    position: 'absolute',
     paddingHorizontal: DP._12,
     paddingVertical: DP._11,
     backgroundColor: Color.TWILIGHT_BLUE,
-    right: 0,
     borderTopRightRadius: DP._12,
     borderBottomRightRadius: DP._12,
   },
@@ -34,7 +34,8 @@ export default StyleSheet.create({
   }),
   containerStyle: {
     padding: DP._8,
-    paddingRight: DP._48,
+    paddingRight: 0,
+    // paddingRight: DP._48,
   },
   titleContainer: {
     flexDirection: 'row',
@@ -83,5 +84,17 @@ export default StyleSheet.create({
     lineHeight: DP._16,
     color: Color.GREY_PURPLE,
     marginBottom: DP._8,
+  },
+  filterAppliedDot: {
+    position: 'absolute',
+    width: DP._8,
+    height: DP._8,
+    right: 14,
+    top: 12,
+    borderWidth: DP._1,
+    borderColor: Color.WHITE,
+    borderRadius: DP._4,
+    backgroundColor: Color.PASTEL_RED,
+    zIndex: 1,
   },
 });

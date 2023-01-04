@@ -27,6 +27,7 @@ const SortAndFilter = ({
   onClearAll,
   onSortSelect,
   onApply,
+  isFilterApplied,
 }) => {
   const [filterModal, setFilterModal] = useState(false);
   const onApplyPress = () => {
@@ -37,18 +38,21 @@ const SortAndFilter = ({
   return (
     <>
       <View style={Styles.filterContainer}>
-        <ScrollView
-          horizontal={true}
-          bounces={false}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={Styles.containerStyle}>
-          {sortData.map((item) => (
-            <SortOption item={item} onPress={onSortSelect} key={item.key} />
-          ))}
-        </ScrollView>
+        {sortData?.length > 0 && (
+          <ScrollView
+            horizontal={true}
+            bounces={false}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={Styles.containerStyle}>
+            {sortData.map((item) => (
+              <SortOption item={item} onPress={onSortSelect} key={item.key} />
+            ))}
+          </ScrollView>
+        )}
         <FTouchableOpacity
           style={Styles.filterButton}
           onPress={() => setFilterModal(true)}>
+          {isFilterApplied && <View style={Styles.filterAppliedDot} />}
           <Icon.Filter stroke={Color.WHITE} />
         </FTouchableOpacity>
       </View>
