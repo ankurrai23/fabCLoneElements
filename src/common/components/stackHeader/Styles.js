@@ -7,7 +7,7 @@ import {shadowObj} from '../../../utils/Utils';
 export default StyleSheet.create({
   container: (shadowVisible) => ({
     flexDirection: 'row',
-    alignItems: 'center',
+    // alignItems: 'center',
     padding: DP._16,
     paddingLeft: DP._16,
     backgroundColor: Color.TWILIGHT_BLUE,
@@ -17,6 +17,7 @@ export default StyleSheet.create({
   titleContainer: {
     flex: 1,
     marginLeft: DP._16,
+    alignSelf: 'center',
   },
   title: {
     fontSize: DP._16,
