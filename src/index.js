@@ -64,6 +64,7 @@ import BusDetailLoadingState from './components/trips/detailCards/loadingStates/
 import TrainDetailLoadingState from './components/trips/detailCards/loadingStates/trainDetailLoadingState';
 import ApproverChain from './components/trips/approverChain';
 import EmployeeActions from './components/trips/employeeActions';
+import PriceBreakupSheet from './components/trips/priceBreakupSheet';
 
 //Constants
 import {
@@ -185,6 +186,7 @@ export {
   TrainDetailLoadingState,
   ApproverChain,
   EmployeeActions,
+  PriceBreakupSheet,
   // Trip Creation
   HotelDetails,
   FlightDetails,
