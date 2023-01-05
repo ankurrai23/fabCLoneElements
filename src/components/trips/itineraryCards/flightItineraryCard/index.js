@@ -303,7 +303,7 @@ const FlightItineraryCard = ({
           style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_8]}>
           <FText style={Styles.portName}>{uiData.sourceAirportCode}</FText>
           <View style={Styles.durationAndStopsContainer}>
-            <FText style={[Styles.duration]}>{uiData.duration}</FText>
+            <FText style={[Styles.duration]}>{uiData.totalDuration}</FText>
             <View style={Styles.dot_two} />
             <FText style={[Styles.duration]} numberOfLines={1}>
               {uiData.stop}
@@ -312,10 +312,16 @@ const FlightItineraryCard = ({
           <FText style={Styles.portName}>{uiData.destinationAirportCode}</FText>
         </View>
         <View style={Styles.flexRowAndJustifySpaceBetween}>
-          <FText style={Styles.terminal}>{uiData.sourceAirportTerminal}</FText>
-          <FText style={Styles.terminal}>
-            {uiData.destinationAirportTerminal}
-          </FText>
+          {uiData.sourceAirportTerminal && (
+            <FText style={Styles.terminal}>
+              {uiData.sourceAirportTerminal}
+            </FText>
+          )}
+          {uiData.destinationAirportTerminal && (
+            <FText style={Styles.terminal}>
+              {uiData.destinationAirportTerminal}
+            </FText>
+          )}
         </View>
       </FTouchableOpacity>
       {!!uiData.pnr && (
