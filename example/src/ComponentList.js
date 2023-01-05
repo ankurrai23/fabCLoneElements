@@ -83,6 +83,7 @@ import {
   EmployeeActions,
   SelectRoomSheet,
   PriceBreakupSheet,
+  LoadingPlaceholder,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -171,6 +172,11 @@ const COMMON_COMPONENTS = [
     name: 'RangeSlider',
     component: (props) => <RangeSlider {...props} />,
     defaultProps: data.rangeSliderProps,
+  },
+  {
+    name: 'LoadingPlaceholder',
+    component: (props) => <LoadingPlaceholder {...props} />,
+    defaultProps: data.placeholderProps,
   },
 ];
 

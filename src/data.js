@@ -13,6 +13,7 @@ import dropDownProps from './common/components/dropDown/data';
 import selectorProps from './common/components/selector/data';
 import sliderProps from './common/components/slider/data';
 import rangeSliderProps from './common/components/rangeSlider/data';
+import placeholderProps from './common/components/placeholder/data';
 
 //trip components props
 import flightPreferenceCardProps from './components/trips/flightPreferenceCard/data';
@@ -82,6 +83,7 @@ import receiptListViewProps from './components/expense/receiptListView/data';
 export {
   buttonProps,
   textFieldProps,
+  placeholderProps,
   dashLineProps,
   pickerFieldProps,
   flightPreferenceCardProps,
