@@ -15,6 +15,7 @@ const flightItineraryCardProps = {
     sourceAirportCode: 'BOM',
     destinationAirportCode: 'BLR',
     reduceOpacity: false,
+    stop: 'Non stop (via Mumbai)',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
@@ -23,7 +24,7 @@ const flightItineraryCardProps = {
     airlineCode: 'G8',
     flightNumber: '717',
     isOutOfPolicy: true,
-    isSoldOut: true,
+    isSoldOut: false,
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
     reasonDetails: {

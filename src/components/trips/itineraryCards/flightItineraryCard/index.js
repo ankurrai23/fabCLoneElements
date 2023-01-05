@@ -307,9 +307,9 @@ const FlightItineraryCard = ({
               fill={Color.LIGHT_BLUEY_GREY}
               style={Styles.airplane}
             />
-            {uiData.totalDuration && (
+            {uiData.duration && (
               <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>{uiData.totalDuration}</FText>
+                <FText style={Styles.duration}>{uiData.duration}</FText>
                 <View style={Styles.dot_two} />
                 <FText style={Styles.duration}>{uiData.stop}</FText>
               </View>
