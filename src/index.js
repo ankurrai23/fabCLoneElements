@@ -27,6 +27,7 @@ import ProgressBar from './common/components/progressBar';
 import Selector from './common/components/selector';
 import Slider from './common/components/slider';
 import RangeSlider from './common/components/rangeSlider';
+import LoadingPlaceholder from './common/components/placeholder';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -150,6 +151,7 @@ export {
   Selector,
   Slider,
   RangeSlider,
+  LoadingPlaceholder,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
