@@ -139,8 +139,8 @@ const FlightItineraryCard = ({
         activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
         style={Styles.card(uiData.reduceOpacity)}
         onPress={onCardPress}>
-        <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-          <View style={Styles.flexDirectionRow}>
+        <View style={[Styles.flexRowAndJustifySpaceBetween, Styles.baseline]}>
+          <View style={Styles.flexRowAndJustifySpaceBetween}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {uiData.date}
             </FText>
@@ -158,7 +158,8 @@ const FlightItineraryCard = ({
             </FText>
           )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+        <View
+          style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_12]}>
           <View style={Styles.flex}>
             <FText style={Styles.preBookingSource} numberOfLines={1}>
               {uiData.source}
@@ -218,11 +219,11 @@ const FlightItineraryCard = ({
         onPress={onCardPress}>
         <View
           style={[
-            Styles.flexDirectionRow,
+            Styles.flexRowAndJustifySpaceBetween,
             Styles.baseline,
             Styles.marginBottom_12,
           ]}>
-          <View style={Styles.flexDirectionRow}>
+          <View style={Styles.flexRowAndJustifySpaceBetween}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
               {uiData.date}
             </FText>
@@ -288,44 +289,33 @@ const FlightItineraryCard = ({
             <PriceLoader />
           )}
         </View>
-        <View style={Styles.flexDirectionRow}>
-          <View style={Styles.flex}>
-            <FText style={Styles.time}>{uiData.departureTime}</FText>
-            <FText style={Styles.portName} numberOfLines={1}>
-              {uiData.sourceAirportCode}
+        <View style={Styles.flexRowAndJustifySpaceBetween}>
+          <FText style={Styles.time}>{uiData.departureTime}</FText>
+          <Icon.Aeroplane
+            width={DP._18}
+            height={DP._18}
+            fill={Color.LIGHT_BLUEY_GREY}
+            style={Styles.airplane}
+          />
+          <FText style={Styles.time}>{uiData.arrivalTime}</FText>
+        </View>
+        <View
+          style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_8]}>
+          <FText style={Styles.portName}>{uiData.sourceAirportCode}</FText>
+          <View style={Styles.durationAndStopsContainer}>
+            <FText style={[Styles.duration]}>{uiData.duration}</FText>
+            <View style={Styles.dot_two} />
+            <FText style={[Styles.duration]} numberOfLines={1}>
+              {uiData.stop}
             </FText>
-            {!!uiData.sourceAirportTerminal && (
-              <FText style={Styles.terminal}>
-                {uiData.sourceAirportTerminal}
-              </FText>
-            )}
           </View>
-          <View style={[Styles.justifyContent_around, Styles.flex]}>
-            <Icon.Aeroplane
-              width={DP._18}
-              height={DP._18}
-              fill={Color.LIGHT_BLUEY_GREY}
-              style={Styles.airplane}
-            />
-            {uiData.duration && (
-              <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>{uiData.duration}</FText>
-                <View style={Styles.dot_two} />
-                <FText style={Styles.duration}>{uiData.stop}</FText>
-              </View>
-            )}
-          </View>
-          <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-            <FText style={Styles.time}>{uiData.arrivalTime}</FText>
-            <FText style={Styles.portName} numberOfLines={1}>
-              {uiData.destinationAirportCode}
-            </FText>
-            {!!uiData.destinationAirportTerminal && (
-              <FText style={Styles.terminal}>
-                {uiData.destinationAirportTerminal}
-              </FText>
-            )}
-          </View>
+          <FText style={Styles.portName}>{uiData.destinationAirportCode}</FText>
+        </View>
+        <View style={Styles.flexRowAndJustifySpaceBetween}>
+          <FText style={Styles.terminal}>{uiData.sourceAirportTerminal}</FText>
+          <FText style={Styles.terminal}>
+            {uiData.destinationAirportTerminal}
+          </FText>
         </View>
       </FTouchableOpacity>
       {!!uiData.pnr && (

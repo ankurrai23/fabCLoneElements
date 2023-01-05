@@ -68,6 +68,7 @@ const hotelFilterProps = {
     },
   },
   onApply: (item) => console.log('on filter apply', item),
+  onSortSelect: (item) => console.log('sorted', item),
 };
 
 export default hotelFilterProps;

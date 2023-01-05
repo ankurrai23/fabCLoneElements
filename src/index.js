@@ -28,6 +28,7 @@ import Selector from './common/components/selector';
 import Slider from './common/components/slider';
 import RangeSlider from './common/components/rangeSlider';
 import LoadingPlaceholder from './common/components/placeholder';
+import ReasonModal from './common/components/reasonModal';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -152,6 +153,7 @@ export {
   Slider,
   RangeSlider,
   LoadingPlaceholder,
+  ReasonModal,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,

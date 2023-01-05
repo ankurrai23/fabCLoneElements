@@ -28,9 +28,9 @@ export default function HotelSearchResultCard({onCardPress, item}) {
             showsHorizontalScrollIndicator={false}
             keyExtractor={(e) => `${e}`}
           />
-          {!!item.rateType && (
+          {!!item.rateLabel && (
             <FText type={FONT_TYPE.MEDIUM} style={Styles.rateType}>
-              {item.rateType}
+              {item.rateLabel}
             </FText>
           )}
         </View>

@@ -36,7 +36,7 @@ function StackHeader({
         <FText type={FONT_TYPE.MEDIUM} style={[Styles.title, textStyle]}>
           {title}
         </FText>
-        <FText style={[Styles.subTitle]}>{subTitle}</FText>
+        {!!subTitle && <FText style={[Styles.subTitle]}>{subTitle}</FText>}
       </View>
       {rightView}
     </View>

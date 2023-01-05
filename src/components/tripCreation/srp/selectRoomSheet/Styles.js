@@ -7,13 +7,11 @@ export default StyleSheet.create({
     padding: DP._8,
     paddingRight: DP._48,
   },
-  titleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  titleContainer: (error) => ({
     marginTop: DP._16,
     marginHorizontal: DP._24,
-    marginBottom: DP._24,
-  },
+    marginBottom: error ? DP._4 : DP._18,
+  }),
   applyButton: {
     flex: 1,
     marginLeft: DP._8,
@@ -95,4 +93,9 @@ export default StyleSheet.create({
     lineHeight: DP._20,
     color: disabled ? Color.FORD_GRAY : Color.DODGER_BLUE,
   }),
+  subTitle: {
+    lineHeight: DP._14,
+    fontSize: DP._12,
+    color: Color.PASTEL_RED,
+  },
 });

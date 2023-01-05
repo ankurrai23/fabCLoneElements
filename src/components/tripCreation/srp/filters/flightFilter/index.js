@@ -2,7 +2,7 @@ import {View} from 'react-native';
 import React, {useCallback, useImperativeHandle, useRef, useState} from 'react';
 import Styles from './Styles';
 import FTouchableOpacity from '../../../../../common/rn/FTouchableOpacity';
-import FText, {FONT_TYPE} from '../../../../../common/rn/FText';
+import FText from '../../../../../common/rn/FText';
 import SortAndFilter, {FilterButton, FilterSection} from '../component';
 import FImage from '../../../../../common/rn/FImage';
 import Checkbox from '../../../../../common/components/checkbox';
@@ -140,7 +140,13 @@ const Entitlement = React.forwardRef(({entitlement}, ref) => {
   );
 });
 
-const FlightFilter = ({sortData, onSortSelect, filterData, onApply}) => {
+const FlightFilter = ({
+  sortData,
+  onSortSelect,
+  filterData,
+  onApply,
+  isFilterApplied,
+}) => {
   const stopsRef = useRef();
   const airlineRef = useRef();
   const entitlementRef = useRef();
@@ -164,6 +170,7 @@ const FlightFilter = ({sortData, onSortSelect, filterData, onApply}) => {
     <SortAndFilter
       sortData={sortData}
       onSortSelect={onSortSelect}
+      isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
       onApply={onApplyPress}>
       <Stops stops={filterData.stop} ref={stopsRef} />

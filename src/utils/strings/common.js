@@ -151,4 +151,6 @@ export default {
   addRoom: 'Add room',
   selectNoOfAdults: 'Select no. of adult(s)',
   roomNo: (num) => `Room ${num}`,
+  selectRoomForTraveler: (num) => `Select room for ${num} traveler(s)`,
+  travellerError: (num) => `Add ${num} more traveler to proceed.`,
 };
