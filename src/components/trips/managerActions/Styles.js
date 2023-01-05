@@ -44,21 +44,19 @@ export default StyleSheet.create({
     color: Color.DODGER_BLUE,
     lineHeight: DP._16,
   },
-  infoContainer: (bgColor) => ({
+  infoContainer: (type) => ({
     paddingHorizontal: DP._16,
     flexDirection: 'row',
     paddingVertical: DP._8,
     alignItems: 'center',
-    backgroundColor: bgColor ?? Color.ICE_BLUE,
+    backgroundColor: type === 'INFO' ? Color.ICE_BLUE : Color.PASTEL_RED_10,
   }),
   infoText: {
     fontSize: DP._12,
-    marginLeft: DP._4,
   },
   buttonContainer: {
     padding: DP._16,
     flexDirection: 'row',
-    flex: 1,
   },
   rejectButtonStyle: {
     flex: 0.5,

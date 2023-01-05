@@ -33,7 +33,7 @@ const Amount = ({price, inclGST = true}) => (
 export default function ManagerActions({
   actions,
   onActionPress,
-  info,
+  msg,
   isSubTripSoldOut,
   amount,
 }) {
@@ -63,7 +63,7 @@ export default function ManagerActions({
 
   return (
     <View style={Styles.container}>
-      <Separator style={Styles.separator} />
+      {!isSubTripSoldOut && <Separator style={Styles.separator} />}
       {showManagerActions && (
         <View>
           {!isSubTripSoldOut && (
@@ -83,25 +83,19 @@ export default function ManagerActions({
                       </FText>
                     </FTouchableOpacity>
                   </View>
-                  {!info && <Separator style={Styles.separator} />}
+                  {!msg && <Separator style={Styles.separator} />}
                 </>
               )}
             </>
           )}
-          {!!info && (
-            <View style={Styles.infoContainer(info.bgColor)}>
-              <Icon.Info
-                width={DP._16}
-                height={DP._16}
-                style={Styles.infoIcon}
-                stroke={info?.iconColor ?? Color.DODGER_BLUE}
-              />
-              <FText style={Styles.infoText}>{info.text}</FText>
+          {!!msg && (
+            <View style={Styles.infoContainer(msg.type)}>
+              <FText style={Styles.infoText}>{msg.value}</FText>
             </View>
           )}
           {!isSubTripSoldOut ? (
             <View style={Styles.buttonContainer}>
-              {!!amount && <Amount price={formattedPrice(amount)} />}
+              {!!amount && <Amount price={amount} />}
               {denyAction && (
                 <Button
                   onPress={() => setRejectModal(true)}

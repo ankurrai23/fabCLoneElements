@@ -22,16 +22,15 @@ export default StyleSheet.create({
     color: Color.BATTLESHIP_GREY,
     marginTop: DP._4,
   },
-  infoContainer: (bgColor) => ({
+  infoContainer: (type) => ({
     paddingHorizontal: DP._16,
     flexDirection: 'row',
     paddingVertical: DP._8,
     alignItems: 'center',
-    backgroundColor: bgColor ?? Color.ICE_BLUE,
+    backgroundColor: type === 'INFO' ? Color.ICE_BLUE : Color.PASTEL_RED_10,
   }),
   infoText: {
     fontSize: DP._12,
-    marginLeft: DP._4,
   },
   buttonContainer: {
     padding: DP._16,
