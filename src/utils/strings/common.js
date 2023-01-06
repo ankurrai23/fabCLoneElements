@@ -154,4 +154,18 @@ export default {
   roomNo: (num) => `Room ${num}`,
   selectRoomForTraveler: (num) => `Select room for ${num} traveler(s)`,
   travellerError: (num) => `Add ${num} more traveler to proceed.`,
+  priceBreakup: {
+    title: 'Price breakup',
+    flightCharges: 'Flight charges',
+    convenienceFee: 'Convenience fee',
+    hotelCharges: 'Hotel charges',
+    gst: 'GST',
+    hotelCancellationCharges: 'Hotel cancellation charges',
+    hotelModificationCharges: 'Hotel modification charges',
+    flightCancellationCharges: 'Flight cancellation charges',
+    flightModificationCharges: 'Flight modification charges',
+    totalAmount: 'Total amount',
+    paidAmount: 'Paid amount',
+  },
+  ok: 'Ok',
 };

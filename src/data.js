@@ -40,6 +40,7 @@ import listTypeFilterProps from './components/trips/listTypeFilter/data';
 import floatingActionProps from './common/components/floatingActionButton/data';
 import approverChainProps from './components/trips/approverChain/data';
 import employeeActionsProps from './components/trips/employeeActions/data';
+import priceBreakupSheetProps from './components/trips/priceBreakupSheet/data';
 
 //trip creation props
 import coTravelersDetailProps from './components/tripCreation/coTravelersDetails/data';
@@ -151,4 +152,5 @@ export {
   pendingPaymentCarouselProps,
   employeeActionsProps,
   selectRoomSheetProps,
+  priceBreakupSheetProps,
 };

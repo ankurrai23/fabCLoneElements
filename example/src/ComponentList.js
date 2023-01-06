@@ -82,6 +82,7 @@ import {
   PendingPaymentCarousel,
   EmployeeActions,
   SelectRoomSheet,
+  PriceBreakupSheet,
   LoadingPlaceholder,
 } from 'react-native-fab-elements';
 
@@ -335,6 +336,11 @@ const TRIP_COMPONENTS = [
     name: 'Employee Actions',
     component: (props) => <EmployeeActions {...props} />,
     defaultProps: data.employeeActionsProps,
+  },
+  {
+    name: 'PriceBreakupSheet',
+    component: (props) => <PriceBreakupSheet {...props} />,
+    defaultProps: data.priceBreakupSheetProps,
   },
 ];
 

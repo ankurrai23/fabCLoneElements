@@ -46,7 +46,7 @@ const flightItineraryCardProps = {
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
     // pnr: 'GBLP6Q',
-    duration: '1h 50min',
+    totalDuration: '1h 50min',
     airline: 'Indigo',
     stop: 'Non stop (via Hyderabad)',
     reduceOpacity: false,

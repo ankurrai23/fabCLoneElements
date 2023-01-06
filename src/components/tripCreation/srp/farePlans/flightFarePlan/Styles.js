@@ -49,6 +49,7 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     marginEnd: DP._8,
     color: Color.GREY_PURPLE,
+    marginLeft: DP._4,
   },
   planIcon: {
     width: DP._20,
