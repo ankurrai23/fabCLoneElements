@@ -105,16 +105,17 @@ const PendingPaymentSheet = ({paymentRequests, onPressPayment}) => {
         <View>
           <FText>
             {Strings.tripId}
-            <FText type={FONT_TYPE.MEDIUM}>{item.tripId}</FText>
+            <FText type={FONT_TYPE.MEDIUM}>{item.masterTripId}</FText>
           </FText>
           <FText style={Styles.tripTitleStyle}>{item.tripTitle}</FText>
           <FText>
-            {item.tripStartDate} - {item.tripEndDate}
+            {item.start} - {item.end}
           </FText>
         </View>
         <View style={Styles.priceContainer}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.priceStyle}>
-            {item.amount}
+            {Strings.rupee}
+            {Math.ceil(item.amount)}
           </FText>
           <FText style={Styles.inclGSTStyle}>{Strings.inclGST}</FText>
         </View>
@@ -123,7 +124,7 @@ const PendingPaymentSheet = ({paymentRequests, onPressPayment}) => {
         textFont={FONT_TYPE.MEDIUM}
         style={Styles.buttonStyle}
         onPress={() => {
-          onPressPayment(item.tripId);
+          onPressPayment(item.masterTripId);
         }}>
         {Strings.pay}
       </Button>

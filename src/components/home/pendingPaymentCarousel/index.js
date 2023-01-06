@@ -39,7 +39,7 @@ export const Card = ({paymentRequest, onPressPayment}) => {
       {renderTextComponent}
       <FTouchableOpacity
         style={Styles.payNowButton}
-        onPress={() => onPressPayment(paymentRequest.tripId)}>
+        onPress={() => onPressPayment(paymentRequest.masterTripId)}>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.payNowText}>
           {Strings.payNow}
         </FText>
