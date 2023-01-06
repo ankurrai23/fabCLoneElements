@@ -97,6 +97,8 @@ const pendingPaymentSheetProps = {
     // },
   ],
   onPressPayment: (tripId) => console.log({tripId}),
+  showBottomSheet: true,
+  onClose: () => console.log('close bottom sheet'),
 };
 
 export default pendingPaymentSheetProps;

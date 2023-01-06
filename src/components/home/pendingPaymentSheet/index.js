@@ -82,7 +82,12 @@ export const CardDots = React.forwardRef(
 
 const ItemSeparator = () => <View style={{width: DP._16}} />;
 
-const PendingPaymentSheet = ({paymentRequests, onPressPayment}) => {
+const PendingPaymentSheet = ({
+  paymentRequests,
+  onPressPayment,
+  showBottomSheet,
+  onClose,
+}) => {
   const [sheetVisible, setSheetVisible] = useState(true);
   const cardDotsRef = useRef();
   const timerRef = useRef();
@@ -133,8 +138,8 @@ const PendingPaymentSheet = ({paymentRequests, onPressPayment}) => {
 
   return (
     <DialogBox
-      modalVisible={sheetVisible}
-      onClose={() => setSheetVisible(false)}
+      modalVisible={showBottomSheet}
+      onClose={onClose}
       ContentModal={
         <View style={Styles.container}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
