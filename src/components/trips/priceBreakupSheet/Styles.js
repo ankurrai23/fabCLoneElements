@@ -33,7 +33,7 @@ export default StyleSheet.create({
     marginHorizontal: DP._24,
   },
   buttonStyle: {
-    marginTop: DP._20,
+    marginTop: DP._4,
     marginHorizontal: DP._24,
     marginBottom: DP._24,
     borderRadius: DP._30,
@@ -41,5 +41,8 @@ export default StyleSheet.create({
   buttonText: {
     fontSize: DP._16,
     lineHeight: DP._24,
+  },
+  paidAmountText: {
+    marginBottom: DP._20,
   },
 });

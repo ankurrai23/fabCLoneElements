@@ -17,8 +17,8 @@ const PriceBreakupSheet = ({
   containerStyle,
   onOkPress,
 }) => {
-  const FeeDetail = ({title, cost, type}) => (
-    <FTouchableOpacity style={Styles.feeContainer}>
+  const FeeDetail = ({title, cost, type, style}) => (
+    <FTouchableOpacity style={[Styles.feeContainer, style]}>
       <FText type={type}>{title}</FText>
       <FText type={type}>{formattedPrice(cost)}</FText>
     </FTouchableOpacity>
@@ -127,6 +127,7 @@ const PriceBreakupSheet = ({
               <FeeDetail
                 title={Strings.priceBreakup.paidAmount}
                 cost={data.paidAmount}
+                style={Styles.paidAmountText}
               />
             )}
           </ScrollView>
