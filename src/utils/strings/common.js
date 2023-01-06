@@ -128,6 +128,7 @@ export default {
   cancellationPolicy: 'View cancellation policy',
   perNight: 'per night',
   inclGst: '(Incl GST)',
+  exGst: '(ex GST)',
   includeModificationCharge: 'Includes modification charges',
   travelerDetails: 'Traveler details',
   paymentPending: 'Payment pending',

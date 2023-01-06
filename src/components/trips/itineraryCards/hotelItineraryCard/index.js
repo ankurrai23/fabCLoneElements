@@ -277,7 +277,7 @@ const HotelItineraryCard = ({
                         {uiData.price}
                       </FText>
                       <FText style={Styles.priceDetail}>
-                        {uiData.gstIncluded ? Strings.inclGst : ''}
+                        {uiData.gstIncluded ? Strings.inclGst : Strings.exGst}
                       </FText>
                     </View>
                     {uiData.isOutOfPolicy && <OOPTag />}
