@@ -31,6 +31,7 @@ export default StyleSheet.create({
   paymentDetail: {
     marginHorizontal: DP._24,
     marginVertical: DP._16,
+    lineHeight: DP._20,
   },
   flexRow: {
     flexDirection: 'row',

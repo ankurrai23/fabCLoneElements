@@ -14,7 +14,7 @@ const pendingPaymentSheetProps = {
       amount: '₹9,000',
       tripStartDate: "28 Dec'22",
       tripEndDate: "01 Jan'22",
-      deadline: '2022-12-15T15:40:00',
+      deadline: '2023-11-15T15:40:00',
     },
     {
       tripId: 'TPX23NF',
@@ -22,7 +22,7 @@ const pendingPaymentSheetProps = {
       amount: '₹9,000',
       tripStartDate: "28 Dec'22",
       tripEndDate: "01 Jan'22",
-      deadline: '2022-12-15T15:45:00',
+      deadline: '2023-10-15T15:45:15',
     },
     // {
     //   tripId: 'TPX23ND',
@@ -88,6 +88,7 @@ const pendingPaymentSheetProps = {
     //   tripEndDate: "01 Jan'22",
     // },
   ],
+  onPressPayment: (tripId) => console.log({tripId}),
 };
 
 export default pendingPaymentSheetProps;
