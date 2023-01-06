@@ -56,7 +56,6 @@ const flightItineraryCardProps = {
     price: '₹2600',
     modificationCharge: '₹600',
     isOutOfPolicy: true,
-    isSoldOut: true,
     reasonDetails: {
       title: 'Reason for modification',
       text: 'Meeting is postponed due to client unavailability',
