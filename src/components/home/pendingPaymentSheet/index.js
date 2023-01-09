@@ -1,11 +1,5 @@
 import {View, FlatList, LayoutAnimation} from 'react-native';
-import React, {
-  useState,
-  useImperativeHandle,
-  useRef,
-  useCallback,
-  useEffect,
-} from 'react';
+import React, {useState, useImperativeHandle, useRef, useEffect} from 'react';
 import DialogBox from '../../../common/components/dialogBox';
 import {DP} from '../../../utils/Dimen';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
@@ -14,24 +8,11 @@ import Button from '../../../common/components/button';
 import Styles, {CARD_WIDTH} from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {Color} from '../../../utils/color/index.travelPlus';
-import moment from 'moment';
+import {formattedHours, formattedMinutes, useTimer} from '../../../utils/Utils';
 
 export const Timer = React.forwardRef(({paymentRequests}, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(0);
-  const deadline = paymentRequests[currentIndex].deadline;
-
-  useEffect(() => {
-    let intervalRef = setInterval(() => {
-      const seconds = moment(deadline).diff(moment(), 'seconds');
-      if (seconds >= 0) {
-        setTimeLeft(seconds);
-      }
-    }, 100);
-    return () => {
-      clearInterval(intervalRef);
-    };
-  }, [deadline]);
+  const timeLeft = useTimer(paymentRequests[currentIndex].deadline);
 
   useImperativeHandle(ref, () => ({
     setIndex: (index) => {
@@ -39,22 +20,20 @@ export const Timer = React.forwardRef(({paymentRequests}, ref) => {
     },
   }));
 
-  const hours = Math.floor(timeLeft / 3600)
-    .toString(10)
-    .padStart(2, '0');
-  const minutes = Math.floor((timeLeft % 3600) / 60)
-    .toString(10)
-    .padStart(2, '0');
-  const seconds = Math.floor((timeLeft % 3600) % 60)
-    .toString(10)
-    .padStart(2, '0');
-
+  const hours = formattedHours(timeLeft);
+  const minutes = formattedMinutes(timeLeft);
   const unitOfTime = hours > 0 ? 'hours ' : 'minutes ';
 
-  return (
-    <FText>
+  return !timeLeft ? (
+    <FText style={Styles.paymentDetail}>
+      {Strings.makePaymentElseTripCancel}
+    </FText>
+  ) : (
+    <FText style={Styles.paymentDetail}>
+      {Strings.makePaymentWithin}
       <FText type={FONT_TYPE.MEDIUM}>{`${hours}:${minutes} `}</FText>
       {unitOfTime}
+      {Strings.elsePaymentCancel}
     </FText>
   );
 });
@@ -82,13 +61,18 @@ export const CardDots = React.forwardRef(
 
 const ItemSeparator = () => <View style={{width: DP._16}} />;
 
-const PendingPaymentSheet = ({paymentRequests}) => {
+const PendingPaymentSheet = ({
+  paymentRequests,
+  onPressPayment,
+  showBottomSheet,
+  onClose,
+}) => {
   const [sheetVisible, setSheetVisible] = useState(true);
   const cardDotsRef = useRef();
   const timerRef = useRef();
 
   const viewabilityConfig = {
-    itemVisiblePercentThreshold: 90,
+    itemVisiblePercentThreshold: 50,
     waitForInteraction: true,
   };
 
@@ -99,49 +83,48 @@ const PendingPaymentSheet = ({paymentRequests}) => {
     }
   };
 
-  const renderItem = useCallback(
-    ({item}) => (
-      <FTouchableOpacity style={Styles.cardStyle}>
-        <View style={Styles.flexRow}>
-          <View>
-            <FText>
-              {Strings.tripId}
-              <FText type={FONT_TYPE.MEDIUM}>{item.tripId}</FText>
-            </FText>
-            <FText style={Styles.tripTitleStyle}>{item.tripTitle}</FText>
-            <FText>
-              {item.tripStartDate} - {item.tripEndDate}
-            </FText>
-          </View>
-          <View style={Styles.priceContainer}>
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.priceStyle}>
-              {item.amount}
-            </FText>
-            <FText style={Styles.inclGSTStyle}>{Strings.inclGST}</FText>
-          </View>
+  const renderItem = ({item}) => (
+    <FTouchableOpacity style={Styles.cardStyle}>
+      <View style={Styles.flexRow}>
+        <View>
+          <FText>
+            {Strings.tripId}
+            <FText type={FONT_TYPE.MEDIUM}>{item.masterTripId}</FText>
+          </FText>
+          <FText style={Styles.tripTitleStyle}>{item.tripTitle}</FText>
+          <FText>
+            {item.start} - {item.end}
+          </FText>
         </View>
-        <Button textFont={FONT_TYPE.MEDIUM} style={Styles.buttonStyle}>
-          {Strings.pay}
-        </Button>
-      </FTouchableOpacity>
-    ),
-    [],
+        <View style={Styles.priceContainer}>
+          <FText type={FONT_TYPE.MEDIUM} style={Styles.priceStyle}>
+            {Strings.rupee}
+            {Math.ceil(item.amount)}
+          </FText>
+          <FText style={Styles.inclGSTStyle}>{Strings.inclGST}</FText>
+        </View>
+      </View>
+      <Button
+        textFont={FONT_TYPE.MEDIUM}
+        style={Styles.buttonStyle}
+        onPress={() => {
+          onPressPayment(item.masterTripId);
+        }}>
+        {Strings.pay}
+      </Button>
+    </FTouchableOpacity>
   );
 
   return (
     <DialogBox
-      modalVisible={sheetVisible}
-      onClose={() => setSheetVisible(false)}
+      modalVisible={showBottomSheet}
+      onClose={onClose}
       ContentModal={
         <View style={Styles.container}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
             {Strings.paymentPending}
           </FText>
-          <FText style={Styles.paymentDetail}>
-            Make the payment within{' '}
-            <Timer ref={timerRef} paymentRequests={paymentRequests} />
-            else your trip will be cancelled.
-          </FText>
+          <Timer ref={timerRef} paymentRequests={paymentRequests} />
           <FlatList
             data={paymentRequests}
             decelerationRate={'fast'}
@@ -167,5 +150,4 @@ const PendingPaymentSheet = ({paymentRequests}) => {
     />
   );
 };
-
 export default PendingPaymentSheet;

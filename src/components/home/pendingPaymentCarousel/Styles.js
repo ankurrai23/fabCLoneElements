@@ -9,10 +9,15 @@ export default StyleSheet.create({
     borderColor: '#FDDDDD',
     paddingBottom: DP._10,
   },
+  paymentDetail: {
+    marginHorizontal: DP._24,
+    marginVertical: DP._16,
+    lineHeight: DP._20,
+  },
   itemStyle: {
     paddingTop: DP._8,
     paddingHorizontal: DP._16,
-    paddingBottom: DP._4,
+    paddingBottom: DP._6,
     width: DP.match_width - DP._1,
   },
   textStyle: {

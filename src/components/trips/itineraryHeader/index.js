@@ -11,11 +11,22 @@ import Styles from './Styles';
 import Separator from '../../../common/components/separator';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
+import {useTimer} from '../../../utils/Utils';
 
 function ItineraryHeader(props) {
+  const timeLeft = useTimer(props.paymentDeadline);
+
+  const hours = Math.floor(timeLeft / 3600);
+  const minutes = Math.floor((timeLeft % 3600) / 60);
+
+  console.log(hours, minutes);
+
+  const hoursString = `${hours} hour${hours > 1 ? 's' : ''} `;
+  const minutesString = `${minutes} min${minutes > 1 ? 's' : ''} `;
+
   return (
     <View style={Styles.container}>
-      <View style={Styles.flexRow}>
+      <View style={Styles.header}>
         <FTouchableOpacity
           onPress={props.onBackClick}
           hitSlop={{left: 50, right: 20, bottom: 20, top: 20}}>
@@ -57,6 +68,29 @@ function ItineraryHeader(props) {
       )}
       {props.cancelledMessage && (
         <FText style={Styles.cancelMessage}>{props.cancelledMessage}</FText>
+      )}
+      {props.paymentDeadline && (
+        <View>
+          <View style={Styles.paymentPendingContainer}>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.paymentPending}>
+              {Strings.paymentPending}
+            </FText>
+            <View style={Styles.flexRow}>
+              {(hours > 0 || minutes > 0) && (
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.fontSize10}>
+                  {`${hours > 0 ? hoursString : ''}${
+                    minutes > 0 ? minutesString : ''
+                  }`}
+                </FText>
+              )}
+              <FText style={Styles.fontSize10}>
+                {hours > 0 || minutes > 0
+                  ? Strings.leftToPayElseApprovalCancel
+                  : Strings.makePaymentElseTripCancel}
+              </FText>
+            </View>
+          </View>
+        </View>
       )}
       {props.tripRequesterInfo && (
         <>
