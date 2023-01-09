@@ -61,7 +61,7 @@ const PriceBreakupSheet = ({
                 <Separator style={Styles.separator} />
               </>
             )}
-            {!!data.hotelCancellationCharges && (
+            {!!data.hotelCancellationCharges?.amount && (
               <>
                 <FeeDetail
                   title={Strings.priceBreakup.hotelCancellationCharges}
@@ -74,7 +74,7 @@ const PriceBreakupSheet = ({
                 <Separator style={Styles.separator} />
               </>
             )}
-            {!!data.hotelModificationCharges && (
+            {!!data.hotelModificationCharges?.amount && (
               <>
                 <FeeDetail
                   title={Strings.priceBreakup.hotelModificationCharges}
@@ -87,7 +87,7 @@ const PriceBreakupSheet = ({
                 <Separator style={Styles.separator} />
               </>
             )}
-            {!!data.flightCancellationCharges && (
+            {!!data.flightCancellationCharges?.amount && (
               <>
                 <FeeDetail
                   title={Strings.priceBreakup.flightCancellationCharges}
@@ -100,7 +100,7 @@ const PriceBreakupSheet = ({
                 <Separator style={Styles.separator} />
               </>
             )}
-            {!!data.flightModificationCharges && (
+            {!!data.flightModificationCharges?.amount && (
               <>
                 <FeeDetail
                   title={Strings.priceBreakup.flightModificationCharges}
