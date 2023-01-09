@@ -21,6 +21,7 @@ import {
   Placeholder,
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
+import remarksBox from '../../components/remarksBox/RemarksBox';
 
 const FlightItineraryCard = ({
   status,
@@ -343,20 +344,11 @@ const FlightItineraryCard = ({
           <Separator style={Styles.seperatorStyle} />
         </>
       )}
-      {!!uiData.reasonDetails && (
-        <View style={Styles.reasonBox}>
-          <FText style={Styles.reasonTitle} type={FONT_TYPE.MEDIUM}>
-            {uiData.reasonDetails.title}
-          </FText>
-          <FText style={Styles.reasonText}>{uiData.reasonDetails.text}</FText>
-        </View>
-      )}
+      {viewRemarksAction && !!uiData.remarks && remarksBox(uiData.remarks)}
       {!actionDisabled &&
-        (rescheduleAction ||
-          cancelAction ||
-          viewRemarksAction ||
-          editAction ||
-          removeAction) && <ActionsInItinerary />}
+        (rescheduleAction || cancelAction || editAction || removeAction) && (
+          <ActionsInItinerary />
+        )}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
