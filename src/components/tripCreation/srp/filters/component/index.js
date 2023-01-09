@@ -14,9 +14,9 @@ import {DP} from '../../../../../utils/Dimen';
 const SortOption = ({item, onPress}) => {
   return (
     <FTouchableOpacity
-      style={Styles.sortOption(item.isSelected)}
+      style={Styles.sortOption(item.selected)}
       onPress={() => onPress(item)}>
-      <FText style={Styles.sortText(item.isSelected)}>{item.value}</FText>
+      <FText style={Styles.sortText(item.selected)}>{item.value}</FText>
     </FTouchableOpacity>
   );
 };
