@@ -9,9 +9,13 @@ import {DP} from '../../../../utils/Dimen';
 import Icon from '../../../../assets/icons/Icon';
 import OOPTag from '../../../trips/components/OOPTag/OOPTag';
 
-export default function FlightSearchResultCard({onPress, flightInfo}) {
+export default function FlightSearchResultCard({
+  onPress,
+  flightInfo,
+  isSelected,
+}) {
   return (
-    <FTouchableOpacity onPress={onPress} style={Styles.container}>
+    <FTouchableOpacity onPress={onPress} style={Styles.container(isSelected)}>
       <View style={Styles.flightParticulars}>
         <FImage
           style={Styles.imageStyle}
