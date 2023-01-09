@@ -138,6 +138,8 @@ export default {
   payNow: 'Pay now',
   tripPendingMakePayment: (title) =>
     `${title} trip payment is pending. Make payment within `,
+  tripPendingMakePaymentAfterTimeout: (title) =>
+    `${title} trip payment is pending. Make payment now else your trip will be cancelled.`,
   rupee: '₹',
   notify: 'Notify',
   requestModification: 'Request modification',
@@ -168,4 +170,8 @@ export default {
     paidAmount: 'Paid amount',
   },
   ok: 'Ok',
+  makePaymentAfterTimeOut:
+    'Hurry up! Make the payment now else your trip will be cancelled.',
+  makePaymentWithin: 'Make the payment within ',
+  elsePaymentCancel: 'else your trip will be cancelled.',
 };
