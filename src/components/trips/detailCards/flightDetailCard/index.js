@@ -88,10 +88,7 @@ const FlightDetailCard = ({
               <FText
                 style={
                   Styles.headerMonth
-                }>{`${tripDetails.monthAndYear} | `}</FText>
-              <FText>
-                {Strings.pnr}: {tripDetails.pnr}
-              </FText>
+                }>{`${tripDetails.month} '${tripDetails.year}`}</FText>
             </View>
             {!!tripDetails.flightBookingStatus && (
               <TripStatus
@@ -99,25 +96,27 @@ const FlightDetailCard = ({
               />
             )}
           </View>
-          <View
-            style={[
-              Styles.flexDirectionRow,
-              Styles.flexRowAndAlignCenter,
-              {marginTop: DP._8},
-            ]}>
+          <View style={[Styles.flexDirectionRow, {marginTop: DP._8}]}>
             <View style={Styles.flexRowAndAlignCenter}>
               <FImage
                 style={Styles.airlineIcon}
                 source={{uri: tripDetails.airlineIcon}}
               />
-              <FText style={{marginLeft: DP._8, marginRight: DP._4}}>
-                {tripDetails.airline}
-              </FText>
-              <FText style={{fontSize: DP._12, color: Color.BLUEY_GREY}}>
-                | {tripDetails.airlineCode}-{tripDetails.flightNumber}
-              </FText>
+              <View style={{marginLeft: DP._8}}>
+                <FText>{tripDetails.airline}</FText>
+                <FText
+                  style={{
+                    fontSize: DP._12,
+                    color: Color.BLUEY_GREY,
+                    marginTop: DP._2,
+                  }}>
+                  {tripDetails.airlineCode}-{tripDetails.flightNumber}
+                </FText>
+              </View>
             </View>
-            <FText style={{fontSize: DP._18, lineHeight: DP._21}}>
+            <FText
+              type={FONT_TYPE.MEDIUM}
+              style={{fontSize: DP._16, lineHeight: DP._21}}>
               {tripDetails.price}
             </FText>
           </View>
@@ -143,7 +142,9 @@ const FlightDetailCard = ({
                 style={Styles.airplane}
               />
               <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>{tripDetails.duration}</FText>
+                <FText style={Styles.duration}>
+                  {tripDetails.totalDuration}
+                </FText>
                 <View style={Styles.dot_two} />
                 <FText style={Styles.duration}>{tripDetails.stop}</FText>
               </View>
@@ -161,9 +162,9 @@ const FlightDetailCard = ({
         </FTouchableOpacity>
         <Separator style={Styles.actionsSeperator} />
         <FText style={Styles.bookingIdTitle}>
-          {Strings.bookingId}
+          {Strings.pnr}
           {': '}
-          <FText type={FONT_TYPE.MEDIUM}>{tripDetails.bookingId}</FText>
+          <FText type={FONT_TYPE.MEDIUM}>{tripDetails.pnr}</FText>
         </FText>
         {!!tripDetails.travelerNames.length && (
           <>
@@ -176,7 +177,7 @@ const FlightDetailCard = ({
                 <View style={Styles.flexRow}>
                   <Icon.Person />
                   <FText key={index} style={Styles.travelerNameStyle}>
-                    {item.name}
+                    {item}
                   </FText>
                 </View>
               ))}
