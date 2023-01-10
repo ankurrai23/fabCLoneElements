@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
-import {Color} from '../../../../utils/color/index.fabhotel';
+import {Color} from '../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
 
 export default StyleSheet.create({
-  container: {
+  container: (isSelected) => ({
     backgroundColor: Color.WHITE,
     overflow: 'hidden',
     paddingVertical: DP._12,
@@ -12,7 +12,9 @@ export default StyleSheet.create({
     borderRadius: DP._12,
     ...cardStyleObj,
     ...shadowObj,
-  },
+    borderColor: isSelected ? Color.DARK_SEA_FOAM : Color.LIGHT_PERIWINKLE,
+    borderWidth: isSelected ? DP._1 : DP._0_5,
+  }),
   flightParticulars: {
     flexDirection: 'row',
     justifyContent: 'space-between',

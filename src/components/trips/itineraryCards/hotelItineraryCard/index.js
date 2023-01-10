@@ -22,6 +22,7 @@ import {
   Placeholder,
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
+import remarksBox from '../../components/remarksBox/RemarksBox';
 
 const HotelItineraryCard = ({
   status,
@@ -96,51 +97,41 @@ const HotelItineraryCard = ({
     <>
       <Separator style={Styles.separatorStyle} />
       <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
+        {cancelAction && (
           <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
+            onPress={() => onActionPress(cancelAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
+            <Icon.Cross
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.PASTEL_RED}
+            />
+            <FText style={Styles.cancel}>{cancelAction.name}</FText>
           </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Cross
-                  width={DP._16}
-                  height={DP._16}
-                  stroke={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {modifyAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(modifyAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Reschedule width={DP._16} height={DP._16} />
-                <FText style={Styles.reschedule}>{modifyAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {removeAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(removeAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
-                <FText style={Styles.cancel}>{removeAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {editAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(editAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Edit />
-                <FText style={Styles.reschedule}>{editAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
+        )}
+        {modifyAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(modifyAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Reschedule width={DP._16} height={DP._16} />
+            <FText style={Styles.reschedule}>{modifyAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {removeAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(removeAction)}
+            style={Styles.flexRowAndAlignCenter}>
+            <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+            <FText style={Styles.cancel}>{removeAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {editAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(editAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Edit />
+            <FText style={Styles.reschedule}>{editAction.name}</FText>
+          </FTouchableOpacity>
         )}
       </View>
     </>
@@ -303,12 +294,13 @@ const HotelItineraryCard = ({
             )}
           </View>
         </FTouchableOpacity>
+
+        {viewRemarksAction && !!uiData.remarks && remarksBox(uiData.remarks)}
+
         {!actionsDisabled &&
-          (modifyAction ||
-            cancelAction ||
-            viewRemarksAction ||
-            editAction ||
-            removeAction) && <ActionsInItinerary />}
+          (modifyAction || cancelAction || editAction || removeAction) && (
+            <ActionsInItinerary />
+          )}
         {showInfo && (
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}

@@ -69,6 +69,8 @@ export default {
   checkOutDate: 'Check-out date',
   checkInTime: `Check-in time: `,
   checkOutTime: `Check-out time: `,
+  checkIn: (time) => `Check-in: ${time}`,
+  checkOut: (time) => `Check-out: ${time}`,
   inclusions: 'Inclusions',
   rooms: 'Rooms',
   moreInclusions: (count) => ` +${count - 3} more`,
@@ -170,8 +172,11 @@ export default {
     paidAmount: 'Paid amount',
   },
   ok: 'Ok',
-  makePaymentAfterTimeOut:
+  leftToPayElseApprovalCancel: 'left to pay. Else approval shall be cancelled',
+  makePaymentElseTripCancel:
     'Hurry up! Make the payment now else your trip will be cancelled.',
+  makePaymentElseApprovalCancel:
+    'Hurry up! Make the payment now else your approval shall be cancelled.',
   makePaymentWithin: 'Make the payment within ',
   elsePaymentCancel: 'else your trip will be cancelled.',
 };

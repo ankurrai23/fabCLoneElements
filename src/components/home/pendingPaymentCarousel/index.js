@@ -8,18 +8,13 @@ import {Color} from '../../../utils/color/index.travelPlus';
 import {CardDots} from '../pendingPaymentSheet';
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
-import {useTimer} from '../pendingPaymentSheet';
+import {formattedHours, formattedMinutes, useTimer} from '../../../utils/Utils';
 
 export const Card = ({paymentRequest, onPressPayment}) => {
   const timeLeft = useTimer(paymentRequest.deadline);
 
-  const hours = Math.floor(timeLeft / 3600)
-    .toString(10)
-    .padStart(2, '0');
-  const minutes = Math.floor((timeLeft % 3600) / 60)
-    .toString(10)
-    .padStart(2, '0');
-
+  const hours = formattedHours(timeLeft);
+  const minutes = formattedMinutes(timeLeft);
   const unitOfTime = hours > 0 ? 'hours ' : 'minutes ';
 
   const renderTextComponent = !timeLeft ? (

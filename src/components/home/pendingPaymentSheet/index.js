@@ -8,24 +8,7 @@ import Button from '../../../common/components/button';
 import Styles, {CARD_WIDTH} from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {Color} from '../../../utils/color/index.travelPlus';
-import moment from 'moment';
-
-export const useTimer = (deadLine) => {
-  const [timeLeft, setTimeLeft] = useState(0);
-  useEffect(() => {
-    let intervalRef = setInterval(() => {
-      let seconds = moment(deadLine).diff(moment(), 'seconds');
-      if (seconds < 0) {
-        seconds = 0;
-      }
-      setTimeLeft(seconds);
-    }, 100);
-    return () => {
-      clearInterval(intervalRef);
-    };
-  }, [deadLine]);
-  return timeLeft;
-};
+import {formattedHours, formattedMinutes, useTimer} from '../../../utils/Utils';
 
 export const Timer = React.forwardRef(({paymentRequests}, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,17 +20,13 @@ export const Timer = React.forwardRef(({paymentRequests}, ref) => {
     },
   }));
 
-  const hours = Math.floor(timeLeft / 3600)
-    .toString(10)
-    .padStart(2, '0');
-  const minutes = Math.floor((timeLeft % 3600) / 60)
-    .toString(10)
-    .padStart(2, '0');
+  const hours = formattedHours(timeLeft);
+  const minutes = formattedMinutes(timeLeft);
   const unitOfTime = hours > 0 ? 'hours ' : 'minutes ';
 
   return !timeLeft ? (
     <FText style={Styles.paymentDetail}>
-      {Strings.makePaymentAfterTimeOut}
+      {Strings.makePaymentElseTripCancel}
     </FText>
   ) : (
     <FText style={Styles.paymentDetail}>

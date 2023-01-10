@@ -34,6 +34,7 @@ const hotelItineraryCardProps = {
     bookingId: 'AZCD123',
     isSoldOut: false,
     gstIncluded: false,
+    remarks: 'Room with breakfast and meals',
     isPriceFetched: true,
   },
   actionsDisabled: false,
@@ -57,7 +58,7 @@ const hotelItineraryCardProps = {
   showLine: true,
   showInfo: false,
   timelineGreyed: false,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   showConfirmedStatus: false,
   hideChevron: true,
 };
