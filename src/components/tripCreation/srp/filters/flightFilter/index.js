@@ -34,7 +34,7 @@ const Airlines = React.forwardRef(({airline}, ref) => {
 
   return (
     <FilterSection title={Strings.airlines}>
-      {airline
+      {state
         .filter((_, index) => index < airlinesCount)
         .map((item, index, array) => (
           <>

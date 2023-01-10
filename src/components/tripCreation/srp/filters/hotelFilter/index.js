@@ -37,7 +37,7 @@ const HotelRating = React.forwardRef(({starRatings}, ref) => {
   return (
     <FilterSection title={Strings.hotelRating}>
       <View style={Styles.buttonContainer}>
-        {starRatings
+        {state
           .filter((e) => e.id !== Strings.one)
           .map((item, index) => (
             <FilterButton
