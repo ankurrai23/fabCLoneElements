@@ -69,6 +69,8 @@ export default {
   checkOutDate: 'Check-out date',
   checkInTime: `Check-in time: `,
   checkOutTime: `Check-out time: `,
+  checkIn: (time) => `Check-in: ${time}`,
+  checkOut: (time) => `Check-out: ${time}`,
   inclusions: 'Inclusions',
   rooms: 'Rooms',
   moreInclusions: (count) => ` +${count - 3} more`,

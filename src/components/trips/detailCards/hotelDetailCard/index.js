@@ -191,7 +191,7 @@ export default function HotelDetailCard({
                   date={item.checkIn.date}
                   time={
                     item.checkIn.time
-                      ? Strings.checkInTime(item.checkIn.time)
+                      ? Strings.checkIn(item.checkIn.time)
                       : null
                   }
                 />
@@ -200,7 +200,7 @@ export default function HotelDetailCard({
                   date={item.checkOut.date}
                   time={
                     item.checkOut.time
-                      ? Strings.checkOutTime(item.checkOut.time)
+                      ? Strings.checkOut(item.checkOut.time)
                       : null
                   }
                 />
