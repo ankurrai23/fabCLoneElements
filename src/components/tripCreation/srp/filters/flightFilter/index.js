@@ -158,11 +158,16 @@ const FlightFilter = ({
   }, []);
 
   const onApplyPress = () => {
-    const data = {
-      stop: stopsRef.current.data,
-      filterAirline: airlineRef.current.data,
-      entitlement: entitlementRef.current.data,
-    };
+    const data = {};
+    if (filterData.stop) {
+      data.stop = stopsRef.current.data;
+    }
+    if (filterData.filterAirline) {
+      data.filterAirline = airlineRef.current.data;
+    }
+    if (filterData.entitlement) {
+      data.entitlement = entitlementRef.current.data;
+    }
     onApply(data);
   };
 
@@ -173,9 +178,16 @@ const FlightFilter = ({
       isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
       onApply={onApplyPress}>
-      <Stops stops={filterData.stop} ref={stopsRef} />
-      <Airlines airline={filterData.filterAirline} ref={airlineRef} />
-      <Entitlement entitlement={filterData.entitlement} ref={entitlementRef} />
+      {filterData.stop && <Stops stops={filterData.stop} ref={stopsRef} />}
+      {filterData.filterAirline && (
+        <Airlines airline={filterData.filterAirline} ref={airlineRef} />
+      )}
+      {filterData.entitlement && (
+        <Entitlement
+          entitlement={filterData.entitlement}
+          ref={entitlementRef}
+        />
+      )}
     </SortAndFilter>
   );
 };
