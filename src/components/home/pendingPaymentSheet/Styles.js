@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {Color} from '../../../utils/color/index.travelPlus';
 import {DP} from '../../../utils/Dimen';
 import {cardStyleObj, shadowObj} from '../../../utils/Utils';
-
+import {isPlatformIos} from '../../../utils/Utils';
 export const CARD_WIDTH = 0.8 * DP.match_width;
 
 export default StyleSheet.create({
@@ -21,7 +21,7 @@ export default StyleSheet.create({
   }),
   container: {
     paddingTop: DP._16,
-    paddingBottom: DP._10,
+    paddingBottom: isPlatformIos() ? DP._20 : DP._10,
   },
   title: {
     fontSize: DP._18,
