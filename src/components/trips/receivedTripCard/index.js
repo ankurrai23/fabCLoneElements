@@ -16,8 +16,13 @@ import {Strings} from '../../../utils/strings/index.travelPlus';
 import {MANAGER_ACTIONS} from '../managerActions';
 import Icon from '../../../assets/icons/Icon';
 import {getSubTripIcon} from '../../../utils/Utils';
+import {TrainSubtripActions} from '../../../utils/SubTripActions';
 
 const ReceivedCard = ({item, onCardPress, onActionPress}) => {
+  const isActionEnabled = (type) => item.actions?.find((e) => e.type === type);
+  const denyAction = isActionEnabled(MANAGER_ACTIONS.DENY);
+  const approveAction = isActionEnabled(MANAGER_ACTIONS.APPROVE);
+
   const [sheetVisible, setSheetVisible] = useState(false);
   const [approveModal, setApproveModal] = useState(false);
   const [rejectModal, setRejectModal] = useState(false);
@@ -118,36 +123,12 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               </FText>
             </FTouchableOpacity>
           )}
-          {item.actions?.[1]?.type === MANAGER_ACTIONS.DENY &&
-          item.actions?.[0]?.type === MANAGER_ACTIONS.APPROVE ? (
+          {!!(denyAction || approveAction) && (
             <FText style={Styles.actionText(Color.DODGER_BLUE)}>
-              {item.actions?.[0].name}/{item.actions?.[1].name}
+              {denyAction ? denyAction.name : ''}
+              {denyAction && approveAction ? '/' : ''}
+              {approveAction ? approveAction.name : ''}
             </FText>
-          ) : (
-            <>
-              {item.actions?.[1]?.type === MANAGER_ACTIONS.DENY && (
-                <FTouchableOpacity
-                  activeOpacity={1}
-                  style={[Styles.btn]}
-                  onPress={() => setRejectModal(true)}>
-                  <Icon.Reject width={DP._16} height={DP._16} />
-                  <FText style={Styles.actionText(Color.PASTEL_RED)}>
-                    {item.actions?.[1].name}
-                  </FText>
-                </FTouchableOpacity>
-              )}
-              {item.actions?.[0]?.type === MANAGER_ACTIONS.APPROVE && (
-                <FTouchableOpacity
-                  activeOpacity={1}
-                  style={[Styles.btn]}
-                  onPress={() => setApproveModal(true)}>
-                  <Icon.Approve width={DP._16} height={DP._16} />
-                  <FText style={Styles.actionText(Color.DARK_SEA_FOAM)}>
-                    {item.actions?.[0].name}
-                  </FText>
-                </FTouchableOpacity>
-              )}
-            </>
           )}
         </View>
       </FTouchableOpacity>

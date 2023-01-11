@@ -3,6 +3,7 @@ import {DP} from '../../../../utils/Dimen';
 // import {Color} from '../../../utils/color';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
+
 export default StyleSheet.create({
   container: {
     // marginHorizontal: DP._16,
@@ -110,9 +111,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   heading: {
-    marginVertical: DP._16,
-    marginTop: DP._24,
-    // marginHorizontal: DP._16,
+    marginBottom: DP._16,
   },
   dot_two: {
     padding: DP._3,
