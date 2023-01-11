@@ -55,6 +55,7 @@ const FlightItineraryCard = ({
   );
   const editAction = isActionEnabled(FlightSubTripActions.EDIT);
   const removeAction = isActionEnabled(FlightSubTripActions.REMOVE);
+  const refundStatus = isActionEnabled(FlightSubTripActions.REFUND_STATUS);
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -128,6 +129,14 @@ const FlightItineraryCard = ({
                 <FText style={Styles.reschedule}>{editAction.name}</FText>
               </FTouchableOpacity>
             )}
+            {!!refundStatus && (
+              <FTouchableOpacity
+                onPress={() => onActionPress(refundStatus)}
+                style={Styles.primaryButtonStyle}>
+                <Icon.Refund />
+                <FText style={Styles.reschedule}>{refundStatus.name}</FText>
+              </FTouchableOpacity>
+            )}
           </>
         )}
       </View>
@@ -187,7 +196,6 @@ const FlightItineraryCard = ({
           </View>
         </View>
       </FTouchableOpacity>
-
       {!actionDisabled &&
         (rescheduleAction ||
           cancelAction ||
@@ -346,9 +354,11 @@ const FlightItineraryCard = ({
       )}
       {viewRemarksAction && !!uiData.remarks && remarksBox(uiData.remarks)}
       {!actionDisabled &&
-        (rescheduleAction || cancelAction || editAction || removeAction) && (
-          <ActionsInItinerary />
-        )}
+        (rescheduleAction ||
+          cancelAction ||
+          editAction ||
+          removeAction ||
+          refundStatus) && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}

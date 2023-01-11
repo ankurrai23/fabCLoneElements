@@ -611,6 +611,28 @@ const Minus = ({width, height, stroke, strokeWidth, ...props}) => (
   </Svg>
 );
 
+const Refund = ({width, height, stroke, ...props}) => (
+  <Svg
+    width={width ?? 16}
+    height={width ?? 18}
+    viewBox="0 0 16 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M14.0921 10.93C13.6901 12.3344 12.805 13.5647 11.5876 14.4113C10.3702 15.2579 8.89591 15.6685 7.41584 15.5731C5.93577 15.4777 4.54154 14.8821 3.47069 13.8879C2.39985 12.8938 1.71865 11.5625 1.54317 10.1209C1.36769 8.67933 1.70878 7.21667 2.50833 5.98213C3.30788 4.74759 4.51642 3.81756 5.92802 3.35051C7.33961 2.88347 8.86694 2.90829 10.2498 3.42077C11.6326 3.93324 12.7853 4.90166 13.5116 6.161"
+      stroke={stroke ?? '#379AFF'}
+      strokeLinecap="round"
+    />
+    <Path
+      d="M14.7585 3.97072L13.8896 7.00576L10.8011 6.19177"
+      stroke={stroke ?? '#379AFF'}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
 const Icon = {
   Reschedule,
   ChevronLeft,
@@ -665,6 +687,7 @@ const Icon = {
   Bus,
   Edit,
   Minus,
+  Refund,
 };
 
 export default Icon;

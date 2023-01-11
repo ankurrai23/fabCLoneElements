@@ -63,13 +63,17 @@ const flightItineraryCardProps = {
     },
   },
   actions: [
+    // {
+    //   type: 'RESCHEDULE',
+    //   name: 'Reschedule',
+    // },
+    // {
+    //   type: 'CANCEL',
+    //   name: 'Cancel',
+    // },
     {
-      type: 'RESCHEDULE',
-      name: 'Reschedule',
-    },
-    {
-      type: 'CANCEL',
-      name: 'Cancel',
+      type: 'REFUND_STATUS',
+      name: 'Refund status',
     },
   ],
   onActionPress: (item) => console.log('Action Pressed', item),
@@ -79,7 +83,7 @@ const flightItineraryCardProps = {
   showInfo: false,
   isAlert: true,
   timelineGreyed: false,
-  actionDisabled: true,
+  actionDisabled: false,
   showStatus: false,
   notificationText: null,
   showPreBookingCard: false,
