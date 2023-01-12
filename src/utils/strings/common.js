@@ -133,6 +133,7 @@ export default {
   exGst: '(ex GST)',
   includeModificationCharge: 'Includes modification charges',
   travelerDetails: 'Traveler details',
+  ticketNumber: 'Ticket Number',
   paymentPending: 'Payment pending',
   pay: 'Pay',
   tripId: 'Trip ID: ',

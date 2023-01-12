@@ -151,8 +151,7 @@ export default StyleSheet.create({
   travelerDetailStyle: {
     fontSize: DP._12,
     marginBottom: DP._12,
-    lineHeight: DP._16,
-    color: Color.GREY_PURPLE,
+    lineHeight: DP._15,
   },
   bookingIdTitle: {
     paddingHorizontal: DP._16,

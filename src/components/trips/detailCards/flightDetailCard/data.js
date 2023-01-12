@@ -22,18 +22,22 @@ const flightDetailCardProps = {
     price: '₹2600',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-    travelerNames: [
+    travelersInfo: [
       {
         name: 'Sahil Malhan',
+        seat: '123456',
       },
       {
         name: 'Vibhav Bhadauriya',
+        seat: '123456',
       },
       {
         name: 'Sahil Malhan',
+        seat: '123456',
       },
       {
         name: 'Vibhav Bhadauriya',
+        seat: '123456',
       },
     ],
     bookingId: 'ABDC1234',

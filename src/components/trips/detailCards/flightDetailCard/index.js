@@ -166,19 +166,28 @@ const FlightDetailCard = ({
           {': '}
           <FText type={FONT_TYPE.MEDIUM}>{tripDetails.pnr}</FText>
         </FText>
-        {!!tripDetails.travelerNames.length && (
+        {!!tripDetails.travelersInfo.length && (
           <>
             <Separator style={Styles.actionsSeperator} />
             <View style={Styles.travelerDetailContainer}>
-              <FText style={Styles.travelerDetailStyle}>
-                {Strings.travelerDetails}
-              </FText>
-              {tripDetails.travelerNames.map((item, index) => (
-                <View style={Styles.flexRow}>
-                  <Icon.Person />
-                  <FText key={index} style={Styles.travelerNameStyle}>
-                    {item}
-                  </FText>
+              <View style={Styles.flexDirectionRow}>
+                <FText style={Styles.travelerDetailStyle}>
+                  {Strings.travelerDetails}
+                </FText>
+                <FText style={Styles.travelerDetailStyle}>
+                  {Strings.ticketNumber}
+                </FText>
+              </View>
+
+              {tripDetails.travelersInfo.map((item, index) => (
+                <View style={Styles.flexDirectionRow}>
+                  <View style={Styles.flexRow}>
+                    <Icon.Person />
+                    <FText key={index} style={Styles.travelerNameStyle}>
+                      {item.name}
+                    </FText>
+                  </View>
+                  <FText style={Styles.travelerNameStyle}>{item.seat}</FText>
                 </View>
               ))}
             </View>
