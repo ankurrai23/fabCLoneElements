@@ -10,11 +10,13 @@ import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 
 export const Card = ({paymentRequest, onPressPayment}) => {
-  const renderTextComponent = paymentRequest.alertMessage;
+  const {deadline} = paymentRequest;
 
   return (
     <View style={Styles.itemStyle}>
-      <FText>{renderTextComponent}</FText>
+      <FText style={Styles.textStyle}>
+        <FText type={FONT_TYPE.MEDIUM}>{deadline.key}</FText> {deadline.value}
+      </FText>
       <FTouchableOpacity
         style={Styles.payNowButton}
         onPress={() => onPressPayment(paymentRequest.masterTripId)}>

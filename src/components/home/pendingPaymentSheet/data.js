@@ -6,8 +6,10 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      deadline: '2023-01-07T04:00:00+05:30',
-      alertMessage: 'Alert message 1',
+      deadline: {
+        key: null,
+        value: 'left to pay. Else trip will be cancelled.',
+      },
     },
     {
       masterTripId: 'TPZSMYAK',
@@ -15,8 +17,10 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      alertMessage: 'Alert message 2',
-      deadline: '2023-01-08T04:00:00+05:30',
+      deadline: {
+        key: '4 hours 26 mins',
+        value: 'left to pay. Else trip will be cancelled.',
+      },
     },
     {
       masterTripId: 'TPZSMYAL',
@@ -24,8 +28,10 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      alertMessage: 'Alert message 3',
-      deadline: '2023-01-09T04:00:00+05:30',
+      deadline: {
+        key: '5 hours 26 mins',
+        value: 'left to pay. Else trip will be cancelled.',
+      },
     },
     {
       masterTripId: 'TPZSMYAM',
@@ -33,8 +39,10 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      alertMessage: 'Alert message 4',
-      deadline: '2023-01-02T04:00:00+05:30',
+      deadline: {
+        key: '6 hours 26 mins',
+        value: 'left to pay. Else trip will be cancelled.',
+      },
     },
     // {
     //   tripId: 'TPX23ND',

@@ -9,12 +9,20 @@ import Styles, {CARD_WIDTH} from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {Color} from '../../../utils/color/index.travelPlus';
 
+const defaultTripTitle = {
+  timeLeft: '',
+  alertString: '',
+};
 export const Timer = React.forwardRef(({paymentRequests}, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [tripTitle, setTripTitle] = useState('');
+  const [alertMessage, setAlertMessage] = useState(defaultTripTitle);
 
   useEffect(() => {
-    setTripTitle(paymentRequests[currentIndex].alertMessage);
+    const newAlertMessage = {
+      timeLeft: paymentRequests[currentIndex].deadline.key,
+      alertString: paymentRequests[currentIndex].deadline.value,
+    };
+    setAlertMessage(newAlertMessage);
   }, [currentIndex, paymentRequests]);
 
   useImperativeHandle(ref, () => ({
@@ -23,7 +31,12 @@ export const Timer = React.forwardRef(({paymentRequests}, ref) => {
     },
   }));
 
-  return <FText style={Styles.paymentDetail}>{tripTitle}</FText>;
+  return (
+    <FText style={Styles.paymentDetail}>
+      <FText type={FONT_TYPE.MEDIUM}>{alertMessage.timeLeft}</FText>{' '}
+      {alertMessage.alertString}
+    </FText>
+  );
 });
 
 export const CardDots = React.forwardRef(
