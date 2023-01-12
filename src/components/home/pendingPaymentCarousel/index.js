@@ -8,30 +8,13 @@ import {Color} from '../../../utils/color/index.travelPlus';
 import {CardDots} from '../pendingPaymentSheet';
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
-import {formattedHours, formattedMinutes, useTimer} from '../../../utils/Utils';
 
 export const Card = ({paymentRequest, onPressPayment}) => {
-  const timeLeft = useTimer(paymentRequest.deadline);
-
-  const hours = formattedHours(timeLeft);
-  const minutes = formattedMinutes(timeLeft);
-  const unitOfTime = hours > 0 ? 'hours ' : 'minutes ';
-
-  const renderTextComponent = !timeLeft ? (
-    <FText style={Styles.textStyle}>
-      {Strings.tripPendingMakePaymentAfterTimeout(paymentRequest.tripTitle)}
-    </FText>
-  ) : (
-    <FText style={Styles.textStyle}>
-      {Strings.tripPendingMakePayment(paymentRequest.tripTitle)}
-      <FText type={FONT_TYPE.MEDIUM}>{`${hours}:${minutes} `}</FText>
-      {unitOfTime}
-    </FText>
-  );
+  const renderTextComponent = paymentRequest.alertMessage;
 
   return (
     <View style={Styles.itemStyle}>
-      {renderTextComponent}
+      <FText>{renderTextComponent}</FText>
       <FTouchableOpacity
         style={Styles.payNowButton}
         onPress={() => onPressPayment(paymentRequest.masterTripId)}>

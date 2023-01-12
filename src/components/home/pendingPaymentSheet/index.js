@@ -8,11 +8,14 @@ import Button from '../../../common/components/button';
 import Styles, {CARD_WIDTH} from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {Color} from '../../../utils/color/index.travelPlus';
-import {formattedHours, formattedMinutes, useTimer} from '../../../utils/Utils';
 
 export const Timer = React.forwardRef(({paymentRequests}, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const timeLeft = useTimer(paymentRequests[currentIndex].deadline);
+  const [tripTitle, setTripTitle] = useState('');
+
+  useEffect(() => {
+    setTripTitle(paymentRequests[currentIndex].alertMessage);
+  }, [currentIndex, paymentRequests]);
 
   useImperativeHandle(ref, () => ({
     setIndex: (index) => {
@@ -20,22 +23,7 @@ export const Timer = React.forwardRef(({paymentRequests}, ref) => {
     },
   }));
 
-  const hours = formattedHours(timeLeft);
-  const minutes = formattedMinutes(timeLeft);
-  const unitOfTime = hours > 0 ? 'hours ' : 'minutes ';
-
-  return !timeLeft ? (
-    <FText style={Styles.paymentDetail}>
-      {Strings.makePaymentElseTripCancel}
-    </FText>
-  ) : (
-    <FText style={Styles.paymentDetail}>
-      {Strings.makePaymentWithin}
-      <FText type={FONT_TYPE.MEDIUM}>{`${hours}:${minutes} `}</FText>
-      {unitOfTime}
-      {Strings.elsePaymentCancel}
-    </FText>
-  );
+  return <FText style={Styles.paymentDetail}>{tripTitle}</FText>;
 });
 
 export const CardDots = React.forwardRef(
@@ -67,7 +55,6 @@ const PendingPaymentSheet = ({
   showBottomSheet,
   onClose,
 }) => {
-  const [sheetVisible, setSheetVisible] = useState(true);
   const cardDotsRef = useRef();
   const timerRef = useRef();
 

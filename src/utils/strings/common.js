@@ -138,10 +138,6 @@ export default {
   tripId: 'Trip ID: ',
   inclGST: 'Incl GST',
   payNow: 'Pay now',
-  tripPendingMakePayment: (title) =>
-    `${title} trip payment is pending. Make payment within `,
-  tripPendingMakePaymentAfterTimeout: (title) =>
-    `${title} trip payment is pending. Make payment now else your trip will be cancelled.`,
   rupee: '₹',
   notify: 'Notify',
   requestModification: 'Request modification',
@@ -173,10 +169,7 @@ export default {
   },
   ok: 'Ok',
   leftToPayElseApprovalCancel: 'left to pay. Else approval shall be cancelled',
-  makePaymentElseTripCancel:
-    'Hurry up! Make the payment now else your trip will be cancelled.',
+
   makePaymentElseApprovalCancel:
     'Hurry up! Make the payment now else your approval shall be cancelled.',
-  makePaymentWithin: 'Make the payment within ',
-  elsePaymentCancel: 'else your trip will be cancelled.',
 };
