@@ -6,6 +6,7 @@ import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import {Color} from '../../../utils/color';
 
 import Styles from './Styles';
+import {DP} from '../../../utils/Dimen';
 
 export const BUTTON_TYPE = {
   PRIMARY: 'PRIMARY',
@@ -36,7 +37,8 @@ function Button({
             Styles.textStyle(type, disabled),
             textStyle,
             selected && {color: Color.DODGER_BLUE},
-          ]}>
+          ]}
+          weight={type === 'NOCOLOR' && DP._500}>
           {children}
         </FText>
       );

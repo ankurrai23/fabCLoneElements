@@ -18,6 +18,13 @@ export default StyleSheet.create({
     ...(disabled && {
       backgroundColor: Color.HAWKES_BLUE,
     }),
+    ...(type === 'NOCOLOR' && {
+      borderWidth: DP._1,
+      borderRadius: DP._25,
+      borderColor: Color.TWILIGHT_BLUE,
+      backgroundColor: Color.WHITE,
+      textColor: Color.TWILIGHT_BLUE,
+    }),
   }),
   textStyle: (type, disabled) => ({
     fontSize: DP._14,
@@ -26,6 +33,8 @@ export default StyleSheet.create({
         ? disabled
           ? Color.WHITE
           : Color.DARK
+        : type === 'NOCOLOR'
+        ? Color.TWILIGHT_BLUE
         : Color.DODGER_BLUE,
   }),
 });
