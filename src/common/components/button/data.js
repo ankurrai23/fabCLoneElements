@@ -1,5 +1,7 @@
+import {BUTTON_TYPE} from './index';
+
 export default {
-  type: 'NOCOLOR', // options -> PRIMARY/SECONDARY/NOCOLOR
+  type: BUTTON_TYPE.PRIMARY,
   onPress: () => console.log('Button Pressed'),
   children: 'Press Me',
   selected: false,

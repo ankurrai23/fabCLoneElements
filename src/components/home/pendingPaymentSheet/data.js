@@ -17,10 +17,7 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      deadline: {
-        key: '4 hours 26 mins',
-        value: 'left to pay. Else trip will be cancelled.',
-      },
+      deadline: null,
     },
     {
       masterTripId: 'TPZSMYAL',

@@ -14,9 +14,11 @@ export const Card = ({paymentRequest, onPressPayment}) => {
 
   return (
     <View style={Styles.itemStyle}>
-      <FText style={Styles.textStyle}>
-        <FText type={FONT_TYPE.MEDIUM}>{deadline.key}</FText> {deadline.value}
-      </FText>
+      {!!deadline && (
+        <FText style={Styles.textStyle}>
+          <FText type={FONT_TYPE.MEDIUM}>{deadline.key}</FText> {deadline.value}
+        </FText>
+      )}
       <FTouchableOpacity
         style={Styles.payNowButton}
         onPress={() => onPressPayment(paymentRequest.masterTripId)}>

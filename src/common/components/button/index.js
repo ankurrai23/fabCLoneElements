@@ -11,6 +11,7 @@ import {DP} from '../../../utils/Dimen';
 export const BUTTON_TYPE = {
   PRIMARY: 'PRIMARY',
   SECONDARY: 'SECONDARY',
+  NO_COLOR: 'NO_COLOR',
 };
 
 function Button({
@@ -38,7 +39,7 @@ function Button({
             textStyle,
             selected && {color: Color.DODGER_BLUE},
           ]}
-          weight={type === 'NOCOLOR' && DP._500}>
+          weight={type === BUTTON_TYPE.NO_COLOR && DP._500}>
           {children}
         </FText>
       );
