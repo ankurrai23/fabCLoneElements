@@ -1,15 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
-import {
-  FImage,
-  FONT_TYPE,
-  FText,
-  FTouchableOpacity,
-} from '../../../../../index';
+import {FONT_TYPE, FText, FTouchableOpacity} from '../../../../../index';
 import styles from './Styles';
 import Icon from '../../../../../assets/icons/Icon';
 import Separator from '../../../../../common/components/separator';
 import OOPTag from '../../../../trips/components/OOPTag/OOPTag';
+import {Strings} from '../../../../../utils/strings/index.travelPlus';
 
 const FlightFarePlanCard = ({
   planTitle,
@@ -28,10 +24,13 @@ const FlightFarePlanCard = ({
             {planTitle}
           </FText>
           <View style={styles.subHeader}>
-            <FText style={styles.planPrice} type={FONT_TYPE.MEDIUM}>
+            <FText
+              style={styles.planPrice(isOutOfPolicy)}
+              type={FONT_TYPE.MEDIUM}>
               {planPrice}
+              <FText style={styles.perAdultStyle}>{Strings.perAdult}</FText>
             </FText>
-            {isOutOfPolicy && OOPTag()}
+            {isOutOfPolicy && <OOPTag />}
           </View>
         </View>
         {isSelected ? <Icon.RadioActive /> : <Icon.RadioPassive />}

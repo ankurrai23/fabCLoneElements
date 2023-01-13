@@ -21,8 +21,6 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   subHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
     marginTop: DP._6,
   },
   planTitle: {
@@ -31,12 +29,13 @@ export default StyleSheet.create({
     color: Color.DARK,
     marginEnd: DP._16,
   },
-  planPrice: {
+  planPrice: (isOOP) => ({
     fontSize: DP._14,
     lineHeight: DP._17,
     marginEnd: DP._12,
     color: Color.DARK,
-  },
+    marginBottom: isOOP ? DP._4 : 0,
+  }),
   planDetailItem: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -63,4 +62,9 @@ export default StyleSheet.create({
     textAlign: 'right',
     color: color ?? Color.DARK,
   }),
+  perAdultStyle: {
+    fontSize: DP._10,
+    lineHeight: DP._12,
+    color: Color.FORD_GRAY,
+  },
 });
