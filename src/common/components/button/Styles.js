@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
+import {BUTTON_TYPE} from './index';
 
 export default StyleSheet.create({
   container: (type, selected, disabled) => ({
@@ -9,16 +10,18 @@ export default StyleSheet.create({
     paddingVertical: DP._12,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: type === 'PRIMARY' ? Color.SUN_YELLOW : Color.WHITE_3,
+    backgroundColor:
+      type === BUTTON_TYPE.PRIMARY ? Color.SUN_YELLOW : Color.WHITE_3,
     ...(selected && {
-      backgroundColor: type === 'SECONDARY' ? Color.ICE_BLUE : Color.SUN_YELLOW,
+      backgroundColor:
+        type === BUTTON_TYPE.SECONDARY ? Color.ICE_BLUE : Color.SUN_YELLOW,
       borderColor: Color.DODGER_BLUE,
-      borderWidth: type === 'SECONDARY' ? 0.5 : 0,
+      borderWidth: type === BUTTON_TYPE.SECONDARY ? 0.5 : 0,
     }),
     ...(disabled && {
       backgroundColor: Color.HAWKES_BLUE,
     }),
-    ...(type === 'NOCOLOR' && {
+    ...(type === BUTTON_TYPE.NO_COLOR && {
       borderWidth: DP._1,
       borderRadius: DP._25,
       borderColor: Color.TWILIGHT_BLUE,
@@ -29,11 +32,11 @@ export default StyleSheet.create({
   textStyle: (type, disabled) => ({
     fontSize: DP._14,
     color:
-      type === 'PRIMARY'
+      type === BUTTON_TYPE.PRIMARY
         ? disabled
           ? Color.WHITE
           : Color.DARK
-        : type === 'NOCOLOR'
+        : type === BUTTON_TYPE.NO_COLOR
         ? Color.TWILIGHT_BLUE
         : Color.DODGER_BLUE,
   }),
