@@ -99,39 +99,6 @@ export function formattedDate(date = new Date(), format = 'DD MMM YY') {
   return moment(date).format(format);
 }
 
-export function formattedHours(timeLeftInSeconds, padStart = 2) {
-  return Math.floor(timeLeftInSeconds / 3600)
-    .toString(10)
-    .padStart(padStart, '0');
-}
-
-export function formattedMinutes(timeLeftInSeconds, padStart = 2) {
-  return Math.floor((timeLeftInSeconds % 3600) / 60)
-    .toString(10)
-    .padStart(padStart, '0');
-}
-
-export const useTimer = (deadLine, interval) => {
-  const calculateDiff = () => {
-    let difference = moment(deadLine).diff(moment(), 'seconds');
-    if (difference < 0) {
-      difference = 0;
-    }
-    return difference;
-  };
-  const [timeLeft, setTimeLeft] = useState(calculateDiff);
-  useEffect(() => {
-    let intervalRef = setInterval(() => {
-      let seconds = calculateDiff();
-      setTimeLeft(seconds);
-    }, interval ?? 10 * 1000);
-    return () => {
-      clearInterval(intervalRef);
-    };
-  }, [deadLine]);
-  return timeLeft;
-};
-
 export function formattedPrice(val, maxFractionDigit = 2) {
   let price = Number(val);
   if (isNaN(price)) {

@@ -45,10 +45,10 @@ const cabItineraryCardProps = {
       },
     ],
     reduceOpacity: false,
-    remarks: {
-      title: 'Remarks',
-      text: 'Change of plans',
-    },
+  },
+  remarks: {
+    title: 'Remarks',
+    text: 'Change of plans',
   },
   actions: [
     {
@@ -74,7 +74,7 @@ const cabItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: false,
 };
 

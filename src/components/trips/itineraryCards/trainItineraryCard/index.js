@@ -244,6 +244,7 @@ const TrainItineraryCard = ({
   notificationText,
   hideChevron,
   actionDisabled,
+  remarks,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -347,10 +348,10 @@ const TrainItineraryCard = ({
             hideChevron={hideChevron}
           />
         )}
-        {viewRemarksAction && !!bookingDetails.remarks && (
+        {viewRemarksAction && !!remarks && (
           <RemarksBox
-            title={bookingDetails.remarks.title}
-            remarks={bookingDetails.remarks.text}
+            title={remarks.title}
+            remarks={remarks.text}
             roundBottomCorners={!actionsVisible}
           />
         )}

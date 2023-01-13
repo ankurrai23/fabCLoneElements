@@ -11,19 +11,8 @@ import Styles from './Styles';
 import Separator from '../../../common/components/separator';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
-import {useTimer} from '../../../utils/Utils';
 
 function ItineraryHeader(props) {
-  const timeLeft = useTimer(props.paymentDeadline);
-
-  const hours = Math.floor(timeLeft / 3600);
-  const minutes = Math.floor((timeLeft % 3600) / 60);
-
-  console.log(hours, minutes);
-
-  const hoursString = `${hours} hour${hours > 1 ? 's' : ''} `;
-  const minutesString = `${minutes} min${minutes > 1 ? 's' : ''} `;
-
   return (
     <View style={Styles.container}>
       <View style={Styles.header}>
@@ -76,17 +65,13 @@ function ItineraryHeader(props) {
               {Strings.paymentPending}
             </FText>
             <View style={Styles.flexRow}>
-              {(hours > 0 || minutes > 0) && (
+              {props.paymentDeadline.key && (
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.fontSize10}>
-                  {`${hours > 0 ? hoursString : ''}${
-                    minutes > 0 ? minutesString : ''
-                  }`}
+                  {props.paymentDeadline.key}
                 </FText>
               )}
               <FText style={Styles.fontSize10}>
-                {hours > 0 || minutes > 0
-                  ? Strings.leftToPayElseApprovalCancel
-                  : Strings.makePaymentElseTripCancel}
+                {props.paymentDeadline.value}
               </FText>
             </View>
           </View>

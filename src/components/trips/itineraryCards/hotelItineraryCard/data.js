@@ -36,11 +36,11 @@ const hotelItineraryCardProps = {
     gstIncluded: false,
     cancellationCharges: '₹600',
     modificationCharges: '₹300',
-    remarks: {
-      title: 'Remarks',
-      text: 'Change of plans',
-    },
     isPriceFetched: true,
+  },
+  remarks: {
+    title: 'Remarks',
+    text: 'Change of plans',
   },
   actionsDisabled: false,
   actions: [

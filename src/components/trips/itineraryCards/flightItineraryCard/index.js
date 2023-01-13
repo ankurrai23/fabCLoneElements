@@ -41,6 +41,7 @@ const FlightItineraryCard = ({
   notificationText,
   hideChevron,
   isProcessing,
+  remarks,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -93,59 +94,49 @@ const FlightItineraryCard = ({
     <>
       <Separator style={Styles.seperatorStyle} />
       <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
+        {cancelAction && (
           <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
+            onPress={() => onActionPress(cancelAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
+            <Icon.Cross
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.PASTEL_RED}
+            />
+            <FText style={Styles.cancel}>{cancelAction.name}</FText>
           </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Cross
-                  width={DP._16}
-                  height={DP._16}
-                  stroke={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {rescheduleAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(rescheduleAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Reschedule width={DP._16} height={DP._16} />
-                <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {removeAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(removeAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
-                <FText style={Styles.cancel}>{removeAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {editAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(editAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Edit />
-                <FText style={Styles.reschedule}>{editAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {!!refundStatus && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(refundStatus)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Refund />
-                <FText style={Styles.reschedule}>{refundStatus.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
+        )}
+        {rescheduleAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(rescheduleAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Reschedule width={DP._16} height={DP._16} />
+            <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {removeAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(removeAction)}
+            style={Styles.flexRowAndAlignCenter}>
+            <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+            <FText style={Styles.cancel}>{removeAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {editAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(editAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Edit />
+            <FText style={Styles.reschedule}>{editAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {!!refundStatus && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(refundStatus)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Refund />
+            <FText style={Styles.reschedule}>{refundStatus.name}</FText>
+          </FTouchableOpacity>
         )}
       </View>
     </>
@@ -204,12 +195,7 @@ const FlightItineraryCard = ({
           </View>
         </View>
       </FTouchableOpacity>
-      {!actionDisabled &&
-        (rescheduleAction ||
-          cancelAction ||
-          viewRemarksAction ||
-          editAction ||
-          removeAction) && <ActionsInItinerary />}
+      {actionVisible && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -374,10 +360,10 @@ const FlightItineraryCard = ({
           <Separator style={Styles.seperatorStyle} />
         </>
       )}
-      {viewRemarksAction && !!uiData.remarks && (
+      {viewRemarksAction && !!remarks && (
         <RemarksBox
-          title={uiData.remarks.title}
-          remarks={uiData.remarks.text}
+          title={remarks.title}
+          remarks={remarks.text}
           roundBottomCorners={!actionVisible}
         />
       )}

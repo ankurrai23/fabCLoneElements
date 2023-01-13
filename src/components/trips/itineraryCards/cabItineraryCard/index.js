@@ -209,6 +209,7 @@ const cabItineraryCard = ({
   timelineGreyed,
   showPreBookingCard,
   bookingDetails,
+  remarks,
   actions,
   notificationText,
   hideChevron,
@@ -316,10 +317,10 @@ const cabItineraryCard = ({
             hideChevron={hideChevron}
           />
         )}
-        {viewRemarksAction && !!bookingDetails.remarks && (
+        {viewRemarksAction && !!remarks && (
           <RemarksBox
-            title={bookingDetails.remarks.title}
-            remarks={bookingDetails.remarks.text}
+            title={remarks.title}
+            remarks={remarks.text}
             roundBottomCorners={!actionsVisible}
           />
         )}

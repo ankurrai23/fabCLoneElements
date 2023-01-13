@@ -21,7 +21,10 @@ const itineraryHeaderProps = {
     primaryText: 'The trip is pending approval from',
     managerName: 'Manudeep Godara',
   },
-  paymentDeadline: '2023-01-09T13:22:06',
+  paymentDeadline: {
+    key: '15 hours 49 mins',
+    value: 'left to pay .Else approval shall be cancelled.',
+  },
   onPressTrack: () => console.log('track pressed'),
 };
 
