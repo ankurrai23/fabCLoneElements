@@ -21,7 +21,7 @@ import {
   Placeholder,
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
-import remarksBox from '../../components/remarksBox/RemarksBox';
+import RemarksBox from '../../components/remarksBox/RemarksBox';
 
 const FlightItineraryCard = ({
   status,
@@ -66,6 +66,14 @@ const FlightItineraryCard = ({
       />
     );
   };
+
+  const actionVisible =
+    !actionDisabled &&
+    (rescheduleAction ||
+      cancelAction ||
+      editAction ||
+      removeAction ||
+      refundStatus);
 
   const PriceLoader = () => {
     return (
@@ -342,23 +350,26 @@ const FlightItineraryCard = ({
           </FText>
         </>
       )}
-      {!!uiData.modificationCharge && (
+      {!!uiData.modificationCharges && (
         <>
           <FText style={Styles.modificationChargeText}>
             {Strings.includeModificationCharge}
             <FText
-              type={FONT_TYPE.MEDIUM}>{` ${uiData.modificationCharge}.`}</FText>
+              type={
+                FONT_TYPE.MEDIUM
+              }>{` ${uiData.modificationCharges}.`}</FText>
           </FText>
           <Separator style={Styles.seperatorStyle} />
         </>
       )}
-      {viewRemarksAction && !!uiData.remarks && remarksBox(uiData.remarks)}
-      {!actionDisabled &&
-        (rescheduleAction ||
-          cancelAction ||
-          editAction ||
-          removeAction ||
-          refundStatus) && <ActionsInItinerary />}
+      {viewRemarksAction && !!uiData.remarks && (
+        <RemarksBox
+          title={uiData.remarks.title}
+          remarks={uiData.remarks.text}
+          roundBottomCorners={!actionVisible}
+        />
+      )}
+      {actionVisible && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}

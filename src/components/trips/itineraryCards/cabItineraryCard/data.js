@@ -45,6 +45,10 @@ const cabItineraryCardProps = {
       },
     ],
     reduceOpacity: false,
+    remarks: {
+      title: 'Remarks',
+      text: 'Change of plans',
+    },
   },
   actions: [
     {

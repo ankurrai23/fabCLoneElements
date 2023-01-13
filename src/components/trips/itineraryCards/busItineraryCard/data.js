@@ -33,6 +33,10 @@ const busItineraryCardProps = {
     seatNumber: 'L23',
     pnr: '123456',
     reduceOpacity: false,
+    remarks: {
+      title: 'Remarks',
+      text: 'Change of plans',
+    },
   },
   actions: [
     {
@@ -58,7 +62,7 @@ const busItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: false,
 };
 
