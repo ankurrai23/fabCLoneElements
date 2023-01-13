@@ -35,7 +35,9 @@ const HotelFarePlanCard = ({
           </FText>
 
           <FText style={styles.gstDetails}>
-            {`${Strings.perNight} ${gstIncluded ? Strings.inclGst : ''}`}
+            {`${Strings.perNight} ${
+              gstIncluded ? Strings.inclGst : Strings.exGst
+            }`}
           </FText>
         </View>
         {isOutOfPolicy && OOPTag(styles.oopMargin)}
