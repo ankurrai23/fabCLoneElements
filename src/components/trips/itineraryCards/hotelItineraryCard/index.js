@@ -42,6 +42,7 @@ const HotelItineraryCard = ({
   showConfirmedStatus,
   hideChevron,
   isProcessing,
+  remarks,
 }) => {
   const sameMonthDates =
     tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
@@ -320,10 +321,10 @@ const HotelItineraryCard = ({
             <Separator style={Styles.seperatorStyle} />
           </>
         )}
-        {viewRemarksAction && !!uiData.remarks && (
+        {viewRemarksAction && !!remarks && (
           <RemarksBox
-            title={uiData.remarks.title}
-            remarks={uiData.remarks.text}
+            title={remarks.title}
+            remarks={remarks.text}
             roundBottomCorners={!actionsVisible}
           />
         )}

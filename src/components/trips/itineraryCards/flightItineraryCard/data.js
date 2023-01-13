@@ -56,15 +56,11 @@ const flightItineraryCardProps = {
     price: '₹2600',
     cancellationCharges: '₹600',
     modificationCharges: '₹300',
-    remarks: {
-      title: 'Remarks',
-      text: 'Change of plans',
-    },
     isOutOfPolicy: true,
-    reasonDetails: {
-      title: 'Reason for modification',
-      text: 'Meeting is postponed due to client unavailability',
-    },
+  },
+  remarks: {
+    title: 'Remarks',
+    text: 'Change of plans',
   },
   actions: [
     {

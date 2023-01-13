@@ -235,6 +235,7 @@ const BusItineraryCard = ({
   timelineGreyed,
   showPreBookingCard,
   bookingDetails,
+  remarks,
   actions,
   notificationText,
   actionDisabled,
@@ -344,10 +345,10 @@ const BusItineraryCard = ({
             sameMonthDates={sameMonthDates}
           />
         )}
-        {viewRemarksAction && !!bookingDetails.remarks && (
+        {viewRemarksAction && !!remarks && (
           <RemarksBox
-            title={bookingDetails.remarks.title}
-            remarks={bookingDetails.remarks.text}
+            title={remarks.title}
+            remarks={remarks.text}
             roundBottomCorners={!actionsVisible}
           />
         )}

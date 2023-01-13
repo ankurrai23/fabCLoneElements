@@ -33,10 +33,10 @@ const busItineraryCardProps = {
     seatNumber: 'L23',
     pnr: '123456',
     reduceOpacity: false,
-    remarks: {
-      title: 'Remarks',
-      text: 'Change of plans',
-    },
+  },
+  remarks: {
+    title: 'Remarks',
+    text: 'Change of plans',
   },
   actions: [
     {
