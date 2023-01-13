@@ -49,6 +49,13 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._16,
   },
+  modificationChargeText: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+    paddingLeft: DP._16,
+    paddingVertical: DP._8,
+    backgroundColor: Color.DODGER_BLUE + '12',
+  },
   date: {
     fontSize: DP._14,
     lineHeight: DP._16,
