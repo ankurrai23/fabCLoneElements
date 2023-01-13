@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._13,
+    paddingVertical: DP._8,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -104,7 +104,7 @@ export default StyleSheet.create({
   primaryButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._24,
+    marginLeft: DP._16,
   },
   chevronContainer: {
     backgroundColor: Color.DODGER_BLUE + '12',
@@ -164,7 +164,7 @@ export default StyleSheet.create({
     color: Color.GREY_PURPLE,
   },
   actionsSeparator: {
-    marginHorizontal: DP._16,
+    // marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   lineHeight_16: {

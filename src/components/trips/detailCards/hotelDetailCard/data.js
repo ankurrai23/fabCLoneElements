@@ -72,18 +72,18 @@ export default {
         type: 'DIRECTION',
         name: 'Directions',
       },
-      {
-        type: 'SUBMIT_REVIEW',
-        name: 'Submit a review',
-      },
-      {
-        type: 'SUBMIT_POS',
-        name: 'Submit proof of stay',
-      },
-      {
-        type: 'VIEW_INVOICE',
-        name: 'See invoice',
-      },
+      // {
+      //   type: 'SUBMIT_REVIEW',
+      //   name: 'Submit a review',
+      // },
+      // {
+      //   type: 'SUBMIT_POS',
+      //   name: 'Submit proof of stay',
+      // },
+      // {
+      //   type: 'VIEW_INVOICE',
+      //   name: 'See invoice',
+      // },
       {
         type: 'SUPPORT',
         name: 'Contact 24x7 support',
@@ -93,6 +93,7 @@ export default {
     notificationText: null,
     alertMessage: 'You have sent a cancellation request for this booking.',
     reduceOpacity: false,
+    enableViewMoreButton: true,
   },
   onActionPress: (item) => console.log(item),
   onPressClose: () => console.log('close modal'),
@@ -108,4 +109,5 @@ export default {
   ],
   onMainImagePress: () => console.log('image press'),
   onClose: () => console.log('close'),
+  onViewMorePress: () => console.log('test'),
 };

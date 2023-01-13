@@ -61,10 +61,6 @@ const flightItineraryCardProps = {
       text: 'Change of plans',
     },
     isOutOfPolicy: true,
-    reasonDetails: {
-      title: 'Reason for modification',
-      text: 'Meeting is postponed due to client unavailability',
-    },
   },
   actions: [
     {
