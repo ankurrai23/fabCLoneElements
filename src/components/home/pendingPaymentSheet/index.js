@@ -19,8 +19,8 @@ export const Timer = React.forwardRef(({paymentRequests}, ref) => {
 
   useEffect(() => {
     const newAlertMessage = {
-      timeLeft: paymentRequests[currentIndex].deadline.key,
-      alertString: paymentRequests[currentIndex].deadline.value,
+      timeLeft: paymentRequests[currentIndex].deadline?.key,
+      alertString: paymentRequests[currentIndex].deadline?.value,
     };
     setAlertMessage(newAlertMessage);
   }, [currentIndex, paymentRequests]);
