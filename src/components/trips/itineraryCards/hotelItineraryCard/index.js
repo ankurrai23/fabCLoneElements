@@ -296,6 +296,30 @@ const HotelItineraryCard = ({
           </View>
         </FTouchableOpacity>
 
+        {!!uiData.modificationCharges && (
+          <>
+            <FText style={Styles.modificationChargeText}>
+              {Strings.includeModificationCharge}
+              <FText
+                type={
+                  FONT_TYPE.MEDIUM
+                }>{` ${uiData.modificationCharges}.`}</FText>
+            </FText>
+            <Separator style={Styles.seperatorStyle} />
+          </>
+        )}
+        {!!uiData.cancellationCharges && (
+          <>
+            <FText style={Styles.modificationChargeText}>
+              {Strings.includeCancellationCharge}
+              <FText
+                type={
+                  FONT_TYPE.MEDIUM
+                }>{` ${uiData.cancellationCharges}.`}</FText>
+            </FText>
+            <Separator style={Styles.seperatorStyle} />
+          </>
+        )}
         {viewRemarksAction && !!uiData.remarks && (
           <RemarksBox
             title={uiData.remarks.title}

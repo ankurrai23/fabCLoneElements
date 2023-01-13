@@ -54,7 +54,8 @@ const flightItineraryCardProps = {
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
     price: '₹2600',
-    modificationCharges: '$2300',
+    cancellationCharges: '₹600',
+    modificationCharges: '₹300',
     remarks: {
       title: 'Remarks',
       text: 'Change of plans',

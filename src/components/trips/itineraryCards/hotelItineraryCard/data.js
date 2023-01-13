@@ -34,6 +34,8 @@ const hotelItineraryCardProps = {
     bookingId: 'AZCD123',
     isSoldOut: false,
     gstIncluded: false,
+    cancellationCharges: '₹600',
+    modificationCharges: '₹300',
     remarks: {
       title: 'Remarks',
       text: 'Change of plans',
