@@ -34,7 +34,10 @@ const hotelItineraryCardProps = {
     bookingId: 'AZCD123',
     isSoldOut: false,
     gstIncluded: false,
-    remarks: 'Room with breakfast and meals',
+    remarks: {
+      title: 'Remarks',
+      text: 'Change of plans',
+    },
     isPriceFetched: true,
   },
   actionsDisabled: false,
@@ -45,6 +48,10 @@ const hotelItineraryCardProps = {
     },
     {
       type: 'CANCEL',
+      name: 'Cancel',
+    },
+    {
+      type: 'VIEW_REMARKS',
       name: 'Cancel',
     },
     {

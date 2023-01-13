@@ -34,6 +34,10 @@ const TrainItineraryCardProps = {
     trainClass: 'AC 3 Tier Sleeper',
     pnr: '256-99589',
     reduceOpacity: false,
+    remarks: {
+      title: 'Remarks',
+      text: 'Change of plans',
+    },
   },
   actions: [
     {

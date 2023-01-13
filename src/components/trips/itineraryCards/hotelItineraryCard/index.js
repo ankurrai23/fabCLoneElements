@@ -22,7 +22,7 @@ import {
   Placeholder,
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
-import remarksBox from '../../components/remarksBox/RemarksBox';
+import RemarksBox from '../../components/remarksBox/RemarksBox';
 
 const HotelItineraryCard = ({
   status,
@@ -144,8 +144,9 @@ const HotelItineraryCard = ({
   );
 
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
-
-  console.log(uiData);
+  const actionsVisible =
+    !actionsDisabled &&
+    (modifyAction || cancelAction || editAction || removeAction);
 
   return (
     <View style={[Styles.flexRow, style]}>
@@ -295,12 +296,15 @@ const HotelItineraryCard = ({
           </View>
         </FTouchableOpacity>
 
-        {viewRemarksAction && !!uiData.remarks && remarksBox(uiData.remarks)}
+        {viewRemarksAction && !!uiData.remarks && (
+          <RemarksBox
+            title={uiData.remarks.title}
+            remarks={uiData.remarks.text}
+            roundBottomCorners={!actionsVisible}
+          />
+        )}
 
-        {!actionsDisabled &&
-          (modifyAction || cancelAction || editAction || removeAction) && (
-            <ActionsInItinerary />
-          )}
+        {actionsVisible && <ActionsInItinerary />}
         {showInfo && (
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}

@@ -132,6 +132,7 @@ export default {
   inclGst: '(Incl GST)',
   exGst: '(ex GST)',
   includeModificationCharge: 'Includes modification charges',
+  includeCancellationCharge: 'Includes cancellation charges',
   travelerDetails: 'Traveler details',
   ticketNumber: 'Ticket Number',
   paymentPending: 'Payment pending',

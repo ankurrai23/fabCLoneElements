@@ -54,8 +54,11 @@ const flightItineraryCardProps = {
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
     price: '₹2600',
-    modificationCharge: null,
-    remarks: 'Personal issue couldnt go',
+    modificationCharges: '$2300',
+    remarks: {
+      title: 'Remarks',
+      text: 'Change of plans',
+    },
     isOutOfPolicy: true,
     reasonDetails: {
       title: 'Reason for modification',
@@ -63,18 +66,18 @@ const flightItineraryCardProps = {
     },
   },
   actions: [
-    // {
-    //   type: 'RESCHEDULE',
-    //   name: 'Reschedule',
-    // },
-    // {
-    //   type: 'CANCEL',
-    //   name: 'Cancel',
-    // },
     {
-      type: 'REFUND_STATUS',
-      name: 'Refund status',
+      type: 'RESCHEDULE',
+      name: 'Reschedule',
     },
+    {
+      type: 'CANCEL',
+      name: 'Cancel',
+    },
+    // {
+    //   type: 'REFUND_STATUS',
+    //   name: 'Refund status',
+    // },
   ],
   onActionPress: (item) => console.log('Action Pressed', item),
   onCardPress: (item) => console.log('Card Pressed', item),
