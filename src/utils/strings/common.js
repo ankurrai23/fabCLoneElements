@@ -155,7 +155,7 @@ export default {
   selectNoOfAdults: 'Select no. of adult(s)',
   roomNo: (num) => `Room ${num}`,
   selectRoomForTraveler: (num) => `Select room for ${num} traveler(s)`,
-  travellerError: (num) => `Add ${num} more traveler to proceed.`,
+  travellerError: (num) => `Add ${num} more traveler(s) to proceed.`,
   priceBreakup: {
     title: 'Price breakup',
     flightCharges: 'Flight charges',
