@@ -64,7 +64,6 @@ export default StyleSheet.create({
   }),
   perAdultStyle: {
     fontSize: DP._10,
-    lineHeight: DP._12,
     color: Color.FORD_GRAY,
   },
 });
