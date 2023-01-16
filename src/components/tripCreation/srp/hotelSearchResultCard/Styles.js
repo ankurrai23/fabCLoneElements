@@ -117,4 +117,7 @@ export default StyleSheet.create({
   oopMargin: {
     marginTop: DP._2,
   },
+  alignFlexEnd: {
+    alignItems: 'flex-end',
+  },
 });

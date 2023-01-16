@@ -6,7 +6,7 @@ import FText, {FONT_TYPE} from '../../../../common/rn/FText';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
 import Icon from '../../../../assets/icons/Icon';
-import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
+import {FlatList} from 'react-native-gesture-handler';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {ratingsArray} from '../../../trips/hotelPreferenceCard';
 import Button from '../../../../common/components/button';
@@ -87,13 +87,13 @@ export default function HotelSearchResultCard({onCardPress, item}) {
         <View style={Styles.amountContainer}>
           <FText style={Styles.cancellationText}>{item.cancellationText}</FText>
           {!!item.cost && (
-            <View style={{alignItems: 'flex-end'}}>
+            <View style={Styles.alignFlexEnd}>
               <View style={Styles.priceAndGstContainer}>
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.costOfHotel}>
                   {item.cost}
                 </FText>
                 <FText style={Styles.priceDetail}>
-                  {item.gstIncluded ? Strings.inclGst : ''}
+                  {item.gstIncluded ? Strings.inclGst : Strings.exGst}
                 </FText>
               </View>
               {item.isOutOfPolicy && <OOPTag style={Styles.oopMargin} />}
