@@ -30,6 +30,7 @@ export default StyleSheet.create({
     backgroundColor: type === 'INFO' ? Color.ICE_BLUE : Color.PASTEL_RED_10,
   }),
   infoText: {
+    marginLeft: DP._4,
     fontSize: DP._12,
   },
   buttonContainer: {

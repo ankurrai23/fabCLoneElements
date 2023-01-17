@@ -23,6 +23,13 @@ const EmployeeActions = ({onPayPress, actions, info, amount}) => {
     <View style={Styles.container}>
       {info ? (
         <View style={Styles.infoContainer(info.type)}>
+          <Icon.Info
+            width={DP._16}
+            height={DP._16}
+            stroke={
+              info.type === 'ERROR' ? Color.PASTEL_RED : Color.DODGER_BLUE
+            }
+          />
           <FText style={Styles.infoText}>{info.value}</FText>
         </View>
       ) : (

@@ -195,6 +195,13 @@ const FlightItineraryCard = ({
           </View>
         </View>
       </FTouchableOpacity>
+      {viewRemarksAction && !!remarks && (
+        <RemarksBox
+          title={remarks.title}
+          remarks={remarks.text}
+          roundBottomCorners={!actionVisible}
+        />
+      )}
       {actionVisible && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox

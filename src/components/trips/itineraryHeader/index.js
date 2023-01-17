@@ -67,7 +67,7 @@ function ItineraryHeader(props) {
             <View style={Styles.flexRow}>
               {props.paymentDeadline.key && (
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.fontSize10}>
-                  {props.paymentDeadline.key}
+                  {props.paymentDeadline.key}{' '}
                 </FText>
               )}
               <FText style={Styles.fontSize10}>
