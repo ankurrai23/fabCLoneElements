@@ -52,7 +52,7 @@ export default StyleSheet.create({
   flatlistContainerStyle: {
     paddingLeft: DP._24,
     paddingRight: DP._24,
-    paddingBottom: DP._8,
+    paddingBottom: DP._16,
   },
   cardStyle: {
     padding: DP._16,
