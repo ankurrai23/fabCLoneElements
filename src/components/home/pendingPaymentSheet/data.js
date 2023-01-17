@@ -6,7 +6,7 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      deadline: {
+      deadLine: {
         key: null,
         value: 'left to pay. Else trip will be cancelled.',
       },
@@ -17,7 +17,7 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      deadline: null,
+      deadLine: null,
     },
     {
       masterTripId: 'TPZSMYAL',
@@ -25,7 +25,7 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      deadline: {
+      deadLine: {
         key: '5 hours 26 mins',
         value: 'left to pay. Else trip will be cancelled.',
       },
@@ -36,7 +36,7 @@ const pendingPaymentSheetProps = {
       start: "06 Jan'23",
       end: "07 Jan'23",
       amount: 1860.32,
-      deadline: {
+      deadLine: {
         key: '6 hours 26 mins',
         value: 'left to pay. Else trip will be cancelled.',
       },

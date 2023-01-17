@@ -19,8 +19,8 @@ export const Timer = React.forwardRef(({paymentRequests}, ref) => {
 
   useEffect(() => {
     const newAlertMessage = {
-      timeLeft: paymentRequests[currentIndex].deadline?.key,
-      alertString: paymentRequests[currentIndex].deadline?.value,
+      timeLeft: paymentRequests[currentIndex].deadLine?.key,
+      alertString: paymentRequests[currentIndex].deadLine?.value,
     };
     setAlertMessage(newAlertMessage);
   }, [currentIndex, paymentRequests]);
@@ -33,7 +33,9 @@ export const Timer = React.forwardRef(({paymentRequests}, ref) => {
 
   return (
     <FText style={Styles.paymentDetail}>
-      <FText type={FONT_TYPE.MEDIUM}>{alertMessage.timeLeft}</FText>{' '}
+      <FText type={FONT_TYPE.MEDIUM}>
+        {alertMessage.timeLeft ? `${alertMessage.timeLeft} ` : ''}
+      </FText>
       {alertMessage.alertString}
     </FText>
   );

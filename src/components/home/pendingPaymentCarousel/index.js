@@ -10,13 +10,17 @@ import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 
 export const Card = ({paymentRequest, onPressPayment}) => {
-  const {deadline} = paymentRequest;
+  const {deadLine, tripTitle} = paymentRequest;
 
   return (
     <View style={Styles.itemStyle}>
-      {!!deadline && (
+      {!!deadLine && (
         <FText style={Styles.textStyle}>
-          <FText type={FONT_TYPE.MEDIUM}>{deadline.key}</FText> {deadline.value}
+          {tripTitle}:{' '}
+          <FText type={FONT_TYPE.MEDIUM}>
+            {deadLine.key ? `${deadLine.key} ` : ''}
+          </FText>
+          {deadLine.value}
         </FText>
       )}
       <FTouchableOpacity
