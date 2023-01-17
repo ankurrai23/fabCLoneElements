@@ -110,7 +110,9 @@ const FlightDetailCard = ({
                     color: Color.BLUEY_GREY,
                     marginTop: DP._2,
                   }}>
-                  {tripDetails.airlineCode}-{tripDetails.flightNumber}
+                  {`${
+                    tripDetails.airlineCode ? `${tripDetails.airlineCode}-` : ''
+                  }${tripDetails.flightNumber}`}
                 </FText>
               </View>
             </View>
@@ -161,7 +163,7 @@ const FlightDetailCard = ({
           </View>
         </FTouchableOpacity>
         <Separator style={Styles.actionsSeperator} />
-        <FText style={Styles.bookingIdTitle}>
+        <FText style={Styles.bookingIdTitle(tripDetails.reduceOpacity)}>
           {Strings.pnr}
           {': '}
           <FText type={FONT_TYPE.MEDIUM}>{tripDetails.pnr}</FText>

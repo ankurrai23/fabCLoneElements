@@ -169,13 +169,14 @@ export default StyleSheet.create({
     color: Color.DARK,
     marginBottom: DP._2,
   },
-  pnr: {
+  pnr: (reduceOpacity) => ({
     marginLeft: DP._16,
     marginVertical: DP._4,
     color: Color.BLUEY_GREY,
     fontSize: DP._12,
     lineHeight: DP._14,
-  },
+    opacity: reduceOpacity ? 0.6 : 1,
+  }),
   modificationChargeText: {
     fontSize: DP._12,
     lineHeight: DP._16,

@@ -285,7 +285,9 @@ const FlightItineraryCard = ({
               style={Styles.flightNumber}
               numberOfLines={1}
               ellipsizeMode={'tail'}>
-              {uiData.airlineCode}-{uiData.flightNumber}
+              {`${uiData.airlineCode ? `${uiData.airlineCode}-` : ''}${
+                uiData.flightNumber
+              }`}
             </FText>
           </View>
           {uiData.isPriceFetched ? (
@@ -337,7 +339,7 @@ const FlightItineraryCard = ({
       {!!uiData.pnr && (
         <>
           <Separator style={Styles.seperatorStyle} />
-          <FText style={Styles.pnr}>
+          <FText style={Styles.pnr(uiData.reduceOpacity)}>
             {Strings.pnr}:
             <FText type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
           </FText>

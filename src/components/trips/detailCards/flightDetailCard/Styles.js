@@ -153,13 +153,14 @@ export default StyleSheet.create({
     marginBottom: DP._12,
     lineHeight: DP._15,
   },
-  bookingIdTitle: {
+  bookingIdTitle: (reduceOpacity) => ({
     paddingHorizontal: DP._16,
     paddingVertical: DP._4,
     color: Color.BLUEY_GREY,
     fontSize: DP._12,
     lineHeight: DP._14,
-  },
+    opacity: reduceOpacity ? 0.6 : 1,
+  }),
   airlineIcon: {
     width: DP._32,
     height: DP._32,
