@@ -12,7 +12,6 @@ import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {Color} from '../../../utils/color/index.travelPlus';
 import Separator from '../../../common/components/separator';
-import {formattedPrice} from '../../../utils/Utils';
 
 export const MANAGER_ACTIONS = {
   APPROVE: 'APPROVE',
@@ -90,6 +89,11 @@ export default function ManagerActions({
           )}
           {!!msg && (
             <View style={Styles.infoContainer(msg.type)}>
+              <Icon.Info
+                width={DP._16}
+                height={DP._16}
+                stroke={isSubTripSoldOut ? Color.PASTEL_RED : Color.DODGER_BLUE}
+              />
               <FText style={Styles.infoText}>{msg.value}</FText>
             </View>
           )}

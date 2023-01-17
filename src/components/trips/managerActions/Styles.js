@@ -53,6 +53,7 @@ export default StyleSheet.create({
   }),
   infoText: {
     fontSize: DP._12,
+    marginLeft: DP._4,
   },
   buttonContainer: {
     padding: DP._16,

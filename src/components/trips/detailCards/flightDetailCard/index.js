@@ -166,7 +166,7 @@ const FlightDetailCard = ({
           {': '}
           <FText type={FONT_TYPE.MEDIUM}>{tripDetails.pnr}</FText>
         </FText>
-        {!!tripDetails.travelersInfo.length && (
+        {!!tripDetails?.travelersInfo?.length && (
           <>
             <Separator style={Styles.actionsSeperator} />
             <View style={Styles.travelerDetailContainer}>

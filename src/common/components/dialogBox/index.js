@@ -184,7 +184,7 @@ const DialogBox = ({modalVisible, onClose, ContentModal}) => {
             toValue: {x: 0, y: 0},
             useNativeDriver: true,
           }).start(() => {
-            setIsAnimating(false);
+            // setIsAnimating(false);
           });
         }}
         onRequestClose={onClose}>
