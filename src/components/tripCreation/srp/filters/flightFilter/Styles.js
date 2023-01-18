@@ -63,6 +63,8 @@ export default StyleSheet.create({
     height: DP._24,
     borderRadius: DP._12,
     marginRight: DP._5,
+    borderWidth: DP._0_2,
+    borderColor: Color.GREY_5,
   },
   showMoreAirlineText: {
     fontSize: DP._12,
