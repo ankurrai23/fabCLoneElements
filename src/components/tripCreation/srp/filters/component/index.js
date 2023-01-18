@@ -67,9 +67,7 @@ const SortAndFilter = ({
                 <FText style={Styles.clearAllText}>{Strings.clearAll}</FText>
               </FTouchableOpacity>
             </View>
-            <ScrollView
-              style={[dialogBoxStyle, {paddingHorizontal: DP._24}]}
-              bounces={false}>
+            <ScrollView style={dialogBoxStyle} bounces={false}>
               {children}
             </ScrollView>
             <Button
@@ -90,7 +88,7 @@ export default SortAndFilter;
 
 export const FilterSection = ({title, children, style}) => {
   return (
-    <View style={[{marginBottom: DP._24}, style]}>
+    <View style={[Styles.filterSection, style]}>
       <FText style={Styles.sectionTitle}>{title}</FText>
       {children}
     </View>

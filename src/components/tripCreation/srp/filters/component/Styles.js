@@ -97,4 +97,8 @@ export default StyleSheet.create({
     backgroundColor: Color.PASTEL_RED,
     zIndex: 1,
   },
+  filterSection: {
+    marginBottom: DP._24,
+    paddingHorizontal: DP._24,
+  },
 });
