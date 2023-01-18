@@ -86,9 +86,10 @@ const FlightDetailCard = ({
                 {tripDetails.date}
               </FText>
               <FText
+                type={FONT_TYPE.MEDIUM}
                 style={
                   Styles.headerMonth
-                }>{`${tripDetails.month} '${tripDetails.year}`}</FText>
+                }>{`${tripDetails.month}'${tripDetails.year}`}</FText>
             </View>
             {!!tripDetails.flightBookingStatus && (
               <TripStatus
@@ -104,21 +105,14 @@ const FlightDetailCard = ({
               />
               <View style={{marginLeft: DP._8}}>
                 <FText>{tripDetails.airline}</FText>
-                <FText
-                  style={{
-                    fontSize: DP._12,
-                    color: Color.BLUEY_GREY,
-                    marginTop: DP._2,
-                  }}>
+                <FText style={Styles.airlineCode}>
                   {`${
                     tripDetails.airlineCode ? `${tripDetails.airlineCode}-` : ''
                   }${tripDetails.flightNumber}`}
                 </FText>
               </View>
             </View>
-            <FText
-              type={FONT_TYPE.MEDIUM}
-              style={{fontSize: DP._16, lineHeight: DP._21}}>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.priceStyle}>
               {tripDetails.price}
             </FText>
           </View>

@@ -129,7 +129,7 @@ export default StyleSheet.create({
     marginVertical: DP._16,
   },
   actionsSeperator: {
-    // marginHorizontal: DP._16,
+    marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   travelerNameStyle: {
@@ -155,7 +155,7 @@ export default StyleSheet.create({
   },
   bookingIdTitle: (reduceOpacity) => ({
     paddingHorizontal: DP._16,
-    paddingVertical: DP._4,
+    paddingVertical: DP._8,
     color: Color.BLUEY_GREY,
     fontSize: DP._12,
     lineHeight: DP._14,
@@ -171,5 +171,14 @@ export default StyleSheet.create({
     fontSize: DP._12,
     lineHeight: DP._14,
     color: Color.GREYISH_PURPLE,
+  },
+  airlineCode: {
+    fontSize: DP._12,
+    color: Color.BLUEY_GREY,
+    marginTop: DP._2,
+  },
+  priceStyle: {
+    fontSize: DP._16,
+    lineHeight: DP._21,
   },
 });

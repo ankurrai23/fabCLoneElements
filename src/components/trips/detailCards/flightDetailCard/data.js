@@ -2,7 +2,8 @@ const flightDetailCardProps = {
   title: 'Return Flight',
   tripDetails: {
     date: '22',
-    monthAndYear: "Nov'22",
+    month: 'Nov',
+    year: '22',
     source: 'Delhi',
     destination: 'Mumbai',
     sourceAirportCode: 'BOM',
