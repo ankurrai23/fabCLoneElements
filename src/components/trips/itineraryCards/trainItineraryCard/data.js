@@ -18,8 +18,8 @@ const TrainItineraryCardProps = {
   },
   bookingDetails: {
     trainBookingStatus: 'CONFIRMED',
-    arrivalDate: {date: '28', month: 'Nov'},
-    departureDate: {date: '22', month: 'Nov'},
+    arrivalDate: {date: '28', month: 'Nov', year: '22'},
+    departureDate: {date: '22', month: 'Nov', year: '22'},
     sourceStationCode: 'CSTM',
     source: 'Mumbai',
     destinationStationCode: 'TVC',
@@ -63,7 +63,7 @@ const TrainItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: true,
+  showPreBookingCard: false,
   hideChevron: false,
 };
 

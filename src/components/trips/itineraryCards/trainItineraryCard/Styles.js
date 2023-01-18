@@ -145,6 +145,7 @@ export default StyleSheet.create({
   },
   actionsSeparator: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
