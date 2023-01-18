@@ -62,10 +62,10 @@ export default function HotelSearchResultCard({onCardPress, item}) {
           {item.hotelName}
         </FText>
         <FText
-          style={Styles.hotelAddress}
+          style={Styles.landmarkDistance}
           numberOfLines={3}
           ellipsizeMode={'tail'}>
-          {item.hotelAddress}
+          {item.landmarkDistance}
         </FText>
         <View style={Styles.ratingsContainer}>
           {ratingsArray(item.ratingScore).map((rating, index) => {

@@ -10,6 +10,7 @@ const hotelSearchResultCardProps = {
     ],
     starRating: 5,
     hotelName: 'Lemon Tree Premier',
+    landmarkDistance: '550m from metro station',
     hotelAddress:
       'Andheri - Kurla Rd, opposite Mittal Industrial Estate, Gamdevi, Marol, Andheri East, Mumbai, Maharashtra 400059',
     cost: '₹2603',
