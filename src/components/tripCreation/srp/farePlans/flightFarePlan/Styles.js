@@ -38,10 +38,8 @@ export default StyleSheet.create({
   }),
   planDetailItem: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: DP._18,
-    marginStart: DP._16,
-    marginEnd: DP._18,
+    margin: DP._16,
+    marginBottom: 0,
   },
   planDetailTitle: {
     fontSize: DP._12,
@@ -49,6 +47,7 @@ export default StyleSheet.create({
     marginEnd: DP._8,
     color: Color.GREY_PURPLE,
     marginLeft: DP._4,
+    flex: 1,
   },
   planIcon: {
     width: DP._20,
