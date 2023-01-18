@@ -329,12 +329,12 @@ const FlightItineraryCard = ({
           <FText style={Styles.portName}>{uiData.destinationAirportCode}</FText>
         </View>
         <View style={Styles.flexRowAndJustifySpaceBetween}>
-          {uiData.sourceAirportTerminal && (
+          {!!uiData.sourceAirportTerminal && (
             <FText style={Styles.terminal}>
               {uiData.sourceAirportTerminal}
             </FText>
           )}
-          {uiData.destinationAirportTerminal && (
+          {!!uiData.destinationAirportTerminal && (
             <FText style={Styles.terminal}>
               {uiData.destinationAirportTerminal}
             </FText>
