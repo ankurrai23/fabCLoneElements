@@ -366,6 +366,7 @@ const BusItineraryCard = ({
             title={remarks.title}
             remarks={remarks.text}
             roundBottomCorners={!actionsVisible}
+            onPress={() => onActionPress(viewRemarksAction)}
           />
         )}
         {actionsVisible && <ActionsInItinerary />}

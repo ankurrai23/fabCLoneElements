@@ -332,6 +332,7 @@ const HotelItineraryCard = ({
             title={remarks.title}
             remarks={remarks.text}
             roundBottomCorners={!actionsVisible}
+            onPress={() => onActionPress(viewRemarksAction)}
           />
         )}
 
