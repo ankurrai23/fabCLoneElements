@@ -173,13 +173,13 @@ export default StyleSheet.create({
     color: Color.BLUEY_GREY,
     lineHeight: DP._14,
     paddingStart: DP._16,
-    paddingVertical: DP._4,
+    paddingVertical: DP._8,
   },
   bookingId: {
     fontSize: DP._12,
     color: Color.DARK,
     lineHeight: DP._14,
-    paddingVertical: DP._4,
+    paddingVertical: DP._8,
   },
   separatorStyle: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
@@ -199,5 +199,13 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.GREY_PURPLE,
     marginLeft: DP._4,
+  },
+  separatorContainerStyle: {
+    paddingHorizontal: DP._16,
+    backgroundColor: Color.DODGER_BLUE + '12',
+  },
+  separatorStyle2: {
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
 });

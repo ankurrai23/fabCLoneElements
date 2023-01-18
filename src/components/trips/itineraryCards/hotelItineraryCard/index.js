@@ -96,7 +96,7 @@ const HotelItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator style={Styles.separatorStyle} />
+      <Separator style={Styles.separatorStyle2} />
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
@@ -283,7 +283,7 @@ const HotelItineraryCard = ({
             <View style={{height: DP._12}} />
             {!!uiData.bookingId && (
               <>
-                <Separator style={Styles.separatorStyle} />
+                <Separator style={Styles.separatorStyle2} />
                 <View style={Styles.flexRowAndAlignCenter}>
                   <FText style={Styles.bookingIdText}>
                     {Strings.bookingId2}
@@ -306,7 +306,10 @@ const HotelItineraryCard = ({
                   FONT_TYPE.MEDIUM
                 }>{` ${uiData.modificationCharges}.`}</FText>
             </FText>
-            <Separator style={Styles.seperatorStyle} />
+            <Separator
+              style={Styles.separatorStyle}
+              containerStyle={Styles.separatorContainerStyle}
+            />
           </>
         )}
         {!!uiData.cancellationCharges && (
@@ -318,7 +321,10 @@ const HotelItineraryCard = ({
                   FONT_TYPE.MEDIUM
                 }>{` ${uiData.cancellationCharges}.`}</FText>
             </FText>
-            <Separator style={Styles.seperatorStyle} />
+            <Separator
+              style={Styles.separatorStyle}
+              containerStyle={Styles.separatorContainerStyle}
+            />
           </>
         )}
         {viewRemarksAction && !!remarks && (
