@@ -121,7 +121,10 @@ const CabDetailCard = ({
                   {bookingDetails.date}
                 </FText>
                 <FText
-                  style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+                  type={FONT_TYPE.MEDIUM}
+                  style={
+                    Styles.headerMonth
+                  }>{`${bookingDetails.month}'${bookingDetails.year}`}</FText>
               </View>
               {!!bookingDetails.cabBookingStatus && (
                 <TripStatus
