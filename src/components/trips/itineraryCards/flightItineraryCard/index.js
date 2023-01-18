@@ -92,6 +92,7 @@ const FlightItineraryCard = ({
 
   const ActionsInItinerary = ({hideSeparator}) => (
     <>
+      {!hideSeparator && <Separator style={Styles.separatorStyle} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
@@ -201,6 +202,9 @@ const FlightItineraryCard = ({
           roundBottomCorners={!actionVisible}
         />
       )}
+      {actionVisible && (
+        <ActionsInItinerary hideSeparator={viewRemarksAction} />
+      )}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -216,7 +220,6 @@ const FlightItineraryCard = ({
           }
         />
       )}
-      {actionVisible && <ActionsInItinerary />}
     </View>
   );
 
@@ -347,41 +350,30 @@ const FlightItineraryCard = ({
             {Strings.pnr}:
             <FText type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
           </FText>
-          {actionVisible && <Separator style={Styles.separatorStyle} />}
         </>
       )}
       {!!uiData.modificationCharges && (
-        <>
-          <FText style={Styles.modificationChargeText}>
-            {Strings.includeModificationCharge}
-            <FText
-              type={
-                FONT_TYPE.MEDIUM
-              }>{` ${uiData.modificationCharges}.`}</FText>
-          </FText>
-          <Separator
-            style={Styles.seperatorStyle}
-            containerStyle={Styles.separatorContainerStyle}
-          />
-        </>
+        <FText style={Styles.modificationChargeText}>
+          {Strings.includeModificationCharge}
+          <FText
+            type={FONT_TYPE.MEDIUM}>{` ${uiData.modificationCharges}.`}</FText>
+        </FText>
       )}
       {!!uiData.cancellationCharges && (
-        <>
-          <FText style={Styles.modificationChargeText}>
-            {Strings.includeCancellationCharge}
-            <FText
-              type={
-                FONT_TYPE.MEDIUM
-              }>{` ${uiData.cancellationCharges}.`}</FText>
-          </FText>
-          <Separator
-            style={Styles.seperatorStyle}
-            containerStyle={Styles.separatorContainerStyle}
-          />
-        </>
+        <FText style={Styles.modificationChargeText}>
+          {Strings.includeCancellationCharge}
+          <FText
+            type={FONT_TYPE.MEDIUM}>{` ${uiData.cancellationCharges}.`}</FText>
+        </FText>
       )}
       {viewRemarksAction && !!remarks && (
         <>
+          {(!!uiData.cancellationCharges || !!uiData.modificationCharges) && (
+            <Separator
+              style={Styles.seperatorStyle}
+              containerStyle={Styles.separatorContainerStyle}
+            />
+          )}
           <RemarksBox
             title={remarks.title}
             remarks={remarks.text}
@@ -391,6 +383,14 @@ const FlightItineraryCard = ({
       )}
       {showInfo && (
         <>
+          {(!!uiData.cancellationCharges ||
+            !!uiData.modificationCharges ||
+            !!viewRemarksAction) && (
+            <Separator
+              style={Styles.seperatorStyle}
+              containerStyle={Styles.separatorContainerStyle}
+            />
+          )}
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}
             text={
@@ -406,7 +406,16 @@ const FlightItineraryCard = ({
           />
         </>
       )}
-      {actionVisible && <ActionsInItinerary />}
+      {actionVisible && (
+        <ActionsInItinerary
+          hideSeparator={
+            viewRemarksAction ||
+            showInfo ||
+            uiData.modificationCharges ||
+            uiData.cancellationCharges
+          }
+        />
+      )}
     </View>
   );
 

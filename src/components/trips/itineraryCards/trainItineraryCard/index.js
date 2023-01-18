@@ -371,6 +371,7 @@ const TrainItineraryCard = ({
             roundBottomCorners={!actionsVisible}
           />
         )}
+        {actionsVisible && <ActionsInItinerary />}
         {showInfo && (
           <InfoBox
             isAlert={!!notificationText}
@@ -379,7 +380,6 @@ const TrainItineraryCard = ({
             disablePressEvent={!!notificationText}
           />
         )}
-        {actionsVisible && <ActionsInItinerary />}
       </View>
     </View>
   );

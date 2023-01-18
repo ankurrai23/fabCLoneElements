@@ -59,10 +59,9 @@ const TrainItineraryCardProps = {
   hideIcon: false,
   showInfo: true,
   isAlert: true,
-  notificationText:
-    'This is notification text kfsld lkfjdlfjs kfds ldsjflkdj fkdjflkj fkjsdlkjf ',
+  notificationText: 'This is notification text',
   timelineGreyed: false,
-  actionDisabled: true,
+  actionDisabled: false,
   showStatus: false,
   showPreBookingCard: false,
   hideChevron: false,
