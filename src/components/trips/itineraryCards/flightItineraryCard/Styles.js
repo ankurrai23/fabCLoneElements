@@ -8,7 +8,6 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
     ...cardStyleObj,
-    overflow: 'hidden',
   },
   actionContainer: {
     flexDirection: 'row',

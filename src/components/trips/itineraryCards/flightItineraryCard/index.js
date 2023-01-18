@@ -90,9 +90,9 @@ const FlightItineraryCard = ({
     );
   };
 
-  const ActionsInItinerary = ({hideSeparator}) => (
+  const ActionsInItinerary = () => (
     <>
-      {!hideSeparator && <Separator style={Styles.separatorStyle} />}
+      <Separator style={Styles.separatorStyle} />
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
@@ -202,9 +202,7 @@ const FlightItineraryCard = ({
           roundBottomCorners={!actionVisible}
         />
       )}
-      {actionVisible && (
-        <ActionsInItinerary hideSeparator={viewRemarksAction} />
-      )}
+      {actionVisible && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -353,27 +351,37 @@ const FlightItineraryCard = ({
         </>
       )}
       {!!uiData.modificationCharges && (
-        <FText style={Styles.modificationChargeText}>
-          {Strings.includeModificationCharge}
-          <FText
-            type={FONT_TYPE.MEDIUM}>{` ${uiData.modificationCharges}.`}</FText>
-        </FText>
+        <>
+          <FText style={Styles.modificationChargeText}>
+            {Strings.includeModificationCharge}
+            <FText
+              type={
+                FONT_TYPE.MEDIUM
+              }>{` ${uiData.modificationCharges}.`}</FText>
+          </FText>
+        </>
       )}
       {!!uiData.cancellationCharges && (
-        <FText style={Styles.modificationChargeText}>
-          {Strings.includeCancellationCharge}
-          <FText
-            type={FONT_TYPE.MEDIUM}>{` ${uiData.cancellationCharges}.`}</FText>
-        </FText>
+        <>
+          <Separator
+            style={Styles.seperatorStyle}
+            containerStyle={Styles.separatorContainerStyle}
+          />
+          <FText style={Styles.modificationChargeText}>
+            {Strings.includeCancellationCharge}
+            <FText
+              type={
+                FONT_TYPE.MEDIUM
+              }>{` ${uiData.cancellationCharges}.`}</FText>
+          </FText>
+        </>
       )}
       {viewRemarksAction && !!remarks && (
         <>
-          {(!!uiData.cancellationCharges || !!uiData.modificationCharges) && (
-            <Separator
-              style={Styles.seperatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
-          )}
+          <Separator
+            style={Styles.seperatorStyle}
+            containerStyle={Styles.separatorContainerStyle}
+          />
           <RemarksBox
             title={remarks.title}
             remarks={remarks.text}
@@ -381,38 +389,19 @@ const FlightItineraryCard = ({
           />
         </>
       )}
+      {actionVisible && <ActionsInItinerary />}
       {showInfo && (
-        <>
-          {(!!uiData.cancellationCharges ||
-            !!uiData.modificationCharges ||
-            !!viewRemarksAction) && (
-            <Separator
-              style={Styles.seperatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
-          )}
-          <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
-            text={
-              viewShortlistedFlightAction?.name ||
-              shortlistingAction?.name ||
-              notificationText
-            }
-            showChevron={!!shortlistingAction}
-            disablePressEvent={!!notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedFlightAction || shortlistingAction)
-            }
-          />
-        </>
-      )}
-      {actionVisible && (
-        <ActionsInItinerary
-          hideSeparator={
-            viewRemarksAction ||
-            showInfo ||
-            uiData.modificationCharges ||
-            uiData.cancellationCharges
+        <InfoBox
+          isAlert={shortlistingAction || !!notificationText}
+          text={
+            viewShortlistedFlightAction?.name ||
+            shortlistingAction?.name ||
+            notificationText
+          }
+          showChevron={!!shortlistingAction}
+          disablePressEvent={!!notificationText}
+          onPress={() =>
+            onActionPress(viewShortlistedFlightAction || shortlistingAction)
           }
         />
       )}
