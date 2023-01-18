@@ -87,7 +87,7 @@ export default StyleSheet.create({
   },
   removeRoomText: (disabled) => ({
     lineHeight: DP._20,
-    color: disabled ? Color.FORD_GRAY : Color.RED_2,
+    color: disabled ? Color.FORD_GRAY : Color.PASTEL_RED,
   }),
   addRoomText: (disabled) => ({
     lineHeight: DP._20,
