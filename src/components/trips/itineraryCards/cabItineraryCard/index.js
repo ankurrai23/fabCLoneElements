@@ -83,7 +83,11 @@ const PostBookingCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {bookingDetails.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${bookingDetails.month}'${bookingDetails.year}`}</FText>
         </View>
         {showStatus && status ? (
           <TripStatus statusObj={getStatusObject(status)} />
