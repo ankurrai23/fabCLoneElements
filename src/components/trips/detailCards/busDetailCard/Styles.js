@@ -173,7 +173,7 @@ export default StyleSheet.create({
     marginTop: DP._8,
   },
   actionsSeparator: {
-    // marginHorizontal: DP._16,
+    marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   lineHeight_16: {

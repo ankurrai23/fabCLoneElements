@@ -115,7 +115,11 @@ const BusDetailCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {departureDate.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${departureDate.month}'${departureDate.year}`}</FText>
         </>
       );
     }
@@ -129,7 +133,11 @@ const BusDetailCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {arrivalDate.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${departureDate.month}'${departureDate.year}`}</FText>
         </>
       );
     }
@@ -139,12 +147,20 @@ const BusDetailCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {departureDate.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${departureDate.month}'${departureDate.year}`}</FText>
           <FText style={Styles.hyphen}>{' - '}</FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {arrivalDate.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${arrivalDate.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${arrivalDate.month}'${arrivalDate.year}`}</FText>
         </>
       );
     }
