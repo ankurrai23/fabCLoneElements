@@ -14,8 +14,10 @@ const flightItineraryCardProps = {
     destination: 'Mumbai',
     sourceAirportCode: 'BOM',
     destinationAirportCode: 'BLR',
+    departureTime: '18:30',
+    arrivalTime: '22:30',
     reduceOpacity: false,
-    stop: 'Non stop (via Mumbai)',
+    stop: 'Non stop (via Mumbai alskjdlakasdasdsjdlaskj)',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
@@ -23,10 +25,11 @@ const flightItineraryCardProps = {
     modificationCharge: '₹600',
     airlineCode: 'G8',
     flightNumber: '717',
+    totalDuration: '1h 50min',
+    airline: 'Indigo',
     isOutOfPolicy: true,
+    modificationCharges: '₹300',
     isSoldOut: false,
-    sourceAirportTerminal: 'Terminal 1',
-    destinationAirportTerminal: 'Terminal 3',
   },
   bookingDetails: {
     flightBookingStatus: 'CONFIRMED',
@@ -41,7 +44,7 @@ const flightItineraryCardProps = {
     flightNumber: '717',
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
-    // pnr: 'GBLP6Q',
+    pnr: 'GBLP6Q',
     totalDuration: '1h 50min',
     airline: 'Indigo',
     stop: 'Non stop (via Hyderabad)',
@@ -50,19 +53,19 @@ const flightItineraryCardProps = {
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
     price: '₹2600',
-    cancellationCharges: '₹600',
     modificationCharges: '₹300',
     isOutOfPolicy: true,
   },
+
   remarks: {
-    title: 'Remarks',
+    title: 'Modification remarks',
     text: 'Change of plans',
   },
   actions: [
-    {
-      type: 'RESCHEDULE',
-      name: 'Reschedule',
-    },
+    // {
+    //   type: 'VIEW_REMARKS',
+    //   name: 'Reschedule',
+    // },
     {
       type: 'CANCEL',
       name: 'Cancel',
@@ -81,9 +84,9 @@ const flightItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  notificationText: null,
-  showPreBookingCard: false,
-  hideChevron: false,
+  notificationText: 'This is a sample notification text',
+  showPreBookingCard: true,
+  hideChevron: true,
 };
 
 export default flightItineraryCardProps;
