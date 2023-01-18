@@ -18,7 +18,7 @@ const Checkbox = ({
   return (
     <FTouchableOpacity
       style={[
-        Styles.checkBox,
+        Styles.checkBox(isChecked),
         {
           height: size,
           width: size,
