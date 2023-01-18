@@ -238,6 +238,7 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginHorizontal: DP._16,
   },
   marginTop_8: {
