@@ -92,7 +92,7 @@ const FlightItineraryCard = ({
 
   const ActionsInItinerary = () => (
     <>
-      <Separator style={Styles.seperatorStyle} />
+      <Separator style={Styles.separatorStyle} />
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
@@ -338,7 +338,7 @@ const FlightItineraryCard = ({
       </FTouchableOpacity>
       {!!uiData.pnr && (
         <>
-          <Separator style={Styles.seperatorStyle} />
+          <Separator style={Styles.separatorStyle} />
           <FText style={Styles.pnr(uiData.reduceOpacity)}>
             {Strings.pnr}:
             <FText type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
@@ -354,11 +354,14 @@ const FlightItineraryCard = ({
                 FONT_TYPE.MEDIUM
               }>{` ${uiData.modificationCharges}.`}</FText>
           </FText>
-          <Separator style={Styles.seperatorStyle} />
         </>
       )}
       {!!uiData.cancellationCharges && (
         <>
+          <Separator
+            style={Styles.seperatorStyle}
+            containerStyle={Styles.separatorContainerStyle}
+          />
           <FText style={Styles.modificationChargeText}>
             {Strings.includeCancellationCharge}
             <FText
@@ -366,15 +369,20 @@ const FlightItineraryCard = ({
                 FONT_TYPE.MEDIUM
               }>{` ${uiData.cancellationCharges}.`}</FText>
           </FText>
-          <Separator style={Styles.seperatorStyle} />
         </>
       )}
       {viewRemarksAction && !!remarks && (
-        <RemarksBox
-          title={remarks.title}
-          remarks={remarks.text}
-          roundBottomCorners={!actionVisible}
-        />
+        <>
+          <Separator
+            style={Styles.seperatorStyle}
+            containerStyle={Styles.separatorContainerStyle}
+          />
+          <RemarksBox
+            title={remarks.title}
+            remarks={remarks.text}
+            roundBottomCorners={!actionVisible}
+          />
+        </>
       )}
       {actionVisible && <ActionsInItinerary />}
       {showInfo && (
