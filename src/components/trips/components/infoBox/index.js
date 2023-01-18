@@ -23,7 +23,7 @@ export default function InfoBox({
           width={DP._16}
           height={DP._16}
           style={styles.icon}
-          stroke={Color.TWILIGHT_BLUE}
+          stroke={Color.DODGER_BLUE}
         />
       ) : (
         <Icon.CheckCircle
@@ -60,8 +60,9 @@ const styles = StyleSheet.create({
   }),
   text: (isAlert) => ({
     color: isAlert ? Color.TWILIGHT_BLUE : Color.DARK,
-    lineHeight: DP._21,
+    lineHeight: DP._16,
     marginRight: DP._16,
+    fontSize: DP._12,
     flex: 1,
   }),
   alignCenter: {alignSelf: 'center'},

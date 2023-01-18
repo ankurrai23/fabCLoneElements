@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: DP._16,
     paddingVertical: DP._8,
     backgroundColor: Color.DODGER_BLUE + '12',
-    borderBottomLeftRadius: roundBottomCorners ? DP._12 : 0,
-    borderBottomRightRadius: roundBottomCorners ? DP._12 : 0,
+    // borderBottomLeftRadius: roundBottomCorners ? DP._12 : 0,
+    // borderBottomRightRadius: roundBottomCorners ? DP._12 : 0,
   }),
   title: {
     fontSize: DP._12,

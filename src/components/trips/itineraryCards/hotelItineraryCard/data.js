@@ -42,7 +42,7 @@ const hotelItineraryCardProps = {
     title: 'Remarks',
     text: 'Change of plans',
   },
-  actionsDisabled: false,
+  actionsDisabled: true,
   actions: [
     {
       type: 'MODIFY',

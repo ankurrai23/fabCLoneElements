@@ -53,7 +53,8 @@ const flightItineraryCardProps = {
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
     price: '₹2600',
-    modificationCharges: '₹300',
+    // cancellationCharges: '₹600',
+    // modificationCharges: '₹300',
     isOutOfPolicy: true,
   },
 
@@ -71,6 +72,17 @@ const flightItineraryCardProps = {
       name: 'Cancel',
     },
     // {
+    //   type: 'VIEW_REMARKS',
+    // },
+    // {
+    //   type: 'SHORTLIST_FLIGHT_TRIPS',VIEW_SHORTLISTED_FLIGHT_TRIPS
+    //   name: 'Flight shortlist ready',
+    // },
+    // {
+    //   type: 'VIEW_SHORTLISTED_FLIGHT_TRIPS',
+    //   name: 'Succefully shortlisted flights',
+    // },
+    // {
     //   type: 'REFUND_STATUS',
     //   name: 'Refund status',
     // },
@@ -82,11 +94,11 @@ const flightItineraryCardProps = {
   showInfo: false,
   isAlert: true,
   timelineGreyed: false,
-  actionDisabled: false,
+  actionDisabled: true,
   showStatus: false,
-  notificationText: 'This is a sample notification text',
-  showPreBookingCard: true,
-  hideChevron: true,
+  // notificationText: 'This is to notify something',
+  showPreBookingCard: false,
+  hideChevron: false,
 };
 
 export default flightItineraryCardProps;

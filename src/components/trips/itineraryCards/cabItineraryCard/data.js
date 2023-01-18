@@ -60,6 +60,9 @@ const cabItineraryCardProps = {
       type: 'CANCEL',
       name: 'Cancel',
     },
+    {
+      type: 'VIEW_REMARKS',
+    },
     // {
     //   type: FlightSubTripActions.CANCELLATION_REQUESTED,
     //   name: 'You have sent a modification request for this booking.',
@@ -73,7 +76,7 @@ const cabItineraryCardProps = {
   isAlert: true,
   notificationText: 'This is notification text',
   timelineGreyed: false,
-  actionDisabled: false,
+  actionDisabled: true,
   showStatus: false,
   showPreBookingCard: false,
   hideChevron: false,

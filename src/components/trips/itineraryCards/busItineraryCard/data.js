@@ -47,6 +47,9 @@ const busItineraryCardProps = {
       type: 'CANCEL',
       name: 'Cancel',
     },
+    {
+      type: 'VIEW_REMARKS',
+    },
     // {
     //   type: FlightSubTripActions.CANCELLATION_REQUESTED,
     //   name: 'You have sent a modification request for this booking.',
@@ -57,10 +60,10 @@ const busItineraryCardProps = {
   showLine: true,
   hideIcon: false,
   showInfo: false,
-  isAlert: false,
+  isAlert: true,
   notificationText: 'This is notification text',
   timelineGreyed: false,
-  actionDisabled: false,
+  actionDisabled: true,
   showStatus: false,
   showPreBookingCard: false,
   hideChevron: false,
