@@ -8,6 +8,7 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
     ...cardStyleObj,
+    overflow: 'hidden',
   },
   actionContainer: {
     flexDirection: 'row',
@@ -57,6 +58,11 @@ export default StyleSheet.create({
     marginTop: DP._16,
   },
   duration: {
+    fontSize: DP._10,
+    color: Color.GREYISH_PURPLE,
+  },
+  stoppage: {
+    flexShrink: 1,
     fontSize: DP._10,
     color: Color.GREYISH_PURPLE,
   },
@@ -229,10 +235,10 @@ export default StyleSheet.create({
     marginLeft: DP._4,
   },
   durationAndStopsContainer: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'flex-start',
-    marginHorizontal: DP._8,
+    marginHorizontal: DP._16,
   },
   marginTop_8: {
     marginTop: DP._8,
