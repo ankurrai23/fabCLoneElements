@@ -161,11 +161,8 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
   },
-  sepratorStyle: {
-    marginTop: DP._12,
-    backgroundColor: Color.LIGHT_PERIWINKLE,
-  },
   actionsSeperator: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
 });
