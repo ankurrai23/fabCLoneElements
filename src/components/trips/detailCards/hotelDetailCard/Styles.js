@@ -58,7 +58,7 @@ export default StyleSheet.create({
     color: Color.DODGER_BLUE,
   },
   separator: {
-    // marginVertical: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   hotelNameAndImageContainer: {
     flexDirection: 'row',
@@ -188,5 +188,9 @@ export default StyleSheet.create({
     height: DP._16,
     width: DP._16,
     marginRight: DP._8,
+  },
+  actionSeparator: {
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
 });

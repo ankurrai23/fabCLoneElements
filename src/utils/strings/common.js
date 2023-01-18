@@ -73,7 +73,7 @@ export default {
   checkOut: (time) => `Check-out: ${time}`,
   inclusions: 'Inclusions',
   rooms: 'Rooms',
-  moreInclusions: (count) => ` +${count - 3} more`,
+  moreInclusions: (count) => ` +${count} more`,
   paymentMode: 'Payment mode',
   NA: 'N.A',
   viewDetails: (expanded) => `View ${expanded ? 'less' : 'more'} details`,
