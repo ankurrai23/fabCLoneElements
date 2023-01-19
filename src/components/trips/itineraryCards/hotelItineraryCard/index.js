@@ -349,7 +349,13 @@ const HotelItineraryCard = ({
             }
           />
         )}
-        {actionsVisible && <ActionsInItinerary />}
+        {actionsVisible && (
+          <ActionsInItinerary
+            hideSeperator={
+              showInfo || modificationCharges || cancellationCharges
+            }
+          />
+        )}
       </View>
     </View>
   );

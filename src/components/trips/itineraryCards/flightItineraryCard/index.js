@@ -219,7 +219,7 @@ const FlightItineraryCard = ({
           }
         />
       )}
-      {actionVisible && <ActionsInItinerary />}
+      {actionVisible && <ActionsInItinerary hideSeperator={showInfo} />}
     </View>
   );
 
@@ -400,7 +400,11 @@ const FlightItineraryCard = ({
           }
         />
       )}
-      {actionVisible && <ActionsInItinerary />}
+      {actionVisible && (
+        <ActionsInItinerary
+          hideSeperator={showInfo || modificationCharges || cancellationCharges}
+        />
+      )}
     </View>
   );
 
