@@ -380,7 +380,9 @@ const TrainItineraryCard = ({
             disablePressEvent={!!notificationText}
           />
         )}
-        {actionsVisible && <ActionsInItinerary />}
+        {actionsVisible && (
+          <ActionsInItinerary hideSeperator={Boolean(showInfo)} />
+        )}
       </View>
     </View>
   );
