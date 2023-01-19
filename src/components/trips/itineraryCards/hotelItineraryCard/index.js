@@ -326,28 +326,44 @@ const HotelItineraryCard = ({
           </>
         )}
         {viewRemarksAction && !!remarks && (
-          <RemarksBox
-            title={remarks.title}
-            remarks={remarks.text}
-            roundBottomCorners={!actionsVisible}
-            onPress={() => onActionPress(viewRemarksAction)}
-          />
+          <>
+            {(cancellationCharges || modificationCharges) && (
+              <Separator
+                style={Styles.seperatorStyle}
+                containerStyle={Styles.separatorContainerStyle}
+              />
+            )}
+            <RemarksBox
+              title={remarks.title}
+              remarks={remarks.text}
+              roundBottomCorners={!actionsVisible}
+              onPress={() => onActionPress(viewRemarksAction)}
+            />
+          </>
         )}
 
         {showInfo && (
-          <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
-            text={
-              viewShortlistedHotelAction?.name ||
-              shortlistingAction?.name ||
-              notificationText
-            }
-            showChevron={!!shortlistingAction}
-            disablePressEvent={!!notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedHotelAction || shortlistingAction)
-            }
-          />
+          <>
+            {(cancellationCharges || modificationCharges) && (
+              <Separator
+                style={Styles.seperatorStyle}
+                containerStyle={Styles.separatorContainerStyle}
+              />
+            )}
+            <InfoBox
+              isAlert={shortlistingAction || !!notificationText}
+              text={
+                viewShortlistedHotelAction?.name ||
+                shortlistingAction?.name ||
+                notificationText
+              }
+              showChevron={!!shortlistingAction}
+              disablePressEvent={!!notificationText}
+              onPress={() =>
+                onActionPress(viewShortlistedHotelAction || shortlistingAction)
+              }
+            />
+          </>
         )}
         {actionsVisible && (
           <ActionsInItinerary
