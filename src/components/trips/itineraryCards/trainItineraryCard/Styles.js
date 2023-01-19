@@ -53,6 +53,9 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.BLUEY_GREY,
   },
+  colorDark: {
+    color: Color.DARK,
+  },
   date: {
     fontSize: DP._14,
     lineHeight: DP._20,

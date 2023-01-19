@@ -129,7 +129,7 @@ const BusDetailCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {departureDate.date}
           </FText>
-          <FText style={Styles.hyphen}>{' - '}</FText>
+          <FText style={[Styles.hyphen, Styles.colorDark]}>{' - '}</FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {arrivalDate.date}
           </FText>

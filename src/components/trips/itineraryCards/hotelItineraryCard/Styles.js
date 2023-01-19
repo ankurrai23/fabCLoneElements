@@ -29,6 +29,9 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.BLUEY_GREY,
   },
+  colorDark: {
+    color: Color.DARK,
+  },
   statusContainer: {
     backgroundColor: Color.DARK_SEA_FOAM + '1a',
     paddingHorizontal: DP._8,
