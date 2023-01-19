@@ -99,7 +99,7 @@ export function formattedDate(date = new Date(), format = 'DD MMM YY') {
   return moment(date).format(format);
 }
 
-export function formattedPrice(val, maxFractionDigit = 2) {
+export function formattedPrice(val, maxFractionDigit = 0) {
   let price = Number(val);
   if (isNaN(price)) {
     return val;
