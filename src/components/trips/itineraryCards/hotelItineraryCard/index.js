@@ -98,7 +98,7 @@ const HotelItineraryCard = ({
 
   const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
+      {!hideSeperator && <Separator style={Styles.separatorStyle} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
@@ -285,7 +285,7 @@ const HotelItineraryCard = ({
             <View style={{height: DP._12}} />
             {!!uiData.bookingId && (
               <>
-                <Separator style={Styles.separatorStyle2} />
+                <Separator style={Styles.separatorStyle} />
                 <View style={Styles.flexRowAndAlignCenter}>
                   <FText style={Styles.bookingIdText}>
                     {Strings.bookingId2}
@@ -306,10 +306,6 @@ const HotelItineraryCard = ({
               <FText
                 type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
             </FText>
-            <Separator
-              style={Styles.separatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
           </>
         )}
         {!!cancellationCharges && (
@@ -319,18 +315,14 @@ const HotelItineraryCard = ({
               <FText
                 type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
             </FText>
-            <Separator
-              style={Styles.separatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
           </>
         )}
         {viewRemarksAction && !!remarks && (
           <>
             {(cancellationCharges || modificationCharges) && (
               <Separator
-                style={Styles.seperatorStyle}
-                containerStyle={Styles.separatorContainerStyle}
+                style={Styles.separatorContainerStyle}
+                // containerStyle={Styles.separatorContainerStyle}
               />
             )}
             <RemarksBox
@@ -346,8 +338,8 @@ const HotelItineraryCard = ({
           <>
             {(cancellationCharges || modificationCharges) && (
               <Separator
-                style={Styles.seperatorStyle}
-                containerStyle={Styles.separatorContainerStyle}
+                style={Styles.separatorContainerStyle}
+                // containerStyle={Styles.separatorContainerStyle}
               />
             )}
             <InfoBox

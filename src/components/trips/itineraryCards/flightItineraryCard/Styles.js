@@ -132,7 +132,7 @@ export default StyleSheet.create({
   },
   seperatorStyle: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
-    // marginHorizontal: DP._16,
+    marginHorizontal: DP._16,
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
@@ -245,11 +245,7 @@ export default StyleSheet.create({
     marginTop: DP._8,
   },
   separatorContainerStyle: {
-    paddingHorizontal: DP._16,
-    backgroundColor: Color.DODGER_BLUE + '12',
-  },
-  separatorStyle: {
+    backgroundColor: Color.HAWKES_BLUE,
     marginHorizontal: DP._16,
-    backgroundColor: Color.LIGHT_PERIWINKLE,
   },
 });
