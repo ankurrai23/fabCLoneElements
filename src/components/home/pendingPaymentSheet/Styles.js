@@ -3,7 +3,9 @@ import {Color} from '../../../utils/color/index.travelPlus';
 import {DP} from '../../../utils/Dimen';
 import {cardStyleObj, shadowObj} from '../../../utils/Utils';
 import {isPlatformIos} from '../../../utils/Utils';
+
 export const CARD_WIDTH = 0.8 * DP.match_width;
+export const CARD_WIDTH_FULL = DP.match_width;
 
 export default StyleSheet.create({
   dotContainer: {
@@ -58,6 +60,13 @@ export default StyleSheet.create({
     padding: DP._16,
     paddingBottom: DP._10,
     width: CARD_WIDTH,
+    ...cardStyleObj,
+    ...shadowObj,
+  },
+  cardStyleSingle: {
+    padding: DP._16,
+    paddingBottom: DP._10,
+    width: CARD_WIDTH_FULL - DP._48,
     ...cardStyleObj,
     ...shadowObj,
   },

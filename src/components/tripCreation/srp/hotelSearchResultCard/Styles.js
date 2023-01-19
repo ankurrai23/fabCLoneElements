@@ -51,7 +51,7 @@ export default StyleSheet.create({
     color: Color.DARK_BLUE_GREY_TWO,
     marginTop: DP._16,
   },
-  hotelAddress: {
+  landmarkDistance: {
     fontSize: DP._12,
     lineHeight: DP._14,
     marginTop: DP._4,

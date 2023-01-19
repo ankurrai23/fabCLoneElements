@@ -2,17 +2,26 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import FText, {FONT_TYPE} from '../../../../common/rn/FText';
 import {Color} from '../../../../utils/color/index.travelPlus';
-import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 
-export default function RemarksBox({title, remarks, roundBottomCorners}) {
+export default function RemarksBox({
+  title,
+  remarks,
+  roundBottomCorners,
+  onPress,
+}) {
   return (
-    <View style={styles.container(roundBottomCorners)}>
+    <FTouchableOpacity
+      onPress={onPress}
+      style={styles.container(roundBottomCorners)}>
       <FText style={styles.title} type={FONT_TYPE.MEDIUM}>
         {title}
       </FText>
-      <FText style={styles.text}>{remarks}</FText>
-    </View>
+      <FText style={styles.text} numberOfLines={2} ellipsizeMode={'tail'}>
+        {remarks}
+      </FText>
+    </FTouchableOpacity>
   );
 }
 

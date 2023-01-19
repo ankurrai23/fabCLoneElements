@@ -12,7 +12,7 @@ import Separator from '../../../../common/components/separator';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 
-const MAX_ADULTS_PER_ROOM = 3;
+const MAX_ADULTS_PER_ROOM = 4;
 const MIN_ADULTS_PER_ROOM = 1;
 const MAX_ROOMS = 6;
 const MIN_ROOMS = 1;

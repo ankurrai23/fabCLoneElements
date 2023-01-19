@@ -86,7 +86,10 @@ const PendingPaymentSheet = ({
   };
 
   const renderItem = ({item}) => (
-    <FTouchableOpacity style={Styles.cardStyle}>
+    <FTouchableOpacity
+      style={
+        paymentRequests.length === 1 ? Styles.cardStyleSingle : Styles.cardStyle
+      }>
       <View style={Styles.flexRow}>
         <View>
           <FText>
@@ -142,11 +145,13 @@ const PendingPaymentSheet = ({
             renderItem={renderItem}
             ItemSeparatorComponent={ItemSeparator}
           />
-          <CardDots
-            ref={cardDotsRef}
-            data={paymentRequests}
-            dotColor={Color.TWILIGHT_BLUE}
-          />
+          {paymentRequests.length !== 1 && (
+            <CardDots
+              ref={cardDotsRef}
+              data={paymentRequests}
+              dotColor={Color.TWILIGHT_BLUE}
+            />
+          )}
         </View>
       }
     />
