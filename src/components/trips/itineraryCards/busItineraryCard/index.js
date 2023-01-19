@@ -270,9 +270,9 @@ const BusItineraryCard = ({
     !actionDisabled &&
     (rescheduleAction || cancelAction || editAction || removeAction);
 
-  const ActionsInItinerary = () => (
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.actionsSeperator} />
+      {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity

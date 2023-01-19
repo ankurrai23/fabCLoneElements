@@ -96,9 +96,9 @@ const HotelItineraryCard = ({
     );
   };
 
-  const ActionsInItinerary = () => (
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.separatorStyle2} />
+      {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity

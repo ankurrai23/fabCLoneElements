@@ -273,9 +273,9 @@ const TrainItineraryCard = ({
     !actionDisabled &&
     (rescheduleAction || cancelAction || editAction || removeAction);
 
-  const ActionsInItinerary = () => (
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.actionsSeparator} />
+      {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity

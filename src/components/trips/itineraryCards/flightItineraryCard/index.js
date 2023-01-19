@@ -92,9 +92,9 @@ const FlightItineraryCard = ({
     );
   };
 
-  const ActionsInItinerary = () => (
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.separatorStyle} />
+      {!hideSeperator && <Separator style={Styles.separatorStyle} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
