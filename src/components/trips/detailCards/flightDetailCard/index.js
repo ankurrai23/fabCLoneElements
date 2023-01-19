@@ -148,12 +148,12 @@ const FlightDetailCard = ({
             </FText>
           </View>
           <View style={Styles.flexRowAndJustifySpaceBetween}>
-            {tripDetails.sourceAirportTerminal && (
+            {!!tripDetails.sourceAirportTerminal && (
               <FText style={Styles.terminal}>
                 {tripDetails.sourceAirportTerminal}
               </FText>
             )}
-            {tripDetails.destinationAirportTerminal && (
+            {!!tripDetails.destinationAirportTerminal && (
               <FText style={Styles.terminal}>
                 {tripDetails.destinationAirportTerminal}
               </FText>
