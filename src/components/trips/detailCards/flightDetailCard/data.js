@@ -15,7 +15,7 @@ const flightDetailCardProps = {
     airlineCode: '6G',
     flightNumber: '717',
     pnr: 'GBLP6Q',
-    duration: '1h 50min',
+    totalDuration: '1h 50min',
     airline: 'Indigo',
     flightBookingStatus: 'CONFIRMED',
     stop: 'Non stop',
