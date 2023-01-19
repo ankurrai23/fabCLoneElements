@@ -42,6 +42,8 @@ const FlightItineraryCard = ({
   hideChevron,
   isProcessing,
   remarks,
+  cancellationCharges,
+  modificationCharges,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -350,18 +352,15 @@ const FlightItineraryCard = ({
           </FText>
         </>
       )}
-      {!!uiData.modificationCharges && (
+      {!!modificationCharges && (
         <>
           <FText style={Styles.modificationChargeText}>
             {Strings.includeModificationCharge}
-            <FText
-              type={
-                FONT_TYPE.MEDIUM
-              }>{` ${uiData.modificationCharges}.`}</FText>
+            <FText type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
           </FText>
         </>
       )}
-      {!!uiData.cancellationCharges && (
+      {!!cancellationCharges && (
         <>
           <Separator
             style={Styles.seperatorStyle}
@@ -369,10 +368,7 @@ const FlightItineraryCard = ({
           />
           <FText style={Styles.modificationChargeText}>
             {Strings.includeCancellationCharge}
-            <FText
-              type={
-                FONT_TYPE.MEDIUM
-              }>{` ${uiData.cancellationCharges}.`}</FText>
+            <FText type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
           </FText>
         </>
       )}

@@ -43,6 +43,8 @@ const HotelItineraryCard = ({
   hideChevron,
   isProcessing,
   remarks,
+  modificationCharges,
+  cancellationCharges,
 }) => {
   const sameMonthDates =
     tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
@@ -297,14 +299,12 @@ const HotelItineraryCard = ({
           </View>
         </FTouchableOpacity>
 
-        {!!uiData.modificationCharges && (
+        {!!modificationCharges && (
           <>
             <FText style={Styles.modificationChargeText}>
               {Strings.includeModificationCharge}
               <FText
-                type={
-                  FONT_TYPE.MEDIUM
-                }>{` ${uiData.modificationCharges}.`}</FText>
+                type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
             </FText>
             <Separator
               style={Styles.separatorStyle}
@@ -312,14 +312,12 @@ const HotelItineraryCard = ({
             />
           </>
         )}
-        {!!uiData.cancellationCharges && (
+        {!!cancellationCharges && (
           <>
             <FText style={Styles.modificationChargeText}>
               {Strings.includeCancellationCharge}
               <FText
-                type={
-                  FONT_TYPE.MEDIUM
-                }>{` ${uiData.cancellationCharges}.`}</FText>
+                type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
             </FText>
             <Separator
               style={Styles.separatorStyle}
