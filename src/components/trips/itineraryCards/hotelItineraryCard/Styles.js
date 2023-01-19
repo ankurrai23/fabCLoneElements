@@ -8,6 +8,7 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
     ...cardStyleObj,
+    overflow: 'hidden',
   },
   card: (reduceOpacity) => ({
     opacity: reduceOpacity ? 0.6 : 1,

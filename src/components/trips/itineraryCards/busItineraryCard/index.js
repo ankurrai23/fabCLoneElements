@@ -270,9 +270,9 @@ const BusItineraryCard = ({
     !actionDisabled &&
     (rescheduleAction || cancelAction || editAction || removeAction);
 
-  const ActionsInItinerary = () => (
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.actionsSeperator} />
+      {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
@@ -369,7 +369,6 @@ const BusItineraryCard = ({
             onPress={() => onActionPress(viewRemarksAction)}
           />
         )}
-        {actionsVisible && <ActionsInItinerary />}
         {showInfo && (
           <InfoBox
             isAlert={!!notificationText}
@@ -377,6 +376,9 @@ const BusItineraryCard = ({
             showChevron={false}
             disablePressEvent={!!notificationText}
           />
+        )}
+        {actionsVisible && (
+          <ActionsInItinerary hideSeperator={Boolean(showInfo)} />
         )}
       </View>
     </View>
