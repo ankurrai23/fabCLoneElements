@@ -116,44 +116,48 @@ const FlightDetailCard = ({
               {tripDetails.price}
             </FText>
           </View>
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-            <View style={Styles.flex}>
-              <FText style={Styles.time}>{tripDetails.departureTime}</FText>
-              <FText style={Styles.portName}>
-                {tripDetails.sourceAirportCode}
+          <View style={Styles.flexRowAndJustifySpaceBetween}>
+            <FText style={Styles.time}>{tripDetails.departureTime}</FText>
+            <Icon.Aeroplane
+              width={DP._18}
+              height={DP._18}
+              fill={Color.LIGHT_BLUEY_GREY}
+              style={Styles.airplane}
+            />
+            <FText style={Styles.time}>{tripDetails.arrivalTime}</FText>
+          </View>
+          <View
+            style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_8]}>
+            <FText style={Styles.portName}>
+              {tripDetails.sourceAirportCode}
+            </FText>
+            <View style={Styles.durationAndStopsContainer}>
+              <FText style={Styles.duration} numberOfLines={1}>
+                {tripDetails.totalDuration}
               </FText>
+              <View style={Styles.dot_two} />
+              <FText
+                style={Styles.stoppage}
+                numberOfLines={1}
+                ellipsizeMode={'tail'}>
+                {tripDetails.stop}
+              </FText>
+            </View>
+            <FText style={Styles.portName}>
+              {tripDetails.destinationAirportCode}
+            </FText>
+          </View>
+          <View style={Styles.flexRowAndJustifySpaceBetween}>
+            {tripDetails.sourceAirportTerminal && (
               <FText style={Styles.terminal}>
                 {tripDetails.sourceAirportTerminal}
               </FText>
-            </View>
-            <View
-              style={[
-                Styles.justifyContent_around(tripDetails.duration),
-                Styles.flex,
-              ]}>
-              <Icon.Aeroplane
-                width={DP._18}
-                height={DP._18}
-                fill={Color.LIGHT_BLUEY_GREY}
-                style={Styles.airplane}
-              />
-              <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>
-                  {tripDetails.totalDuration}
-                </FText>
-                <View style={Styles.dot_two} />
-                <FText style={Styles.duration}>{tripDetails.stop}</FText>
-              </View>
-            </View>
-            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-              <FText style={Styles.time}>{tripDetails.arrivalTime}</FText>
-              <FText style={Styles.portName}>
-                {tripDetails.destinationAirportCode}
-              </FText>
+            )}
+            {tripDetails.destinationAirportTerminal && (
               <FText style={Styles.terminal}>
                 {tripDetails.destinationAirportTerminal}
               </FText>
-            </View>
+            )}
           </View>
         </FTouchableOpacity>
         <Separator style={Styles.actionsSeperator} />

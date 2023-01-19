@@ -181,4 +181,21 @@ export default StyleSheet.create({
     fontSize: DP._16,
     lineHeight: DP._21,
   },
+  flexRowAndJustifySpaceBetween: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  durationAndStopsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: DP._4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: DP._16,
+  },
+  stoppage: {
+    flexShrink: 1,
+    fontSize: DP._10,
+    color: Color.GREYISH_PURPLE,
+  },
 });
