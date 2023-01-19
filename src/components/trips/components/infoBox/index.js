@@ -23,7 +23,7 @@ export default function InfoBox({
           width={DP._16}
           height={DP._16}
           style={styles.icon}
-          stroke={Color.TWILIGHT_BLUE}
+          stroke={Color.DODGER_BLUE}
         />
       ) : (
         <Icon.CheckCircle
@@ -46,7 +46,7 @@ export default function InfoBox({
 
 const styles = StyleSheet.create({
   container: (isAlert) => ({
-    paddingVertical: DP._16,
+    paddingVertical: DP._8,
     backgroundColor: isAlert
       ? Color.DODGER_BLUE + '12'
       : Color.DARK_SEA_FOAM_10,
@@ -60,9 +60,10 @@ const styles = StyleSheet.create({
   }),
   text: (isAlert) => ({
     color: isAlert ? Color.TWILIGHT_BLUE : Color.DARK,
-    lineHeight: DP._21,
+    lineHeight: DP._16,
     marginRight: DP._16,
     flex: 1,
+    textSize: DP._12,
   }),
   alignCenter: {alignSelf: 'center'},
   icon: {

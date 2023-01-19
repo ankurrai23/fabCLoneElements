@@ -42,6 +42,8 @@ const FlightItineraryCard = ({
   hideChevron,
   isProcessing,
   remarks,
+  cancellationCharges,
+  modificationCharges,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -90,9 +92,9 @@ const FlightItineraryCard = ({
     );
   };
 
-  const ActionsInItinerary = ({hideSeparator}) => (
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      {!hideSeparator && <Separator style={Styles.separatorStyle} />}
+      {!hideSeperator && <Separator style={Styles.seperatorStyle} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
@@ -202,9 +204,6 @@ const FlightItineraryCard = ({
           roundBottomCorners={!actionVisible}
         />
       )}
-      {actionVisible && (
-        <ActionsInItinerary hideSeparator={viewRemarksAction} />
-      )}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -220,6 +219,7 @@ const FlightItineraryCard = ({
           }
         />
       )}
+      {actionVisible && <ActionsInItinerary hideSeperator={showInfo} />}
     </View>
   );
 
@@ -331,12 +331,12 @@ const FlightItineraryCard = ({
           <FText style={Styles.portName}>{uiData.destinationAirportCode}</FText>
         </View>
         <View style={Styles.flexRowAndJustifySpaceBetween}>
-          {uiData.sourceAirportTerminal && (
+          {!!uiData.sourceAirportTerminal && (
             <FText style={Styles.terminal}>
               {uiData.sourceAirportTerminal}
             </FText>
           )}
-          {uiData.destinationAirportTerminal && (
+          {!!uiData.destinationAirportTerminal && (
             <FText style={Styles.terminal}>
               {uiData.destinationAirportTerminal}
             </FText>
@@ -352,27 +352,22 @@ const FlightItineraryCard = ({
           </FText>
         </>
       )}
-      {!!uiData.modificationCharges && (
+      {!!modificationCharges && (
         <FText style={Styles.modificationChargeText}>
           {Strings.includeModificationCharge}
-          <FText
-            type={FONT_TYPE.MEDIUM}>{` ${uiData.modificationCharges}.`}</FText>
+          <FText type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
         </FText>
       )}
-      {!!uiData.cancellationCharges && (
+      {!!cancellationCharges && (
         <FText style={Styles.modificationChargeText}>
           {Strings.includeCancellationCharge}
-          <FText
-            type={FONT_TYPE.MEDIUM}>{` ${uiData.cancellationCharges}.`}</FText>
+          <FText type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
         </FText>
       )}
       {viewRemarksAction && !!remarks && (
         <>
-          {(!!uiData.cancellationCharges || !!uiData.modificationCharges) && (
-            <Separator
-              style={Styles.seperatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
+          {(cancellationCharges || modificationCharges) && (
+            <Separator style={Styles.separatorContainerStyle} />
           )}
           <RemarksBox
             title={remarks.title}
@@ -383,13 +378,8 @@ const FlightItineraryCard = ({
       )}
       {showInfo && (
         <>
-          {(!!uiData.cancellationCharges ||
-            !!uiData.modificationCharges ||
-            !!viewRemarksAction) && (
-            <Separator
-              style={Styles.seperatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
+          {(cancellationCharges || modificationCharges) && (
+            <Separator style={Styles.separatorContainerStyle} />
           )}
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}
@@ -408,12 +398,7 @@ const FlightItineraryCard = ({
       )}
       {actionVisible && (
         <ActionsInItinerary
-          hideSeparator={
-            viewRemarksAction ||
-            showInfo ||
-            uiData.modificationCharges ||
-            uiData.cancellationCharges
-          }
+          hideSeperator={showInfo || modificationCharges || cancellationCharges}
         />
       )}
     </View>

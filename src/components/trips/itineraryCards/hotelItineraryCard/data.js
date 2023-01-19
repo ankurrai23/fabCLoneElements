@@ -34,10 +34,10 @@ const hotelItineraryCardProps = {
     bookingId: 'AZCD123',
     isSoldOut: false,
     gstIncluded: false,
-    cancellationCharges: '₹600',
-    modificationCharges: '₹300',
     isPriceFetched: true,
   },
+  // cancellationCharges: '₹600',
+  // modificationCharges: '₹300',
   remarks: {
     title: 'Remarks',
     text: 'Change of plans',
@@ -52,10 +52,10 @@ const hotelItineraryCardProps = {
       type: 'CANCEL',
       name: 'Cancel',
     },
-    {
-      type: 'VIEW_REMARKS',
-      name: 'Cancel',
-    },
+    // {
+    //   type: 'VIEW_REMARKS',
+    //   name: 'Cancel',
+    // },
     {
       type: 'DIRECTION',
       name: 'Directions',
@@ -70,6 +70,7 @@ const hotelItineraryCardProps = {
   showPreBookingCard: false,
   showConfirmedStatus: false,
   hideChevron: true,
+  notificationText: 'this is notification text',
 };
 
 export default hotelItineraryCardProps;

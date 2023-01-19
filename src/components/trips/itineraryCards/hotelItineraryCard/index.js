@@ -43,6 +43,8 @@ const HotelItineraryCard = ({
   hideChevron,
   isProcessing,
   remarks,
+  modificationCharges,
+  cancellationCharges,
 }) => {
   const sameMonthDates =
     tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
@@ -94,9 +96,9 @@ const HotelItineraryCard = ({
     );
   };
 
-  const ActionsInItinerary = () => (
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.separatorStyle2} />
+      {!hideSeperator && <Separator style={Styles.separatorStyle} />}
       <View style={Styles.actionContainer}>
         {cancelAction && (
           <FTouchableOpacity
@@ -283,7 +285,7 @@ const HotelItineraryCard = ({
             <View style={{height: DP._12}} />
             {!!uiData.bookingId && (
               <>
-                <Separator style={Styles.separatorStyle2} />
+                <Separator style={Styles.separatorStyle} />
                 <View style={Styles.flexRowAndAlignCenter}>
                   <FText style={Styles.bookingIdText}>
                     {Strings.bookingId2}
@@ -297,57 +299,68 @@ const HotelItineraryCard = ({
           </View>
         </FTouchableOpacity>
 
-        {!!uiData.modificationCharges && (
+        {!!modificationCharges && (
           <>
             <FText style={Styles.modificationChargeText}>
               {Strings.includeModificationCharge}
               <FText
-                type={
-                  FONT_TYPE.MEDIUM
-                }>{` ${uiData.modificationCharges}.`}</FText>
+                type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
             </FText>
-            <Separator
-              style={Styles.separatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
           </>
         )}
-        {!!uiData.cancellationCharges && (
+        {!!cancellationCharges && (
           <>
             <FText style={Styles.modificationChargeText}>
               {Strings.includeCancellationCharge}
               <FText
-                type={
-                  FONT_TYPE.MEDIUM
-                }>{` ${uiData.cancellationCharges}.`}</FText>
+                type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
             </FText>
-            <Separator
-              style={Styles.separatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
           </>
         )}
         {viewRemarksAction && !!remarks && (
-          <RemarksBox
-            title={remarks.title}
-            remarks={remarks.text}
-            roundBottomCorners={!actionsVisible}
-          />
+          <>
+            {(cancellationCharges || modificationCharges) && (
+              <Separator
+                style={Styles.separatorContainerStyle}
+                // containerStyle={Styles.separatorContainerStyle}
+              />
+            )}
+            <RemarksBox
+              title={remarks.title}
+              remarks={remarks.text}
+              roundBottomCorners={!actionsVisible}
+              onPress={() => onActionPress(viewRemarksAction)}
+            />
+          </>
         )}
 
-        {actionsVisible && <ActionsInItinerary />}
         {showInfo && (
-          <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
-            text={
-              viewShortlistedHotelAction?.name ||
-              shortlistingAction?.name ||
-              notificationText
-            }
-            showChevron={!!shortlistingAction}
-            disablePressEvent={!!notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedHotelAction || shortlistingAction)
+          <>
+            {(cancellationCharges || modificationCharges) && (
+              <Separator
+                style={Styles.separatorContainerStyle}
+                // containerStyle={Styles.separatorContainerStyle}
+              />
+            )}
+            <InfoBox
+              isAlert={shortlistingAction || !!notificationText}
+              text={
+                viewShortlistedHotelAction?.name ||
+                shortlistingAction?.name ||
+                notificationText
+              }
+              showChevron={!!shortlistingAction}
+              disablePressEvent={!!notificationText}
+              onPress={() =>
+                onActionPress(viewShortlistedHotelAction || shortlistingAction)
+              }
+            />
+          </>
+        )}
+        {actionsVisible && (
+          <ActionsInItinerary
+            hideSeperator={
+              showInfo || modificationCharges || cancellationCharges
             }
           />
         )}

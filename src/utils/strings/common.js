@@ -94,7 +94,7 @@ export default {
   remarks: 'Remarks',
   sort: 'Sort',
   filter: 'Filter',
-  processing: 'Processsing',
+  processing: 'Processing',
   viewdetails: 'View details',
   addAStop: 'Add a stop',
   class: 'Class',

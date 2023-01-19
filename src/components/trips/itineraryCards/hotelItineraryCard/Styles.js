@@ -8,6 +8,7 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
     ...cardStyleObj,
+    overflow: 'hidden',
   },
   card: (reduceOpacity) => ({
     opacity: reduceOpacity ? 0.6 : 1,
@@ -183,6 +184,7 @@ export default StyleSheet.create({
   },
   separatorStyle: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
   animatedComponent: {
     flex: 1,
@@ -201,11 +203,7 @@ export default StyleSheet.create({
     marginLeft: DP._4,
   },
   separatorContainerStyle: {
-    paddingHorizontal: DP._16,
-    backgroundColor: Color.DODGER_BLUE + '12',
-  },
-  separatorStyle2: {
-    backgroundColor: Color.LIGHT_PERIWINKLE,
+    backgroundColor: Color.HAWKES_BLUE,
     marginHorizontal: DP._16,
   },
 });

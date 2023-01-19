@@ -17,7 +17,7 @@ const flightItineraryCardProps = {
     departureTime: '18:30',
     arrivalTime: '22:30',
     reduceOpacity: false,
-    stop: 'Non stop (via Mumbai alskjdlakasdasdsjdlaskj)',
+    stop: 'Non stop (via Mumbai)',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
@@ -28,8 +28,9 @@ const flightItineraryCardProps = {
     totalDuration: '1h 50min',
     airline: 'Indigo',
     isOutOfPolicy: true,
-    modificationCharges: '₹300',
     isSoldOut: false,
+    sourceAirportTerminal: 'Terminal 1',
+    destinationAirportTerminal: 'Terminal 3',
   },
   bookingDetails: {
     flightBookingStatus: 'CONFIRMED',
@@ -44,7 +45,7 @@ const flightItineraryCardProps = {
     flightNumber: '717',
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
-    pnr: 'GBLP6Q',
+    // pnr: 'GBLP6Q',
     totalDuration: '1h 50min',
     airline: 'Indigo',
     stop: 'Non stop (via Hyderabad)',
@@ -53,23 +54,26 @@ const flightItineraryCardProps = {
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
     price: '₹2600',
-    modificationCharges: '₹300',
     isOutOfPolicy: true,
   },
-
+  // cancellationCharges: '₹600',
+  // modificationCharges: '₹300',
   remarks: {
     title: 'Modification remarks',
     text: 'Change of plans',
   },
   actions: [
-    // {
-    //   type: 'VIEW_REMARKS',
-    //   name: 'Reschedule',
-    // },
+    {
+      type: 'RESCHEDULE',
+      name: 'Reschedule',
+    },
     {
       type: 'CANCEL',
       name: 'Cancel',
     },
+    // {
+    //   type: 'VIEW_REMARKS',
+    // },
     // {
     //   type: 'REFUND_STATUS',
     //   name: 'Refund status',
@@ -79,14 +83,14 @@ const flightItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: false,
   hideIcon: true,
-  showInfo: false,
+  showInfo: true,
   isAlert: true,
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  notificationText: 'This is a sample notification text',
-  showPreBookingCard: true,
-  hideChevron: true,
+  notificationText: null,
+  showPreBookingCard: false,
+  hideChevron: false,
 };
 
 export default flightItineraryCardProps;
