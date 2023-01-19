@@ -36,8 +36,8 @@ const hotelItineraryCardProps = {
     gstIncluded: false,
     isPriceFetched: true,
   },
-  cancellationCharges: '₹600',
-  modificationCharges: '₹300',
+  // cancellationCharges: '₹600',
+  // modificationCharges: '₹300',
   remarks: {
     title: 'Remarks',
     text: 'Change of plans',
@@ -52,10 +52,10 @@ const hotelItineraryCardProps = {
       type: 'CANCEL',
       name: 'Cancel',
     },
-    {
-      type: 'VIEW_REMARKS',
-      name: 'Cancel',
-    },
+    // {
+    //   type: 'VIEW_REMARKS',
+    //   name: 'Cancel',
+    // },
     {
       type: 'DIRECTION',
       name: 'Directions',
@@ -65,11 +65,12 @@ const hotelItineraryCardProps = {
   onCardPress: () => console.log('Card Pressed'),
   hideIcon: false,
   showLine: true,
-  showInfo: true,
+  showInfo: false,
   timelineGreyed: false,
   showPreBookingCard: false,
   showConfirmedStatus: false,
   hideChevron: true,
+  notificationText: 'this is notification text',
 };
 
 export default hotelItineraryCardProps;
