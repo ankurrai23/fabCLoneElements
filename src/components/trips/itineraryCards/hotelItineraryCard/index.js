@@ -191,7 +191,7 @@ const HotelItineraryCard = ({
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                   {uiData.checkIn.date}
                 </FText>
-                <FText style={[Styles.hyphen, Styles.colorDark]}>{'-'}</FText>
+                <FText style={Styles.hyphen}>{'-'}</FText>
                 <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                   {uiData.checkOut.date}
                 </FText>

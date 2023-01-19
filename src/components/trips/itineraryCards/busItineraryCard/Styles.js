@@ -55,10 +55,6 @@ export default StyleSheet.create({
   hyphen: {
     alignSelf: 'center',
     fontSize: DP._12,
-    color: Color.BLUEY_GREY,
-  },
-  colorDark: {
-    color: Color.DARK,
   },
   date: {
     fontSize: DP._14,
@@ -165,7 +161,7 @@ export default StyleSheet.create({
     fontSize: DP._12,
     color: Color.GREY_PURPLE,
   },
-  actionsSeperator: {
+  actionsSeparator: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
     marginHorizontal: DP._16,
   },
