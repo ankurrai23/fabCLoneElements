@@ -25,7 +25,7 @@ const TripListingCard = ({item, onCardPress, style}) => {
         onPress={() =>
           onCardPress({
             masterTripId: item.masterTripId,
-            isSBT: item.requestType === 'SELF_BOOKING',
+            isSBT: item.tripRequestType === 'SELF_BOOKING',
           })
         }
         style={[Styles.container, {...style}]}>
