@@ -130,7 +130,7 @@ export default StyleSheet.create({
   marginTop_12: {
     marginTop: DP._12,
   },
-  seperatorStyle: {
+  separatorStyle: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
     marginHorizontal: DP._16,
   },
