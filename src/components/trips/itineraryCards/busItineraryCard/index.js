@@ -369,7 +369,6 @@ const BusItineraryCard = ({
             onPress={() => onActionPress(viewRemarksAction)}
           />
         )}
-        {actionsVisible && <ActionsInItinerary />}
         {showInfo && (
           <InfoBox
             isAlert={!!notificationText}
@@ -378,6 +377,7 @@ const BusItineraryCard = ({
             disablePressEvent={!!notificationText}
           />
         )}
+        {actionsVisible && <ActionsInItinerary />}
       </View>
     </View>
   );

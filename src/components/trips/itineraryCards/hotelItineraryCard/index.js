@@ -336,7 +336,6 @@ const HotelItineraryCard = ({
           />
         )}
 
-        {actionsVisible && <ActionsInItinerary />}
         {showInfo && (
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}
@@ -352,6 +351,7 @@ const HotelItineraryCard = ({
             }
           />
         )}
+        {actionsVisible && <ActionsInItinerary />}
       </View>
     </View>
   );

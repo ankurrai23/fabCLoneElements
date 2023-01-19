@@ -202,7 +202,6 @@ const FlightItineraryCard = ({
           roundBottomCorners={!actionVisible}
         />
       )}
-      {actionVisible && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -218,6 +217,7 @@ const FlightItineraryCard = ({
           }
         />
       )}
+      {actionVisible && <ActionsInItinerary />}
     </View>
   );
 
@@ -389,7 +389,6 @@ const FlightItineraryCard = ({
           />
         </>
       )}
-      {actionVisible && <ActionsInItinerary />}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -405,6 +404,7 @@ const FlightItineraryCard = ({
           }
         />
       )}
+      {actionVisible && <ActionsInItinerary />}
     </View>
   );
 
