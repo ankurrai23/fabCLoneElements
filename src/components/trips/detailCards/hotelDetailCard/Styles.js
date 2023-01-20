@@ -193,4 +193,9 @@ export default StyleSheet.create({
     backgroundColor: Color.LIGHT_PERIWINKLE,
     marginHorizontal: DP._16,
   },
+  payNowButtonStyle: {
+    marginTop: DP._4,
+    marginBottom: DP._16,
+    borderRadius: DP._30,
+  },
 });
