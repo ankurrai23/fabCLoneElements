@@ -309,7 +309,7 @@ export default function HotelDetailCard({
               {payNowAction && (
                 <Button
                   onPress={() => onActionPress?.(payNowAction)}
-                  style={{borderRadius: DP._4, marginTop: DP._4}}
+                  style={Styles.payNowButtonStyle}
                   disabled={item.reduceOpacity}
                   textFont={FONT_TYPE.MEDIUM}>
                   {payNowAction.name}
