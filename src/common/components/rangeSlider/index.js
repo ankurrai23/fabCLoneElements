@@ -17,7 +17,7 @@ const RangeSlider = React.forwardRef(
 
     useImperativeHandle(ref, () => ({
       resetSlider: () => {
-        setValue((prevState) => ({...prevState, min: minValue, max: maxValue}));
+        setValue((prevState) => ({...prevState, min: minLimit, max: maxLimit}));
       },
       data: {
         minLimit,
