@@ -16,14 +16,14 @@ export default function OOPTag(style) {
 const styles = StyleSheet.create({
   container: {
     flexWrap: 'wrap',
+    paddingVertical: DP._1,
+    paddingHorizontal: DP._8,
+    borderRadius: DP._22,
+    backgroundColor: Color.PEARL_RED,
   },
   text: {
-    fontSize: DP._10,
-    paddingVertical: DP._1,
-    paddingHorizontal: DP._4,
-    backgroundColor: Color.PASTEL_RED_10,
-    borderRadius: DP._2,
-    overflow: 'hidden',
     color: Color.PASTEL_RED,
+    fontSize: DP._10,
+    overflow: 'hidden',
   },
 });

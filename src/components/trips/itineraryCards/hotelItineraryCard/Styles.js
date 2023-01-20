@@ -109,7 +109,7 @@ export default StyleSheet.create({
   priceAndGstContainer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    marginBottom: DP._4,
+    marginBottom: DP._2,
   },
   priceContainer: {
     alignItems: 'flex-end',
