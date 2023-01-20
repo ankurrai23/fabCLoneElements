@@ -56,8 +56,8 @@ const flightItineraryCardProps = {
     price: '₹2600',
     isOutOfPolicy: true,
   },
-  cancellationCharges: '₹600',
-  modificationCharges: '₹300',
+  // cancellationCharges: '₹600',
+  // modificationCharges: '₹300',
   remarks: {
     title: 'Modification remarks',
     text: 'Change of plans',
@@ -72,6 +72,9 @@ const flightItineraryCardProps = {
       name: 'Cancel',
     },
     // {
+    //   type: 'VIEW_REMARKS',
+    // },
+    // {
     //   type: 'REFUND_STATUS',
     //   name: 'Refund status',
     // },
@@ -80,7 +83,7 @@ const flightItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: false,
   hideIcon: true,
-  showInfo: false,
+  showInfo: true,
   isAlert: true,
   timelineGreyed: false,
   actionDisabled: false,

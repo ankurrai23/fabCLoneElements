@@ -42,7 +42,6 @@ export default StyleSheet.create({
   hyphen: {
     alignSelf: 'center',
     fontSize: DP._12,
-    color: Color.BLUEY_GREY,
   },
   flowRow: {
     flexDirection: 'row',

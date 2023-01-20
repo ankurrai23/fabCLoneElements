@@ -7,7 +7,6 @@ export default StyleSheet.create({
   container: {
     paddingBottom: DP._18,
     ...cardStyleObj,
-    borderRadius: DP._4,
   },
   flex: {
     flex: 1,

@@ -49,9 +49,11 @@ export default function HotelSearchResultCard({onCardPress, item}) {
                 />
               );
             })}
-          <FText style={Styles.hotelStar}>
-            {Strings.starHotel(item.starRating)}
-          </FText>
+          {Boolean(item.starRating) && (
+            <FText style={Styles.hotelStar}>
+              {Strings.starHotel(item.starRating)}
+            </FText>
+          )}
           {!!item.preferenceText && (
             <FText type={FONT_TYPE.MEDIUM} style={Styles.preferenceText}>
               {item.preferenceText}

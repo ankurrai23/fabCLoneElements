@@ -27,7 +27,6 @@ export default StyleSheet.create({
   hyphen: {
     alignSelf: 'center',
     fontSize: DP._12,
-    color: Color.BLUEY_GREY,
   },
   statusContainer: {
     backgroundColor: Color.DARK_SEA_FOAM + '1a',
@@ -110,7 +109,7 @@ export default StyleSheet.create({
   priceAndGstContainer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    marginBottom: DP._4,
+    marginBottom: DP._2,
   },
   priceContainer: {
     alignItems: 'flex-end',
@@ -184,6 +183,7 @@ export default StyleSheet.create({
   },
   separatorStyle: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
   animatedComponent: {
     flex: 1,
@@ -202,11 +202,7 @@ export default StyleSheet.create({
     marginLeft: DP._4,
   },
   separatorContainerStyle: {
-    paddingHorizontal: DP._16,
-    backgroundColor: Color.DODGER_BLUE + '12',
-  },
-  separatorStyle2: {
-    backgroundColor: Color.LIGHT_PERIWINKLE,
+    backgroundColor: Color.HAWKES_BLUE,
     marginHorizontal: DP._16,
   },
 });

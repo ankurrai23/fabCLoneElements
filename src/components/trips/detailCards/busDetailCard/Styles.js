@@ -97,7 +97,6 @@ export default StyleSheet.create({
   hyphen: {
     alignSelf: 'center',
     fontSize: DP._12,
-    color: Color.BLUEY_GREY,
   },
   flexRow: {flexDirection: 'row'},
   justifyContent_around: (duration) => ({

@@ -18,19 +18,17 @@ const Amount = ({price, inclGST = true}) => (
   </View>
 );
 
-const EmployeeActions = ({onPayPress, actions, info, amount}) => {
+const EmployeeActions = ({onPayPress, actions, msg, amount}) => {
   return (
     <View style={Styles.container}>
-      {info ? (
-        <View style={Styles.infoContainer(info.type)}>
+      {msg ? (
+        <View style={Styles.infoContainer(msg.type)}>
           <Icon.Info
             width={DP._16}
             height={DP._16}
-            stroke={
-              info.type === 'ERROR' ? Color.PASTEL_RED : Color.DODGER_BLUE
-            }
+            stroke={msg.type === 'ERROR' ? Color.PASTEL_RED : Color.DODGER_BLUE}
           />
-          <FText style={Styles.infoText}>{info.value}</FText>
+          <FText style={Styles.infoText}>{msg.value}</FText>
         </View>
       ) : (
         <Separator style={Styles.separator} />

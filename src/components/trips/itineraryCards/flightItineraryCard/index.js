@@ -367,10 +367,7 @@ const FlightItineraryCard = ({
       {viewRemarksAction && !!remarks && (
         <>
           {(cancellationCharges || modificationCharges) && (
-            <Separator
-              style={Styles.seperatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
+            <Separator style={Styles.separatorContainerStyle} />
           )}
           <RemarksBox
             title={remarks.title}
@@ -382,10 +379,7 @@ const FlightItineraryCard = ({
       {showInfo && (
         <>
           {(cancellationCharges || modificationCharges) && (
-            <Separator
-              style={Styles.seperatorStyle}
-              containerStyle={Styles.separatorContainerStyle}
-            />
+            <Separator style={Styles.separatorContainerStyle} />
           )}
           <InfoBox
             isAlert={shortlistingAction || !!notificationText}

@@ -156,7 +156,7 @@ export default StyleSheet.create({
   color_grey: {
     color: Color.GREY_PURPLE,
   },
-  actionsSeperator: {
+  actionsSeparator: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
     marginHorizontal: DP._16,
   },
