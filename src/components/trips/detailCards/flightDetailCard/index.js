@@ -97,7 +97,7 @@ const FlightDetailCard = ({
               />
             )}
           </View>
-          <View style={[Styles.flexDirectionRow, {marginTop: DP._8}]}>
+          <View style={[Styles.flexDirectionRow, Styles.marginTop_8]}>
             <View style={Styles.flexRowAndAlignCenter}>
               <FImage
                 style={Styles.airlineIcon}
@@ -116,7 +116,8 @@ const FlightDetailCard = ({
               {tripDetails.price}
             </FText>
           </View>
-          <View style={Styles.flexRowAndJustifySpaceBetween}>
+          <View
+            style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_12]}>
             <FText style={Styles.time}>{tripDetails.departureTime}</FText>
             <Icon.Aeroplane
               width={DP._18}
@@ -126,8 +127,7 @@ const FlightDetailCard = ({
             />
             <FText style={Styles.time}>{tripDetails.arrivalTime}</FText>
           </View>
-          <View
-            style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_8]}>
+          <View style={[Styles.flexRowAndJustifySpaceBetween]}>
             <FText style={Styles.portName}>
               {tripDetails.sourceAirportCode}
             </FText>
