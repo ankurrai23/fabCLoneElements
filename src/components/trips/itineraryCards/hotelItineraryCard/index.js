@@ -238,7 +238,9 @@ const HotelItineraryCard = ({
           </View>
           <View>
             <FText style={Styles.hotelName}>{uiData.title}</FText>
-            <FText style={Styles.hotelLocation}>{uiData.location}</FText>
+            <FText style={Styles.hotelLocation}>
+              {uiData.addressLine ?? uiData.address ?? uiData.location}
+            </FText>
             {!!uiData.checkInTime && (
               <View style={Styles.checkInContainer}>
                 <FText style={Styles.checkIn(Color.GREY_PURPLE)}>
