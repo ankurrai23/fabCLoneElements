@@ -21,6 +21,7 @@ export default StyleSheet.create({
   },
   subHeader: {
     marginTop: DP._6,
+    alignItems: 'flex-start',
   },
   planTitle: {
     fontSize: DP._14,
