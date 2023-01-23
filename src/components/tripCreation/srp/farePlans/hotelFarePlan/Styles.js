@@ -15,6 +15,7 @@ export default StyleSheet.create({
   content: {
     flex: 1,
     marginEnd: DP._16,
+    alignItems: 'flex-start',
   },
   cancellationPolicyButton: {
     alignSelf: 'flex-start',

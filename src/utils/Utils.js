@@ -100,8 +100,13 @@ export function formattedDate(date = new Date(), format = 'DD MMM YY') {
 }
 
 export function formattedPrice(val, maxFractionDigit = 0) {
-  let price = Number(val);
-  if (isNaN(price)) {
+  let price;
+  try {
+    price = Number(Math.ceil(val));
+    if (isNaN(price)) {
+      return val;
+    }
+  } catch (err) {
     return val;
   }
   price = new Intl.NumberFormat('en-IN', {

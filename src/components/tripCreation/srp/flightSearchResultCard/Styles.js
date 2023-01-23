@@ -41,7 +41,7 @@ export default StyleSheet.create({
     color: Color.DARK,
   },
   oopMargin: {
-    marginTop: DP._20,
+    marginTop: DP._2,
   },
   flightTimeTextStyle: {
     fontSize: DP._16,

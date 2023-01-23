@@ -19,7 +19,7 @@ const FlightFarePlanCard = ({
   return (
     <FTouchableOpacity onPress={onPress} style={[styles.container, style]}>
       <View style={styles.header}>
-        <View style={styles.flex}>
+        <View>
           <FText style={styles.planTitle} numberOfLines={1}>
             {planTitle}
           </FText>

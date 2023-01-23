@@ -202,6 +202,7 @@ const FlightItineraryCard = ({
           title={remarks.title}
           remarks={remarks.text}
           roundBottomCorners={!actionVisible}
+          onPress={() => onActionPress(viewRemarksAction)}
         />
       )}
       {showInfo && (
@@ -255,10 +256,8 @@ const FlightItineraryCard = ({
               <FText style={Styles.processing}>{Strings.processing}</FText>
             </View>
           )}
-          {showStatus && uiData.flightBookingStatus ? (
-            <TripStatus
-              statusObj={getStatusObject(uiData.flightBookingStatus)}
-            />
+          {showStatus ? (
+            <TripStatus statusObj={status} />
           ) : uiData.isSoldOut ? (
             <SoldOutTag />
           ) : (
@@ -373,6 +372,7 @@ const FlightItineraryCard = ({
             title={remarks.title}
             remarks={remarks.text}
             roundBottomCorners={!actionVisible}
+            onPress={() => onActionPress(viewRemarksAction)}
           />
         </>
       )}
