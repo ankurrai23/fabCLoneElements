@@ -50,6 +50,10 @@ const FloatingAction = ({
   };
 
   const bagStyle = {
+    zIndex: animation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [-1, 1],
+    }),
     transform: [
       {scale: animation},
       {
@@ -62,6 +66,10 @@ const FloatingAction = ({
   };
 
   const rupeesStyle = {
+    zIndex: animation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [-1, 1],
+    }),
     transform: [
       {scale: animation},
       {
