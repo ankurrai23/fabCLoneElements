@@ -202,6 +202,7 @@ const FlightItineraryCard = ({
           title={remarks.title}
           remarks={remarks.text}
           roundBottomCorners={!actionVisible}
+          onPress={() => onActionPress(viewRemarksAction)}
         />
       )}
       {showInfo && (
@@ -371,6 +372,7 @@ const FlightItineraryCard = ({
             title={remarks.title}
             remarks={remarks.text}
             roundBottomCorners={!actionVisible}
+            onPress={() => onActionPress(viewRemarksAction)}
           />
         </>
       )}
