@@ -91,6 +91,7 @@ const ApproverChain = ({
           </FText>
           {!expanded && showViewButton && (
             <FTouchableOpacity
+              hitSlop={{top: DP._8, bottom: DP._8, left: DP._10, right: DP._5}}
               onPress={() => {
                 setExpanded(true);
                 onViewPress?.();
