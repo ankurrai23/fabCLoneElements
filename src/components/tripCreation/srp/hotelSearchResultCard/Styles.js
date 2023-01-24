@@ -10,7 +10,6 @@ export default StyleSheet.create({
     backgroundColor: Color.WHITE,
     overflow: 'hidden',
     ...cardStyleObj,
-    borderRadius: DP._4,
     ...shadowObj,
   },
   hotelImageStyle: {width: 0.7 * Width, height: DP._146, marginRight: DP._1},
