@@ -1,13 +1,25 @@
 import {View, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
 import DashedLine from '../../../common/components/dashedLine';
 import {MANAGER_APPROVAL_STATUS} from '../../../utils/Constants';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
+import {Strings} from '../../../utils/strings/index.travelPlus';
 
-const ApproverChain = ({data, inItinerary, title, style}) => {
+const ApproverChain = ({
+  data,
+  inItinerary,
+  title,
+  style,
+  hideApprovalIndicator,
+  showViewButton,
+  onViewPress,
+}) => {
+  const [expanded, setExpanded] = useState(!showViewButton);
   const ManagerDetail = ({
+    firstItem,
     lastItem,
     primaryText,
     designation,
@@ -31,18 +43,22 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
       }
     };
     return (
-      <View style={styles.itemContainer(lastItem)}>
-        <View style={styles.radio(waiting, status, statusColor())}>
-          <View style={styles.radioFill(status, statusColor())} />
-        </View>
-        {!lastItem && (
-          <View style={styles.dashLineStyle}>
-            <DashedLine
-              dashColor={waiting ? Color.GREY_5 : statusColor()}
-              dashSize={DP._3}
-              dashWidth={DP._1}
-            />
-          </View>
+      <View style={styles.itemContainer(lastItem, firstItem)}>
+        {!hideApprovalIndicator && (
+          <>
+            <View style={styles.radio(waiting, status, statusColor())}>
+              <View style={styles.radioFill(status, statusColor())} />
+            </View>
+            {!lastItem && (
+              <View style={styles.dashLineStyle}>
+                <DashedLine
+                  dashColor={waiting ? Color.GREY_5 : statusColor()}
+                  dashSize={DP._3}
+                  dashWidth={DP._1}
+                />
+              </View>
+            )}
+          </>
         )}
         <View style={styles.managerNameAndDesignationContainer}>
           <FText
@@ -69,13 +85,31 @@ const ApproverChain = ({data, inItinerary, title, style}) => {
   return (
     <View style={[style]}>
       {!!title && (
-        <FText style={styles.titleTextStyle} type={FONT_TYPE.MEDIUM}>
-          {title}
-        </FText>
+        <View style={styles.titleContainer}>
+          <FText style={styles.titleTextStyle} type={FONT_TYPE.MEDIUM}>
+            {title}
+          </FText>
+          {!expanded && showViewButton && (
+            <FTouchableOpacity
+              onPress={() => {
+                setExpanded(true);
+                onViewPress?.();
+              }}>
+              <FText type={FONT_TYPE.MEDIUM} style={styles.viewButton}>
+                {Strings.view}
+              </FText>
+            </FTouchableOpacity>
+          )}
+        </View>
       )}
-      {data.map((item, index) => (
-        <ManagerDetail {...item} lastItem={index === data.length - 1} />
-      ))}
+      {expanded &&
+        data.map((item, index) => (
+          <ManagerDetail
+            {...item}
+            lastItem={index === data.length - 1}
+            firstItem={index === 0}
+          />
+        ))}
     </View>
   );
 };
@@ -94,7 +128,8 @@ const styles = StyleSheet.create({
     fontSize: inItinerary ? DP._12 : DP._14,
     color: inItinerary ? Color.DARK : Color.GREY_PURPLE,
   }),
-  itemContainer: (lastItem) => ({
+  itemContainer: (lastItem, firstItem) => ({
+    marginTop: firstItem ? DP._16 : 0,
     marginBottom: lastItem ? 0 : DP._16,
     flexDirection: 'row',
   }),
@@ -140,10 +175,19 @@ const styles = StyleSheet.create({
   titleTextStyle: {
     fontSize: DP._14,
     lineHeight: DP._16,
-    marginVertical: DP._16,
   },
   managerNameAndDesignationContainer: {
     marginTop: DP._1,
     flex: 1,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  viewButton: {
+    color: Color.DODGER_BLUE,
+    fontSize: DP._12,
+    lineHeight: DP._16,
   },
 });
