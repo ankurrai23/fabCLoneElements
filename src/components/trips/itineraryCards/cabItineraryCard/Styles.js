@@ -8,12 +8,13 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
     ...cardStyleObj,
+    overflow: 'hidden',
   },
   actionContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._12,
+    paddingVertical: DP._8,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -94,7 +95,7 @@ export default StyleSheet.create({
   primaryButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._24,
+    marginLeft: DP._16,
   },
   chevronContainer: {
     backgroundColor: Color.DODGER_BLUE + '12',
@@ -155,9 +156,9 @@ export default StyleSheet.create({
   color_grey: {
     color: Color.GREY_PURPLE,
   },
-  actionsSeperator: {
-    marginHorizontal: DP._16,
+  actionsSeparator: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
   headerMonth: {
     color: Color.BLUEY_GREY,

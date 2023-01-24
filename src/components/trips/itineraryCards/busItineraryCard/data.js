@@ -2,6 +2,7 @@ const busItineraryCardProps = {
   tripRequest: {
     date: '22',
     month: 'Nov',
+    year: '22',
     slotDetail: 'Slot: 6PM - 9PM',
     source: 'Mumbai',
     destination: 'Lonavala',
@@ -17,8 +18,8 @@ const busItineraryCardProps = {
   },
   bookingDetails: {
     busBookingStatus: 'CONFIRMED',
-    arrivalDate: {date: '22', month: 'Dec'},
-    departureDate: {date: '22', month: 'Nov'},
+    arrivalDate: {date: '22', month: 'Dec', year: '22'},
+    departureDate: {date: '22', month: 'Nov', year: '22'},
     source: 'Mumbai',
     destination: 'Lonavala',
     sourceLocality: 'Mumbai Airport',
@@ -32,6 +33,10 @@ const busItineraryCardProps = {
     seatNumber: 'L23',
     pnr: '123456',
     reduceOpacity: false,
+  },
+  remarks: {
+    title: 'Remarks',
+    text: 'Change of plans',
   },
   actions: [
     {

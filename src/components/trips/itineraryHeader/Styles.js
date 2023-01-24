@@ -1,14 +1,17 @@
 import {StyleSheet} from 'react-native';
-import {Color} from '../../../utils/color';
+import {Color} from '../../../utils/color/index.fabhotel';
 
 import {DP} from '../../../utils/Dimen';
 import {isPlatformIos} from '../../../utils/Utils';
 
 export default StyleSheet.create({
-  flexRow: {
+  header: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: DP._16,
+  },
+  flexRow: {
+    flexDirection: 'row',
   },
   title: {
     fontSize: DP._20,
@@ -64,6 +67,12 @@ export default StyleSheet.create({
     backgroundColor: Color.DEEP_SAFFRON + '1a',
     marginTop: DP._8,
   },
+  paymentPendingContainer: {
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._8,
+    backgroundColor: Color.PASTEL_RED_10,
+    marginTop: DP._8,
+  },
   approvalPendingInfoText: {
     fontSize: DP._10,
     linHeight: DP._12,
@@ -73,4 +82,13 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   approvalText: {width: '85%', flexGrow: 1, paddingRight: DP._8},
+  paymentPending: {
+    fontSize: DP._10,
+    color: Color.PASTEL_RED,
+    marginBottom: DP._4,
+  },
+  fontSize10: {
+    fontSize: DP._10,
+    lineHeight: DP._12,
+  },
 });

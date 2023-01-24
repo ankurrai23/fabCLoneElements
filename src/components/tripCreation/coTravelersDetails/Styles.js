@@ -19,9 +19,11 @@ export default StyleSheet.create({
   title: {
     fontSize: DP._14,
     color: Color.DARK,
+    marginBottom: DP._4,
   },
   titleSubContainer: {
     flex: 0.9,
+    // marginBottom: DP._4,
   },
   hitSlop: {
     top: DP._15,
@@ -40,9 +42,9 @@ export default StyleSheet.create({
   },
   subText: {
     fontSize: DP._12,
-    lineHeight: DP._18,
+    lineHeight: DP._16,
     color: Color.GREY_PURPLE,
-    marginTop: DP._5,
+    marginTop: DP._4,
     marginRight: DP._12,
   },
   coTravelerContainer: {
@@ -52,11 +54,11 @@ export default StyleSheet.create({
     borderWidth: 0, //1
     borderRadius: DP._20, //4
     borderColor: Color.DODGER_BLUE,
-    paddingVertical: DP._3,
+    paddingVertical: DP._2,
     paddingHorizontal: DP._8,
     backgroundColor: Color.ICE_BLUE,
-    marginRight: DP._17,
-    marginTop: DP._18,
+    marginRight: DP._8,
+    marginTop: DP._8,
   },
   coTravelerName: {
     fontSize: DP._12,
@@ -72,6 +74,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flexWrap: 'wrap',
-    marginTop: DP._8,
+    marginTop: DP._4,
+  },
+  optional: {
+    color: Color.GREY_6,
   },
 });

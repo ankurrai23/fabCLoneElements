@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import FText from '../../rn/FText';
-import Button from '../button';
+import Button, {BUTTON_TYPE} from '../button';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const EmptyScreen = (props) => {
@@ -20,7 +20,11 @@ const EmptyScreen = (props) => {
         )}
       </View>
       {!!props.btnText && (
-        <Button onPress={props.onPress}>{props.btnText}</Button>
+        <Button
+          type={props.btnType ?? BUTTON_TYPE.PRIMARY}
+          onPress={props.onPress}>
+          {props.btnText}
+        </Button>
       )}
     </View>
   );

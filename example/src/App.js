@@ -1,11 +1,16 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, TouchableOpacity, Text, Platform} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import ComponentList from './ComponentList';
 import CustomDrawer from './CustomDrawer';
 import RenderComponent from './RenderComponent';
+
+if (Platform.OS === 'ios') {
+  require('intl'); // import intl object
+  require('intl/locale-data/jsonp/en-IN'); // load the required locale details
+}
 
 const Drawer = createDrawerNavigator();
 
@@ -30,7 +35,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator
         drawerContent={(props) => <CustomDrawer {...props} />}
-        screenOptions={{drawerStyle: {width: 250}}}
+        screenOptions={{drawerStyle: {width: '70%'}}}
         detachInactiveScreens={true}>
         {ComponentList.map((item, index) => {
           if (item.component) {

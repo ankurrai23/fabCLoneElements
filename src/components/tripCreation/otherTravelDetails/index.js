@@ -12,12 +12,18 @@ import DialogBox from '../../../common/components/dialogBox';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 
-export default function OtherTravelDetails(props) {
+export default function OtherTravelDetails({
+  purposeOfTravelerError,
+  purposeOfTravelData,
+  selectedValue,
+  onChangeRemark,
+  onPurposeSelect,
+  otherRemark,
+  style,
+}) {
   const [visible, setVisible] = useState(false);
-  const [selectedValueTemp, setSelectedValueTemp] = useState(
-    props.selectedValue,
-  );
-  const {purposeOfTravelerError, purposeOfTravel, selectedValue} = props;
+  const [selectedValueTemp, setSelectedValueTemp] = useState(selectedValue);
+  // const {purposeOfTravelerError, purposeOfTravel, selectedValue} = props;
 
   function renderItem({item, index}) {
     const isActive = selectedValueTemp.key === item.key;
@@ -34,15 +40,11 @@ export default function OtherTravelDetails(props) {
   function onPress(item) {
     setVisible(false);
     setSelectedValueTemp(item);
-    props._onPressDetail(item);
-  }
-
-  function onChangeText(val) {
-    props.onChangeText(val);
+    onPurposeSelect(item);
   }
 
   return (
-    <View style={[Styles.container, props.style]}>
+    <View style={[Styles.container, style]}>
       <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
         {Strings.otherDetails}
       </FText>
@@ -64,8 +66,8 @@ export default function OtherTravelDetails(props) {
         bottomMargin={purposeOfTravelerError ? 0 : DP._6}
       />
       <TextField
-        value={props.otherRemark}
-        onChangeText={onChangeText}
+        value={otherRemark}
+        onChangeText={onChangeRemark}
         label={Strings.otherRemarks}
         labelStyle={Styles.textFieldLabel}
         topMargin={DP._18}
@@ -78,7 +80,7 @@ export default function OtherTravelDetails(props) {
               <FText style={Styles.heading}>{Strings.purposeOfTravel}</FText>
               <View style={{paddingHorizontal: DP._24}}>
                 <FlatList
-                  data={purposeOfTravel}
+                  data={purposeOfTravelData}
                   renderItem={renderItem}
                   ItemSeparatorComponent={() => (
                     <View style={Styles.separator} />

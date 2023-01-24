@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {DP} from '../../../../utils/Dimen';
-import {Color} from '../../../../utils/color';
+import {Color} from '../../../../utils/color/index.travelPlus';
 
 import DashedLine from '../../../../common/components/dashedLine';
 import Separator from '../../../../common/components/separator';
@@ -15,6 +15,14 @@ import {HotelSubTripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {TRIP_STATUS} from '../../../../utils/Constants';
 import Icon from '../../../../assets/icons/Icon';
+import OOPTag from '../../components/OOPTag/OOPTag';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  PlaceholderContainer,
+  Placeholder,
+} from 'react-native-loading-placeholder';
+import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
+import RemarksBox from '../../components/remarksBox/RemarksBox';
 
 const HotelItineraryCard = ({
   status,
@@ -33,6 +41,10 @@ const HotelItineraryCard = ({
   showPreBookingCard,
   showConfirmedStatus,
   hideChevron,
+  isProcessing,
+  remarks,
+  modificationCharges,
+  cancellationCharges,
 }) => {
   const sameMonthDates =
     tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
@@ -43,13 +55,14 @@ const HotelItineraryCard = ({
   const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
 
   const viewRemarksAction = isActionEnabled(HotelSubTripActions.VIEW_REMARKS);
-  const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
   const shortlistingAction = isActionEnabled(
     HotelSubTripActions.SHORTLIST_HOTEL_TRIPS,
   );
   const viewShortlistedHotelAction = isActionEnabled(
     HotelSubTripActions.VIEW_SHORTLISTED_HOTEL_TRIPS,
   );
+  const editAction = isActionEnabled(HotelSubTripActions.EDIT);
+  const removeAction = isActionEnabled(HotelSubTripActions.REMOVE);
 
   const confirmedStatus = {
     key: 'CONFIRMED',
@@ -58,213 +71,85 @@ const HotelItineraryCard = ({
     bgColor: Color.DARK_SEA_FOAM + '26',
   };
 
-  const ActionsInItinerary = () => (
+  const animatedComponent = (cardColor, secondaryColor) => {
+    return (
+      <LinearGradient
+        style={Styles.animatedComponent}
+        colors={[cardColor, secondaryColor, cardColor]}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+      />
+    );
+  };
+
+  const PriceLoader = () => {
+    return (
+      <PlaceholderContainer
+        animatedComponent={animatedComponent(
+          Color.VERY_LIGHT_PINK,
+          Color.WHITE,
+        )}
+        duration={1500}
+        delay={500}>
+        <Placeholder style={Styles.priceLoading} />
+      </PlaceholderContainer>
+    );
+  };
+
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.seperatorStyle} />
+      {!hideSeperator && <Separator style={Styles.separatorStyle} />}
       <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
+        {cancelAction && (
           <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
+            onPress={() => onActionPress(cancelAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
+            <Icon.Cross
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.PASTEL_RED}
+            />
+            <FText style={Styles.cancel}>{cancelAction.name}</FText>
           </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Cross
-                  width={DP._16}
-                  height={DP._16}
-                  stroke={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {modifyAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(modifyAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Reschedule width={DP._16} height={DP._16} />
-                <FText style={Styles.reschedule}>{modifyAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
+        )}
+        {modifyAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(modifyAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Reschedule width={DP._16} height={DP._16} />
+            <FText style={Styles.reschedule}>{modifyAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {removeAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(removeAction)}
+            style={Styles.flexRowAndAlignCenter}>
+            <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+            <FText style={Styles.cancel}>{removeAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {editAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(editAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Edit />
+            <FText style={Styles.reschedule}>{editAction.name}</FText>
+          </FTouchableOpacity>
         )}
       </View>
     </>
   );
 
-  const HotelPreBookingCard = () => (
-    <View style={Styles.container}>
-      <FTouchableOpacity
-        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(tripRequest.reduceOpacity)}
-        onPress={onCardPress}>
-        <View style={Styles.dateAndStatusContainer}>
-          {sameMonthDates ? (
-            <View style={Styles.datesContainer}>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {tripRequest.checkIn.date}
-              </FText>
-              <FText style={Styles.hyphen}>{' - '}</FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {tripRequest.checkOut.date}
-              </FText>
-              <FText style={Styles.month}> {tripRequest.checkIn.month}</FText>
-            </View>
-          ) : (
-            <View style={Styles.datesContainer}>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {tripRequest.checkIn.date}
-              </FText>
-              <FText style={Styles.month}> {tripRequest.checkIn.month}</FText>
-              <FText style={Styles.hyphen}>{' - '}</FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {tripRequest.checkOut.date}
-              </FText>
-              <FText style={Styles.month}> {tripRequest.checkOut.month}</FText>
-            </View>
-          )}
-          {showConfirmedStatus ? (
-            <TripStatus statusObj={confirmedStatus} />
-          ) : (
-            status?.key === TRIP_STATUS.CANCELLED && (
-              <TripStatus statusObj={status} />
-            )
-          )}
-        </View>
-        <View style={Styles.paddingHorizontal_16}>
-          <FText style={Styles.hotelName} numberOfLines={1}>
-            {tripRequest.title}
-          </FText>
-          <FText style={Styles.hotelLocation} numberOfLines={1}>
-            {tripRequest.location}
-          </FText>
-        </View>
-      </FTouchableOpacity>
-      {!actionsDisabled &&
-        (modifyAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
-      {showInfo && (
-        <InfoBox
-          isAlert={shortlistingAction || !!notificationText}
-          text={
-            viewShortlistedHotelAction?.name ||
-            shortlistingAction?.name ||
-            notificationText
-          }
-          showChevron={!!shortlistingAction}
-          disablePressEvent={!!notificationText}
-          onPress={() =>
-            onActionPress(viewShortlistedHotelAction || shortlistingAction)
-          }
-        />
-      )}
-    </View>
+  const renderMonthYear = (month, year) => (
+    <FText
+      type={FONT_TYPE.MEDIUM}
+      style={Styles.month}>{` ${month}'${year}`}</FText>
   );
 
-  const HotelPostBookingCard = () => (
-    <View style={Styles.container}>
-      <FTouchableOpacity
-        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(tripRequest.reduceOpacity)}
-        onPress={onCardPress}>
-        <View style={Styles.dateAndStatusContainer}>
-          {sameMonthDates ? (
-            <View style={Styles.datesContainer}>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {bookingDetails.checkIn.date}
-              </FText>
-              <FText style={Styles.hyphen}>{' - '}</FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {bookingDetails.checkOut.date}
-              </FText>
-              <FText
-                style={
-                  Styles.month
-                }>{` ${bookingDetails.checkIn.month}`}</FText>
-            </View>
-          ) : (
-            <View style={Styles.datesContainer}>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {bookingDetails.checkIn.date}
-              </FText>
-              <FText style={Styles.month}>
-                {` ${bookingDetails.checkIn.month}`}
-              </FText>
-              <FText style={Styles.hyphen}>{' - '}</FText>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-                {bookingDetails.checkOut.date}
-              </FText>
-              <FText style={Styles.month}>
-                {` ${bookingDetails.checkOut.month}`}
-              </FText>
-            </View>
-          )}
-          {status?.key === TRIP_STATUS.CANCELLED ? (
-            <TripStatus statusObj={status} />
-          ) : showConfirmedStatus ? (
-            <TripStatus statusObj={confirmedStatus} />
-          ) : (
-            !hideChevron && (
-              <Icon.ChevronRight
-                width={DP._18}
-                height={DP._18}
-                stroke={Color.BATTLESHIP_GREY_TWO}
-              />
-            )
-          )}
-        </View>
-        <View style={Styles.paddingHorizontal_16}>
-          <FText style={Styles.hotelName}>{bookingDetails.title}</FText>
-          <FText style={Styles.hotelLocation}>{bookingDetails.location}</FText>
-          <View style={Styles.checkInAndDirectionContainer}>
-            {bookingDetails.checkInTime ? (
-              <FText style={Styles.checkIn}>
-                {Strings.checkInTime(bookingDetails.checkInTime)}
-              </FText>
-            ) : (
-              <View />
-            )}
-            {directionAction && (
-              <FTouchableOpacity
-                style={[Styles.flexRowWithAlignCenter]}
-                onPress={() => onActionPress(directionAction)}>
-                <Icon.Navigation
-                  width={DP._16}
-                  height={DP._16}
-                  style={Styles.directionIcon}
-                />
-                <FText style={Styles.direction}>{directionAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </View>
-        </View>
-      </FTouchableOpacity>
-      {!actionsDisabled &&
-        (modifyAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
-      {showInfo && (
-        <InfoBox
-          isAlert={shortlistingAction || !!notificationText}
-          text={
-            viewShortlistedHotelAction?.name ||
-            shortlistingAction?.name ||
-            notificationText
-          }
-          showChevron={!!shortlistingAction}
-          disablePressEvent={!!notificationText}
-          onPress={() =>
-            onActionPress(viewShortlistedHotelAction || shortlistingAction)
-          }
-        />
-      )}
-    </View>
-  );
+  const uiData = showPreBookingCard ? tripRequest : bookingDetails;
+  const actionsVisible =
+    !actionsDisabled &&
+    (modifyAction || cancelAction || editAction || removeAction);
 
   return (
     <View style={[Styles.flexRow, style]}>
@@ -295,7 +180,193 @@ const HotelItineraryCard = ({
           </View>
         )}
       </View>
-      {showPreBookingCard ? <HotelPreBookingCard /> : <HotelPostBookingCard />}
+      <View style={Styles.container}>
+        <FTouchableOpacity
+          activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
+          style={Styles.card(uiData.reduceOpacity)}
+          onPress={onCardPress}>
+          <View style={Styles.dateAndStatusContainer}>
+            {sameMonthDates ? (
+              <View style={Styles.datesContainer}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                  {uiData.checkIn.date}
+                </FText>
+                <FText style={Styles.hyphen}>{'-'}</FText>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                  {uiData.checkOut.date}
+                </FText>
+                {renderMonthYear(uiData.checkIn.month, uiData.checkIn.year)}
+              </View>
+            ) : (
+              <View style={Styles.datesContainer}>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                  {uiData.checkIn.date}
+                </FText>
+                {renderMonthYear(uiData.checkIn.month, uiData.checkIn.year)}
+                <FText style={Styles.hyphen}>{' - '}</FText>
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                  {uiData.checkOut.date}
+                </FText>
+                {renderMonthYear(uiData.checkOut.month, uiData.checkOut.year)}
+              </View>
+            )}
+            {isProcessing && (
+              <View style={Styles.flexRowAndAlignCenter}>
+                <Icon.Reschedule
+                  width={DP._14}
+                  height={DP._14}
+                  stroke={Color.GREY_PURPLE}
+                />
+                <FText style={Styles.processing}>{Strings.processing}</FText>
+              </View>
+            )}
+            {status?.key === TRIP_STATUS.CANCELLED ? (
+              <TripStatus statusObj={status} />
+            ) : showConfirmedStatus ? (
+              <TripStatus statusObj={confirmedStatus} />
+            ) : uiData.isSoldOut ? (
+              <SoldOutTag />
+            ) : (
+              !hideChevron && (
+                <Icon.ChevronRight
+                  width={DP._18}
+                  height={DP._18}
+                  stroke={Color.BATTLESHIP_GREY_TWO}
+                />
+              )
+            )}
+          </View>
+          <View>
+            <FText style={Styles.hotelName}>{uiData.title}</FText>
+            <FText style={Styles.hotelLocation}>
+              {uiData.addressLine ?? uiData.address ?? uiData.location}
+            </FText>
+            {!!uiData.checkInTime && (
+              <View style={Styles.checkInContainer}>
+                <FText style={Styles.checkIn(Color.GREY_PURPLE)}>
+                  {Strings.checkInTime}
+                </FText>
+                <FText style={Styles.checkIn(Color.DARK)}>
+                  {uiData.checkInTime}
+                </FText>
+              </View>
+            )}
+            {!!uiData.price && (
+              <View style={Styles.roomTypeAndPriceContainer}>
+                <View style={Styles.ratePlanContainer}>
+                  <FText
+                    style={Styles.roomType}
+                    numberOfLines={1}
+                    ellipsizeMode={'tail'}>
+                    {uiData.roomTypeName}
+                  </FText>
+                  <FText
+                    style={Styles.mealType}
+                    numberOfLines={1}
+                    ellipsizeMode={'tail'}>
+                    {uiData.ratePlanName}
+                  </FText>
+                </View>
+                {uiData.isPriceFetched ? (
+                  <View style={Styles.priceContainer}>
+                    <View style={Styles.priceAndGstContainer}>
+                      <FText type={FONT_TYPE.MEDIUM} style={Styles.price}>
+                        {uiData.price}
+                      </FText>
+                      <FText style={Styles.priceDetail}>
+                        {uiData.gstIncluded ? Strings.inclGst : Strings.exGst}
+                      </FText>
+                    </View>
+                    {uiData.isOutOfPolicy && <OOPTag />}
+                  </View>
+                ) : (
+                  <PriceLoader />
+                )}
+              </View>
+            )}
+            <View style={{height: DP._12}} />
+            {!!uiData.bookingId && (
+              <>
+                <Separator style={Styles.separatorStyle} />
+                <View style={Styles.flexRowAndAlignCenter}>
+                  <FText style={Styles.bookingIdText}>
+                    {Strings.bookingId2}
+                  </FText>
+                  <FText style={Styles.bookingId} type={FONT_TYPE.MEDIUM}>
+                    {uiData.bookingId}
+                  </FText>
+                </View>
+              </>
+            )}
+          </View>
+        </FTouchableOpacity>
+
+        {!!modificationCharges && (
+          <>
+            <FText style={Styles.modificationChargeText}>
+              {Strings.includeModificationCharge}
+              <FText
+                type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
+            </FText>
+          </>
+        )}
+        {!!cancellationCharges && (
+          <>
+            <FText style={Styles.modificationChargeText}>
+              {Strings.includeCancellationCharge}
+              <FText
+                type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
+            </FText>
+          </>
+        )}
+        {viewRemarksAction && !!remarks && (
+          <>
+            {(cancellationCharges || modificationCharges) && (
+              <Separator
+                style={Styles.separatorContainerStyle}
+                // containerStyle={Styles.separatorContainerStyle}
+              />
+            )}
+            <RemarksBox
+              title={remarks.title}
+              remarks={remarks.text}
+              roundBottomCorners={!actionsVisible}
+              onPress={() => onActionPress(viewRemarksAction)}
+            />
+          </>
+        )}
+
+        {showInfo && (
+          <>
+            {(cancellationCharges || modificationCharges) && (
+              <Separator
+                style={Styles.separatorContainerStyle}
+                // containerStyle={Styles.separatorContainerStyle}
+              />
+            )}
+            <InfoBox
+              isAlert={shortlistingAction || !!notificationText}
+              text={
+                viewShortlistedHotelAction?.name ||
+                shortlistingAction?.name ||
+                notificationText
+              }
+              showChevron={!!shortlistingAction}
+              disablePressEvent={!!notificationText}
+              onPress={() =>
+                onActionPress(viewShortlistedHotelAction || shortlistingAction)
+              }
+            />
+          </>
+        )}
+        {actionsVisible && (
+          <ActionsInItinerary
+            hideSeperator={
+              showInfo || modificationCharges || cancellationCharges
+            }
+          />
+        )}
+      </View>
     </View>
   );
 };

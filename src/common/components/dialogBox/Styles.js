@@ -31,7 +31,7 @@ export default StyleSheet.create({
   },
   dashView: {
     alignItems: 'center',
-    marginVertical: 7,
+    marginVertical: DP._8,
     justifyContent: 'center',
   },
   absolute: {

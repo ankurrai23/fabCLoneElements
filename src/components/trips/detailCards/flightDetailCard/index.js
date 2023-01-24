@@ -14,6 +14,7 @@ import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
+import FImage from '../../../../common/rn/FImage';
 
 const FlightDetailCard = ({
   title,
@@ -27,6 +28,7 @@ const FlightDetailCard = ({
   actions,
   notificationText,
   actionsDisabled,
+  cardStyle,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -66,29 +68,28 @@ const FlightDetailCard = ({
     return null;
   }
   return (
-    <>
+    <View style={style}>
       {title && (
         <FText type={FONT_TYPE.MEDIUM} style={Styles.heading}>
           {title}
         </FText>
       )}
-      {!!notificationText && (
-        <ModificationAlertBox
-          msg={notificationText}
-          style={{marginHorizontal: DP._16}}
-        />
-      )}
-      <View style={[Styles.container, style]}>
+      {!!notificationText && <ModificationAlertBox msg={notificationText} />}
+      <View style={[Styles.container, cardStyle]}>
         <FTouchableOpacity
           activeOpacity={tripDetails.reduceOpacity ? 0.6 : 1}
           style={Styles.card(tripDetails.reduceOpacity)}
           onPress={onCardPress}>
-          <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+          <View style={[Styles.flexDirectionRow, Styles.flexRowAndAlignCenter]}>
             <View style={Styles.flexDirectionRow}>
               <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
                 {tripDetails.date}
               </FText>
-              <FText style={Styles.headerMonth}>{`${tripDetails.month}`}</FText>
+              <FText
+                type={FONT_TYPE.MEDIUM}
+                style={
+                  Styles.headerMonth
+                }>{`${tripDetails.month}'${tripDetails.year}`}</FText>
             </View>
             {!!tripDetails.flightBookingStatus && (
               <TripStatus
@@ -96,74 +97,119 @@ const FlightDetailCard = ({
               />
             )}
           </View>
-          <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-            <View style={Styles.flex}>
-              <FText style={Styles.time}>{tripDetails.departureTime}</FText>
-              <FText style={Styles.portName}>
-                {`${tripDetails.sourceAirportCode}` +
-                  (tripDetails.sourceAirportTerminal
-                    ? ` - ${tripDetails.sourceAirportTerminal}`
-                    : '')}
-              </FText>
-            </View>
-            <View
-              style={[
-                Styles.justifyContent_around(tripDetails.duration),
-                Styles.flex,
-              ]}>
-              <Icon.Aeroplane
-                width={DP._18}
-                height={DP._18}
-                fill={Color.LIGHT_BLUEY_GREY}
-                style={Styles.airplane}
+          <View style={[Styles.flexDirectionRow, Styles.marginTop_8]}>
+            <View style={Styles.flexRowAndAlignCenter}>
+              <FImage
+                style={Styles.airlineIcon}
+                source={{uri: tripDetails.airlineIcon}}
               />
-              <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>{tripDetails.duration}</FText>
-                <View style={Styles.dot_two} />
-                <FText style={Styles.duration}>{tripDetails.stop}</FText>
-              </View>
-            </View>
-            <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-              <FText style={Styles.time}>{tripDetails.arrivalTime}</FText>
-              <FText style={Styles.portName}>
-                {`${tripDetails.destinationAirportCode}` +
-                  (tripDetails.destinationAirportTerminal
-                    ? ` - ${tripDetails.destinationAirportTerminal}`
-                    : '')}
-              </FText>
-            </View>
-          </View>
-          {tripDetails.pnr && (
-            <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-              <View>
-                <FText style={Styles.time}>{tripDetails.airline}</FText>
-                <FText style={Styles.portName}>
-                  {tripDetails.flightNumber}
+              <View style={{marginLeft: DP._8}}>
+                <FText>{tripDetails.airline}</FText>
+                <FText style={Styles.airlineCode}>
+                  {`${
+                    tripDetails.airlineCode ? `${tripDetails.airlineCode}-` : ''
+                  }${tripDetails.flightNumber}`}
                 </FText>
               </View>
-              <View style={Styles.alignItem_flexEnd}>
-                <FText style={Styles.time}>{Strings.pnr}</FText>
-                <FText style={Styles.portName}>{tripDetails.pnr}</FText>
-              </View>
             </View>
-          )}
-          {supportAction && (
-            <>
-              <Separator style={Styles.separator} />
-              <ContactSupport
-                supportDetails={supportDetails}
-                onContactSupportPress={onContactSupportPress}
-                onClose={onClose}
-              />
-            </>
-          )}
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.priceStyle}>
+              {tripDetails.price}
+            </FText>
+          </View>
+          <View
+            style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_12]}>
+            <FText style={Styles.time}>{tripDetails.departureTime}</FText>
+            <Icon.Aeroplane
+              width={DP._18}
+              height={DP._18}
+              fill={Color.LIGHT_BLUEY_GREY}
+              style={Styles.airplane}
+            />
+            <FText style={Styles.time}>{tripDetails.arrivalTime}</FText>
+          </View>
+          <View style={[Styles.flexRowAndJustifySpaceBetween]}>
+            <FText style={Styles.portName}>
+              {tripDetails.sourceAirportCode}
+            </FText>
+            <View style={Styles.durationAndStopsContainer}>
+              <FText style={Styles.duration} numberOfLines={1}>
+                {tripDetails.totalDuration}
+              </FText>
+              <View style={Styles.dot_two} />
+              <FText
+                style={Styles.stoppage}
+                numberOfLines={1}
+                ellipsizeMode={'tail'}>
+                {tripDetails.stop}
+              </FText>
+            </View>
+            <FText style={Styles.portName}>
+              {tripDetails.destinationAirportCode}
+            </FText>
+          </View>
+          <View style={Styles.flexRowAndJustifySpaceBetween}>
+            {!!tripDetails.sourceAirportTerminal && (
+              <FText style={Styles.terminal}>
+                {tripDetails.sourceAirportTerminal}
+              </FText>
+            )}
+            {!!tripDetails.destinationAirportTerminal && (
+              <FText style={Styles.terminal}>
+                {tripDetails.destinationAirportTerminal}
+              </FText>
+            )}
+          </View>
         </FTouchableOpacity>
+        <Separator style={Styles.actionsSeperator} />
+        <FText style={Styles.bookingIdTitle(tripDetails.reduceOpacity)}>
+          {Strings.pnr}
+          {': '}
+          <FText type={FONT_TYPE.MEDIUM}>{tripDetails.pnr}</FText>
+        </FText>
+        {!!tripDetails?.travelersInfo?.length && (
+          <>
+            <Separator style={Styles.actionsSeperator} />
+            <View style={Styles.travelerDetailContainer}>
+              <View style={Styles.flexDirectionRow}>
+                <FText style={Styles.travelerDetailStyle}>
+                  {Strings.travelerDetails}
+                </FText>
+                <FText style={Styles.travelerDetailStyle}>
+                  {Strings.ticketNumber}
+                </FText>
+              </View>
+
+              {tripDetails.travelersInfo.map((item, index) => (
+                <View style={Styles.flexDirectionRow}>
+                  <View style={Styles.flexRow}>
+                    <Icon.Person />
+                    <FText key={index} style={Styles.travelerNameStyle}>
+                      {item.name}
+                    </FText>
+                  </View>
+                  <FText style={Styles.travelerNameStyle}>{item.seat}</FText>
+                </View>
+              ))}
+            </View>
+          </>
+        )}
+        {supportAction && (
+          <>
+            <Separator style={Styles.actionsSeperator} />
+            <ContactSupport
+              supportDetails={supportDetails}
+              onContactSupportPress={onContactSupportPress}
+              onClose={onClose}
+              style={Styles.contactSupport}
+            />
+          </>
+        )}
         {!actionsDisabled &&
           (rescheduleAction || cancelAction || viewRemarksAction) && (
             <Actions />
           )}
       </View>
-    </>
+    </View>
   );
 };
 

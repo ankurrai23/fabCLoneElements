@@ -73,15 +73,15 @@ export default function HotelDetailCard({
     </View>
   );
 
-  const CoTraveller = ({name}) => (
-    <View style={Styles.coTravellerContainer}>
+  const CoTraveller = ({name, lastItem}) => (
+    <View style={Styles.coTravellerContainer(lastItem)}>
       <Icon.User width={DP._14} height={DP._14} stroke={Color.GREY_PURPLE} />
       <FText style={{marginLeft: DP._8}}>{name}</FText>
     </View>
   );
 
-  const Inclusions = ({image, text}) => (
-    <View style={Styles.inclusionContainer}>
+  const Inclusions = ({image, text, lastItem}) => (
+    <View style={Styles.inclusionContainer(lastItem)}>
       <FImage source={{uri: image}} style={Styles.inclusionIcon} />
       <FText>{text}</FText>
     </View>
@@ -155,13 +155,19 @@ export default function HotelDetailCard({
           </View>
           <FText style={Styles.addressText}>{item.address}</FText>
           <Separator style={Styles.separator} />
-          <View style={Styles.flexRowWithSpaceBetween}>
-            <View style={Styles.flexRow}>
-              <FText>{Strings.bookingId}</FText>
-              <FText type={FONT_TYPE.BOLD} style={{paddingLeft: DP._8}}>
+          <View
+            style={[Styles.flexRowWithSpaceBetween, {marginVertical: DP._8}]}>
+            <FText
+              style={{
+                fontSize: DP._12,
+                lineHeight: DP._14,
+                color: Color.BLUEY_GREY,
+              }}>
+              {Strings.bookingId2}
+              <FText type={FONT_TYPE.MEDIUM} style={{paddingLeft: DP._8}}>
                 {item.bookingId}
               </FText>
-            </View>
+            </FText>
             {directionAction && (
               <FTouchableOpacity
                 style={[Styles.flexRowWithAlignCenter]}
@@ -176,6 +182,7 @@ export default function HotelDetailCard({
                   style={{
                     fontSize: DP._12,
                     color: Color.DODGER_BLUE,
+                    marginLeft: DP._8,
                   }}>
                   {Strings.directions}
                 </FText>
@@ -185,13 +192,17 @@ export default function HotelDetailCard({
           <Separator style={Styles.separator} />
           {expanded && (
             <Animated.View style={{opacity: fadeIn}}>
-              <View style={Styles.flexRowWithSpaceBetween}>
+              <View
+                style={[
+                  Styles.flexRowWithSpaceBetween,
+                  {marginVertical: DP._16},
+                ]}>
                 <CheckInInfo
                   title={Strings.checkInDate}
                   date={item.checkIn.date}
                   time={
                     item.checkIn.time
-                      ? Strings.checkInTime(item.checkIn.time)
+                      ? Strings.checkIn(item.checkIn.time)
                       : null
                   }
                 />
@@ -200,7 +211,7 @@ export default function HotelDetailCard({
                   date={item.checkOut.date}
                   time={
                     item.checkOut.time
-                      ? Strings.checkOutTime(item.checkOut.time)
+                      ? Strings.checkOut(item.checkOut.time)
                       : null
                   }
                 />
@@ -219,22 +230,24 @@ export default function HotelDetailCard({
               <Separator style={Styles.separator} />
               {!item.inclusions?.length ? null : (
                 <>
-                  <FText style={Styles.sectionTitle}>
+                  <FText style={[Styles.sectionTitle, {marginTop: DP._16}]}>
                     {Strings.inclusions}
                   </FText>
-                  {item.inclusions?.map((item, index) => {
+                  {item.inclusions?.map((entity, index) => {
                     if (index < 3)
                       return (
                         <Inclusions
                           key={`ab${index}cd`}
-                          text={item.text}
-                          image={item.icon}
+                          text={entity.text}
+                          image={entity.icon}
+                          lastItem={item.inclusions.length - 1 === index}
                         />
                       );
                   })}
                   {item.inclusions.length > 3 && (
                     <FTouchableOpacity
                       onPress={() => setSheetVisible(true)}
+                      style={{marginBottom: DP._16}}
                       disabled={item.reduceOpacity}>
                       <FText style={Styles.moreInclustion}>
                         {Strings.moreInclusions(item.inclusions.length - 3)}
@@ -246,11 +259,15 @@ export default function HotelDetailCard({
               )}
               {item?.coTravellers?.length > 0 && (
                 <>
-                  <FText style={Styles.sectionTitle}>
-                    {Strings.coTravelers}
+                  <FText style={[Styles.sectionTitle, {marginTop: DP._16}]}>
+                    {Strings.travelerDetails}
                   </FText>
-                  {item.coTravellers.map((item, index) => (
-                    <CoTraveller name={item} key={`abc${index}def`} />
+                  {item.coTravellers.map((names, index) => (
+                    <CoTraveller
+                      name={names}
+                      key={`abc${index}def`}
+                      lastItem={index === item.coTravellers.length - 1}
+                    />
                   ))}
                   <Separator style={Styles.separator} />
                 </>
@@ -292,7 +309,7 @@ export default function HotelDetailCard({
               {payNowAction && (
                 <Button
                   onPress={() => onActionPress?.(payNowAction)}
-                  style={{borderRadius: DP._4, marginTop: DP._4}}
+                  style={Styles.payNowButtonStyle}
                   disabled={item.reduceOpacity}
                   textFont={FONT_TYPE.MEDIUM}>
                   {payNowAction.name}
@@ -305,6 +322,7 @@ export default function HotelDetailCard({
                     supportDetails={supportDetails}
                     onContactSupportPress={onContactSupportPress}
                     onClose={onClose}
+                    style={{marginVertical: DP._16}}
                   />
                 </>
               )}
@@ -323,8 +341,8 @@ export default function HotelDetailCard({
               </FText>
               <Animated.View style={{transform: [{rotate: spin}]}}>
                 <Icon.ChevronDown
-                  width={DP._12}
-                  height={DP._12}
+                  width={DP._14}
+                  height={DP._14}
                   stroke={Color.DODGER_BLUE}
                 />
               </Animated.View>
@@ -333,7 +351,7 @@ export default function HotelDetailCard({
         </View>
         {(cancelAction || modifyAction) && (
           <>
-            <Separator style={{backgroundColor: Color.PALE_GREY_THREE}} />
+            <Separator style={Styles.actionSeparator} />
             <View style={Styles.buttonContainer}>
               {cancelAction && (
                 <FTouchableOpacity

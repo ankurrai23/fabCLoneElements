@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Color} from '../../../../utils/color';
+import {Color} from '../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
 import {cardStyleObj, shadowObj} from '../../../../utils/Utils';
 
@@ -8,6 +8,7 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
     ...cardStyleObj,
+    overflow: 'hidden',
   },
   card: (reduceOpacity) => ({
     opacity: reduceOpacity ? 0.6 : 1,
@@ -26,7 +27,6 @@ export default StyleSheet.create({
   hyphen: {
     alignSelf: 'center',
     fontSize: DP._12,
-    color: Color.BLUEY_GREY,
   },
   statusContainer: {
     backgroundColor: Color.DARK_SEA_FOAM + '1a',
@@ -38,46 +38,43 @@ export default StyleSheet.create({
     fontSize: DP._12,
   },
   hotelName: {
+    paddingHorizontal: DP._16,
     fontSize: DP._14,
     marginBottom: DP._2,
     lineHeight: DP._20,
   },
   hotelLocation: {
     color: Color.GREYISH_PURPLE,
+    paddingHorizontal: DP._16,
     fontSize: DP._12,
-    marginBottom: DP._12,
     lineHeight: DP._16,
+  },
+  modificationChargeText: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+    paddingLeft: DP._16,
+    paddingVertical: DP._8,
+    backgroundColor: Color.DODGER_BLUE + '12',
   },
   date: {
     fontSize: DP._14,
-    lineHeight: DP._20,
+    lineHeight: DP._16,
   },
   month: {
     fontSize: DP._14,
-    lineHeight: 20,
+    lineHeight: DP._16,
     color: Color.BLUEY_GREY,
   },
-  checkIn: {
-    fontSize: DP._10,
-    color: Color.DARK_SLATE_BLUE,
-    backgroundColor: Color.PALE_GREY,
-    paddingHorizontal: DP._6,
-    paddingVertical: DP._1,
-    borderRadius: DP._10,
-    overflow: 'hidden',
-    lineHeight: DP._12,
-  },
-  buttonContainer: {
+  checkInContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: DP._16,
+    paddingHorizontal: DP._16,
   },
-  cancelText: {
-    color: Color.PASTEL_RED,
-  },
-  modifyText: {
-    color: Color.DODGER_BLUE,
-  },
+  checkIn: (color) => ({
+    fontSize: DP._12,
+    color: color,
+    lineHeight: DP._14,
+    marginTop: DP._4,
+  }),
   icon: {
     width: DP._30,
     height: DP._30,
@@ -93,22 +90,54 @@ export default StyleSheet.create({
     paddingBottom: DP._10,
   },
   flexRow: {flexDirection: 'row'},
-  flexRowWithAlignCenter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  directionIcon: {bottom: 2, right: 2},
   checkInAndDirectionContainer: {
-    marginBottom: DP._12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  roomTypeAndPriceContainer: {
+    marginTop: DP._16,
+    flexDirection: 'row',
+    paddingHorizontal: DP._16,
+    justifyContent: 'space-between',
+    // alignItems: 'center',
+  },
+  ratePlanContainer: {
+    flex: 1,
+    marginEnd: DP._10,
+  },
+  priceAndGstContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginBottom: DP._2,
+  },
+  priceContainer: {
+    alignItems: 'flex-end',
+  },
+  price: {
+    fontSize: DP._16,
+    marginEnd: DP._4,
+    marginBottom: -2,
+    color: Color.DARK,
+  },
+  priceDetail: {
+    fontSize: DP._10,
+    color: Color.BATTLESHIP_GREY_TWO,
+  },
+  roomType: {
+    fontSize: DP._12,
+    color: Color.DARK,
+  },
+  mealType: {
+    fontSize: DP._12,
+    color: Color.GREYISH_PURPLE,
+    marginTop: DP._4,
   },
   actionContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._12,
+    paddingVertical: DP._8,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -127,7 +156,7 @@ export default StyleSheet.create({
   primaryButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._24,
+    marginLeft: DP._16,
   },
   rescheduleIcon: {
     width: DP._18,
@@ -139,16 +168,41 @@ export default StyleSheet.create({
     padding: DP._3,
     borderRadius: DP._12,
   },
-  paddingHorizontal_16: {
-    paddingHorizontal: DP._16,
-  },
-  seperatorStyle: {
-    marginHorizontal: DP._16,
-    backgroundColor: Color.LIGHT_PERIWINKLE,
-  },
-  direction: {
+  bookingIdText: {
     fontSize: DP._12,
-    color: Color.DODGER_BLUE,
-    lineHeight: DP._16,
+    color: Color.BLUEY_GREY,
+    lineHeight: DP._14,
+    paddingStart: DP._16,
+    paddingVertical: DP._8,
+  },
+  bookingId: {
+    fontSize: DP._12,
+    color: Color.DARK,
+    lineHeight: DP._14,
+    paddingVertical: DP._8,
+  },
+  separatorStyle: {
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
+  },
+  animatedComponent: {
+    flex: 1,
+    width: DP._60,
+  },
+  priceLoading: {
+    height: DP._20,
+    width: DP._60,
+    backgroundColor: Color.VERY_LIGHT_PINK,
+    borderRadius: DP._2,
+  },
+  processing: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREY_PURPLE,
+    marginLeft: DP._4,
+  },
+  separatorContainerStyle: {
+    backgroundColor: Color.HAWKES_BLUE,
+    marginHorizontal: DP._16,
   },
 });

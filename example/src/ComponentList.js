@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  data,
   Button,
   TextField,
   DashedLine,
@@ -69,7 +70,20 @@ import {
   CabDetails,
   Selector,
   ProgressBar,
-  data,
+  FlightFilter,
+  HotelFilter,
+  Slider,
+  RangeSlider,
+  FlightFarePlanCard,
+  HotelFarePlanCard,
+  FlightSearchResultCard,
+  HotelSearchResultCard,
+  PendingPaymentSheet,
+  PendingPaymentCarousel,
+  EmployeeActions,
+  SelectRoomSheet,
+  PriceBreakupSheet,
+  LoadingPlaceholder,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -148,6 +162,21 @@ const COMMON_COMPONENTS = [
     name: 'Selector',
     component: (props) => <Selector {...props} />,
     defaultProps: data.selectorProps,
+  },
+  {
+    name: 'Slider',
+    component: (props) => <Slider {...props} />,
+    defaultProps: data.sliderProps,
+  },
+  {
+    name: 'RangeSlider',
+    component: (props) => <RangeSlider {...props} />,
+    defaultProps: data.rangeSliderProps,
+  },
+  {
+    name: 'LoadingPlaceholder',
+    component: (props) => <LoadingPlaceholder {...props} />,
+    defaultProps: data.placeholderProps,
   },
 ];
 
@@ -303,6 +332,16 @@ const TRIP_COMPONENTS = [
     component: (props) => <ApproverChain {...props} />,
     defaultProps: data.approverChainProps,
   },
+  {
+    name: 'Employee Actions',
+    component: (props) => <EmployeeActions {...props} />,
+    defaultProps: data.employeeActionsProps,
+  },
+  {
+    name: 'PriceBreakupSheet',
+    component: (props) => <PriceBreakupSheet {...props} />,
+    defaultProps: data.priceBreakupSheetProps,
+  },
 ];
 
 const TRIP_CREATION = [
@@ -357,6 +396,41 @@ const TRIP_CREATION = [
     component: (props) => <CabDetails {...props} />,
     defaultProps: data.cabDetailsProps,
   },
+  {
+    name: 'FlightFilter',
+    component: (props) => <FlightFilter {...props} />,
+    defaultProps: data.flightFilterProps,
+  },
+  {
+    name: 'HotelFilter',
+    component: (props) => <HotelFilter {...props} />,
+    defaultProps: data.hotelFilterProps,
+  },
+  {
+    name: 'FlightFarePlan',
+    component: (props) => <FlightFarePlanCard {...props} />,
+    defaultProps: data.flightFarePlanProps,
+  },
+  {
+    name: 'HotelFarePlan',
+    component: (props) => <HotelFarePlanCard {...props} />,
+    defaultProps: data.hotelFarePlanProps,
+  },
+  {
+    name: 'FlightSearchResultCard',
+    component: (props) => <FlightSearchResultCard {...props} />,
+    defaultProps: data.flightSearchResultCardProps,
+  },
+  {
+    name: 'HotelSearchResultCard',
+    component: (props) => <HotelSearchResultCard {...props} />,
+    defaultProps: data.hotelSearchResultCardProps,
+  },
+  {
+    name: 'SelectRoomSheet',
+    component: (props) => <SelectRoomSheet {...props} />,
+    defaultProps: data.selectRoomSheetProps,
+  },
 ];
 
 const HOME = [
@@ -380,6 +454,16 @@ const HOME = [
     name: 'HomeLoadingState',
     component: (props) => <HomeLoadingState {...props} />,
     defaultProps: data.homeLoadingStateProps,
+  },
+  {
+    name: 'PendingPaymentSheet',
+    component: (props) => <PendingPaymentSheet {...props} />,
+    defaultProps: data.pendingPaymentSheetProps,
+  },
+  {
+    name: 'PendingPaymentCarousel',
+    component: (props) => <PendingPaymentCarousel {...props} />,
+    defaultProps: data.pendingPaymentCarouselProps,
   },
 ];
 

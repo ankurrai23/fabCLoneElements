@@ -8,12 +8,13 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
     ...cardStyleObj,
+    overflow: 'hidden',
   },
   actionContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._12,
+    paddingVertical: DP._8,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -50,7 +51,6 @@ export default StyleSheet.create({
   hyphen: {
     alignSelf: 'center',
     fontSize: DP._12,
-    color: Color.BLUEY_GREY,
   },
   date: {
     fontSize: DP._14,
@@ -102,7 +102,7 @@ export default StyleSheet.create({
   primaryButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._24,
+    marginLeft: DP._16,
   },
   chevronContainer: {
     backgroundColor: Color.DODGER_BLUE + '12',
@@ -144,8 +144,8 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   actionsSeparator: {
-    marginHorizontal: DP._16,
     backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
   headerMonth: {
     color: Color.BLUEY_GREY,

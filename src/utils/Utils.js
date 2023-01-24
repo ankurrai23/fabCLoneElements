@@ -6,7 +6,8 @@ import percentToHexChart from './color/percent-to-hex-chart.json';
 import {Color} from './color';
 import {SUB_TRIP_TYPE} from './Constants';
 import Icon from '../assets/icons/Icon';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {Strings} from './strings/index.travelPlus';
 
 export const FontFamily = Config.fontFamily || 'Metropolis';
 
@@ -98,18 +99,23 @@ export function formattedDate(date = new Date(), format = 'DD MMM YY') {
   return moment(date).format(format);
 }
 
-export function formattedPrice(val) {
-  let price = Number(val);
-  if (isNaN(price)) {
+export function formattedPrice(val, maxFractionDigit = 0) {
+  let price;
+  try {
+    price = Number(Math.ceil(val));
+    if (isNaN(price)) {
+      return val;
+    }
+  } catch (err) {
     return val;
   }
   price = new Intl.NumberFormat('en-IN', {
-    style: 'currency',
+    // style: 'currency', // enables ₹ symbol with a little right padding
     currency: 'INR',
     minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: maxFractionDigit,
   }).format(price);
-  return price;
+  return Strings.rupee + price;
 }
 
 export function isEmpty(obj) {
@@ -130,6 +136,7 @@ export function isEmpty(obj) {
 export function isPlatformIos() {
   return Platform.OS === 'ios';
 }
+
 export function getPluralText(number, text, isCaps, isNumberPrefix) {
   return text
     ? (isNumberPrefix ? number + ' ' : '') +
