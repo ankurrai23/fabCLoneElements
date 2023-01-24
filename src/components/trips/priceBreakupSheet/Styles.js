@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {DP} from '../../../utils/Dimen';
+import {Color} from '../../../utils/color/index.fabhotel';
 
 export default StyleSheet.create({
   container: {
@@ -25,6 +26,15 @@ export default StyleSheet.create({
   separator: {
     marginVertical: DP._12,
     marginHorizontal: DP._24,
+  },
+  flexRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
+  subTitle: {
+    fontSize: DP._12,
+    marginLeft: DP._4,
+    color: Color.FORD_GRAY,
   },
   feeContainer: {
     flexDirection: 'row',
