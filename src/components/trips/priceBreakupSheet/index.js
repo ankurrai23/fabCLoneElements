@@ -17,9 +17,12 @@ const PriceBreakupSheet = ({
   containerStyle,
   onOkPress,
 }) => {
-  const FeeDetail = ({title, cost, type, style}) => (
+  const FeeDetail = ({title, subtitle, cost, type, style}) => (
     <FTouchableOpacity style={[Styles.feeContainer, style]}>
-      <FText type={type}>{title}</FText>
+      <View style={Styles.flexRow}>
+        <FText type={type}>{title}</FText>
+        {subtitle && <FText style={Styles.subTitle}>{subtitle}</FText>}
+      </View>
       <FText type={type}>{formattedPrice(cost)}</FText>
     </FTouchableOpacity>
   );
@@ -78,6 +81,7 @@ const PriceBreakupSheet = ({
               <>
                 <FeeDetail
                   title={Strings.priceBreakup.hotelModificationCharges}
+                  subtitle={Strings.priceBreakup.included}
                   cost={data.hotelModificationCharges.amount}
                 />
                 <FeeDetail
