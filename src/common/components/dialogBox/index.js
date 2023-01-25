@@ -146,12 +146,13 @@ const DialogBox = ({modalVisible, onClose, ContentModal}) => {
 
   const GestureHandlerHOC = gestureHandlerRootHOC(() => (
     <FTouchableOpacity style={Styles.absolute} onPress={() => onClose()}>
-      <BlurView
+      {/* <BlurView
         style={Styles.absolute}
         blurType="light"
         blurAmount={1}
         reducedTransparencyFallbackColor="transparent"
-      />
+      /> */}
+      <View style={[Styles.absolute, {backgroundColor: '#32323280'}]} />
       <Animated.View style={handleMainBodyStyle(interpolateBackgroundOpacity)}>
         <Animated.View
           style={handleGetStyleBody(interpolateBackgroundOpacity)}
