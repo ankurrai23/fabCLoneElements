@@ -10,9 +10,6 @@ export default StyleSheet.create({
     ...cardStyleObj,
     overflow: 'hidden',
   },
-  card: (reduceOpacity) => ({
-    opacity: reduceOpacity ? 0.6 : 1,
-  }),
   dateAndStatusContainer: {
     flexDirection: 'row',
     marginBottom: DP._12,

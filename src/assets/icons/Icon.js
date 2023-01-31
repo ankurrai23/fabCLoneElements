@@ -1,10 +1,9 @@
 import React from 'react';
-import {Svg, Path, Line} from 'react-native-svg';
+import {Svg, Path, Line, Mask} from 'react-native-svg';
 import {Color} from '../../utils/color/index.travelPlus';
 
 //Svg files
 import PlusCircle from './plus-circle.svg';
-import Phone from './phone.svg';
 import Search from './search.svg';
 import Camera from './camera.svg';
 import Image from './image.svg';
@@ -15,7 +14,6 @@ import EditFilled from './edit-filled.svg';
 import File from './file.svg';
 import CreditCard from './credit-card.svg';
 import ZooomIn from './zoom-in.svg';
-import Navigation from './navigation.svg';
 import Sort from './sort.svg';
 import EditWithBlueBackground from './edit-with-blue-background.svg';
 import Bell from './bell.svg';
@@ -292,6 +290,49 @@ const User = ({width, height, stroke, ...props}) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
+  </Svg>
+);
+
+const Navigation = ({width, height, stroke, fill, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M21.6791 2.28815C21.3939 2.00384 21.0137 1.90907 20.6334 2.09861L2.57041 10.6278C2.19014 10.8173 2 11.1964 2 11.5755C2 11.9545 2.28521 12.3336 2.76055 12.4284L9.7956 14.229L11.6019 21.2419C11.697 21.6209 12.0772 21.9052 12.4575 22H12.5526C12.9329 22 13.2181 21.8105 13.4082 21.4314L21.9643 3.42537C22.0594 2.95153 21.9643 2.57245 21.6791 2.28815Z"
+      fill={fill ?? Color.DODGER_BLUE}
+    />
+  </Svg>
+);
+
+const Phone = ({width, height, stroke, fill, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M16.0039 14.0981C16.0039 14.3484 15.9205 14.5152 15.7536 14.6821C15.5868 14.8489 14.3523 16 14.0186 16C11.5994 15.7497 9.26361 14.9155 7.17809 13.5808C5.25942 12.4129 3.67442 10.7445 2.42311 8.82581C1.08838 6.74029 0.254169 4.40451 0.00390625 1.98531C0.00390625 1.73504 1.155 0.500525 1.23843 0.333683C1.40527 0.166842 1.65553 0 1.90579 0H4.40842C4.82552 0 5.1592 0.333683 5.24262 0.750787C5.32604 1.585 5.57631 2.50262 5.90999 3.25341C5.99341 3.58709 5.90999 3.92078 5.74315 4.17104L4.65868 5.17209C4.40842 5.42235 4.325 5.83946 4.49184 6.17314C5.74315 8.4255 7.57841 10.2608 9.83077 11.5121C10.1645 11.6789 10.5816 11.6789 10.8318 11.3452L11.9163 10.2608C12.1665 10.0105 12.5002 9.92707 12.8339 10.0939C13.6681 10.4276 14.5023 10.5944 15.3365 10.7613C15.6702 10.8447 16.0039 11.1784 16.0039 11.5955V14.0981Z"
+      fill={fill ?? Color.DODGER_BLUE}
+    />
+    <Mask
+      id="mask0_3482_11893"
+      style="mask-type:alpha"
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="17"
+      height="16">
+      <Path
+        d="M16.0039 14.0981C16.0039 14.3484 15.9205 14.5152 15.7536 14.6821C15.5868 14.8489 14.3523 16 14.0186 16C11.5994 15.7497 9.26361 14.9155 7.17809 13.5808C5.25942 12.4129 3.67442 10.7445 2.42311 8.82581C1.08838 6.74029 0.254169 4.40451 0.00390625 1.98531C0.00390625 1.73504 1.155 0.500525 1.23843 0.333683C1.40527 0.166842 1.65553 0 1.90579 0H4.40842C4.82552 0 5.1592 0.333683 5.24262 0.750787C5.32604 1.585 5.57631 2.50262 5.90999 3.25341C5.99341 3.58709 5.90999 3.92078 5.74315 4.17104L4.65868 5.17209C4.40842 5.42235 4.325 5.83946 4.49184 6.17314C5.74315 8.4255 7.57841 10.2608 9.83077 11.5121C10.1645 11.6789 10.5816 11.6789 10.8318 11.3452L11.9163 10.2608C12.1665 10.0105 12.5002 9.92707 12.8339 10.0939C13.6681 10.4276 14.5023 10.5944 15.3365 10.7613C15.6702 10.8447 16.0039 11.1784 16.0039 11.5955V14.0981Z"
+        fill={fill ?? Color.WHITE}
+      />
+    </Mask>
   </Svg>
 );
 
