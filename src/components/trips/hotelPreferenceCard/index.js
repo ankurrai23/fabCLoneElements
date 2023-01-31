@@ -2,13 +2,13 @@ import {View} from 'react-native';
 import React from 'react';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import Separator from '../../../common/components/separator';
-import FImage from '../../../common/rn/FImage';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
+import {renderHotelImage} from '../../tripCreation/srp/hotelSearchResultCard';
 
 const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
   <>
@@ -109,9 +109,7 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
     <View>
       <FlatList
         data={item.hotelImages}
-        renderItem={({item: imageObj}) => (
-          <FImage source={{uri: imageObj}} style={Styles.hotelImageStyle} />
-        )}
+        renderItem={renderHotelImage}
         horizontal
         showsHorizontalScrollIndicator={false}
         keyExtractor={(_, index) => `${index}abc`}
@@ -191,7 +189,7 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
   </TouchableOpacity>
 );
 
-const ratingsArray = (value) => {
+export const ratingsArray = (value) => {
   value *= 100;
   let filledBars = parseInt(value / 100, 10);
   let partialFilled = value % 100;

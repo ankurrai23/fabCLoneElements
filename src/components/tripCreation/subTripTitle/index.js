@@ -17,17 +17,9 @@ export default function SubTripTitle({title, dataLength, onPress, style}) {
         style={Styles.flexRow}
         hitSlop={Styles.hitSlop}
         onPress={onPress}>
-        {dataLength ? (
-          <Icon.EditFilled width={DP._16} height={DP._16} />
-        ) : (
-          <Icon.Plus
-            width={DP._16}
-            height={DP._16}
-            stroke={Color.DODGER_BLUE}
-          />
-        )}
+        <Icon.Plus width={DP._16} height={DP._16} stroke={Color.DODGER_BLUE} />
         <FText type={FONT_TYPE.MEDIUM} style={Styles.addDetails}>
-          {dataLength ? Strings.edit : Strings.add}
+          {Strings.add}
         </FText>
       </FTouchableOpacity>
     </View>

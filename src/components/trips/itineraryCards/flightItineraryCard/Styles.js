@@ -8,12 +8,13 @@ export default StyleSheet.create({
     flex: 1,
     ...shadowObj,
     ...cardStyleObj,
+    overflow: 'hidden',
   },
   actionContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingVertical: DP._12,
+    paddingVertical: DP._8,
     paddingHorizontal: DP._16,
     borderBottomLeftRadius: DP._12,
     borderBottomRightRadius: DP._12,
@@ -27,8 +28,9 @@ export default StyleSheet.create({
     color: Color.DODGER_BLUE,
     marginLeft: DP._4,
     fontSize: DP._12,
+    lineHeight: DP._16,
   },
-  flexDirectionRow: {
+  flexRowAndJustifySpaceBetween: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -36,13 +38,12 @@ export default StyleSheet.create({
     transform: [{rotate: '90deg'}],
   },
   portName: {
-    marginTop: DP._2,
     color: Color.GREYISH_PURPLE,
     lineHeight: DP._16,
-    fontSize: DP._12,
+    fontSize: DP._14,
   },
   time: {
-    fontSize: DP._14,
+    fontSize: DP._16,
     lineHeight: DP._20,
   },
   date: {
@@ -60,10 +61,16 @@ export default StyleSheet.create({
     fontSize: DP._10,
     color: Color.GREYISH_PURPLE,
   },
+  stoppage: {
+    flexShrink: 1,
+    fontSize: DP._10,
+    color: Color.GREYISH_PURPLE,
+  },
   baseline: {alignItems: 'center'},
   card: (reduceOpacity) => ({
     paddingHorizontal: DP._16,
-    paddingVertical: DP._12,
+    paddingTop: DP._12,
+    paddingBottom: DP._8,
     opacity: reduceOpacity ? 0.6 : 1,
   }),
   alignItem_flexEnd: {
@@ -92,7 +99,7 @@ export default StyleSheet.create({
   primaryButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._24,
+    marginLeft: DP._16,
   },
   chevronContainer: {
     backgroundColor: Color.DODGER_BLUE + '12',
@@ -108,27 +115,137 @@ export default StyleSheet.create({
     flex: 1,
   },
   dot_two: {
-    padding: DP._3,
-    borderRadius: DP._4,
+    width: DP._4,
+    height: DP._4,
+    borderRadius: DP._2,
     backgroundColor: Color.LIGHT_BLUEY_GREY,
-    marginHorizontal: DP._5,
+    marginHorizontal: DP._4,
   },
   durationContainer: {
     flexDirection: 'row',
     flexGrow: 1,
     alignItems: 'center',
+    // marginBottom: DP._14,
   },
   marginTop_12: {
     marginTop: DP._12,
   },
-  seperatorStyle: {
-    marginHorizontal: DP._16,
+  separatorStyle: {
     backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
   },
   headerMonth: {
     color: Color.BLUEY_GREY,
     fontSize: DP._14,
     lineHeight: DP._20,
-    marginLeft: DP._2,
+    marginLeft: DP._4,
+  },
+  animatedComponent: {
+    flex: 1,
+    width: DP._60,
+  },
+  priceLoading: {
+    height: DP._20,
+    width: DP._60,
+    backgroundColor: Color.VERY_LIGHT_PINK,
+    borderRadius: DP._2,
+  },
+  flightParticulars: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: DP._12,
+  },
+  imageStyle: {
+    width: DP._32,
+    height: DP._32,
+    borderRadius: DP._32,
+  },
+  nameAndNumberContainer: {flex: 1, marginStart: DP._8},
+  flightName: {
+    color: Color.DARK,
+  },
+  flightNumber: {
+    color: Color.BLUEY_GREY,
+    marginTop: DP._2,
+    fontSize: DP._12,
+  },
+  flightPrice: {
+    alignSelf: 'flex-end',
+    fontSize: DP._16,
+    lineHeight: DP._19,
+    color: Color.DARK,
+    marginBottom: DP._4,
+  },
+  pnr: (reduceOpacity) => ({
+    marginLeft: DP._16,
+    marginVertical: DP._8,
+    color: Color.BLUEY_GREY,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    opacity: reduceOpacity ? 0.6 : 1,
+  }),
+  modificationChargeText: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+    paddingLeft: DP._16,
+    paddingVertical: DP._8,
+    backgroundColor: Color.DODGER_BLUE + '12',
+  },
+  reasonBox: {
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._8,
+    backgroundColor: Color.DODGER_BLUE + '12',
+    borderBottomLeftRadius: DP._12,
+    borderBottomRightRadius: DP._12,
+  },
+  reasonTitle: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+  },
+  reasonText: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+  },
+  marginBottom_12: {
+    marginBottom: DP._12,
+  },
+  terminal: {
+    marginTop: DP._4,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREYISH_PURPLE,
+  },
+  preBookingSource: {
+    fontSize: DP._14,
+    lineHeight: DP._20,
+  },
+  preBookingPort: {
+    marginTop: DP._2,
+    fontSize: DP._12,
+    lineHeight: DP._16,
+    color: Color.GREYISH_PURPLE,
+  },
+  priceContainer: {
+    alignItems: 'flex-end',
+  },
+  processing: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREY_PURPLE,
+    marginLeft: DP._4,
+  },
+  durationAndStopsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: DP._16,
+  },
+  marginTop_8: {
+    marginTop: DP._8,
+  },
+  separatorContainerStyle: {
+    backgroundColor: Color.HAWKES_BLUE,
+    marginHorizontal: DP._16,
   },
 });

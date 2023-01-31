@@ -3,6 +3,8 @@ const SubTripCommonActions = {
   SUPPORT: 'SUPPORT',
   CANCEL: 'CANCEL',
   RESCHEDULE: 'RESCHEDULE',
+  EDIT: 'EDIT',
+  REMOVE: 'REMOVE',
 };
 
 export const HotelSubTripActions = {
@@ -25,6 +27,7 @@ export const FlightSubTripActions = {
   VIEW_SHORTLISTED_FLIGHT_TRIPS: 'VIEW_SHORTLISTED_FLIGHT_TRIPS',
   MODIFICATION_REQUESTED: 'MODIFICATION_REQUESTED',
   CANCELLATION_REQUESTED: 'CANCELLATION_REQUESTED',
+  REFUND_STATUS: 'REFUND_STATUS',
 };
 
 export const TrainSubtripActions = {

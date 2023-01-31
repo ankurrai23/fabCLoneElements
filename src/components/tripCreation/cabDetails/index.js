@@ -6,6 +6,8 @@ import CabItineraryCard from '../../trips/itineraryCards/cabItineraryCard';
 import Styles from './Styles';
 import moment from 'moment';
 import FText from '../../../common/rn/FText';
+import {TRIP_CREATION_ACTIONS} from '../../../utils/Constants';
+import {CabSubtripActions} from '../../../utils/SubTripActions';
 
 const CAB_TYPE = {
   outstation: 'OUTSTATION',
@@ -22,11 +24,25 @@ export default function CabDetails({onPress, data, style, error}) {
     destinationLocality: item.destinationLocality,
     pickupTime: item.cabType === CAB_TYPE.outstation ? item.startTime : null,
   });
+
+  const handlePress = (action, index) => {
+    switch (action.type) {
+      case CabSubtripActions.EDIT:
+        onPress?.({requestType: 'CAB', action: 'EDIT', index: index});
+        break;
+      case CabSubtripActions.REMOVE:
+        onPress?.({requestType: 'CAB', action: 'REMOVE', index: index});
+        break;
+      default:
+        onPress?.({requestType: 'CAB', action: 'ADD', index: data.length});
+    }
+  };
+
   return (
     <View style={style}>
       <SubTripTitle
         title={Strings.cabs}
-        onPress={onPress}
+        onPress={handlePress}
         dataLength={data?.length}
         style={Styles.headerStyle(data)}
       />
@@ -35,7 +51,8 @@ export default function CabDetails({onPress, data, style, error}) {
         <CabItineraryCard
           tripRequest={generateRequestInfo(item)}
           showPreBookingCard={true}
-          actionDisabled={true}
+          actions={TRIP_CREATION_ACTIONS}
+          onActionPress={(action) => handlePress(action, index)}
           hideIcon
           style={Styles.cardStyle(data, index)}
         />

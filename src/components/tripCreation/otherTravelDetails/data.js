@@ -1,5 +1,5 @@
 const otherTravelDetailsProps = {
-  purposeOfTravel: [
+  purposeOfTravelData: [
     {
       key: 'Client meeting',
       value: 'Client meeting',

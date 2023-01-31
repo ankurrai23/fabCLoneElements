@@ -15,7 +15,7 @@ import Icon from '../../../assets/icons/Icon';
 function ItineraryHeader(props) {
   return (
     <View style={Styles.container}>
-      <View style={Styles.flexRow}>
+      <View style={Styles.header}>
         <FTouchableOpacity
           onPress={props.onBackClick}
           hitSlop={{left: 50, right: 20, bottom: 20, top: 20}}>
@@ -57,6 +57,25 @@ function ItineraryHeader(props) {
       )}
       {props.cancelledMessage && (
         <FText style={Styles.cancelMessage}>{props.cancelledMessage}</FText>
+      )}
+      {props.paymentDeadline && (
+        <View>
+          <View style={Styles.paymentPendingContainer}>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.paymentPending}>
+              {Strings.paymentPending}
+            </FText>
+            <View style={Styles.flexRow}>
+              {props.paymentDeadline.key && (
+                <FText type={FONT_TYPE.MEDIUM} style={Styles.fontSize10}>
+                  {props.paymentDeadline.key}{' '}
+                </FText>
+              )}
+              <FText style={Styles.fontSize10}>
+                {props.paymentDeadline.value}
+              </FText>
+            </View>
+          </View>
+        </View>
       )}
       {props.tripRequesterInfo && (
         <>

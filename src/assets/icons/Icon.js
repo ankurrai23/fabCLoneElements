@@ -1,5 +1,5 @@
 import React from 'react';
-import {Svg, Path} from 'react-native-svg';
+import {Svg, Path, Line} from 'react-native-svg';
 import {Color} from '../../utils/color/index.travelPlus';
 
 //Svg files
@@ -11,13 +11,11 @@ import Image from './image.svg';
 import Upload from './upload.svg';
 import RadioActive from './radio-active.svg';
 import RadioPassive from './radio-passive.svg';
-import Trash from './trash.svg';
 import EditFilled from './edit-filled.svg';
 import File from './file.svg';
 import CreditCard from './credit-card.svg';
 import ZooomIn from './zoom-in.svg';
 import Navigation from './navigation.svg';
-import Filter from './filter.svg';
 import Sort from './sort.svg';
 import EditWithBlueBackground from './edit-with-blue-background.svg';
 import Bell from './bell.svg';
@@ -37,6 +35,7 @@ import Approve from './approve.svg';
 import Reject from './reject.svg';
 import Person from './personIcon.svg';
 import PhoneIcon from './phoneIcon.svg';
+import Edit from './edit.svg';
 
 const ChevronLeft = ({width, height, size, stroke, strokeWidth, ...props}) => (
   <Svg
@@ -463,6 +462,177 @@ const Train = ({width, height, fill, ...props}) => (
   </Svg>
 );
 
+const Filter = ({width, height, stroke, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    fill="none"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Line
+      x1={3.75}
+      y1={5.42676}
+      x2={13.5}
+      y2={5.42676}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={16.125}
+      y1={5.42676}
+      x2={20.25}
+      y2={5.42676}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={16.125}
+      y1={3.75}
+      x2={16.125}
+      y2={7.54412}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={3.75}
+      y1={18.1328}
+      x2={13.5}
+      y2={18.1328}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={16.125}
+      y1={18.1333}
+      x2={20.25}
+      y2={18.1333}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={16.125}
+      y1={16.4561}
+      x2={16.125}
+      y2={20.2502}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={20.25}
+      y1={12.2212}
+      x2={10.5}
+      y2={12.2212}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={7.875}
+      y1={12.2207}
+      x2={3.75}
+      y2={12.2207}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+    <Line
+      x1={7.875}
+      y1={13.897}
+      x2={7.875}
+      y2={10.1029}
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={2}
+      strokeLinecap="round"
+    />
+  </Svg>
+);
+
+const Trash = ({width, height, stroke, strokeWidth, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M3 6H5H21"
+      stroke="#D65656"
+      strokeWidth={strokeWidth ?? 2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z"
+      stroke="#D65656"
+      strokeWidth={strokeWidth ?? 2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M10 11V17"
+      stroke="#D65656"
+      strokeWidth={strokeWidth ?? 2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M14 11V17"
+      stroke="#D65656"
+      strokeWidth={strokeWidth ?? 2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+const Minus = ({width, height, stroke, strokeWidth, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M5 12H19"
+      stroke={stroke ?? '#379AFF'}
+      strokeWidth={strokeWidth ?? 1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+const Refund = ({width, height, stroke, ...props}) => (
+  <Svg
+    width={width ?? 16}
+    height={width ?? 18}
+    viewBox="0 0 16 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M14.0921 10.93C13.6901 12.3344 12.805 13.5647 11.5876 14.4113C10.3702 15.2579 8.89591 15.6685 7.41584 15.5731C5.93577 15.4777 4.54154 14.8821 3.47069 13.8879C2.39985 12.8938 1.71865 11.5625 1.54317 10.1209C1.36769 8.67933 1.70878 7.21667 2.50833 5.98213C3.30788 4.74759 4.51642 3.81756 5.92802 3.35051C7.33961 2.88347 8.86694 2.90829 10.2498 3.42077C11.6326 3.93324 12.7853 4.90166 13.5116 6.161"
+      stroke={stroke ?? '#379AFF'}
+      strokeLinecap="round"
+    />
+    <Path
+      d="M14.7585 3.97072L13.8896 7.00576L10.8011 6.19177"
+      stroke={stroke ?? '#379AFF'}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
 const Icon = {
   Reschedule,
   ChevronLeft,
@@ -515,6 +685,9 @@ const Icon = {
   Train,
   Cab,
   Bus,
+  Edit,
+  Minus,
+  Refund,
 };
 
 export default Icon;

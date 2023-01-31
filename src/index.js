@@ -25,6 +25,10 @@ import DropDown from './common/components/dropDown';
 import FieldStates from './common/components/fieldStates';
 import ProgressBar from './common/components/progressBar';
 import Selector from './common/components/selector';
+import Slider from './common/components/slider';
+import RangeSlider from './common/components/rangeSlider';
+import LoadingPlaceholder from './common/components/placeholder';
+import ReasonModal from './common/components/reasonModal';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -60,6 +64,8 @@ import CabDetailLoadingState from './components/trips/detailCards/loadingStates/
 import BusDetailLoadingState from './components/trips/detailCards/loadingStates/busDetailLoadingState';
 import TrainDetailLoadingState from './components/trips/detailCards/loadingStates/trainDetailLoadingState';
 import ApproverChain from './components/trips/approverChain';
+import EmployeeActions from './components/trips/employeeActions';
+import PriceBreakupSheet from './components/trips/priceBreakupSheet';
 
 //Constants
 import {
@@ -82,12 +88,21 @@ import ItineraryCard from './components/tripCreation/itinerary';
 import TrainDetails from './components/tripCreation/trainDetails';
 import BusDetails from './components/tripCreation/busDetails';
 import CabDetails from './components/tripCreation/cabDetails';
+import FlightFilter from './components/tripCreation/srp/filters/flightFilter';
+import HotelFilter from './components/tripCreation/srp/filters/hotelFilter';
+import FlightFarePlanCard from './components/tripCreation/srp/farePlans/flightFarePlan';
+import HotelFarePlanCard from './components/tripCreation/srp/farePlans/hotelFarePlan';
+import FlightSearchResultCard from './components/tripCreation/srp/flightSearchResultCard';
+import HotelSearchResultCard from './components/tripCreation/srp/hotelSearchResultCard';
+import SelectRoomSheet from './components/tripCreation/srp/selectRoomSheet';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
 import ClaimsList from './components/home/claimsList';
 import MessageCard from './components/home/messageCard';
 import HomeLoadingState from './components/home/homeLoadingState';
+import PendingPaymentSheet from './components/home/pendingPaymentSheet';
+import PendingPaymentCarousel from './components/home/pendingPaymentCarousel';
 
 //Expense Components
 import ExpenseCard from './components/expense/expenseCard';
@@ -136,6 +151,10 @@ export {
   FieldStates,
   ProgressBar,
   Selector,
+  Slider,
+  RangeSlider,
+  LoadingPlaceholder,
+  ReasonModal,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,
@@ -168,6 +187,8 @@ export {
   BusDetailLoadingState,
   TrainDetailLoadingState,
   ApproverChain,
+  EmployeeActions,
+  PriceBreakupSheet,
   // Trip Creation
   HotelDetails,
   FlightDetails,
@@ -178,6 +199,13 @@ export {
   TrainDetails,
   BusDetails,
   CabDetails,
+  FlightFilter,
+  HotelFilter,
+  FlightFarePlanCard,
+  HotelFarePlanCard,
+  FlightSearchResultCard,
+  HotelSearchResultCard,
+  SelectRoomSheet,
   // constants
   FlightSubTripActions,
   TrainSubtripActions,
@@ -192,6 +220,8 @@ export {
   MessageCard,
   HomeLoadingState,
   ItineraryCard,
+  PendingPaymentSheet,
+  PendingPaymentCarousel,
   //Expense,
   ExpenseCard,
   ExpenseDetailCard,

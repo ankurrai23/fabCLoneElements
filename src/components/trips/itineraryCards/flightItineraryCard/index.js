@@ -13,6 +13,15 @@ import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
+import OOPTag from '../../components/OOPTag/OOPTag';
+import FImage from '../../../../common/rn/FImage';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  PlaceholderContainer,
+  Placeholder,
+} from 'react-native-loading-placeholder';
+import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
+import RemarksBox from '../../components/remarksBox/RemarksBox';
 
 const FlightItineraryCard = ({
   status,
@@ -31,9 +40,13 @@ const FlightItineraryCard = ({
   showPreBookingCard,
   notificationText,
   hideChevron,
+  isProcessing,
+  remarks,
+  cancellationCharges,
+  modificationCharges,
 }) => {
+  const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
@@ -43,40 +56,89 @@ const FlightItineraryCard = ({
   const viewShortlistedFlightAction = isActionEnabled(
     FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
   );
+  const editAction = isActionEnabled(FlightSubTripActions.EDIT);
+  const removeAction = isActionEnabled(FlightSubTripActions.REMOVE);
+  const refundStatus = isActionEnabled(FlightSubTripActions.REFUND_STATUS);
+  const animatedComponent = (cardColor, secondaryColor) => {
+    return (
+      <LinearGradient
+        style={Styles.animatedComponent}
+        colors={[cardColor, secondaryColor, cardColor]}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+      />
+    );
+  };
 
-  const ActionsInItinerary = () => (
+  const actionVisible =
+    !actionDisabled &&
+    (rescheduleAction ||
+      cancelAction ||
+      editAction ||
+      removeAction ||
+      refundStatus);
+
+  const PriceLoader = () => {
+    return (
+      <PlaceholderContainer
+        animatedComponent={animatedComponent(
+          Color.VERY_LIGHT_PINK,
+          Color.WHITE,
+        )}
+        duration={1500}
+        delay={500}>
+        <Placeholder style={Styles.priceLoading} />
+      </PlaceholderContainer>
+    );
+  };
+
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.seperatorStyle} />
+      {!hideSeperator && <Separator style={Styles.separatorStyle} />}
       <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
+        {cancelAction && (
           <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
+            onPress={() => onActionPress(cancelAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
+            <Icon.Cross
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.PASTEL_RED}
+            />
+            <FText style={Styles.cancel}>{cancelAction.name}</FText>
           </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Cross
-                  width={DP._16}
-                  height={DP._16}
-                  stroke={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {rescheduleAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(rescheduleAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Reschedule width={DP._16} height={DP._16} />
-                <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
+        )}
+        {rescheduleAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(rescheduleAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Reschedule width={DP._16} height={DP._16} />
+            <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {removeAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(removeAction)}
+            style={Styles.flexRowAndAlignCenter}>
+            <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+            <FText style={Styles.cancel}>{removeAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {editAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(editAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Edit />
+            <FText style={Styles.reschedule}>{editAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {!!refundStatus && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(refundStatus)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Refund />
+            <FText style={Styles.reschedule}>{refundStatus.name}</FText>
+          </FTouchableOpacity>
         )}
       </View>
     </>
@@ -85,31 +147,36 @@ const FlightItineraryCard = ({
   const FlightPreBookingCard = () => (
     <View style={Styles.container}>
       <FTouchableOpacity
-        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(tripRequest.reduceOpacity)}
+        activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(uiData.reduceOpacity)}
         onPress={onCardPress}>
-        <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-          <View style={Styles.flexDirectionRow}>
+        <View style={[Styles.flexRowAndJustifySpaceBetween, Styles.baseline]}>
+          <View style={Styles.flexRowAndJustifySpaceBetween}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-              {tripRequest.date}
+              {uiData.date}
             </FText>
-            <FText style={Styles.headerMonth}>{`${tripRequest.month}`}</FText>
+            <FText
+              type={FONT_TYPE.MEDIUM}
+              style={
+                Styles.headerMonth
+              }>{`${uiData.month}'${uiData.year}`}</FText>
           </View>
           {showStatus ? (
             <TripStatus statusObj={status} />
           ) : (
             <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
-              {tripRequest.slotDetail}
+              {uiData.slotDetail}
             </FText>
           )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
+        <View
+          style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_12]}>
           <View style={Styles.flex}>
-            <FText style={Styles.time} numberOfLines={1}>
-              {tripRequest.source}
+            <FText style={Styles.preBookingSource} numberOfLines={1}>
+              {uiData.source}
             </FText>
-            <FText style={Styles.portName}>
-              {tripRequest.sourceAirportCode}
+            <FText style={Styles.preBookingPort}>
+              {uiData.sourceAirportCode}
             </FText>
           </View>
           <View style={[Styles.justifyContent_around, Styles.flex]}>
@@ -121,20 +188,23 @@ const FlightItineraryCard = ({
             />
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-            <FText style={Styles.time} numberOfLines={1}>
-              {tripRequest.destination}
+            <FText style={Styles.preBookingSource} numberOfLines={1}>
+              {uiData.destination}
             </FText>
-            <FText style={Styles.portName}>
-              {tripRequest.destinationAirportCode}
+            <FText style={Styles.preBookingPort}>
+              {uiData.destinationAirportCode}
             </FText>
           </View>
         </View>
       </FTouchableOpacity>
-
-      {!actionDisabled &&
-        (rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
+      {viewRemarksAction && !!remarks && (
+        <RemarksBox
+          title={remarks.title}
+          remarks={remarks.text}
+          roundBottomCorners={!actionVisible}
+          onPress={() => onActionPress(viewRemarksAction)}
+        />
+      )}
       {showInfo && (
         <InfoBox
           isAlert={shortlistingAction || !!notificationText}
@@ -150,27 +220,46 @@ const FlightItineraryCard = ({
           }
         />
       )}
+      {actionVisible && <ActionsInItinerary hideSeperator={showInfo} />}
     </View>
   );
 
   const FlightPostBookingCard = () => (
     <View style={Styles.container}>
       <FTouchableOpacity
-        activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(tripRequest.reduceOpacity)}
+        activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
+        style={Styles.card(uiData.reduceOpacity)}
         onPress={onCardPress}>
-        <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-          <View style={Styles.flexDirectionRow}>
+        <View
+          style={[
+            Styles.flexRowAndJustifySpaceBetween,
+            Styles.baseline,
+            Styles.marginBottom_12,
+          ]}>
+          <View style={Styles.flexRowAndJustifySpaceBetween}>
             <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
-              {bookingDetails.date}
+              {uiData.date}
             </FText>
             <FText
-              style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+              type={FONT_TYPE.MEDIUM}
+              style={
+                Styles.headerMonth
+              }>{`${uiData.month}'${uiData.year}`}</FText>
           </View>
-          {showStatus && bookingDetails.flightBookingStatus ? (
-            <TripStatus
-              statusObj={getStatusObject(bookingDetails.flightBookingStatus)}
-            />
+          {isProcessing && (
+            <View style={Styles.flexRowAndAlignCenter}>
+              <Icon.Reschedule
+                width={DP._14}
+                height={DP._14}
+                stroke={Color.GREY_PURPLE}
+              />
+              <FText style={Styles.processing}>{Strings.processing}</FText>
+            </View>
+          )}
+          {showStatus ? (
+            <TripStatus statusObj={status} />
+          ) : uiData.isSoldOut ? (
+            <SoldOutTag />
           ) : (
             !hideChevron && (
               <Icon.ChevronRight
@@ -181,71 +270,135 @@ const FlightItineraryCard = ({
             )
           )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-          <View style={Styles.flex}>
-            <FText style={Styles.time}>{bookingDetails.departureTime}</FText>
-
-            <FText style={Styles.portName} numberOfLines={1}>
-              {bookingDetails.sourceAirportCode +
-                (bookingDetails.sourceAirportTerminal
-                  ? ` - ${bookingDetails.sourceAirportTerminal}`
-                  : '')}
+        <View style={Styles.flightParticulars}>
+          <FImage
+            style={Styles.imageStyle}
+            source={{uri: uiData.airlineIcon}}
+          />
+          <View style={Styles.nameAndNumberContainer}>
+            <FText
+              style={Styles.flightName}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {uiData.airline}
+            </FText>
+            <FText
+              style={Styles.flightNumber}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {`${uiData.airlineCode ? `${uiData.airlineCode}-` : ''}${
+                uiData.flightNumber
+              }`}
             </FText>
           </View>
-          <View style={[Styles.justifyContent_around, Styles.flex]}>
-            <Icon.Aeroplane
-              width={DP._18}
-              height={DP._18}
-              fill={Color.LIGHT_BLUEY_GREY}
-              style={Styles.airplane}
-            />
-            {bookingDetails.duration && (
-              <View style={Styles.durationContainer}>
-                <FText style={Styles.duration}>{bookingDetails.duration}</FText>
-                <View style={Styles.dot_two} />
-                <FText style={Styles.duration}>{bookingDetails.stop}</FText>
-              </View>
-            )}
-          </View>
-          <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-            <FText style={Styles.time}>{bookingDetails.arrivalTime}</FText>
-
-            <FText style={Styles.portName} numberOfLines={1}>
-              {bookingDetails.destinationAirportCode +
-                (bookingDetails.destinationAirportTerminal
-                  ? ` - ${bookingDetails.destinationAirportTerminal}`
-                  : '')}
-            </FText>
-          </View>
+          {uiData.isPriceFetched ? (
+            <View style={Styles.priceContainer}>
+              <FText style={Styles.flightPrice} type={FONT_TYPE.MEDIUM}>
+                {uiData.price}
+              </FText>
+              {uiData.isOutOfPolicy && <OOPTag />}
+            </View>
+          ) : (
+            <PriceLoader />
+          )}
         </View>
-        <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
-          <View>
-            <FText style={Styles.time}>{bookingDetails.airline}</FText>
-            <FText style={Styles.portName}>{bookingDetails.flightNumber}</FText>
+        <View style={Styles.flexRowAndJustifySpaceBetween}>
+          <FText style={Styles.time}>{uiData.departureTime}</FText>
+          <Icon.Aeroplane
+            width={DP._18}
+            height={DP._18}
+            fill={Color.LIGHT_BLUEY_GREY}
+            style={Styles.airplane}
+          />
+          <FText style={Styles.time}>{uiData.arrivalTime}</FText>
+        </View>
+        <View
+          style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_8]}>
+          <FText style={Styles.portName}>{uiData.sourceAirportCode}</FText>
+          <View style={Styles.durationAndStopsContainer}>
+            <FText style={Styles.duration} numberOfLines={1}>
+              {uiData.totalDuration}
+            </FText>
+            <View style={Styles.dot_two} />
+            <FText
+              style={Styles.stoppage}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {uiData.stop}
+            </FText>
           </View>
-          <View style={Styles.alignItem_flexEnd}>
-            <FText style={Styles.time}>{Strings.pnr}</FText>
-            <FText style={Styles.portName}>{bookingDetails.pnr}</FText>
-          </View>
+          <FText style={Styles.portName}>{uiData.destinationAirportCode}</FText>
+        </View>
+        <View style={Styles.flexRowAndJustifySpaceBetween}>
+          {!!uiData.sourceAirportTerminal && (
+            <FText style={Styles.terminal}>
+              {uiData.sourceAirportTerminal}
+            </FText>
+          )}
+          {!!uiData.destinationAirportTerminal && (
+            <FText style={Styles.terminal}>
+              {uiData.destinationAirportTerminal}
+            </FText>
+          )}
         </View>
       </FTouchableOpacity>
-      {!actionDisabled &&
-        (rescheduleAction || cancelAction || viewRemarksAction) && (
-          <ActionsInItinerary />
-        )}
+      {!!uiData.pnr && (
+        <>
+          <Separator style={Styles.separatorStyle} />
+          <FText style={Styles.pnr(uiData.reduceOpacity)}>
+            {Strings.pnr}:
+            <FText type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
+          </FText>
+        </>
+      )}
+      {!!modificationCharges && (
+        <FText style={Styles.modificationChargeText}>
+          {Strings.includeModificationCharge}
+          <FText type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
+        </FText>
+      )}
+      {!!cancellationCharges && (
+        <FText style={Styles.modificationChargeText}>
+          {Strings.includeCancellationCharge}
+          <FText type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
+        </FText>
+      )}
+      {viewRemarksAction && !!remarks && (
+        <>
+          {(cancellationCharges || modificationCharges) && (
+            <Separator style={Styles.separatorContainerStyle} />
+          )}
+          <RemarksBox
+            title={remarks.title}
+            remarks={remarks.text}
+            roundBottomCorners={!actionVisible}
+            onPress={() => onActionPress(viewRemarksAction)}
+          />
+        </>
+      )}
       {showInfo && (
-        <InfoBox
-          isAlert={shortlistingAction || !!notificationText}
-          text={
-            viewShortlistedFlightAction?.name ||
-            shortlistingAction?.name ||
-            notificationText
-          }
-          showChevron={!!shortlistingAction}
-          disablePressEvent={!!notificationText}
-          onPress={() =>
-            onActionPress(viewShortlistedFlightAction || shortlistingAction)
-          }
+        <>
+          {(cancellationCharges || modificationCharges) && (
+            <Separator style={Styles.separatorContainerStyle} />
+          )}
+          <InfoBox
+            isAlert={shortlistingAction || !!notificationText}
+            text={
+              viewShortlistedFlightAction?.name ||
+              shortlistingAction?.name ||
+              notificationText
+            }
+            showChevron={!!shortlistingAction}
+            disablePressEvent={!!notificationText}
+            onPress={() =>
+              onActionPress(viewShortlistedFlightAction || shortlistingAction)
+            }
+          />
+        </>
+      )}
+      {actionVisible && (
+        <ActionsInItinerary
+          hideSeperator={showInfo || modificationCharges || cancellationCharges}
         />
       )}
     </View>
@@ -280,7 +433,7 @@ const FlightItineraryCard = ({
           </View>
         )}
       </View>
-      {showPreBookingCard ? (
+      {showPreBookingCard && !uiData.price ? (
         <FlightPreBookingCard />
       ) : (
         <FlightPostBookingCard />

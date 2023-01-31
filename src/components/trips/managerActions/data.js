@@ -1,4 +1,10 @@
 const managerActionsProps = {
+  msg: {
+    value: 'Flight is sold out. Please notify Nikhil',
+    type: 'ERROR', // INFO/ERROR
+  },
+  isSubTripSoldOut: true,
+  amount: '$100',
   actions: [
     {
       type: 'REQUEST_MODIFICATION',

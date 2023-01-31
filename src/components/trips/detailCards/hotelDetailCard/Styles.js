@@ -11,11 +11,13 @@ export default StyleSheet.create({
   subContainer: (modified) => ({
     opacity: modified ? 0.6 : 1,
     padding: DP._16,
+    paddingBottom: 0,
   }),
   addressText: {
     fontSize: DP._12,
     lineHeight: DP._18,
     color: Color.GREYISH_PURPLE,
+    marginBottom: DP._16,
   },
   weatherIcon: {
     width: DP._14,
@@ -38,7 +40,7 @@ export default StyleSheet.create({
   },
   buttonContainer: {
     paddingHorizontal: DP._16,
-    paddingVertical: DP._12,
+    paddingVertical: DP._8,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     borderBottomLeftRadius: DP._12,
@@ -56,7 +58,7 @@ export default StyleSheet.create({
     color: Color.DODGER_BLUE,
   },
   separator: {
-    marginVertical: DP._16,
+    backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   hotelNameAndImageContainer: {
     flexDirection: 'row',
@@ -72,15 +74,18 @@ export default StyleSheet.create({
     overflow: 'hidden',
     marginTop: DP._8,
   },
-  coTravellerContainer: {
+  coTravellerContainer: (lastItem) => ({
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: DP._8,
-  },
-  inclusionContainer: {
+    marginTop: DP._8,
+    marginBottom: lastItem ? DP._16 : 0,
+  }),
+  inclusionContainer: (lastItem) => ({
     flexDirection: 'row',
-    marginVertical: DP._8,
-  },
+    alignItems: 'center',
+    marginTop: DP._8,
+    marginBottom: lastItem ? DP._16 : 0,
+  }),
   alignCenter: {
     alignItems: 'center',
   },
@@ -99,7 +104,7 @@ export default StyleSheet.create({
     borderRadius: DP._8,
     backgroundColor: Color.GREY_PURPLE + '1a',
   },
-  directionIcon: {bottom: 2, right: 2},
+  // directionIcon: {bottom: 2, right: 2},
   searchIcon: {position: 'absolute', bottom: DP._4, right: DP._4},
   bookingDetailsContainer: {flex: 1, marginBottom: DP._8},
   flexRow: {flexDirection: 'row'},
@@ -152,14 +157,14 @@ export default StyleSheet.create({
   modifyButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: DP._24,
+    marginLeft: DP._16,
   },
   cancelButtonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   viewDetailView: {
-    // paddingVertical:DP._16,
+    paddingVertical: DP._8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -183,5 +188,14 @@ export default StyleSheet.create({
     height: DP._16,
     width: DP._16,
     marginRight: DP._8,
+  },
+  actionSeparator: {
+    backgroundColor: Color.LIGHT_PERIWINKLE,
+    marginHorizontal: DP._16,
+  },
+  payNowButtonStyle: {
+    marginTop: DP._4,
+    marginBottom: DP._16,
+    borderRadius: DP._30,
   },
 });

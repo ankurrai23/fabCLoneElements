@@ -13,6 +13,7 @@ import {BusSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
+import RemarksBox from '../../components/remarksBox/RemarksBox';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
@@ -25,7 +26,11 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {tripRequest.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${tripRequest.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${tripRequest.month}'${tripRequest.year}`}</FText>
         </View>
         {showStatus ? (
           <TripStatus statusObj={status} />
@@ -81,7 +86,11 @@ const PostBookingCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {departureDate.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${departureDate.month}'${departureDate.year}`}</FText>
         </>
       );
     }
@@ -95,7 +104,11 @@ const PostBookingCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {arrivalDate.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${departureDate.month}'${departureDate.year}`}</FText>
         </>
       );
     }
@@ -105,12 +118,20 @@ const PostBookingCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {departureDate.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${departureDate.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${departureDate.month}'${departureDate.year}`}</FText>
           <FText style={Styles.hyphen}>{' - '}</FText>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {arrivalDate.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${arrivalDate.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${arrivalDate.month}'${arrivalDate.year}`}</FText>
         </>
       );
     }
@@ -230,6 +251,7 @@ const BusItineraryCard = ({
   timelineGreyed,
   showPreBookingCard,
   bookingDetails,
+  remarks,
   actions,
   notificationText,
   actionDisabled,
@@ -241,40 +263,52 @@ const BusItineraryCard = ({
   const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
+  const editAction = isActionEnabled(BusSubtripActions.EDIT);
+  const removeAction = isActionEnabled(BusSubtripActions.REMOVE);
 
-  const ActionsInItinerary = () => (
+  const actionsVisible =
+    !actionDisabled &&
+    (rescheduleAction || cancelAction || editAction || removeAction);
+
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.actionsSeperator} />
+      {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
       <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
+        {cancelAction && (
           <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
+            onPress={() => onActionPress(cancelAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
+            <Icon.Cross
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.PASTEL_RED}
+            />
+            <FText style={Styles.cancel}>{cancelAction.name}</FText>
           </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Cross
-                  width={DP._16}
-                  height={DP._16}
-                  stroke={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {rescheduleAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(rescheduleAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Reschedule width={DP._16} height={DP._16} />
-                <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
+        )}
+        {rescheduleAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(rescheduleAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Reschedule width={DP._16} height={DP._16} />
+            <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {removeAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(removeAction)}
+            style={Styles.flexRowAndAlignCenter}>
+            <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+            <FText style={Styles.cancel}>{removeAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {editAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(editAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Edit />
+            <FText style={Styles.reschedule}>{editAction.name}</FText>
+          </FTouchableOpacity>
         )}
       </View>
     </>
@@ -327,10 +361,14 @@ const BusItineraryCard = ({
             sameMonthDates={sameMonthDates}
           />
         )}
-        {!actionDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+        {viewRemarksAction && !!remarks && (
+          <RemarksBox
+            title={remarks.title}
+            remarks={remarks.text}
+            roundBottomCorners={!actionsVisible}
+            onPress={() => onActionPress(viewRemarksAction)}
+          />
+        )}
         {showInfo && (
           <InfoBox
             isAlert={!!notificationText}
@@ -338,6 +376,9 @@ const BusItineraryCard = ({
             showChevron={false}
             disablePressEvent={!!notificationText}
           />
+        )}
+        {actionsVisible && (
+          <ActionsInItinerary hideSeperator={Boolean(showInfo)} />
         )}
       </View>
     </View>

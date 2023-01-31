@@ -1,5 +1,4 @@
 import React from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
 import {
   data,
   Button,
@@ -70,55 +69,114 @@ import {
   BusDetails,
   CabDetails,
   Selector,
+  ProgressBar,
+  FlightFilter,
+  HotelFilter,
+  Slider,
+  RangeSlider,
+  FlightFarePlanCard,
+  HotelFarePlanCard,
+  FlightSearchResultCard,
+  HotelSearchResultCard,
+  PendingPaymentSheet,
+  PendingPaymentCarousel,
+  EmployeeActions,
+  SelectRoomSheet,
+  PriceBreakupSheet,
+  LoadingPlaceholder,
 } from 'react-native-fab-elements';
-import {ProgressBar} from '../../src';
 
 const COMMON_COMPONENTS = [
   {name: 'Components'},
-  {name: 'Button', component: <Button {...data.buttonProps} />},
-  {name: 'TextField', component: <TextField {...data.textFieldProps} />},
-  {name: 'PickerField', component: <PickerField {...data.pickerFieldProps} />},
-  {name: 'DashedLine', component: <DashedLine {...data.dashLineProps} />},
-  {name: 'EmptyScreen', component: <EmptyScreen {...data.emptyScreenProps} />},
+  {
+    name: 'Button',
+    component: (props) => <Button {...props} />,
+    defaultProps: data.buttonProps,
+  },
+  {
+    name: 'TextField',
+    component: (props) => <TextField {...props} />,
+    defaultProps: data.textFieldProps,
+  },
+  {
+    name: 'PickerField',
+    component: (props) => <PickerField {...props} />,
+    defaultProps: data.pickerFieldProps,
+  },
+  {
+    name: 'DashedLine',
+    component: (props) => <DashedLine {...props} />,
+    defaultProps: data.dashLineProps,
+  },
+  {
+    name: 'EmptyScreen',
+    component: (props) => <EmptyScreen {...props} />,
+    defaultProps: data.emptyScreenProps,
+  },
   {
     name: 'ClaimsCard',
-    component: <ClaimsCard {...data.claimsCardProps} />,
+    component: (props) => <ClaimsCard {...props} />,
+    defaultProps: data.claimsCardProps,
   },
   {
     name: 'FloatingAction',
-    component: <FloatingAction {...data.floatingActionProps} />,
+    component: (props) => <FloatingAction {...props} />,
+    defaultProps: data.floatingActionProps,
   },
   {
     name: 'Checkbox',
-    component: <Checkbox {...data.checkboxProps} />,
+    component: (props) => <Checkbox {...props} />,
+    defaultProps: data.checkboxProps,
   },
   {
     name: 'StackHeader',
-    component: <StackHeader {...data.stackHeaderProps} />,
+    component: (props) => <StackHeader {...props} />,
+    defaultProps: data.stackHeaderProps,
   },
   {
     name: 'ScrollableTabBar',
-    component: <ScrollableTabBar {...data.scrollableTabBarProps} />,
+    component: (props) => <ScrollableTabBar {...props} />,
+    defaultProps: data.scrollableTabBarProps,
   },
   {
     name: 'Contact Support',
-    component: <ContactSupport {...data.contactSupportProps} />,
+    component: (props) => <ContactSupport {...props} />,
+    defaultProps: data.contactSupportProps,
   },
   {
     name: 'DropDown',
-    component: <DropDown {...data.dropDownProps} />,
+    component: (props) => <DropDown {...props} />,
+    defaultProps: data.dropDownProps,
   },
   {
     name: 'FieldStates',
-    component: <FieldStates />,
+    component: (props) => <FieldStates {...props} />,
+    defaultProps: data.fieldStatesProps,
   },
   {
     name: 'ProgressBar',
-    component: <ProgressBar />,
+    component: (props) => <ProgressBar {...props} />,
+    defaultProps: data.progressBarProps,
   },
   {
     name: 'Selector',
-    component: <Selector {...data.selectorProps} />,
+    component: (props) => <Selector {...props} />,
+    defaultProps: data.selectorProps,
+  },
+  {
+    name: 'Slider',
+    component: (props) => <Slider {...props} />,
+    defaultProps: data.sliderProps,
+  },
+  {
+    name: 'RangeSlider',
+    component: (props) => <RangeSlider {...props} />,
+    defaultProps: data.rangeSliderProps,
+  },
+  {
+    name: 'LoadingPlaceholder',
+    component: (props) => <LoadingPlaceholder {...props} />,
+    defaultProps: data.placeholderProps,
   },
 ];
 
@@ -126,127 +184,163 @@ const TRIP_COMPONENTS = [
   {name: 'Trips'},
   {
     name: 'FlightPreferenceCard',
-    component: <FlightPreferenceCard {...data.flightPreferenceCardProps} />,
-  },
-  {
-    name: 'TripStatus',
-    component: <TripStatus {...data.tripStatusProps} />,
-  },
-  {
-    name: 'FlightItineraryCard',
-    component: <FlightItineraryCard {...data.flightItineraryCardProps} />,
-  },
-  {
-    name: 'BusItineraryCard',
-    component: <BusItineraryCard {...data.busItineraryCardProps} />,
-  },
-  {
-    name: 'TrainItineraryCard',
-    component: <TrainItineraryCard {...data.trainItineraryCardProps} />,
-  },
-  {
-    name: 'CabItineraryCard',
-    component: <CabItineraryCard {...data.cabItineraryCardProps} />,
-  },
-  {
-    name: 'HotelItineraryCard',
-    component: <HotelItineraryCard {...data.hotelItineraryCardProps} />,
-  },
-  {
-    name: 'RemarksContainer',
-    component: <RemarksContainer {...data.remarksContainerProps} />,
-  },
-  {
-    name: 'CoTravellers',
-    component: <CoTravellers {...data.coTravellersProps} />,
-  },
-  {
-    name: 'ItineraryHeader',
-    component: <ItineraryHeader {...data.itineraryHeaderProps} />,
-  },
-  {
-    name: 'TripListingCard',
-    component: <TripListingCard {...data.tripListingCardProps} />,
-  },
-  {
-    name: 'SubmittedTripCard',
-    component: <SubmittedTripCard {...data.submittedTripCardProps} />,
-  },
-  {
-    name: 'ReceivedTripCard',
-    component: <ReceivedTripCard {...data.receivedTripCardProps} />,
-  },
-  {
-    name: 'HotelPreferenceCard',
-    component: <HotelPreferenceCard {...data.hotelPreferenceCardProps} />,
-  },
-  {
-    name: 'ManagerActions',
-    component: <ManagerActions {...data.managerActionsProps} />,
+    component: (props) => <FlightPreferenceCard {...props} />,
+    defaultProps: data.flightPreferenceCardProps,
   },
   {
     name: 'HotelDetailCard',
-    component: (
-      <ScrollView>
-        <HotelDetailCard {...data.hotelDetailCardProps} />
-      </ScrollView>
-    ),
+    component: (props) => <HotelDetailCard {...props} />,
+    defaultProps: data.hotelDetailCardProps,
+  },
+  {
+    name: 'TripStatus',
+    component: (props) => <TripStatus {...props} />,
+    defaultProps: data.tripStatusProps,
+  },
+  {
+    name: 'FlightItineraryCard',
+    component: (props) => <FlightItineraryCard {...props} />,
+    defaultProps: data.flightItineraryCardProps,
+  },
+  {
+    name: 'BusItineraryCard',
+    component: (props) => <BusItineraryCard {...props} />,
+    defaultProps: data.busItineraryCardProps,
+  },
+  {
+    name: 'TrainItineraryCard',
+    component: (props) => <TrainItineraryCard {...props} />,
+    defaultProps: data.trainItineraryCardProps,
+  },
+  {
+    name: 'CabItineraryCard',
+    component: (props) => <CabItineraryCard {...props} />,
+    defaultProps: data.cabItineraryCardProps,
+  },
+  {
+    name: 'HotelItineraryCard',
+    component: (props) => <HotelItineraryCard {...props} />,
+    defaultProps: data.hotelItineraryCardProps,
+  },
+  {
+    name: 'RemarksContainer',
+    component: (props) => <RemarksContainer {...props} />,
+    defaultProps: data.remarksContainerProps,
+  },
+  {
+    name: 'CoTravellers',
+    component: (props) => <CoTravellers {...props} />,
+    defaultProps: data.coTravellersProps,
+  },
+  {
+    name: 'ItineraryHeader',
+    component: (props) => <ItineraryHeader {...props} />,
+    defaultProps: data.itineraryHeaderProps,
+  },
+  {
+    name: 'TripListingCard',
+    component: (props) => <TripListingCard {...props} />,
+    defaultProps: data.tripListingCardProps,
+  },
+  {
+    name: 'SubmittedTripCard',
+    component: (props) => <SubmittedTripCard {...props} />,
+    defaultProps: data.submittedTripCardProps,
+  },
+  {
+    name: 'ReceivedTripCard',
+    component: (props) => <ReceivedTripCard {...props} />,
+    defaultProps: data.receivedTripCardProps,
+  },
+  {
+    name: 'HotelPreferenceCard',
+    component: (props) => <HotelPreferenceCard {...props} />,
+    defaultProps: data.hotelPreferenceCardProps,
+  },
+  {
+    name: 'ManagerActions',
+    component: (props) => <ManagerActions {...props} />,
+    defaultProps: data.managerActionsProps,
   },
   {
     name: 'FlightDetailCard',
-    component: <FlightDetailCard {...data.flightDetailCardProps} />,
+    component: (props) => <FlightDetailCard {...props} />,
+    defaultProps: data.flightDetailCardProps,
   },
   {
     name: 'BusDetailCard',
-    component: <BusDetailCard {...data.busDetailCardProps} />,
+    component: (props) => <BusDetailCard {...props} />,
+    defaultProps: data.busDetailCardProps,
   },
   {
     name: 'CabDetailCard',
-    component: <CabDetailCard {...data.cabDetailCardProps} />,
+    component: (props) => <CabDetailCard {...props} />,
+    defaultProps: data.cabDetailCardProps,
   },
   {
     name: 'TrainDetailCard',
-    component: <TrainDetailCard {...data.trainDetailCardProps} />,
+    component: (props) => <TrainDetailCard {...props} />,
+    defaultProps: data.trainDetailCardProps,
   },
   {
     name: 'TripCardLoadingState',
-    component: <TripCardLoadingState {...data.listTypeFilterProps} />,
+    component: (props) => <TripCardLoadingState {...props} />,
+    defaultProps: data.tripCardLoadingStateProps,
   },
   {
     name: 'HotelPreferenceLoadingState',
-    component: <HotelPreferenceLoadingState />,
+    component: (props) => <HotelPreferenceLoadingState {...props} />,
+    defaultProps: data.hotelPreferenceLoadingStateProps,
   },
   {
     name: 'HotelDetailLoadingState',
-    component: <HotelDetailLoadingState />,
+    component: (props) => <HotelDetailLoadingState {...props} />,
+    defaultProps: data.hotelDetailLoadingStateProps,
   },
   {
     name: 'FlightPreferenceLoadingState',
-    component: <FlightPreferenceLoadingState />,
+    component: (props) => <FlightPreferenceLoadingState {...props} />,
+    defaultProps: data.flightPreferenceLoadingStateProps,
   },
   {
     name: 'ListTypeFilter',
-    component: <ListTypeFilter {...data.listTypeFilterProps} />,
+    component: (props) => <ListTypeFilter {...props} />,
+    defaultProps: data.listTypeFilterProps,
   },
   {
     name: 'FlightDetailLoadingState',
-    component: <FlightDetailLoadingState />,
+    component: (props) => <FlightDetailLoadingState {...props} />,
+    defaultProps: data.flightDetailLoadingStateProps,
   },
   {
     name: 'CabDetailLoadingState',
-    component: <CabDetailLoadingState />,
+    component: (props) => <CabDetailLoadingState {...props} />,
+    defaultProps: data.cabDetailLoadingStateProps,
   },
   {
     name: 'BusDetailLoadingState',
-    component: <BusDetailLoadingState />,
+    component: (props) => <BusDetailLoadingState {...props} />,
+    defaultProps: data.busDetailLoadingStateProps,
   },
   {
     name: 'TrainDetailLoadingState',
-    component: <TrainDetailLoadingState />,
+    component: (props) => <TrainDetailLoadingState {...props} />,
+    defaultProps: data.trainDetailLoadingStateProps,
   },
   {
     name: 'Approver Chain',
-    component: <ApproverChain {...data.approverChainProps} />,
+    component: (props) => <ApproverChain {...props} />,
+    defaultProps: data.approverChainProps,
+  },
+  {
+    name: 'Employee Actions',
+    component: (props) => <EmployeeActions {...props} />,
+    defaultProps: data.employeeActionsProps,
+  },
+  {
+    name: 'PriceBreakupSheet',
+    component: (props) => <PriceBreakupSheet {...props} />,
+    defaultProps: data.priceBreakupSheetProps,
   },
 ];
 
@@ -254,43 +348,88 @@ const TRIP_CREATION = [
   {name: 'Trips Creation'},
   {
     name: 'CoTravelersDetails',
-    component: <CoTravelersDetails {...data.coTravellersDetailProps} />,
+    component: (props) => <CoTravelersDetails {...props} />,
+    defaultProps: data.coTravelersDetailsProps,
   },
   {
     name: 'HotelDetails',
-    component: <HotelDetails {...data.hotelDetailsProps} />,
+    component: (props) => <HotelDetails {...props} />,
+    defaultProps: data.hotelDetailsProps,
   },
   {
     name: 'ItineraryCard',
-    component: <ItineraryCard {...data.itineraryCardProps} />,
+    component: (props) => <ItineraryCard {...props} />,
+    defaultProps: data.itineraryCardProps,
   },
   {
     name: 'FlightDetails',
-    component: <FlightDetails {...data.flightDetailsProps} />,
+    component: (props) => <FlightDetails {...props} />,
+    defaultProps: data.flightDetailsProps,
   },
   {
     name: 'OtherTravelDetails',
-    component: <OtherTravelDetails {...data.otherTravelDetailsProps} />,
+    component: (props) => <OtherTravelDetails {...props} />,
+    defaultProps: data.otherTravelDetailsProps,
   },
   {
     name: 'ApprovalManager',
-    component: <ApprovalManager {...data.approvalManagerProps} />,
+    component: (props) => <ApprovalManager {...props} />,
+    defaultProps: data.approvalManagerProps,
   },
   {
     name: 'Remove Itinerary',
-    component: <RemoveItinerary {...data.removeItineraryProps} />,
+    component: (props) => <RemoveItinerary {...props} />,
+    defaultProps: data.removeItineraryProps,
   },
   {
     name: 'TrainDetails',
-    component: <TrainDetails {...data.trainDetailsProps} />,
+    component: (props) => <TrainDetails {...props} />,
+    defaultProps: data.trainDetailsProps,
   },
   {
     name: 'BusDetails',
-    component: <BusDetails {...data.busDetailsProps} />,
+    component: (props) => <BusDetails {...props} />,
+    defaultProps: data.busDetailsProps,
   },
   {
     name: 'CabDetails',
-    component: <CabDetails {...data.cabDetailsProps} />,
+    component: (props) => <CabDetails {...props} />,
+    defaultProps: data.cabDetailsProps,
+  },
+  {
+    name: 'FlightFilter',
+    component: (props) => <FlightFilter {...props} />,
+    defaultProps: data.flightFilterProps,
+  },
+  {
+    name: 'HotelFilter',
+    component: (props) => <HotelFilter {...props} />,
+    defaultProps: data.hotelFilterProps,
+  },
+  {
+    name: 'FlightFarePlan',
+    component: (props) => <FlightFarePlanCard {...props} />,
+    defaultProps: data.flightFarePlanProps,
+  },
+  {
+    name: 'HotelFarePlan',
+    component: (props) => <HotelFarePlanCard {...props} />,
+    defaultProps: data.hotelFarePlanProps,
+  },
+  {
+    name: 'FlightSearchResultCard',
+    component: (props) => <FlightSearchResultCard {...props} />,
+    defaultProps: data.flightSearchResultCardProps,
+  },
+  {
+    name: 'HotelSearchResultCard',
+    component: (props) => <HotelSearchResultCard {...props} />,
+    defaultProps: data.hotelSearchResultCardProps,
+  },
+  {
+    name: 'SelectRoomSheet',
+    component: (props) => <SelectRoomSheet {...props} />,
+    defaultProps: data.selectRoomSheetProps,
   },
 ];
 
@@ -298,19 +437,33 @@ const HOME = [
   {name: 'Home'},
   {
     name: 'HomeHeader',
-    component: <HomeHeader {...data.homeHeaderProps} />,
+    component: (props) => <HomeHeader {...props} />,
+    defaultProps: data.homeHeaderProps,
   },
   {
     name: 'ClaimList',
-    component: <ClaimsList {...data.claimsListProps} />,
+    component: (props) => <ClaimsList {...props} />,
+    defaultProps: data.claimsListProps,
   },
   {
     name: 'MessageCard',
-    component: <MessageCard {...data.messageCardProps} />,
+    component: (props) => <MessageCard {...props} />,
+    defaultProps: data.messageCardProps,
   },
   {
     name: 'HomeLoadingState',
-    component: <HomeLoadingState />,
+    component: (props) => <HomeLoadingState {...props} />,
+    defaultProps: data.homeLoadingStateProps,
+  },
+  {
+    name: 'PendingPaymentSheet',
+    component: (props) => <PendingPaymentSheet {...props} />,
+    defaultProps: data.pendingPaymentSheetProps,
+  },
+  {
+    name: 'PendingPaymentCarousel',
+    component: (props) => <PendingPaymentCarousel {...props} />,
+    defaultProps: data.pendingPaymentCarouselProps,
   },
 ];
 
@@ -318,43 +471,53 @@ const EXPENSE = [
   {name: 'Expense'},
   {
     name: 'ExpenseCard',
-    component: <ExpenseCard {...data.expenseCardProps} />,
+    component: (props) => <ExpenseCard {...props} />,
+    defaultProps: data.expenseCardProps,
   },
   {
     name: 'ExpenseDetailCard',
-    component: <ExpenseDetailCard {...data.expenseDetailCardProps} />,
+    component: (props) => <ExpenseDetailCard {...props} />,
+    defaultProps: data.expenseDetailCardProps,
   },
   {
     name: 'StopDetailList',
-    component: <StopDetailList {...data.stopDetailListProps} />,
+    component: (props) => <StopDetailList {...props} />,
+    defaultProps: data.stopDetailListProps,
   },
   {
     name: 'ExpenseApprovalCard',
-    component: <ExpenseApprovalCard {...data.expenseApprovalCardProps} />,
+    component: (props) => <ExpenseApprovalCard {...props} />,
+    defaultProps: data.expenseApprovalCardProps,
   },
   {
     name: 'ExpenseApprovalHeader',
-    component: <ExpenseApprovalHeader {...data.expenseApprovalHeaderProps} />,
+    component: (props) => <ExpenseApprovalHeader {...props} />,
+    defaultProps: data.expenseApprovalHeaderProps,
   },
   {
     name: 'LocationInputBox',
-    component: <LocationInputBox {...data.locationInputBoxProps} />,
+    component: (props) => <LocationInputBox {...props} />,
+    defaultProps: data.locationInputBoxProps,
   },
   {
     name: 'Swiper',
-    component: <Swiper {...data.swiperProps} />,
+    component: (props) => <Swiper {...props} />,
+    defaultProps: data.swiperProps,
   },
   {
     name: 'MonthPicker',
-    component: <MonthPicker {...data.monthPickerProps} />,
+    component: (props) => <MonthPicker {...props} />,
+    defaultProps: data.monthPickerProps,
   },
   {
     name: 'ReceiptsList',
-    component: <ReceiptsList {...data.receiptsListProps} />,
+    component: (props) => <ReceiptsList {...props} />,
+    defaultProps: data.receiptsListProps,
   },
   {
     name: 'ReceiptListView',
-    component: <ReceiptListView {...data.receiptListViewProps} />,
+    component: (props) => <ReceiptListView {...props} />,
+    defaultProps: data.receiptListViewProps,
   },
 ];
 

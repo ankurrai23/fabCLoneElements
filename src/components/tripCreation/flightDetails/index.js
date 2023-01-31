@@ -7,39 +7,55 @@ import {Strings} from '../../../utils/strings/index.travelPlus';
 import SubTripTitle from '../subTripTitle';
 import FlightItineraryCard from '../../trips/itineraryCards/flightItineraryCard';
 import moment from 'moment';
+import {FlightSubTripActions} from '../../../utils/SubTripActions';
+import {TRIP_CREATION_ACTIONS} from '../../../utils/Constants';
 
 const DATE = 'DD'; // 12, 13
 const MONTH = 'MMM'; // Jan, Feb
+const YEAR = 'YY';
 
-export default function FlightDetails(props) {
-  const {data} = props;
+export default function FlightDetails({data, onLayout, style, onPress, error}) {
   const generateRequestInfo = (item) => ({
     date: moment(item.departureDate).format(DATE),
     month: moment(item.departureDate).format(MONTH),
+    year: moment(item.departureDate).format(YEAR),
     slotDetail: Strings.slotInfo(item.startTime, item.endTime),
     source: item.source,
     destination: item.destination,
     sourceAirportCode: item.sourceAirportCode,
     destinationAirportCode: item.destinationAirportCode,
   });
+
+  const handlePress = (action, index) => {
+    switch (action.type) {
+      case FlightSubTripActions.EDIT:
+        onPress?.({requestType: 'FLIGHT', action: 'EDIT', index: index});
+        break;
+      case FlightSubTripActions.REMOVE:
+        onPress?.({requestType: 'FLIGHT', action: 'REMOVE', index: index});
+        break;
+      default:
+        onPress?.({requestType: 'FLIGHT', action: 'ADD', index: data.length});
+    }
+  };
+
   return (
-    <View onLayout={props.onLayout} style={props.style}>
+    <View onLayout={onLayout} style={style}>
       <SubTripTitle
         title={Strings.flights}
-        dataLength={props.data?.length}
-        onPress={props.onPress}
+        dataLength={data?.length}
+        onPress={handlePress}
         style={Styles.headerStyle(data)}
       />
-      {!!props.error && (
-        <FText style={Styles.errorDetailText}>{props.error}</FText>
-      )}
+      {!!error && <FText style={Styles.errorDetailText}>{error}</FText>}
       {data?.map((item, index) => (
         <FlightItineraryCard
           tripRequest={generateRequestInfo(item)}
           showPreBookingCard={true}
-          actionDisabled={true}
+          actions={TRIP_CREATION_ACTIONS}
           hideIcon
           style={Styles.cardStyle(data, index)}
+          onActionPress={(action) => handlePress(action, index)}
         />
       ))}
     </View>

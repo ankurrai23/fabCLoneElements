@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import FText from '../../rn/FText';
+import FText, {FONT_TYPE} from '../../rn/FText';
 import Button from '../button';
 import TextField from '../textField';
 import Styles from './Styles';
@@ -13,9 +13,9 @@ const ReasonModal = (props) => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    setReason('');
+    setReason(props.value ?? '');
     setErrors({});
-  }, [props.visible]);
+  }, [props.visible, props.value]);
 
   function onChangeText(val) {
     setReason(val);
@@ -27,7 +27,7 @@ const ReasonModal = (props) => {
     }
     const newErrors = {};
     if (!reason?.trim()) {
-      newErrors.reason = Strings.reasonToProceed;
+      newErrors.reason = props.error ?? Strings.reasonToProceed;
     }
     setErrors(newErrors);
     return Utils.isEmpty(newErrors);
@@ -44,7 +44,9 @@ const ReasonModal = (props) => {
       visible={props.visible}
       setVisible={props.setVisible}
       style={Styles.bottomSheet}>
-      <FText style={Styles.heading}>{props.heading}</FText>
+      <FText type={FONT_TYPE.MEDIUM} style={Styles.heading}>
+        {props.heading}
+      </FText>
       <TextField
         label={props.textFieldLabel}
         value={reason}
@@ -53,7 +55,10 @@ const ReasonModal = (props) => {
         error={!!errors.reason}
         onBlur={validateForm}
       />
-      <Button style={Styles.submitButton} onPress={onSubmit}>
+      <Button
+        style={Styles.submitButton}
+        textFont={FONT_TYPE.MEDIUM}
+        onPress={onSubmit}>
         {props.buttonText}
       </Button>
     </BottomSheet>

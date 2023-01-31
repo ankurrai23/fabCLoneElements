@@ -3,6 +3,7 @@ const cabDetailCardProps = {
     cabBookingStatus: 'CONFIRMED',
     date: '22',
     month: 'Nov',
+    year: '22',
     source: 'Mumbai',
     destination: 'Lonavala',
     sourceLocality: 'Mumbai Airport',

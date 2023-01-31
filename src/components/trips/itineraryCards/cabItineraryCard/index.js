@@ -13,6 +13,7 @@ import {CabSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
+import RemarksBox from '../../components/remarksBox/RemarksBox';
 
 const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
   return (
@@ -25,7 +26,11 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {tripRequest.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${tripRequest.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${tripRequest.month}'${tripRequest.year}`}</FText>
         </View>
         {showStatus ? (
           <TripStatus statusObj={status} />
@@ -78,7 +83,11 @@ const PostBookingCard = ({
           <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
             {bookingDetails.date}
           </FText>
-          <FText style={Styles.headerMonth}>{`${bookingDetails.month}`}</FText>
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            style={
+              Styles.headerMonth
+            }>{`${bookingDetails.month}'${bookingDetails.year}`}</FText>
         </View>
         {showStatus && status ? (
           <TripStatus statusObj={getStatusObject(status)} />
@@ -204,6 +213,7 @@ const cabItineraryCard = ({
   timelineGreyed,
   showPreBookingCard,
   bookingDetails,
+  remarks,
   actions,
   notificationText,
   hideChevron,
@@ -214,40 +224,52 @@ const cabItineraryCard = ({
   const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
+  const editAction = isActionEnabled(CabSubtripActions.EDIT);
+  const removeAction = isActionEnabled(CabSubtripActions.REMOVE);
 
-  const ActionsInItinerary = () => (
+  const actionsVisible =
+    !actionDisabled &&
+    (rescheduleAction || cancelAction || editAction || removeAction);
+
+  const ActionsInItinerary = ({hideSeperator}) => (
     <>
-      <Separator style={Styles.actionsSeperator} />
+      {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
       <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
+        {cancelAction && (
           <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
+            onPress={() => onActionPress(cancelAction)}
             style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
+            <Icon.Cross
+              width={DP._16}
+              height={DP._16}
+              stroke={Color.PASTEL_RED}
+            />
+            <FText style={Styles.cancel}>{cancelAction.name}</FText>
           </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Cross
-                  width={DP._16}
-                  height={DP._16}
-                  stroke={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {rescheduleAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(rescheduleAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Reschedule width={DP._16} height={DP._16} />
-                <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
+        )}
+        {rescheduleAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(rescheduleAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Reschedule width={DP._16} height={DP._16} />
+            <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {removeAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(removeAction)}
+            style={Styles.flexRowAndAlignCenter}>
+            <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+            <FText style={Styles.cancel}>{removeAction.name}</FText>
+          </FTouchableOpacity>
+        )}
+        {editAction && (
+          <FTouchableOpacity
+            onPress={() => onActionPress(editAction)}
+            style={Styles.primaryButtonStyle}>
+            <Icon.Edit />
+            <FText style={Styles.reschedule}>{editAction.name}</FText>
+          </FTouchableOpacity>
         )}
       </View>
     </>
@@ -299,10 +321,14 @@ const cabItineraryCard = ({
             hideChevron={hideChevron}
           />
         )}
-        {!actionDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <ActionsInItinerary />
-          )}
+        {viewRemarksAction && !!remarks && (
+          <RemarksBox
+            title={remarks.title}
+            remarks={remarks.text}
+            roundBottomCorners={!actionsVisible}
+            onPress={() => onActionPress(viewRemarksAction)}
+          />
+        )}
         {showInfo && (
           <InfoBox
             isAlert={!!notificationText}
@@ -310,6 +336,9 @@ const cabItineraryCard = ({
             showChevron={false}
             disablePressEvent={!!notificationText}
           />
+        )}
+        {actionsVisible && (
+          <ActionsInItinerary hideSeperator={Boolean(showInfo)} />
         )}
       </View>
     </View>

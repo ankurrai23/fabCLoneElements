@@ -2,6 +2,7 @@ const TrainItineraryCardProps = {
   tripRequest: {
     date: '22',
     month: 'Nov',
+    year: '22',
     slotDetail: 'Slot: 6PM - 9PM',
     sourceStationCode: 'CSTM',
     source: 'Mumbai',
@@ -17,8 +18,8 @@ const TrainItineraryCardProps = {
   },
   bookingDetails: {
     trainBookingStatus: 'CONFIRMED',
-    arrivalDate: {date: '28', month: 'Nov'},
-    departureDate: {date: '22', month: 'Nov'},
+    arrivalDate: {date: '28', month: 'Nov', year: '22'},
+    departureDate: {date: '22', month: 'Nov', year: '22'},
     sourceStationCode: 'CSTM',
     source: 'Mumbai',
     destinationStationCode: 'TVC',
@@ -33,6 +34,10 @@ const TrainItineraryCardProps = {
     trainClass: 'AC 3 Tier Sleeper',
     pnr: '256-99589',
     reduceOpacity: false,
+  },
+  remarks: {
+    title: 'Remarks',
+    text: 'Change of plans',
   },
   actions: [
     {
@@ -52,9 +57,9 @@ const TrainItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: true,
   hideIcon: false,
-  showInfo: true,
+  showInfo: false,
   isAlert: true,
-  notificationText: 'This is notification text',
+  // notificationText: 'This is notification text',
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
