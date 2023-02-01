@@ -3,7 +3,7 @@ import React, {useCallback, useImperativeHandle, useRef, useState} from 'react';
 import Styles from './Styles';
 import FTouchableOpacity from '../../../../../common/rn/FTouchableOpacity';
 import FText from '../../../../../common/rn/FText';
-import SortAndFilter, {FilterButton, FilterSection} from '../component';
+import QuickLinks, {FilterButton, FilterSection} from '../component';
 import FImage from '../../../../../common/rn/FImage';
 import Checkbox from '../../../../../common/components/checkbox';
 import Separator from '../../../../../common/components/separator';
@@ -141,8 +141,8 @@ const Entitlement = React.forwardRef(({entitlement}, ref) => {
 });
 
 const FlightFilter = ({
-  sortData,
-  onSortSelect,
+  quickLinks,
+  onQuickLinkSelect,
   filterData,
   onApply,
   isFilterApplied,
@@ -172,9 +172,9 @@ const FlightFilter = ({
   };
 
   return (
-    <SortAndFilter
-      sortData={sortData}
-      onSortSelect={onSortSelect}
+    <QuickLinks
+      quickLinks={quickLinks}
+      onQuickLinkSelect={onQuickLinkSelect}
       isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
       onApply={onApplyPress}>
@@ -188,7 +188,7 @@ const FlightFilter = ({
           ref={entitlementRef}
         />
       )}
-    </SortAndFilter>
+    </QuickLinks>
   );
 };
 
