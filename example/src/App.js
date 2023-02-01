@@ -36,6 +36,7 @@ export default function App() {
       <Drawer.Navigator
         drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={{drawerStyle: {width: '70%'}}}
+        initialRouteName="BottomSheet"
         detachInactiveScreens={true}>
         {ComponentList.map((item, index) => {
           if (item.component) {
