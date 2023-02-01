@@ -303,7 +303,7 @@ const HotelItineraryCard = ({
                         {uiData.gstIncluded ? Strings.inclGst : Strings.exGst}
                       </FText>
                     </View>
-                    {uiData.isOutOfPolicy && <OOPTag />}
+                    {uiData.isOutOfPolicy && <OOPTag greyedOut={isGreyedOut} />}
                   </View>
                 ) : (
                   <PriceLoader />

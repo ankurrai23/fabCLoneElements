@@ -8,7 +8,7 @@ const cabItineraryCardProps = {
     destination: 'Lonavala fjlskfjsdlfjdslkfjsd ',
     sourceLocality: 'Mumbai Airport fdkfjsldjfsldfjs',
     destinationLocality: 'Tungarli road skfjsdlfjsldfjsdlkfj',
-    reduceOpacity: false,
+    reduceOpacity: true,
   },
   status: {
     key: 'PROCESSED',
@@ -45,7 +45,7 @@ const cabItineraryCardProps = {
         bookingId: '1234567',
       },
     ],
-    reduceOpacity: false,
+    reduceOpacity: true,
   },
   remarks: {
     title: 'Remarks',
@@ -75,7 +75,7 @@ const cabItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
 };
 

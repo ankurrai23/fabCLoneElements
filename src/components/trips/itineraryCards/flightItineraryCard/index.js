@@ -288,7 +288,7 @@ const FlightItineraryCard = ({
           )}
         </View>
         <View style={Styles.flightParticulars}>
-          <Grayscale amount={isGreyedOut ? 1 : 0}>
+          <Grayscale amount={isGreyedOut ? 0.7 : 0}>
             <FImage
               style={Styles.imageStyle}
               source={{uri: uiData.airlineIcon}}
