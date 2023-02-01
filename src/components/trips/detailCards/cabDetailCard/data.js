@@ -29,7 +29,7 @@ const cabDetailCardProps = {
         bookingId: '12345',
       },
     ],
-    reduceOpacity: false,
+    reduceOpacity: true,
   },
   actions: [
     {

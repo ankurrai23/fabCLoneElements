@@ -19,7 +19,7 @@ const flightDetailCardProps = {
     airline: 'Indigo',
     flightBookingStatus: 'CONFIRMED',
     stop: 'Non stop',
-    reduceOpacity: false,
+    reduceOpacity: true,
     price: '₹2600',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
