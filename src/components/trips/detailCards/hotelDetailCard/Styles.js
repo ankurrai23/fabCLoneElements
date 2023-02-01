@@ -8,11 +8,10 @@ export default StyleSheet.create({
     ...shadowObj,
     ...cardStyleObj,
   },
-  subContainer: (modified) => ({
-    opacity: modified ? 0.6 : 1,
+  subContainer: {
     padding: DP._16,
     paddingBottom: 0,
-  }),
+  },
   addressText: {
     fontSize: DP._12,
     lineHeight: DP._18,
