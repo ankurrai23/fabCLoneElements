@@ -12,6 +12,8 @@ target 'FabElementsExample' do
     :hermes_enabled => true
   )
 
+  pod 'react-native-color-matrix-image-filters', :path => '../node_modules/react-native-color-matrix-image-filters/react-native-color-matrix-image-filters.podspec'
+
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and

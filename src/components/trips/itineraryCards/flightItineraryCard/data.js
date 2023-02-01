@@ -16,7 +16,7 @@ const flightItineraryCardProps = {
     destinationAirportCode: 'BLR',
     departureTime: '18:30',
     arrivalTime: '22:30',
-    reduceOpacity: false,
+    reduceOpacity: true,
     stop: 'Non stop (via Mumbai)',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
@@ -49,7 +49,7 @@ const flightItineraryCardProps = {
     totalDuration: '1h 50min',
     airline: 'Indigo',
     stop: 'Non stop (via Hyderabad)',
-    reduceOpacity: false,
+    reduceOpacity: true,
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
@@ -89,7 +89,7 @@ const flightItineraryCardProps = {
   actionDisabled: false,
   showStatus: false,
   notificationText: null,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
 };
 
