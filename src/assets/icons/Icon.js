@@ -36,6 +36,7 @@ import Reject from './reject.svg';
 import Person from './personIcon.svg';
 import PhoneIcon from './phoneIcon.svg';
 import Edit from './edit.svg';
+import PoweredByGoogle from './powered-by-google-logo.svg';
 
 const ChevronLeft = ({width, height, size, stroke, strokeWidth, ...props}) => (
   <Svg
@@ -688,6 +689,7 @@ const Icon = {
   Edit,
   Minus,
   Refund,
+  PoweredByGoogle,
 };
 
 export default Icon;

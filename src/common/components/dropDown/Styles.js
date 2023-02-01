@@ -48,4 +48,8 @@ export default StyleSheet.create({
     position: 'absolute',
     right: DP._8,
   },
+  poweredByGoogle: {
+    padding: DP._4,
+    alignItems: 'flex-end',
+  },
 });

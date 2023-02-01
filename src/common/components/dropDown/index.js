@@ -20,6 +20,7 @@ function DropDown(
     onPressClose,
     selectTextOnFocus,
     icon,
+    googleSearch,
   },
   ref,
 ) {
@@ -107,6 +108,11 @@ function DropDown(
           keyboardShouldPersistTaps="always"
           persistentScrollbar={true}
         />
+        {googleSearch && !!data.length && (
+          <View style={Styles.poweredByGoogle}>
+            <Icon.PoweredByGoogle />
+          </View>
+        )}
       </View>
     </View>
   );
