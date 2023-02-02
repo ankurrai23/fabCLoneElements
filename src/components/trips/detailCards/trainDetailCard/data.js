@@ -27,7 +27,7 @@ const trainDetailCardProps = {
         seatNo: 'b1, 42',
       },
     ],
-    reduceOpacity: false,
+    reduceOpacity: true,
   },
   actions: [
     {

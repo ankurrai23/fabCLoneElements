@@ -30,7 +30,7 @@ const busDetailCardProps = {
         seatNo: 'c1',
       },
     ],
-    reduceOpacity: false,
+    reduceOpacity: true,
   },
   actions: [
     {

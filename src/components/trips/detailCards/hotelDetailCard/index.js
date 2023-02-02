@@ -16,6 +16,7 @@ import TripStatus from '../../tripStatus';
 import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {Grayscale} from 'react-native-color-matrix-image-filters';
 
 export default function HotelDetailCard({
   item,
@@ -116,6 +117,7 @@ export default function HotelDetailCard({
                 {item.type === HotelSubTripActions.SUBMIT_REVIEW && (
                   <FText
                     greyedOut={isGreyedOut}
+                    c
                     style={{
                       fontSize: DP._11,
                       color: Color.GREY_PURPLE,
@@ -149,10 +151,13 @@ export default function HotelDetailCard({
                 style={{marginRight: DP._8}}
                 disabled={item.reduceOpacity}
                 onPress={onMainImagePress}>
-                <FImage
-                  style={Styles.hotelImage}
-                  source={{uri: item.imageBaseUrl + item.mainImage}}
-                />
+                <Grayscale amount={isGreyedOut ? 1 : 0}>
+                  <FImage
+                    style={Styles.hotelImage}
+                    source={{uri: item.imageBaseUrl + item.mainImage}}
+                  />
+                </Grayscale>
+
                 <Icon.ZooomIn
                   width={DP._18}
                   height={DP._18}

@@ -157,7 +157,7 @@ const HotelItineraryCard = ({
     <View style={[Styles.flexRow, style]}>
       <View>
         {!hideIcon &&
-          (isGreyedOut ? (
+          (timelineGreyed ? (
             <Icon.HotelItineraryGreyed
               width={DP._30}
               height={DP._30}
@@ -176,7 +176,7 @@ const HotelItineraryCard = ({
               dashSize={3}
               dashWidth={1}
               dashColor={
-                isGreyedOut ? Color.LIGHT_BLUEY_GREY : Color.DODGER_BLUE
+                timelineGreyed ? Color.LIGHT_BLUEY_GREY : Color.DODGER_BLUE
               }
             />
           </View>
@@ -303,7 +303,7 @@ const HotelItineraryCard = ({
                         {uiData.gstIncluded ? Strings.inclGst : Strings.exGst}
                       </FText>
                     </View>
-                    {uiData.isOutOfPolicy && <OOPTag />}
+                    {uiData.isOutOfPolicy && <OOPTag greyedOut={isGreyedOut} />}
                   </View>
                 ) : (
                   <PriceLoader />

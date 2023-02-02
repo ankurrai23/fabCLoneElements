@@ -32,7 +32,7 @@ const busItineraryCardProps = {
     busType: 'Sleeper',
     seatNumber: 'L23',
     pnr: '123456',
-    reduceOpacity: false,
+    reduceOpacity: true,
   },
   remarks: {
     title: 'Remarks',

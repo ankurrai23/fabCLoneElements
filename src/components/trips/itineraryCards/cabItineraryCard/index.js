@@ -15,18 +15,25 @@ import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
 
-const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
+const PreBookingCard = ({
+  onCardPress,
+  tripRequest,
+  showStatus,
+  status,
+  isGreyedOut,
+}) => {
   return (
-    <FTouchableOpacity
-      activeOpacity={tripRequest.reduceOpacity ? 0.6 : 1}
-      style={Styles.card(tripRequest.reduceOpacity)}
-      onPress={onCardPress}>
+    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <View style={Styles.flexDirectionRow}>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}
+            style={Styles.date}>
             {tripRequest.date}
           </FText>
           <FText
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
@@ -36,7 +43,10 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
           <TripStatus statusObj={status} />
         ) : (
           !!tripRequest?.pickupTime && (
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
+            <FText
+              greyedOut={isGreyedOut}
+              type={FONT_TYPE.MEDIUM}
+              style={Styles.slotDetail}>
               {Strings.pickupTime} {tripRequest.pickupTime}
             </FText>
           )
@@ -45,18 +55,30 @@ const PreBookingCard = ({onCardPress, tripRequest, showStatus, status}) => {
 
       <View style={[Styles.flexDirectionRow, Styles.marginTop_12]}>
         <View style={Styles.width_48}>
-          <FText style={Styles.heading} numberOfLines={1}>
+          <FText
+            greyedOut={isGreyedOut}
+            style={Styles.heading}
+            numberOfLines={1}>
             {tripRequest.source}
           </FText>
-          <FText style={Styles.detail} numberOfLines={1}>
+          <FText
+            greyedOut={isGreyedOut}
+            style={Styles.detail}
+            numberOfLines={1}>
             {tripRequest.sourceLocality}
           </FText>
         </View>
         <View style={[Styles.alignItem_flexEnd, Styles.width_48]}>
-          <FText style={Styles.heading} numberOfLines={1}>
+          <FText
+            greyedOut={isGreyedOut}
+            style={Styles.heading}
+            numberOfLines={1}>
             {tripRequest.destination}
           </FText>
-          <FText style={Styles.detail} numberOfLines={1}>
+          <FText
+            greyedOut={isGreyedOut}
+            style={Styles.detail}
+            numberOfLines={1}>
             {tripRequest.destinationLocality}
           </FText>
         </View>
@@ -70,20 +92,21 @@ const PostBookingCard = ({
   bookingDetails,
   showStatus,
   status,
-  reduceOpacity,
+  isGreyedOut,
   hideChevron,
 }) => {
   return (
-    <FTouchableOpacity
-      activeOpacity={reduceOpacity ? 0.6 : 1}
-      style={Styles.card(reduceOpacity)}
-      onPress={onCardPress}>
+    <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
       <View style={[Styles.flexDirectionRow, Styles.baseline]}>
         <View style={Styles.flexDirectionRow}>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}
+            style={Styles.date}>
             {bookingDetails.date}
           </FText>
           <FText
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
@@ -97,7 +120,9 @@ const PostBookingCard = ({
               <Icon.ChevronRight
                 width={DP._18}
                 height={DP._18}
-                stroke={Color.BATTLESHIP_GREY_TWO}
+                stroke={
+                  isGreyedOut ? Color.BLUEY_GREY : Color.BATTLESHIP_GREY_TWO
+                }
               />
             )}
           </View>
@@ -107,15 +132,18 @@ const PostBookingCard = ({
       <View style={[Styles.marginTop_12]}>
         <View style={[Styles.flexDirectionRow]}>
           <FText
+            greyedOut={isGreyedOut}
             style={[Styles.heading, Styles.width_40, Styles.textAlign_left]}
             numberOfLines={1}>
             {bookingDetails.departureTime}
           </FText>
           <FText
+            greyedOut={isGreyedOut}
             style={[Styles.duration, Styles.width_20, Styles.textAlign_center]}>
             {bookingDetails.estimateDuration}
           </FText>
           <FText
+            greyedOut={isGreyedOut}
             style={[Styles.heading, Styles.width_40, Styles.textAlign_right]}
             numberOfLines={1}>
             {bookingDetails.arrivalTime}
@@ -125,13 +153,19 @@ const PostBookingCard = ({
           <View style={[Styles.width_40, Styles.textAlign_left]}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.detail} numberOfLines={1}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.detail}
+                numberOfLines={1}>
                 {bookingDetails.sourceLocality}
               </FText>
             )}
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.detail} numberOfLines={1}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.detail}
+                numberOfLines={1}>
                 {bookingDetails.source}
               </FText>
             )}
@@ -144,13 +178,19 @@ const PostBookingCard = ({
             ]}>
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.detail} numberOfLines={1}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.detail}
+                numberOfLines={1}>
                 {bookingDetails.destinationLocality}
               </FText>
             )}
             {(bookingDetails?.sourceLocality ||
               bookingDetails?.destinationLocality) && (
-              <FText style={Styles.detail} numberOfLines={1}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.detail}
+                numberOfLines={1}>
                 {bookingDetails.destination}
               </FText>
             )}
@@ -168,6 +208,7 @@ const PostBookingCard = ({
               }}
             />
             <FText
+              greyedOut={isGreyedOut}
               numberOfLines={1}
               style={[
                 Styles.marginTop_12,
@@ -180,16 +221,25 @@ const PostBookingCard = ({
               {Strings.details}
             </FText>
             <View style={Styles.marginTop_8}>
-              <FText style={Styles.heading} numberOfLines={1}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.heading}
+                numberOfLines={1}>
                 {details?.vehicleName ?? Strings.carNa}
               </FText>
               {details?.vehicleNumber && (
-                <FText style={Styles.detail} numberOfLines={1}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.detail}
+                  numberOfLines={1}>
                   {details.vehicleNumber}
                 </FText>
               )}
               {details?.bookingId && (
-                <FText style={Styles.detail} numberOfLines={1}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.detail}
+                  numberOfLines={1}>
                   {Strings.bookingId}: {details.bookingId}
                 </FText>
               )}
@@ -220,7 +270,8 @@ const cabItineraryCard = ({
   actionDisabled,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-
+  const uiData = showPreBookingCard ? tripRequest : bookingDetails;
+  const isGreyedOut = uiData.reduceOpacity;
   const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
@@ -307,6 +358,7 @@ const cabItineraryCard = ({
         {showPreBookingCard ? (
           <PreBookingCard
             onCardPress={onCardPress}
+            isGreyedOut={isGreyedOut}
             tripRequest={tripRequest}
             showStatus={showStatus}
             status={status}
@@ -314,10 +366,10 @@ const cabItineraryCard = ({
         ) : (
           <PostBookingCard
             onCardPress={onCardPress}
-            bookingDetails={bookingDetails}
+            bookingDetails={uiData}
             showStatus={showStatus}
-            status={bookingDetails.cabBookingStatus}
-            reduceOpacity={tripRequest.reduceOpacity}
+            status={uiData.cabBookingStatus}
+            isGreyedOut={isGreyedOut}
             hideChevron={hideChevron}
           />
         )}

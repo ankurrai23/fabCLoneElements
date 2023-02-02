@@ -31,8 +31,8 @@ import Briefcase from './briefcase.svg';
 import Rupee from './rupee.svg';
 import Approve from './approve.svg';
 import Reject from './reject.svg';
-import Person from './personIcon.svg';
-import PhoneIcon from './phoneIcon.svg';
+// import Person from './personIcon.svg';
+// import PhoneIcon from './phoneIcon.svg';
 import Edit from './edit.svg';
 import PoweredByGoogle from './powered-by-google-logo.svg';
 
@@ -50,6 +50,46 @@ const ChevronLeft = ({width, height, size, stroke, strokeWidth, ...props}) => (
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+const Person = ({width, height, stroke, ...props}) => (
+  <Svg
+    width={width ?? 16}
+    height={height ?? 16}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M13.3346 14V12.6667C13.3346 11.9594 13.0537 11.2811 12.5536 10.781C12.0535 10.281 11.3752 10 10.668 10H5.33464C4.62739 10 3.94911 10.281 3.44902 10.781C2.94892 11.2811 2.66797 11.9594 2.66797 12.6667V14"
+      stroke={stroke ?? 'black'}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <Path
+      d="M7.9987 7.33333C9.47146 7.33333 10.6654 6.13943 10.6654 4.66667C10.6654 3.19391 9.47146 2 7.9987 2C6.52594 2 5.33203 3.19391 5.33203 4.66667C5.33203 6.13943 6.52594 7.33333 7.9987 7.33333Z"
+      stroke={stroke ?? 'black'}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </Svg>
+);
+
+const PhoneIcon = ({width, height, stroke, ...props}) => (
+  <Svg
+    width={width ?? 16}
+    height={height ?? 16}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M14.665 11.2793V13.2793C14.6657 13.4649 14.6277 13.6487 14.5533 13.8188C14.479 13.9889 14.3699 14.1416 14.233 14.2672C14.0962 14.3927 13.9347 14.4882 13.7588 14.5477C13.5829 14.6072 13.3966 14.6293 13.2117 14.6126C11.1602 14.3897 9.18966 13.6887 7.45833 12.5659C5.84755 11.5424 4.48189 10.1767 3.45833 8.56592C2.33165 6.82672 1.63049 4.84658 1.41166 2.78592C1.395 2.60156 1.41691 2.41576 1.47599 2.24033C1.53508 2.06491 1.63004 1.90371 1.75484 1.767C1.87964 1.63029 2.03153 1.52106 2.20086 1.44627C2.37018 1.37147 2.55322 1.33276 2.73833 1.33258H4.73833C5.06187 1.3294 5.37552 1.44397 5.62084 1.65494C5.86615 1.86591 6.02638 2.15888 6.07166 2.47925C6.15608 3.1193 6.31263 3.74774 6.53833 4.35258C6.62802 4.5912 6.64744 4.85053 6.59427 5.09984C6.5411 5.34915 6.41757 5.57799 6.23833 5.75925L5.39166 6.60592C6.3407 8.27495 7.72263 9.65688 9.39166 10.6059L10.2383 9.75925C10.4196 9.58001 10.6484 9.45648 10.8977 9.40331C11.1471 9.35014 11.4064 9.36956 11.645 9.45925C12.2498 9.68495 12.8783 9.8415 13.5183 9.92592C13.8422 9.9716 14.1379 10.1347 14.3494 10.3842C14.5608 10.6338 14.6731 10.9523 14.665 11.2793Z"
+      stroke={stroke ?? Color.DARK}
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </Svg>
 );
