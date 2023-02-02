@@ -3,24 +3,28 @@ import {StyleSheet, View} from 'react-native';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
-import FText from '../../rn/FText';
+import FText, {FONT_TYPE} from '../../rn/FText';
 import Button, {BUTTON_TYPE} from '../button';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 
 const EmptyScreen = (props) => {
   return (
     <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <View style={styles.image}>{props.image}</View>
-        <FText style={styles.heading}>
-          {props.heading || Strings.nothingInItineraryMsg}
-        </FText>
-        {!!props.subHeading && (
-          <FText style={styles.subHeading}>{props.subHeading}</FText>
-        )}
-      </View>
+      <View style={styles.image}>{props.image}</View>
+      <FText style={styles.heading}>
+        {props.heading || Strings.nothingInItineraryMsg}
+      </FText>
+      {!!props.subHeading && (
+        <FText style={styles.subHeading}>{props.subHeading}</FText>
+      )}
       {!!props.btnText && (
         <Button
+          style={{
+            paddingVertical: DP._10,
+            paddingHorizontal: DP._27,
+            marginTop: DP._16,
+          }}
+          textFont={FONT_TYPE.MEDIUM}
           type={props.btnType ?? BUTTON_TYPE.PRIMARY}
           onPress={props.onPress}>
           {props.btnText}
@@ -33,14 +37,9 @@ const EmptyScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    justifyContent: 'space-between',
-    padding: DP._16,
-    paddingBottom: DP._24,
-  },
-  textContainer: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: DP._16,
   },
   image: {
     marginBottom: DP._18,

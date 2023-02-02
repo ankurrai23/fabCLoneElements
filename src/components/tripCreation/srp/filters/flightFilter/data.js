@@ -1,24 +1,28 @@
 const flightFilterProps = {
-  sortData: [
+  quickLinks: [
     {
       key: 'NON_STOP',
       value: 'Non-stop',
       selected: false,
+      type: 'FILTER',
     },
     {
       key: 'EARLIEST_FIRST',
       value: 'Earliest first',
       selected: true,
+      type: 'SORT',
     },
     {
       key: 'CHEAPEST_FIRST',
       value: 'Cheapest first',
       selected: false,
+      type: 'SORT',
     },
     {
       key: 'NON_STOP1',
       value: 'Non-stop',
       selected: false,
+      type: 'SORT',
     },
   ],
   filterData: {
@@ -116,7 +120,7 @@ const flightFilterProps = {
       // },
     ],
   },
-  onSortSelect: (item) => console.log('sort selected', item),
+  onQuickLinkSelect: (item) => console.log('sort selected', item),
   onApply: (item) => console.log('apply clicked', item),
 };
 

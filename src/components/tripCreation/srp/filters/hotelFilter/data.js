@@ -1,21 +1,4 @@
 const hotelFilterProps = {
-  sortData: [
-    {
-      key: 'CHEAPEST',
-      value: 'Cheapest',
-      selected: false,
-    },
-    {
-      key: 'POPULAR',
-      value: 'Popular',
-      selected: true,
-    },
-    {
-      key: 'HIGHEST_RATING',
-      value: 'Highest rating',
-      selected: false,
-    },
-  ],
   filterData: {
     entitlement: [
       {
@@ -68,7 +51,7 @@ const hotelFilterProps = {
     },
   },
   onApply: (item) => console.log('on filter apply', item),
-  onSortSelect: (item) => console.log('sorted', item),
+  onQuickLinkSelect: (item) => console.log('sorted', item),
 };
 
 export default hotelFilterProps;

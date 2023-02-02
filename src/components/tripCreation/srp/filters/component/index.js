@@ -10,7 +10,7 @@ import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {dialogBoxStyle} from '../../../../../utils/Utils';
 import BottomSheet from '../../../../../common/components/bottomSheet';
 
-const SortOption = ({item, onPress}) => {
+const QuickLink = ({item, onPress}) => {
   return (
     <FTouchableOpacity
       style={Styles.sortOption(item.selected)}
@@ -20,11 +20,11 @@ const SortOption = ({item, onPress}) => {
   );
 };
 
-const SortAndFilter = ({
+const QuickLinks = ({
   children,
-  sortData,
+  quickLinks,
   onClearAll,
-  onSortSelect,
+  onQuickLinkSelect,
   onApply,
   isFilterApplied,
 }) => {
@@ -37,14 +37,18 @@ const SortAndFilter = ({
   return (
     <>
       <View style={Styles.filterContainer}>
-        {sortData?.length > 0 && (
+        {quickLinks?.length > 0 && (
           <ScrollView
             horizontal={true}
             bounces={false}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={Styles.containerStyle}>
-            {sortData.map((item) => (
-              <SortOption item={item} onPress={onSortSelect} key={item.key} />
+            {quickLinks.map((item) => (
+              <QuickLink
+                item={item}
+                onPress={onQuickLinkSelect}
+                key={item.key}
+              />
             ))}
           </ScrollView>
         )}
@@ -79,7 +83,7 @@ const SortAndFilter = ({
   );
 };
 
-export default SortAndFilter;
+export default QuickLinks;
 
 export const FilterSection = ({title, children, style}) => {
   return (

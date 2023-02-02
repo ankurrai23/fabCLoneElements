@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import React, {useImperativeHandle, useRef, useState} from 'react';
-import SortAndFilter, {FilterButton, FilterSection} from '../component';
+import QuickLinks, {FilterButton, FilterSection} from '../component';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {DP} from '../../../../../utils/Dimen';
 import Styles from './Styles';
@@ -138,13 +138,7 @@ const Entitlement = React.forwardRef(({entitlement}, ref) => {
   );
 });
 
-const HotelFilter = ({
-  sortData,
-  filterData,
-  onSortSelect,
-  onApply,
-  isFilterApplied,
-}) => {
+const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
   const sliderRef = useRef();
   const hotelRatingRef = useRef();
   const preferredTypeRef = useRef();
@@ -168,8 +162,7 @@ const HotelFilter = ({
   };
 
   return (
-    <SortAndFilter
-      sortData={sortData}
+    <QuickLinks
       onSortSelect={onSortSelect}
       isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
@@ -184,7 +177,7 @@ const HotelFilter = ({
         travelPlusPreferredFilter={filterData.travelPlusPreferredFilter}
       />
       <Entitlement entitlement={filterData.entitlement} ref={entitlementRef} />
-    </SortAndFilter>
+    </QuickLinks>
   );
 };
 
