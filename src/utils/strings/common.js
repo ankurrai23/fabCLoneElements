@@ -177,4 +177,5 @@ export default {
     'Hurry up! Make the payment now else your approval shall be cancelled.',
   perAdult: ' per adult',
   view: 'View',
+  soldOut2: 'Sold Out!',
 };

@@ -35,6 +35,7 @@ import Reject from './reject.svg';
 // import PhoneIcon from './phoneIcon.svg';
 import Edit from './edit.svg';
 import PoweredByGoogle from './powered-by-google-logo.svg';
+import Clock from './clock.svg';
 
 const ChevronLeft = ({width, height, size, stroke, strokeWidth, ...props}) => (
   <Svg
@@ -771,6 +772,7 @@ const Icon = {
   Minus,
   Refund,
   PoweredByGoogle,
+  Clock,
 };
 
 export default Icon;
