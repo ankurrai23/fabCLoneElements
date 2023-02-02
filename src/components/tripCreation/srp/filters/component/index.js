@@ -1,5 +1,5 @@
 import {ScrollView, View} from 'react-native';
-import React, {useRef} from 'react';
+import React, {useState} from 'react';
 import Styles from './Styles';
 import FTouchableOpacity from '../../../../../common/rn/FTouchableOpacity';
 import FText, {FONT_TYPE} from '../../../../../common/rn/FText';
@@ -8,7 +8,7 @@ import Icon from '../../../../../assets/icons/Icon';
 import Button from '../../../../../common/components/button';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {dialogBoxStyle} from '../../../../../utils/Utils';
-import BottomSheet from '../../../../../common/components/bottomSheet';
+import DialogBox from '../../../../../common/components/dialogBox';
 
 const QuickLink = ({item, onPress}) => {
   return (
@@ -28,12 +28,12 @@ const QuickLinks = ({
   onApply,
   isFilterApplied,
 }) => {
-  const bottomSheetRef = useRef();
+  const [filterModal, setFilterModal] = useState(false);
   const onApplyPress = () => {
-    bottomSheetRef.current.collapse();
+    setFilterModal(false);
     onApply();
   };
-
+  const onClose = () => setFilterModal(false);
   return (
     <>
       <View style={Styles.filterContainer}>
@@ -54,31 +54,35 @@ const QuickLinks = ({
         )}
         <FTouchableOpacity
           style={Styles.filterButton}
-          onPress={() => bottomSheetRef.current.expand()}>
+          onPress={() => setFilterModal(true)}>
           {isFilterApplied && <View style={Styles.filterAppliedDot} />}
           <Icon.Filter stroke={Color.WHITE} />
         </FTouchableOpacity>
       </View>
-      <BottomSheet ref={bottomSheetRef}>
-        <>
-          <View style={Styles.titleContainer}>
-            <FText style={Styles.filterText}>{Strings.filter}</FText>
-            <FTouchableOpacity onPress={onClearAll}>
-              <FText style={Styles.clearAllText}>{Strings.clearAll}</FText>
-            </FTouchableOpacity>
-          </View>
-          <ScrollView style={dialogBoxStyle} bounces={false}>
-            {children}
-          </ScrollView>
-          <Button
-            onPress={onApplyPress}
-            style={Styles.applyButton}
-            textStyle={Styles.applyText}
-            textFont={FONT_TYPE.MEDIUM}>
-            {Strings.apply}
-          </Button>
-        </>
-      </BottomSheet>
+      <DialogBox
+        modalVisible={filterModal}
+        onClose={onClose}
+        ContentModal={
+          <>
+            <View style={Styles.titleContainer}>
+              <FText style={Styles.filterText}>{Strings.filter}</FText>
+              <FTouchableOpacity onPress={onClearAll}>
+                <FText style={Styles.clearAllText}>{Strings.clearAll}</FText>
+              </FTouchableOpacity>
+            </View>
+            <ScrollView style={dialogBoxStyle} bounces={false}>
+              {children}
+            </ScrollView>
+            <Button
+              onPress={onApplyPress}
+              style={Styles.applyButton}
+              textStyle={Styles.applyText}
+              textFont={FONT_TYPE.MEDIUM}>
+              {Strings.apply}
+            </Button>
+          </>
+        }
+      />
     </>
   );
 };
