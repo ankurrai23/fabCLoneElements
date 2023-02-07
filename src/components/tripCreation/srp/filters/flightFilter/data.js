@@ -25,8 +25,8 @@ const flightFilterProps = {
       type: 'SORT',
     },
   ],
-  showOOP: true,
   filterData: {
+    showOOP: true,
     stop: [
       {
         id: 'NON_STOP',

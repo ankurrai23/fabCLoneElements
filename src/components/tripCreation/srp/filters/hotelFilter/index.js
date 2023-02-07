@@ -103,13 +103,7 @@ const PreferredType = React.forwardRef(
   },
 );
 
-const HotelFilter = ({
-  filterData,
-  showOOP,
-  onSortSelect,
-  onApply,
-  isFilterApplied,
-}) => {
+const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
   const sliderRef = useRef();
   const hotelRatingRef = useRef();
   const preferredTypeRef = useRef();
@@ -150,7 +144,7 @@ const HotelFilter = ({
         travelPlusPreferredFilter={filterData.travelPlusPreferredFilter}
       />
       <Separator style={Styles.separator} />
-      <ShowOOP ref={entitlementRef} showOOP={showOOP} />
+      <ShowOOP ref={entitlementRef} showOOP={filterData.showOOP} />
       <Separator style={Styles.separator} />
     </QuickLinks>
   );

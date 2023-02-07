@@ -131,7 +131,6 @@ const FlightFilter = ({
   onQuickLinkSelect,
   filterData,
   onApply,
-  showOOP,
   isFilterApplied,
 }) => {
   const stopsRef = useRef();
@@ -169,7 +168,7 @@ const FlightFilter = ({
         <Airlines airline={filterData.filterAirline} ref={airlineRef} />
       )}
       <Separator style={Styles.separator} />
-      <ShowOOP showOOP={showOOP} ref={entitlementRef} />
+      <ShowOOP showOOP={filterData.showOOP} ref={entitlementRef} />
       <Separator style={Styles.separator} />
     </QuickLinks>
   );

@@ -1,6 +1,6 @@
 const hotelFilterProps = {
-  showOOP: true,
   filterData: {
+    showOOP: true,
     travelPlusPreferredFilter: false,
     contractedRatePreferredFilter: true,
     starRatings: [
