@@ -66,6 +66,8 @@ function TextField(
     secureTextEntry,
     password,
     inputStyle,
+    multiline,
+    textAlignVertical,
   },
   ref,
 ) {
@@ -238,6 +240,11 @@ function TextField(
             placeholderTextColor={Color.GREY_PURPLE}
             secureTextEntry={secureTextEntry || password} // Compatibility
             editable={editable}
+            multiline={multiline}
+            placeholder={placeholder}
+            value={value}
+            defaultValue={defaultValue}
+            textAlignVertical={textAlignVertical}
             style={[
               Styles.input(editable),
               inputStyle,
