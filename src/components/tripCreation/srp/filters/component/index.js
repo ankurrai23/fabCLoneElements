@@ -9,6 +9,7 @@ import Button from '../../../../../common/components/button';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {dialogBoxStyle} from '../../../../../utils/Utils';
 import DialogBox from '../../../../../common/components/dialogBox';
+import Separator from '../../../../../common/components/separator';
 
 const QuickLink = ({item, onPress}) => {
   return (
@@ -70,7 +71,8 @@ const QuickLinks = ({
                 <FText style={Styles.clearAllText}>{Strings.clearAll}</FText>
               </FTouchableOpacity>
             </View>
-            <ScrollView style={dialogBoxStyle} bounces={false}>
+            <Separator style={Styles.separator} />
+            <ScrollView style={dialogBoxStyle(0.6)} bounces={false}>
               {children}
             </ScrollView>
             <Button

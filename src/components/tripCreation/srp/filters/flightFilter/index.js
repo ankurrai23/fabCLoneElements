@@ -1,9 +1,9 @@
-import {View} from 'react-native';
+import {Switch, View} from 'react-native';
 import React, {useCallback, useImperativeHandle, useRef, useState} from 'react';
 import Styles from './Styles';
 import FTouchableOpacity from '../../../../../common/rn/FTouchableOpacity';
 import FText from '../../../../../common/rn/FText';
-import QuickLinks, {FilterButton, FilterSection} from '../component';
+import QuickLinks, {FilterSection} from '../component';
 import FImage from '../../../../../common/rn/FImage';
 import Checkbox from '../../../../../common/components/checkbox';
 import Separator from '../../../../../common/components/separator';
@@ -87,7 +87,7 @@ const Stops = React.forwardRef(({stops}, ref) => {
   };
 
   return (
-    <FilterSection title={Strings.selectStops}>
+    <FilterSection title={Strings.stops}>
       <View style={Styles.buttonContainer}>
         {state.map((item, index) => (
           <FTouchableOpacity
@@ -103,40 +103,26 @@ const Stops = React.forwardRef(({stops}, ref) => {
   );
 });
 
-const Entitlement = React.forwardRef(({entitlement}, ref) => {
-  const [state, setState] = useState([...entitlement]);
+export const ShowOOP = React.forwardRef(({showOOP}, ref) => {
+  const [_showOOP, setShowOOP] = useState(showOOP);
+  console.log(_showOOP, showOOP);
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
-      setState((prevState) =>
-        prevState.map((item) => ({...item, selected: false})),
-      );
+      setShowOOP(false);
     },
-    data: state,
+    data: _showOOP,
   }));
 
-  const onEntitlementSelect = (item) => {
-    state.forEach((value) => {
-      if (value.id === item.id) value.selected = !value.selected;
-    });
-    setState([...state]);
-  };
-
   return (
-    <FilterSection
-      title={Strings.selectEntitlement}
-      style={Styles.entitlementStyle}>
-      <View style={Styles.buttonContainer}>
-        {state.map((item, index) => (
-          <FilterButton
-            isSelected={item.selected}
-            onPress={() => onEntitlementSelect(item)}
-            addMarginRight={index < state.length - 1}>
-            {item.name}
-          </FilterButton>
-        ))}
-      </View>
-    </FilterSection>
+    <View style={Styles.oopSwitchContainer}>
+      <FText style={Styles.showOOPText}>{Strings.showOOPFlights}</FText>
+      <Switch
+        trackColor={Styles.switchTrackColor}
+        value={!!_showOOP}
+        onChange={() => setShowOOP(!_showOOP)}
+      />
+    </View>
   );
 });
 
@@ -145,6 +131,7 @@ const FlightFilter = ({
   onQuickLinkSelect,
   filterData,
   onApply,
+  showOOP,
   isFilterApplied,
 }) => {
   const stopsRef = useRef();
@@ -165,9 +152,7 @@ const FlightFilter = ({
     if (filterData.filterAirline) {
       data.filterAirline = airlineRef.current.data;
     }
-    if (filterData.entitlement) {
-      data.entitlement = entitlementRef.current.data;
-    }
+    data.showOOP = entitlementRef.current.data;
     onApply(data);
   };
 
@@ -179,15 +164,13 @@ const FlightFilter = ({
       onClearAll={onClearAll}
       onApply={onApplyPress}>
       {filterData.stop && <Stops stops={filterData.stop} ref={stopsRef} />}
+      <Separator style={Styles.separator} />
       {filterData.filterAirline && (
         <Airlines airline={filterData.filterAirline} ref={airlineRef} />
       )}
-      {filterData.entitlement && (
-        <Entitlement
-          entitlement={filterData.entitlement}
-          ref={entitlementRef}
-        />
-      )}
+      <Separator style={Styles.separator} />
+      <ShowOOP showOOP={showOOP} ref={entitlementRef} />
+      <Separator style={Styles.separator} />
     </QuickLinks>
   );
 };
