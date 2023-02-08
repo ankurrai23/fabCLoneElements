@@ -43,7 +43,7 @@ function DropDown(
   });
 
   const Item = ({
-    entity: {titleTextBold, subTitle, titleText, img},
+    entity: {titleTextBold, subTitle, titleText, itemIcon},
     entity,
     index,
   }) => {
@@ -52,7 +52,7 @@ function DropDown(
         onPress={() => onPress(entity, index)}
         style={Styles.cardStyle}>
         <View style={Styles.titleAndIconContainer}>
-          {icon}
+          {itemIcon ?? icon}
           <FText
             type={FONT_TYPE.BOLD}
             style={Styles.titleText}
