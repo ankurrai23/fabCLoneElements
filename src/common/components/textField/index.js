@@ -68,6 +68,8 @@ function TextField(
     inputStyle,
     multiline,
     textAlignVertical,
+    autoFocus,
+    selectTextOnFocus,
   },
   ref,
 ) {
@@ -88,6 +90,7 @@ function TextField(
     },
   });
   console.log('state', state.labelStyle);
+
   useImperativeHandle(ref, () => ({
     focus,
     blur,
@@ -213,6 +216,7 @@ function TextField(
   };
 
   const focus = () => {
+    console.log('focus called');
     textInput.current.focus();
   };
 
@@ -245,6 +249,8 @@ function TextField(
             value={value}
             defaultValue={defaultValue}
             textAlignVertical={textAlignVertical}
+            autoFocus={autoFocus}
+            selectTextOnFocus={selectTextOnFocus}
             style={[
               Styles.input(editable),
               inputStyle,
