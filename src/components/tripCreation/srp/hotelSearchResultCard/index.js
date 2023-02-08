@@ -12,6 +12,7 @@ import {ratingsArray} from '../../../trips/hotelPreferenceCard';
 import Button from '../../../../common/components/button';
 import OOPTag from '../../../trips/components/OOPTag/OOPTag';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
+
 export const renderHotelImage = ({item}, greyedOut) => {
   return (
     <Grayscale amount={greyedOut ? 1 : 0}>
@@ -124,7 +125,9 @@ export default function HotelSearchResultCard({onCardPress, item}) {
                 </View>
               )}
             </View>
-            <Button textFont={FONT_TYPE.MEDIUM} onPress={onCardPress}>
+            <Button
+              textFont={FONT_TYPE.MEDIUM}
+              onPress={() => onCardPress(item)}>
               {Strings.selectRoom}
             </Button>
           </>
