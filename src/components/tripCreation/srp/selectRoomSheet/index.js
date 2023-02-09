@@ -136,7 +136,7 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
             ItemSeparatorComponent={() => (
               <Separator style={Styles.separator} />
             )}
-            style={dialogBoxStyle}
+            style={dialogBoxStyle()}
           />
           <Separator style={Styles.separator} />
           <View style={Styles.addRemoveRoomButtonContainer}>

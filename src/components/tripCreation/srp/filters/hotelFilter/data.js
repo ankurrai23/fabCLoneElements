@@ -1,17 +1,6 @@
 const hotelFilterProps = {
   filterData: {
-    entitlement: [
-      {
-        id: 'INPOLICY',
-        name: 'In policy',
-        selected: true,
-      },
-      {
-        id: 'OUTOFPOLICY',
-        name: 'Out of policy',
-        selected: false,
-      },
-    ],
+    showOOP: true,
     travelPlusPreferredFilter: false,
     contractedRatePreferredFilter: true,
     starRatings: [

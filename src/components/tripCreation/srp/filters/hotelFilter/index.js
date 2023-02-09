@@ -8,6 +8,8 @@ import Icon from '../../../../../assets/icons/Icon';
 import FText from '../../../../../common/rn/FText';
 import {Color} from '../../../../../utils/color/index.travelPlus';
 import RangeSlider from '../../../../../common/components/rangeSlider';
+import {ShowOOP} from '../flightFilter';
+import Separator from '../../../../../common/components/separator';
 
 const HotelRating = React.forwardRef(({starRatings}, ref) => {
   const [state, setState] = useState([...starRatings]);
@@ -101,43 +103,6 @@ const PreferredType = React.forwardRef(
   },
 );
 
-const Entitlement = React.forwardRef(({entitlement}, ref) => {
-  const [state, setState] = useState([...entitlement]);
-
-  useImperativeHandle(ref, () => ({
-    clearAll: () => {
-      setState((prevState) =>
-        prevState.map((item) => ({...item, selected: false})),
-      );
-    },
-    data: state,
-  }));
-
-  const onEntitlementSelect = (item) => {
-    state.forEach((value) => {
-      if (value.id === item.id) value.selected = !value.selected;
-    });
-    setState([...state]);
-  };
-
-  return (
-    <FilterSection
-      title={Strings.selectEntitlement}
-      style={Styles.entitlementStyle}>
-      <View style={Styles.buttonContainer}>
-        {state.map((item, index) => (
-          <FilterButton
-            isSelected={item.selected}
-            onPress={() => onEntitlementSelect(item)}
-            addMarginRight={index < state.length - 1}>
-            {item.name}
-          </FilterButton>
-        ))}
-      </View>
-    </FilterSection>
-  );
-});
-
 const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
   const sliderRef = useRef();
   const hotelRatingRef = useRef();
@@ -156,7 +121,7 @@ const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
       ...preferredTypeRef.current.data,
       starRatings: hotelRatingRef.current.data,
       priceData: sliderRef.current.data,
-      entitlement: entitlementRef.current.data,
+      showOOP: entitlementRef.current.data,
     };
     onApply(data);
   };
@@ -170,13 +135,17 @@ const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
       <FilterSection title={Strings.price}>
         <RangeSlider ref={sliderRef} {...filterData.priceData} />
       </FilterSection>
+      <Separator style={Styles.separator} />
       <HotelRating ref={hotelRatingRef} starRatings={filterData.starRatings} />
+      <Separator style={Styles.separator} />
       <PreferredType
         ref={preferredTypeRef}
         contractedRatePreferredFilter={filterData.contractedRatePreferredFilter}
         travelPlusPreferredFilter={filterData.travelPlusPreferredFilter}
       />
-      <Entitlement entitlement={filterData.entitlement} ref={entitlementRef} />
+      <Separator style={Styles.separator} />
+      <ShowOOP ref={entitlementRef} showOOP={filterData.showOOP} />
+      <Separator style={Styles.separator} />
     </QuickLinks>
   );
 };

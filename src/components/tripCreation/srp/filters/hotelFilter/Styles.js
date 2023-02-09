@@ -88,4 +88,8 @@ export default StyleSheet.create({
     marginBottom: DP._18,
     fontSize: DP._16,
   },
+  separator: {
+    marginHorizontal: DP._24,
+    marginBottom: DP._24,
+  },
 });

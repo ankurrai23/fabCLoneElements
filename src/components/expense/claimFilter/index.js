@@ -72,7 +72,7 @@ const ClaimFilter = ({data, onPressCancel, onPressApply}) => {
         data={filterData}
         renderItem={renderItems}
         showsVerticalScrollIndicator={false}
-        style={{...dialogBoxStyle}}
+        style={{...dialogBoxStyle()}}
         keyExtractor={(item) => item.key}
       />
       <View style={Styles.buttonView}>

@@ -90,10 +90,10 @@ export const cardStyleObj = {
   borderRadius: DP._12,
 };
 
-export const dialogBoxStyle = {
+export const dialogBoxStyle = (ratio) => ({
   flexGrow: 0,
-  maxHeight: DP.match_height / 2,
-};
+  maxHeight: DP.match_height * (ratio ?? 0.5),
+});
 
 export function formattedDate(date = new Date(), format = 'DD MMM YY') {
   return moment(date).format(format);
