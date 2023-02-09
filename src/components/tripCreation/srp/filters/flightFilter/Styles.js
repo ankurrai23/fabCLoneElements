@@ -81,7 +81,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingBottom: DP._24,
-    paddingHorizontal: DP._16,
+    paddingHorizontal: DP._24,
     justifyContent: 'space-between',
   },
 });
