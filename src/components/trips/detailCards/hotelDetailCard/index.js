@@ -16,7 +16,8 @@ import TripStatus from '../../tripStatus';
 import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
-import {Grayscale} from 'react-native-color-matrix-image-filters';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
 export default function HotelDetailCard({
   item,
@@ -151,12 +152,12 @@ export default function HotelDetailCard({
                 style={{marginRight: DP._8}}
                 disabled={item.reduceOpacity}
                 onPress={onMainImagePress}>
-                <Grayscale amount={isGreyedOut ? 1 : 0}>
+                <ColorMatrix matrix={grayImageMatrix(isGreyedOut)}>
                   <FImage
                     style={Styles.hotelImage}
                     source={{uri: item.imageBaseUrl + item.mainImage}}
                   />
-                </Grayscale>
+                </ColorMatrix>
 
                 <Icon.ZooomIn
                   width={DP._18}

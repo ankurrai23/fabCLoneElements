@@ -16,13 +16,14 @@ import {getStatusObject} from '../../../../utils/Utils';
 import OOPTag from '../../components/OOPTag/OOPTag';
 import FImage from '../../../../common/rn/FImage';
 import LinearGradient from 'react-native-linear-gradient';
-import {Grayscale} from 'react-native-color-matrix-image-filters';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {
   PlaceholderContainer,
   Placeholder,
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
 const FlightItineraryCard = ({
   status,
@@ -288,12 +289,12 @@ const FlightItineraryCard = ({
           )}
         </View>
         <View style={Styles.flightParticulars}>
-          <Grayscale amount={isGreyedOut ? 0.7 : 0}>
+          <ColorMatrix matrix={grayImageMatrix(isGreyedOut)}>
             <FImage
               style={Styles.imageStyle}
               source={{uri: uiData.airlineIcon}}
             />
-          </Grayscale>
+          </ColorMatrix>
           <View style={Styles.nameAndNumberContainer}>
             <FText
               greyedOut={isGreyedOut}

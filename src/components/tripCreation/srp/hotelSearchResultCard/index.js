@@ -11,17 +11,18 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {ratingsArray} from '../../../trips/hotelPreferenceCard';
 import Button from '../../../../common/components/button';
 import OOPTag from '../../../trips/components/OOPTag/OOPTag';
-import {Grayscale} from 'react-native-color-matrix-image-filters';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
 export const renderHotelImage = ({item}, greyedOut, length) => {
   return (
-    <Grayscale amount={greyedOut ? 1 : 0}>
+    <ColorMatrix matrix={grayImageMatrix(greyedOut)}>
       <FImage
         source={{uri: item}}
         style={Styles.hotelImageStyle(length < 2)}
         defaultSource={require('../../../../assets/images/trips/hotel-image-placeholder.png')}
       />
-    </Grayscale>
+    </ColorMatrix>
   );
 };
 
