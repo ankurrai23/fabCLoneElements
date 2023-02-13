@@ -1,12 +1,12 @@
 import React from 'react';
 
 import FText, {FONT_TYPE} from '../../rn/FText';
-import FTouchableOpacity from '../../rn/FTouchableOpacity';
 
 import {Color} from '../../../utils/color';
 
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export const BUTTON_TYPE = {
   PRIMARY: 'PRIMARY',
@@ -48,13 +48,15 @@ function Button({
   }
 
   return (
-    <FTouchableOpacity
-      style={[Styles.container(type, selected, disabled), style]}
+    <TouchableOpacity
+      activeOpacity={1}
+      // style={[Styles.container(type, selected, disabled), style]}
+      containerStyle={[Styles.container(type, selected, disabled), style]}
       onPress={_onPress}
       disabled={disabled}
       {...props}>
       {renderChildren()}
-    </FTouchableOpacity>
+    </TouchableOpacity>
   );
 }
 
