@@ -89,7 +89,6 @@ function TextField(
       ),
     },
   });
-  console.log('state', state.labelStyle);
 
   useImperativeHandle(ref, () => ({
     focus,
