@@ -12,7 +12,11 @@ export default StyleSheet.create({
     ...cardStyleObj,
     ...shadowObj,
   },
-  hotelImageStyle: {width: 0.7 * Width, height: DP._146, marginRight: DP._1},
+  hotelImageStyle: (fullWidth) => ({
+    width: (fullWidth ? 1 : 0.7) * Width,
+    height: DP._146,
+    marginRight: DP._1,
+  }),
   starContainer: {
     flexDirection: 'row',
     alignItems: 'center',

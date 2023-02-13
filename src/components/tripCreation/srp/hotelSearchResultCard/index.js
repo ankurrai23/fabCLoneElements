@@ -13,12 +13,12 @@ import Button from '../../../../common/components/button';
 import OOPTag from '../../../trips/components/OOPTag/OOPTag';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
 
-export const renderHotelImage = ({item}, greyedOut) => {
+export const renderHotelImage = ({item}, greyedOut, length) => {
   return (
     <Grayscale amount={greyedOut ? 1 : 0}>
       <FImage
         source={{uri: item}}
-        style={Styles.hotelImageStyle}
+        style={Styles.hotelImageStyle(length < 2)}
         defaultSource={require('../../../../assets/images/trips/hotel-image-placeholder.png')}
       />
     </Grayscale>
@@ -33,7 +33,9 @@ export default function HotelSearchResultCard({onCardPress, item}) {
       <View>
         <FlatList
           data={item.hotelImages?.length ? item.hotelImages : ['']}
-          renderItem={(obj) => renderHotelImage(obj, greyedOut)}
+          renderItem={(obj) =>
+            renderHotelImage(obj, greyedOut, item.hotelImages?.length ?? 1)
+          }
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={(e) => `${e}`}
