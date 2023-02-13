@@ -7,7 +7,10 @@ import Styles from './Styles';
 import Utils from '../../../utils/Utils';
 import BottomSheet from './BottomSheet';
 import {Strings} from '../../../utils/strings/index.travelPlus';
-
+import FTouchableOpacity from '../../rn/FTouchableOpacity';
+import Icon from '../../../assets/icons/Icon';
+import {DP} from '../../../utils/Dimen';
+import {Color} from '../../../utils/color/index.travelPlus';
 const ReasonModal = (props) => {
   const [reason, setReason] = useState('');
   const [errors, setErrors] = useState({});
@@ -39,6 +42,10 @@ const ReasonModal = (props) => {
     }
   }
 
+  function onPressClose() {
+    setReason('');
+  }
+
   return (
     <BottomSheet
       visible={props.visible}
@@ -54,6 +61,19 @@ const ReasonModal = (props) => {
         helperText={errors.reason}
         error={!!errors.reason}
         onBlur={validateForm}
+        rightIcon={
+          !!reason && (
+            <FTouchableOpacity
+              onPress={onPressClose}
+              hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+              <Icon.Cross
+                width={DP._16}
+                height={DP._16}
+                stroke={Color.BLUEY_GREY}
+              />
+            </FTouchableOpacity>
+          )
+        }
       />
       <Button
         style={Styles.submitButton}

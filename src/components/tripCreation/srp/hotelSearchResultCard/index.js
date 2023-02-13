@@ -16,7 +16,11 @@ import {Grayscale} from 'react-native-color-matrix-image-filters';
 export const renderHotelImage = ({item}, greyedOut) => {
   return (
     <Grayscale amount={greyedOut ? 1 : 0}>
-      <FImage source={{uri: item}} style={Styles.hotelImageStyle} />
+      <FImage
+        source={{uri: item}}
+        style={Styles.hotelImageStyle}
+        defaultSource={require('../../../../assets/images/trips/hotel-image-placeholder.png')}
+      />
     </Grayscale>
   );
 };
@@ -26,25 +30,23 @@ export default function HotelSearchResultCard({onCardPress, item}) {
 
   return (
     <View style={Styles.container}>
-      {!!item.hotelImages?.length && (
-        <View>
-          <FlatList
-            data={item.hotelImages}
-            renderItem={(obj) => renderHotelImage(obj, greyedOut)}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(e) => `${e}`}
-          />
-          {!!item.rateLabel && (
-            <FText
-              type={FONT_TYPE.MEDIUM}
-              greyedOut={greyedOut}
-              style={Styles.rateType(greyedOut)}>
-              {item.rateLabel}
-            </FText>
-          )}
-        </View>
-      )}
+      <View>
+        <FlatList
+          data={item.hotelImages?.length ? item.hotelImages : ['']}
+          renderItem={(obj) => renderHotelImage(obj, greyedOut)}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(e) => `${e}`}
+        />
+        {!!item.rateLabel && (
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            greyedOut={greyedOut}
+            style={Styles.rateType(greyedOut)}>
+            {item.rateLabel}
+          </FText>
+        )}
+      </View>
       <View style={Styles.subContainer}>
         <View style={Styles.starContainer}>
           {Array(item.starRating)
@@ -100,13 +102,15 @@ export default function HotelSearchResultCard({onCardPress, item}) {
               })}
               <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
             </View>
-            {!!item.colleaguesCount && (
-              <FText style={Styles.ratingsText}>
-                {Strings.your}
-                <FText type={FONT_TYPE.MEDIUM}>{item.colleaguesCount}</FText>
-                {Strings.colleagueAvgRating(item.colleaguesRatingAvg)}
-              </FText>
-            )}
+            <FText style={Styles.ratingsText}>
+              {!!item.colleaguesCount && (
+                <>
+                  {Strings.your}
+                  <FText type={FONT_TYPE.MEDIUM}>{item.colleaguesCount}</FText>
+                  {Strings.colleagueAvgRating(item.colleaguesRatingAvg)}
+                </>
+              )}
+            </FText>
             <View style={Styles.amountContainer}>
               <FText style={Styles.cancellationText}>
                 {item.cancellationText}
