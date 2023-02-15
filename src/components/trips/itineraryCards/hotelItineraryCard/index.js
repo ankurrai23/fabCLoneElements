@@ -45,6 +45,7 @@ const HotelItineraryCard = ({
   remarks,
   modificationCharges,
   cancellationCharges,
+  reduceOpacity: isGreyedOut,
 }) => {
   const sameMonthDates =
     tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
@@ -148,7 +149,6 @@ const HotelItineraryCard = ({
   );
 
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
-  const isGreyedOut = uiData.reduceOpacity;
   const actionsVisible =
     !actionsDisabled &&
     (modifyAction || cancelAction || editAction || removeAction);

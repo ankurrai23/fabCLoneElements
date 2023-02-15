@@ -31,9 +31,9 @@ const FlightDetailCard = ({
   notificationText,
   actionsDisabled,
   cardStyle,
+  reduceOpacity: isGreyedOut,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-  const isGreyedOut = tripDetails.reduceOpacity;
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);

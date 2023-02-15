@@ -65,6 +65,7 @@ const BusDetailCard = ({
   actionDisabled,
   onPhoneNumberClicked,
   notificationText,
+  reduceOpacity: isGreyedOut,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
@@ -115,13 +116,13 @@ const BusDetailCard = ({
       return (
         <>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={Styles.date}>
             {departureDate.date}
           </FText>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
@@ -133,22 +134,22 @@ const BusDetailCard = ({
       return (
         <>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={Styles.date}>
             {departureDate.date}
           </FText>
-          <FText greyedOut={bookingDetails.reduceOpacity} style={Styles.hyphen}>
+          <FText greyedOut={isGreyedOut} style={Styles.hyphen}>
             {' - '}
           </FText>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={Styles.date}>
             {arrivalDate.date}
           </FText>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
@@ -160,28 +161,28 @@ const BusDetailCard = ({
       return (
         <>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={Styles.date}>
             {departureDate.date}
           </FText>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
             }>{`${departureDate.month}'${departureDate.year}`}</FText>
-          <FText greyedOut={bookingDetails.reduceOpacity} style={Styles.hyphen}>
+          <FText greyedOut={isGreyedOut} style={Styles.hyphen}>
             {' - '}
           </FText>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={Styles.date}>
             {arrivalDate.date}
           </FText>
           <FText
-            greyedOut={bookingDetails.reduceOpacity}
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
@@ -213,7 +214,7 @@ const BusDetailCard = ({
             <View style={[Styles.marginTop_12]}>
               <View style={[Styles.flexDirectionRow]}>
                 <FText
-                  greyedOut={bookingDetails.reduceOpacity}
+                  greyedOut={isGreyedOut}
                   style={[
                     Styles.heading,
                     Styles.width_40,
@@ -223,7 +224,7 @@ const BusDetailCard = ({
                   {bookingDetails.departureTime}
                 </FText>
                 <FText
-                  greyedOut={bookingDetails.reduceOpacity}
+                  greyedOut={isGreyedOut}
                   style={[
                     Styles.duration,
                     Styles.width_20,
@@ -232,7 +233,7 @@ const BusDetailCard = ({
                   {bookingDetails.estimateDuration}
                 </FText>
                 <FText
-                  greyedOut={bookingDetails.reduceOpacity}
+                  greyedOut={isGreyedOut}
                   style={[
                     Styles.heading,
                     Styles.width_40,
@@ -247,7 +248,7 @@ const BusDetailCard = ({
                   {(bookingDetails?.sourceLocality ||
                     bookingDetails?.destinationLocality) && (
                     <FText
-                      greyedOut={bookingDetails.reduceOpacity}
+                      greyedOut={isGreyedOut}
                       style={[Styles.detail, Styles.textAlign_left]}
                       numberOfLines={1}>
                       {bookingDetails.sourceLocality}
@@ -255,7 +256,7 @@ const BusDetailCard = ({
                   )}
                   {(bookingDetails?.source || bookingDetails?.destination) && (
                     <FText
-                      greyedOut={bookingDetails.reduceOpacity}
+                      greyedOut={isGreyedOut}
                       style={Styles.detail}
                       numberOfLines={1}>
                       {bookingDetails.source}
@@ -266,7 +267,7 @@ const BusDetailCard = ({
                   {(bookingDetails?.destinationLocality ||
                     bookingDetails?.sourceLocality) && (
                     <FText
-                      greyedOut={bookingDetails.reduceOpacity}
+                      greyedOut={isGreyedOut}
                       style={Styles.detail}
                       numberOfLines={1}>
                       {bookingDetails.destinationLocality}
@@ -274,7 +275,7 @@ const BusDetailCard = ({
                   )}
                   {(bookingDetails?.source || bookingDetails?.destination) && (
                     <FText
-                      greyedOut={bookingDetails.reduceOpacity}
+                      greyedOut={isGreyedOut}
                       style={Styles.detail}
                       numberOfLines={1}>
                       {bookingDetails.destination}
@@ -286,7 +287,7 @@ const BusDetailCard = ({
 
             <View style={Styles.marginTop_12}>
               <FText
-                greyedOut={bookingDetails.reduceOpacity}
+                greyedOut={isGreyedOut}
                 style={Styles.heading}
                 numberOfLines={1}>
                 {bookingDetails?.busName ?? Strings.busNa}
@@ -294,7 +295,7 @@ const BusDetailCard = ({
               {(bookingDetails.busNumber || bookingDetails.pnr) && (
                 <View style={[Styles.flexDirectionRow]}>
                   <FText
-                    greyedOut={bookingDetails.reduceOpacity}
+                    greyedOut={isGreyedOut}
                     style={[
                       Styles.detail,
                       Styles.textAlign_left,
@@ -305,7 +306,7 @@ const BusDetailCard = ({
                   </FText>
 
                   <FText
-                    greyedOut={bookingDetails.reduceOpacity}
+                    greyedOut={isGreyedOut}
                     style={[
                       Styles.detail,
                       Styles.textAlign_right,
@@ -318,7 +319,7 @@ const BusDetailCard = ({
               )}
               {bookingDetails?.busType && (
                 <FText
-                  greyedOut={bookingDetails.reduceOpacity}
+                  greyedOut={isGreyedOut}
                   style={Styles.detail}
                   numberOfLines={1}>
                   {bookingDetails.busType}
@@ -331,7 +332,7 @@ const BusDetailCard = ({
                   <Separator style={Styles.separatorStyle} />
 
                   <FText
-                    greyedOut={bookingDetails.reduceOpacity}
+                    greyedOut={isGreyedOut}
                     numberOfLines={1}
                     style={[
                       Styles.marginTop_12,
@@ -347,11 +348,7 @@ const BusDetailCard = ({
                         <Icon.Person
                           width={DP._16}
                           height={DP._16}
-                          stroke={
-                            bookingDetails.reduceOpacity
-                              ? Color.BLUEY_GREY
-                              : null
-                          }
+                          stroke={isGreyedOut ? Color.BLUEY_GREY : null}
                         />
                       }
                       rightData={detail.seatNo}
@@ -359,7 +356,7 @@ const BusDetailCard = ({
                       style={
                         index === 0 ? Styles.marginTop_12 : Styles.marginTop_8
                       }
-                      greyedOut={bookingDetails.reduceOpacity}
+                      greyedOut={isGreyedOut}
                     />
                   ))}
                 </>
@@ -371,7 +368,7 @@ const BusDetailCard = ({
                 <Separator style={Styles.separatorStyle} />
                 <View style={Styles.marginTop_12}>
                   <FText
-                    greyedOut={bookingDetails.reduceOpacity}
+                    greyedOut={isGreyedOut}
                     numberOfLines={1}
                     style={[
                       Styles.marginBottom_12,
@@ -387,16 +384,12 @@ const BusDetailCard = ({
                         <Icon.Person
                           width={DP._16}
                           height={DP._16}
-                          stroke={
-                            bookingDetails.reduceOpacity
-                              ? Color.BLUEY_GREY
-                              : null
-                          }
+                          stroke={isGreyedOut ? Color.BLUEY_GREY : null}
                         />
                       }
                       rightData={bookingDetails.coordinatorName}
                       leftDefaultData={Strings.name}
-                      greyedOut={bookingDetails.reduceOpacity}
+                      greyedOut={isGreyedOut}
                     />
                   )}
                   {completePhoneNo && (
@@ -405,14 +398,10 @@ const BusDetailCard = ({
                         <Icon.PhoneIcon
                           width={DP._16}
                           height={DP._16}
-                          stroke={
-                            bookingDetails.reduceOpacity
-                              ? Color.BLUEY_GREY
-                              : null
-                          }
+                          stroke={isGreyedOut ? Color.BLUEY_GREY : null}
                         />
                       }
-                      greyedOut={bookingDetails.reduceOpacity}
+                      greyedOut={isGreyedOut}
                       rightData={completePhoneNo}
                       leftDefaultData={Strings.phoneNo}
                       rightDataStyle={Styles.color_blue}

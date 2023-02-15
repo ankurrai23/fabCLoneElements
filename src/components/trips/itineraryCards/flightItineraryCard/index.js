@@ -46,9 +46,9 @@ const FlightItineraryCard = ({
   remarks,
   cancellationCharges,
   modificationCharges,
+  reduceOpacity: isGreyedOut,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
-  const isGreyedOut = uiData.reduceOpacity;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
