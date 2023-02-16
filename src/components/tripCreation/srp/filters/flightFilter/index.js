@@ -8,6 +8,7 @@ import FImage from '../../../../../common/rn/FImage';
 import Checkbox from '../../../../../common/components/checkbox';
 import Separator from '../../../../../common/components/separator';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
+import {isPlatformIos} from '../../../../../utils/Utils';
 
 const MINIMUM_FLIGHT_COUNT = 4;
 
@@ -118,7 +119,7 @@ export const ShowOOP = React.forwardRef(({showOOP}, ref) => {
     <View style={Styles.oopSwitchContainer}>
       <FText style={Styles.showOOPText}>{Strings.showOOPFlights}</FText>
       <Switch
-        trackColor={Styles.switchTrackColor}
+        trackColor={isPlatformIos() ? Styles.switchTrackColor : {}}
         value={!!_showOOP}
         onChange={() => setShowOOP(!_showOOP)}
       />
