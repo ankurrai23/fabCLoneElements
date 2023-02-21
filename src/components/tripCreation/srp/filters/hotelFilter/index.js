@@ -12,7 +12,9 @@ import {ShowOOP} from '../flightFilter';
 import Separator from '../../../../../common/components/separator';
 
 const HotelRating = React.forwardRef(({starRatings}, ref) => {
-  const [state, setState] = useState([...starRatings]);
+  const [state, setState] = useState([
+    ...starRatings.map((item) => ({...item})),
+  ]);
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {

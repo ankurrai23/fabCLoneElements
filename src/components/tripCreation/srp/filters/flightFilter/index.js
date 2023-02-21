@@ -13,7 +13,7 @@ import {isPlatformIos} from '../../../../../utils/Utils';
 const MINIMUM_FLIGHT_COUNT = 4;
 
 const Airlines = React.forwardRef(({airline}, ref) => {
-  const [state, setState] = useState([...airline]);
+  const [state, setState] = useState([...airline.map((item) => ({...item}))]);
   const [allFlights, setAllFlights] = useState(false);
   const airlinesCount = allFlights ? state.length : MINIMUM_FLIGHT_COUNT;
 
@@ -69,7 +69,7 @@ const Airlines = React.forwardRef(({airline}, ref) => {
 });
 
 const Stops = React.forwardRef(({stops}, ref) => {
-  const [state, setState] = useState([...stops]);
+  const [state, setState] = useState([...stops.map((item) => ({...item}))]);
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
