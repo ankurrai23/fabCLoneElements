@@ -1,5 +1,5 @@
 import {ScrollView, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import Styles from './Styles';
 import FTouchableOpacity from '../../../../../common/rn/FTouchableOpacity';
 import FText, {FONT_TYPE} from '../../../../../common/rn/FText';
@@ -10,6 +10,7 @@ import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {dialogBoxStyle} from '../../../../../utils/Utils';
 import DialogBox from '../../../../../common/components/dialogBox';
 import Separator from '../../../../../common/components/separator';
+import FBottomSheet from '../../../../../common/rn/FBottomSheet';
 
 const QuickLink = ({item, onPress}) => {
   return (
@@ -29,12 +30,11 @@ const QuickLinks = ({
   onApply,
   isFilterApplied,
 }) => {
-  const [filterModal, setFilterModal] = useState(false);
+  const fBottomSheetRef = useRef(null);
   const onApplyPress = () => {
-    setFilterModal(false);
+    fBottomSheetRef.current.close();
     onApply();
   };
-  const onClose = () => setFilterModal(false);
   return (
     <>
       <View style={Styles.filterContainer}>
@@ -55,36 +55,34 @@ const QuickLinks = ({
         )}
         <FTouchableOpacity
           style={Styles.filterButton}
-          onPress={() => setFilterModal(true)}>
+          onPress={() => {
+            fBottomSheetRef.current.expand();
+          }}>
           {isFilterApplied && <View style={Styles.filterAppliedDot} />}
           <Icon.Filter stroke={Color.WHITE} />
         </FTouchableOpacity>
       </View>
-      <DialogBox
-        modalVisible={filterModal}
-        onClose={onClose}
-        ContentModal={
-          <>
-            <View style={Styles.titleContainer}>
-              <FText style={Styles.filterText}>{Strings.filter}</FText>
-              <FTouchableOpacity onPress={onClearAll}>
-                <FText style={Styles.clearAllText}>{Strings.clearAll}</FText>
-              </FTouchableOpacity>
-            </View>
-            <Separator style={Styles.separator} />
-            <ScrollView style={dialogBoxStyle(0.6)} bounces={false}>
-              {children}
-            </ScrollView>
-            <Button
-              onPress={onApplyPress}
-              style={Styles.applyButton}
-              textStyle={Styles.applyText}
-              textFont={FONT_TYPE.MEDIUM}>
-              {Strings.apply}
-            </Button>
-          </>
-        }
-      />
+      <FBottomSheet ref={fBottomSheetRef}>
+        <>
+          <View style={Styles.titleContainer}>
+            <FText style={Styles.filterText}>{Strings.filter}</FText>
+            <FTouchableOpacity onPress={onClearAll}>
+              <FText style={Styles.clearAllText}>{Strings.clearAll}</FText>
+            </FTouchableOpacity>
+          </View>
+          <Separator style={Styles.separator} />
+          <ScrollView style={dialogBoxStyle(0.6)} bounces={false}>
+            {children}
+          </ScrollView>
+          <Button
+            onPress={onApplyPress}
+            style={Styles.applyButton}
+            textStyle={Styles.applyText}
+            textFont={FONT_TYPE.MEDIUM}>
+            {Strings.apply}
+          </Button>
+        </>
+      </FBottomSheet>
     </>
   );
 };
