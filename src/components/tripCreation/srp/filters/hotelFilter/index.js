@@ -115,7 +115,6 @@ const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
     sliderRef.current.resetSlider();
     hotelRatingRef.current.clearAll();
     preferredTypeRef.current.clearAll();
-    entitlementRef.current.clearAll();
   };
 
   const onApplyPress = () => {

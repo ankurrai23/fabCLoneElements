@@ -141,7 +141,6 @@ const FlightFilter = ({
   const onClearAll = useCallback(() => {
     stopsRef.current.clearAll();
     airlineRef.current.clearAll();
-    entitlementRef.current.clearAll();
   }, []);
 
   const onApplyPress = () => {
