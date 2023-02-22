@@ -139,16 +139,16 @@ const FlightFilter = ({
   const entitlementRef = useRef();
 
   const onClearAll = useCallback(() => {
-    stopsRef.current.clearAll();
-    airlineRef.current.clearAll();
+    stopsRef.current?.clearAll();
+    airlineRef.current?.clearAll();
   }, []);
 
   const onApplyPress = () => {
     const data = {};
-    if (filterData.stop) {
+    if (filterData.stop?.length) {
       data.stop = stopsRef.current.data;
     }
-    if (filterData.filterAirline) {
+    if (filterData.filterAirline?.length) {
       data.filterAirline = airlineRef.current.data;
     }
     data.showOOP = entitlementRef.current.data;
@@ -162,12 +162,19 @@ const FlightFilter = ({
       isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
       onApply={onApplyPress}>
-      {filterData.stop && <Stops stops={filterData.stop} ref={stopsRef} />}
-      <Separator style={Styles.separator} />
-      {filterData.filterAirline && (
-        <Airlines airline={filterData.filterAirline} ref={airlineRef} />
+      {!!filterData?.stop?.length && (
+        <>
+          <Stops stops={filterData.stop} ref={stopsRef} />
+          <Separator style={Styles.separator} />
+        </>
       )}
-      <Separator style={Styles.separator} />
+
+      {!!filterData?.filterAirline?.length && (
+        <>
+          <Airlines airline={filterData.filterAirline} ref={airlineRef} />
+          <Separator style={Styles.separator} />
+        </>
+      )}
       <ShowOOP showOOP={filterData.showOOP} ref={entitlementRef} />
       <Separator style={Styles.separator} />
     </QuickLinks>
