@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useImperativeHandle} from 'react';
 import Styles from './Styles';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Animated, {
@@ -82,128 +82,152 @@ const Thumb = ({
   );
 };
 
-const Slider = ({
-  minValue,
-  maxValue,
-  minLimit,
-  maxLimit,
-  granularity,
-  onChange,
-}) => {
-  const barWidth = useSharedValue(0);
+const Slider = React.memo(
+  React.forwardRef(
+    ({minValue, maxValue, minLimit, maxLimit, granularity, onChange}, ref) => {
+      const barWidth = useSharedValue(0);
 
-  const valuePerPixel = useDerivedValue(() => {
-    return (maxLimit - minLimit) / barWidth.value;
-  }, [barWidth]);
+      useImperativeHandle(ref, () => ({
+        resetSlider: () => {
+          leftThumbPosition.value = getPositionFromValue(
+            minLimit,
+            minValue,
+            valuePerPixel.value,
+          );
+          leftThumbOffset.value = getPositionFromValue(
+            minLimit,
+            minValue,
+            valuePerPixel.value,
+          );
+          rightThumbPosition.value = getPositionFromValue(
+            minLimit,
+            maxValue,
+            valuePerPixel.value,
+          );
+          rightThumbOffset.value = getPositionFromValue(
+            minLimit,
+            maxValue,
+            valuePerPixel.value,
+          );
+        },
+      }));
 
-  const pixelCountPerGranularity = useDerivedValue(() => {
-    return granularity / valuePerPixel.value;
-  }, [valuePerPixel]);
+      const valuePerPixel = useDerivedValue(() => {
+        return (maxLimit - minLimit) / barWidth.value;
+      }, [barWidth]);
 
-  const leftThumbPosition = useDerivedValue(() => {
-    return getPositionFromValue(minLimit, minValue, valuePerPixel.value);
-  });
+      const pixelCountPerGranularity = useDerivedValue(() => {
+        return granularity / valuePerPixel.value;
+      }, [valuePerPixel]);
 
-  const leftThumbOffset = useDerivedValue(() => {
-    return getPositionFromValue(minLimit, minValue, valuePerPixel.value);
-  });
+      const leftThumbPosition = useDerivedValue(() => {
+        return getPositionFromValue(minLimit, minValue, valuePerPixel.value);
+      });
 
-  const rightThumbOffset = useDerivedValue(() => {
-    return getPositionFromValue(minLimit, maxValue, valuePerPixel.value);
-  });
+      const leftThumbOffset = useDerivedValue(() => {
+        return getPositionFromValue(minLimit, minValue, valuePerPixel.value);
+      });
 
-  const leftThumbLowerLimit = useSharedValue(0);
+      const rightThumbOffset = useDerivedValue(() => {
+        return getPositionFromValue(minLimit, maxValue, valuePerPixel.value);
+      });
 
-  const leftThumbUpperLimit = useDerivedValue(() => {
-    return rightThumbOffset.value - 24;
-  }, [rightThumbOffset]);
+      const leftThumbLowerLimit = useSharedValue(0);
 
-  const rightThumbPosition = useDerivedValue(() => {
-    return getPositionFromValue(minLimit, maxValue, valuePerPixel.value);
-  });
+      const leftThumbUpperLimit = useDerivedValue(() => {
+        return rightThumbOffset.value - 24;
+      }, [rightThumbOffset]);
 
-  const rightThumbLowerLimit = useDerivedValue(() => {
-    return leftThumbOffset.value + 24;
-  }, [leftThumbOffset]);
+      const rightThumbPosition = useDerivedValue(() => {
+        return getPositionFromValue(minLimit, maxValue, valuePerPixel.value);
+      });
 
-  const rightThumbUpperLimit = useDerivedValue(() => {
-    return barWidth.value;
-  }, [barWidth]);
+      const rightThumbLowerLimit = useDerivedValue(() => {
+        return leftThumbOffset.value + 24;
+      }, [leftThumbOffset]);
 
-  const onThumbPositionChange = () => {
-    let initialPosition = getValueFromPosition(
-      leftThumbPosition.value,
-      minLimit,
-      granularity,
-      pixelCountPerGranularity.value,
-    );
-    let finalPosition = getValueFromPosition(
-      rightThumbPosition.value,
-      minLimit,
-      granularity,
-      pixelCountPerGranularity.value,
-    );
-    onChange(initialPosition, finalPosition);
-  };
-  const filledPortionFromLeft = useAnimatedStyle(() => ({
-    width: interpolate(
-      leftThumbPosition.value,
-      [0, rightThumbOffset.value],
-      [0, rightThumbOffset.value],
-      {
-        extrapolateLeft: Extrapolation.CLAMP,
-        extrapolateRight: Extrapolation.CLAMP,
-      },
-    ),
-  }));
+      const rightThumbUpperLimit = useDerivedValue(() => {
+        return barWidth.value;
+      }, [barWidth]);
 
-  const filledPortionFromRight = useAnimatedStyle(() => ({
-    width: interpolate(
-      rightThumbPosition.value,
-      [leftThumbOffset.value, barWidth.value],
-      [leftThumbOffset.value, barWidth.value],
-      {
-        extrapolateLeft: Extrapolation.CLAMP,
-        extrapolateRight: Extrapolation.CLAMP,
-      },
-    ),
-  }));
+      const onThumbPositionChange = () => {
+        let initialPosition = getValueFromPosition(
+          leftThumbPosition.value,
+          minLimit,
+          granularity,
+          pixelCountPerGranularity.value,
+        );
+        let finalPosition = getValueFromPosition(
+          rightThumbPosition.value,
+          minLimit,
+          granularity,
+          pixelCountPerGranularity.value,
+        );
+        onChange(initialPosition, finalPosition);
+      };
+      const filledPortionFromLeft = useAnimatedStyle(() => ({
+        width: interpolate(
+          leftThumbPosition.value,
+          [0, rightThumbOffset.value],
+          [0, rightThumbOffset.value],
+          {
+            extrapolateLeft: Extrapolation.CLAMP,
+            extrapolateRight: Extrapolation.CLAMP,
+          },
+        ),
+      }));
 
-  return (
-    <View style={Styles.container}>
-      <View
-        style={Styles.unfilledBar}
-        onLayout={(e) => {
-          barWidth.value = e.nativeEvent.layout.width - 24;
-          rightThumbOffset.value = e.nativeEvent.layout.width - 12;
-        }}
-      />
-      <Animated.View
-        style={[
-          Styles.filledBarStyle,
-          {backgroundColor: Color.TWILIGHT_BLUE},
-          filledPortionFromRight,
-        ]}
-      />
-      <Animated.View style={[Styles.filledBarStyle, filledPortionFromLeft]} />
-      <Thumb
-        style={Styles.leftThumbStyle}
-        currentPosition={leftThumbPosition}
-        lowerLimit={leftThumbLowerLimit}
-        upperLimit={leftThumbUpperLimit}
-        finalOffset={leftThumbOffset}
-        onChange={onThumbPositionChange}
-      />
-      <Thumb
-        style={Styles.rightThumbStyle}
-        lowerLimit={rightThumbLowerLimit}
-        currentPosition={rightThumbPosition}
-        upperLimit={rightThumbUpperLimit}
-        finalOffset={rightThumbOffset}
-        onChange={onThumbPositionChange}
-      />
-    </View>
-  );
-};
+      const filledPortionFromRight = useAnimatedStyle(() => ({
+        width: interpolate(
+          rightThumbPosition.value,
+          [leftThumbOffset.value, barWidth.value],
+          [leftThumbOffset.value, barWidth.value],
+          {
+            extrapolateLeft: Extrapolation.CLAMP,
+            extrapolateRight: Extrapolation.CLAMP,
+          },
+        ),
+      }));
 
-export default React.memo(Slider);
+      return (
+        <View style={Styles.container}>
+          <View
+            style={Styles.unfilledBar}
+            onLayout={(e) => {
+              barWidth.value = e.nativeEvent.layout.width - 24;
+              rightThumbOffset.value = e.nativeEvent.layout.width - 12;
+            }}
+          />
+          <Animated.View
+            style={[
+              Styles.filledBarStyle,
+              {backgroundColor: Color.TWILIGHT_BLUE},
+              filledPortionFromRight,
+            ]}
+          />
+          <Animated.View
+            style={[Styles.filledBarStyle, filledPortionFromLeft]}
+          />
+          <Thumb
+            style={Styles.leftThumbStyle}
+            currentPosition={leftThumbPosition}
+            lowerLimit={leftThumbLowerLimit}
+            upperLimit={leftThumbUpperLimit}
+            finalOffset={leftThumbOffset}
+            onChange={onThumbPositionChange}
+          />
+          <Thumb
+            style={Styles.rightThumbStyle}
+            lowerLimit={rightThumbLowerLimit}
+            currentPosition={rightThumbPosition}
+            upperLimit={rightThumbUpperLimit}
+            finalOffset={rightThumbOffset}
+            onChange={onThumbPositionChange}
+          />
+        </View>
+      );
+    },
+  ),
+);
+
+export default Slider;

@@ -14,11 +14,12 @@ const RangeSlider = React.forwardRef(
   ) => {
     const [value, setValue] = useState({min: minValue, max: maxValue});
     const sliderMoved = useRef(false);
-
+    const sliderRef = useRef(null);
     useImperativeHandle(ref, () => ({
       resetSlider: () => {
         sliderMoved.current = true;
         setValue((prevState) => ({...prevState, min: minLimit, max: maxLimit}));
+        sliderRef.current.resetSlider();
       },
       data: {
         minLimit,
@@ -44,11 +45,12 @@ const RangeSlider = React.forwardRef(
           </FText>
         </View>
         <Slider
+          ref={sliderRef}
           minLimit={minLimit}
           maxLimit={maxLimit}
           granularity={granularity}
-          minValue={value.min}
-          maxValue={value.max}
+          minValue={minValue}
+          maxValue={maxValue}
           onChange={callback}
         />
       </View>
