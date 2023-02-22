@@ -12,6 +12,16 @@ const RangeSlider = React.forwardRef(
     {minLimit, maxLimit, granularity, minValue, maxValue, valueFormatter},
     ref,
   ) => {
+    if (minValue < minLimit) {
+      console.log('Incorrect min value received', minValue, minLimit);
+    }
+    if (maxValue > maxLimit) {
+      console.log('Incorrect max value received', maxValue, maxLimit);
+    }
+    if (granularity > maxValue - minValue || !granularity) {
+      console.log('Incorrect granularity received', granularity);
+    }
+
     const [value, setValue] = useState({min: minValue, max: maxValue});
     const sliderMoved = useRef(false);
     const sliderRef = useRef(null);
@@ -24,6 +34,7 @@ const RangeSlider = React.forwardRef(
       data: {
         minLimit,
         maxLimit,
+        granularity,
         minValue: value.min,
         maxValue: value.max,
         changed: sliderMoved.current,
