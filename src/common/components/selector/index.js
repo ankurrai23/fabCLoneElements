@@ -1,28 +1,28 @@
 import {View, FlatList} from 'react-native';
 import React from 'react';
-import DialogBox from '../dialogBox';
 import FText from '../../rn/FText';
 import Icon from '../../../assets/icons/Icon';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import Separator from '../separator';
 import Styles from './Styles';
 import {dialogBoxStyle} from '../../../utils/Utils';
+import FBottomSheet from '../../rn/FBottomSheet';
 
-const Selector = ({
-  title,
-  data,
-  multiSelect,
-  keySelected,
-  onItemSelect,
-  visible,
-  onClose,
-  containerStyle,
-  itemStyle,
-}) => {
-  return (
-    <DialogBox
-      modalVisible={visible}
-      ContentModal={
+const Selector = React.forwardRef(
+  (
+    {
+      title,
+      data,
+      multiSelect,
+      keySelected,
+      onItemSelect,
+      containerStyle,
+      itemStyle,
+    },
+    ref,
+  ) => {
+    return (
+      <FBottomSheet ref={ref}>
         <View style={[Styles.container, containerStyle]}>
           <FText style={Styles.titleText}>{title}</FText>
           <FlatList
@@ -45,10 +45,9 @@ const Selector = ({
             bounces={false}
           />
         </View>
-      }
-      onClose={onClose}
-    />
-  );
-};
+      </FBottomSheet>
+    );
+  },
+);
 
 export default Selector;

@@ -15,7 +15,7 @@ const CustomBackdrop = ({animatedIndex, style, onBackdropPress}) => {
     opacity: interpolate(
       animatedIndex.value,
       [-1, 0],
-      [0, 1],
+      [0, 0.8],
       Extrapolate.CLAMP,
     ),
     zIndex: interpolate(
@@ -30,7 +30,7 @@ const CustomBackdrop = ({animatedIndex, style, onBackdropPress}) => {
     () => [
       style,
       {
-        backgroundColor: 'red',
+        backgroundColor: '#000000',
       },
       containerAnimatedStyle,
     ],
@@ -62,7 +62,7 @@ const FBottomSheet = React.forwardRef(({children}, ref) => {
     }),
     [],
   );
-  const snapPoints = useMemo(() => ['60%'], []);
+  const snapPoints = useMemo(() => ['70%'], []);
   return (
     <Portal>
       <BottomSheet
