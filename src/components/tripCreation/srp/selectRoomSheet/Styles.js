@@ -39,7 +39,8 @@ export default StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     paddingHorizontal: DP._24,
-    paddingVertical: DP._16,
+    paddingTop: DP._16,
+    paddingBottom: DP._24,
   },
   separator: {
     marginHorizontal: DP._24,

@@ -59,7 +59,7 @@ const MonthFilter = ({data, onPressCancel, onPressApply}) => {
         data={sheetData}
         renderItem={renderItems}
         showsVerticalScrollIndicator={false}
-        style={{...dialogBoxStyle}}
+        style={{...dialogBoxStyle()}}
         keyExtractor={(item, index) => `${item.name}`}
       />
       <View style={Styles.buttonView}>

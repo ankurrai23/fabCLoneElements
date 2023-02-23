@@ -12,7 +12,11 @@ export default StyleSheet.create({
     ...cardStyleObj,
     ...shadowObj,
   },
-  hotelImageStyle: {width: 0.7 * Width, height: DP._146, marginRight: DP._1},
+  hotelImageStyle: (fullWidth) => ({
+    width: (fullWidth ? 1 : 0.7) * Width,
+    height: DP._146,
+    marginRight: DP._1,
+  }),
   starContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -23,16 +27,16 @@ export default StyleSheet.create({
     flexGrow: 1,
     color: Color.TWILIGHT_BLUE,
   },
-  preferenceText: {
+  preferenceText: (greyedOut) => ({
     fontSize: DP._10,
     color: Color.TWILIGHT_BLUE,
-    backgroundColor: Color.LINK_WATER,
+    backgroundColor: greyedOut ? Color.GREY_8 : Color.LINK_WATER,
     paddingVertical: DP._4,
     paddingHorizontal: DP._8,
     overflow: 'hidden',
     borderRadius: DP._10,
-  },
-  rateType: {
+  }),
+  rateType: (greyedOut) => ({
     position: 'absolute',
     fontSize: DP._10,
     color: Color.DARK_SEA_FOAM,
@@ -43,7 +47,9 @@ export default StyleSheet.create({
     overflow: 'hidden',
     top: DP._8,
     left: DP._8,
-  },
+    borderWidth: greyedOut ? DP._1 : 0,
+    borderColor: Color.WHITE_2,
+  }),
   hotelName: {
     fontSize: DP._12,
     lineHeight: DP._14,
@@ -118,5 +124,16 @@ export default StyleSheet.create({
   },
   alignFlexEnd: {
     alignItems: 'flex-end',
+  },
+  soldOutContainer: {
+    backgroundColor: Color.RED_3,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: DP._8,
+  },
+  soldOutText: {
+    marginLeft: DP._4,
+    lineHeight: DP._16,
+    color: Color.PASTEL_RED,
   },
 });

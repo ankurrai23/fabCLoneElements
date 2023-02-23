@@ -71,4 +71,17 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.DODGER_BLUE,
   },
+  separator: {
+    marginHorizontal: DP._24,
+    marginBottom: DP._24,
+  },
+  switchTrackColor: {true: Color.DODGER_BLUE},
+  showOOPText: {fontSize: DP._14, color: Color.GREY_PURPLE},
+  oopSwitchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: DP._24,
+    paddingHorizontal: DP._24,
+    justifyContent: 'space-between',
+  },
 });

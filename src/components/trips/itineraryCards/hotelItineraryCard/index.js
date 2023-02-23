@@ -45,6 +45,7 @@ const HotelItineraryCard = ({
   remarks,
   modificationCharges,
   cancellationCharges,
+  reduceOpacity: isGreyedOut,
 }) => {
   const sameMonthDates =
     tripRequest?.checkIn?.month === tripRequest?.checkOut?.month;
@@ -142,6 +143,7 @@ const HotelItineraryCard = ({
 
   const renderMonthYear = (month, year) => (
     <FText
+      greyedOut={isGreyedOut}
       type={FONT_TYPE.MEDIUM}
       style={Styles.month}>{` ${month}'${year}`}</FText>
   );
@@ -181,30 +183,43 @@ const HotelItineraryCard = ({
         )}
       </View>
       <View style={Styles.container}>
-        <FTouchableOpacity
-          activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
-          style={Styles.card(uiData.reduceOpacity)}
-          onPress={onCardPress}>
+        <FTouchableOpacity onPress={onCardPress}>
           <View style={Styles.dateAndStatusContainer}>
             {sameMonthDates ? (
               <View style={Styles.datesContainer}>
-                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  type={FONT_TYPE.MEDIUM}
+                  style={Styles.date}>
                   {uiData.checkIn.date}
                 </FText>
-                <FText style={Styles.hyphen}>{'-'}</FText>
-                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                <FText greyedOut={isGreyedOut} style={Styles.hyphen}>
+                  {'-'}
+                </FText>
+                <FText
+                  greyedOut={isGreyedOut}
+                  type={FONT_TYPE.MEDIUM}
+                  style={Styles.date}>
                   {uiData.checkOut.date}
                 </FText>
                 {renderMonthYear(uiData.checkIn.month, uiData.checkIn.year)}
               </View>
             ) : (
               <View style={Styles.datesContainer}>
-                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  type={FONT_TYPE.MEDIUM}
+                  style={Styles.date}>
                   {uiData.checkIn.date}
                 </FText>
                 {renderMonthYear(uiData.checkIn.month, uiData.checkIn.year)}
-                <FText style={Styles.hyphen}>{' - '}</FText>
-                <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+                <FText greyedOut={isGreyedOut} style={Styles.hyphen}>
+                  {' - '}
+                </FText>
+                <FText
+                  greyedOut={isGreyedOut}
+                  type={FONT_TYPE.MEDIUM}
+                  style={Styles.date}>
                   {uiData.checkOut.date}
                 </FText>
                 {renderMonthYear(uiData.checkOut.month, uiData.checkOut.year)}
@@ -231,22 +246,28 @@ const HotelItineraryCard = ({
                 <Icon.ChevronRight
                   width={DP._18}
                   height={DP._18}
-                  stroke={Color.BATTLESHIP_GREY_TWO}
+                  stroke={Color.GREY_PURPLE}
                 />
               )
             )}
           </View>
           <View>
-            <FText style={Styles.hotelName}>{uiData.title}</FText>
-            <FText style={Styles.hotelLocation}>
+            <FText greyedOut={isGreyedOut} style={Styles.hotelName}>
+              {uiData.title}
+            </FText>
+            <FText greyedOut={isGreyedOut} style={Styles.hotelLocation}>
               {uiData.addressLine ?? uiData.address ?? uiData.location}
             </FText>
             {!!uiData.checkInTime && (
               <View style={Styles.checkInContainer}>
-                <FText style={Styles.checkIn(Color.GREY_PURPLE)}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.checkIn(Color.GREY_PURPLE)}>
                   {Strings.checkInTime}
                 </FText>
-                <FText style={Styles.checkIn(Color.DARK)}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.checkIn(Color.DARK)}>
                   {uiData.checkInTime}
                 </FText>
               </View>
@@ -255,12 +276,14 @@ const HotelItineraryCard = ({
               <View style={Styles.roomTypeAndPriceContainer}>
                 <View style={Styles.ratePlanContainer}>
                   <FText
+                    greyedOut={isGreyedOut}
                     style={Styles.roomType}
                     numberOfLines={1}
                     ellipsizeMode={'tail'}>
                     {uiData.roomTypeName}
                   </FText>
                   <FText
+                    greyedOut={isGreyedOut}
                     style={Styles.mealType}
                     numberOfLines={1}
                     ellipsizeMode={'tail'}>
@@ -270,14 +293,17 @@ const HotelItineraryCard = ({
                 {uiData.isPriceFetched ? (
                   <View style={Styles.priceContainer}>
                     <View style={Styles.priceAndGstContainer}>
-                      <FText type={FONT_TYPE.MEDIUM} style={Styles.price}>
+                      <FText
+                        greyedOut={isGreyedOut}
+                        type={FONT_TYPE.MEDIUM}
+                        style={Styles.price}>
                         {uiData.price}
                       </FText>
-                      <FText style={Styles.priceDetail}>
+                      <FText greyedOut={isGreyedOut} style={Styles.priceDetail}>
                         {uiData.gstIncluded ? Strings.inclGst : Strings.exGst}
                       </FText>
                     </View>
-                    {uiData.isOutOfPolicy && <OOPTag />}
+                    {uiData.isOutOfPolicy && <OOPTag greyedOut={isGreyedOut} />}
                   </View>
                 ) : (
                   <PriceLoader />
@@ -289,10 +315,13 @@ const HotelItineraryCard = ({
               <>
                 <Separator style={Styles.separatorStyle} />
                 <View style={Styles.flexRowAndAlignCenter}>
-                  <FText style={Styles.bookingIdText}>
+                  <FText greyedOut={isGreyedOut} style={Styles.bookingIdText}>
                     {Strings.bookingId2}
                   </FText>
-                  <FText style={Styles.bookingId} type={FONT_TYPE.MEDIUM}>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={Styles.bookingId}
+                    type={FONT_TYPE.MEDIUM}>
                     {uiData.bookingId}
                   </FText>
                 </View>
@@ -303,9 +332,12 @@ const HotelItineraryCard = ({
 
         {!!modificationCharges && (
           <>
-            <FText style={Styles.modificationChargeText}>
+            <FText
+              greyedOut={isGreyedOut}
+              style={Styles.modificationChargeText}>
               {Strings.includeModificationCharge}
               <FText
+                greyedOut={isGreyedOut}
                 type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
             </FText>
           </>

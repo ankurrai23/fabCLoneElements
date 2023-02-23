@@ -25,6 +25,7 @@ const DetailRow = ({
   leftDataStyle,
   onClickRightData,
   onClickLeftData,
+  greyedOut,
 }) => {
   return (
     <View style={[Styles.flexDirectionRow, style]}>
@@ -33,6 +34,7 @@ const DetailRow = ({
         onPress={onClickLeftData}>
         {dataIcon}
         <FText
+          greyedOut={greyedOut}
           style={[Styles.detailLableStyle, Styles.lineHeight_16, leftDataStyle]}
           numberOfLines={1}>
           {leftData ?? leftDefaultData}
@@ -40,6 +42,7 @@ const DetailRow = ({
       </FTouchableOpacity>
       <FTouchableOpacity onPress={onClickRightData} style={Styles.width_48}>
         <FText
+          greyedOut={greyedOut}
           style={[
             Styles.fontSize_12,
             Styles.textAlign_right,
@@ -62,6 +65,7 @@ const TrainDetailCard = ({
   actions,
   actionDisabled,
   notificationText,
+  reduceOpacity: isGreyedOut,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
@@ -112,10 +116,14 @@ const TrainDetailCard = ({
     if (depArrMonthSame && depArrDateSame) {
       return (
         <>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}
+            style={Styles.date}>
             {departureDate.date}
           </FText>
           <FText
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
@@ -126,14 +134,23 @@ const TrainDetailCard = ({
     if (depArrMonthSame && !depArrDateSame) {
       return (
         <>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}
+            style={Styles.date}>
             {departureDate.date}
           </FText>
-          <FText style={Styles.hyphen}>{' - '}</FText>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+          <FText greyedOut={isGreyedOut} style={Styles.hyphen}>
+            {' - '}
+          </FText>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}
+            style={Styles.date}>
             {arrivalDate.date}
           </FText>
           <FText
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
@@ -144,19 +161,29 @@ const TrainDetailCard = ({
     if (!depArrMonthSame) {
       return (
         <>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}
+            style={Styles.date}>
             {departureDate.date}
           </FText>
           <FText
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
             }>{`${departureDate.month}'${departureDate.year}`}</FText>
-          <FText style={Styles.hyphen}>{' - '}</FText>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+          <FText greyedOut={isGreyedOut} style={Styles.hyphen}>
+            {' - '}
+          </FText>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}
+            style={Styles.date}>
             {arrivalDate.date}
           </FText>
           <FText
+            greyedOut={isGreyedOut}
             type={FONT_TYPE.MEDIUM}
             style={
               Styles.headerMonth
@@ -170,10 +197,7 @@ const TrainDetailCard = ({
       {!!notificationText && <ModificationAlertBox msg={notificationText} />}
       <View style={Styles.flexRow}>
         <View style={Styles.container}>
-          <FTouchableOpacity
-            activeOpacity={bookingDetails.reduceOpacity ? 0.6 : 1}
-            style={Styles.card(bookingDetails.reduceOpacity)}
-            onPress={onCardPress}>
+          <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
             <View style={[Styles.flexDirectionRow, Styles.baseline]}>
               <View style={Styles.flexDirectionRow}>
                 {renderDate(
@@ -191,6 +215,7 @@ const TrainDetailCard = ({
             <View style={[Styles.marginTop_12]}>
               <View style={[Styles.flexDirectionRow]}>
                 <FText
+                  greyedOut={isGreyedOut}
                   style={[
                     Styles.heading,
                     Styles.width_40,
@@ -200,6 +225,7 @@ const TrainDetailCard = ({
                   {bookingDetails.departureTime}
                 </FText>
                 <FText
+                  greyedOut={isGreyedOut}
                   style={[
                     Styles.duration,
                     Styles.width_20,
@@ -208,6 +234,7 @@ const TrainDetailCard = ({
                   {bookingDetails.estimateDuration}
                 </FText>
                 <FText
+                  greyedOut={isGreyedOut}
                   style={[
                     Styles.heading,
                     Styles.width_40,
@@ -221,12 +248,16 @@ const TrainDetailCard = ({
                 <View style={Styles.width_40}>
                   {(bookingDetails?.departureTime ||
                     bookingDetails?.arrivalTime) && (
-                    <FText style={Styles.detail} numberOfLines={1}>
+                    <FText
+                      greyedOut={isGreyedOut}
+                      style={Styles.detail}
+                      numberOfLines={1}>
                       {bookingDetails.sourceStationCode}
                     </FText>
                   )}
                   {(bookingDetails?.source || bookingDetails?.destination) && (
                     <FText
+                      greyedOut={isGreyedOut}
                       style={[Styles.detail, Styles.textAlign_left]}
                       numberOfLines={1}>
                       {bookingDetails.source}
@@ -234,7 +265,10 @@ const TrainDetailCard = ({
                   )}
                   {(bookingDetails?.sourcePlatform ||
                     bookingDetails?.destinationPlatform) && (
-                    <FText style={Styles.detail} numberOfLines={1}>
+                    <FText
+                      greyedOut={isGreyedOut}
+                      style={Styles.detail}
+                      numberOfLines={1}>
                       {Strings.platform} {bookingDetails.sourcePlatform}
                     </FText>
                   )}
@@ -242,18 +276,27 @@ const TrainDetailCard = ({
                 <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
                   {(bookingDetails?.arrivalTime ||
                     bookingDetails?.departureTime) && (
-                    <FText style={Styles.detail} numberOfLines={1}>
+                    <FText
+                      greyedOut={isGreyedOut}
+                      style={Styles.detail}
+                      numberOfLines={1}>
                       {bookingDetails.destinationStationCode}
                     </FText>
                   )}
                   {bookingDetails?.destination && (
-                    <FText style={Styles.detail} numberOfLines={1}>
+                    <FText
+                      greyedOut={isGreyedOut}
+                      style={Styles.detail}
+                      numberOfLines={1}>
                       {bookingDetails.destination}
                     </FText>
                   )}
                   {(bookingDetails?.sourcePlatform ||
                     bookingDetails?.destinationPlatform) && (
-                    <FText style={Styles.detail} numberOfLines={1}>
+                    <FText
+                      greyedOut={isGreyedOut}
+                      style={Styles.detail}
+                      numberOfLines={1}>
                       {Strings.platform} {bookingDetails.destinationPlatform}
                     </FText>
                   )}
@@ -262,19 +305,28 @@ const TrainDetailCard = ({
             </View>
 
             <View style={Styles.marginTop_12}>
-              <FText style={Styles.heading} numberOfLines={1}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.heading}
+                numberOfLines={1}>
                 {formatTrainNameNo(
                   bookingDetails.trainName,
                   bookingDetails.trainNumber,
                 )}
               </FText>
               {!!bookingDetails?.pnr && (
-                <FText style={Styles.detail} numberOfLines={1}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.detail}
+                  numberOfLines={1}>
                   {Strings.pnr}: {bookingDetails.pnr}
                 </FText>
               )}
               {!!bookingDetails?.trainClass && (
-                <FText style={Styles.detail} numberOfLines={1}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.detail}
+                  numberOfLines={1}>
                   {bookingDetails.trainClass}
                 </FText>
               )}
@@ -285,6 +337,7 @@ const TrainDetailCard = ({
                   <Separator style={Styles.sepratorStyle} />
 
                   <FText
+                    greyedOut={isGreyedOut}
                     numberOfLines={1}
                     style={[
                       Styles.marginTop_12,
@@ -296,7 +349,14 @@ const TrainDetailCard = ({
                   </FText>
                   {bookingDetails.travellerDetails.map((detail, index) => (
                     <DetailRow
-                      dataIcon={<Icon.Person width={DP._16} height={DP._16} />}
+                      dataIcon={
+                        <Icon.Person
+                          width={DP._16}
+                          height={DP._16}
+                          stroke={isGreyedOut ? Color.BLUEY_GREY : null}
+                        />
+                      }
+                      greyedOut={isGreyedOut}
                       rightData={detail.seatNo}
                       leftData={detail.travellerName}
                       style={

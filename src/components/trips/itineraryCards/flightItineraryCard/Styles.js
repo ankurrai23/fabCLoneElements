@@ -67,12 +67,11 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'center'},
-  card: (reduceOpacity) => ({
+  card: {
     paddingHorizontal: DP._16,
     paddingTop: DP._12,
     paddingBottom: DP._8,
-    opacity: reduceOpacity ? 0.6 : 1,
-  }),
+  },
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },

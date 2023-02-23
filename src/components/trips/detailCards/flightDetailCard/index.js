@@ -15,6 +15,8 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import FImage from '../../../../common/rn/FImage';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
 const FlightDetailCard = ({
   title,
@@ -29,9 +31,9 @@ const FlightDetailCard = ({
   notificationText,
   actionsDisabled,
   cardStyle,
+  reduceOpacity: isGreyedOut,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-
   const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
@@ -70,22 +72,26 @@ const FlightDetailCard = ({
   return (
     <View style={style}>
       {title && (
-        <FText type={FONT_TYPE.MEDIUM} style={Styles.heading}>
+        <FText
+          greyedOut={isGreyedOut}
+          type={FONT_TYPE.MEDIUM}
+          style={Styles.heading}>
           {title}
         </FText>
       )}
       {!!notificationText && <ModificationAlertBox msg={notificationText} />}
       <View style={[Styles.container, cardStyle]}>
-        <FTouchableOpacity
-          activeOpacity={tripDetails.reduceOpacity ? 0.6 : 1}
-          style={Styles.card(tripDetails.reduceOpacity)}
-          onPress={onCardPress}>
+        <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
           <View style={[Styles.flexDirectionRow, Styles.flexRowAndAlignCenter]}>
             <View style={Styles.flexDirectionRow}>
-              <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+              <FText
+                greyedOut={isGreyedOut}
+                type={FONT_TYPE.MEDIUM}
+                style={Styles.date}>
                 {tripDetails.date}
               </FText>
               <FText
+                greyedOut={isGreyedOut}
                 type={FONT_TYPE.MEDIUM}
                 style={
                   Styles.headerMonth
@@ -99,82 +105,103 @@ const FlightDetailCard = ({
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_8]}>
             <View style={Styles.flexRowAndAlignCenter}>
-              <FImage
-                style={Styles.airlineIcon}
-                source={{uri: tripDetails.airlineIcon}}
-              />
+              <ColorMatrix matrix={grayImageMatrix(isGreyedOut)}>
+                <FImage
+                  style={Styles.airlineIcon}
+                  source={{uri: tripDetails.airlineIcon}}
+                />
+              </ColorMatrix>
               <View style={{marginLeft: DP._8}}>
-                <FText>{tripDetails.airline}</FText>
-                <FText style={Styles.airlineCode}>
+                <FText greyedOut={isGreyedOut}>{tripDetails.airline}</FText>
+                <FText greyedOut={isGreyedOut} style={Styles.airlineCode}>
                   {`${
                     tripDetails.airlineCode ? `${tripDetails.airlineCode}-` : ''
                   }${tripDetails.flightNumber}`}
                 </FText>
               </View>
             </View>
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.priceStyle}>
+            <FText
+              greyedOut={isGreyedOut}
+              type={FONT_TYPE.MEDIUM}
+              style={Styles.priceStyle}>
               {tripDetails.price}
             </FText>
           </View>
           <View
             style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_12]}>
-            <FText style={Styles.time}>{tripDetails.departureTime}</FText>
+            <FText greyedOut={isGreyedOut} style={Styles.time}>
+              {tripDetails.departureTime}
+            </FText>
             <Icon.Aeroplane
               width={DP._18}
               height={DP._18}
               fill={Color.LIGHT_BLUEY_GREY}
               style={Styles.airplane}
             />
-            <FText style={Styles.time}>{tripDetails.arrivalTime}</FText>
+            <FText greyedOut={isGreyedOut} style={Styles.time}>
+              {tripDetails.arrivalTime}
+            </FText>
           </View>
           <View style={[Styles.flexRowAndJustifySpaceBetween]}>
-            <FText style={Styles.portName}>
+            <FText greyedOut={isGreyedOut} style={Styles.portName}>
               {tripDetails.sourceAirportCode}
             </FText>
             <View style={Styles.durationAndStopsContainer}>
-              <FText style={Styles.duration} numberOfLines={1}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.duration}
+                numberOfLines={1}>
                 {tripDetails.totalDuration}
               </FText>
               <View style={Styles.dot_two} />
               <FText
+                greyedOut={isGreyedOut}
                 style={Styles.stoppage}
                 numberOfLines={1}
                 ellipsizeMode={'tail'}>
                 {tripDetails.stop}
               </FText>
             </View>
-            <FText style={Styles.portName}>
+            <FText greyedOut={isGreyedOut} style={Styles.portName}>
               {tripDetails.destinationAirportCode}
             </FText>
           </View>
           <View style={Styles.flexRowAndJustifySpaceBetween}>
             {!!tripDetails.sourceAirportTerminal && (
-              <FText style={Styles.terminal}>
+              <FText greyedOut={isGreyedOut} style={Styles.terminal}>
                 {tripDetails.sourceAirportTerminal}
               </FText>
             )}
             {!!tripDetails.destinationAirportTerminal && (
-              <FText style={Styles.terminal}>
+              <FText greyedOut={isGreyedOut} style={Styles.terminal}>
                 {tripDetails.destinationAirportTerminal}
               </FText>
             )}
           </View>
         </FTouchableOpacity>
         <Separator style={Styles.actionsSeperator} />
-        <FText style={Styles.bookingIdTitle(tripDetails.reduceOpacity)}>
+        <FText
+          greyedOut={isGreyedOut}
+          style={Styles.bookingIdTitle(tripDetails.reduceOpacity)}>
           {Strings.pnr}
           {': '}
-          <FText type={FONT_TYPE.MEDIUM}>{tripDetails.pnr}</FText>
+          <FText greyedOut={isGreyedOut} type={FONT_TYPE.MEDIUM}>
+            {tripDetails.pnr}
+          </FText>
         </FText>
         {!!tripDetails?.travelersInfo?.length && (
           <>
             <Separator style={Styles.actionsSeperator} />
             <View style={Styles.travelerDetailContainer}>
               <View style={Styles.flexDirectionRow}>
-                <FText style={Styles.travelerDetailStyle}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.travelerDetailStyle}>
                   {Strings.travelerDetails}
                 </FText>
-                <FText style={Styles.travelerDetailStyle}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.travelerDetailStyle}>
                   {Strings.ticketNumber}
                 </FText>
               </View>
@@ -183,11 +210,18 @@ const FlightDetailCard = ({
                 <View style={Styles.flexDirectionRow}>
                   <View style={Styles.flexRow}>
                     <Icon.Person />
-                    <FText key={index} style={Styles.travelerNameStyle}>
+                    <FText
+                      greyedOut={isGreyedOut}
+                      key={index}
+                      style={Styles.travelerNameStyle}>
                       {item.name}
                     </FText>
                   </View>
-                  <FText style={Styles.travelerNameStyle}>{item.seat}</FText>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={Styles.travelerNameStyle}>
+                    {item.seat}
+                  </FText>
                 </View>
               ))}
             </View>
@@ -201,6 +235,7 @@ const FlightDetailCard = ({
               onContactSupportPress={onContactSupportPress}
               onClose={onClose}
               style={Styles.contactSupport}
+              isGreyedOut={isGreyedOut}
             />
           </>
         )}

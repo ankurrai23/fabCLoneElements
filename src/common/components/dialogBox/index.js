@@ -24,7 +24,7 @@ const DialogBox = ({modalVisible, onClose, ContentModal}) => {
 
   const pan = useRef(new Animated.ValueXY()).current;
 
-  let [isAnimating, setIsAnimating] = useState(false);
+  // let [isAnimating, setIsAnimating] = useState(false);
 
   let animatedValueX = 0;
 
@@ -35,13 +35,7 @@ const DialogBox = ({modalVisible, onClose, ContentModal}) => {
       onStartShouldSetPanResponder: () => false,
       onStartShouldSetPanResponderCapture: () => false,
       onMoveShouldSetPanResponder: (evt, gestureState) => {
-        if (isAnimating) {
-          return false;
-        }
-        if (gestureState.dy > 22) {
-          return true;
-        }
-        return false;
+        return gestureState.dy > 22;
       },
       onPanResponderGrant: () => {
         pan.setOffset({
@@ -58,41 +52,41 @@ const DialogBox = ({modalVisible, onClose, ContentModal}) => {
       onPanResponderRelease: (evt, gestureState) => {
         if (gestureState.dy > 0 && gestureState.vy > 0) {
           if (gestureState.vy <= -0.7 || gestureState.dy <= -100) {
-            setIsAnimating(true);
+            // setIsAnimating(true);
             Animated.timing(pan, {
               toValue: {x: 0, y: -height},
               ...TIMING,
               useNativeDriver: true,
             }).start(() => {
-              setIsAnimating(false);
+              // setIsAnimating(false);
               onClose();
             });
           } else if (gestureState.vy >= 0.5 || gestureState.dy >= 100) {
-            setIsAnimating(true);
+            // setIsAnimating(true);
             Animated.timing(pan, {
               toValue: {x: 0, y: height},
               ...TIMING,
               useNativeDriver: true,
             }).start(() => {
-              setIsAnimating(false);
+              // setIsAnimating(false);
               onClose();
             });
           } else {
-            setIsAnimating(true);
+            // setIsAnimating(true);
             Animated.spring(pan, {
               toValue: 0,
               useNativeDriver: true,
             }).start(() => {
-              setIsAnimating(false);
+              // setIsAnimating(false);
             });
           }
         } else {
-          setIsAnimating(true);
+          // setIsAnimating(true);
           Animated.spring(pan, {
             toValue: 0,
             useNativeDriver: true,
           }).start(() => {
-            setIsAnimating(false);
+            // setIsAnimating(false);
           });
         }
       },
@@ -179,7 +173,7 @@ const DialogBox = ({modalVisible, onClose, ContentModal}) => {
         transparent={true}
         visible={modalVisible}
         onShow={() => {
-          setIsAnimating(true);
+          // setIsAnimating(true);
           Animated.timing(pan, {
             ...TIMING,
             toValue: {x: 0, y: 0},

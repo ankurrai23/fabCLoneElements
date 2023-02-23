@@ -92,7 +92,7 @@ export default {
     ],
     notificationText: null,
     alertMessage: 'You have sent a cancellation request for this booking.',
-    reduceOpacity: false,
+    reduceOpacity: true,
     enableViewMoreButton: true,
   },
   onActionPress: (item) => console.log(item),

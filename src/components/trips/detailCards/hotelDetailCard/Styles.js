@@ -8,11 +8,10 @@ export default StyleSheet.create({
     ...shadowObj,
     ...cardStyleObj,
   },
-  subContainer: (modified) => ({
-    opacity: modified ? 0.6 : 1,
+  subContainer: {
     padding: DP._16,
     paddingBottom: 0,
-  }),
+  },
   addressText: {
     fontSize: DP._12,
     lineHeight: DP._18,
@@ -65,12 +64,12 @@ export default StyleSheet.create({
     marginBottom: DP._8,
   },
   checkInTIme: {
-    fontSize: DP._10,
-    paddingHorizontal: DP._8,
+    fontSize: DP._12,
+    // paddingHorizontal: DP._8,
     paddingVertical: DP._1,
-    color: Color.DARK_SLATE_BLUE,
-    backgroundColor: Color.PALE_GREY,
-    borderRadius: DP._10,
+    color: Color.DARK,
+    // backgroundColor: Color.PALE_GREY,
+    // borderRadius: DP._10,
     overflow: 'hidden',
     marginTop: DP._8,
   },

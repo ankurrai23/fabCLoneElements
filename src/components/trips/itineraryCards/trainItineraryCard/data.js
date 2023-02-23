@@ -8,7 +8,6 @@ const TrainItineraryCardProps = {
     source: 'Mumbai',
     destinationStationCode: 'TVC',
     destination: 'Thiruvanthapuram',
-    reduceOpacity: false,
   },
   status: {
     key: 'PROCESSED',
@@ -33,7 +32,6 @@ const TrainItineraryCardProps = {
     trainNumber: '2222',
     trainClass: 'AC 3 Tier Sleeper',
     pnr: '256-99589',
-    reduceOpacity: false,
   },
   remarks: {
     title: 'Remarks',
@@ -60,11 +58,12 @@ const TrainItineraryCardProps = {
   showInfo: false,
   isAlert: true,
   // notificationText: 'This is notification text',
-  timelineGreyed: false,
+  timelineGreyed: true,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
+  reduceOpacity: true,
 };
 
 export default TrainItineraryCardProps;

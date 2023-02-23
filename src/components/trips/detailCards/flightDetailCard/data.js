@@ -19,7 +19,6 @@ const flightDetailCardProps = {
     airline: 'Indigo',
     flightBookingStatus: 'CONFIRMED',
     stop: 'Non stop',
-    reduceOpacity: false,
     price: '₹2600',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
@@ -62,6 +61,7 @@ const flightDetailCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   notificationText: 'Some thing to notify',
   onContactSupportPress: () => console.log('contact support pressed'),
+  reduceOpacity: true,
 };
 
 export default flightDetailCardProps;
