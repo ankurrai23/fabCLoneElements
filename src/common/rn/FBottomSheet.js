@@ -1,6 +1,9 @@
 import React, {useImperativeHandle, useMemo, useRef} from 'react';
 import {StyleSheet, Pressable} from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet, {
+  BottomSheetView,
+  useBottomSheetDynamicSnapPoints,
+} from '@gorhom/bottom-sheet';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -62,11 +65,19 @@ const FBottomSheet = React.forwardRef(({children}, ref) => {
     }),
     [],
   );
-  const snapPoints = useMemo(() => ['70%'], []);
+  const snapPoints = useMemo(() => ['CONTENT_HEIGHT'], []);
+  const {
+    animatedHandleHeight,
+    animatedSnapPoints,
+    animatedContentHeight,
+    handleContentLayout,
+  } = useBottomSheetDynamicSnapPoints(snapPoints);
   return (
     <Portal>
       <BottomSheet
         ref={sheetRef}
+        handleHeight={animatedHandleHeight}
+        contentHeight={animatedContentHeight}
         backdropComponent={({animatedIndex}) => (
           <CustomBackdrop
             animatedIndex={animatedIndex}
@@ -74,10 +85,12 @@ const FBottomSheet = React.forwardRef(({children}, ref) => {
             onBackdropPress={() => sheetRef.current?.close()}
           />
         )}
-        snapPoints={snapPoints}
+        snapPoints={animatedSnapPoints}
         index={-1}
         enablePanDownToClose={true}>
-        {children}
+        <BottomSheetView onLayout={handleContentLayout}>
+          {children}
+        </BottomSheetView>
       </BottomSheet>
     </Portal>
   );
