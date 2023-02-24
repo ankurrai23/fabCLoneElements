@@ -8,7 +8,6 @@ import Icon from '../../../../../assets/icons/Icon';
 import Button from '../../../../../common/components/button';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {dialogBoxStyle} from '../../../../../utils/Utils';
-import DialogBox from '../../../../../common/components/dialogBox';
 import Separator from '../../../../../common/components/separator';
 import FBottomSheet from '../../../../../common/rn/FBottomSheet';
 

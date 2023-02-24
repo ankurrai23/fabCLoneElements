@@ -1,7 +1,6 @@
 import {View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import FText, {FONT_TYPE} from '../../../../common/rn/FText';
-import DialogBox from '../../../../common/components/dialogBox';
 import Button from '../../../../common/components/button';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {dialogBoxStyle} from '../../../../utils/Utils';
@@ -19,7 +18,7 @@ const MAX_ROOMS = 6;
 const MIN_ROOMS = 1;
 
 const SelectRoomSheet = React.forwardRef(
-  ({visible, onClose, roomData, onApply, onCancel}, ref) => {
+  ({visible, roomData, onApply, onCancel}, ref) => {
     const [roomState, setRoomState] = useState([]);
     const [error, setError] = useState('');
     const initialTravellerCount = roomData?.reduce(
@@ -134,7 +133,7 @@ const SelectRoomSheet = React.forwardRef(
           data={roomState}
           renderItem={renderItem}
           ItemSeparatorComponent={() => <Separator style={Styles.separator} />}
-          style={dialogBoxStyle()}
+          style={dialogBoxStyle(0.4)}
         />
         <Separator style={Styles.separator} />
         <View style={Styles.addRemoveRoomButtonContainer}>
