@@ -1,5 +1,5 @@
 import {View, Animated} from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import FText, {FONT_TYPE} from '../../../../common/rn/FText';
 import FImage from '../../../../common/rn/FImage';
 import Styles from './Styles';
@@ -7,7 +7,6 @@ import {DP} from '../../../../utils/Dimen';
 import {Color} from '../../../../utils/color';
 import Separator from '../../../../common/components/separator';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
-import DialogBox from '../../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import Button from '../../../../common/components/button';
 import {HotelSubTripActions} from '../../../../utils/SubTripActions';
@@ -18,6 +17,7 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
+import FBottomSheet from '../../../../common/rn/FBottomSheet';
 
 export default function HotelDetailCard({
   item,
@@ -30,8 +30,8 @@ export default function HotelDetailCard({
   onViewMorePress,
 }) {
   const [expanded, setExpanded] = useState(!item.enableViewMoreButton);
+  const inclusionListRef = useRef(null);
   const isGreyedOut = item.reduceOpacity;
-  const [sheetVisible, setSheetVisible] = useState(false);
   const [fadeIn] = useState(
     new Animated.Value(item.enableViewMoreButton ? 0 : 1),
   );
@@ -279,7 +279,7 @@ export default function HotelDetailCard({
                   })}
                   {item.inclusions.length > 3 && (
                     <FTouchableOpacity
-                      onPress={() => setSheetVisible(true)}
+                      onPress={() => inclusionListRef.current.expand()}
                       style={{marginBottom: DP._16}}
                       disabled={item.reduceOpacity}>
                       <FText
@@ -420,28 +420,24 @@ export default function HotelDetailCard({
           </>
         )}
       </View>
-      <DialogBox
-        modalVisible={sheetVisible}
-        onClose={() => setSheetVisible(false)}
-        ContentModal={
-          <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>{Strings.inclusions}</FText>
-            <FlatList
-              data={item.inclusions}
-              renderItem={renderItem}
-              ItemSeparatorComponent={() => (
-                <Separator
-                  style={{
-                    marginVertical: DP._16,
-                    backgroundColor: Color.SILVER,
-                  }}
-                />
-              )}
-              keyExtractor={(_, index) => `${index}`}
-            />
-          </View>
-        }
-      />
+      <FBottomSheet ref={inclusionListRef}>
+        <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
+          <FText style={Styles.modalHeading}>{Strings.inclusions}</FText>
+          <FlatList
+            data={item.inclusions}
+            renderItem={renderItem}
+            ItemSeparatorComponent={() => (
+              <Separator
+                style={{
+                  marginVertical: DP._16,
+                  backgroundColor: Color.SILVER,
+                }}
+              />
+            )}
+            keyExtractor={(_, index) => `${index}`}
+          />
+        </View>
+      </FBottomSheet>
     </>
   );
 }

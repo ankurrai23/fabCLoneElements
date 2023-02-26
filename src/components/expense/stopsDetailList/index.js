@@ -1,22 +1,21 @@
-import React, {useState} from 'react';
+import React, {useRef} from 'react';
 import {View, FlatList} from 'react-native';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import DashedLine from '../../../common/components/dashedLine';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
-import DialogBox from '../../../common/components/dialogBox';
 
 import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 
 import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import FBottomSheet from '../../../common/rn/FBottomSheet';
 
 /*
 TODO: Fix scroll issue for bottom list
 */
-const StopDetailList = ({data}) => {
-  const [modalVisible, setModalVisible] = useState(false);
-
+const StopDetailList = React.forwardRef(({data}, ref) => {
+  const sheetRef = useRef(null);
   const StopDetail = ({item, index, showDash}) => {
     return (
       <View>
@@ -54,7 +53,7 @@ const StopDetailList = ({data}) => {
       <View style={Styles.stopDetailContainer}>
         <View style={Styles.locationNameAndStopContainer(false)}>
           <View style={Styles.characterContainer(true)} />
-          <FTouchableOpacity onPress={() => setModalVisible(true)}>
+          <FTouchableOpacity onPress={() => sheetRef.current.expand()}>
             <FText style={Styles.locationName(true)}>
               {Strings.stopsCount(data.length - 2)}
             </FText>
@@ -108,13 +107,11 @@ const StopDetailList = ({data}) => {
         ) : null}
         <StopDetail item={data[data.length - 1]} index={data.length - 1} />
       </View>
-      <DialogBox
-        modalVisible={modalVisible}
-        ContentModal={<FullList />}
-        onClose={() => setModalVisible(false)}
-      />
+      <FBottomSheet ref={sheetRef}>
+        <FullList />
+      </FBottomSheet>
     </>
   );
-};
+});
 
 export default StopDetailList;

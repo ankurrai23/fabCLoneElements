@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {StyleSheet} from 'react-native';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import FText from '../../rn/FText';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import SupportDialog from '../supportDialog';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
+import SupportDialog from '../supportDialog';
 
 export default function ContactSupport({
   item,
@@ -14,8 +14,15 @@ export default function ContactSupport({
   onContactSupportPress,
   style,
   isGreyedOut,
-  onClose,
 }) {
+  const sheetRef = useRef(null);
+
+  useEffect(() => {
+    if (supportDetails?.length) {
+      sheetRef.current.expand();
+    }
+  }, [supportDetails]);
+
   return (
     <>
       <FTouchableOpacity
@@ -26,13 +33,7 @@ export default function ContactSupport({
         </FText>
         <Icon.Phone fill={isGreyedOut ? Color.BLUEY_GREY : Color.DODGER_BLUE} />
       </FTouchableOpacity>
-      {!!supportDetails?.length && (
-        <SupportDialog
-          visible={supportDetails.length > 0}
-          onClose={onClose}
-          supportDetails={supportDetails}
-        />
-      )}
+      <SupportDialog ref={sheetRef} supportDetails={supportDetails} />
     </>
   );
 }

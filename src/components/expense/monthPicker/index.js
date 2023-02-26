@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {View} from 'react-native';
 
 import FText from '../../../common/rn/FText';
@@ -8,12 +8,12 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
 
-import DialogBox from '../../../common/components/dialogBox';
 import MonthFilter from '../monthFilter';
 import Icon from '../../../assets/icons/Icon';
+import FBottomSheet from '../../../common/rn/FBottomSheet';
 
 const MonthPicker = (props) => {
-  const [visible, setVisible] = useState(false);
+  const monthSheetRef = useRef(null);
   return (
     <>
       <View style={Styles.container}>
@@ -26,7 +26,7 @@ const MonthPicker = (props) => {
             ]}
             onPress={
               index === 2
-                ? () => setVisible(true)
+                ? () => monthSheetRef.current.expand()
                 : () => props.onMonthChange(item)
             }>
             {item.showAsDropdown && (
@@ -52,21 +52,13 @@ const MonthPicker = (props) => {
           </FTouchableOpacity>
         ))}
       </View>
-      {visible && (
-        <DialogBox
-          modalVisible={visible}
-          ContentModal={
-            <MonthFilter
-              data={props.dataForSheet}
-              onPressApply={props.onMonthChange}
-              onPressCancel={() => setVisible(false)}
-            />
-          }
-          onClose={() => {
-            setVisible(false);
-          }}
+      <FBottomSheet>
+        <MonthFilter
+          data={props.dataForSheet}
+          onPressApply={props.onMonthChange}
+          onPressCancel={() => monthSheetRef.current.close()}
         />
-      )}
+      </FBottomSheet>
     </>
   );
 };

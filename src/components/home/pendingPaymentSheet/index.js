@@ -1,6 +1,5 @@
 import {View, FlatList, LayoutAnimation} from 'react-native';
 import React, {useState, useImperativeHandle, useRef, useEffect} from 'react';
-import DialogBox from '../../../common/components/dialogBox';
 import {DP} from '../../../utils/Dimen';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -8,6 +7,7 @@ import Button from '../../../common/components/button';
 import Styles, {CARD_WIDTH} from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {Color} from '../../../utils/color/index.travelPlus';
+import FBottomSheet from '../../../common/rn/FBottomSheet';
 
 const defaultTripTitle = {
   timeLeft: '',
@@ -64,67 +64,62 @@ export const CardDots = React.forwardRef(
 
 const ItemSeparator = () => <View style={{width: DP._16}} />;
 
-const PendingPaymentSheet = ({
-  paymentRequests,
-  onPressPayment,
-  showBottomSheet,
-  onClose,
-}) => {
-  const cardDotsRef = useRef();
-  const timerRef = useRef();
+const PendingPaymentSheet = React.forwardRef(
+  ({paymentRequests, onPressPayment}, ref) => {
+    const cardDotsRef = useRef();
+    const timerRef = useRef();
 
-  const viewabilityConfig = {
-    itemVisiblePercentThreshold: 50,
-    waitForInteraction: true,
-  };
+    const viewabilityConfig = {
+      itemVisiblePercentThreshold: 50,
+      waitForInteraction: true,
+    };
 
-  const onViewableItemsChanged = (info) => {
-    if (info.viewableItems.length > 0) {
-      timerRef.current.setIndex(info.viewableItems[0].index);
-      cardDotsRef.current.setIndex(info.viewableItems[0].index);
-    }
-  };
+    const onViewableItemsChanged = (info) => {
+      if (info.viewableItems.length > 0) {
+        timerRef.current.setIndex(info.viewableItems[0].index);
+        cardDotsRef.current.setIndex(info.viewableItems[0].index);
+      }
+    };
 
-  const renderItem = ({item}) => (
-    <FTouchableOpacity
-      style={
-        paymentRequests.length === 1 ? Styles.cardStyleSingle : Styles.cardStyle
-      }>
-      <View style={Styles.flexRow}>
-        <View>
-          <FText>
-            {Strings.tripId}
-            <FText type={FONT_TYPE.MEDIUM}>{item.masterTripId}</FText>
-          </FText>
-          <FText style={Styles.tripTitleStyle}>{item.tripTitle}</FText>
-          <FText>
-            {item.start} - {item.end}
-          </FText>
+    const renderItem = ({item}) => (
+      <FTouchableOpacity
+        style={
+          paymentRequests.length === 1
+            ? Styles.cardStyleSingle
+            : Styles.cardStyle
+        }>
+        <View style={Styles.flexRow}>
+          <View>
+            <FText>
+              {Strings.tripId}
+              <FText type={FONT_TYPE.MEDIUM}>{item.masterTripId}</FText>
+            </FText>
+            <FText style={Styles.tripTitleStyle}>{item.tripTitle}</FText>
+            <FText>
+              {item.start} - {item.end}
+            </FText>
+          </View>
+          <View style={Styles.priceContainer}>
+            <FText type={FONT_TYPE.MEDIUM} style={Styles.priceStyle}>
+              {Strings.rupee}
+              {Math.ceil(item.amount)}
+            </FText>
+            <FText style={Styles.inclGSTStyle}>{Strings.inclGST}</FText>
+          </View>
         </View>
-        <View style={Styles.priceContainer}>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.priceStyle}>
-            {Strings.rupee}
-            {Math.ceil(item.amount)}
-          </FText>
-          <FText style={Styles.inclGSTStyle}>{Strings.inclGST}</FText>
-        </View>
-      </View>
-      <Button
-        textFont={FONT_TYPE.MEDIUM}
-        style={Styles.buttonStyle}
-        onPress={() => {
-          onPressPayment(item.masterTripId);
-        }}>
-        {Strings.pay}
-      </Button>
-    </FTouchableOpacity>
-  );
+        <Button
+          textFont={FONT_TYPE.MEDIUM}
+          style={Styles.buttonStyle}
+          onPress={() => {
+            onPressPayment(item.masterTripId);
+          }}>
+          {Strings.pay}
+        </Button>
+      </FTouchableOpacity>
+    );
 
-  return (
-    <DialogBox
-      modalVisible={showBottomSheet}
-      onClose={onClose}
-      ContentModal={
+    return (
+      <FBottomSheet ref={ref}>
         <View style={Styles.container}>
           <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
             {Strings.paymentPending}
@@ -153,8 +148,8 @@ const PendingPaymentSheet = ({
             />
           )}
         </View>
-      }
-    />
-  );
-};
+      </FBottomSheet>
+    );
+  },
+);
 export default PendingPaymentSheet;

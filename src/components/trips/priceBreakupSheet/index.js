@@ -2,35 +2,28 @@ import React from 'react';
 import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Button from '../../../common/components/button';
-import DialogBox from '../../../common/components/dialogBox';
 import Separator from '../../../common/components/separator';
+import FBottomSheet from '../../../common/rn/FBottomSheet';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {formattedPrice} from '../../../utils/Utils';
 import Styles from './Styles';
 
-const PriceBreakupSheet = ({
-  data,
-  visible,
-  onClose,
-  containerStyle,
-  onOkPress,
-}) => {
-  const FeeDetail = ({title, subtitle, cost, type, style}) => (
-    <FTouchableOpacity style={[Styles.feeContainer, style]}>
-      <View style={Styles.flexRow}>
-        <FText type={type}>{title}</FText>
-        {subtitle && <FText style={Styles.subTitle}>{subtitle}</FText>}
-      </View>
-      <FText type={type}>{formattedPrice(cost)}</FText>
-    </FTouchableOpacity>
-  );
+const PriceBreakupSheet = React.forwardRef(
+  ({data, containerStyle, onOkPress}, ref) => {
+    const FeeDetail = ({title, subtitle, cost, type, style}) => (
+      <FTouchableOpacity style={[Styles.feeContainer, style]}>
+        <View style={Styles.flexRow}>
+          <FText type={type}>{title}</FText>
+          {subtitle && <FText style={Styles.subTitle}>{subtitle}</FText>}
+        </View>
+        <FText type={type}>{formattedPrice(cost)}</FText>
+      </FTouchableOpacity>
+    );
 
-  return (
-    <DialogBox
-      modalVisible={visible}
-      ContentModal={
+    return (
+      <FBottomSheet ref={ref}>
         <View style={[Styles.container, containerStyle]}>
           <FText style={Styles.titleText}>{Strings.priceBreakup.title}</FText>
           <ScrollView>
@@ -143,10 +136,9 @@ const PriceBreakupSheet = ({
             {Strings.ok}
           </Button>
         </View>
-      }
-      onClose={onClose}
-    />
-  );
-};
+      </FBottomSheet>
+    );
+  },
+);
 
 export default PriceBreakupSheet;

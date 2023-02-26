@@ -6,10 +6,10 @@ import {Color} from '../../../utils/color';
 import {DP} from '../../../utils/Dimen';
 import FText from '../../rn/FText';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
-import DialogBox from '../dialogBox';
 import {Strings} from '../../../utils/strings/index.travelPlus';
+import FBottomSheet from '../../rn/FBottomSheet';
 
-const SupportDialog = (props) => {
+const SupportDialog = React.forwardRef((props, ref) => {
   function onPress(item) {
     Linking.openURL(`tel:${item.value}`);
   }
@@ -27,26 +27,22 @@ const SupportDialog = (props) => {
   }
 
   return (
-    <DialogBox
-      modalVisible={props.visible}
-      ContentModal={
-        <View style={styles.paddingView}>
-          <FText style={styles.heading}>{Strings.support}</FText>
-          <View style={{paddingHorizontal: DP._10}}>
-            <FlatList
-              data={props.supportDetails}
-              renderItem={renderItem}
-              ItemSeparatorComponent={() => <View style={styles.separator} />}
-              keyExtractor={(item) => item.name}
-              bounces={false}
-            />
-          </View>
+    <FBottomSheet ref={ref}>
+      <View style={styles.paddingView}>
+        <FText style={styles.heading}>{Strings.support}</FText>
+        <View style={{paddingHorizontal: DP._10}}>
+          <FlatList
+            data={props.supportDetails}
+            renderItem={renderItem}
+            ItemSeparatorComponent={() => <View style={styles.separator} />}
+            keyExtractor={(item) => item.name}
+            bounces={false}
+          />
         </View>
-      }
-      onClose={props.onClose}
-    />
+      </View>
+    </FBottomSheet>
   );
-};
+});
 
 const styles = StyleSheet.create({
   bottomSheet: {},
