@@ -13,7 +13,7 @@ import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import ModificationAlertBox from '../../components/modificationAlertBox';
 import {formatTrainNameNo} from '../../itineraryCards/trainItineraryCard';
-
+import ActionsInItinerary from '../../../../common/components/ActionsInItinerary';
 const DetailRow = ({
   dataIcon,
   leftData,
@@ -68,47 +68,41 @@ const TrainDetailCard = ({
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
-  const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(TrainSubtripActions.VIEW_REMARKS);
+  // const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
+  // const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
+  // const viewRemarksAction = isActionEnabled(TrainSubtripActions.VIEW_REMARKS);
 
-  const ActionsInItinerary = () => (
-    <>
-      <Separator style={Styles.actionsSeparator} />
-      <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
-          <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
-            style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
-          </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Cross
-                  width={DP._16}
-                  height={DP._16}
-                  stroke={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {rescheduleAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(rescheduleAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Reschedule width={DP._16} height={DP._16} />
-                <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
-        )}
-      </View>
-    </>
-  );
+  // const ActionsInItinerary = () => (
+  //   <>
+  //     <Separator style={Styles.actionsSeparator} />
+  //     <View style={Styles.actionContainer}>
+  //       {
+  //         <>
+  //           {cancelAction && (
+  //             <FTouchableOpacity
+  //               onPress={() => onActionPress(cancelAction)}
+  //               style={Styles.flexRowAndAlignCenter}>
+  //               <Icon.Cross
+  //                 width={DP._16}
+  //                 height={DP._16}
+  //                 stroke={Color.PASTEL_RED}
+  //               />
+  //               <FText style={Styles.cancel}>{cancelAction.name}</FText>
+  //             </FTouchableOpacity>
+  //           )}
+  //           {rescheduleAction && (
+  //             <FTouchableOpacity
+  //               onPress={() => onActionPress(rescheduleAction)}
+  //               style={Styles.primaryButtonStyle}>
+  //               <Icon.Reschedule width={DP._16} height={DP._16} />
+  //               <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+  //             </FTouchableOpacity>
+  //           )}
+  //         </>
+  //       }
+  //     </View>
+  //   </>
+  // );
   const renderDate = (departureDate, arrivalDate) => {
     const depArrDateSame = departureDate.date === arrivalDate.date;
     const depArrMonthSame = departureDate.month === arrivalDate.month;
@@ -370,10 +364,16 @@ const TrainDetailCard = ({
                 </>
               )}
           </FTouchableOpacity>
-          {!actionDisabled &&
+          {/* {!actionDisabled &&
             (rescheduleAction || cancelAction || viewRemarksAction) && (
               <ActionsInItinerary />
-            )}
+            )} */}
+          <ActionsInItinerary
+            // hideSeperator={Boolean(showInfo)}
+            actions={actions}
+            actionDisabled={actionDisabled}
+            onActionPress={onActionPress}
+          />
         </View>
       </View>
     </View>

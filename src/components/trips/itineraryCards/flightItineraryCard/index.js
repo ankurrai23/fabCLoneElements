@@ -13,7 +13,7 @@ import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
-import ActionsInItinerary from '../ActionsInItinerary';
+import ActionsInItinerary, {BottomBarActions} from '../../../../common/components/ActionsInItinerary';
 import OOPTag from '../../components/OOPTag/OOPTag';
 import FImage from '../../../../common/rn/FImage';
 import LinearGradient from 'react-native-linear-gradient';
@@ -24,7 +24,6 @@ import {
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
-import {BottomBarActions} from '../ActionsInItinerary';
 
 const FlightItineraryCard = ({
   status,

@@ -1,15 +1,15 @@
 import React from 'react';
-import Separator from '../../../common/components/separator';
+import Separator from './separator';
 import {
   SubTripCommonActions,
   FlightSubTripActions,
   HotelSubTripActions,
-} from '../../../utils/SubTripActions';
-import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import Icon from '../../../assets/icons/Icon';
-import FText from '../../../common/rn/FText';
-import {DP} from '../../../utils/Dimen';
-import {Color} from '../../../utils/color/index.travelPlus';
+} from '../../utils/SubTripActions';
+import FTouchableOpacity from '../rn/FTouchableOpacity';
+import Icon from '../../assets/icons/Icon';
+import FText from '../rn/FText';
+import {DP} from '../../utils/Dimen';
+import {Color} from '../../utils/color/index.travelPlus';
 import {View, StyleSheet} from 'react-native';
 
 const {SUPPORT, ...REST} = SubTripCommonActions;

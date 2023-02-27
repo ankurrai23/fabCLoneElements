@@ -14,7 +14,9 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
-import ActionsInItinerary, {BottomBarActions} from '../ActionsInItinerary';
+import ActionsInItinerary, {
+  BottomBarActions,
+} from '../../../../common/components/ActionsInItinerary';
 
 const PreBookingCard = ({
   onCardPress,

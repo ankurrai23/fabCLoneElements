@@ -41,6 +41,10 @@ const busDetailCardProps = {
       type: 'CANCEL',
       name: 'Cancel',
     },
+    {
+      type: 'VIEW_REMARKS',
+      name: 'view remarks',
+    },
     // {
     //   type: FlightSubTripActions.CANCELLATION_REQUESTED,
     //   name: 'You have sent a modification request for this booking.',

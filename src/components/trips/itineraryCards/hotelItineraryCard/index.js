@@ -23,7 +23,9 @@ import {
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
-import ActionsInItinerary, {BottomBarActions} from '../ActionsInItinerary';
+import ActionsInItinerary, {
+  BottomBarActions,
+} from '../../../../common/components/ActionsInItinerary';
 
 const HotelItineraryCard = ({
   status,

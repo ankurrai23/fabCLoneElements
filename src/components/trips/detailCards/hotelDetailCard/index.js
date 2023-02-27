@@ -17,7 +17,7 @@ import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
-
+import ActionsInItinerary from '../../../../common/components/ActionsInItinerary';
 export default function HotelDetailCard({
   item,
   onActionPress,
@@ -391,7 +391,7 @@ export default function HotelDetailCard({
             </FTouchableOpacity>
           )}
         </View>
-        {(cancelAction || modifyAction) && (
+        {/* {(cancelAction || modifyAction) && (
           <>
             <Separator style={Styles.actionSeparator} />
             <View style={Styles.buttonContainer}>
@@ -417,7 +417,13 @@ export default function HotelDetailCard({
               )}
             </View>
           </>
-        )}
+        )} */}
+        <ActionsInItinerary
+          // hideSeperator={Boolean(showInfo)}
+          actions={item.actions}
+          // actionDisabled={actionDisabled}
+          onActionPress={onActionPress}
+        />
       </View>
       <DialogBox
         modalVisible={sheetVisible}
