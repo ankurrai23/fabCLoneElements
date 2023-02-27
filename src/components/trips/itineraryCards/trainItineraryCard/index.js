@@ -14,7 +14,7 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
-
+import ActionsInItinerary, {BottomBarActions} from '../ActionsInItinerary';
 const PreBookingCard = ({
   onCardPress,
   tripRequest,
@@ -336,58 +336,60 @@ const TrainItineraryCard = ({
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isGreyedOut = uiData.reduceOpacity;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-  const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
+  // const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
+  // const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(TrainSubtripActions.VIEW_REMARKS);
-  const editAction = isActionEnabled(TrainSubtripActions.EDIT);
-  const removeAction = isActionEnabled(TrainSubtripActions.REMOVE);
+  // const editAction = isActionEnabled(TrainSubtripActions.EDIT);
+  // const removeAction = isActionEnabled(TrainSubtripActions.REMOVE);
   const actionsVisible =
     !actionDisabled &&
-    (rescheduleAction || cancelAction || editAction || removeAction);
+    Object.keys(BottomBarActions).reduce((acc, v) => {
+      return acc || isActionEnabled(BottomBarActions[v]);
+    }, false);
 
-  const ActionsInItinerary = ({hideSeperator}) => (
-    <>
-      {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
-      <View style={Styles.actionContainer}>
-        {cancelAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(cancelAction)}
-            style={Styles.flexRowAndAlignCenter}>
-            <Icon.Cross
-              width={DP._16}
-              height={DP._16}
-              stroke={Color.PASTEL_RED}
-            />
-            <FText style={Styles.cancel}>{cancelAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-        {rescheduleAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(rescheduleAction)}
-            style={Styles.primaryButtonStyle}>
-            <Icon.Reschedule width={DP._16} height={DP._16} />
-            <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-        {removeAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(removeAction)}
-            style={Styles.flexRowAndAlignCenter}>
-            <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
-            <FText style={Styles.cancel}>{removeAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-        {editAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(editAction)}
-            style={Styles.primaryButtonStyle}>
-            <Icon.Edit />
-            <FText style={Styles.reschedule}>{editAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-      </View>
-    </>
-  );
+  // const ActionsInItinerary = ({hideSeperator}) => (
+  //   <>
+  //     {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
+  //     <View style={Styles.actionContainer}>
+  //       {cancelAction && (
+  //         <FTouchableOpacity
+  //           onPress={() => onActionPress(cancelAction)}
+  //           style={Styles.flexRowAndAlignCenter}>
+  //           <Icon.Cross
+  //             width={DP._16}
+  //             height={DP._16}
+  //             stroke={Color.PASTEL_RED}
+  //           />
+  //           <FText style={Styles.cancel}>{cancelAction.name}</FText>
+  //         </FTouchableOpacity>
+  //       )}
+  //       {rescheduleAction && (
+  //         <FTouchableOpacity
+  //           onPress={() => onActionPress(rescheduleAction)}
+  //           style={Styles.primaryButtonStyle}>
+  //           <Icon.Reschedule width={DP._16} height={DP._16} />
+  //           <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
+  //         </FTouchableOpacity>
+  //       )}
+  //       {removeAction && (
+  //         <FTouchableOpacity
+  //           onPress={() => onActionPress(removeAction)}
+  //           style={Styles.flexRowAndAlignCenter}>
+  //           <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
+  //           <FText style={Styles.cancel}>{removeAction.name}</FText>
+  //         </FTouchableOpacity>
+  //       )}
+  //       {editAction && (
+  //         <FTouchableOpacity
+  //           onPress={() => onActionPress(editAction)}
+  //           style={Styles.primaryButtonStyle}>
+  //           <Icon.Edit />
+  //           <FText style={Styles.reschedule}>{editAction.name}</FText>
+  //         </FTouchableOpacity>
+  //       )}
+  //     </View>
+  //   </>
+  // );
 
   return (
     <View style={[Styles.flexRow, style]}>
@@ -453,9 +455,15 @@ const TrainItineraryCard = ({
             disablePressEvent={!!notificationText}
           />
         )}
-        {actionsVisible && (
+        {/* {actionsVisible && (
           <ActionsInItinerary hideSeperator={Boolean(showInfo)} />
-        )}
+        )} */}
+        <ActionsInItinerary
+          hideSeperator={Boolean(showInfo)}
+          actions={actions}
+          actionDisabled={actionDisabled}
+          onActionPress={onActionPress}
+        />
       </View>
     </View>
   );

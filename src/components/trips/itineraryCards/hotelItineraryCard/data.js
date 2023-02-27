@@ -28,8 +28,7 @@ const hotelItineraryCardProps = {
     checkInTime: '1AM',
     roomTypeName: 'Deluxe room',
     ratePlanName: 'Room with breakfast and meals',
-    reduceOpacity: true
-    ,
+    reduceOpacity: true,
     isOutOfPolicy: true,
     price: '₹3600',
     bookingId: 'AZCD123',
