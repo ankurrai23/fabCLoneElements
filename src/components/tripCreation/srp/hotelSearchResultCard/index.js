@@ -11,13 +11,18 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {ratingsArray} from '../../../trips/hotelPreferenceCard';
 import Button from '../../../../common/components/button';
 import OOPTag from '../../../trips/components/OOPTag/OOPTag';
-import {Grayscale} from 'react-native-color-matrix-image-filters';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
-export const renderHotelImage = ({item}, greyedOut) => {
+export const renderHotelImage = ({item}, greyedOut, length) => {
   return (
-    <Grayscale amount={greyedOut ? 1 : 0}>
-      <FImage source={{uri: item}} style={Styles.hotelImageStyle} />
-    </Grayscale>
+    <ColorMatrix matrix={grayImageMatrix(greyedOut)}>
+      <FImage
+        source={{uri: item}}
+        style={Styles.hotelImageStyle(length < 2)}
+        defaultSource={require('../../../../assets/images/trips/hotel-image-placeholder.png')}
+      />
+    </ColorMatrix>
   );
 };
 
@@ -26,25 +31,25 @@ export default function HotelSearchResultCard({onCardPress, item}) {
 
   return (
     <View style={Styles.container}>
-      {!!item.hotelImages?.length && (
-        <View>
-          <FlatList
-            data={item.hotelImages}
-            renderItem={(obj) => renderHotelImage(obj, greyedOut)}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(e) => `${e}`}
-          />
-          {!!item.rateLabel && (
-            <FText
-              type={FONT_TYPE.MEDIUM}
-              greyedOut={greyedOut}
-              style={Styles.rateType(greyedOut)}>
-              {item.rateLabel}
-            </FText>
-          )}
-        </View>
-      )}
+      <View>
+        <FlatList
+          data={item.hotelImages?.length ? item.hotelImages : ['']}
+          renderItem={(obj) =>
+            renderHotelImage(obj, greyedOut, item.hotelImages?.length ?? 1)
+          }
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(e) => `${e}`}
+        />
+        {!!item.rateLabel && (
+          <FText
+            type={FONT_TYPE.MEDIUM}
+            greyedOut={greyedOut}
+            style={Styles.rateType(greyedOut)}>
+            {item.rateLabel}
+          </FText>
+        )}
+      </View>
       <View style={Styles.subContainer}>
         <View style={Styles.starContainer}>
           {Array(item.starRating)
@@ -100,13 +105,15 @@ export default function HotelSearchResultCard({onCardPress, item}) {
               })}
               <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
             </View>
-            {!!item.colleaguesCount && (
-              <FText style={Styles.ratingsText}>
-                {Strings.your}
-                <FText type={FONT_TYPE.MEDIUM}>{item.colleaguesCount}</FText>
-                {Strings.colleagueAvgRating(item.colleaguesRatingAvg)}
-              </FText>
-            )}
+            <FText style={Styles.ratingsText}>
+              {!!item.colleaguesCount && (
+                <>
+                  {Strings.your}
+                  <FText type={FONT_TYPE.MEDIUM}>{item.colleaguesCount}</FText>
+                  {Strings.colleagueAvgRating(item.colleaguesRatingAvg)}
+                </>
+              )}
+            </FText>
             <View style={Styles.amountContainer}>
               <FText style={Styles.cancellationText}>
                 {item.cancellationText}

@@ -23,7 +23,7 @@ const hotelSearchResultCardProps = {
     cancellationText: 'Free cancellation before 12 Nov',
     gstIncluded: true,
     isOutOfPolicy: true,
-    isSoldOut: true,
+    isSoldOut: false,
     rateLabel: 'Contracted Rate',
   },
   onCardPress: (item) => console.log('Card pressed'),

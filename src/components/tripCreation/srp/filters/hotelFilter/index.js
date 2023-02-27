@@ -12,7 +12,9 @@ import {ShowOOP} from '../flightFilter';
 import Separator from '../../../../../common/components/separator';
 
 const HotelRating = React.forwardRef(({starRatings}, ref) => {
-  const [state, setState] = useState([...starRatings]);
+  const [state, setState] = useState([
+    ...starRatings.map((item) => ({...item})),
+  ]);
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
@@ -113,7 +115,6 @@ const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
     sliderRef.current.resetSlider();
     hotelRatingRef.current.clearAll();
     preferredTypeRef.current.clearAll();
-    entitlementRef.current.clearAll();
   };
 
   const onApplyPress = () => {

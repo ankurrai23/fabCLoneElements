@@ -271,10 +271,10 @@ const cabItineraryCard = ({
   notificationText,
   hideChevron,
   actionDisabled,
+  reduceOpacity,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
-  const isGreyedOut = uiData.reduceOpacity;
   // const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
   // const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
@@ -363,7 +363,7 @@ const cabItineraryCard = ({
         {showPreBookingCard ? (
           <PreBookingCard
             onCardPress={onCardPress}
-            isGreyedOut={isGreyedOut}
+            isGreyedOut={reduceOpacity}
             tripRequest={tripRequest}
             showStatus={showStatus}
             status={status}
@@ -374,7 +374,7 @@ const cabItineraryCard = ({
             bookingDetails={uiData}
             showStatus={showStatus}
             status={uiData.cabBookingStatus}
-            isGreyedOut={isGreyedOut}
+            isGreyedOut={reduceOpacity}
             hideChevron={hideChevron}
           />
         )}

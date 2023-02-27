@@ -13,7 +13,6 @@ const hotelItineraryCardProps = {
     location: 'Andheri East, Mumbai',
     roomTypeName: 'Deluxe room',
     ratePlanName: 'Room with breakfast and meals',
-    reduceOpacity: true,
     price: '₹3600',
     gstIncluded: false,
     isOutOfPolicy: true,
@@ -28,7 +27,6 @@ const hotelItineraryCardProps = {
     checkInTime: '1AM',
     roomTypeName: 'Deluxe room',
     ratePlanName: 'Room with breakfast and meals',
-    reduceOpacity: true,
     isOutOfPolicy: true,
     price: '₹3600',
     bookingId: 'AZCD123',
@@ -66,9 +64,10 @@ const hotelItineraryCardProps = {
   hideIcon: false,
   showLine: true,
   showInfo: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   showConfirmedStatus: false,
   hideChevron: true,
+  reduceOpacity: true,
   notificationText: 'this is notification text',
 };
 

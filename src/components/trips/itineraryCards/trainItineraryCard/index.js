@@ -334,9 +334,9 @@ const TrainItineraryCard = ({
   hideChevron,
   actionDisabled,
   remarks,
+  reduceOpacity,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
-  const isGreyedOut = uiData.reduceOpacity;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   // const rescheduleAction = isActionEnabled(TrainSubtripActions.RESCHEDULE);
   // const cancelAction = isActionEnabled(TrainSubtripActions.CANCEL);
@@ -428,7 +428,7 @@ const TrainItineraryCard = ({
             onCardPress={onCardPress}
             tripRequest={uiData}
             showStatus={showStatus}
-            isGreyedOut={isGreyedOut}
+            isGreyedOut={reduceOpacity}
             status={status}
           />
         ) : (
@@ -437,7 +437,7 @@ const TrainItineraryCard = ({
             bookingDetails={uiData}
             showStatus={showStatus}
             status={uiData.trainBookingStatus}
-            isGreyedOut={isGreyedOut}
+            isGreyedOut={reduceOpacity}
             hideChevron={hideChevron}
           />
         )}

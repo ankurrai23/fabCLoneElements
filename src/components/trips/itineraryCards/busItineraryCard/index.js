@@ -321,9 +321,9 @@ const BusItineraryCard = ({
   notificationText,
   actionDisabled,
   hideChevron,
+  reduceOpacity,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
-  const isGreyedOut = uiData.reduceOpacity;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const sameMonthDates =
     uiData?.arrivalDate?.month === uiData?.departureDate?.month;
@@ -415,14 +415,14 @@ const BusItineraryCard = ({
         {showPreBookingCard ? (
           <PreBookingCard
             onCardPress={onCardPress}
-            isGreyedOut={isGreyedOut}
+            isGreyedOut={reduceOpacity}
             tripRequest={uiData}
             showStatus={showStatus}
             status={status}
           />
         ) : (
           <PostBookingCard
-            isGreyedOut={isGreyedOut}
+            isGreyedOut={reduceOpacity}
             onCardPress={onCardPress}
             bookingDetails={uiData}
             showStatus={showStatus}

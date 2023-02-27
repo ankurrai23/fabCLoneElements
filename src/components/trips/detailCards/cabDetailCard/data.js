@@ -29,7 +29,6 @@ const cabDetailCardProps = {
         bookingId: '12345',
       },
     ],
-    reduceOpacity: true,
   },
   actions: [
     {
@@ -51,6 +50,7 @@ const cabDetailCardProps = {
   onPhoneNumberClicked: () => console.log('phoneNumber clicked'),
   actionDisabled: false,
   notificationText: 'Some thing to notify',
+  reduceOpacity: true,
 };
 
 export default cabDetailCardProps;

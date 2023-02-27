@@ -8,11 +8,12 @@ import FImage from '../../../../../common/rn/FImage';
 import Checkbox from '../../../../../common/components/checkbox';
 import Separator from '../../../../../common/components/separator';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
+import {isPlatformIos} from '../../../../../utils/Utils';
 
 const MINIMUM_FLIGHT_COUNT = 4;
 
 const Airlines = React.forwardRef(({airline}, ref) => {
-  const [state, setState] = useState([...airline]);
+  const [state, setState] = useState([...airline.map((item) => ({...item}))]);
   const [allFlights, setAllFlights] = useState(false);
   const airlinesCount = allFlights ? state.length : MINIMUM_FLIGHT_COUNT;
 
@@ -68,7 +69,7 @@ const Airlines = React.forwardRef(({airline}, ref) => {
 });
 
 const Stops = React.forwardRef(({stops}, ref) => {
-  const [state, setState] = useState([...stops]);
+  const [state, setState] = useState([...stops.map((item) => ({...item}))]);
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
@@ -118,7 +119,7 @@ export const ShowOOP = React.forwardRef(({showOOP}, ref) => {
     <View style={Styles.oopSwitchContainer}>
       <FText style={Styles.showOOPText}>{Strings.showOOPFlights}</FText>
       <Switch
-        trackColor={Styles.switchTrackColor}
+        trackColor={isPlatformIos() ? Styles.switchTrackColor : {}}
         value={!!_showOOP}
         onChange={() => setShowOOP(!_showOOP)}
       />
@@ -138,17 +139,16 @@ const FlightFilter = ({
   const entitlementRef = useRef();
 
   const onClearAll = useCallback(() => {
-    stopsRef.current.clearAll();
-    airlineRef.current.clearAll();
-    entitlementRef.current.clearAll();
+    stopsRef.current?.clearAll();
+    airlineRef.current?.clearAll();
   }, []);
 
   const onApplyPress = () => {
     const data = {};
-    if (filterData.stop) {
+    if (filterData.stop?.length) {
       data.stop = stopsRef.current.data;
     }
-    if (filterData.filterAirline) {
+    if (filterData.filterAirline?.length) {
       data.filterAirline = airlineRef.current.data;
     }
     data.showOOP = entitlementRef.current.data;
@@ -162,12 +162,19 @@ const FlightFilter = ({
       isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
       onApply={onApplyPress}>
-      {filterData.stop && <Stops stops={filterData.stop} ref={stopsRef} />}
-      <Separator style={Styles.separator} />
-      {filterData.filterAirline && (
-        <Airlines airline={filterData.filterAirline} ref={airlineRef} />
+      {!!filterData?.stop?.length && (
+        <>
+          <Stops stops={filterData.stop} ref={stopsRef} />
+          <Separator style={Styles.separator} />
+        </>
       )}
-      <Separator style={Styles.separator} />
+
+      {!!filterData?.filterAirline?.length && (
+        <>
+          <Airlines airline={filterData.filterAirline} ref={airlineRef} />
+          <Separator style={Styles.separator} />
+        </>
+      )}
       <ShowOOP showOOP={filterData.showOOP} ref={entitlementRef} />
       <Separator style={Styles.separator} />
     </QuickLinks>

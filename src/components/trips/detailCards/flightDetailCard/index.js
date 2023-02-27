@@ -15,8 +15,10 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import FImage from '../../../../common/rn/FImage';
-import {Grayscale} from 'react-native-color-matrix-image-filters';
 import ActionsInItinerary from '../../../../common/components/ActionsInItinerary';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
+
 const FlightDetailCard = ({
   title,
   tripDetails,
@@ -30,9 +32,9 @@ const FlightDetailCard = ({
   notificationText,
   actionsDisabled,
   cardStyle,
+  reduceOpacity: isGreyedOut,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-  const isGreyedOut = tripDetails.reduceOpacity;
   // const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
   // const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   // const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
@@ -104,12 +106,12 @@ const FlightDetailCard = ({
           </View>
           <View style={[Styles.flexDirectionRow, Styles.marginTop_8]}>
             <View style={Styles.flexRowAndAlignCenter}>
-              <Grayscale amount={isGreyedOut ? 1 : 0}>
+              <ColorMatrix matrix={grayImageMatrix(isGreyedOut)}>
                 <FImage
                   style={Styles.airlineIcon}
                   source={{uri: tripDetails.airlineIcon}}
                 />
-              </Grayscale>
+              </ColorMatrix>
               <View style={{marginLeft: DP._8}}>
                 <FText greyedOut={isGreyedOut}>{tripDetails.airline}</FText>
                 <FText greyedOut={isGreyedOut} style={Styles.airlineCode}>

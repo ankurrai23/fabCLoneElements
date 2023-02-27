@@ -8,7 +8,6 @@ const busItineraryCardProps = {
     destination: 'Lonavala',
     sourceLocality: 'Mumbai Airport',
     destinationLocality: 'Tungarli road',
-    reduceOpacity: false,
   },
   status: {
     key: 'PROCESSED',
@@ -32,7 +31,6 @@ const busItineraryCardProps = {
     busType: 'Sleeper',
     seatNumber: 'L23',
     pnr: '123456',
-    reduceOpacity: true,
   },
   remarks: {
     title: 'Remarks',
@@ -62,7 +60,8 @@ const busItineraryCardProps = {
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
+  reduceOpacity: true,
   hideChevron: false,
 };
 

@@ -16,8 +16,10 @@ import TripStatus from '../../tripStatus';
 import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
-import {Grayscale} from 'react-native-color-matrix-image-filters';
 import ActionsInItinerary from '../../../../common/components/ActionsInItinerary';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
+
 export default function HotelDetailCard({
   item,
   onActionPress,
@@ -36,8 +38,8 @@ export default function HotelDetailCard({
   );
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
-  const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
-  const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
+  // const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
+  // const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
   const payNowAction = isActionEnabled(HotelSubTripActions.PAY_NOW);
   const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
   const posAction = isActionEnabled(HotelSubTripActions.SUBMIT_POS);
@@ -151,12 +153,12 @@ export default function HotelDetailCard({
                 style={{marginRight: DP._8}}
                 disabled={item.reduceOpacity}
                 onPress={onMainImagePress}>
-                <Grayscale amount={isGreyedOut ? 1 : 0}>
+                <ColorMatrix matrix={grayImageMatrix(isGreyedOut)}>
                   <FImage
                     style={Styles.hotelImage}
                     source={{uri: item.imageBaseUrl + item.mainImage}}
                   />
-                </Grayscale>
+                </ColorMatrix>
 
                 <Icon.ZooomIn
                   width={DP._18}
