@@ -8,16 +8,13 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
 
-import MonthFilter from '../monthFilter';
 import Icon from '../../../assets/icons/Icon';
-import FBottomSheet from '../../../common/rn/FBottomSheet';
 
-const MonthPicker = (props) => {
-  const monthSheetRef = useRef(null);
+const MonthPicker = ({data, onMonthChange, onMorePress}) => {
   return (
     <>
       <View style={Styles.container}>
-        {props.data.map((item, index) => (
+        {data.map((item, index) => (
           <FTouchableOpacity
             key={`${item.name}`}
             style={[
@@ -25,9 +22,7 @@ const MonthPicker = (props) => {
               item.isSelected ? Styles.buttonSelected : null,
             ]}
             onPress={
-              index === 2
-                ? () => monthSheetRef.current.expand()
-                : () => props.onMonthChange(item)
+              index === 2 ? () => onMorePress() : () => onMonthChange(item)
             }>
             {item.showAsDropdown && (
               <Icon.Calendar
@@ -52,13 +47,6 @@ const MonthPicker = (props) => {
           </FTouchableOpacity>
         ))}
       </View>
-      <FBottomSheet>
-        <MonthFilter
-          data={props.dataForSheet}
-          onPressApply={props.onMonthChange}
-          onPressCancel={() => monthSheetRef.current.close()}
-        />
-      </FBottomSheet>
     </>
   );
 };
