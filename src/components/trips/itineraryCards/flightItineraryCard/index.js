@@ -16,12 +16,14 @@ import {getStatusObject} from '../../../../utils/Utils';
 import OOPTag from '../../components/OOPTag/OOPTag';
 import FImage from '../../../../common/rn/FImage';
 import LinearGradient from 'react-native-linear-gradient';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {
   PlaceholderContainer,
   Placeholder,
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
 const FlightItineraryCard = ({
   status,
@@ -44,6 +46,7 @@ const FlightItineraryCard = ({
   remarks,
   cancellationCharges,
   modificationCharges,
+  reduceOpacity: isGreyedOut,
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
@@ -146,16 +149,17 @@ const FlightItineraryCard = ({
 
   const FlightPreBookingCard = () => (
     <View style={Styles.container}>
-      <FTouchableOpacity
-        activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(uiData.reduceOpacity)}
-        onPress={onCardPress}>
+      <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
         <View style={[Styles.flexRowAndJustifySpaceBetween, Styles.baseline]}>
           <View style={Styles.flexRowAndJustifySpaceBetween}>
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            <FText
+              greyedOut={isGreyedOut}
+              type={FONT_TYPE.MEDIUM}
+              style={Styles.date}>
               {uiData.date}
             </FText>
             <FText
+              greyedOut={isGreyedOut}
               type={FONT_TYPE.MEDIUM}
               style={
                 Styles.headerMonth
@@ -164,7 +168,10 @@ const FlightItineraryCard = ({
           {showStatus ? (
             <TripStatus statusObj={status} />
           ) : (
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.slotDetail}>
+            <FText
+              greyedOut={isGreyedOut}
+              type={FONT_TYPE.MEDIUM}
+              style={Styles.slotDetail}>
               {uiData.slotDetail}
             </FText>
           )}
@@ -172,10 +179,13 @@ const FlightItineraryCard = ({
         <View
           style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_12]}>
           <View style={Styles.flex}>
-            <FText style={Styles.preBookingSource} numberOfLines={1}>
+            <FText
+              greyedOut={isGreyedOut}
+              style={Styles.preBookingSource}
+              numberOfLines={1}>
               {uiData.source}
             </FText>
-            <FText style={Styles.preBookingPort}>
+            <FText greyedOut={isGreyedOut} style={Styles.preBookingPort}>
               {uiData.sourceAirportCode}
             </FText>
           </View>
@@ -188,10 +198,13 @@ const FlightItineraryCard = ({
             />
           </View>
           <View style={[Styles.alignItem_flexEnd, Styles.flex]}>
-            <FText style={Styles.preBookingSource} numberOfLines={1}>
+            <FText
+              greyedOut={isGreyedOut}
+              style={Styles.preBookingSource}
+              numberOfLines={1}>
               {uiData.destination}
             </FText>
-            <FText style={Styles.preBookingPort}>
+            <FText greyedOut={isGreyedOut} style={Styles.preBookingPort}>
               {uiData.destinationAirportCode}
             </FText>
           </View>
@@ -226,10 +239,7 @@ const FlightItineraryCard = ({
 
   const FlightPostBookingCard = () => (
     <View style={Styles.container}>
-      <FTouchableOpacity
-        activeOpacity={uiData.reduceOpacity ? 0.6 : 1}
-        style={Styles.card(uiData.reduceOpacity)}
-        onPress={onCardPress}>
+      <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
         <View
           style={[
             Styles.flexRowAndJustifySpaceBetween,
@@ -237,10 +247,14 @@ const FlightItineraryCard = ({
             Styles.marginBottom_12,
           ]}>
           <View style={Styles.flexRowAndJustifySpaceBetween}>
-            <FText type={FONT_TYPE.MEDIUM} style={Styles.date}>
+            <FText
+              greyedOut={isGreyedOut}
+              type={FONT_TYPE.MEDIUM}
+              style={Styles.date}>
               {uiData.date}
             </FText>
             <FText
+              greyedOut={isGreyedOut}
               type={FONT_TYPE.MEDIUM}
               style={
                 Styles.headerMonth
@@ -253,7 +267,9 @@ const FlightItineraryCard = ({
                 height={DP._14}
                 stroke={Color.GREY_PURPLE}
               />
-              <FText style={Styles.processing}>{Strings.processing}</FText>
+              <FText greyedOut={isGreyedOut} style={Styles.processing}>
+                {Strings.processing}
+              </FText>
             </View>
           )}
           {showStatus ? (
@@ -265,24 +281,30 @@ const FlightItineraryCard = ({
               <Icon.ChevronRight
                 width={DP._18}
                 height={DP._18}
-                stroke={Color.BATTLESHIP_GREY_TWO}
+                stroke={
+                  isGreyedOut ? Color.BLUEY_GREY : Color.BATTLESHIP_GREY_TWO
+                }
               />
             )
           )}
         </View>
         <View style={Styles.flightParticulars}>
-          <FImage
-            style={Styles.imageStyle}
-            source={{uri: uiData.airlineIcon}}
-          />
+          <ColorMatrix matrix={grayImageMatrix(isGreyedOut)}>
+            <FImage
+              style={Styles.imageStyle}
+              source={{uri: uiData.airlineIcon}}
+            />
+          </ColorMatrix>
           <View style={Styles.nameAndNumberContainer}>
             <FText
+              greyedOut={isGreyedOut}
               style={Styles.flightName}
               numberOfLines={1}
               ellipsizeMode={'tail'}>
               {uiData.airline}
             </FText>
             <FText
+              greyedOut={isGreyedOut}
               style={Styles.flightNumber}
               numberOfLines={1}
               ellipsizeMode={'tail'}>
@@ -293,50 +315,65 @@ const FlightItineraryCard = ({
           </View>
           {uiData.isPriceFetched ? (
             <View style={Styles.priceContainer}>
-              <FText style={Styles.flightPrice} type={FONT_TYPE.MEDIUM}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.flightPrice}
+                type={FONT_TYPE.MEDIUM}>
                 {uiData.price}
               </FText>
-              {uiData.isOutOfPolicy && <OOPTag />}
+              {uiData.isOutOfPolicy && <OOPTag greyedOut={isGreyedOut} />}
             </View>
           ) : (
             <PriceLoader />
           )}
         </View>
         <View style={Styles.flexRowAndJustifySpaceBetween}>
-          <FText style={Styles.time}>{uiData.departureTime}</FText>
+          <FText greyedOut={isGreyedOut} style={Styles.time}>
+            {uiData.departureTime}
+          </FText>
           <Icon.Aeroplane
             width={DP._18}
             height={DP._18}
             fill={Color.LIGHT_BLUEY_GREY}
             style={Styles.airplane}
           />
-          <FText style={Styles.time}>{uiData.arrivalTime}</FText>
+          <FText greyedOut={isGreyedOut} style={Styles.time}>
+            {uiData.arrivalTime}
+          </FText>
         </View>
         <View
           style={[Styles.flexRowAndJustifySpaceBetween, Styles.marginTop_8]}>
-          <FText style={Styles.portName}>{uiData.sourceAirportCode}</FText>
+          <FText greyedOut={isGreyedOut} style={Styles.portName}>
+            {uiData.sourceAirportCode}
+          </FText>
           <View style={Styles.durationAndStopsContainer}>
-            <FText style={Styles.duration} numberOfLines={1}>
+            <FText
+              greyedOut={isGreyedOut}
+              style={Styles.duration}
+              numberOfLines={1}>
               {uiData.totalDuration}
             </FText>
             <View style={Styles.dot_two} />
             <FText
+              greyedOut={isGreyedOut}
               style={Styles.stoppage}
               numberOfLines={1}
               ellipsizeMode={'tail'}>
               {uiData.stop}
             </FText>
           </View>
-          <FText style={Styles.portName}>{uiData.destinationAirportCode}</FText>
+          <FText greyedOut={isGreyedOut} style={Styles.portName}>
+            {uiData.destinationAirportCode}
+          </FText>
         </View>
         <View style={Styles.flexRowAndJustifySpaceBetween}>
           {!!uiData.sourceAirportTerminal && (
-            <FText style={Styles.terminal}>
+            <FText greyedOut={isGreyedOut} style={Styles.terminal}>
               {uiData.sourceAirportTerminal}
             </FText>
           )}
           {!!uiData.destinationAirportTerminal && (
-            <FText style={Styles.terminal}>
+            <FText greyedOut={isGreyedOut} style={Styles.terminal}>
               {uiData.destinationAirportTerminal}
             </FText>
           )}
@@ -345,22 +382,30 @@ const FlightItineraryCard = ({
       {!!uiData.pnr && (
         <>
           <Separator style={Styles.separatorStyle} />
-          <FText style={Styles.pnr(uiData.reduceOpacity)}>
+          <FText
+            greyedOut={isGreyedOut}
+            style={Styles.pnr(uiData.reduceOpacity)}>
             {Strings.pnr}:
-            <FText type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
+            <FText
+              greyedOut={isGreyedOut}
+              type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
           </FText>
         </>
       )}
       {!!modificationCharges && (
-        <FText style={Styles.modificationChargeText}>
+        <FText greyedOut={isGreyedOut} style={Styles.modificationChargeText}>
           {Strings.includeModificationCharge}
-          <FText type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}>{` ${modificationCharges}.`}</FText>
         </FText>
       )}
       {!!cancellationCharges && (
-        <FText style={Styles.modificationChargeText}>
+        <FText greyedOut={isGreyedOut} style={Styles.modificationChargeText}>
           {Strings.includeCancellationCharge}
-          <FText type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
+          <FText
+            greyedOut={isGreyedOut}
+            type={FONT_TYPE.MEDIUM}>{` ${cancellationCharges}.`}</FText>
         </FText>
       )}
       {viewRemarksAction && !!remarks && (

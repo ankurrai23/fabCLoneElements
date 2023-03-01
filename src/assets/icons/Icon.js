@@ -1,10 +1,9 @@
 import React from 'react';
-import {Svg, Path, Line} from 'react-native-svg';
+import {Svg, Path, Line, Mask} from 'react-native-svg';
 import {Color} from '../../utils/color/index.travelPlus';
 
 //Svg files
 import PlusCircle from './plus-circle.svg';
-import Phone from './phone.svg';
 import Search from './search.svg';
 import Camera from './camera.svg';
 import Image from './image.svg';
@@ -15,7 +14,6 @@ import EditFilled from './edit-filled.svg';
 import File from './file.svg';
 import CreditCard from './credit-card.svg';
 import ZooomIn from './zoom-in.svg';
-import Navigation from './navigation.svg';
 import Sort from './sort.svg';
 import EditWithBlueBackground from './edit-with-blue-background.svg';
 import Bell from './bell.svg';
@@ -33,9 +31,11 @@ import Briefcase from './briefcase.svg';
 import Rupee from './rupee.svg';
 import Approve from './approve.svg';
 import Reject from './reject.svg';
-import Person from './personIcon.svg';
-import PhoneIcon from './phoneIcon.svg';
+// import Person from './personIcon.svg';
+// import PhoneIcon from './phoneIcon.svg';
 import Edit from './edit.svg';
+import PoweredByGoogle from './powered-by-google-logo.svg';
+import Clock from './clock.svg';
 
 const ChevronLeft = ({width, height, size, stroke, strokeWidth, ...props}) => (
   <Svg
@@ -51,6 +51,46 @@ const ChevronLeft = ({width, height, size, stroke, strokeWidth, ...props}) => (
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+const Person = ({width, height, stroke, ...props}) => (
+  <Svg
+    width={width ?? 16}
+    height={height ?? 16}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M13.3346 14V12.6667C13.3346 11.9594 13.0537 11.2811 12.5536 10.781C12.0535 10.281 11.3752 10 10.668 10H5.33464C4.62739 10 3.94911 10.281 3.44902 10.781C2.94892 11.2811 2.66797 11.9594 2.66797 12.6667V14"
+      stroke={stroke ?? 'black'}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <Path
+      d="M7.9987 7.33333C9.47146 7.33333 10.6654 6.13943 10.6654 4.66667C10.6654 3.19391 9.47146 2 7.9987 2C6.52594 2 5.33203 3.19391 5.33203 4.66667C5.33203 6.13943 6.52594 7.33333 7.9987 7.33333Z"
+      stroke={stroke ?? 'black'}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </Svg>
+);
+
+const PhoneIcon = ({width, height, stroke, ...props}) => (
+  <Svg
+    width={width ?? 16}
+    height={height ?? 16}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M14.665 11.2793V13.2793C14.6657 13.4649 14.6277 13.6487 14.5533 13.8188C14.479 13.9889 14.3699 14.1416 14.233 14.2672C14.0962 14.3927 13.9347 14.4882 13.7588 14.5477C13.5829 14.6072 13.3966 14.6293 13.2117 14.6126C11.1602 14.3897 9.18966 13.6887 7.45833 12.5659C5.84755 11.5424 4.48189 10.1767 3.45833 8.56592C2.33165 6.82672 1.63049 4.84658 1.41166 2.78592C1.395 2.60156 1.41691 2.41576 1.47599 2.24033C1.53508 2.06491 1.63004 1.90371 1.75484 1.767C1.87964 1.63029 2.03153 1.52106 2.20086 1.44627C2.37018 1.37147 2.55322 1.33276 2.73833 1.33258H4.73833C5.06187 1.3294 5.37552 1.44397 5.62084 1.65494C5.86615 1.86591 6.02638 2.15888 6.07166 2.47925C6.15608 3.1193 6.31263 3.74774 6.53833 4.35258C6.62802 4.5912 6.64744 4.85053 6.59427 5.09984C6.5411 5.34915 6.41757 5.57799 6.23833 5.75925L5.39166 6.60592C6.3407 8.27495 7.72263 9.65688 9.39166 10.6059L10.2383 9.75925C10.4196 9.58001 10.6484 9.45648 10.8977 9.40331C11.1471 9.35014 11.4064 9.36956 11.645 9.45925C12.2498 9.68495 12.8783 9.8415 13.5183 9.92592C13.8422 9.9716 14.1379 10.1347 14.3494 10.3842C14.5608 10.6338 14.6731 10.9523 14.665 11.2793Z"
+      stroke={stroke ?? Color.DARK}
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </Svg>
 );
@@ -292,6 +332,49 @@ const User = ({width, height, stroke, ...props}) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
+  </Svg>
+);
+
+const Navigation = ({width, height, stroke, fill, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M21.6791 2.28815C21.3939 2.00384 21.0137 1.90907 20.6334 2.09861L2.57041 10.6278C2.19014 10.8173 2 11.1964 2 11.5755C2 11.9545 2.28521 12.3336 2.76055 12.4284L9.7956 14.229L11.6019 21.2419C11.697 21.6209 12.0772 21.9052 12.4575 22H12.5526C12.9329 22 13.2181 21.8105 13.4082 21.4314L21.9643 3.42537C22.0594 2.95153 21.9643 2.57245 21.6791 2.28815Z"
+      fill={fill ?? Color.DODGER_BLUE}
+    />
+  </Svg>
+);
+
+const Phone = ({width, height, stroke, fill, ...props}) => (
+  <Svg
+    width={width ?? 24}
+    height={height ?? 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M16.0039 14.0981C16.0039 14.3484 15.9205 14.5152 15.7536 14.6821C15.5868 14.8489 14.3523 16 14.0186 16C11.5994 15.7497 9.26361 14.9155 7.17809 13.5808C5.25942 12.4129 3.67442 10.7445 2.42311 8.82581C1.08838 6.74029 0.254169 4.40451 0.00390625 1.98531C0.00390625 1.73504 1.155 0.500525 1.23843 0.333683C1.40527 0.166842 1.65553 0 1.90579 0H4.40842C4.82552 0 5.1592 0.333683 5.24262 0.750787C5.32604 1.585 5.57631 2.50262 5.90999 3.25341C5.99341 3.58709 5.90999 3.92078 5.74315 4.17104L4.65868 5.17209C4.40842 5.42235 4.325 5.83946 4.49184 6.17314C5.74315 8.4255 7.57841 10.2608 9.83077 11.5121C10.1645 11.6789 10.5816 11.6789 10.8318 11.3452L11.9163 10.2608C12.1665 10.0105 12.5002 9.92707 12.8339 10.0939C13.6681 10.4276 14.5023 10.5944 15.3365 10.7613C15.6702 10.8447 16.0039 11.1784 16.0039 11.5955V14.0981Z"
+      fill={fill ?? Color.DODGER_BLUE}
+    />
+    <Mask
+      id="mask0_3482_11893"
+      style="mask-type:alpha"
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="17"
+      height="16">
+      <Path
+        d="M16.0039 14.0981C16.0039 14.3484 15.9205 14.5152 15.7536 14.6821C15.5868 14.8489 14.3523 16 14.0186 16C11.5994 15.7497 9.26361 14.9155 7.17809 13.5808C5.25942 12.4129 3.67442 10.7445 2.42311 8.82581C1.08838 6.74029 0.254169 4.40451 0.00390625 1.98531C0.00390625 1.73504 1.155 0.500525 1.23843 0.333683C1.40527 0.166842 1.65553 0 1.90579 0H4.40842C4.82552 0 5.1592 0.333683 5.24262 0.750787C5.32604 1.585 5.57631 2.50262 5.90999 3.25341C5.99341 3.58709 5.90999 3.92078 5.74315 4.17104L4.65868 5.17209C4.40842 5.42235 4.325 5.83946 4.49184 6.17314C5.74315 8.4255 7.57841 10.2608 9.83077 11.5121C10.1645 11.6789 10.5816 11.6789 10.8318 11.3452L11.9163 10.2608C12.1665 10.0105 12.5002 9.92707 12.8339 10.0939C13.6681 10.4276 14.5023 10.5944 15.3365 10.7613C15.6702 10.8447 16.0039 11.1784 16.0039 11.5955V14.0981Z"
+        fill={fill ?? Color.WHITE}
+      />
+    </Mask>
   </Svg>
 );
 
@@ -688,6 +771,8 @@ const Icon = {
   Edit,
   Minus,
   Refund,
+  PoweredByGoogle,
+  Clock,
 };
 
 export default Icon;

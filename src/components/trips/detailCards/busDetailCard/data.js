@@ -30,7 +30,6 @@ const busDetailCardProps = {
         seatNo: 'c1',
       },
     ],
-    reduceOpacity: false,
   },
   actions: [
     {
@@ -52,6 +51,7 @@ const busDetailCardProps = {
   onPhoneNumberClicked: () => console.log('phoneNumber clicked'),
   actionDisabled: false,
   notificationText: 'Some thing to notify',
+  reduceOpacity: true,
 };
 
 export default busDetailCardProps;

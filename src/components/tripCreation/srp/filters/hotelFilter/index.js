@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import React, {useImperativeHandle, useRef, useState} from 'react';
-import SortAndFilter, {FilterButton, FilterSection} from '../component';
+import QuickLinks, {FilterButton, FilterSection} from '../component';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
 import {DP} from '../../../../../utils/Dimen';
 import Styles from './Styles';
@@ -8,9 +8,13 @@ import Icon from '../../../../../assets/icons/Icon';
 import FText from '../../../../../common/rn/FText';
 import {Color} from '../../../../../utils/color/index.travelPlus';
 import RangeSlider from '../../../../../common/components/rangeSlider';
+import {ShowOOP} from '../flightFilter';
+import Separator from '../../../../../common/components/separator';
 
 const HotelRating = React.forwardRef(({starRatings}, ref) => {
-  const [state, setState] = useState([...starRatings]);
+  const [state, setState] = useState([
+    ...starRatings.map((item) => ({...item})),
+  ]);
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
@@ -101,50 +105,7 @@ const PreferredType = React.forwardRef(
   },
 );
 
-const Entitlement = React.forwardRef(({entitlement}, ref) => {
-  const [state, setState] = useState([...entitlement]);
-
-  useImperativeHandle(ref, () => ({
-    clearAll: () => {
-      setState((prevState) =>
-        prevState.map((item) => ({...item, selected: false})),
-      );
-    },
-    data: state,
-  }));
-
-  const onEntitlementSelect = (item) => {
-    state.forEach((value) => {
-      if (value.id === item.id) value.selected = !value.selected;
-    });
-    setState([...state]);
-  };
-
-  return (
-    <FilterSection
-      title={Strings.selectEntitlement}
-      style={Styles.entitlementStyle}>
-      <View style={Styles.buttonContainer}>
-        {state.map((item, index) => (
-          <FilterButton
-            isSelected={item.selected}
-            onPress={() => onEntitlementSelect(item)}
-            addMarginRight={index < state.length - 1}>
-            {item.name}
-          </FilterButton>
-        ))}
-      </View>
-    </FilterSection>
-  );
-});
-
-const HotelFilter = ({
-  sortData,
-  filterData,
-  onSortSelect,
-  onApply,
-  isFilterApplied,
-}) => {
+const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
   const sliderRef = useRef();
   const hotelRatingRef = useRef();
   const preferredTypeRef = useRef();
@@ -154,7 +115,6 @@ const HotelFilter = ({
     sliderRef.current.resetSlider();
     hotelRatingRef.current.clearAll();
     preferredTypeRef.current.clearAll();
-    entitlementRef.current.clearAll();
   };
 
   const onApplyPress = () => {
@@ -162,14 +122,13 @@ const HotelFilter = ({
       ...preferredTypeRef.current.data,
       starRatings: hotelRatingRef.current.data,
       priceData: sliderRef.current.data,
-      entitlement: entitlementRef.current.data,
+      showOOP: entitlementRef.current.data,
     };
     onApply(data);
   };
 
   return (
-    <SortAndFilter
-      sortData={sortData}
+    <QuickLinks
       onSortSelect={onSortSelect}
       isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
@@ -177,14 +136,18 @@ const HotelFilter = ({
       <FilterSection title={Strings.price}>
         <RangeSlider ref={sliderRef} {...filterData.priceData} />
       </FilterSection>
+      <Separator style={Styles.separator} />
       <HotelRating ref={hotelRatingRef} starRatings={filterData.starRatings} />
+      <Separator style={Styles.separator} />
       <PreferredType
         ref={preferredTypeRef}
         contractedRatePreferredFilter={filterData.contractedRatePreferredFilter}
         travelPlusPreferredFilter={filterData.travelPlusPreferredFilter}
       />
-      <Entitlement entitlement={filterData.entitlement} ref={entitlementRef} />
-    </SortAndFilter>
+      <Separator style={Styles.separator} />
+      <ShowOOP ref={entitlementRef} showOOP={filterData.showOOP} />
+      <Separator style={Styles.separator} />
+    </QuickLinks>
   );
 };
 

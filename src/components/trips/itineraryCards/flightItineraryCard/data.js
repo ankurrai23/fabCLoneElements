@@ -16,7 +16,6 @@ const flightItineraryCardProps = {
     destinationAirportCode: 'BLR',
     departureTime: '18:30',
     arrivalTime: '22:30',
-    reduceOpacity: false,
     stop: 'Non stop (via Mumbai)',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
@@ -45,11 +44,9 @@ const flightItineraryCardProps = {
     flightNumber: '717',
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
-    // pnr: 'GBLP6Q',
     totalDuration: '1h 50min',
     airline: 'Indigo',
     stop: 'Non stop (via Hyderabad)',
-    reduceOpacity: false,
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
     isPriceFetched: true,
@@ -91,6 +88,7 @@ const flightItineraryCardProps = {
   notificationText: null,
   showPreBookingCard: false,
   hideChevron: false,
+  reduceOpacity: true,
 };
 
 export default flightItineraryCardProps;

@@ -37,12 +37,16 @@ export default StyleSheet.create({
     paddingRight: 0,
     // paddingRight: DP._48,
   },
+  separator: {
+    marginHorizontal: DP._24,
+    marginBottom: DP._24,
+  },
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: DP._16,
-    marginHorizontal: DP._24,
-    marginBottom: DP._24,
+    paddingTop: DP._16,
+    paddingHorizontal: DP._24,
+    paddingBottom: DP._24,
   },
   filterText: {
     fontSize: DP._18,

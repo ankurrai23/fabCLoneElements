@@ -13,6 +13,7 @@ export default function ContactSupport({
   supportDetails,
   onContactSupportPress,
   style,
+  isGreyedOut,
   onClose,
 }) {
   return (
@@ -20,10 +21,10 @@ export default function ContactSupport({
       <FTouchableOpacity
         style={[styles.container, style]}
         onPress={onContactSupportPress}>
-        <FText style={styles.textStyle}>
+        <FText greyedOut={isGreyedOut} style={styles.textStyle}>
           {item?.name || Strings.contactSupport}
         </FText>
-        <Icon.Phone />
+        <Icon.Phone fill={isGreyedOut ? Color.BLUEY_GREY : Color.DODGER_BLUE} />
       </FTouchableOpacity>
       {!!supportDetails?.length && (
         <SupportDialog

@@ -1,18 +1,19 @@
-import {View} from 'react-native';
+import {Switch, View} from 'react-native';
 import React, {useCallback, useImperativeHandle, useRef, useState} from 'react';
 import Styles from './Styles';
 import FTouchableOpacity from '../../../../../common/rn/FTouchableOpacity';
 import FText from '../../../../../common/rn/FText';
-import SortAndFilter, {FilterButton, FilterSection} from '../component';
+import QuickLinks, {FilterSection} from '../component';
 import FImage from '../../../../../common/rn/FImage';
 import Checkbox from '../../../../../common/components/checkbox';
 import Separator from '../../../../../common/components/separator';
 import {Strings} from '../../../../../utils/strings/index.travelPlus';
+import {isPlatformIos} from '../../../../../utils/Utils';
 
 const MINIMUM_FLIGHT_COUNT = 4;
 
 const Airlines = React.forwardRef(({airline}, ref) => {
-  const [state, setState] = useState([...airline]);
+  const [state, setState] = useState([...airline.map((item) => ({...item}))]);
   const [allFlights, setAllFlights] = useState(false);
   const airlinesCount = allFlights ? state.length : MINIMUM_FLIGHT_COUNT;
 
@@ -68,7 +69,7 @@ const Airlines = React.forwardRef(({airline}, ref) => {
 });
 
 const Stops = React.forwardRef(({stops}, ref) => {
-  const [state, setState] = useState([...stops]);
+  const [state, setState] = useState([...stops.map((item) => ({...item}))]);
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
@@ -87,7 +88,7 @@ const Stops = React.forwardRef(({stops}, ref) => {
   };
 
   return (
-    <FilterSection title={Strings.selectStops}>
+    <FilterSection title={Strings.stops}>
       <View style={Styles.buttonContainer}>
         {state.map((item, index) => (
           <FTouchableOpacity
@@ -103,46 +104,32 @@ const Stops = React.forwardRef(({stops}, ref) => {
   );
 });
 
-const Entitlement = React.forwardRef(({entitlement}, ref) => {
-  const [state, setState] = useState([...entitlement]);
+export const ShowOOP = React.forwardRef(({showOOP}, ref) => {
+  const [_showOOP, setShowOOP] = useState(showOOP);
+  console.log(_showOOP, showOOP);
 
   useImperativeHandle(ref, () => ({
     clearAll: () => {
-      setState((prevState) =>
-        prevState.map((item) => ({...item, selected: false})),
-      );
+      setShowOOP(false);
     },
-    data: state,
+    data: _showOOP,
   }));
 
-  const onEntitlementSelect = (item) => {
-    state.forEach((value) => {
-      if (value.id === item.id) value.selected = !value.selected;
-    });
-    setState([...state]);
-  };
-
   return (
-    <FilterSection
-      title={Strings.selectEntitlement}
-      style={Styles.entitlementStyle}>
-      <View style={Styles.buttonContainer}>
-        {state.map((item, index) => (
-          <FilterButton
-            isSelected={item.selected}
-            onPress={() => onEntitlementSelect(item)}
-            addMarginRight={index < state.length - 1}>
-            {item.name}
-          </FilterButton>
-        ))}
-      </View>
-    </FilterSection>
+    <View style={Styles.oopSwitchContainer}>
+      <FText style={Styles.showOOPText}>{Strings.showOOPFlights}</FText>
+      <Switch
+        trackColor={isPlatformIos() ? Styles.switchTrackColor : {}}
+        value={!!_showOOP}
+        onChange={() => setShowOOP(!_showOOP)}
+      />
+    </View>
   );
 });
 
 const FlightFilter = ({
-  sortData,
-  onSortSelect,
+  quickLinks,
+  onQuickLinkSelect,
   filterData,
   onApply,
   isFilterApplied,
@@ -152,43 +139,45 @@ const FlightFilter = ({
   const entitlementRef = useRef();
 
   const onClearAll = useCallback(() => {
-    stopsRef.current.clearAll();
-    airlineRef.current.clearAll();
-    entitlementRef.current.clearAll();
+    stopsRef.current?.clearAll();
+    airlineRef.current?.clearAll();
   }, []);
 
   const onApplyPress = () => {
     const data = {};
-    if (filterData.stop) {
+    if (filterData.stop?.length) {
       data.stop = stopsRef.current.data;
     }
-    if (filterData.filterAirline) {
+    if (filterData.filterAirline?.length) {
       data.filterAirline = airlineRef.current.data;
     }
-    if (filterData.entitlement) {
-      data.entitlement = entitlementRef.current.data;
-    }
+    data.showOOP = entitlementRef.current.data;
     onApply(data);
   };
 
   return (
-    <SortAndFilter
-      sortData={sortData}
-      onSortSelect={onSortSelect}
+    <QuickLinks
+      quickLinks={quickLinks}
+      onQuickLinkSelect={onQuickLinkSelect}
       isFilterApplied={isFilterApplied}
       onClearAll={onClearAll}
       onApply={onApplyPress}>
-      {filterData.stop && <Stops stops={filterData.stop} ref={stopsRef} />}
-      {filterData.filterAirline && (
-        <Airlines airline={filterData.filterAirline} ref={airlineRef} />
+      {!!filterData?.stop?.length && (
+        <>
+          <Stops stops={filterData.stop} ref={stopsRef} />
+          <Separator style={Styles.separator} />
+        </>
       )}
-      {filterData.entitlement && (
-        <Entitlement
-          entitlement={filterData.entitlement}
-          ref={entitlementRef}
-        />
+
+      {!!filterData?.filterAirline?.length && (
+        <>
+          <Airlines airline={filterData.filterAirline} ref={airlineRef} />
+          <Separator style={Styles.separator} />
+        </>
       )}
-    </SortAndFilter>
+      <ShowOOP showOOP={filterData.showOOP} ref={entitlementRef} />
+      <Separator style={Styles.separator} />
+    </QuickLinks>
   );
 };
 

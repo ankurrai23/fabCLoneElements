@@ -27,7 +27,6 @@ const trainDetailCardProps = {
         seatNo: 'b1, 42',
       },
     ],
-    reduceOpacity: false,
   },
   actions: [
     {
@@ -47,6 +46,7 @@ const trainDetailCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   notificationText: 'Some thing to notify',
   actionDisabled: false,
+  reduceOpacity: true,
 };
 
 export default trainDetailCardProps;

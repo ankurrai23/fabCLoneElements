@@ -41,7 +41,7 @@ const Selector = ({
             ItemSeparatorComponent={() => (
               <Separator style={Styles.separator} />
             )}
-            style={{...dialogBoxStyle}}
+            style={{...dialogBoxStyle()}}
             bounces={false}
           />
         </View>

@@ -16,6 +16,8 @@ import TripStatus from '../../tripStatus';
 import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import {ColorMatrix} from 'react-native-color-matrix-image-filters';
+import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
 export default function HotelDetailCard({
   item,
@@ -28,6 +30,7 @@ export default function HotelDetailCard({
   onViewMorePress,
 }) {
   const [expanded, setExpanded] = useState(!item.enableViewMoreButton);
+  const isGreyedOut = item.reduceOpacity;
   const [sheetVisible, setSheetVisible] = useState(false);
   const [fadeIn] = useState(
     new Animated.Value(item.enableViewMoreButton ? 0 : 1),
@@ -68,22 +71,30 @@ export default function HotelDetailCard({
   const CheckInInfo = ({title, date, time}) => (
     <View>
       <FText style={Styles.sectionTitle}>{title}</FText>
-      <FText type={FONT_TYPE.MEDIUM}>{date}</FText>
-      {time && <FText style={Styles.checkInTIme}>{time}</FText>}
+      <FText greyedOut={isGreyedOut} type={FONT_TYPE.MEDIUM}>
+        {date}
+      </FText>
+      {time && (
+        <FText greyedOut={isGreyedOut} style={Styles.checkInTIme}>
+          {time}
+        </FText>
+      )}
     </View>
   );
 
   const CoTraveller = ({name, lastItem}) => (
     <View style={Styles.coTravellerContainer(lastItem)}>
       <Icon.User width={DP._14} height={DP._14} stroke={Color.GREY_PURPLE} />
-      <FText style={{marginLeft: DP._8}}>{name}</FText>
+      <FText greyedOut={isGreyedOut} style={{marginLeft: DP._8}}>
+        {name}
+      </FText>
     </View>
   );
 
   const Inclusions = ({image, text, lastItem}) => (
     <View style={Styles.inclusionContainer(lastItem)}>
       <FImage source={{uri: image}} style={Styles.inclusionIcon} />
-      <FText>{text}</FText>
+      <FText greyedOut={isGreyedOut}>{text}</FText>
     </View>
   );
 
@@ -97,11 +108,17 @@ export default function HotelDetailCard({
                 style={{paddingVertical: DP._16}}
                 onPress={() => onActionPress(item)}>
                 <View style={Styles.postTripButtonContainer}>
-                  <FText style={{color: Color.DODGER_BLUE}}>{item.name}</FText>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={{color: Color.DODGER_BLUE}}>
+                    {item.name}
+                  </FText>
                   <Icon.ChevronRight width={DP._14} height={DP._14} />
                 </View>
                 {item.type === HotelSubTripActions.SUBMIT_REVIEW && (
                   <FText
+                    greyedOut={isGreyedOut}
+                    c
                     style={{
                       fontSize: DP._11,
                       color: Color.GREY_PURPLE,
@@ -128,17 +145,20 @@ export default function HotelDetailCard({
         <ModificationAlertBox msg={item.notificationText} />
       )}
       <View style={[Styles.container, style]}>
-        <View style={Styles.subContainer(item.reduceOpacity)}>
+        <View style={Styles.subContainer}>
           <View style={Styles.hotelNameAndImageContainer}>
             {item.mainImage && (
               <FTouchableOpacity
                 style={{marginRight: DP._8}}
                 disabled={item.reduceOpacity}
                 onPress={onMainImagePress}>
-                <FImage
-                  style={Styles.hotelImage}
-                  source={{uri: item.imageBaseUrl + item.mainImage}}
-                />
+                <ColorMatrix matrix={grayImageMatrix(isGreyedOut)}>
+                  <FImage
+                    style={Styles.hotelImage}
+                    source={{uri: item.imageBaseUrl + item.mainImage}}
+                  />
+                </ColorMatrix>
+
                 <Icon.ZooomIn
                   width={DP._18}
                   height={DP._18}
@@ -150,7 +170,9 @@ export default function HotelDetailCard({
               {!!item.bookingStatus && (
                 <TripStatus statusObj={item.bookingStatus} />
               )}
-              <FText style={{marginTop: DP._12}}>{item.hotelName}</FText>
+              <FText greyedOut={isGreyedOut} style={{marginTop: DP._12}}>
+                {item.hotelName}
+              </FText>
             </View>
           </View>
           <FText style={Styles.addressText}>{item.address}</FText>
@@ -158,13 +180,17 @@ export default function HotelDetailCard({
           <View
             style={[Styles.flexRowWithSpaceBetween, {marginVertical: DP._8}]}>
             <FText
+              greyedOut={isGreyedOut}
               style={{
                 fontSize: DP._12,
                 lineHeight: DP._14,
                 color: Color.BLUEY_GREY,
               }}>
               {Strings.bookingId2}
-              <FText type={FONT_TYPE.MEDIUM} style={{paddingLeft: DP._8}}>
+              <FText
+                greyedOut={isGreyedOut}
+                type={FONT_TYPE.MEDIUM}
+                style={{paddingLeft: DP._8}}>
                 {item.bookingId}
               </FText>
             </FText>
@@ -176,9 +202,11 @@ export default function HotelDetailCard({
                 <Icon.Navigation
                   width={DP._16}
                   height={DP._16}
+                  fill={isGreyedOut ? Color.BLUEY_GREY : Color.DODGER_BLUE}
                   style={Styles.directionIcon}
                 />
                 <FText
+                  greyedOut={isGreyedOut}
                   style={{
                     fontSize: DP._12,
                     color: Color.DODGER_BLUE,
@@ -217,6 +245,7 @@ export default function HotelDetailCard({
                 />
                 <View>
                   <FText
+                    greyedOut={isGreyedOut}
                     style={{
                       fontSize: DP._12,
                       color: Color.GREY_PURPLE,
@@ -224,13 +253,17 @@ export default function HotelDetailCard({
                     }}>
                     {Strings.rooms}
                   </FText>
-                  <FText type={FONT_TYPE.MEDIUM}>{item.noOfRooms || '-'}</FText>
+                  <FText greyedOut={isGreyedOut} type={FONT_TYPE.MEDIUM}>
+                    {item.noOfRooms || '-'}
+                  </FText>
                 </View>
               </View>
               <Separator style={Styles.separator} />
               {!item.inclusions?.length ? null : (
                 <>
-                  <FText style={[Styles.sectionTitle, {marginTop: DP._16}]}>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={[Styles.sectionTitle, {marginTop: DP._16}]}>
                     {Strings.inclusions}
                   </FText>
                   {item.inclusions?.map((entity, index) => {
@@ -249,7 +282,9 @@ export default function HotelDetailCard({
                       onPress={() => setSheetVisible(true)}
                       style={{marginBottom: DP._16}}
                       disabled={item.reduceOpacity}>
-                      <FText style={Styles.moreInclustion}>
+                      <FText
+                        greyedOut={isGreyedOut}
+                        style={Styles.moreInclustion}>
                         {Strings.moreInclusions(item.inclusions.length - 3)}
                       </FText>
                     </FTouchableOpacity>
@@ -259,7 +294,9 @@ export default function HotelDetailCard({
               )}
               {item?.coTravellers?.length > 0 && (
                 <>
-                  <FText style={[Styles.sectionTitle, {marginTop: DP._16}]}>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={[Styles.sectionTitle, {marginTop: DP._16}]}>
                     {Strings.travelerDetails}
                   </FText>
                   {item.coTravellers.map((names, index) => (
@@ -272,7 +309,9 @@ export default function HotelDetailCard({
                   <Separator style={Styles.separator} />
                 </>
               )}
-              <FText style={[Styles.sectionTitle, {marginTop: DP._8}]}>
+              <FText
+                greyedOut={isGreyedOut}
+                style={[Styles.sectionTitle, {marginTop: DP._8}]}>
                 {Strings.paymentMode}
               </FText>
               <View style={Styles.paymentModeContainer}>
@@ -283,7 +322,9 @@ export default function HotelDetailCard({
                     {alignItems: 'center'},
                   ]}>
                   <Icon.CreditCard width={DP._16} height={DP._16} />
-                  <FText style={{marginLeft: DP._8, fontSize: DP._12}}>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={{marginLeft: DP._8, fontSize: DP._12}}>
                     {item?.paymentMode ? item.paymentMode : Strings.NA}
                   </FText>
                 </View>
@@ -297,6 +338,7 @@ export default function HotelDetailCard({
                       color={item.paymentStatus.color}
                     /> */}
                     <FText
+                      greyedOut={isGreyedOut}
                       style={{
                         fontSize: DP._10,
                         color: item.paymentStatus.color,
@@ -322,6 +364,7 @@ export default function HotelDetailCard({
                     supportDetails={supportDetails}
                     onContactSupportPress={onContactSupportPress}
                     onClose={onClose}
+                    isGreyedOut={isGreyedOut}
                     style={{marginVertical: DP._16}}
                   />
                 </>
@@ -336,7 +379,7 @@ export default function HotelDetailCard({
               hitSlop={Styles.viewDetailHitSlop}
               onPress={onItemPress}
               style={Styles.viewDetailView}>
-              <FText style={Styles.showMoreTxt}>
+              <FText greyedOut={isGreyedOut} style={Styles.showMoreTxt}>
                 {Strings.viewDetails(expanded)}
               </FText>
               <Animated.View style={{transform: [{rotate: spin}]}}>

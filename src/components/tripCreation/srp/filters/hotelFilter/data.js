@@ -1,34 +1,6 @@
 const hotelFilterProps = {
-  sortData: [
-    {
-      key: 'CHEAPEST',
-      value: 'Cheapest',
-      selected: false,
-    },
-    {
-      key: 'POPULAR',
-      value: 'Popular',
-      selected: true,
-    },
-    {
-      key: 'HIGHEST_RATING',
-      value: 'Highest rating',
-      selected: false,
-    },
-  ],
   filterData: {
-    entitlement: [
-      {
-        id: 'INPOLICY',
-        name: 'In policy',
-        selected: true,
-      },
-      {
-        id: 'OUTOFPOLICY',
-        name: 'Out of policy',
-        selected: false,
-      },
-    ],
+    showOOP: true,
     travelPlusPreferredFilter: false,
     contractedRatePreferredFilter: true,
     starRatings: [
@@ -68,7 +40,7 @@ const hotelFilterProps = {
     },
   },
   onApply: (item) => console.log('on filter apply', item),
-  onSortSelect: (item) => console.log('sorted', item),
+  onQuickLinkSelect: (item) => console.log('sorted', item),
 };
 
 export default hotelFilterProps;

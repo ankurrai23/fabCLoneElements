@@ -22,6 +22,7 @@ export default {
   uploadReceipt: 'Upload receipt',
   start: 'Start',
   stop: 'Stop',
+  stops: 'Stops',
   selectMonth: 'Select month',
   addAnother: 'Add another',
   upload: 'Upload',
@@ -177,4 +178,6 @@ export default {
     'Hurry up! Make the payment now else your approval shall be cancelled.',
   perAdult: ' per adult',
   view: 'View',
+  soldOut2: 'Sold Out!',
+  showOOPFlights: 'Show out of policy flights',
 };

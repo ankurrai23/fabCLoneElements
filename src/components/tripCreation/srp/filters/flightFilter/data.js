@@ -1,27 +1,32 @@
 const flightFilterProps = {
-  sortData: [
+  quickLinks: [
     {
       key: 'NON_STOP',
       value: 'Non-stop',
       selected: false,
+      type: 'FILTER',
     },
     {
       key: 'EARLIEST_FIRST',
       value: 'Earliest first',
       selected: true,
+      type: 'SORT',
     },
     {
       key: 'CHEAPEST_FIRST',
       value: 'Cheapest first',
       selected: false,
+      type: 'SORT',
     },
     {
       key: 'NON_STOP1',
       value: 'Non-stop',
       selected: false,
+      type: 'SORT',
     },
   ],
   filterData: {
+    showOOP: true,
     stop: [
       {
         id: 'NON_STOP',
@@ -32,25 +37,13 @@ const flightFilterProps = {
       {
         id: 'ONE_STOP',
         noOfStops: '1',
-        name: 'Stop',
+        name: '1 Stop',
         selected: true,
       },
       {
         id: 'MULTI_STOP',
         noOfStops: '1+',
-        name: 'Stops',
-        selected: false,
-      },
-    ],
-    entitlement: [
-      {
-        id: 'INPOLICY',
-        name: 'In policy',
-        selected: true,
-      },
-      {
-        id: 'OUTOFPOLICY',
-        name: 'Out of policy',
+        name: '1+ Stops',
         selected: false,
       },
     ],
@@ -90,33 +83,33 @@ const flightFilterProps = {
         name: 'Go Air',
         selected: false,
       },
-      // {
-      //   airlineName: 'Spice Jet',
-      //   airlineIcon:
-      //     'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      //   selected: false,
-      // },
-      // {
-      //   airlineName: 'Air india',
-      //   airlineIcon:
-      //     'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      //   selected: false,
-      // },
-      // {
-      //   airlineName: 'Indigo',
-      //   airlineIcon:
-      //     'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      //   selected: false,
-      // },
-      // {
-      //   airlineName: 'Spice Jet',
-      //   airlineIcon:
-      //     'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
-      //   selected: false,
-      // },
+      {
+        name: 'Spice Jet',
+        icon:
+          'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
+        selected: false,
+      },
+      {
+        name: 'Air india',
+        icon:
+          'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
+        selected: false,
+      },
+      {
+        name: 'Indigo',
+        icon:
+          'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
+        selected: false,
+      },
+      {
+        name: 'Spice Jet',
+        icon:
+          'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
+        selected: false,
+      },
     ],
   },
-  onSortSelect: (item) => console.log('sort selected', item),
+  onQuickLinkSelect: (item) => console.log('sort selected', item),
   onApply: (item) => console.log('apply clicked', item),
 };
 

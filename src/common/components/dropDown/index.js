@@ -20,6 +20,7 @@ function DropDown(
     onPressClose,
     selectTextOnFocus,
     icon,
+    googleSearch,
   },
   ref,
 ) {
@@ -42,7 +43,7 @@ function DropDown(
   });
 
   const Item = ({
-    entity: {titleTextBold, subTitle, titleText, img},
+    entity: {titleTextBold, subTitle, titleText, itemIcon},
     entity,
     index,
   }) => {
@@ -51,7 +52,7 @@ function DropDown(
         onPress={() => onPress(entity, index)}
         style={Styles.cardStyle}>
         <View style={Styles.titleAndIconContainer}>
-          {icon}
+          {itemIcon ?? icon}
           <FText
             type={FONT_TYPE.BOLD}
             style={Styles.titleText}
@@ -107,6 +108,11 @@ function DropDown(
           keyboardShouldPersistTaps="always"
           persistentScrollbar={true}
         />
+        {googleSearch && !!data.length && (
+          <View style={Styles.poweredByGoogle}>
+            <Icon.PoweredByGoogle />
+          </View>
+        )}
       </View>
     </View>
   );
