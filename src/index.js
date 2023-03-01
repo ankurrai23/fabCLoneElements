@@ -96,6 +96,7 @@ import HotelFarePlanCard from './components/tripCreation/srp/farePlans/hotelFare
 import FlightSearchResultCard from './components/tripCreation/srp/flightSearchResultCard';
 import HotelSearchResultCard from './components/tripCreation/srp/hotelSearchResultCard';
 import SelectRoomSheet from './components/tripCreation/srp/selectRoomSheet';
+import QuickLinks from './components/tripCreation/srp/filters/component';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -119,6 +120,7 @@ import ReceiptsList from './components/expense/receiptsList';
 import AddReceiptModal from './components/expense/addReceiptModal';
 import ReceiptListView from './components/expense/receiptListView';
 import Utils from './utils/Utils';
+import MonthFilter from './components/expense/monthFilter';
 
 //Constants
 import {FONT_TYPE} from './common/rn/FText';
@@ -208,6 +210,7 @@ export {
   FlightSearchResultCard,
   HotelSearchResultCard,
   SelectRoomSheet,
+  QuickLinks,
   // constants
   FlightSubTripActions,
   TrainSubtripActions,
@@ -238,6 +241,7 @@ export {
   AddReceiptModal,
   ReceiptListView,
   Utils,
+  MonthFilter,
   //Constants
   FONT_TYPE,
   BUTTON_TYPE,
