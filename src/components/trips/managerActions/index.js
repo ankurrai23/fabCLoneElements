@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -7,7 +7,6 @@ import Button from '../../../common/components/button';
 
 import {DP} from '../../../utils/Dimen';
 import Styles from './Styles';
-import ReasonModal from '../../../common/components/reasonModal';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {Color} from '../../../utils/color/index.travelPlus';

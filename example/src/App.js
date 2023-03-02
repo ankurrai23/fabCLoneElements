@@ -6,7 +6,6 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import ComponentList from './ComponentList';
 import CustomDrawer from './CustomDrawer';
 import RenderComponent from './RenderComponent';
-import {PortalProvider} from '@gorhom/portal';
 
 if (Platform.OS === 'ios') {
   require('intl'); // import intl object
@@ -33,39 +32,37 @@ export default function App() {
   };
 
   return (
-    <PortalProvider>
-      <NavigationContainer>
-        <Drawer.Navigator
-          initialRouteName="HotelFilter"
-          drawerContent={(props) => <CustomDrawer {...props} />}
-          screenOptions={{drawerStyle: {width: '70%'}}}
-          detachInactiveScreens={true}>
-          {ComponentList.map((item, index) => {
-            if (item.component) {
-              // noinspection JSUnusedGlobalSymbols
-              return (
-                <Drawer.Screen
-                  name={item.name}
-                  key={`abc${index}`}
-                  options={{
-                    headerRight: headerRightText(
-                      onHeaderTextPress,
-                      showProperties,
-                    ),
-                  }}>
-                  {() => (
-                    <RenderComponent
-                      showProperties={showProperties}
-                      item={item}
-                    />
-                  )}
-                </Drawer.Screen>
-              );
-            }
-          })}
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </PortalProvider>
+    <NavigationContainer>
+      <Drawer.Navigator
+        initialRouteName="HotelFilter"
+        drawerContent={(props) => <CustomDrawer {...props} />}
+        screenOptions={{drawerStyle: {width: '70%'}}}
+        detachInactiveScreens={true}>
+        {ComponentList.map((item, index) => {
+          if (item.component) {
+            // noinspection JSUnusedGlobalSymbols
+            return (
+              <Drawer.Screen
+                name={item.name}
+                key={`abc${index}`}
+                options={{
+                  headerRight: headerRightText(
+                    onHeaderTextPress,
+                    showProperties,
+                  ),
+                }}>
+                {() => (
+                  <RenderComponent
+                    showProperties={showProperties}
+                    item={item}
+                  />
+                )}
+              </Drawer.Screen>
+            );
+          }
+        })}
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
