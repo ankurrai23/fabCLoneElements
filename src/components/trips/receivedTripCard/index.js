@@ -1,29 +1,20 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import Separator from '../../../common/components/separator';
 
 import Styles from './Styles';
-import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {FlatList} from 'react-native-gesture-handler';
 import TripStatus from '../tripStatus';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {MANAGER_ACTIONS} from '../managerActions';
 import {getSubTripIcon} from '../../../utils/Utils';
-import FBottomSheet from '../../../common/rn/FBottomSheet';
 
-const ReceivedCard = ({item, onCardPress, onActionPress}) => {
+const ReceivedCard = ({item, onCardPress, onCoTravelerPress}) => {
   const isActionEnabled = (type) => item.actions?.find((e) => e.type === type);
-  const coTravellersListRef = useRef(null);
   const denyAction = isActionEnabled(MANAGER_ACTIONS.DENY);
   const approveAction = isActionEnabled(MANAGER_ACTIONS.APPROVE);
-
-  const renderItem = ({item: coTravelerName}) => {
-    return <FText style={{fontSize: DP._16}}>{coTravelerName}</FText>;
-  };
 
   return (
     <>
@@ -83,7 +74,7 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
               style={Styles.flex}
               onPress={() =>
                 item.coTravellers.length > 1 &&
-                coTravellersListRef.current.expand()
+                onCoTravelerPress(item.coTravellers)
               }>
               <FText numberOfLines={1}>
                 {item.coTravellers?.[0]}
@@ -116,24 +107,6 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
           )}
         </View>
       </FTouchableOpacity>
-      <FBottomSheet ref={coTravellersListRef}>
-        <View style={{paddingBottom: DP._48, paddingHorizontal: DP._24}}>
-          <FText style={Styles.modalHeading}>{Strings.coTravelers}</FText>
-          <FlatList
-            data={item.coTravellers}
-            renderItem={renderItem}
-            ItemSeparatorComponent={() => (
-              <Separator
-                style={{
-                  marginVertical: DP._16,
-                  backgroundColor: Color.SILVER,
-                }}
-              />
-            )}
-            keyExtractor={(_) => _}
-          />
-        </View>
-      </FBottomSheet>
     </>
   );
 };
