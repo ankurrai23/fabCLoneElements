@@ -30,6 +30,7 @@ import RangeSlider from './common/components/rangeSlider';
 import LoadingPlaceholder from './common/components/placeholder';
 import ReasonModal from './common/components/reasonModal';
 import BottomSheet from './common/components/bottomSheet';
+import SupportDialog from './common/components/supportDialog';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
 import FlightPreferenceCard from './components/trips/flightPreferenceCard';
@@ -159,6 +160,7 @@ export {
   LoadingPlaceholder,
   ReasonModal,
   BottomSheet,
+  SupportDialog,
   // Trips components
   FlightPreferenceCard,
   HotelDetailCard,

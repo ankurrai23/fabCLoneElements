@@ -24,9 +24,7 @@ const FlightDetailCard = ({
   onActionPress,
   onCardPress,
   style,
-  supportDetails,
   onContactSupportPress,
-  onClose,
   actions,
   notificationText,
   actionsDisabled,
@@ -231,9 +229,7 @@ const FlightDetailCard = ({
           <>
             <Separator style={Styles.actionsSeperator} />
             <ContactSupport
-              supportDetails={supportDetails}
               onContactSupportPress={onContactSupportPress}
-              onClose={onClose}
               style={Styles.contactSupport}
               isGreyedOut={isGreyedOut}
             />

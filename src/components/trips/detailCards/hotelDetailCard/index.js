@@ -17,7 +17,6 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
-import FBottomSheet from '../../../../common/rn/FBottomSheet';
 
 export default function HotelDetailCard({
   item,
@@ -361,9 +360,7 @@ export default function HotelDetailCard({
                 <>
                   <Separator style={Styles.separator} />
                   <ContactSupport
-                    supportDetails={supportDetails}
                     onContactSupportPress={onContactSupportPress}
-                    onClose={onClose}
                     isGreyedOut={isGreyedOut}
                     style={{marginVertical: DP._16}}
                   />
@@ -420,24 +417,24 @@ export default function HotelDetailCard({
           </>
         )}
       </View>
-      <FBottomSheet ref={inclusionListRef}>
-        <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
-          <FText style={Styles.modalHeading}>{Strings.inclusions}</FText>
-          <FlatList
-            data={item.inclusions}
-            renderItem={renderItem}
-            ItemSeparatorComponent={() => (
-              <Separator
-                style={{
-                  marginVertical: DP._16,
-                  backgroundColor: Color.SILVER,
-                }}
-              />
-            )}
-            keyExtractor={(_, index) => `${index}`}
-          />
-        </View>
-      </FBottomSheet>
+      {/* <FBottomSheet ref={inclusionListRef}> */}
+      <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
+        <FText style={Styles.modalHeading}>{Strings.inclusions}</FText>
+        <FlatList
+          data={item.inclusions}
+          renderItem={renderItem}
+          ItemSeparatorComponent={() => (
+            <Separator
+              style={{
+                marginVertical: DP._16,
+                backgroundColor: Color.SILVER,
+              }}
+            />
+          )}
+          keyExtractor={(_, index) => `${index}`}
+        />
+      </View>
+      {/* </FBottomSheet> */}
     </>
   );
 }
