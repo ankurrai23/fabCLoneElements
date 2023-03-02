@@ -109,7 +109,7 @@ import PendingPaymentCarousel from './components/home/pendingPaymentCarousel';
 //Expense Components
 import ExpenseCard from './components/expense/expenseCard';
 import ExpenseDetailCard from './components/expense/expenseDetailCard';
-import StopDetailList from './components/expense/stopsDetailList';
+import StopsDetail from './components/expense/stopsDetail';
 import ExpenseApprovalCard from './components/expense/expenseApprovalCard';
 import ExpenseApprovalHeader from './components/expense/expenseApprovalHeader';
 import LocationInputBox from './components/expense/locationInputBox';
@@ -230,7 +230,7 @@ export {
   //Expense,
   ExpenseCard,
   ExpenseDetailCard,
-  StopDetailList,
+  StopsDetail,
   ExpenseApprovalCard,
   ExpenseApprovalHeader,
   LocationInputBox,
