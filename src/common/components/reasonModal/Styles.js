@@ -34,10 +34,8 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
   },
   containerSheet: {
-    backgroundColor: Color.WHITE,
     padding: DP._24,
-    borderTopRightRadius: DP._24,
-    borderTopLeftRadius: DP._24,
+    paddingTop: 0,
   },
   crossIcon: {
     alignSelf: 'flex-end',
