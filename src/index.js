@@ -69,6 +69,8 @@ import ApproverChain from './components/trips/approverChain';
 import EmployeeActions from './components/trips/employeeActions';
 import PriceBreakupSheet from './components/trips/priceBreakupSheet';
 
+import {InclusionSheet} from './components/trips/detailCards/hotelDetailCard';
+
 //Constants
 import {
   FlightSubTripActions,
@@ -195,6 +197,7 @@ export {
   ApproverChain,
   EmployeeActions,
   PriceBreakupSheet,
+  InclusionSheet,
   // Trip Creation
   HotelDetails,
   FlightDetails,
