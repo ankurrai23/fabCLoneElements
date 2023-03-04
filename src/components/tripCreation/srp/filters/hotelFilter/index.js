@@ -145,7 +145,11 @@ const HotelFilter = ({filterData, onSortSelect, onApply, isFilterApplied}) => {
         travelPlusPreferredFilter={filterData.travelPlusPreferredFilter}
       />
       <Separator style={Styles.separator} />
-      <ShowOOP ref={entitlementRef} showOOP={filterData.showOOP} />
+      <ShowOOP
+        ref={entitlementRef}
+        showOOP={filterData.showOOP}
+        text={Strings.showOOPHotels}
+      />
       <Separator style={Styles.separator} />
     </QuickLinks>
   );

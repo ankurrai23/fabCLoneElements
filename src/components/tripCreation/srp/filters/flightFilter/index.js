@@ -104,7 +104,7 @@ const Stops = React.forwardRef(({stops}, ref) => {
   );
 });
 
-export const ShowOOP = React.forwardRef(({showOOP}, ref) => {
+export const ShowOOP = React.forwardRef(({showOOP, text}, ref) => {
   const [_showOOP, setShowOOP] = useState(showOOP);
   console.log(_showOOP, showOOP);
 
@@ -117,7 +117,7 @@ export const ShowOOP = React.forwardRef(({showOOP}, ref) => {
 
   return (
     <View style={Styles.oopSwitchContainer}>
-      <FText style={Styles.showOOPText}>{Strings.showOOPFlights}</FText>
+      <FText style={Styles.showOOPText}>{text}</FText>
       <Switch
         trackColor={isPlatformIos() ? Styles.switchTrackColor : {}}
         value={!!_showOOP}
@@ -175,7 +175,11 @@ const FlightFilter = ({
           <Separator style={Styles.separator} />
         </>
       )}
-      <ShowOOP showOOP={filterData.showOOP} ref={entitlementRef} />
+      <ShowOOP
+        showOOP={filterData.showOOP}
+        text={Strings.showOOPFlights}
+        ref={entitlementRef}
+      />
       <Separator style={Styles.separator} />
     </QuickLinks>
   );
