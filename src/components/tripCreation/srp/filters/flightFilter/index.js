@@ -106,7 +106,7 @@ const Stops = React.forwardRef(({stops}, ref) => {
   );
 });
 
-export const ShowOOP = React.forwardRef(({showOOP}, ref) => {
+export const ShowOOP = React.forwardRef(({showOOP, text}, ref) => {
   const [_showOOP, setShowOOP] = useState(showOOP);
   console.log(_showOOP, showOOP);
 
@@ -119,7 +119,7 @@ export const ShowOOP = React.forwardRef(({showOOP}, ref) => {
 
   return (
     <View style={Styles.oopSwitchContainer}>
-      <FText style={Styles.showOOPText}>{Strings.showOOPFlights}</FText>
+      <FText style={Styles.showOOPText}>{text}</FText>
       <Switch
         trackColor={isPlatformIos() ? Styles.switchTrackColor : {}}
         value={!!_showOOP}
@@ -135,17 +135,16 @@ const FlightFilter = ({filterData, onApply}) => {
   const entitlementRef = useRef();
 
   const onClearAll = useCallback(() => {
-    stopsRef.current.clearAll();
-    airlineRef.current.clearAll();
-    entitlementRef.current.clearAll();
+    stopsRef.current?.clearAll();
+    airlineRef.current?.clearAll();
   }, []);
 
   const onApplyPress = () => {
     const data = {};
-    if (filterData.stop) {
+    if (filterData.stop?.length) {
       data.stop = stopsRef.current.data;
     }
-    if (filterData.filterAirline) {
+    if (filterData.filterAirline?.length) {
       data.filterAirline = airlineRef.current.data;
     }
     data.showOOP = entitlementRef.current.data;
@@ -168,7 +167,11 @@ const FlightFilter = ({filterData, onApply}) => {
           <Airlines airline={filterData.filterAirline} ref={airlineRef} />
         )}
         <Separator style={Styles.separator} />
-        <ShowOOP showOOP={filterData.showOOP} ref={entitlementRef} />
+        <ShowOOP
+          showOOP={filterData.showOOP}
+          text={Strings.showOOPFlights}
+          ref={entitlementRef}
+        />
         <Separator style={Styles.separator} />
       </ScrollView>
       <Button

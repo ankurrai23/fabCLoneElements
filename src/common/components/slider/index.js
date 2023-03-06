@@ -91,22 +91,22 @@ const Slider = React.memo(
         resetSlider: () => {
           leftThumbPosition.value = getPositionFromValue(
             minLimit,
-            minValue,
+            minLimit,
             valuePerPixel.value,
           );
           leftThumbOffset.value = getPositionFromValue(
             minLimit,
-            minValue,
+            minLimit,
             valuePerPixel.value,
           );
           rightThumbPosition.value = getPositionFromValue(
             minLimit,
-            maxValue,
+            maxLimit,
             valuePerPixel.value,
           );
           rightThumbOffset.value = getPositionFromValue(
             minLimit,
-            maxValue,
+            maxLimit,
             valuePerPixel.value,
           );
         },

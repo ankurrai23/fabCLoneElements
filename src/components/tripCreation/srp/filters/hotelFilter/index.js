@@ -119,7 +119,6 @@ const HotelFilter = ({filterData, onApply}) => {
     sliderRef.current.resetSlider();
     hotelRatingRef.current.clearAll();
     preferredTypeRef.current.clearAll();
-    entitlementRef.current.clearAll();
   };
 
   const onApplyPress = () => {
@@ -159,7 +158,11 @@ const HotelFilter = ({filterData, onApply}) => {
           travelPlusPreferredFilter={filterData.travelPlusPreferredFilter}
         />
         <Separator style={Styles.separator} />
-        <ShowOOP ref={entitlementRef} showOOP={filterData.showOOP} />
+        <ShowOOP
+          ref={entitlementRef}
+          text={Strings.showOOPHotels}
+          showOOP={filterData.showOOP}
+        />
         <Separator style={Styles.separator} />
       </ScrollView>
       <Button
