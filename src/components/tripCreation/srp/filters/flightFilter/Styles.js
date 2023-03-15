@@ -84,4 +84,30 @@ export default StyleSheet.create({
     paddingHorizontal: DP._24,
     justifyContent: 'space-between',
   },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: DP._16,
+    paddingHorizontal: DP._24,
+    paddingBottom: DP._24,
+  },
+  filterText: {
+    fontSize: DP._18,
+    lineHeight: DP._22,
+  },
+  clearAllText: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+    color: Color.DODGER_BLUE,
+  },
+  applyButton: {
+    borderRadius: DP._24,
+    marginHorizontal: DP._24,
+    marginVertical: DP._8,
+    marginBottom: DP._24,
+  },
+  applyText: {
+    fontSize: DP._16,
+    lineHeight: DP._24,
+  },
 });

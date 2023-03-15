@@ -34,6 +34,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
+        initialRouteName="HotelFilter"
         drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={{drawerStyle: {width: '70%'}}}
         detachInactiveScreens={true}>

@@ -71,7 +71,7 @@ import pendingPaymentCarouselProps from './components/home/pendingPaymentCarouse
 //expense components props
 import expenseCardProps from './components/expense/expenseCard/data';
 import expenseDetailCardProps from './components/expense/expenseDetailCard/data';
-import stopDetailListProps from './components/expense/stopsDetailList/data';
+import stopDetailListProps from './components/expense/stopsDetail/data';
 import expenseApprovalCardProps from './components/expense/expenseApprovalCard/data';
 import expenseApprovalHeaderProps from './components/expense/expenseApprovalHeader/data';
 import locationInputBoxProps from './components/expense/locationInputBox/data';
