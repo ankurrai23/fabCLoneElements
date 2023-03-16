@@ -36,7 +36,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@gorhom/bottom-sheet": "^2.4.1",
     "intl": "1.2.5",
     "ios": "0.0.1",
     "moment": "2.29.1",
