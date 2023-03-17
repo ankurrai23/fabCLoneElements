@@ -70,6 +70,7 @@ function TextField(
     textAlignVertical,
     autoFocus,
     selectTextOnFocus,
+    inputMode,
   },
   ref,
 ) {
@@ -251,6 +252,7 @@ function TextField(
             textAlignVertical={textAlignVertical}
             autoFocus={autoFocus}
             selectTextOnFocus={selectTextOnFocus}
+            inputMode={inputMode}
             style={[
               Styles.input(editable),
               inputStyle,
