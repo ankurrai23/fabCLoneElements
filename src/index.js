@@ -29,7 +29,6 @@ import Slider from './common/components/slider';
 import RangeSlider from './common/components/rangeSlider';
 import LoadingPlaceholder from './common/components/placeholder';
 import ReasonModal from './common/components/reasonModal';
-import BottomSheet from './common/components/bottomSheet';
 import SupportDialog from './common/components/supportDialog';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
@@ -161,7 +160,6 @@ export {
   RangeSlider,
   LoadingPlaceholder,
   ReasonModal,
-  BottomSheet,
   SupportDialog,
   // Trips components
   FlightPreferenceCard,
