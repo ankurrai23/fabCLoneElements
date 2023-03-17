@@ -78,19 +78,9 @@ import {
   CabSubtripActions,
 } from './utils/SubTripActions';
 import {HotelSubTripActions} from './utils/SubTripActions';
-import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
 //Trip Creation Components
-import HotelDetails from './components/tripCreation/hotelDetails';
-import FlightDetails from './components/tripCreation/flightDetails';
-import OtherTravelDetails from './components/tripCreation/otherTravelDetails';
-import ApprovalManager from './components/tripCreation/approvalManager';
-import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
 import RemoveItinerary from './components/tripCreation/removeItinerary';
-import ItineraryCard from './components/tripCreation/itinerary';
-import TrainDetails from './components/tripCreation/trainDetails';
-import BusDetails from './components/tripCreation/busDetails';
-import CabDetails from './components/tripCreation/cabDetails';
 import FlightFilter from './components/tripCreation/srp/filters/flightFilter';
 import HotelFilter from './components/tripCreation/srp/filters/hotelFilter';
 import FlightFarePlanCard from './components/tripCreation/srp/farePlans/flightFarePlan';
@@ -197,15 +187,7 @@ export {
   PriceBreakupSheet,
   InclusionSheet,
   // Trip Creation
-  HotelDetails,
-  FlightDetails,
-  OtherTravelDetails,
-  CoTravelersDetails,
-  ApprovalManager,
   RemoveItinerary,
-  TrainDetails,
-  BusDetails,
-  CabDetails,
   FlightFilter,
   HotelFilter,
   FlightFarePlanCard,
@@ -220,14 +202,12 @@ export {
   BusSubtripActions,
   CabSubtripActions,
   HotelSubTripActions,
-  FieldNamesEnum,
   // Home
   HomeHeader,
   ClaimsCard,
   ClaimsList,
   MessageCard,
   HomeLoadingState,
-  ItineraryCard,
   PendingPaymentSheet,
   PendingPaymentCarousel,
   //Expense,
