@@ -38,12 +38,16 @@ const SubmittedTripCard = ({
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexRowAndAlignCenter}>
-            {item?.subTripsIcon?.slice(0, 3)?.map((asset) => {
+            {item?.subTripsIcon?.slice(0, 3)?.map((asset, index) => {
               const subTripIcon = getSubTripIcon(asset.key);
-              return <View style={Styles.iconStyle}>{subTripIcon}</View>;
+              return (
+                <View key={index} style={Styles.iconStyle}>
+                  {subTripIcon}
+                </View>
+              );
             })}
             {item?.subTripsIcon?.length > 3 && (
-              <FText weight={500} style={Styles.fontSize_14}>
+              <FText weight={FONT_TYPE.MEDIUM} style={Styles.fontSize_14}>
                 +{item?.subTripsIcon?.length - 3}
               </FText>
             )}
@@ -101,8 +105,8 @@ const SubmittedTripCard = ({
         <View style={Styles.footer}>
           {item.actions
             .filter((e) => e.type !== EMPLOYEE_ACTIONS.SEND_REMINDER)
-            .map((e) => (
-              <FTouchableOpacity disabled>
+            .map((e, index) => (
+              <FTouchableOpacity disabled key={index}>
                 <FText style={Styles.action(e.type)}>{e.name}</FText>
               </FTouchableOpacity>
             ))}

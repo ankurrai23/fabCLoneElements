@@ -28,12 +28,16 @@ const ReceivedCard = ({item, onCardPress, onCoTravelerPress}) => {
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexRowAndAlignCenter}>
-            {item?.subTripsIcon?.slice(0, 3)?.map((asset) => {
+            {item?.subTripsIcon?.slice(0, 3)?.map((asset, index) => {
               const subTripIcon = getSubTripIcon(asset.key);
-              return <View style={Styles.iconStyle}>{subTripIcon}</View>;
+              return (
+                <View key={index} style={Styles.iconStyle}>
+                  {subTripIcon}
+                </View>
+              );
             })}
             {item?.subTripsIcon?.length > 3 && (
-              <FText weight={500} style={Styles.fontSize_14}>
+              <FText weight={FONT_TYPE.MEDIUM} style={Styles.fontSize_14}>
                 +{item?.subTripsIcon?.length - 3}
               </FText>
             )}
