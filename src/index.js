@@ -14,7 +14,6 @@ import TextField from './common/components/textField';
 import DashedLine from './common/components/dashedLine';
 import PickerField from './common/components/pickerField';
 import ClaimsCard from './common/components/claimsCard';
-import DialogBox from './common/components/dialogBox';
 import FloatingAction from './common/components/floatingActionButton';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
@@ -136,7 +135,6 @@ export {
   DashedLine,
   PickerField,
   ModificationAlertBox,
-  DialogBox,
   FloatingAction,
   Checkbox,
   StackHeader,
