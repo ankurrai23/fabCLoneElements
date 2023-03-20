@@ -1,15 +1,10 @@
 import {ScrollView, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import Styles from './Styles';
 import FTouchableOpacity from '../../../../../common/rn/FTouchableOpacity';
-import FText, {FONT_TYPE} from '../../../../../common/rn/FText';
+import FText from '../../../../../common/rn/FText';
 import {Color} from '../../../../../utils/color/index.travelPlus';
 import Icon from '../../../../../assets/icons/Icon';
-import Button from '../../../../../common/components/button';
-import {Strings} from '../../../../../utils/strings/index.travelPlus';
-import {dialogBoxStyle} from '../../../../../utils/Utils';
-import DialogBox from '../../../../../common/components/dialogBox';
-import Separator from '../../../../../common/components/separator';
 
 const QuickLink = ({item, onPress}) => {
   return (
@@ -22,70 +17,29 @@ const QuickLink = ({item, onPress}) => {
 };
 
 const QuickLinks = ({
-  children,
   quickLinks,
-  onClearAll,
   onQuickLinkSelect,
-  onApply,
   isFilterApplied,
+  onFilterPress,
 }) => {
-  const [filterModal, setFilterModal] = useState(false);
-  const onApplyPress = () => {
-    setFilterModal(false);
-    onApply();
-  };
-  const onClose = () => setFilterModal(false);
   return (
-    <>
-      <View style={Styles.filterContainer}>
-        {quickLinks?.length > 0 && (
-          <ScrollView
-            horizontal={true}
-            bounces={false}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={Styles.containerStyle}>
-            {quickLinks.map((item) => (
-              <QuickLink
-                item={item}
-                onPress={onQuickLinkSelect}
-                key={item.key}
-              />
-            ))}
-          </ScrollView>
-        )}
-        <FTouchableOpacity
-          style={Styles.filterButton}
-          onPress={() => setFilterModal(true)}>
-          {isFilterApplied && <View style={Styles.filterAppliedDot} />}
-          <Icon.Filter stroke={Color.WHITE} />
-        </FTouchableOpacity>
-      </View>
-      <DialogBox
-        modalVisible={filterModal}
-        onClose={onClose}
-        ContentModal={
-          <>
-            <View style={Styles.titleContainer}>
-              <FText style={Styles.filterText}>{Strings.filter}</FText>
-              <FTouchableOpacity onPress={onClearAll}>
-                <FText style={Styles.clearAllText}>{Strings.clearAll}</FText>
-              </FTouchableOpacity>
-            </View>
-            <Separator style={Styles.separator} />
-            <ScrollView style={dialogBoxStyle(0.6)} bounces={false}>
-              {children}
-            </ScrollView>
-            <Button
-              onPress={onApplyPress}
-              style={Styles.applyButton}
-              textStyle={Styles.applyText}
-              textFont={FONT_TYPE.MEDIUM}>
-              {Strings.apply}
-            </Button>
-          </>
-        }
-      />
-    </>
+    <View style={Styles.filterContainer}>
+      {quickLinks?.length > 0 && (
+        <ScrollView
+          horizontal={true}
+          bounces={false}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={Styles.containerStyle}>
+          {quickLinks.map((item) => (
+            <QuickLink item={item} onPress={onQuickLinkSelect} key={item.key} />
+          ))}
+        </ScrollView>
+      )}
+      <FTouchableOpacity style={Styles.filterButton} onPress={onFilterPress}>
+        {isFilterApplied && <View style={Styles.filterAppliedDot} />}
+        <Icon.Filter stroke={Color.WHITE} />
+      </FTouchableOpacity>
+    </View>
   );
 };
 

@@ -1,5 +1,5 @@
 import {View, Animated} from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import FText, {FONT_TYPE} from '../../../../common/rn/FText';
 import FImage from '../../../../common/rn/FImage';
 import Styles from './Styles';
@@ -7,7 +7,6 @@ import {DP} from '../../../../utils/Dimen';
 import {Color} from '../../../../utils/color';
 import Separator from '../../../../common/components/separator';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
-import DialogBox from '../../../../common/components/dialogBox';
 import {FlatList} from 'react-native-gesture-handler';
 import Button from '../../../../common/components/button';
 import {HotelSubTripActions} from '../../../../utils/SubTripActions';
@@ -20,19 +19,54 @@ import ActionsInItinerary from '../../../../common/components/ActionsInItinerary
 import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
+const Inclusions = ({image, text, lastItem, isGreyedOut}) => (
+  <View style={Styles.inclusionContainer(lastItem)}>
+    <FImage source={{uri: image}} style={Styles.inclusionIcon} />
+    <FText greyedOut={isGreyedOut}>{text}</FText>
+  </View>
+);
+export const InclusionSheet = ({data, isGreyedOut}) => {
+  const renderItem = ({item: inclusion}) => {
+    return (
+      <Inclusions
+        text={inclusion.text}
+        image={inclusion.icon}
+        isGreyedOut={isGreyedOut}
+      />
+    );
+  };
+
+  return (
+    <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
+      <FText style={Styles.modalHeading}>{Strings.inclusions}</FText>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        ItemSeparatorComponent={() => (
+          <Separator
+            style={{
+              marginVertical: DP._16,
+              backgroundColor: Color.SILVER,
+            }}
+          />
+        )}
+        keyExtractor={(_, index) => `${index}`}
+      />
+    </View>
+  );
+};
+
 export default function HotelDetailCard({
   item,
   onActionPress,
   onMainImagePress,
   style,
-  supportDetails,
-  onClose,
   onContactSupportPress,
   onViewMorePress,
+  onShowInclusionPress,
 }) {
   const [expanded, setExpanded] = useState(!item.enableViewMoreButton);
   const isGreyedOut = item.reduceOpacity;
-  const [sheetVisible, setSheetVisible] = useState(false);
   const [fadeIn] = useState(
     new Animated.Value(item.enableViewMoreButton ? 0 : 1),
   );
@@ -90,13 +124,6 @@ export default function HotelDetailCard({
     </View>
   );
 
-  const Inclusions = ({image, text, lastItem}) => (
-    <View style={Styles.inclusionContainer(lastItem)}>
-      <FImage source={{uri: image}} style={Styles.inclusionIcon} />
-      <FText greyedOut={isGreyedOut}>{text}</FText>
-    </View>
-  );
-
   const PostTripHotelActions = () => (
     <View style={Styles.postTripActionContainer}>
       {[posAction, invoiceAction, reviewAction].map((item, index) => (
@@ -134,9 +161,6 @@ export default function HotelDetailCard({
     </View>
   );
 
-  const renderItem = ({item: inclusion}) => {
-    return <Inclusions text={inclusion.text} image={inclusion.icon} />;
-  };
   return (
     <>
       {(posAction || invoiceAction || reviewAction) && <PostTripHotelActions />}
@@ -273,12 +297,13 @@ export default function HotelDetailCard({
                           text={entity.text}
                           image={entity.icon}
                           lastItem={item.inclusions.length - 1 === index}
+                          isGreyedOut={isGreyedOut}
                         />
                       );
                   })}
                   {item.inclusions.length > 3 && (
                     <FTouchableOpacity
-                      onPress={() => setSheetVisible(true)}
+                      onPress={onShowInclusionPress}
                       style={{marginBottom: DP._16}}
                       disabled={item.reduceOpacity}>
                       <FText
@@ -360,9 +385,7 @@ export default function HotelDetailCard({
                 <>
                   <Separator style={Styles.separator} />
                   <ContactSupport
-                    supportDetails={supportDetails}
                     onContactSupportPress={onContactSupportPress}
-                    onClose={onClose}
                     isGreyedOut={isGreyedOut}
                     style={{marginVertical: DP._16}}
                   />
@@ -398,28 +421,6 @@ export default function HotelDetailCard({
           onActionPress={onActionPress}
         />
       </View>
-      <DialogBox
-        modalVisible={sheetVisible}
-        onClose={() => setSheetVisible(false)}
-        ContentModal={
-          <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>{Strings.inclusions}</FText>
-            <FlatList
-              data={item.inclusions}
-              renderItem={renderItem}
-              ItemSeparatorComponent={() => (
-                <Separator
-                  style={{
-                    marginVertical: DP._16,
-                    backgroundColor: Color.SILVER,
-                  }}
-                />
-              )}
-              keyExtractor={(_, index) => `${index}`}
-            />
-          </View>
-        }
-      />
     </>
   );
 }

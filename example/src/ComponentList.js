@@ -51,7 +51,7 @@ import {
   ScrollableTabBar,
   ExpenseCard,
   ExpenseDetailCard,
-  StopDetailList,
+  StopsDetail,
   ExpenseApprovalCard,
   ExpenseApprovalHeader,
   LocationInputBox,
@@ -486,8 +486,8 @@ const EXPENSE = [
     defaultProps: data.expenseDetailCardProps,
   },
   {
-    name: 'StopDetailList',
-    component: (props) => <StopDetailList {...props} />,
+    name: 'StopsDetail',
+    component: (props) => <StopsDetail.Card {...props} />,
     defaultProps: data.stopDetailListProps,
   },
   {

@@ -10,31 +10,15 @@ import Styles from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 
-const MonthFilter = ({data, onPressCancel, onPressApply}) => {
+const MonthFilter = ({data, onPressCancel, onItemPress}) => {
   const [sheetData, setSheetData] = useState(data.map((item) => ({...item})));
 
-  const _onPress = (objIndex) => {
-    let arr = sheetData.map((item, index) => {
-      if (index === objIndex) {
-        item.isSelected = true;
-      } else {
-        item.isSelected = false;
-      }
-      return item;
-    });
-    setSheetData(arr);
-  };
-
-  const _onPressApply = () => {
-    const selectedMonth = sheetData.find((ele) => ele.isSelected === true);
-    onPressApply(selectedMonth);
-  };
   const renderItems = ({item, index}) => {
     return (
       <View>
         {index === 0 ? null : <Separator style={{height: DP._1}} />}
         <FTouchableOpacity
-          onPress={() => _onPress(index)}
+          onPress={() => onItemPress(item)}
           style={Styles.rowDirection}>
           <View style={{flex: 7}}>
             <FText type={FONT_TYPE.REGULAR} style={Styles.monthTxt}>
@@ -62,22 +46,6 @@ const MonthFilter = ({data, onPressCancel, onPressApply}) => {
         style={{...dialogBoxStyle()}}
         keyExtractor={(item, index) => `${item.name}`}
       />
-      <View style={Styles.buttonView}>
-        <Button
-          style={Styles.cancelButton}
-          textStyle={Styles.cancelText}
-          textFont={FONT_TYPE.MEDIUM}
-          onPress={onPressCancel}>
-          {Strings.cancel}
-        </Button>
-        <Button
-          style={Styles.applyButton}
-          textStyle={Styles.cancelText}
-          textFont={FONT_TYPE.MEDIUM}
-          onPress={_onPressApply}>
-          {Strings.apply}
-        </Button>
-      </View>
     </View>
   );
 };

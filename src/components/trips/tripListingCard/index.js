@@ -1,24 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import Separator from '../../../common/components/separator';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import DialogBox from '../../../common/components/dialogBox';
-import {FlatList} from 'react-native-gesture-handler';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {getSubTripIcon} from '../../../utils/Utils';
 
-const TripListingCard = ({item, onCardPress, style}) => {
-  const [sheetVisible, setSheetVisible] = useState(false);
-
-  const renderItem = ({item: coTravelerName}) => {
-    return <FText style={{fontSize: DP._16}}>{coTravelerName}</FText>;
-  };
-
+const TripListingCard = ({item, onCardPress, style, onCoTravelerPress}) => {
   return (
     <>
       <FTouchableOpacity
@@ -73,7 +64,8 @@ const TripListingCard = ({item, onCardPress, style}) => {
           <FTouchableOpacity
             style={Styles.flex}
             onPress={() =>
-              item.coTravellers?.length > 1 && setSheetVisible(true)
+              item.coTravellers?.length > 1 &&
+              onCoTravelerPress(item.coTravellers)
             }>
             <FText numberOfLines={1}>
               {item.coTravellers?.[0]}
@@ -94,28 +86,6 @@ const TripListingCard = ({item, onCardPress, style}) => {
           </View>
         )}
       </FTouchableOpacity>
-      <DialogBox
-        modalVisible={sheetVisible}
-        onClose={() => setSheetVisible(false)}
-        ContentModal={
-          <View style={{paddingBottom: DP._30, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>{Strings.coTravelers}</FText>
-            <FlatList
-              data={item.coTravellers}
-              renderItem={renderItem}
-              ItemSeparatorComponent={() => (
-                <Separator
-                  style={{
-                    marginVertical: DP._16,
-                    backgroundColor: Color.SILVER,
-                  }}
-                />
-              )}
-              keyExtractor={(_) => _}
-            />
-          </View>
-        }
-      />
     </>
   );
 };

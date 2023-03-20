@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -7,7 +7,6 @@ import Button from '../../../common/components/button';
 
 import {DP} from '../../../utils/Dimen';
 import Styles from './Styles';
-import ReasonModal from '../../../common/components/reasonModal';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {Color} from '../../../utils/color/index.travelPlus';
@@ -31,31 +30,19 @@ const Amount = ({price, inclGST = true}) => (
 
 export default function ManagerActions({
   actions,
-  onActionPress,
   msg,
   isSubTripSoldOut,
   amount,
+  onRequestModificationPress,
+  onRejectPress,
+  onApprovePress,
 }) {
-  const [approveModal, setApproveModal] = useState(false);
-  const [rejectModal, setRejectModal] = useState(false);
-  const [modificationModal, setModificationModal] = useState(false);
-
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const approveAction = isActionEnabled(MANAGER_ACTIONS.APPROVE);
   const denyAction = isActionEnabled(MANAGER_ACTIONS.DENY);
   const modificationRequestAction = isActionEnabled(
     MANAGER_ACTIONS.REQUEST_MODIFICATION,
   );
-
-  function _onActionPress(actionType, comments) {
-    setApproveModal(false);
-    setRejectModal(false);
-    setModificationModal(false);
-    onActionPress({
-      actionType,
-      comments,
-    });
-  }
 
   const showManagerActions =
     approveAction || denyAction || modificationRequestAction;
@@ -75,8 +62,7 @@ export default function ManagerActions({
                       style={Styles.requestToModifyStyle}>
                       {Strings.requestForModification}
                     </FText>
-                    <FTouchableOpacity
-                      onPress={() => setModificationModal(true)}>
+                    <FTouchableOpacity onPress={onRequestModificationPress}>
                       <FText style={Styles.notifyText} type={FONT_TYPE.MEDIUM}>
                         {Strings.notify}
                       </FText>
@@ -102,7 +88,7 @@ export default function ManagerActions({
               {!!amount && <Amount price={amount} />}
               {denyAction && (
                 <Button
-                  onPress={() => setRejectModal(true)}
+                  onPress={onRejectPress}
                   style={Styles.rejectButtonStyle}
                   textFont={FONT_TYPE.MEDIUM}
                   textStyle={Styles.rejectText}>
@@ -111,7 +97,7 @@ export default function ManagerActions({
               )}
               {approveAction && (
                 <Button
-                  onPress={() => setApproveModal(true)}
+                  onPress={onApprovePress}
                   textFont={FONT_TYPE.MEDIUM}
                   style={Styles.approveButtonStyle}>
                   {Strings.approve}
@@ -120,7 +106,7 @@ export default function ManagerActions({
             </View>
           ) : (
             <Button
-              onPress={() => setModificationModal(true)}
+              onPress={onRequestModificationPress}
               style={Styles.requestModification}
               textFont={FONT_TYPE.MEDIUM}
               textStyle={Styles.requestModificationText}>
@@ -129,29 +115,6 @@ export default function ManagerActions({
           )}
         </View>
       )}
-      <ReasonModal
-        visible={approveModal}
-        setVisible={setApproveModal}
-        onSubmit={(reason) => _onActionPress(MANAGER_ACTIONS.APPROVE, reason)}
-        heading={Strings.approveRequest}
-        buttonText={Strings.approve}
-      />
-      <ReasonModal
-        visible={rejectModal}
-        setVisible={setRejectModal}
-        onSubmit={(reason) => _onActionPress(MANAGER_ACTIONS.DENY, reason)}
-        heading={Strings.rejectRequest}
-        buttonText={Strings.reject}
-      />
-      <ReasonModal
-        visible={modificationModal}
-        setVisible={setModificationModal}
-        onSubmit={(reason) =>
-          _onActionPress(MANAGER_ACTIONS.REQUEST_MODIFICATION, reason)
-        }
-        heading={Strings.requestForModification}
-        buttonText={Strings.confirm}
-      />
     </View>
   );
 }

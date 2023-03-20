@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import FImage from '../../../common/rn/FImage';
-import AddReceiptModal from '../addReceiptModal';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 
@@ -29,15 +28,9 @@ const ExpenseCard = ({
   viewReceipt,
   style,
   onPress,
-  onUploadReceipt,
   onViewReceipt,
+  onUploadReceiptPress,
 }) => {
-  const [visible, setVisible] = useState(false);
-  function onAddReceiptOptionPress(type) {
-    setVisible(false);
-    setTimeout(() => onUploadReceipt(type), 100);
-  }
-
   return (
     <FTouchableOpacity
       style={[Styles.container(showSeparator), style]}
@@ -88,7 +81,7 @@ const ExpenseCard = ({
         </View>
         {receiptRequired && (
           <View style={Styles.uploadReceiptButton}>
-            <FTouchableOpacity onPress={() => setVisible(true)}>
+            <FTouchableOpacity onPress={onUploadReceiptPress}>
               <FText style={Styles.uploadReceiptText}>
                 {Strings.uploadReceipt}
               </FText>
@@ -107,11 +100,6 @@ const ExpenseCard = ({
           </View>
         )}
       </View>
-      <AddReceiptModal
-        visible={visible}
-        setVisible={setVisible}
-        onPress={onAddReceiptOptionPress}
-      />
     </FTouchableOpacity>
   );
 };
