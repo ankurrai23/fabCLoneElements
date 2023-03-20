@@ -67,42 +67,7 @@ const BusDetailCard = ({
   notificationText,
   reduceOpacity: isGreyedOut,
 }) => {
-  // const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-  // const rescheduleAction = isActionEnabled(BusSubtripActions.RESCHEDULE);
-  // const cancelAction = isActionEnabled(BusSubtripActions.CANCEL);
-  // const viewRemarksAction = isActionEnabled(BusSubtripActions.VIEW_REMARKS);
   const completePhoneNo = `${bookingDetails.countryCode} ${bookingDetails.coordinatorNo}`;
-  // const ActionsInItinerary = () => (
-  //   <>
-  //     <Separator style={Styles.actionsSeparator} />
-  //     <View style={Styles.actionContainer}>
-  //       {
-  //         <>
-  //           {cancelAction && (
-  //             <FTouchableOpacity
-  //               onPress={() => onActionPress(cancelAction)}
-  //               style={Styles.flexRowAndAlignCenter}>
-  //               <Icon.Cross
-  //                 width={DP._16}
-  //                 height={DP._16}
-  //                 stroke={Color.PASTEL_RED}
-  //               />
-  //               <FText style={Styles.cancel}>{cancelAction.name}</FText>
-  //             </FTouchableOpacity>
-  //           )}
-  //           {rescheduleAction && (
-  //             <FTouchableOpacity
-  //               onPress={() => onActionPress(rescheduleAction)}
-  //               style={Styles.primaryButtonStyle}>
-  //               <Icon.Reschedule width={DP._16} height={DP._16} />
-  //               <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-  //             </FTouchableOpacity>
-  //           )}
-  //         </>
-  //       }
-  //     </View>
-  //   </>
-  // );
   const renderDate = (departureDate, arrivalDate) => {
     const depArrDateSame = departureDate.date === arrivalDate.date;
     const depArrMonthSame = departureDate.month === arrivalDate.month;
@@ -411,12 +376,7 @@ const BusDetailCard = ({
               </>
             )}
           </FTouchableOpacity>
-          {/* {!actionDisabled &&
-            (rescheduleAction || cancelAction || viewRemarksAction) && (
-              <ActionsInItinerary />
-            )} */}
           <ActionsInItinerary
-            // hideSeperator={Boolean(showInfo)}
             actions={actions}
             actionDisabled={actionDisabled}
             onActionPress={onActionPress}

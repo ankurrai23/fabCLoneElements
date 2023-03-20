@@ -12,7 +12,6 @@ import TripStatus from '../../tripStatus';
 import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
-import {getStatusObject} from '../../../../utils/Utils';
 import ActionsInItinerary, {BottomBarActions} from '../../../../common/components/ActionsInItinerary';
 import OOPTag from '../../components/OOPTag/OOPTag';
 import FImage from '../../../../common/rn/FImage';
@@ -51,8 +50,6 @@ const FlightItineraryCard = ({
 }) => {
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-  // const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
-  // const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
   const shortlistingAction = isActionEnabled(
     FlightSubTripActions.SHORTLIST_FLIGHT_TRIPS,
@@ -60,9 +57,6 @@ const FlightItineraryCard = ({
   const viewShortlistedFlightAction = isActionEnabled(
     FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
   );
-  // const editAction = isActionEnabled(FlightSubTripActions.EDIT);
-  // const removeAction = isActionEnabled(FlightSubTripActions.REMOVE);
-  // const refundStatus = isActionEnabled(FlightSubTripActions.REFUND_STATUS);
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -93,58 +87,6 @@ const FlightItineraryCard = ({
       </PlaceholderContainer>
     );
   };
-
-  // const ActionsInItinerary = ({hideSeperator}) => (
-  //   <>
-  //     {!hideSeperator && <Separator style={Styles.separatorStyle} />}
-  //     <View style={Styles.actionContainer}>
-  //       {cancelAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(cancelAction)}
-  //           style={Styles.flexRowAndAlignCenter}>
-  //           <Icon.Cross
-  //             width={DP._16}
-  //             height={DP._16}
-  //             stroke={Color.PASTEL_RED}
-  //           />
-  //           <FText style={Styles.cancel}>{cancelAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //       {rescheduleAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(rescheduleAction)}
-  //           style={Styles.primaryButtonStyle}>
-  //           <Icon.Reschedule width={DP._16} height={DP._16} />
-  //           <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //       {removeAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(removeAction)}
-  //           style={Styles.flexRowAndAlignCenter}>
-  //           <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
-  //           <FText style={Styles.cancel}>{removeAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //       {editAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(editAction)}
-  //           style={Styles.primaryButtonStyle}>
-  //           <Icon.Edit />
-  //           <FText style={Styles.reschedule}>{editAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //       {!!refundStatus && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(refundStatus)}
-  //           style={Styles.primaryButtonStyle}>
-  //           <Icon.Refund />
-  //           <FText style={Styles.reschedule}>{refundStatus.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //     </View>
-  //   </>
-  // );
 
   const FlightPreBookingCard = () => (
     <View style={Styles.container}>

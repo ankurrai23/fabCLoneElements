@@ -275,11 +275,8 @@ const cabItineraryCard = ({
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
-  // const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
-  // const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
+
   const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
-  // const editAction = isActionEnabled(CabSubtripActions.EDIT);
-  // const removeAction = isActionEnabled(CabSubtripActions.REMOVE);
 
   const actionsVisible =
     !actionDisabled &&
@@ -287,49 +284,6 @@ const cabItineraryCard = ({
       return acc || isActionEnabled(BottomBarActions[v]);
     }, false);
 
-  // const ActionsInItinerary = ({hideSeperator}) => (
-  //   <>
-  //     {!hideSeperator && <Separator style={Styles.actionsSeparator} />}
-  //     <View style={Styles.actionContainer}>
-  //       {cancelAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(cancelAction)}
-  //           style={Styles.flexRowAndAlignCenter}>
-  //           <Icon.Cross
-  //             width={DP._16}
-  //             height={DP._16}
-  //             stroke={Color.PASTEL_RED}
-  //           />
-  //           <FText style={Styles.cancel}>{cancelAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //       {rescheduleAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(rescheduleAction)}
-  //           style={Styles.primaryButtonStyle}>
-  //           <Icon.Reschedule width={DP._16} height={DP._16} />
-  //           <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //       {removeAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(removeAction)}
-  //           style={Styles.flexRowAndAlignCenter}>
-  //           <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
-  //           <FText style={Styles.cancel}>{removeAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //       {editAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(editAction)}
-  //           style={Styles.primaryButtonStyle}>
-  //           <Icon.Edit />
-  //           <FText style={Styles.reschedule}>{editAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //     </View>
-  //   </>
-  // );
   return (
     <View style={[Styles.flexRow, style]}>
       <View>
@@ -394,9 +348,6 @@ const cabItineraryCard = ({
             disablePressEvent={!!notificationText}
           />
         )}
-        {/* {actionsVisible && (
-          <ActionsInItinerary hideSeperator={Boolean(showInfo)} />
-        )} */}
         <ActionsInItinerary
           hideSeperator={Boolean(showInfo)}
           actions={actions}

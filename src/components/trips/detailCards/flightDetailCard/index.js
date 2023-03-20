@@ -35,38 +35,8 @@ const FlightDetailCard = ({
   reduceOpacity: isGreyedOut,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-  // const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
-  // const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
-  // const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
   const supportAction = isActionEnabled(FlightSubTripActions.SUPPORT);
 
-  // const Actions = () => (
-  //   <>
-  //     <Separator style={Styles.actionsSeperator} />
-  //     <View style={Styles.actionContainer}>
-  //       {cancelAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(cancelAction)}
-  //           style={Styles.flexRowAndAlignCenter}>
-  //           <Icon.Cross
-  //             width={DP._16}
-  //             height={DP._16}
-  //             stroke={Color.PASTEL_RED}
-  //           />
-  //           <FText style={Styles.cancel}>{cancelAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //       {rescheduleAction && (
-  //         <FTouchableOpacity
-  //           onPress={() => onActionPress(rescheduleAction)}
-  //           style={Styles.primaryButtonStyle}>
-  //           <Icon.Reschedule width={DP._16} height={DP._16} />
-  //           <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-  //         </FTouchableOpacity>
-  //       )}
-  //     </View>
-  //   </>
-  // );
   if (!tripDetails) {
     return null;
   }
@@ -240,12 +210,7 @@ const FlightDetailCard = ({
             />
           </>
         )}
-        {/* {!actionsDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <Actions />
-          )} */}
         <ActionsInItinerary
-          // hideSeperator={Boolean(showInfo)}
           actions={actions}
           actionDisabled={actionsDisabled}
           onActionPress={onActionPress}
