@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "intl": "1.2.5",
-    "moment": "2.29.1",
     "react-native-loading-placeholder": "0.0.6",
     "react-native-svg-transformer": "1.0.0"
   },
