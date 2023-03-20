@@ -23,6 +23,9 @@ import {
 } from 'react-native-loading-placeholder';
 import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
+import ActionsInItinerary, {
+  BottomBarActions,
+} from '../../../../common/components/ActionsInItinerary';
 
 const HotelItineraryCard = ({
   status,
@@ -52,9 +55,6 @@ const HotelItineraryCard = ({
 
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
-  const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
-  const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
-
   const viewRemarksAction = isActionEnabled(HotelSubTripActions.VIEW_REMARKS);
   const shortlistingAction = isActionEnabled(
     HotelSubTripActions.SHORTLIST_HOTEL_TRIPS,
@@ -62,8 +62,6 @@ const HotelItineraryCard = ({
   const viewShortlistedHotelAction = isActionEnabled(
     HotelSubTripActions.VIEW_SHORTLISTED_HOTEL_TRIPS,
   );
-  const editAction = isActionEnabled(HotelSubTripActions.EDIT);
-  const removeAction = isActionEnabled(HotelSubTripActions.REMOVE);
 
   const confirmedStatus = {
     key: 'CONFIRMED',
@@ -97,50 +95,6 @@ const HotelItineraryCard = ({
     );
   };
 
-  const ActionsInItinerary = ({hideSeperator}) => (
-    <>
-      {!hideSeperator && <Separator style={Styles.separatorStyle} />}
-      <View style={Styles.actionContainer}>
-        {cancelAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(cancelAction)}
-            style={Styles.flexRowAndAlignCenter}>
-            <Icon.Cross
-              width={DP._16}
-              height={DP._16}
-              stroke={Color.PASTEL_RED}
-            />
-            <FText style={Styles.cancel}>{cancelAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-        {modifyAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(modifyAction)}
-            style={Styles.primaryButtonStyle}>
-            <Icon.Reschedule width={DP._16} height={DP._16} />
-            <FText style={Styles.reschedule}>{modifyAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-        {removeAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(removeAction)}
-            style={Styles.flexRowAndAlignCenter}>
-            <Icon.Trash width={DP._16} height={DP._16} strokeWidth={1.5} />
-            <FText style={Styles.cancel}>{removeAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-        {editAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(editAction)}
-            style={Styles.primaryButtonStyle}>
-            <Icon.Edit />
-            <FText style={Styles.reschedule}>{editAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-      </View>
-    </>
-  );
-
   const renderMonthYear = (month, year) => (
     <FText
       greyedOut={isGreyedOut}
@@ -151,7 +105,9 @@ const HotelItineraryCard = ({
   const uiData = showPreBookingCard ? tripRequest : bookingDetails;
   const actionsVisible =
     !actionsDisabled &&
-    (modifyAction || cancelAction || editAction || removeAction);
+    Object.keys(BottomBarActions).reduce((acc, v) => {
+      return acc || isActionEnabled(BottomBarActions[v]);
+    }, false);
 
   return (
     <View style={[Styles.flexRow, style]}>
@@ -356,7 +312,6 @@ const HotelItineraryCard = ({
             {(cancellationCharges || modificationCharges) && (
               <Separator
                 style={Styles.separatorContainerStyle}
-                // containerStyle={Styles.separatorContainerStyle}
               />
             )}
             <RemarksBox
@@ -373,7 +328,6 @@ const HotelItineraryCard = ({
             {(cancellationCharges || modificationCharges) && (
               <Separator
                 style={Styles.separatorContainerStyle}
-                // containerStyle={Styles.separatorContainerStyle}
               />
             )}
             <InfoBox
@@ -391,13 +345,12 @@ const HotelItineraryCard = ({
             />
           </>
         )}
-        {actionsVisible && (
-          <ActionsInItinerary
-            hideSeperator={
-              showInfo || modificationCharges || cancellationCharges
-            }
-          />
-        )}
+        <ActionsInItinerary
+          hideSeperator={showInfo || modificationCharges || cancellationCharges}
+          actions={actions}
+          actionDisabled={actionsDisabled}
+          onActionPress={onActionPress}
+        />
       </View>
     </View>
   );

@@ -15,6 +15,7 @@ import TripStatus from '../../tripStatus';
 import ContactSupport from '../../../../common/components/contactSupport';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
+import ActionsInItinerary from '../../../../common/components/ActionsInItinerary';
 import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
@@ -71,8 +72,6 @@ export default function HotelDetailCard({
   );
   const isActionEnabled = (type) => item?.actions?.find((e) => e.type === type);
 
-  const modifyAction = isActionEnabled(HotelSubTripActions.MODIFY);
-  const cancelAction = isActionEnabled(HotelSubTripActions.CANCEL);
   const payNowAction = isActionEnabled(HotelSubTripActions.PAY_NOW);
   const directionAction = isActionEnabled(HotelSubTripActions.DIRECTION);
   const posAction = isActionEnabled(HotelSubTripActions.SUBMIT_POS);
@@ -415,33 +414,12 @@ export default function HotelDetailCard({
             </FTouchableOpacity>
           )}
         </View>
-        {(cancelAction || modifyAction) && (
-          <>
-            <Separator style={Styles.actionSeparator} />
-            <View style={Styles.buttonContainer}>
-              {cancelAction && (
-                <FTouchableOpacity
-                  onPress={() => onActionPress?.(cancelAction)}
-                  style={Styles.cancelButtonStyle}>
-                  <Icon.Cross
-                    width={DP._16}
-                    height={DP._16}
-                    stroke={Color.PASTEL_RED}
-                  />
-                  <FText style={Styles.cancel}>{cancelAction.name}</FText>
-                </FTouchableOpacity>
-              )}
-              {modifyAction && (
-                <FTouchableOpacity
-                  onPress={() => onActionPress?.(modifyAction)}
-                  style={Styles.modifyButtonStyle}>
-                  <Icon.Reschedule width={DP._16} height={DP._16} />
-                  <FText style={Styles.modify}>{modifyAction.name}</FText>
-                </FTouchableOpacity>
-              )}
-            </View>
-          </>
-        )}
+        <ActionsInItinerary
+          // hideSeperator={Boolean(showInfo)}
+          actions={item.actions}
+          // actionDisabled={actionDisabled}
+          onActionPress={onActionPress}
+        />
       </View>
     </>
   );
