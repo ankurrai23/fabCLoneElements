@@ -7,12 +7,12 @@ import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Styles from './Styles';
 import Separator from '../../../../common/components/separator';
 import TripStatus from '../../tripStatus';
-import {CabSubtripActions} from '../../../../utils/SubTripActions';
+// import {CabSubtripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import ModificationAlertBox from '../../components/modificationAlertBox';
 import {getStatusObject} from '../../../../utils/Utils';
-
+import ActionsInItinerary from '../../../../common/components/ActionsInItinerary';
 const DetailRow = ({
   dataIcon,
   leftData,
@@ -67,49 +67,7 @@ const CabDetailCard = ({
   notificationText,
   reduceOpacity: isGreyedOut,
 }) => {
-  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
 
-  const rescheduleAction = isActionEnabled(CabSubtripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(CabSubtripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(CabSubtripActions.VIEW_REMARKS);
-
-  const ActionsInItinerary = () => (
-    <>
-      <Separator style={Styles.actionsSeperator} />
-      <View style={Styles.actionContainer}>
-        {viewRemarksAction ? (
-          <FTouchableOpacity
-            onPress={() => onActionPress(viewRemarksAction)}
-            style={Styles.flexRowAndAlignCenter}>
-            <FText style={Styles.reschedule}>{viewRemarksAction.name}</FText>
-          </FTouchableOpacity>
-        ) : (
-          <>
-            {cancelAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(cancelAction)}
-                style={Styles.flexRowAndAlignCenter}>
-                <Icon.Cross
-                  width={DP._16}
-                  height={DP._16}
-                  stroke={Color.PASTEL_RED}
-                />
-                <FText style={Styles.cancel}>{cancelAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-            {rescheduleAction && (
-              <FTouchableOpacity
-                onPress={() => onActionPress(rescheduleAction)}
-                style={Styles.primaryButtonStyle}>
-                <Icon.Reschedule width={DP._16} height={DP._16} />
-                <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-              </FTouchableOpacity>
-            )}
-          </>
-        )}
-      </View>
-    </>
-  );
   return (
     <View style={style}>
       {!!notificationText && <ModificationAlertBox msg={notificationText} />}
@@ -308,10 +266,11 @@ const CabDetailCard = ({
                 );
               })}
           </FTouchableOpacity>
-          {!actionDisabled &&
-            (rescheduleAction || cancelAction || viewRemarksAction) && (
-              <ActionsInItinerary />
-            )}
+          <ActionsInItinerary
+            actions={actions}
+            actionDisabled={actionDisabled}
+            onActionPress={onActionPress}
+          />
         </View>
       </View>
     </View>
