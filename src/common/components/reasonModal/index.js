@@ -1,44 +1,54 @@
 import React, {useEffect, useState} from 'react';
-
+import {View} from 'react-native';
 import FText, {FONT_TYPE} from '../../rn/FText';
 import Button from '../button';
 import TextField from '../textField';
 import Styles from './Styles';
 import Utils from '../../../utils/Utils';
-import BottomSheet from './BottomSheet';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import FTouchableOpacity from '../../rn/FTouchableOpacity';
 import Icon from '../../../assets/icons/Icon';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color/index.travelPlus';
-const ReasonModal = (props) => {
+
+const ReasonModal = ({
+  value,
+  reasonRequired,
+  error,
+  heading,
+  textFieldLabel,
+  buttonText,
+  onSubmit,
+  onFocus,
+  onBlur,
+}) => {
   const [reason, setReason] = useState('');
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    setReason(props.value ?? '');
+    setReason(value ?? '');
     setErrors({});
-  }, [props.visible, props.value]);
+  }, [value]);
 
   function onChangeText(val) {
     setReason(val);
   }
 
   function validateForm() {
-    if (!props.reasonRequired) {
+    if (!reasonRequired) {
       return true;
     }
     const newErrors = {};
     if (!reason?.trim()) {
-      newErrors.reason = props.error ?? Strings.reasonToProceed;
+      newErrors.reason = error ?? Strings.reasonToProceed;
     }
     setErrors(newErrors);
     return Utils.isEmpty(newErrors);
   }
 
-  function onSubmit() {
+  function onPress() {
     if (validateForm()) {
-      props.onSubmit && props.onSubmit(reason);
+      onSubmit && onSubmit(reason);
     }
   }
 
@@ -47,20 +57,22 @@ const ReasonModal = (props) => {
   }
 
   return (
-    <BottomSheet
-      visible={props.visible}
-      setVisible={props.setVisible}
-      style={Styles.bottomSheet}>
+    <View style={Styles.containerSheet}>
       <FText type={FONT_TYPE.MEDIUM} style={Styles.heading}>
-        {props.heading}
+        {heading}
       </FText>
       <TextField
-        label={props.textFieldLabel}
+        label={textFieldLabel}
+        onFocus={onFocus}
+        autoFocus
         value={reason}
         onChangeText={onChangeText}
         helperText={errors.reason}
         error={!!errors.reason}
-        onBlur={validateForm}
+        onBlur={() => {
+          onBlur?.();
+          validateForm();
+        }}
         rightIcon={
           !!reason && (
             <FTouchableOpacity
@@ -78,10 +90,10 @@ const ReasonModal = (props) => {
       <Button
         style={Styles.submitButton}
         textFont={FONT_TYPE.MEDIUM}
-        onPress={onSubmit}>
-        {props.buttonText}
+        onPress={onPress}>
+        {buttonText}
       </Button>
-    </BottomSheet>
+    </View>
   );
 };
 

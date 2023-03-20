@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {View} from 'react-native';
 
 import FText from '../../../common/rn/FText';
@@ -8,16 +8,13 @@ import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
 import Styles from './Styles';
 
-import DialogBox from '../../../common/components/dialogBox';
-import MonthFilter from '../monthFilter';
 import Icon from '../../../assets/icons/Icon';
 
-const MonthPicker = (props) => {
-  const [visible, setVisible] = useState(false);
+const MonthPicker = ({data, onMonthChange, onMorePress}) => {
   return (
     <>
       <View style={Styles.container}>
-        {props.data.map((item, index) => (
+        {data.map((item, index) => (
           <FTouchableOpacity
             key={`${item.name}`}
             style={[
@@ -25,9 +22,7 @@ const MonthPicker = (props) => {
               item.isSelected ? Styles.buttonSelected : null,
             ]}
             onPress={
-              index === 2
-                ? () => setVisible(true)
-                : () => props.onMonthChange(item)
+              index === 2 ? () => onMorePress() : () => onMonthChange(item)
             }>
             {item.showAsDropdown && (
               <Icon.Calendar
@@ -52,21 +47,6 @@ const MonthPicker = (props) => {
           </FTouchableOpacity>
         ))}
       </View>
-      {visible && (
-        <DialogBox
-          modalVisible={visible}
-          ContentModal={
-            <MonthFilter
-              data={props.dataForSheet}
-              onPressApply={props.onMonthChange}
-              onPressCancel={() => setVisible(false)}
-            />
-          }
-          onClose={() => {
-            setVisible(false);
-          }}
-        />
-      )}
     </>
   );
 };

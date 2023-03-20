@@ -60,14 +60,14 @@ const flightItineraryCardProps = {
     text: 'Change of plans',
   },
   actions: [
-    {
-      type: 'RESCHEDULE',
-      name: 'Reschedule',
-    },
-    {
-      type: 'CANCEL',
-      name: 'Cancel',
-    },
+    // {
+    //   type: 'RESCHEDULE',
+    //   name: 'Reschedule',
+    // },
+    // {
+    //   type: 'CANCEL',
+    //   name: 'Cancel',
+    // },
     // {
     //   type: 'VIEW_REMARKS',
     // },

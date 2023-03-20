@@ -1,46 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import Separator from '../../../common/components/separator';
 
 import Styles from './Styles';
-import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import DialogBox from '../../../common/components/dialogBox';
-import {FlatList} from 'react-native-gesture-handler';
 import TripStatus from '../tripStatus';
-import ReasonModal from '../../../common/components/reasonModal';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {MANAGER_ACTIONS} from '../managerActions';
-import Icon from '../../../assets/icons/Icon';
 import {getSubTripIcon} from '../../../utils/Utils';
-import {TrainSubtripActions} from '../../../utils/SubTripActions';
 
-const ReceivedCard = ({item, onCardPress, onActionPress}) => {
+const ReceivedCard = ({item, onCardPress, onCoTravelerPress}) => {
   const isActionEnabled = (type) => item.actions?.find((e) => e.type === type);
   const denyAction = isActionEnabled(MANAGER_ACTIONS.DENY);
   const approveAction = isActionEnabled(MANAGER_ACTIONS.APPROVE);
-
-  const [sheetVisible, setSheetVisible] = useState(false);
-  const [approveModal, setApproveModal] = useState(false);
-  const [rejectModal, setRejectModal] = useState(false);
-
-  const renderItem = ({item: coTravelerName}) => {
-    return <FText style={{fontSize: DP._16}}>{coTravelerName}</FText>;
-  };
-
-  function _onActionPress(actionType, comments) {
-    setApproveModal(false);
-    setRejectModal(false);
-    onActionPress({
-      actionType,
-      masterTripId: item.masterTripId,
-      isSBT: item.requestType === 'SELF_BOOKING',
-      comments,
-    });
-  }
 
   return (
     <>
@@ -54,12 +28,16 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexRowAndAlignCenter}>
-            {item?.subTripsIcon?.slice(0, 3)?.map((asset) => {
+            {item?.subTripsIcon?.slice(0, 3)?.map((asset, index) => {
               const subTripIcon = getSubTripIcon(asset.key);
-              return <View style={Styles.iconStyle}>{subTripIcon}</View>;
+              return (
+                <View key={index} style={Styles.iconStyle}>
+                  {subTripIcon}
+                </View>
+              );
             })}
             {item?.subTripsIcon?.length > 3 && (
-              <FText weight={500} style={Styles.fontSize_14}>
+              <FText weight={FONT_TYPE.MEDIUM} style={Styles.fontSize_14}>
                 +{item?.subTripsIcon?.length - 3}
               </FText>
             )}
@@ -99,7 +77,8 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
             <FTouchableOpacity
               style={Styles.flex}
               onPress={() =>
-                item.coTravellers.length > 1 && setSheetVisible(true)
+                item.coTravellers.length > 1 &&
+                onCoTravelerPress(item.coTravellers)
               }>
               <FText numberOfLines={1}>
                 {item.coTravellers?.[0]}
@@ -132,42 +111,6 @@ const ReceivedCard = ({item, onCardPress, onActionPress}) => {
           )}
         </View>
       </FTouchableOpacity>
-      <DialogBox
-        modalVisible={sheetVisible}
-        onClose={() => setSheetVisible(false)}
-        ContentModal={
-          <View style={{paddingBottom: DP._48, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>{Strings.coTravelers}</FText>
-            <FlatList
-              data={item.coTravellers}
-              renderItem={renderItem}
-              ItemSeparatorComponent={() => (
-                <Separator
-                  style={{
-                    marginVertical: DP._16,
-                    backgroundColor: Color.SILVER,
-                  }}
-                />
-              )}
-              keyExtractor={(_) => _}
-            />
-          </View>
-        }
-      />
-      <ReasonModal
-        visible={approveModal}
-        setVisible={setApproveModal}
-        onSubmit={(reason) => _onActionPress(MANAGER_ACTIONS.APPROVE, reason)}
-        heading={Strings.approveRequest}
-        buttonText={Strings.approve}
-      />
-      <ReasonModal
-        visible={rejectModal}
-        setVisible={setRejectModal}
-        onSubmit={(reason) => _onActionPress(MANAGER_ACTIONS.DENY, reason)}
-        heading={Strings.rejectRequest}
-        buttonText={Strings.reject}
-      />
     </>
   );
 };

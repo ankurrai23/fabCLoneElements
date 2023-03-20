@@ -180,4 +180,5 @@ export default {
   view: 'View',
   soldOut2: 'Sold Out!',
   showOOPFlights: 'Show out of policy flights',
+  showOOPHotels: 'Show out of policy hotels',
 };

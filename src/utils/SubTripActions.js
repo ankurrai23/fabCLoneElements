@@ -1,4 +1,4 @@
-const SubTripCommonActions = {
+export const SubTripCommonActions = {
   VIEW_REMARKS: 'VIEW_REMARKS',
   SUPPORT: 'SUPPORT',
   CANCEL: 'CANCEL',

@@ -15,6 +15,7 @@ import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
 import {getStatusObject} from '../../../../utils/Utils';
 import FImage from '../../../../common/rn/FImage';
+import ActionsInItinerary from '../../../../common/components/ActionsInItinerary';
 import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
@@ -24,9 +25,7 @@ const FlightDetailCard = ({
   onActionPress,
   onCardPress,
   style,
-  supportDetails,
   onContactSupportPress,
-  onClose,
   actions,
   notificationText,
   actionsDisabled,
@@ -34,38 +33,8 @@ const FlightDetailCard = ({
   reduceOpacity: isGreyedOut,
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-  const rescheduleAction = isActionEnabled(FlightSubTripActions.RESCHEDULE);
-  const cancelAction = isActionEnabled(FlightSubTripActions.CANCEL);
-  const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
   const supportAction = isActionEnabled(FlightSubTripActions.SUPPORT);
 
-  const Actions = () => (
-    <>
-      <Separator style={Styles.actionsSeperator} />
-      <View style={Styles.actionContainer}>
-        {cancelAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(cancelAction)}
-            style={Styles.flexRowAndAlignCenter}>
-            <Icon.Cross
-              width={DP._16}
-              height={DP._16}
-              stroke={Color.PASTEL_RED}
-            />
-            <FText style={Styles.cancel}>{cancelAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-        {rescheduleAction && (
-          <FTouchableOpacity
-            onPress={() => onActionPress(rescheduleAction)}
-            style={Styles.primaryButtonStyle}>
-            <Icon.Reschedule width={DP._16} height={DP._16} />
-            <FText style={Styles.reschedule}>{rescheduleAction.name}</FText>
-          </FTouchableOpacity>
-        )}
-      </View>
-    </>
-  );
   if (!tripDetails) {
     return null;
   }
@@ -231,18 +200,17 @@ const FlightDetailCard = ({
           <>
             <Separator style={Styles.actionsSeperator} />
             <ContactSupport
-              supportDetails={supportDetails}
               onContactSupportPress={onContactSupportPress}
-              onClose={onClose}
               style={Styles.contactSupport}
               isGreyedOut={isGreyedOut}
             />
           </>
         )}
-        {!actionsDisabled &&
-          (rescheduleAction || cancelAction || viewRemarksAction) && (
-            <Actions />
-          )}
+        <ActionsInItinerary
+          actions={actions}
+          actionDisabled={actionsDisabled}
+          onActionPress={onActionPress}
+        />
       </View>
     </View>
   );

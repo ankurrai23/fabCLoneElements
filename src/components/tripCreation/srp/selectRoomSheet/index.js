@@ -1,7 +1,6 @@
 import {View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import FText, {FONT_TYPE} from '../../../../common/rn/FText';
-import DialogBox from '../../../../common/components/dialogBox';
 import Button from '../../../../common/components/button';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {dialogBoxStyle} from '../../../../utils/Utils';
@@ -17,7 +16,7 @@ const MIN_ADULTS_PER_ROOM = 1;
 const MAX_ROOMS = 6;
 const MIN_ROOMS = 1;
 
-const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
+const SelectRoomSheet = ({visible, roomData, onApply, onCancel}) => {
   const [roomState, setRoomState] = useState([]);
   const [error, setError] = useState('');
   const initialTravellerCount = roomData?.reduce(
@@ -119,64 +118,54 @@ const SelectRoomSheet = ({visible, onClose, roomData, onApply, onCancel}) => {
   };
 
   return (
-    <DialogBox
-      modalVisible={visible}
-      onClose={onClose}
-      ContentModal={
-        <>
-          <View style={Styles.titleContainer(error)}>
-            <FText style={Styles.titleText}>
-              {Strings.selectRoomForTraveler(initialTravellerCount)}
-            </FText>
-            {!!error && <FText style={Styles.subTitle}>{error}</FText>}
-          </View>
-          <FlatList
-            data={roomState}
-            renderItem={renderItem}
-            ItemSeparatorComponent={() => (
-              <Separator style={Styles.separator} />
-            )}
-            style={dialogBoxStyle()}
-          />
-          <Separator style={Styles.separator} />
-          <View style={Styles.addRemoveRoomButtonContainer}>
-            <FTouchableOpacity onPress={onRemoveRoomPress}>
-              <FText
-                style={Styles.removeRoomText(disableRemoveRoom)}
-                type={FONT_TYPE.MEDIUM}>
-                {Strings.removeRoom}
-              </FText>
-            </FTouchableOpacity>
-            <FTouchableOpacity
-              disabled={disableAddRoom}
-              onPress={onAddRoomPress}>
-              <FText
-                style={Styles.addRoomText(disableAddRoom)}
-                type={FONT_TYPE.MEDIUM}>
-                {Strings.addRoom}
-              </FText>
-            </FTouchableOpacity>
-          </View>
-          <Separator style={Styles.separator} />
-          <View style={Styles.buttonContainer}>
-            <Button
-              onPress={onCancel}
-              textFont={FONT_TYPE.MEDIUM}
-              style={Styles.cancelButton}
-              textStyle={Styles.cancelText}>
-              {Strings.cancel}
-            </Button>
-            <Button
-              onPress={onApplyPress}
-              style={Styles.applyButton}
-              textStyle={Styles.applyText}
-              textFont={FONT_TYPE.MEDIUM}>
-              {Strings.apply}
-            </Button>
-          </View>
-        </>
-      }
-    />
+    <>
+      <View style={Styles.titleContainer(error)}>
+        <FText style={Styles.titleText}>
+          {Strings.selectRoomForTraveler(initialTravellerCount)}
+        </FText>
+        {!!error && <FText style={Styles.subTitle}>{error}</FText>}
+      </View>
+      <FlatList
+        data={roomState}
+        renderItem={renderItem}
+        ItemSeparatorComponent={() => <Separator style={Styles.separator} />}
+        style={dialogBoxStyle(0.4)}
+      />
+      <Separator style={Styles.separator} />
+      <View style={Styles.addRemoveRoomButtonContainer}>
+        <FTouchableOpacity onPress={onRemoveRoomPress}>
+          <FText
+            style={Styles.removeRoomText(disableRemoveRoom)}
+            type={FONT_TYPE.MEDIUM}>
+            {Strings.removeRoom}
+          </FText>
+        </FTouchableOpacity>
+        <FTouchableOpacity disabled={disableAddRoom} onPress={onAddRoomPress}>
+          <FText
+            style={Styles.addRoomText(disableAddRoom)}
+            type={FONT_TYPE.MEDIUM}>
+            {Strings.addRoom}
+          </FText>
+        </FTouchableOpacity>
+      </View>
+      <Separator style={Styles.separator} />
+      <View style={Styles.buttonContainer}>
+        <Button
+          onPress={onCancel}
+          textFont={FONT_TYPE.MEDIUM}
+          style={Styles.cancelButton}
+          textStyle={Styles.cancelText}>
+          {Strings.cancel}
+        </Button>
+        <Button
+          onPress={onApplyPress}
+          style={Styles.applyButton}
+          textStyle={Styles.applyText}
+          textFont={FONT_TYPE.MEDIUM}>
+          {Strings.apply}
+        </Button>
+      </View>
+    </>
   );
 };
 

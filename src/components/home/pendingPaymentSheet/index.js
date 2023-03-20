@@ -1,6 +1,11 @@
-import {View, FlatList, LayoutAnimation} from 'react-native';
-import React, {useState, useImperativeHandle, useRef, useEffect} from 'react';
-import DialogBox from '../../../common/components/dialogBox';
+import {View, LayoutAnimation} from 'react-native';
+import React, {
+  useState,
+  useImperativeHandle,
+  useRef,
+  useEffect,
+  useCallback,
+} from 'react';
 import {DP} from '../../../utils/Dimen';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
@@ -8,7 +13,7 @@ import Button from '../../../common/components/button';
 import Styles, {CARD_WIDTH} from './Styles';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import {Color} from '../../../utils/color/index.travelPlus';
-
+import {FlatList} from 'react-native-gesture-handler';
 const defaultTripTitle = {
   timeLeft: '',
   alertString: '',
@@ -19,8 +24,8 @@ export const Timer = React.forwardRef(({paymentRequests}, ref) => {
 
   useEffect(() => {
     const newAlertMessage = {
-      timeLeft: paymentRequests[currentIndex].deadLine?.key,
-      alertString: paymentRequests[currentIndex].deadLine?.value,
+      timeLeft: paymentRequests?.[currentIndex]?.deadLine?.key,
+      alertString: paymentRequests?.[currentIndex]?.deadLine?.value,
     };
     setAlertMessage(newAlertMessage);
   }, [currentIndex, paymentRequests]);
@@ -55,7 +60,10 @@ export const CardDots = React.forwardRef(
     return (
       <View style={[Styles.dotContainer, {containerStyle}]}>
         {data.map((_, index) => (
-          <View style={[Styles.dotStyle(currentIndex === index, dotColor)]} />
+          <View
+            key={index}
+            style={[Styles.dotStyle(currentIndex === index, dotColor)]}
+          />
         ))}
       </View>
     );
@@ -64,12 +72,7 @@ export const CardDots = React.forwardRef(
 
 const ItemSeparator = () => <View style={{width: DP._16}} />;
 
-const PendingPaymentSheet = ({
-  paymentRequests,
-  onPressPayment,
-  showBottomSheet,
-  onClose,
-}) => {
+const PendingPaymentSheet = ({paymentRequests, onPressPayment}) => {
   const cardDotsRef = useRef();
   const timerRef = useRef();
 
@@ -78,12 +81,12 @@ const PendingPaymentSheet = ({
     waitForInteraction: true,
   };
 
-  const onViewableItemsChanged = (info) => {
+  const onViewableItemsChanged = useCallback((info) => {
     if (info.viewableItems.length > 0) {
       timerRef.current.setIndex(info.viewableItems[0].index);
       cardDotsRef.current.setIndex(info.viewableItems[0].index);
     }
-  };
+  }, []);
 
   const renderItem = ({item}) => (
     <FTouchableOpacity
@@ -121,40 +124,34 @@ const PendingPaymentSheet = ({
   );
 
   return (
-    <DialogBox
-      modalVisible={showBottomSheet}
-      onClose={onClose}
-      ContentModal={
-        <View style={Styles.container}>
-          <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
-            {Strings.paymentPending}
-          </FText>
-          <Timer ref={timerRef} paymentRequests={paymentRequests} />
-          <FlatList
-            data={paymentRequests}
-            decelerationRate={'fast'}
-            horizontal={true}
-            bounces={false}
-            pagingEnabled={true}
-            disableIntervalMomentum={true}
-            snapToInterval={CARD_WIDTH + DP._16}
-            showsHorizontalScrollIndicator={false}
-            viewabilityConfig={viewabilityConfig}
-            onViewableItemsChanged={onViewableItemsChanged}
-            contentContainerStyle={Styles.flatlistContainerStyle}
-            renderItem={renderItem}
-            ItemSeparatorComponent={ItemSeparator}
-          />
-          {paymentRequests.length !== 1 && (
-            <CardDots
-              ref={cardDotsRef}
-              data={paymentRequests}
-              dotColor={Color.TWILIGHT_BLUE}
-            />
-          )}
-        </View>
-      }
-    />
+    <View style={Styles.container}>
+      <FText type={FONT_TYPE.MEDIUM} style={Styles.title}>
+        {Strings.paymentPending}
+      </FText>
+      <Timer ref={timerRef} paymentRequests={paymentRequests} />
+      <FlatList
+        data={paymentRequests}
+        decelerationRate={'fast'}
+        horizontal={true}
+        bounces={false}
+        pagingEnabled={true}
+        disableIntervalMomentum={true}
+        snapToInterval={CARD_WIDTH + DP._16}
+        showsHorizontalScrollIndicator={false}
+        viewabilityConfig={viewabilityConfig}
+        onViewableItemsChanged={onViewableItemsChanged}
+        contentContainerStyle={Styles.flatlistContainerStyle}
+        renderItem={renderItem}
+        ItemSeparatorComponent={ItemSeparator}
+      />
+      {paymentRequests.length !== 1 && (
+        <CardDots
+          ref={cardDotsRef}
+          data={paymentRequests}
+          dotColor={Color.TWILIGHT_BLUE}
+        />
+      )}
+    </View>
   );
 };
 export default PendingPaymentSheet;

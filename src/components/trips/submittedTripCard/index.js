@@ -1,26 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import DialogBox from '../../../common/components/dialogBox';
-import {FlatList} from 'react-native-gesture-handler';
 import TripStatus from '../tripStatus';
 import {EMPLOYEE_ACTIONS} from '../../../utils/Constants';
 import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
-import Separator from '../../../common/components/separator';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {getSubTripIcon} from '../../../utils/Utils';
 
-const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
-  const [sheetVisible, setSheetVisible] = useState(false);
-
-  const renderItem = ({item: coTravelerName}) => {
-    return <FText style={{fontSize: DP._16}}>{coTravelerName}</FText>;
-  };
-
+const SubmittedTripCard = ({
+  item,
+  onCardPress,
+  onActionPress,
+  onCoTravelerPress,
+}) => {
   const _onActionPress = (actionType) => {
     const data = {
       masterTripId: item.masterTripId,
@@ -42,12 +38,16 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexRowAndAlignCenter}>
-            {item?.subTripsIcon?.slice(0, 3)?.map((asset) => {
+            {item?.subTripsIcon?.slice(0, 3)?.map((asset, index) => {
               const subTripIcon = getSubTripIcon(asset.key);
-              return <View style={Styles.iconStyle}>{subTripIcon}</View>;
+              return (
+                <View key={index} style={Styles.iconStyle}>
+                  {subTripIcon}
+                </View>
+              );
             })}
             {item?.subTripsIcon?.length > 3 && (
-              <FText weight={500} style={Styles.fontSize_14}>
+              <FText weight={FONT_TYPE.MEDIUM} style={Styles.fontSize_14}>
                 +{item?.subTripsIcon?.length - 3}
               </FText>
             )}
@@ -76,7 +76,8 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
             <FTouchableOpacity
               style={Styles.flex}
               onPress={() =>
-                item.coTravellers?.length > 1 && setSheetVisible(true)
+                item.coTravellers?.length > 1 &&
+                onCoTravelerPress(item.coTravellers)
               }>
               <FText numberOfLines={1}>
                 {item.coTravellers?.[0]}
@@ -104,35 +105,13 @@ const SubmittedTripCard = ({item, onCardPress, onActionPress}) => {
         <View style={Styles.footer}>
           {item.actions
             .filter((e) => e.type !== EMPLOYEE_ACTIONS.SEND_REMINDER)
-            .map((e) => (
-              <FTouchableOpacity disabled>
+            .map((e, index) => (
+              <FTouchableOpacity disabled key={index}>
                 <FText style={Styles.action(e.type)}>{e.name}</FText>
               </FTouchableOpacity>
             ))}
         </View>
       </FTouchableOpacity>
-      <DialogBox
-        modalVisible={sheetVisible}
-        onClose={() => setSheetVisible(false)}
-        ContentModal={
-          <View style={{paddingBottom: DP._48, paddingHorizontal: DP._24}}>
-            <FText style={Styles.modalHeading}>{Strings.coTravelers}</FText>
-            <FlatList
-              data={item.coTravellers}
-              renderItem={renderItem}
-              ItemSeparatorComponent={() => (
-                <Separator
-                  style={{
-                    marginVertical: DP._16,
-                    backgroundColor: Color.SILVER,
-                  }}
-                />
-              )}
-              keyExtractor={(_) => _}
-            />
-          </View>
-        }
-      />
     </>
   );
 };

@@ -70,6 +70,7 @@ function TextField(
     textAlignVertical,
     autoFocus,
     selectTextOnFocus,
+    inputMode,
   },
   ref,
 ) {
@@ -110,7 +111,8 @@ function TextField(
   useEffect(() => {
     if (typeof value !== 'undefined') {
       if (
-        Boolean(textInput.current.isFocused() || Boolean(value)) !== state.dirty
+        Boolean(textInput?.current?.isFocused() || Boolean(value)) !==
+        state.dirty
       ) {
         _animate(Boolean(value));
         setState((prevState) => ({...prevState, dirty: Boolean(value)}));
@@ -151,7 +153,7 @@ function TextField(
 
   const _onBlur = () => {
     setState((prevState) => ({...prevState, isFocused: false}));
-    if (textInput.current.isFocused()) {
+    if (textInput?.current?.isFocused()) {
       textInput.current.blur();
     }
 
@@ -200,7 +202,7 @@ function TextField(
   };
 
   const _keyboardDidHide = () => {
-    if (textInput.current.isFocused() && !isPlatformIos()) {
+    if (textInput?.current?.isFocused() && !isPlatformIos()) {
       textInput.current.blur();
       setState((prevState) => ({...prevState, isFocused: false}));
     }
@@ -220,7 +222,7 @@ function TextField(
   };
 
   const isFocused = () => {
-    textInput.current.isFocused();
+    textInput?.current?.isFocused();
   };
 
   const elementStyles = [Styles.element, style];
@@ -250,6 +252,7 @@ function TextField(
             textAlignVertical={textAlignVertical}
             autoFocus={autoFocus}
             selectTextOnFocus={selectTextOnFocus}
+            inputMode={inputMode}
             style={[
               Styles.input(editable),
               inputStyle,
