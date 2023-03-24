@@ -4,7 +4,7 @@ import {Color} from '../../../utils/color/index.fabhotel';
 
 export default StyleSheet.create({
   container: {
-    paddingVertical: DP._24,
+    paddingTop: DP._14,
   },
   titleText: {
     fontSize: DP._20,
@@ -32,7 +32,7 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
   },
   subTitle: {
-    fontSize: DP._12,
+    fontSize: DP._14,
     marginLeft: DP._4,
     color: Color.FORD_GRAY,
   },
@@ -45,7 +45,6 @@ export default StyleSheet.create({
   buttonStyle: {
     marginTop: DP._4,
     marginHorizontal: DP._24,
-    marginBottom: DP._24,
     borderRadius: DP._30,
   },
   buttonText: {

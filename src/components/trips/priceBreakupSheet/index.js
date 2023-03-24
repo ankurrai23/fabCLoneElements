@@ -29,10 +29,30 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
       <ScrollView>
         {!!data.flightBreakup && (
           <>
-            <FeeDetail
-              title={Strings.priceBreakup.flightCharges}
-              cost={data.flightBreakup.flightCharges}
-            />
+            {!!data.flightBreakup.flightCharges && (
+              <FeeDetail
+                title={Strings.priceBreakup.flightCharges}
+                cost={data.flightBreakup.flightCharges}
+              />
+            )}
+            {!!data.flightBreakup.flightCharge && (
+              <FeeDetail
+                title={Strings.priceBreakup.flightCharges}
+                subtitle={`(${
+                  data.flightBreakup.flightCharge.count
+                } X ${formattedPrice(
+                  data.flightBreakup.flightCharge.pricePerPax,
+                )})`}
+                cost={data.flightBreakup.flightCharge.price}
+              />
+            )}
+            {!!data.flightBreakup.meal && (
+              <FeeDetail
+                title={Strings.priceBreakup.meals}
+                subtitle={`X ${data.flightBreakup.meal.mealCount}`}
+                cost={data.flightBreakup.meal.mealCharges}
+              />
+            )}
             <FeeDetail
               title={Strings.priceBreakup.convenienceFee}
               cost={data.flightBreakup.convFeeWithGst}

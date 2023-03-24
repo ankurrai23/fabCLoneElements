@@ -170,6 +170,7 @@ export default {
     totalAmount: 'Total amount',
     paidAmount: 'Paid amount',
     included: '(included)',
+    meals: 'Meals',
   },
   ok: 'Ok',
   leftToPayElseApprovalCancel: 'left to pay. Else approval shall be cancelled',
