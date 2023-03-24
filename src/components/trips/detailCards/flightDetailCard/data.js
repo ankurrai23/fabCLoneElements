@@ -22,6 +22,7 @@ const flightDetailCardProps = {
     price: '₹2600',
     airlineIcon:
       'https://storage.googleapis.com/fabm-test-uploader/airline_logo/SG.png',
+    mealCount: 3,
     travelersInfo: [
       {
         name: 'Sahil Malhan',

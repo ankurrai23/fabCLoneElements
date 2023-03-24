@@ -28,6 +28,7 @@ const flightItineraryCardProps = {
     airline: 'Indigo',
     isOutOfPolicy: true,
     isSoldOut: false,
+    mealCount: 5,
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
   },
@@ -52,6 +53,8 @@ const flightItineraryCardProps = {
     isPriceFetched: true,
     price: '₹2600',
     isOutOfPolicy: true,
+    pnr: 'EJKW234',
+    mealCount: 5,
   },
   // cancellationCharges: '₹600',
   // modificationCharges: '₹300',
@@ -86,9 +89,9 @@ const flightItineraryCardProps = {
   actionDisabled: false,
   showStatus: false,
   notificationText: null,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
-  reduceOpacity: true,
+  reduceOpacity: false,
 };
 
 export default flightItineraryCardProps;

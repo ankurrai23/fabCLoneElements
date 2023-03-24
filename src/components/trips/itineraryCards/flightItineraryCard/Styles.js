@@ -176,8 +176,8 @@ export default StyleSheet.create({
     marginBottom: DP._4,
   },
   pnr: (reduceOpacity) => ({
-    marginLeft: DP._16,
-    marginVertical: DP._8,
+    // marginLeft: DP._16,
+    // marginVertical: DP._8,
     color: Color.BLUEY_GREY,
     fontSize: DP._12,
     lineHeight: DP._14,
@@ -246,5 +246,18 @@ export default StyleSheet.create({
   separatorContainerStyle: {
     backgroundColor: Color.HAWKES_BLUE,
     marginHorizontal: DP._16,
+  },
+  pnrAndMealContainer: {
+    paddingHorizontal: DP._16,
+    flexDirection: 'row',
+    paddingVertical: DP._8,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  mealsAdded: {
+    marginLeft: DP._8,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREY_PURPLE,
   },
 });

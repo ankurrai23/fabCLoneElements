@@ -153,8 +153,8 @@ export default StyleSheet.create({
     lineHeight: DP._15,
   },
   bookingIdTitle: (reduceOpacity) => ({
-    paddingHorizontal: DP._16,
-    paddingVertical: DP._8,
+    // paddingHorizontal: DP._16,
+    // paddingVertical: DP._8,
     color: Color.BLUEY_GREY,
     fontSize: DP._12,
     lineHeight: DP._14,
@@ -199,5 +199,18 @@ export default StyleSheet.create({
   },
   marginTop_8: {
     marginTop: DP._8,
+  },
+  pnrAndMealContainer: {
+    paddingHorizontal: DP._16,
+    flexDirection: 'row',
+    paddingVertical: DP._8,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  mealsAdded: {
+    marginLeft: DP._8,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREY_PURPLE,
   },
 });
