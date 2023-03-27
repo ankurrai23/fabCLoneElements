@@ -86,6 +86,7 @@ import {
   LoadingPlaceholder,
   BottomSheet,
   SelectMeal,
+  SeatSelection,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -443,6 +444,11 @@ const TRIP_CREATION = [
     component: (props) => <SelectMeal {...props} />,
     defaultProps: data.selectMealProps,
   },
+  {
+    name: 'SeatSelection',
+    component: (props) => <SeatSelection {...props} />,
+    defaultProps: data.seatSelectionsProps,
+  },
 ];
 
 const HOME = [
@@ -532,6 +538,8 @@ const EXPENSE = [
     defaultProps: data.receiptListViewProps,
   },
 ];
+
+console.log({seatSelectionsProps: data.seatSelectionsProps});
 
 export default [
   ...COMMON_COMPONENTS,

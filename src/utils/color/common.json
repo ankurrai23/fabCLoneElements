@@ -85,5 +85,9 @@
   "RED_2": "#E54304",
   "RED_3": "#FFF0F0",
   "GREY_8": "#F2F3F3",
-  "WHITE_2": "#EAEAEA"
+  "WHITE_2": "#EAEAEA",
+  "DIAMOND": "#C3E1FF",
+  "JORDY_BLUE": "#87C2FF",
+  "VERY_LIGHT_AZURE" : "#6CB5FF",
+  "CULTURED": "#F5F5F5"
 }
