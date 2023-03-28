@@ -153,8 +153,6 @@ export default StyleSheet.create({
     lineHeight: DP._15,
   },
   bookingIdTitle: (reduceOpacity) => ({
-    // paddingHorizontal: DP._16,
-    // paddingVertical: DP._8,
     color: Color.BLUEY_GREY,
     fontSize: DP._12,
     lineHeight: DP._14,

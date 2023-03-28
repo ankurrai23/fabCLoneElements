@@ -176,8 +176,6 @@ export default StyleSheet.create({
     marginBottom: DP._4,
   },
   pnr: (reduceOpacity) => ({
-    // marginLeft: DP._16,
-    // marginVertical: DP._8,
     color: Color.BLUEY_GREY,
     fontSize: DP._12,
     lineHeight: DP._14,

@@ -7,6 +7,7 @@ import Icon from '../../../../assets/icons/Icon';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {formattedPrice} from '../../../../utils/Utils';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
+import {MEAL_TYPE} from '../../../../utils/Constants';
 
 const SelectMeal = ({
   data,
@@ -17,7 +18,7 @@ const SelectMeal = ({
   disableMinusButton,
   disablePlusButton,
 }) => {
-  const isMealFree = data.price === 0 || !isLcc;
+  const isMealFree = data.mealType === MEAL_TYPE.FREE || !isLcc;
   return (
     <View style={Styles.container}>
       <View style={Styles.infoContainer}>
@@ -39,7 +40,6 @@ const SelectMeal = ({
         </FTouchableOpacity>
         <FText style={Styles.count(count === 0)}>{count}</FText>
         <FTouchableOpacity
-          // disabled={disablePlusButton}
           style={Styles.addRemoveButtonStyle(disablePlusButton)}
           onPress={() => onAddPress?.(data)}>
           <Icon.Plus
