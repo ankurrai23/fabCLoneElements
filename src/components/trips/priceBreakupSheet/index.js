@@ -46,7 +46,7 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
                 cost={data.flightBreakup.flightCharge.price}
               />
             )}
-            {!!data.flightBreakup.meal && (
+            {!!data.flightBreakup.meal?.mealCount && (
               <FeeDetail
                 title={Strings.priceBreakup.meals}
                 subtitle={`X ${data.flightBreakup.meal.mealCount}`}
