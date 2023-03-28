@@ -6,6 +6,7 @@ import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Icon from '../../../../assets/icons/Icon';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {formattedPrice} from '../../../../utils/Utils';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
 
 const SelectMeal = ({
   data,
@@ -16,18 +17,16 @@ const SelectMeal = ({
   disableMinusButton,
   disablePlusButton,
 }) => {
-  const isMealFree = data.mealType === 'FREE';
+  const isMealFree = data.price === 0 || !isLcc;
   return (
     <View style={Styles.container}>
       <View style={Styles.infoContainer}>
         <FText numberOfLines={2} style={Styles.mealDesc}>
           {data.mealDescription ?? data.description}
         </FText>
-        {isLcc && (
-          <FText style={Styles.mealPrice(!isMealFree)}>
-            {!isMealFree ? formattedPrice(data.price) : 'Free'}
-          </FText>
-        )}
+        <FText style={Styles.mealPrice(!isMealFree)}>
+          {!isMealFree ? formattedPrice(data.price) : Strings.free}
+        </FText>
       </View>
       <View style={Styles.addRemoveButtonContainer}>
         <FTouchableOpacity
