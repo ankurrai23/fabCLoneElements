@@ -182,5 +182,5 @@ export default {
   soldOut2: 'Sold Out!',
   showOOPFlights: 'Show out of policy flights',
   showOOPHotels: 'Show out of policy hotels',
-  mealsAdded: (count) => `${count} Meals added`,
+  mealsAdded: (count) => `${count} Meal(s) added`,
 };
