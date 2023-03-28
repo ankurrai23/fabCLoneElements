@@ -1,11 +1,13 @@
-import {View, Text, FlatList} from 'react-native';
-import React from 'react';
+import {View, Text} from 'react-native';
+import React, {useRef, useState} from 'react';
 import Styles from './Styles';
 import Icon from '../../../../assets/icons/Icon';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
-import Tooltip from './ToolTip';
+import {ScrollView} from 'react-native-gesture-handler';
+import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
+
 const getSeatColor = (price) => {
   if (price === 0) return null;
   if (price <= 500) return Color.ICE_BLUE;
@@ -14,23 +16,23 @@ const getSeatColor = (price) => {
   if (price > 1500) return Color.VERY_LIGHT_AZURE;
 };
 
-export const FlightSeat = ({seatString, seatColor, ifBooked, selected}) => {
+export const FlightSeat = ({
+  seatString,
+  seatColor,
+  ifBooked,
+  selected,
+  onSeatPress,
+}) => {
+  const positionRef = useRef();
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: seatColor,
-        borderWidth: DP._0_5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: Color.PALE_GREY_THREE,
-        borderTopLeftRadius: DP._8,
-        borderTopRightRadius: DP._8,
-        marginLeft: DP._4,
-        marginRight: DP._4,
-        minHeight: DP._40,
-        minWidth: DP._40,
-        zIndex: -1,
+    <FTouchableOpacity
+      style={Styles.seatStyle(seatColor)}
+      onPress={() => {
+        onSeatPress(positionRef.current);
+      }}
+      onLayout={(event) => {
+        const {x} = event.nativeEvent.layout;
+        positionRef.current = x;
       }}>
       {selected ? (
         <Icon.Check width={DP._16} height={DP._16} stroke={Color.WHITE} />
@@ -47,19 +49,22 @@ export const FlightSeat = ({seatString, seatColor, ifBooked, selected}) => {
           {seatString}
         </Text>
       )}
-    </View>
+    </FTouchableOpacity>
   );
 };
 
 const SeatSelection = ({data}) => {
-  const renderSeatRow = ({item, index}) => {
-    console.log({item});
+  const rowPositionRef = useRef({});
+  const [toolTipPos, setToolTipPos] = useState(null);
+  const renderSeatRow = (item, index) => {
     return (
       <View
-        style={{
-          flexDirection: 'row',
-          marginBottom: DP._16,
-          justifyContent: 'space-between',
+        style={Styles.seatRow}
+        onLayout={(event) => {
+          rowPositionRef.current = {
+            ...rowPositionRef.current,
+            [index]: event.nativeEvent.layout.y,
+          };
         }}>
         {item.map((seatData) => {
           const {price, ifBooked, selected, type} = seatData;
@@ -70,31 +75,35 @@ const SeatSelection = ({data}) => {
             ? Color.CULTURED
             : getSeatColor(price);
           return type === 'EMPTY_SPACE' ? (
-            <View
-              style={{
-                minWidth: DP._48,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
+            <View style={Styles.emptySpace}>
               <Text style={{fontSize: DP._11, color: Color.GREY_PURPLE}}>
                 {index + 1}
               </Text>
             </View>
           ) : (
-            <Tooltip>
-              <FlightSeat
-                seatColor={seatColor}
-                seatString={seatString}
-                ifBooked={ifBooked}
-                selected={selected}
-              />
-            </Tooltip>
+            <FlightSeat
+              seatColor={seatColor}
+              seatString={seatString}
+              ifBooked={ifBooked}
+              selected={selected}
+              onSeatPress={(x) => {
+                setToolTipPos({x, y: rowPositionRef.current[index]});
+              }}
+            />
           );
         })}
       </View>
     );
   };
-  return <FlatList data={data} renderItem={renderSeatRow} />;
+
+  return (
+    <View style={Styles.posRelative}>
+      <ScrollView>{data.map(renderSeatRow)}</ScrollView>
+      {!!toolTipPos && (
+        <View style={Styles.toolTip(toolTipPos.x, toolTipPos.y)} />
+      )}
+    </View>
+  );
 };
 
 export default SeatSelection;

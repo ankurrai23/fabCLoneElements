@@ -4,9 +4,10 @@ const seatSelectionsProps = {
       {price: 100, type: 'SEAT'},
       {price: 200, type: 'SEAT'},
       {price: 0, type: 'SEAT'},
-      {price: 0, type: 'EMPTY_SPACE', ifBooked: true},
+      {price: 0, type: 'EMPTY_SPACE', ifBooked: true}, //isBooked
       {price: 100, type: 'SEAT'},
       {price: 200, type: 'SEAT'},
+      {price: 0, type: 'SEAT'},
       {price: 0, type: 'SEAT'},
     ],
     [
@@ -17,14 +18,6 @@ const seatSelectionsProps = {
       {price: 0, type: 'SEAT', ifBooked: true},
       {price: 200, type: 'SEAT'},
       {price: 0, type: 'SEAT'},
-    ],
-    [
-      {price: 100, type: 'SEAT'},
-      {price: 200, type: 'SEAT'},
-      {price: 0, type: 'SEAT', ifBooked: true},
-      {price: 0, type: 'EMPTY_SPACE', ifBooked: true},
-      {price: 100, type: 'SEAT'},
-      {price: 200, type: 'SEAT'},
       {price: 0, type: 'SEAT'},
     ],
     [
@@ -35,14 +28,6 @@ const seatSelectionsProps = {
       {price: 100, type: 'SEAT'},
       {price: 200, type: 'SEAT'},
       {price: 0, type: 'SEAT'},
-    ],
-    [
-      {price: 100, type: 'SEAT'},
-      {price: 200, type: 'SEAT'},
-      {price: 0, type: 'SEAT', ifBooked: true},
-      {price: 0, type: 'EMPTY_SPACE', ifBooked: true},
-      {price: 100, type: 'SEAT'},
-      {price: 200, type: 'SEAT'},
       {price: 0, type: 'SEAT'},
     ],
     [
@@ -53,6 +38,7 @@ const seatSelectionsProps = {
       {price: 100, type: 'SEAT'},
       {price: 200, type: 'SEAT'},
       {price: 0, type: 'SEAT'},
+      {price: 0, type: 'SEAT'},
     ],
     [
       {price: 100, type: 'SEAT'},
@@ -61,6 +47,27 @@ const seatSelectionsProps = {
       {price: 0, type: 'EMPTY_SPACE', ifBooked: true},
       {price: 100, type: 'SEAT'},
       {price: 200, type: 'SEAT'},
+      {price: 0, type: 'SEAT'},
+      {price: 0, type: 'SEAT'},
+    ],
+    [
+      {price: 100, type: 'SEAT'},
+      {price: 200, type: 'SEAT'},
+      {price: 0, type: 'SEAT', ifBooked: true},
+      {price: 0, type: 'EMPTY_SPACE', ifBooked: true},
+      {price: 100, type: 'SEAT'},
+      {price: 200, type: 'SEAT'},
+      {price: 0, type: 'SEAT'},
+      {price: 0, type: 'SEAT'},
+    ],
+    [
+      {price: 100, type: 'SEAT'},
+      {price: 200, type: 'SEAT'},
+      {price: 0, type: 'SEAT', ifBooked: true},
+      {price: 0, type: 'EMPTY_SPACE', ifBooked: true},
+      {price: 100, type: 'SEAT'},
+      {price: 200, type: 'SEAT'},
+      {price: 0, type: 'SEAT'},
       {price: 0, type: 'SEAT'},
     ],
     [
