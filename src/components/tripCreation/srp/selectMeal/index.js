@@ -37,7 +37,7 @@ const SelectMeal = ({
             stroke={disableMinusButton ? Color.FORD_GRAY : Color.DODGER_BLUE}
           />
         </FTouchableOpacity>
-        <FText style={Styles.count}>{count}</FText>
+        <FText style={Styles.count(count === 0)}>{count}</FText>
         <FTouchableOpacity
           // disabled={disablePlusButton}
           style={Styles.addRemoveButtonStyle(disablePlusButton)}
