@@ -183,4 +183,5 @@ export default {
   showOOPFlights: 'Show out of policy flights',
   showOOPHotels: 'Show out of policy hotels',
   mealsAdded: (count) => `${count} Meal(s) added`,
+  exclConvFeeMsg: '(Excluding convenience fee)',
 };

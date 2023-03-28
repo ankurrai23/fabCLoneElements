@@ -53,10 +53,12 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
                 cost={data.flightBreakup.meal.mealCharges}
               />
             )}
-            <FeeDetail
-              title={Strings.priceBreakup.convenienceFee}
-              cost={data.flightBreakup.convFeeWithGst}
-            />
+            {!!data.flightBreakup.convFeeWithGst && (
+              <FeeDetail
+                title={Strings.priceBreakup.convenienceFee}
+                cost={data.flightBreakup.convFeeWithGst}
+              />
+            )}
             <Separator style={Styles.separator} />
           </>
         )}
@@ -137,6 +139,9 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
               cost={data.grandTotal}
               type={FONT_TYPE.MEDIUM}
             />
+            {!!data.exclConvFeeMsg && (
+              <FText style={Styles.exclConvMsg}>{Strings.exclConvFeeMsg}</FText>
+            )}
             <Separator style={Styles.separator} />
           </>
         )}

@@ -54,4 +54,8 @@ export default StyleSheet.create({
   paidAmountText: {
     marginBottom: DP._20,
   },
+  exclConvMsg: {
+    marginLeft: DP._24,
+    fontSize: DP._11,
+  },
 });
