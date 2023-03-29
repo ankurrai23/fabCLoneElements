@@ -88,6 +88,7 @@ import FlightSearchResultCard from './components/tripCreation/srp/flightSearchRe
 import HotelSearchResultCard from './components/tripCreation/srp/hotelSearchResultCard';
 import SelectRoomSheet from './components/tripCreation/srp/selectRoomSheet';
 import QuickLinks from './components/tripCreation/srp/filters/component';
+import SelectMeal from './components/tripCreation/srp/selectMeal';
 
 //Home Screen Components
 import HomeHeader from './components/home/homeHeader';
@@ -194,6 +195,7 @@ export {
   HotelSearchResultCard,
   SelectRoomSheet,
   QuickLinks,
+  SelectMeal,
   // constants
   FlightSubTripActions,
   TrainSubtripActions,

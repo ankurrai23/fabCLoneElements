@@ -34,10 +34,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="HotelFilter"
+        initialRouteName="SelectMeal"
         drawerContent={props => <CustomDrawer {...props} />}
         screenOptions={{drawerStyle: {width: '70%'}}}
-        detachInactiveScreens={true}>
+        detachInactiveScreens={true}
+      >
         {ComponentList.map((item, index) => {
           if (item.component) {
             // noinspection JSUnusedGlobalSymbols
@@ -50,7 +51,8 @@ export default function App() {
                     onHeaderTextPress,
                     showProperties,
                   ),
-                }}>
+                }}
+              >
                 {() => (
                   <RenderComponent
                     showProperties={showProperties}

@@ -76,6 +76,7 @@ import {
   SelectRoomSheet,
   PriceBreakupSheet,
   LoadingPlaceholder,
+  SelectMeal,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -383,6 +384,11 @@ const TRIP_CREATION = [
     name: 'SelectRoomSheet',
     component: props => <SelectRoomSheet {...props} />,
     defaultProps: data.selectRoomSheetProps,
+  },
+  {
+    name: 'SelectMeal',
+    component: props => <SelectMeal {...props} />,
+    defaultProps: data.selectMealProps,
   },
 ];
 

@@ -12,7 +12,9 @@ import TripStatus from '../../tripStatus';
 import {FlightSubTripActions} from '../../../../utils/SubTripActions';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import Icon from '../../../../assets/icons/Icon';
-import ActionsInItinerary, {BottomBarActions} from '../../../../common/components/ActionsInItinerary';
+import ActionsInItinerary, {
+  BottomBarActions,
+} from '../../../../common/components/ActionsInItinerary';
 import OOPTag from '../../components/OOPTag/OOPTag';
 import FImage from '../../../../common/rn/FImage';
 import LinearGradient from 'react-native-linear-gradient';
@@ -326,17 +328,29 @@ const FlightItineraryCard = ({
           )}
         </View>
       </FTouchableOpacity>
-      {!!uiData.pnr && (
+      {(!!uiData.pnr || !!uiData.mealCount) && (
         <>
           <Separator style={Styles.separatorStyle} />
-          <FText
-            greyedOut={isGreyedOut}
-            style={Styles.pnr(uiData.reduceOpacity)}>
-            {Strings.pnr}:
-            <FText
-              greyedOut={isGreyedOut}
-              type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
-          </FText>
+          <View style={Styles.pnrAndMealContainer}>
+            {uiData.pnr && (
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.pnr(uiData.reduceOpacity)}>
+                {Strings.pnr}:
+                <FText
+                  greyedOut={isGreyedOut}
+                  type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
+              </FText>
+            )}
+            {uiData.mealCount && (
+              <View style={Styles.flexRowAndAlignCenter}>
+                <Icon.Meal />
+                <FText style={Styles.mealsAdded}>
+                  {Strings.mealsAdded(uiData.mealCount)}
+                </FText>
+              </View>
+            )}
+          </View>
         </>
       )}
       {!!modificationCharges && (

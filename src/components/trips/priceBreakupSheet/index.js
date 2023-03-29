@@ -29,14 +29,42 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
       <ScrollView>
         {!!data.flightBreakup && (
           <>
-            <FeeDetail
-              title={Strings.priceBreakup.flightCharges}
-              cost={data.flightBreakup.flightCharges}
-            />
-            <FeeDetail
-              title={Strings.priceBreakup.convenienceFee}
-              cost={data.flightBreakup.convFeeWithGst}
-            />
+            {!!data.flightBreakup.flightCharges && (
+              <FeeDetail
+                title={Strings.priceBreakup.flightCharges}
+                cost={data.flightBreakup.flightCharges}
+              />
+            )}
+            {!!data.flightBreakup.flightCharge && (
+              <FeeDetail
+                title={Strings.priceBreakup.flightCharges}
+                subtitle={`(${
+                  data.flightBreakup.flightCharge.count
+                } X ${formattedPrice(
+                  data.flightBreakup.flightCharge.pricePerPax,
+                )})`}
+                cost={data.flightBreakup.flightCharge.price}
+              />
+            )}
+            {!!data.flightBreakup.mealCount && (
+              <FeeDetail
+                title={Strings.priceBreakup.meals}
+                cost={data.flightBreakup.mealCharges}
+              />
+            )}
+            {!!data.flightBreakup.meal?.mealCount && (
+              <FeeDetail
+                title={Strings.priceBreakup.meals}
+                subtitle={`X ${data.flightBreakup.meal.mealCount}`}
+                cost={data.flightBreakup.meal.mealCharges}
+              />
+            )}
+            {!!data.flightBreakup.convFeeWithGst && (
+              <FeeDetail
+                title={Strings.priceBreakup.convenienceFee}
+                cost={data.flightBreakup.convFeeWithGst}
+              />
+            )}
             <Separator style={Styles.separator} />
           </>
         )}
@@ -117,6 +145,9 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
               cost={data.grandTotal}
               type={FONT_TYPE.MEDIUM}
             />
+            {!!data.exclConvFeeMsg && (
+              <FText style={Styles.exclConvMsg}>{Strings.exclConvFeeMsg}</FText>
+            )}
             <Separator style={Styles.separator} />
           </>
         )}
