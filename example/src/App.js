@@ -28,16 +28,17 @@ export default function App() {
   const [showProperties, setShowProperties] = useState(false);
 
   const onHeaderTextPress = () => {
-    setShowProperties((currentState) => !currentState);
+    setShowProperties(currentState => !currentState);
   };
 
   return (
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName="SelectMeal"
-        drawerContent={(props) => <CustomDrawer {...props} />}
+        drawerContent={props => <CustomDrawer {...props} />}
         screenOptions={{drawerStyle: {width: '70%'}}}
-        detachInactiveScreens={true}>
+        detachInactiveScreens={true}
+      >
         {ComponentList.map((item, index) => {
           if (item.component) {
             // noinspection JSUnusedGlobalSymbols
@@ -50,7 +51,8 @@ export default function App() {
                     onHeaderTextPress,
                     showProperties,
                   ),
-                }}>
+                }}
+              >
                 {() => (
                   <RenderComponent
                     showProperties={showProperties}

@@ -60,7 +60,10 @@ export const CardDots = React.forwardRef(
     return (
       <View style={[Styles.dotContainer, {containerStyle}]}>
         {data.map((_, index) => (
-          <View style={[Styles.dotStyle(currentIndex === index, dotColor)]} />
+          <View
+            key={index}
+            style={[Styles.dotStyle(currentIndex === index, dotColor)]}
+          />
         ))}
       </View>
     );

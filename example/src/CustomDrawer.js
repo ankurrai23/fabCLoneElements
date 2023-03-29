@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {FText, FTouchableOpacity} from 'react-native-fab-elements';
 
-import Feather from 'react-native-vector-icons/Feather';
+import Icon from '../../src/assets/icons/Icon';
 import ComponentList from './ComponentList';
 import {TextField} from 'react-native-fab-elements';
 
@@ -19,10 +19,10 @@ export default function CustomDrawer({navigation, state}) {
           <FText style={styles.componentName(selected)} numberOfLines={1}>
             {item.name}
           </FText>
-          <Feather
+          <Icon.ChevronRight
             name="chevron-right"
             size={18}
-            color={selected ? '#379aff' : 'black'}
+            stroke={selected ? '#379aff' : 'black'}
           />
         </FTouchableOpacity>
       );
@@ -44,7 +44,7 @@ export default function CustomDrawer({navigation, state}) {
           onChangeText={setSearchText}
         />
         <FlatList
-          data={ComponentList.filter((item) =>
+          data={ComponentList.filter(item =>
             item.name.toLowerCase().includes(searchText.toLowerCase()),
           )}
           renderItem={renderItem}
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   searchMargin: {
     margin: 10,
   },
-  buttonStyle: (selected) => ({
+  buttonStyle: selected => ({
     flexDirection: 'row',
     padding: 8,
     marginVertical: 1,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     backgroundColor: selected ? '#379aff1a' : 'transparent',
   }),
   titleText: {fontSize: 20, marginVertical: 5},
-  componentName: (selected) => ({
+  componentName: selected => ({
     color: selected ? '#379aff' : 'black',
     flex: 0.9,
   }),

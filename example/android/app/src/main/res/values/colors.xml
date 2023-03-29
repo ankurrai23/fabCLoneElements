@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <color name="colorAccent">#379aff</color>
-  <color name="themePrimary">#0E286A</color>
-  <!-- to avoid a crash in react-native-splash-screen library -> primary_dark is needed -->
-  <color name="primary_dark">@color/themePrimary</color>
-
-</resources>

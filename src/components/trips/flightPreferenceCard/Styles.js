@@ -53,7 +53,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderRadius: 1,
   },
-  airplane: {transform: [{rotate: '45 deg'}]},
+  airplane: {transform: [{rotate: '90 deg'}]},
   whiteDot: {
     padding: DP._2,
     borderWidth: DP._2,
