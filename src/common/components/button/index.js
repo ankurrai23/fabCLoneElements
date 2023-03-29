@@ -39,7 +39,7 @@ function Button({
             textStyle,
             selected && {color: Color.DODGER_BLUE},
           ]}
-          weight={type === BUTTON_TYPE.NO_COLOR && DP._500}>
+          weight={type === BUTTON_TYPE.NO_COLOR && FONT_TYPE.MEDIUM}>
           {children}
         </FText>
       );

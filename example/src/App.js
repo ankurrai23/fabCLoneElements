@@ -28,14 +28,14 @@ export default function App() {
   const [showProperties, setShowProperties] = useState(false);
 
   const onHeaderTextPress = () => {
-    setShowProperties((currentState) => !currentState);
+    setShowProperties(currentState => !currentState);
   };
 
   return (
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName="HotelFilter"
-        drawerContent={(props) => <CustomDrawer {...props} />}
+        drawerContent={props => <CustomDrawer {...props} />}
         screenOptions={{drawerStyle: {width: '70%'}}}
         detachInactiveScreens={true}>
         {ComponentList.map((item, index) => {

@@ -54,7 +54,7 @@ const FIELD_STATES = [
   },
   {
     label: 'Mobile number',
-    value: 7342422435,
+    value: '7342422435',
     icon: <FText style={{color: Color.BLUEY_GREY}}>+91</FText>,
     iconStyle: {
       width: DP._39,
@@ -63,7 +63,7 @@ const FIELD_STATES = [
   },
   {
     label: 'Mobile number',
-    value: 7342422435,
+    value: '7342422435',
     icon: <FText style={{color: Color.BLUEY_GREY}}>+999</FText>,
     iconStyle: {
       width: DP._39,
@@ -72,10 +72,10 @@ const FIELD_STATES = [
 ];
 
 const FieldStates = () => {
-  const renderItem = ({item}) => {
+  const renderItem = ({item, index}) => {
     if (item.type === 'textField')
-      return <TextField {...item} topMargin={DP._18} />;
-    else return <PickerField {...item} topMargin={DP._18} />;
+      return <TextField key={index} {...item} topMargin={DP._18} />;
+    else return <PickerField key={index} {...item} topMargin={DP._18} />;
   };
 
   return (
