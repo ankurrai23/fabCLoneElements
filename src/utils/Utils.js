@@ -132,6 +132,15 @@ export function isPlatformIos() {
   return Platform.OS === 'ios';
 }
 
+let lastClickTime = 0;
+
+export function isMutuallyExclusiveClick() {
+  let newClickTime = Date.now();
+  let result = newClickTime - lastClickTime > 200;
+  lastClickTime = newClickTime;
+  return result;
+}
+
 export function getPluralText(number, text, isCaps, isNumberPrefix) {
   return text
     ? (isNumberPrefix ? number + ' ' : '') +

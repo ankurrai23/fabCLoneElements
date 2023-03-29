@@ -9,7 +9,7 @@ import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
-import {getSubTripIcon} from '../../../utils/Utils';
+import {getSubTripIcon, isMutuallyExclusiveClick} from '../../../utils/Utils';
 
 const SubmittedTripCard = ({
   item,
@@ -90,7 +90,11 @@ const SubmittedTripCard = ({
             (e) => e.type === EMPLOYEE_ACTIONS.SEND_REMINDER,
           ) && (
             <FTouchableOpacity
-              onPress={() => _onActionPress(EMPLOYEE_ACTIONS.SEND_REMINDER)}
+              onPress={() => {
+                if (isMutuallyExclusiveClick()) {
+                  _onActionPress(EMPLOYEE_ACTIONS.SEND_REMINDER);
+                }
+              }}
               style={{marginLeft: DP._8}}>
               <Icon.Bell />
             </FTouchableOpacity>
