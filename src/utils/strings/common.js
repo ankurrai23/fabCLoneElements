@@ -182,7 +182,10 @@ export default {
   soldOut2: 'Sold Out!',
   showOOPFlights: 'Show out of policy flights',
   showOOPHotels: 'Show out of policy hotels',
-  mealsAdded: (count) => `${count} Meal(s) added`,
+  addOnIncl: 'Add-ons included',
+  mealsAdded: (count) => `${count} meal(s) added`,
+  seatsAdded: (count) => `${count} seat(s) added`,
+  additionalBaggageIncl: 'Additional baggage added',
   exclConvFeeMsg: '(Excluding convenience fee)',
   free: 'Free',
 };

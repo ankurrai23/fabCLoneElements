@@ -37,6 +37,8 @@ import Edit from './edit.svg';
 import PoweredByGoogle from './powered-by-google-logo.svg';
 import Clock from './clock.svg';
 import Meal from './meal.svg';
+import Seat from './seat.svg';
+import Baggage from './baggage.svg';
 
 const ChevronLeft = ({width, height, size, stroke, strokeWidth, ...props}) => (
   <Svg
@@ -771,6 +773,8 @@ const Icon = {
   PoweredByGoogle,
   Clock,
   Meal,
+  Seat,
+  Baggage,
 };
 
 export default Icon;

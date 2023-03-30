@@ -1,5 +1,5 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, {useState} from 'react';
+import {LayoutAnimation, View} from 'react-native';
 import {DP} from '../../../../utils/Dimen';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import FText, {FONT_TYPE} from '../../../../common/rn/FText';
@@ -27,38 +27,7 @@ import SoldOutTag from '../../components/soldOutTag/SoldOutTag';
 import RemarksBox from '../../components/remarksBox/RemarksBox';
 import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 
-const FlightItineraryCard = ({
-  status,
-  tripRequest,
-  bookingDetails,
-  showStatus,
-  actions,
-  onActionPress,
-  onCardPress,
-  style,
-  actionDisabled,
-  hideIcon,
-  showLine,
-  showInfo,
-  timelineGreyed,
-  showPreBookingCard,
-  notificationText,
-  hideChevron,
-  isProcessing,
-  remarks,
-  cancellationCharges,
-  modificationCharges,
-  reduceOpacity: isGreyedOut,
-}) => {
-  const uiData = showPreBookingCard ? tripRequest : bookingDetails;
-  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
-  const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
-  const shortlistingAction = isActionEnabled(
-    FlightSubTripActions.SHORTLIST_FLIGHT_TRIPS,
-  );
-  const viewShortlistedFlightAction = isActionEnabled(
-    FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
-  );
+const PriceLoader = () => {
   const animatedComponent = (cardColor, secondaryColor) => {
     return (
       <LinearGradient
@@ -69,6 +38,37 @@ const FlightItineraryCard = ({
       />
     );
   };
+  return (
+    <PlaceholderContainer
+      animatedComponent={animatedComponent(Color.VERY_LIGHT_PINK, Color.WHITE)}
+      duration={1500}
+      delay={500}>
+      <Placeholder style={Styles.priceLoading} />
+    </PlaceholderContainer>
+  );
+};
+
+const FlightPreBookingCard = ({
+  uiData,
+  isGreyedOut,
+  onCardPress,
+  showStatus,
+  status,
+  remarks,
+  showInfo,
+  actions,
+  actionDisabled,
+  onActionPress,
+  notificationText,
+}) => {
+  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
+  const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
+  const shortlistingAction = isActionEnabled(
+    FlightSubTripActions.SHORTLIST_FLIGHT_TRIPS,
+  );
+  const viewShortlistedFlightAction = isActionEnabled(
+    FlightSubTripActions.VIEW_SHORTLISTED_FLIGHT_TRIPS,
+  );
 
   const actionVisible =
     !actionDisabled &&
@@ -76,21 +76,7 @@ const FlightItineraryCard = ({
       return acc || isActionEnabled(BottomBarActions[v]);
     }, false);
 
-  const PriceLoader = () => {
-    return (
-      <PlaceholderContainer
-        animatedComponent={animatedComponent(
-          Color.VERY_LIGHT_PINK,
-          Color.WHITE,
-        )}
-        duration={1500}
-        delay={500}>
-        <Placeholder style={Styles.priceLoading} />
-      </PlaceholderContainer>
-    );
-  };
-
-  const FlightPreBookingCard = () => (
+  return (
     <View style={Styles.container}>
       <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
         <View style={[Styles.flexRowAndJustifySpaceBetween, Styles.baseline]}>
@@ -185,8 +171,86 @@ const FlightItineraryCard = ({
       />
     </View>
   );
+};
 
-  const FlightPostBookingCard = () => (
+const AddOns = ({mealCount, seatCount, baggageIncluded}) => {
+  const [showAddOns, setShowAddOns] = useState(true);
+  return (
+    <View style={Styles.addOnContainer}>
+      <FTouchableOpacity
+        onPress={() => {
+          LayoutAnimation.easeInEaseOut();
+          setShowAddOns((prevState) => !prevState);
+        }}
+        style={Styles.addOnTitle}>
+        <FText style={Styles.addOnTitleText}>{Strings.addOnIncl}</FText>
+        <Icon.ChevronDown
+          width={DP._16}
+          height={DP._16}
+          style={{transform: [{rotateZ: showAddOns ? '180deg' : '0deg'}]}}
+        />
+      </FTouchableOpacity>
+      {showAddOns && (
+        <>
+          {mealCount && (
+            <View style={Styles.addOnItemContainer}>
+              <Icon.Meal />
+              <FText style={Styles.addOnItemText}>
+                {Strings.mealsAdded(mealCount)}
+              </FText>
+            </View>
+          )}
+          {seatCount && (
+            <View style={Styles.addOnItemContainer}>
+              <Icon.Seat />
+              <FText style={Styles.addOnItemText}>
+                {Strings.seatsAdded(seatCount)}
+              </FText>
+            </View>
+          )}
+          {baggageIncluded && (
+            <View style={Styles.addOnItemContainer}>
+              <Icon.Baggage />
+              <FText style={Styles.addOnItemText}>
+                {Strings.additionalBaggageIncl}
+              </FText>
+            </View>
+          )}
+        </>
+      )}
+    </View>
+  );
+};
+
+const FlightPostBookingCard = ({
+  uiData,
+  isGreyedOut,
+  onCardPress,
+  isProcessing,
+  showStatus,
+  status,
+  hideChevron,
+  modificationCharges,
+  cancellationCharges,
+  actions,
+  showInfo,
+  actionDisabled,
+  remarks,
+  onActionPress,
+  notificationText,
+}) => {
+  const isActionEnabled = (type) => actions?.find((e) => e.type === type);
+  const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
+  const addOnsIncluded =
+    uiData.mealCount || uiData.baggageIncluded || uiData.seatCount;
+
+  const actionVisible =
+    !actionDisabled &&
+    Object.keys(BottomBarActions).reduce((acc, v) => {
+      return acc || isActionEnabled(BottomBarActions[v]);
+    }, false);
+
+  return (
     <View style={Styles.container}>
       <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
         <View
@@ -328,7 +392,7 @@ const FlightItineraryCard = ({
           )}
         </View>
       </FTouchableOpacity>
-      {(!!uiData.pnr || !!uiData.mealCount) && (
+      {!!uiData.pnr && (
         <>
           <Separator style={Styles.separatorStyle} />
           <View style={Styles.pnrAndMealContainer}>
@@ -342,15 +406,17 @@ const FlightItineraryCard = ({
                   type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
               </FText>
             )}
-            {uiData.mealCount && (
-              <View style={Styles.flexRowAndAlignCenter}>
-                <Icon.Meal />
-                <FText style={Styles.mealsAdded}>
-                  {Strings.mealsAdded(uiData.mealCount)}
-                </FText>
-              </View>
-            )}
           </View>
+        </>
+      )}
+      {addOnsIncluded && (
+        <>
+          <Separator style={Styles.separatorStyle} />
+          <AddOns
+            mealCount={uiData.mealCount}
+            baggageIncluded={uiData.baggageIncluded}
+            seatCount={uiData.seatCount}
+          />
         </>
       )}
       {!!modificationCharges && (
@@ -388,25 +454,17 @@ const FlightItineraryCard = ({
             <Separator style={Styles.separatorContainerStyle} />
           )}
           <InfoBox
-            isAlert={shortlistingAction || !!notificationText}
-            text={
-              viewShortlistedFlightAction?.name ||
-              shortlistingAction?.name ||
-              notificationText
-            }
-            showChevron={!!shortlistingAction}
+            isAlert={!!notificationText}
+            text={notificationText}
             disablePressEvent={!!notificationText}
-            onPress={() =>
-              onActionPress(viewShortlistedFlightAction || shortlistingAction)
-            }
           />
         </>
       )}
       {/* {actionVisible && (
-        <ActionsInItinerary
-          hideSeperator={showInfo || modificationCharges || cancellationCharges}
-        />
-      )} */}
+      <ActionsInItinerary
+        hideSeperator={showInfo || modificationCharges || cancellationCharges}
+      />
+    )} */}
       <ActionsInItinerary
         hideSeperator={showInfo || modificationCharges || cancellationCharges}
         actions={actions}
@@ -415,6 +473,32 @@ const FlightItineraryCard = ({
       />
     </View>
   );
+};
+
+const FlightItineraryCard = ({
+  status,
+  tripRequest,
+  bookingDetails,
+  showStatus,
+  actions,
+  onActionPress,
+  onCardPress,
+  style,
+  actionDisabled,
+  hideIcon,
+  showLine,
+  showInfo,
+  timelineGreyed,
+  showPreBookingCard,
+  notificationText,
+  hideChevron,
+  isProcessing,
+  remarks,
+  cancellationCharges,
+  modificationCharges,
+  reduceOpacity: isGreyedOut,
+}) => {
+  const uiData = showPreBookingCard ? tripRequest : bookingDetails;
 
   return (
     <View style={[Styles.flexRow, style]}>
@@ -446,9 +530,37 @@ const FlightItineraryCard = ({
         )}
       </View>
       {showPreBookingCard && !uiData.price ? (
-        <FlightPreBookingCard />
+        <FlightPreBookingCard
+          uiData={uiData}
+          isGreyedOut={isGreyedOut}
+          onCardPress={onCardPress}
+          showStatus={showStatus}
+          status={status}
+          remarks={remarks}
+          showInfo={showInfo}
+          actions={actions}
+          actionDisabled={actionDisabled}
+          onActionPress={onActionPress}
+          notificationText={notificationText}
+        />
       ) : (
-        <FlightPostBookingCard />
+        <FlightPostBookingCard
+          uiData={uiData}
+          isGreyedOut={isGreyedOut}
+          onCardPress={onCardPress}
+          isProcessing={isProcessing}
+          showStatus={showStatus}
+          status={status}
+          hideChevron={hideChevron}
+          modificationCharges={modificationCharges}
+          cancellationCharges={cancellationCharges}
+          actions={actions}
+          showInfo={showInfo}
+          actionDisabled={actionDisabled}
+          remarks={remarks}
+          onActionPress={onActionPress}
+          notificationText={notificationText}
+        />
       )}
     </View>
   );
