@@ -5,10 +5,11 @@ import Separator from '../../../common/components/separator';
 import Styles from './Styles';
 import {DP} from '../../../utils/Dimen';
 import {Color} from '../../../utils/color';
-import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
+import {FlatList} from 'react-native-gesture-handler';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
 import {renderHotelImage} from '../../tripCreation/srp/hotelSearchResultCard';
+import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 
 const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
   <>
@@ -18,7 +19,7 @@ const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
         {backgroundColor: Color.LIGHT_PERIWINKLE},
       ]}
     />
-    <TouchableOpacity
+    <FTouchableOpacity
       activeOpacity={1}
       onPress={onTapToSetPreferences}
       disabled={item.disablePref}
@@ -38,7 +39,7 @@ const SetOrResetPreference = ({item, onTapToSetPreferences}) => (
           {item.preference}
         </FText>
       </View>
-    </TouchableOpacity>
+    </FTouchableOpacity>
   </>
 );
 

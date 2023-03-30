@@ -149,15 +149,24 @@ const FlightDetailCard = ({
           </View>
         </FTouchableOpacity>
         <Separator style={Styles.actionsSeperator} />
-        <FText
-          greyedOut={isGreyedOut}
-          style={Styles.bookingIdTitle(tripDetails.reduceOpacity)}>
-          {Strings.pnr}
-          {': '}
-          <FText greyedOut={isGreyedOut} type={FONT_TYPE.MEDIUM}>
-            {tripDetails.pnr}
+        <View style={Styles.pnrAndMealContainer}>
+          <FText
+            greyedOut={isGreyedOut}
+            style={Styles.bookingIdTitle(tripDetails.reduceOpacity)}>
+            {Strings.pnr}:
+            <FText
+              greyedOut={isGreyedOut}
+              type={FONT_TYPE.MEDIUM}>{` ${tripDetails.pnr}`}</FText>
           </FText>
-        </FText>
+          {tripDetails.mealCount && (
+            <View style={Styles.flexRowAndAlignCenter}>
+              <Icon.Meal />
+              <FText style={Styles.mealsAdded}>
+                {Strings.mealsAdded(tripDetails.mealCount)}
+              </FText>
+            </View>
+          )}
+        </View>
         {!!tripDetails?.travelersInfo?.length && (
           <>
             <Separator style={Styles.actionsSeperator} />

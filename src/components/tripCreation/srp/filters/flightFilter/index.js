@@ -3,7 +3,7 @@ import React, {useCallback, useImperativeHandle, useRef, useState} from 'react';
 import Styles from './Styles';
 import FTouchableOpacity from '../../../../../common/rn/FTouchableOpacity';
 import FText, {FONT_TYPE} from '../../../../../common/rn/FText';
-import QuickLinks, {FilterSection} from '../component';
+import {FilterSection} from '../component';
 import FImage from '../../../../../common/rn/FImage';
 import Checkbox from '../../../../../common/components/checkbox';
 import Separator from '../../../../../common/components/separator';
@@ -40,7 +40,7 @@ const Airlines = React.forwardRef(({airline}, ref) => {
       {state
         .filter((_, index) => index < airlinesCount)
         .map((item, index, array) => (
-          <>
+          <View key={index}>
             <FTouchableOpacity
               onPress={() => onAirlineSelect(item)}
               style={Styles.airlineButton(index, array.length)}>
@@ -55,7 +55,7 @@ const Airlines = React.forwardRef(({airline}, ref) => {
               />
             </FTouchableOpacity>
             {index < array.length - 1 && <Separator />}
-          </>
+          </View>
         ))}
       {airline.length > MINIMUM_FLIGHT_COUNT && (
         <FTouchableOpacity
@@ -94,6 +94,7 @@ const Stops = React.forwardRef(({stops}, ref) => {
       <View style={Styles.buttonContainer}>
         {state.map((item, index) => (
           <FTouchableOpacity
+            key={index}
             onPress={() => onStopSelect(item)}
             style={Styles.button(item.selected, index < state.length - 1)}>
             <FText style={Styles.stopDescText(item.selected)}>

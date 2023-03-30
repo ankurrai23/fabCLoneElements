@@ -75,7 +75,7 @@ export default StyleSheet.create({
   },
   approvalPendingInfoText: {
     fontSize: DP._10,
-    linHeight: DP._12,
+    lineHeight: DP._12,
   },
   trackButton: {
     flexDirection: 'row',
