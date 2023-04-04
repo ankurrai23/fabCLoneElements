@@ -7,13 +7,39 @@ import {DP} from '../../../../utils/Dimen';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {ScrollView} from 'react-native-gesture-handler';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
+import {formattedPrice, getRepString} from '../../../../utils/Utils';
+import FText, {FONT_TYPE} from '../../../../common/rn/FText';
 
-const getSeatColor = (price) => {
-  if (price === 0) return null;
-  if (price <= 500) return Color.ICE_BLUE;
-  if (price <= 1000) return Color.DIAMOND;
-  if (price <= 1500) return Color.JORDY_BLUE;
-  if (price > 1500) return Color.VERY_LIGHT_AZURE;
+export const TOOLTIP_WIDTH = DP._110;
+export const TOOLTIP_HEIGHT = DP._50;
+
+const ITEM_TYPE = {
+  SEAT: 'SEAT',
+  AISLE: 'AISLE',
+};
+
+const getTooltipPosition = (x, y, scrollViewSize, seatWidth) => {
+  let xPos = x + seatWidth / 2 - TOOLTIP_WIDTH / 2;
+  let yPos = y;
+  if (x < TOOLTIP_WIDTH / 2) {
+    xPos = 4;
+  } else if (scrollViewSize.width - x < TOOLTIP_WIDTH / 2) {
+    xPos = x;
+  }
+  return {xPos, yPos};
+};
+
+const getFontSize = (rowLength) => {
+  switch (rowLength) {
+    case 11:
+      return DP._8;
+    case 7:
+      return DP._11;
+    case 4:
+      return DP._16;
+    default:
+      return DP._11;
+  }
 };
 
 export const FlightSeat = ({
@@ -22,32 +48,33 @@ export const FlightSeat = ({
   ifBooked,
   selected,
   onSeatPress,
+  rowLength,
 }) => {
   const positionRef = useRef();
+  const onLayout = (event) => {
+    const {x, width} = event.nativeEvent.layout;
+    positionRef.current = {x: x, width: width};
+  };
+  const onPress = () => {
+    onSeatPress(positionRef.current);
+  };
   return (
     <FTouchableOpacity
       style={Styles.seatStyle(seatColor)}
-      onPress={() => {
-        onSeatPress(positionRef.current);
-      }}
-      onLayout={(event) => {
-        const {x} = event.nativeEvent.layout;
-        positionRef.current = x;
-      }}>
+      onPress={onPress}
+      onLayout={onLayout}>
       {selected ? (
         <Icon.Check width={DP._16} height={DP._16} stroke={Color.WHITE} />
       ) : ifBooked ? (
         <Icon.Cross width={DP._16} height={DP._16} stroke={Color.GREY_5} />
       ) : (
-        <Text
+        <FText
           style={{
-            paddingHorizontal: DP._6,
-            paddingVertical: DP._10,
-            fontSize: DP._11,
+            fontSize: getFontSize(rowLength),
             lineHeight: DP._18,
           }}>
           {seatString}
-        </Text>
+        </FText>
       )}
     </FTouchableOpacity>
   );
@@ -55,30 +82,37 @@ export const FlightSeat = ({
 
 const SeatSelection = ({data}) => {
   const rowPositionRef = useRef({});
+  const scrollViewLayoutRef = useRef(null);
+  const scrollViewRef = useRef(null);
   const [toolTipPos, setToolTipPos] = useState(null);
   const renderSeatRow = (item, index) => {
     return (
       <View
         style={Styles.seatRow}
         onLayout={(event) => {
+          const {y, height} = event.nativeEvent.layout;
           rowPositionRef.current = {
             ...rowPositionRef.current,
-            [index]: event.nativeEvent.layout.y,
+            [index]: y + height - DP._10,
           };
         }}>
         {item.map((seatData) => {
           const {price, ifBooked, selected, type} = seatData;
-          const seatString = price === 0 ? 'Free' : `${Strings.rupee}${price}`;
+          const seatString = price === 0 ? 'Free' : getRepString(price);
           const seatColor = selected
             ? Color.DARK_SEA_FOAM
             : ifBooked
             ? Color.CULTURED
-            : getSeatColor(price);
-          return type === 'EMPTY_SPACE' ? (
+            : seatData.colorCode;
+          return type === ITEM_TYPE.AISLE ? (
             <View style={Styles.emptySpace}>
-              <Text style={{fontSize: DP._11, color: Color.GREY_PURPLE}}>
+              <FText
+                style={{
+                  fontSize: getFontSize(item.length),
+                  color: Color.GREY_PURPLE,
+                }}>
                 {index + 1}
-              </Text>
+              </FText>
             </View>
           ) : (
             <FlightSeat
@@ -86,8 +120,17 @@ const SeatSelection = ({data}) => {
               seatString={seatString}
               ifBooked={ifBooked}
               selected={selected}
-              onSeatPress={(x) => {
-                setToolTipPos({x, y: rowPositionRef.current[index]});
+              rowLength={item.length}
+              onSeatPress={(seat) => {
+                // scrollViewRef.current.scrollTo({
+                //   y: rowPositionRef.current[index],
+                //   animated: true,
+                // });
+                setToolTipPos({
+                  x: seat.x,
+                  seatWidth: seat.width,
+                  y: rowPositionRef.current[index],
+                });
               }}
             />
           );
@@ -97,12 +140,52 @@ const SeatSelection = ({data}) => {
   };
 
   return (
-    <View style={Styles.posRelative}>
-      <ScrollView>{data.map(renderSeatRow)}</ScrollView>
+    <ScrollView
+      overScrollMode="never"
+      ref={scrollViewRef}
+      onLayout={(e) => {
+        scrollViewLayoutRef.current = e.nativeEvent.layout;
+      }}>
+      {data.map(renderSeatRow)}
       {!!toolTipPos && (
-        <View style={Styles.toolTip(toolTipPos.x, toolTipPos.y)} />
+        <View
+          style={Styles.toolTip(
+            getTooltipPosition(
+              toolTipPos.x,
+              toolTipPos.y,
+              scrollViewLayoutRef.current,
+              toolTipPos.seatWidth,
+            ),
+          )}>
+          <FText
+            type={FONT_TYPE.REGULAR}
+            numberOfLines={1}
+            style={{fontSize: DP._12, lineHeight: DP._14}}>
+            Mr. Nikhil Kumar Choudhary
+          </FText>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginTop: DP._4,
+              justifyContent: 'space-between',
+            }}>
+            <FText
+              type={FONT_TYPE.MEDIUM}
+              style={{
+                fontSize: DP._12,
+                lineHeight: DP._16,
+              }}>
+              31B
+            </FText>
+            <FText
+              type={FONT_TYPE.MEDIUM}
+              style={{fontSize: DP._12, lineHeight: DP._16}}>
+              {formattedPrice(9999)}
+            </FText>
+          </View>
+        </View>
       )}
-    </View>
+    </ScrollView>
   );
 };
 

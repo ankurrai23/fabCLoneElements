@@ -1,19 +1,26 @@
 import {StyleSheet} from 'react-native';
+import {TOOLTIP_HEIGHT, TOOLTIP_WIDTH} from '.';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
+import {shadowObj} from '../../../../utils/Utils';
 
 export default StyleSheet.create({
   posRelative: {position: 'relative'},
-  toolTip: (x, y) => ({
-    height: DP._25,
-    width: DP._25,
-    backgroundColor: 'black',
+  toolTip: (pos) => ({
+    height: TOOLTIP_HEIGHT,
+    width: TOOLTIP_WIDTH,
+    backgroundColor: 'white',
     position: 'absolute',
-    top: y,
-    left: x,
+    borderRadius: DP._4,
+    borderWidth: DP._0_5,
+    borderColor: Color.LIGHT_PERIWINKLE,
+    top: pos.yPos,
+    left: pos.xPos,
+    padding: DP._8,
+    ...shadowObj,
   }),
   emptySpace: {
-    minWidth: DP._48,
+    minWidth: DP._30,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -33,7 +40,7 @@ export default StyleSheet.create({
     borderTopRightRadius: DP._8,
     marginLeft: DP._4,
     marginRight: DP._4,
-    minHeight: DP._40,
-    minWidth: DP._40,
+    aspectRatio: 1,
+    minWidth: DP._20,
   }),
 });
