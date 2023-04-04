@@ -46,7 +46,7 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
                 cost={data.flightBreakup.flightCharge.price}
               />
             )}
-            {data.flightBreakup.mealCharges !== null && (
+            {(data.flightBreakup?.mealCharges ?? -1) >= 0 && (
               <FeeDetail
                 title={Strings.priceBreakup.meals}
                 cost={data.flightBreakup.mealCharges}
