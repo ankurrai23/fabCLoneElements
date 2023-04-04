@@ -6,6 +6,7 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'flex-start',
   },
   addRemoveButtonContainer: {
     flexDirection: 'row',
@@ -18,12 +19,13 @@ export default StyleSheet.create({
       : Color.DODGER_BLUE + '1a',
     borderRadius: DP._2,
   }),
-  count: {
+  count: (isZero) => ({
     width: DP._12,
     marginHorizontal: DP._12,
     fontSize: DP._16,
     lineHeight: DP._18,
-  },
+    color: isZero ? Color.FORD_GRAY : Color.DARK,
+  }),
   mealDesc: {
     fontSize: DP._12,
     lineHeight: DP._18,

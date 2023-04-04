@@ -14,7 +14,6 @@ import TextField from './common/components/textField';
 import DashedLine from './common/components/dashedLine';
 import PickerField from './common/components/pickerField';
 import ClaimsCard from './common/components/claimsCard';
-import DialogBox from './common/components/dialogBox';
 import FloatingAction from './common/components/floatingActionButton';
 import Checkbox from './common/components/checkbox';
 import EmptyScreen from './common/components/emptyScreen';
@@ -29,7 +28,6 @@ import Slider from './common/components/slider';
 import RangeSlider from './common/components/rangeSlider';
 import LoadingPlaceholder from './common/components/placeholder';
 import ReasonModal from './common/components/reasonModal';
-import BottomSheet from './common/components/bottomSheet';
 import SupportDialog from './common/components/supportDialog';
 
 //Trip Components - (Listing, Itinerary, Shortlisting, Details, Modification/Reschedule)
@@ -79,19 +77,9 @@ import {
   CabSubtripActions,
 } from './utils/SubTripActions';
 import {HotelSubTripActions} from './utils/SubTripActions';
-import {FieldNamesEnum} from './components/tripCreation/itinerary/index';
 
 //Trip Creation Components
-import HotelDetails from './components/tripCreation/hotelDetails';
-import FlightDetails from './components/tripCreation/flightDetails';
-import OtherTravelDetails from './components/tripCreation/otherTravelDetails';
-import ApprovalManager from './components/tripCreation/approvalManager';
-import CoTravelersDetails from './components/tripCreation/coTravelersDetails';
 import RemoveItinerary from './components/tripCreation/removeItinerary';
-import ItineraryCard from './components/tripCreation/itinerary';
-import TrainDetails from './components/tripCreation/trainDetails';
-import BusDetails from './components/tripCreation/busDetails';
-import CabDetails from './components/tripCreation/cabDetails';
 import FlightFilter from './components/tripCreation/srp/filters/flightFilter';
 import HotelFilter from './components/tripCreation/srp/filters/hotelFilter';
 import FlightFarePlanCard from './components/tripCreation/srp/farePlans/flightFarePlan';
@@ -150,7 +138,6 @@ export {
   DashedLine,
   PickerField,
   ModificationAlertBox,
-  DialogBox,
   FloatingAction,
   Checkbox,
   StackHeader,
@@ -164,7 +151,6 @@ export {
   RangeSlider,
   LoadingPlaceholder,
   ReasonModal,
-  BottomSheet,
   SupportDialog,
   // Trips components
   FlightPreferenceCard,
@@ -202,15 +188,7 @@ export {
   PriceBreakupSheet,
   InclusionSheet,
   // Trip Creation
-  HotelDetails,
-  FlightDetails,
-  OtherTravelDetails,
-  CoTravelersDetails,
-  ApprovalManager,
   RemoveItinerary,
-  TrainDetails,
-  BusDetails,
-  CabDetails,
   FlightFilter,
   HotelFilter,
   FlightFarePlanCard,
@@ -228,14 +206,12 @@ export {
   BusSubtripActions,
   CabSubtripActions,
   HotelSubTripActions,
-  FieldNamesEnum,
   // Home
   HomeHeader,
   ClaimsCard,
   ClaimsList,
   MessageCard,
   HomeLoadingState,
-  ItineraryCard,
   PendingPaymentSheet,
   PendingPaymentCarousel,
   //Expense,

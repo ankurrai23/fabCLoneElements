@@ -28,6 +28,9 @@ const flightItineraryCardProps = {
     airline: 'Indigo',
     isOutOfPolicy: true,
     isSoldOut: false,
+    mealCount: 5,
+    baggageIncluded: true,
+    seatCount: 3,
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
   },
@@ -52,6 +55,8 @@ const flightItineraryCardProps = {
     isPriceFetched: true,
     price: '₹2600',
     isOutOfPolicy: true,
+    pnr: 'EJKW234',
+    mealCount: 5,
   },
   // cancellationCharges: '₹600',
   // modificationCharges: '₹300',
@@ -60,14 +65,14 @@ const flightItineraryCardProps = {
     text: 'Change of plans',
   },
   actions: [
-    // {
-    //   type: 'RESCHEDULE',
-    //   name: 'Reschedule',
-    // },
-    // {
-    //   type: 'CANCEL',
-    //   name: 'Cancel',
-    // },
+    {
+      type: 'RESCHEDULE',
+      name: 'Reschedule',
+    },
+    {
+      type: 'CANCEL',
+      name: 'Cancel',
+    },
     // {
     //   type: 'VIEW_REMARKS',
     // },
@@ -80,15 +85,15 @@ const flightItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: false,
   hideIcon: true,
-  showInfo: true,
+  showInfo: false,
   isAlert: true,
   timelineGreyed: false,
   actionDisabled: false,
   showStatus: false,
   notificationText: null,
-  showPreBookingCard: false,
+  showPreBookingCard: true,
   hideChevron: false,
-  reduceOpacity: true,
+  reduceOpacity: false,
 };
 
 export default flightItineraryCardProps;

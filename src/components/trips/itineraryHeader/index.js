@@ -40,7 +40,7 @@ function ItineraryHeader(props) {
             style={Styles.trackButton}
             onPress={props.onPressTrack}>
             <FText
-              weight={'500'}
+              weight={FONT_TYPE.MEDIUM}
               style={[
                 Styles.approvalPendingInfoText,
                 {color: Color.DEEP_SAFFRON},

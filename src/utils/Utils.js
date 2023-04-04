@@ -1,4 +1,3 @@
-import moment from 'moment';
 import {Platform} from 'react-native';
 import Config from './config';
 import {DP} from './Dimen';
@@ -6,7 +5,7 @@ import percentToHexChart from './color/percent-to-hex-chart.json';
 import {Color} from './color';
 import {SUB_TRIP_TYPE} from './Constants';
 import Icon from '../assets/icons/Icon';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Strings} from './strings/index.travelPlus';
 
 export const FontFamily = Config.fontFamily || 'Metropolis';
@@ -95,10 +94,6 @@ export const dialogBoxStyle = (ratio) => ({
   maxHeight: DP.match_height * (ratio ?? 0.5),
 });
 
-export function formattedDate(date = new Date(), format = 'DD MMM YY') {
-  return moment(date).format(format);
-}
-
 export function formattedPrice(val, maxFractionDigit = 0) {
   let price;
   try {
@@ -135,6 +130,15 @@ export function isEmpty(obj) {
 
 export function isPlatformIos() {
   return Platform.OS === 'ios';
+}
+
+let lastClickTime = 0;
+
+export function isMutuallyExclusiveClick() {
+  let newClickTime = Date.now();
+  let result = newClickTime - lastClickTime > 200;
+  lastClickTime = newClickTime;
+  return result;
 }
 
 export function getPluralText(number, text, isCaps, isNumberPrefix) {

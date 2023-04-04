@@ -49,3 +49,8 @@ export const TRIP_CREATION_ACTIONS = [
     name: 'Remove',
   },
 ];
+
+export const MEAL_TYPE = {
+  FREE: 'FREE',
+  PAID: 'PAID',
+};

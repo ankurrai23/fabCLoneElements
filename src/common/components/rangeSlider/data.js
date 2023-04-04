@@ -1,9 +1,9 @@
 const rangeSliderProps = {
-  initialLimit: 5000,
-  finalLimit: 60000,
+  minLimit: 5000,
+  maxLimit: 60000,
   granularity: 1000,
-  initialValue: 7000,
-  finalValue: 14000,
+  minValue: 7000,
+  maxValue: 14000,
 };
 
 export default rangeSliderProps;

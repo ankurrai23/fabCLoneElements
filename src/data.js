@@ -43,16 +43,7 @@ import employeeActionsProps from './components/trips/employeeActions/data';
 import priceBreakupSheetProps from './components/trips/priceBreakupSheet/data';
 
 //trip creation props
-import coTravelersDetailProps from './components/tripCreation/coTravelersDetails/data';
-import hotelDetailsProps from './components/tripCreation/hotelDetails/data';
-import flightDetailsProps from './components/tripCreation/flightDetails/data';
-import otherTravelDetailsProps from './components/tripCreation/otherTravelDetails/data';
-import approvalManagerProps from './components/tripCreation/approvalManager/data';
 import removeItineraryProps from './components/tripCreation/removeItinerary/data';
-import itineraryCardProps from './components/tripCreation/itinerary/data';
-import trainDetailsProps from './components/tripCreation/trainDetails/data';
-import busDetailsProps from './components/tripCreation/busDetails/data';
-import cabDetailsProps from './components/tripCreation/cabDetails/data';
 import flightFilterProps from './components/tripCreation/srp/filters/flightFilter/data';
 import hotelFilterProps from './components/tripCreation/srp/filters/hotelFilter/data';
 import flightFarePlanProps from './components/tripCreation/srp/farePlans/flightFarePlan/data';
@@ -98,7 +89,6 @@ export {
   cabItineraryCardProps,
   hotelItineraryCardProps,
   remarksContainerProps,
-  coTravelersDetailProps,
   emptyScreenProps,
   itineraryHeaderProps,
   tripListingCardProps,
@@ -106,10 +96,6 @@ export {
   receivedTripCardProps,
   hotelPreferenceCardProps,
   managerActionsProps,
-  hotelDetailsProps,
-  flightDetailsProps,
-  otherTravelDetailsProps,
-  approvalManagerProps,
   coTravellersProps,
   flightDetailCardProps,
   busDetailCardProps,
@@ -135,13 +121,9 @@ export {
   receiptsListProps,
   receiptListViewProps,
   removeItineraryProps,
-  itineraryCardProps,
   contactSupportProps,
   dropDownProps,
   approverChainProps,
-  trainDetailsProps,
-  busDetailsProps,
-  cabDetailsProps,
   selectorProps,
   flightFilterProps,
   hotelFilterProps,

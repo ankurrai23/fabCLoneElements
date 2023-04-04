@@ -170,6 +170,7 @@ export default {
     totalAmount: 'Total amount',
     paidAmount: 'Paid amount',
     included: '(included)',
+    meals: 'Meals',
   },
   ok: 'Ok',
   leftToPayElseApprovalCancel: 'left to pay. Else approval shall be cancelled',
@@ -181,4 +182,10 @@ export default {
   soldOut2: 'Sold Out!',
   showOOPFlights: 'Show out of policy flights',
   showOOPHotels: 'Show out of policy hotels',
+  addOnIncl: 'Add-ons included',
+  mealsAdded: (count) => `${count} meal(s) added`,
+  seatsAdded: (count) => `${count} seat(s) added`,
+  additionalBaggageIncl: 'Additional baggage added',
+  exclConvFeeMsg: '(Excluding convenience fee)',
+  free: 'Free',
 };

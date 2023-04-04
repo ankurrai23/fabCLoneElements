@@ -49,6 +49,7 @@ const HotelRating = React.forwardRef(({starRatings}, ref) => {
           .filter((e) => e.id !== Strings.one)
           .map((item, index) => (
             <FilterButton
+              key={index}
               isSelected={item.selected}
               onPress={() => onHotelRatingSelect(item)}
               viewStyle={Styles.flexRow}

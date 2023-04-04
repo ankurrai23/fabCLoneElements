@@ -9,7 +9,7 @@ import FText, {FONT_TYPE} from '../../../common/rn/FText';
 import FTouchableOpacity from '../../../common/rn/FTouchableOpacity';
 import {Strings} from '../../../utils/strings/index.travelPlus';
 import Icon from '../../../assets/icons/Icon';
-import {getSubTripIcon} from '../../../utils/Utils';
+import {getSubTripIcon, isMutuallyExclusiveClick} from '../../../utils/Utils';
 
 const SubmittedTripCard = ({
   item,
@@ -38,12 +38,16 @@ const SubmittedTripCard = ({
         style={Styles.container}>
         <View style={Styles.tripIdContainer}>
           <View style={Styles.flexRowAndAlignCenter}>
-            {item?.subTripsIcon?.slice(0, 3)?.map((asset) => {
+            {item?.subTripsIcon?.slice(0, 3)?.map((asset, index) => {
               const subTripIcon = getSubTripIcon(asset.key);
-              return <View style={Styles.iconStyle}>{subTripIcon}</View>;
+              return (
+                <View key={index} style={Styles.iconStyle}>
+                  {subTripIcon}
+                </View>
+              );
             })}
             {item?.subTripsIcon?.length > 3 && (
-              <FText weight={500} style={Styles.fontSize_14}>
+              <FText weight={FONT_TYPE.MEDIUM} style={Styles.fontSize_14}>
                 +{item?.subTripsIcon?.length - 3}
               </FText>
             )}
@@ -86,7 +90,11 @@ const SubmittedTripCard = ({
             (e) => e.type === EMPLOYEE_ACTIONS.SEND_REMINDER,
           ) && (
             <FTouchableOpacity
-              onPress={() => _onActionPress(EMPLOYEE_ACTIONS.SEND_REMINDER)}
+              onPress={() => {
+                if (isMutuallyExclusiveClick()) {
+                  _onActionPress(EMPLOYEE_ACTIONS.SEND_REMINDER);
+                }
+              }}
               style={{marginLeft: DP._8}}>
               <Icon.Bell />
             </FTouchableOpacity>
@@ -101,8 +109,8 @@ const SubmittedTripCard = ({
         <View style={Styles.footer}>
           {item.actions
             .filter((e) => e.type !== EMPLOYEE_ACTIONS.SEND_REMINDER)
-            .map((e) => (
-              <FTouchableOpacity disabled>
+            .map((e, index) => (
+              <FTouchableOpacity disabled key={index}>
                 <FText style={Styles.action(e.type)}>{e.name}</FText>
               </FTouchableOpacity>
             ))}

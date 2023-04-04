@@ -22,7 +22,7 @@ module.exports = async () => {
     resolver: {
       blacklistRE: blacklist(
         modules.map(
-          (m) =>
+          m =>
             new RegExp(`^${escape(path.join(root, 'node_modules', m))}\\/.*$`),
         ),
       ),
@@ -31,7 +31,7 @@ module.exports = async () => {
         acc[name] = path.join(__dirname, 'node_modules', name);
         return acc;
       }, {}),
-      assetExts: assetExts.filter((ext) => ext !== 'svg'),
+      assetExts: assetExts.filter(ext => ext !== 'svg'),
       sourceExts: [...sourceExts, 'travelPlus.js', 'travelPlus.json', 'svg'],
     },
 

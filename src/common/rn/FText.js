@@ -37,20 +37,4 @@ function FText({children, type, weight, style, greyedOut, ...props}) {
   );
 }
 
-FText.propTypes = {
-  type: PropTypes.oneOf([
-    FONT_TYPE.LIGHT,
-    FONT_TYPE.REGULAR,
-    FONT_TYPE.MEDIUM,
-    FONT_TYPE.SEMI_BOLD,
-    FONT_TYPE.BOLD,
-  ]),
-  weight: PropTypes.oneOf([300, 400, 500, 600, 700]),
-};
-
-FText.defaultProps = {
-  children: '',
-  type: FONT_TYPE.REGULAR,
-};
-
 export default FText;
