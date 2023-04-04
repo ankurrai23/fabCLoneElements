@@ -77,6 +77,7 @@ import {
   PriceBreakupSheet,
   LoadingPlaceholder,
   SelectMeal,
+  AnimatedLoader,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -170,6 +171,10 @@ const COMMON_COMPONENTS = [
     name: 'LoadingPlaceholder',
     component: props => <LoadingPlaceholder {...props} />,
     defaultProps: data.placeholderProps,
+  },
+  {
+    name: 'AnimatedLoader',
+    component: props => <AnimatedLoader {...props} />,
   },
 ];
 

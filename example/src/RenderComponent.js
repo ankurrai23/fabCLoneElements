@@ -6,7 +6,6 @@ import {
   TextInput,
   View,
   Alert,
-  Button,
 } from 'react-native';
 
 import {DP} from '../../src/utils/Dimen';
@@ -45,7 +44,7 @@ const RenderComponent = ({showProperties, item}) => {
     setCompProps(encodeProps(item.defaultProps));
   }, [item.defaultProps]);
 
-  const checkAndRenderComponent = (propsString) => {
+  const checkAndRenderComponent = propsString => {
     let propsObj = decodeProps(propsString);
     return item.component(propsObj);
   };
