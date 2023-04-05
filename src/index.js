@@ -88,7 +88,8 @@ import FlightSearchResultCard from './components/tripCreation/srp/flightSearchRe
 import HotelSearchResultCard from './components/tripCreation/srp/hotelSearchResultCard';
 import SelectRoomSheet from './components/tripCreation/srp/selectRoomSheet';
 import QuickLinks from './components/tripCreation/srp/filters/component';
-import SelectMeal from './components/tripCreation/srp/selectMeal';
+import MealAddOn from './components/tripCreation/srp/mealAddOn';
+import BaggageAddOn from './components/tripCreation/srp/baggageAddOn';
 import SeatSelection from './components/tripCreation/srp/seatSelection';
 import TravellerSelection from './components/tripCreation/srp/travellerSelection';
 
@@ -197,7 +198,8 @@ export {
   HotelSearchResultCard,
   SelectRoomSheet,
   QuickLinks,
-  SelectMeal,
+  MealAddOn,
+  BaggageAddOn,
   SeatSelection,
   TravellerSelection,
   // constants
