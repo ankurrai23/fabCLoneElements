@@ -188,4 +188,6 @@ export default {
   additionalBaggageIncl: 'Additional baggage added',
   exclConvFeeMsg: '(Excluding convenience fee)',
   free: 'Free',
+  front: 'FRONT',
+  back: 'BACK',
 };

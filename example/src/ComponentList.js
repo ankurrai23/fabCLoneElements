@@ -76,7 +76,8 @@ import {
   SelectRoomSheet,
   PriceBreakupSheet,
   LoadingPlaceholder,
-  SelectMeal,
+  MealAddOn,
+  BaggageAddOn,
   SeatSelection,
   TravellerSelection,
 } from 'react-native-fab-elements';
@@ -388,9 +389,14 @@ const TRIP_CREATION = [
     defaultProps: data.selectRoomSheetProps,
   },
   {
-    name: 'SelectMeal',
-    component: props => <SelectMeal {...props} />,
-    defaultProps: data.selectMealProps,
+    name: 'MealAddOn',
+    component: props => <MealAddOn {...props} />,
+    defaultProps: data.mealAddOnProps,
+  },
+  {
+    name: 'BaggageAddOn',
+    component: props => <BaggageAddOn {...props} />,
+    defaultProps: data.baggageAddOnProps,
   },
   {
     name: 'SeatSelection',
