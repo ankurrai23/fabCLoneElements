@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     paddingHorizontal: DP._16,
-    paddingTop: DP._24,
+    // paddingTop: DP._24,
     flexGrow: 1,
   },
 });

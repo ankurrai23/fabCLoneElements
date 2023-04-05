@@ -17,6 +17,7 @@ export default StyleSheet.create({
     top: pos.yPos,
     left: pos.xPos,
     padding: DP._8,
+    zIndex: 1000,
     ...shadowObj,
   }),
   emptySpace: {
@@ -43,4 +44,32 @@ export default StyleSheet.create({
     aspectRatio: 1,
     minWidth: DP._20,
   }),
+  toolTipPassengerName: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+  },
+  toolTipSeatInfoContainer: {
+    flexDirection: 'row',
+    marginTop: DP._4,
+    justifyContent: 'space-between',
+  },
+  toolTipSeatCode: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+  },
+  toolTipSeatPrice: {
+    fontSize: DP._12,
+    lineHeight: DP._16,
+  },
+  frontAisle: {
+    paddingTop: DP._24,
+    paddingBottom: DP._12,
+  },
+  text_Center: {
+    textAlign: 'center',
+  },
+  backAisle: {
+    paddingTop: DP._12,
+    paddingBottom: DP._24,
+  },
 });
