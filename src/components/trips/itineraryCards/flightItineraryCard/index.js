@@ -342,7 +342,7 @@ const FlightItineraryCard = ({
                   type={FONT_TYPE.MEDIUM}>{` ${uiData.pnr}`}</FText>
               </FText>
             )}
-            {uiData.mealCount && (
+            {!!uiData.mealCount && (
               <View style={Styles.flexRowAndAlignCenter}>
                 <Icon.Meal />
                 <FText style={Styles.mealsAdded}>
