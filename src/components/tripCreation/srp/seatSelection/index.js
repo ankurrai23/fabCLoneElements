@@ -24,7 +24,7 @@ const getTooltipPosition = (x, y, scrollViewSize, seatWidth) => {
   if (x < TOOLTIP_WIDTH / 2) {
     xPos = 4;
   } else if (scrollViewSize.width - x < TOOLTIP_WIDTH / 2) {
-    xPos = x;
+    xPos = scrollViewSize.width - TOOLTIP_WIDTH;
   }
   return {xPos, yPos};
 };
@@ -122,10 +122,12 @@ const SeatSelection = ({data}) => {
               selected={selected}
               rowLength={item.length}
               onSeatPress={(seat) => {
-                // scrollViewRef.current.scrollTo({
-                //   y: rowPositionRef.current[index],
-                //   animated: true,
-                // });
+                scrollViewRef.current.scrollTo({
+                  y:
+                    rowPositionRef.current[index] -
+                    scrollViewLayoutRef.current.height * 0.45,
+                  animated: true,
+                });
                 setToolTipPos({
                   x: seat.x,
                   seatWidth: seat.width,
@@ -141,12 +143,14 @@ const SeatSelection = ({data}) => {
 
   return (
     <ScrollView
-      overScrollMode="never"
       ref={scrollViewRef}
       onLayout={(e) => {
         scrollViewLayoutRef.current = e.nativeEvent.layout;
       }}>
       {data.map(renderSeatRow)}
+      <View>
+        <Text style={{paddingBottom: DP._24}}>BACK</Text>
+      </View>
       {!!toolTipPos && (
         <View
           style={Styles.toolTip(
