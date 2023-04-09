@@ -8,6 +8,12 @@ import Icon from '../assets/icons/Icon';
 import React from 'react';
 import {Strings} from './strings/index.travelPlus';
 
+export const FLIGHT_ADD_ON_TYPES = {
+  SEAT: 'seat',
+  MEAL: 'meal',
+  BAGGAGE: 'baggage',
+};
+
 export const FontFamily = Config.fontFamily || 'Metropolis';
 
 export const Specs = {

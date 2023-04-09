@@ -5,18 +5,51 @@ import {DP} from '../../../../utils/Dimen';
 import Icon from '../../../../assets/icons/Icon';
 import FText from '../../../../common/rn/FText';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
+import {FLIGHT_ADD_ON_TYPES, formattedPrice} from '../../../../utils/Utils';
+import {Strings} from '../../../../utils/strings/index.travelPlus';
 
-let selectedIndex;
+const getSelectedInfo = (activeStoppage, activeAddOnType, info) => {
+  let addOnTypeKeyMap = {
+    seat: 'seatDetails',
+    meal: 'mealDetails',
+    baggage: 'baggageDetails',
+  };
+  let activeAddOnKey = addOnTypeKeyMap[activeAddOnType];
+  let selectedInfo = info[activeAddOnKey][activeStoppage];
+  if (activeAddOnType === FLIGHT_ADD_ON_TYPES.SEAT) {
+    return selectedInfo
+      ? `${selectedInfo.seatInfo.code} ${formattedPrice(
+          selectedInfo.seatInfo.price,
+        )}`
+      : null;
+  } else if (activeAddOnType === FLIGHT_ADD_ON_TYPES.MEAL) {
+    return selectedInfo ? Strings.mealAdded : null;
+  } else {
+    return selectedInfo ? Strings.baggageAdded : null;
+  }
+};
+
+const getSelectionPlaceholder = (activeAddOnType) => {
+  if (activeAddOnType === FLIGHT_ADD_ON_TYPES.SEAT) {
+    return Strings.selectSeat;
+  } else if (activeAddOnType === FLIGHT_ADD_ON_TYPES.MEAL) {
+    return Strings.selectMeal;
+  } else {
+    return Strings.selectBaggage;
+  }
+};
+
 const TravellerSelection = ({
-  selectionPlaceHolder,
   travellersInfo,
   onClick,
+  activeStoppage,
+  activeAddOnType,
 }) => {
   const flatListRef = useRef();
+  const placeholder = getSelectionPlaceholder(activeAddOnType);
+  const selectedIndex = travellersInfo.findIndex((e) => e.isSelected);
   const renderTraveller = ({item, index}) => {
-    if (item.isSelected) {
-      selectedIndex = index;
-    }
+    let info = getSelectedInfo(activeStoppage, activeAddOnType, item);
     return (
       <FTouchableOpacity
         style={Styles.travellerContainer(index === 0, item.isSelected)}
@@ -25,20 +58,20 @@ const TravellerSelection = ({
         }}>
         <View>
           <FText style={Styles.travellerName} numberOfLines={1}>
-            {item.travellerName}
+            {item.fullName}
           </FText>
           <FText
-            style={Styles.selectedInfo(item.selectedData)}
-            weight={item.selectedData ? 500 : 400}
+            style={Styles.selectedInfo(info)}
+            weight={info ? 500 : 400}
             numberOfLines={1}>
-            {item.selectedData ? item.selectedData : selectionPlaceHolder}
+            {info ?? placeholder}
           </FText>
         </View>
 
         <FTouchableOpacity
-          style={Styles.trashCanContainer(item.selectedData, item.isSelected)}
+          style={Styles.removeIconContainer(info, item.isSelected)}
           onPress={() => onClick(index, true)}>
-          {!!item.selectedData && <Icon.Trash width={DP._14} height={DP._14} />}
+          {!!info && <Icon.Trash width={DP._14} height={DP._14} />}
         </FTouchableOpacity>
       </FTouchableOpacity>
     );

@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
-import {shadowObj} from '../../../../utils/Utils';
+
 export default StyleSheet.create({
   container: {
     paddingHorizontal: DP._16,
@@ -17,10 +17,13 @@ export default StyleSheet.create({
       borderColor: isSelected ? Color.DODGER_BLUE : Color.LIGHT_PERIWINKLE,
       borderRadius: DP._4,
       marginLeft: isFirstElement ? 0 : DP._8,
+      minWidth: DP._142,
+      justifyContent: 'space-between',
+      alignItems: 'center',
       backgroundColor: isSelected ? Color.ALICE_BLUE : Color.WHITE,
     };
   },
-  trashCanContainer: (selectedInfo, isItemSelected) => ({
+  removeIconContainer: (selectedInfo, isItemSelected) => ({
     borderWidth: DP._1,
     borderColor: selectedInfo
       ? Color.VERY_LIGHT_PINK_3

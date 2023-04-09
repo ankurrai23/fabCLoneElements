@@ -190,4 +190,9 @@ export default {
   free: 'Free',
   front: 'FRONT',
   back: 'BACK',
+  selectSeat: 'Select seat',
+  selectMeal: 'Select meal',
+  selectBaggage: 'Select baggage',
+  mealAdded: 'Meal added',
+  baggageAdded: 'Baggage added',
 };
