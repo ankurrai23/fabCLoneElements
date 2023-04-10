@@ -67,7 +67,6 @@ const TrainDetailCard = ({
   notificationText,
   reduceOpacity: isGreyedOut,
 }) => {
-
   const renderDate = (departureDate, arrivalDate) => {
     const depArrDateSame = departureDate.date === arrivalDate.date;
     const depArrMonthSame = departureDate.month === arrivalDate.month;
@@ -155,173 +154,180 @@ const TrainDetailCard = ({
       {!!notificationText && <ModificationAlertBox msg={notificationText} />}
       <View style={Styles.flexRow}>
         <View style={Styles.container}>
-          <FTouchableOpacity style={Styles.card} onPress={onCardPress}>
-            <View style={[Styles.flexDirectionRow, Styles.baseline]}>
-              <View style={Styles.flexDirectionRow}>
-                {renderDate(
-                  bookingDetails.departureDate,
-                  bookingDetails.arrivalDate,
-                )}
-              </View>
-              {!!bookingDetails.trainBookingStatus && (
-                <TripStatus
-                  statusObj={getStatusObject(bookingDetails.trainBookingStatus)}
-                />
-              )}
-            </View>
-
-            <View style={[Styles.marginTop_12]}>
-              <View style={[Styles.flexDirectionRow]}>
-                <FText
-                  greyedOut={isGreyedOut}
-                  style={[
-                    Styles.heading,
-                    Styles.width_40,
-                    Styles.textAlign_left,
-                  ]}
-                  numberOfLines={1}>
-                  {bookingDetails.departureTime}
-                </FText>
-                <FText
-                  greyedOut={isGreyedOut}
-                  style={[
-                    Styles.duration,
-                    Styles.width_20,
-                    Styles.textAlign_center,
-                  ]}>
-                  {bookingDetails.estimateDuration}
-                </FText>
-                <FText
-                  greyedOut={isGreyedOut}
-                  style={[
-                    Styles.heading,
-                    Styles.width_40,
-                    Styles.textAlign_right,
-                  ]}
-                  numberOfLines={1}>
-                  {bookingDetails.arrivalTime}
-                </FText>
-              </View>
-              <View style={[Styles.flexDirectionRow]}>
-                <View style={Styles.width_40}>
-                  {(bookingDetails?.departureTime ||
-                    bookingDetails?.arrivalTime) && (
-                    <FText
-                      greyedOut={isGreyedOut}
-                      style={Styles.detail}
-                      numberOfLines={1}>
-                      {bookingDetails.sourceStationCode}
-                    </FText>
-                  )}
-                  {(bookingDetails?.source || bookingDetails?.destination) && (
-                    <FText
-                      greyedOut={isGreyedOut}
-                      style={[Styles.detail, Styles.textAlign_left]}
-                      numberOfLines={1}>
-                      {bookingDetails.source}
-                    </FText>
-                  )}
-                  {(bookingDetails?.sourcePlatform ||
-                    bookingDetails?.destinationPlatform) && (
-                    <FText
-                      greyedOut={isGreyedOut}
-                      style={Styles.detail}
-                      numberOfLines={1}>
-                      {Strings.platform} {bookingDetails.sourcePlatform}
-                    </FText>
+          <FTouchableOpacity onPress={onCardPress}>
+            <View style={Styles.journeyDetailsContainer}>
+              <View style={[Styles.flexDirectionRow, Styles.baseline]}>
+                <View style={Styles.flexDirectionRow}>
+                  {renderDate(
+                    bookingDetails.departureDate,
+                    bookingDetails.arrivalDate,
                   )}
                 </View>
-                <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
-                  {(bookingDetails?.arrivalTime ||
-                    bookingDetails?.departureTime) && (
-                    <FText
-                      greyedOut={isGreyedOut}
-                      style={Styles.detail}
-                      numberOfLines={1}>
-                      {bookingDetails.destinationStationCode}
-                    </FText>
-                  )}
-                  {bookingDetails?.destination && (
-                    <FText
-                      greyedOut={isGreyedOut}
-                      style={Styles.detail}
-                      numberOfLines={1}>
-                      {bookingDetails.destination}
-                    </FText>
-                  )}
-                  {(bookingDetails?.sourcePlatform ||
-                    bookingDetails?.destinationPlatform) && (
-                    <FText
-                      greyedOut={isGreyedOut}
-                      style={Styles.detail}
-                      numberOfLines={1}>
-                      {Strings.platform} {bookingDetails.destinationPlatform}
-                    </FText>
-                  )}
+                {!!bookingDetails.trainBookingStatus && (
+                  <TripStatus
+                    statusObj={getStatusObject(
+                      bookingDetails.trainBookingStatus,
+                    )}
+                  />
+                )}
+              </View>
+
+              <View style={[Styles.marginTop_12]}>
+                <View style={[Styles.flexDirectionRow]}>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={[
+                      Styles.heading,
+                      Styles.width_40,
+                      Styles.textAlign_left,
+                    ]}
+                    numberOfLines={1}>
+                    {bookingDetails.departureTime}
+                  </FText>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={[
+                      Styles.duration,
+                      Styles.width_20,
+                      Styles.textAlign_center,
+                    ]}>
+                    {bookingDetails.estimateDuration}
+                  </FText>
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={[
+                      Styles.heading,
+                      Styles.width_40,
+                      Styles.textAlign_right,
+                    ]}
+                    numberOfLines={1}>
+                    {bookingDetails.arrivalTime}
+                  </FText>
+                </View>
+                <View style={[Styles.flexDirectionRow]}>
+                  <View style={Styles.width_40}>
+                    {(bookingDetails?.departureTime ||
+                      bookingDetails?.arrivalTime) && (
+                      <FText
+                        greyedOut={isGreyedOut}
+                        style={Styles.detail}
+                        numberOfLines={1}>
+                        {bookingDetails.sourceStationCode}
+                      </FText>
+                    )}
+                    {(bookingDetails?.source ||
+                      bookingDetails?.destination) && (
+                      <FText
+                        greyedOut={isGreyedOut}
+                        style={[Styles.detail, Styles.textAlign_left]}
+                        numberOfLines={1}>
+                        {bookingDetails.source}
+                      </FText>
+                    )}
+                    {(bookingDetails?.sourcePlatform ||
+                      bookingDetails?.destinationPlatform) && (
+                      <FText
+                        greyedOut={isGreyedOut}
+                        style={Styles.detail}
+                        numberOfLines={1}>
+                        {Strings.platform} {bookingDetails.sourcePlatform}
+                      </FText>
+                    )}
+                  </View>
+                  <View style={[Styles.alignItem_flexEnd, Styles.width_40]}>
+                    {(bookingDetails?.arrivalTime ||
+                      bookingDetails?.departureTime) && (
+                      <FText
+                        greyedOut={isGreyedOut}
+                        style={Styles.detail}
+                        numberOfLines={1}>
+                        {bookingDetails.destinationStationCode}
+                      </FText>
+                    )}
+                    {bookingDetails?.destination && (
+                      <FText
+                        greyedOut={isGreyedOut}
+                        style={Styles.detail}
+                        numberOfLines={1}>
+                        {bookingDetails.destination}
+                      </FText>
+                    )}
+                    {(bookingDetails?.sourcePlatform ||
+                      bookingDetails?.destinationPlatform) && (
+                      <FText
+                        greyedOut={isGreyedOut}
+                        style={Styles.detail}
+                        numberOfLines={1}>
+                        {Strings.platform} {bookingDetails.destinationPlatform}
+                      </FText>
+                    )}
+                  </View>
                 </View>
               </View>
-            </View>
 
-            <View style={Styles.marginTop_12}>
-              <FText
-                greyedOut={isGreyedOut}
-                style={Styles.heading}
-                numberOfLines={1}>
-                {formatTrainNameNo(
-                  bookingDetails.trainName,
-                  bookingDetails.trainNumber,
+              <View style={Styles.marginTop_12}>
+                <FText
+                  greyedOut={isGreyedOut}
+                  style={Styles.heading}
+                  numberOfLines={1}>
+                  {formatTrainNameNo(
+                    bookingDetails.trainName,
+                    bookingDetails.trainNumber,
+                  )}
+                </FText>
+                {!!bookingDetails?.pnr && (
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={Styles.detail}
+                    numberOfLines={1}>
+                    {Strings.pnr}: {bookingDetails.pnr}
+                  </FText>
                 )}
-              </FText>
-              {!!bookingDetails?.pnr && (
-                <FText
-                  greyedOut={isGreyedOut}
-                  style={Styles.detail}
-                  numberOfLines={1}>
-                  {Strings.pnr}: {bookingDetails.pnr}
-                </FText>
-              )}
-              {!!bookingDetails?.trainClass && (
-                <FText
-                  greyedOut={isGreyedOut}
-                  style={Styles.detail}
-                  numberOfLines={1}>
-                  {bookingDetails.trainClass}
-                </FText>
-              )}
+                {!!bookingDetails?.trainClass && (
+                  <FText
+                    greyedOut={isGreyedOut}
+                    style={Styles.detail}
+                    numberOfLines={1}>
+                    {bookingDetails.trainClass}
+                  </FText>
+                )}
+              </View>
             </View>
             {bookingDetails.travellerDetails &&
               bookingDetails.travellerDetails.length > 0 && (
                 <>
-                  <Separator style={Styles.sepratorStyle} />
-
-                  <FText
-                    greyedOut={isGreyedOut}
-                    numberOfLines={1}
-                    style={[
-                      Styles.marginTop_12,
-                      Styles.fontSize_12,
-                      Styles.color_grey,
-                      Styles.lineHeight_16,
-                    ]}>
-                    {Strings.travelersDetails}
-                  </FText>
-                  {bookingDetails.travellerDetails.map((detail, index) => (
-                    <DetailRow
-                      dataIcon={
-                        <Icon.Person
-                          width={DP._16}
-                          height={DP._16}
-                          stroke={isGreyedOut ? Color.BLUEY_GREY : null}
-                        />
-                      }
+                  <View style={Styles.paddingHorizontal_16}>
+                    <Separator style={Styles.sepratorStyle} />
+                  </View>
+                  <View style={Styles.passengerDetailsHeadingContainer}>
+                    <View style={Styles.headingNotch} />
+                    <FText
                       greyedOut={isGreyedOut}
-                      rightData={detail.seatNo}
-                      leftData={detail.travellerName}
-                      style={
-                        index === 0 ? Styles.marginTop_12 : Styles.marginTop_8
-                      }
-                    />
-                  ))}
+                      numberOfLines={1}
+                      weight={500}
+                      style={[Styles.fontSize_12, Styles.lineHeight_16]}>
+                      {Strings.travelersDetails}
+                    </FText>
+                  </View>
+                  <View style={Styles.passengerDetailsContainer}>
+                    {bookingDetails.travellerDetails.map((detail, index) => (
+                      <DetailRow
+                        dataIcon={
+                          <Icon.Person
+                            width={DP._16}
+                            height={DP._16}
+                            stroke={isGreyedOut ? Color.BLUEY_GREY : null}
+                          />
+                        }
+                        greyedOut={isGreyedOut}
+                        rightData={detail.seatNo}
+                        leftData={detail.travellerName}
+                        style={
+                          index === 0 ? Styles.marginTop_12 : Styles.marginTop_8
+                        }
+                      />
+                    ))}
+                  </View>
                 </>
               )}
           </FTouchableOpacity>
