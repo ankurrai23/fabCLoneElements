@@ -9,9 +9,9 @@ import {FLIGHT_ADD_ON_TYPES, formattedPrice} from '../../../../utils/Utils';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 
 const getSelectedInfo = (activeStoppage, activeAddOnType, info) => {
-  let selectedInfo = info?.activeAddOnType?.[activeStoppage];
+  let selectedInfo = info?.[activeAddOnType]?.[activeStoppage];
   if (activeAddOnType === FLIGHT_ADD_ON_TYPES.SEAT) {
-    return selectedInfo
+    return selectedInfo?.seatInfo
       ? `${selectedInfo.seatInfo.code} ${formattedPrice(
           selectedInfo.seatInfo.price,
         )}`
@@ -92,7 +92,7 @@ const TravellerSelection = ({
         onScrollToIndexFailed={(info) => {
           setTimeout(
             () =>
-              flatListRef?.current.scrollToIndex({
+              flatListRef?.current?.scrollToIndex({
                 animated: true,
                 index: selectedIndex,
               }),

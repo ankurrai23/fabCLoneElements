@@ -1,5 +1,5 @@
-import {View} from 'react-native';
-import React, {useRef, useState} from 'react';
+import {LayoutAnimation, View} from 'react-native';
+import React, {useRef, useState, useEffect} from 'react';
 import Styles from './Styles';
 import Icon from '../../../../assets/icons/Icon';
 import {Color} from '../../../../utils/color/index.travelPlus';
@@ -114,34 +114,39 @@ const SeatSelection = ({data, onSeatPress}) => {
   const scrollViewRef = useRef(null);
   const [toolTipInfo, setToolTipInfo] = useState(null);
 
-  // useEffect(() => {
-  //   if (toolTipInfo) {
-  //     setTimeout(() => {
-  //       LayoutAnimation.easeInEaseOut();
-  //       setToolTipInfo(null);
-  //     }, 2000);
-  //   }
-  // }, [toolTipInfo]);
+  useEffect(() => {
+    if (toolTipInfo) {
+      setTimeout(() => {
+        LayoutAnimation.easeInEaseOut();
+        setToolTipInfo(null);
+      }, 2000);
+    }
+  }, [toolTipInfo]);
 
   const renderSeatRow = (item, index) => {
-    const onFlightSeatPress = (seat) => {
-      onSeatPress(seat);
+    const onFlightSeatPress = (seatData, position) => {
+      if (!seatData.passengerName) {
+        onSeatPress(seatData);
+      }
       scrollViewRef.current.scrollTo({
         y:
           rowPositionRef.current[index] -
           scrollViewLayoutRef.current.height * 0.45,
         animated: true,
       });
-      setToolTipInfo({
-        x: seat.x,
-        seatWidth: seat.width,
-        y: rowPositionRef.current[index],
-        totalWidth: scrollViewLayoutRef.current.width,
-        passengerName: 'Hello World',
-        seatPrice: '999',
-        seatCode: '1A',
-      });
+      if (seatData.passengerName) {
+        setToolTipInfo({
+          x: position.x,
+          seatWidth: position.width,
+          y: rowPositionRef.current[index],
+          totalWidth: scrollViewLayoutRef.current.width,
+          passengerName: seatData.passengerName,
+          seatPrice: formattedPrice(seatData.price),
+          seatCode: seatData.code,
+        });
+      }
     };
+
     return (
       <View
         style={Styles.seatRow}
@@ -155,6 +160,8 @@ const SeatSelection = ({data, onSeatPress}) => {
         }}>
         {item.map((seatData, seatIndex) => {
           const {price, ifBooked, selected, type} = seatData;
+          seatData.rowIndex = index;
+          seatData.columnIndex = seatIndex;
           const seatString = price === 0 ? 'Free' : getRepString(price);
           const seatColor = selected
             ? Color.DARK_SEA_FOAM
@@ -179,7 +186,7 @@ const SeatSelection = ({data, onSeatPress}) => {
               ifBooked={ifBooked}
               selected={selected}
               rowLength={item.length}
-              onSeatPress={onFlightSeatPress}
+              onSeatPress={(position) => onFlightSeatPress(seatData, position)}
             />
           );
         })}
