@@ -6,7 +6,6 @@ import {
   TextInput,
   View,
   Alert,
-  Button,
 } from 'react-native';
 
 import {DP} from '../../src/utils/Dimen';

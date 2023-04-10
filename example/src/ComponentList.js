@@ -76,6 +76,8 @@ import {
   SelectRoomSheet,
   PriceBreakupSheet,
   LoadingPlaceholder,
+  SelectMeal,
+  AnimatedLoader,
   MealAddOn,
   BaggageAddOn,
   SeatSelection,
@@ -173,6 +175,10 @@ const COMMON_COMPONENTS = [
     name: 'LoadingPlaceholder',
     component: props => <LoadingPlaceholder {...props} />,
     defaultProps: data.placeholderProps,
+  },
+  {
+    name: 'AnimatedLoader',
+    component: props => <AnimatedLoader {...props} />,
   },
 ];
 
@@ -400,16 +406,16 @@ const TRIP_CREATION = [
   },
   {
     name: 'SeatSelection',
-    component: (props) => <SeatSelection {...props} />,
+    component: props => <SeatSelection {...props} />,
     defaultProps: data.seatSelectionsProps,
   },
   {
     name: 'TravellerSelection',
-    component: (props) => <TravellerSelection {...props} />,
+    component: props => <TravellerSelection {...props} />,
     defaultProps: data.travellerSelectionProps,
   },
 ];
-console.log('something',data.travellerSelectionProps);
+console.log('something', data.travellerSelectionProps);
 
 const HOME = [
   {name: 'Home'},
