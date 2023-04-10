@@ -1,5 +1,5 @@
-import {LayoutAnimation, View} from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import {View} from 'react-native';
+import React, {useRef, useState} from 'react';
 import Styles from './Styles';
 import Icon from '../../../../assets/icons/Icon';
 import {Color} from '../../../../utils/color/index.travelPlus';
@@ -43,7 +43,9 @@ const getFontSize = (rowLength) => {
 };
 
 const ToolTip = ({info}) => {
-  if (!info) return null;
+  if (!info) {
+    return null;
+  }
   const {x, y, totalWidth, seatWidth, passengerName, seatCode, seatPrice} =
     info;
   return (
@@ -67,7 +69,7 @@ const ToolTip = ({info}) => {
   );
 };
 
-export const FlightSeat = ({
+const FlightSeat = ({
   seatString,
   seatColor,
   ifBooked,
@@ -106,7 +108,7 @@ export const FlightSeat = ({
   );
 };
 
-const SeatSelection = ({data}) => {
+const SeatSelection = ({data, onSeatPress}) => {
   const rowPositionRef = useRef({});
   const scrollViewLayoutRef = useRef(null);
   const scrollViewRef = useRef(null);
@@ -123,6 +125,7 @@ const SeatSelection = ({data}) => {
 
   const renderSeatRow = (item, index) => {
     const onFlightSeatPress = (seat) => {
+      onSeatPress(seat);
       scrollViewRef.current.scrollTo({
         y:
           rowPositionRef.current[index] -

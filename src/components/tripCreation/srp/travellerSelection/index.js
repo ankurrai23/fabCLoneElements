@@ -9,13 +9,7 @@ import {FLIGHT_ADD_ON_TYPES, formattedPrice} from '../../../../utils/Utils';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 
 const getSelectedInfo = (activeStoppage, activeAddOnType, info) => {
-  let addOnTypeKeyMap = {
-    seat: 'seatDetails',
-    meal: 'mealDetails',
-    baggage: 'baggageDetails',
-  };
-  let activeAddOnKey = addOnTypeKeyMap[activeAddOnType];
-  let selectedInfo = info[activeAddOnKey][activeStoppage];
+  let selectedInfo = info?.activeAddOnType?.[activeStoppage];
   if (activeAddOnType === FLIGHT_ADD_ON_TYPES.SEAT) {
     return selectedInfo
       ? `${selectedInfo.seatInfo.code} ${formattedPrice(
@@ -76,12 +70,16 @@ const TravellerSelection = ({
       </FTouchableOpacity>
     );
   };
-  setTimeout(() =>
-    flatListRef?.current.scrollToIndex({
-      animated: true,
-      index: selectedIndex,
-    }),
-  );
+
+  if (selectedIndex >= 0) {
+    setTimeout(() =>
+      flatListRef?.current.scrollToIndex({
+        animated: true,
+        index: selectedIndex,
+      }),
+    );
+  }
+
   return (
     <View style={Styles.container}>
       <FlatList
