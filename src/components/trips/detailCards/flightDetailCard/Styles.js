@@ -256,4 +256,5 @@ export default StyleSheet.create({
     lineHeight: DP._12,
   },
   mv_12: {marginVertical: DP._12},
+  ticketNoStyle: {fontSize: DP._10, lineHeight: DP._16},
 });

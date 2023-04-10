@@ -190,9 +190,15 @@ const FlightDetailCard = ({
                       numberOfLines={1}>
                       {item.name}
                     </FText>
-                    <FText style={Styles.ticketStyle}>
-                      Ticket no {item.ticketNo}
-                    </FText>
+                    <View style={{flexDirection: 'row'}}>
+                      <FText style={Styles.ticketStyle}>
+                        {Strings.ticketNo}
+                      </FText>
+                      <FText style={Styles.ticketNoStyle}>
+                        {' '}
+                        {item.ticketNo}
+                      </FText>
+                    </View>
                   </View>
                   <View>
                     {item.addOnDetails.map((addOnDetail, i, addOnDetails) => {

@@ -195,4 +195,5 @@ export default {
   selectBaggage: 'Select baggage',
   mealAdded: 'Meal added',
   baggageAdded: 'Baggage added',
+  ticketNo: 'Ticket no',
 };
