@@ -158,7 +158,7 @@ const FlightDetailCard = ({
               greyedOut={isGreyedOut}
               type={FONT_TYPE.MEDIUM}>{` ${tripDetails.pnr}`}</FText>
           </FText>
-          {tripDetails.mealCount && (
+          {!!tripDetails.mealCount && (
             <View style={Styles.flexRowAndAlignCenter}>
               <Icon.Meal />
               <FText style={Styles.mealsAdded}>
