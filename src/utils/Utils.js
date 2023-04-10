@@ -8,6 +8,12 @@ import Icon from '../assets/icons/Icon';
 import React from 'react';
 import {Strings} from './strings/index.travelPlus';
 
+export const FLIGHT_ADD_ON_TYPES = {
+  SEAT: 'seatDetails',
+  MEAL: 'mealDetails',
+  BAGGAGE: 'baggageDetails',
+};
+
 export const FontFamily = Config.fontFamily || 'Metropolis';
 
 export const Specs = {
@@ -111,6 +117,30 @@ export function formattedPrice(val, maxFractionDigit = 0) {
     maximumFractionDigits: maxFractionDigit,
   }).format(price);
   return Strings.rupee + price;
+}
+
+export function getRepString(val) {
+  if (val === null || val === undefined) {
+    return '';
+  }
+  let rep = val + '';
+
+  function formatString(value) {
+    const indexOfDot = value.indexOf('.');
+    return value.slice(0, indexOfDot + 2);
+  }
+
+  if (rep > 10000000) {
+    rep = formatString(parseFloat(rep / 10000000).toPrecision(9)) + 'Cr';
+  } else if (rep > 100000) {
+    rep = formatString(parseFloat(rep / 100000).toPrecision(7)) + 'L';
+  } else if (rep >= 1000) {
+    rep = formatString(parseFloat(rep / 1000).toPrecision(5)) + 'K';
+  } else {
+    rep = formattedPrice(rep, 1);
+    return rep;
+  }
+  return Strings.rupee + rep;
 }
 
 export function isEmpty(obj) {

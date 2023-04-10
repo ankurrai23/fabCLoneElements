@@ -29,6 +29,8 @@ const flightItineraryCardProps = {
     isOutOfPolicy: true,
     isSoldOut: false,
     mealCount: 5,
+    baggageIncluded: true,
+    seatCount: 3,
     sourceAirportTerminal: 'Terminal 1',
     destinationAirportTerminal: 'Terminal 3',
   },
@@ -63,14 +65,14 @@ const flightItineraryCardProps = {
     text: 'Change of plans',
   },
   actions: [
-    // {
-    //   type: 'RESCHEDULE',
-    //   name: 'Reschedule',
-    // },
-    // {
-    //   type: 'CANCEL',
-    //   name: 'Cancel',
-    // },
+    {
+      type: 'RESCHEDULE',
+      name: 'Reschedule',
+    },
+    {
+      type: 'CANCEL',
+      name: 'Cancel',
+    },
     // {
     //   type: 'VIEW_REMARKS',
     // },
@@ -83,7 +85,7 @@ const flightItineraryCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   showLine: false,
   hideIcon: true,
-  showInfo: true,
+  showInfo: false,
   isAlert: true,
   timelineGreyed: false,
   actionDisabled: false,

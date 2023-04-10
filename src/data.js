@@ -51,7 +51,10 @@ import hotelFarePlanProps from './components/tripCreation/srp/farePlans/hotelFar
 import flightSearchResultCardProps from './components/tripCreation/srp/flightSearchResultCard/data';
 import hotelSearchResultCardProps from './components/tripCreation/srp/hotelSearchResultCard/data';
 import selectRoomSheetProps from './components/tripCreation/srp/selectRoomSheet/data';
-import selectMealProps from './components/tripCreation/srp/selectMeal/data';
+import mealAddOnProps from './components/tripCreation/srp/mealAddOn/data';
+import baggageAddOnProps from './components/tripCreation/srp/baggageAddOn/data';
+import seatSelectionsProps from './components/tripCreation/srp/seatSelection/data';
+import travellerSelectionProps from './components/tripCreation/srp/travellerSelection/data';
 
 //home screen props
 import homeHeaderProps from './components/home/homeHeader/data';
@@ -136,5 +139,8 @@ export {
   employeeActionsProps,
   selectRoomSheetProps,
   priceBreakupSheetProps,
-  selectMealProps,
+  mealAddOnProps,
+  seatSelectionsProps,
+  travellerSelectionProps,
+  baggageAddOnProps,
 };

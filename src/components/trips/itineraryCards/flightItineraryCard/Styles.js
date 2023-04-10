@@ -258,4 +258,27 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.GREY_PURPLE,
   },
+  addOnItemContainer: {
+    paddingTop: DP._12,
+    flexDirection: 'row',
+  },
+  addOnItemText: {
+    marginLeft: DP._8,
+    fontSize: DP._12,
+    lineHeight: DP._14,
+    color: Color.GREY_PURPLE,
+  },
+  addOnContainer: {
+    paddingHorizontal: DP._16,
+    paddingVertical: DP._8,
+  },
+  addOnTitle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  addOnTitleText: {
+    fontSize: DP._12,
+    lineHeight: DP._14,
+  },
 });

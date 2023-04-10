@@ -78,6 +78,10 @@ import {
   LoadingPlaceholder,
   SelectMeal,
   AnimatedLoader,
+  MealAddOn,
+  BaggageAddOn,
+  SeatSelection,
+  TravellerSelection,
 } from 'react-native-fab-elements';
 
 const COMMON_COMPONENTS = [
@@ -391,11 +395,27 @@ const TRIP_CREATION = [
     defaultProps: data.selectRoomSheetProps,
   },
   {
-    name: 'SelectMeal',
-    component: props => <SelectMeal {...props} />,
-    defaultProps: data.selectMealProps,
+    name: 'MealAddOn',
+    component: props => <MealAddOn {...props} />,
+    defaultProps: data.mealAddOnProps,
+  },
+  {
+    name: 'BaggageAddOn',
+    component: props => <BaggageAddOn {...props} />,
+    defaultProps: data.baggageAddOnProps,
+  },
+  {
+    name: 'SeatSelection',
+    component: props => <SeatSelection {...props} />,
+    defaultProps: data.seatSelectionsProps,
+  },
+  {
+    name: 'TravellerSelection',
+    component: props => <TravellerSelection {...props} />,
+    defaultProps: data.travellerSelectionProps,
   },
 ];
+console.log('something', data.travellerSelectionProps);
 
 const HOME = [
   {name: 'Home'},

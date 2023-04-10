@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Text} from 'react-native';
 
 import {Specs, FontWeightSpec} from '../../utils/Utils';
@@ -13,7 +12,14 @@ export const FONT_TYPE = {
   BOLD: 'bold',
 };
 
-function FText({children, type, weight, style, greyedOut, ...props}) {
+function FText({
+  children,
+  type = FONT_TYPE.REGULAR,
+  weight,
+  style,
+  greyedOut,
+  ...props
+}) {
   function getFont() {
     return weight ? {...FontWeightSpec[weight]} : {...Specs[type]};
   }
