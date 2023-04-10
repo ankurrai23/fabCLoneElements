@@ -76,7 +76,6 @@ import {
   SelectRoomSheet,
   PriceBreakupSheet,
   LoadingPlaceholder,
-  SelectMeal,
   AnimatedLoader,
   MealAddOn,
   BaggageAddOn,
