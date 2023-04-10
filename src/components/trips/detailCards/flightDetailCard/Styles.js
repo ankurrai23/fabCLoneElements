@@ -132,24 +132,20 @@ export default StyleSheet.create({
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   travelerNameStyle: {
-    marginBottom: DP._8,
+    marginBottom: DP._12,
     fontSize: DP._12,
-    lineHeight: DP._16,
-    marginLeft: DP._8,
-    color: Color.GREY_PURPLE,
+    maxWidth: '50%',
   },
   contactSupport: {
-    paddingHorizontal: DP._16,
+    paddingRight: DP._16,
     paddingVertical: DP._8,
   },
   travelerDetailContainer: {
     paddingHorizontal: DP._16,
-    paddingTop: DP._12,
-    paddingBottom: DP._8,
+    paddingVertical: DP._16,
   },
   travelerDetailStyle: {
     fontSize: DP._12,
-    marginBottom: DP._12,
     lineHeight: DP._15,
   },
   bookingIdTitle: (reduceOpacity) => ({
@@ -211,4 +207,53 @@ export default StyleSheet.create({
     lineHeight: DP._14,
     color: Color.GREY_PURPLE,
   },
+  travellerInfoHeading: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: DP._16,
+  },
+  headingNotch: {
+    width: DP._4,
+    backgroundColor: Color.TWILIGHT_BLUE,
+    height: DP._21,
+    marginRight: DP._12,
+    borderTopRightRadius: DP._4,
+    borderBottomRightRadius: DP._4,
+  },
+  ticketStyle: {
+    color: Color.GREY_PURPLE,
+    fontSize: DP._10,
+    lineHeight: DP._16,
+  },
+  radio: {
+    width: DP._10,
+    height: DP._10,
+    borderWidth: DP._1,
+    marginRight: DP._8,
+    borderRadius: DP._5,
+    backgroundColor: Color.WHITE,
+    borderColor: Color.DODGER_BLUE,
+  },
+  dashLineStyle: {
+    position: 'absolute',
+    height: DP._24,
+    top: '100%',
+    left: '25%',
+  },
+  addOnDetailContaier: (isLastIndex) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: isLastIndex ? DP._16 : 0,
+  }),
+  stoppageTextStyle: {
+    fontSize: DP._10,
+    lineHeight: DP._12,
+    color: Color.GREYISH_PURPLE,
+  },
+  addOnTextStyle: {
+    marginLeft: DP._4,
+    fontSize: DP._10,
+    lineHeight: DP._12,
+  },
+  mv_12: {marginVertical: DP._12},
 });

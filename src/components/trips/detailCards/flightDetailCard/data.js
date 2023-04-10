@@ -26,19 +26,76 @@ const flightDetailCardProps = {
     travelersInfo: [
       {
         name: 'Sahil Malhan',
-        seat: '123456',
+        ticketNo: 'asd',
+        addOnDetails: [
+          {
+            origin: 'BOM',
+            destination: 'DEL',
+            seat: '2A',
+            isMealAdded: true,
+            isBaggageAdded: true,
+          },
+        ],
       },
       {
         name: 'Vibhav Bhadauriya',
-        seat: '123456',
+        ticketNo: 'asd',
+        addOnDetails: [
+          {
+            origin: 'BOM',
+            destination: 'DEL',
+            seat: '2A',
+            isMealAdded: true,
+            isBaggageAdded: true,
+          },
+        ],
       },
       {
-        name: 'Sahil Malhan',
-        seat: '123456',
+        name: 'Sahil Malhan lkdfjdlfkjdlfkjdlfkjdlfkdjdlfkjdlfkdjdlfkdjfldkjfdlfkjdlfkj',
+        ticketNo: 'asd',
+        addOnDetails: [
+          {
+            origin: 'BOM',
+            destination: 'DEL',
+            seat: '2A',
+            isMealAdded: true,
+            isBaggageAdded: true,
+          },
+          {
+            origin: 'DEL',
+            destination: 'KOL',
+            seat: '2A',
+            isMealAdded: true,
+            isBaggageAdded: true,
+          },
+        ],
       },
       {
         name: 'Vibhav Bhadauriya',
-        seat: '123456',
+        ticketNo: 'asd',
+        addOnDetails: [
+          {
+            origin: 'BOM',
+            destination: 'DEL',
+            seat: '2A',
+            isMealAdded: true,
+            isBaggageAdded: true,
+          },
+          {
+            origin: 'DEL',
+            destination: 'KOL',
+            seat: '2A',
+            isMealAdded: true,
+            isBaggageAdded: true,
+          },
+          {
+            origin: 'DEL',
+            destination: 'KOL',
+            seat: '2A',
+            isMealAdded: true,
+            isBaggageAdded: true,
+          },
+        ],
       },
     ],
     bookingId: 'ABDC1234',
@@ -62,7 +119,7 @@ const flightDetailCardProps = {
   onCardPress: (item) => console.log('Card Pressed', item),
   notificationText: 'Some thing to notify',
   onContactSupportPress: () => console.log('contact support pressed'),
-  reduceOpacity: true,
+  reduceOpacity: false,
 };
 
 export default flightDetailCardProps;

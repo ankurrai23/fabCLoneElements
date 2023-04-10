@@ -18,7 +18,7 @@ import FImage from '../../../../common/rn/FImage';
 import ActionsInItinerary from '../../../../common/components/ActionsInItinerary';
 import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
-
+import DashedLine from '../../../../common/components/dashedLine';
 const FlightDetailCard = ({
   title,
   tripDetails,
@@ -170,37 +170,67 @@ const FlightDetailCard = ({
         {!!tripDetails?.travelersInfo?.length && (
           <>
             <Separator style={Styles.actionsSeperator} />
+            <View style={Styles.travellerInfoHeading}>
+              <View style={Styles.headingNotch} />
+              <FText
+                greyedOut={isGreyedOut}
+                style={Styles.travelerDetailStyle}
+                weight={500}>
+                {Strings.travelerDetails}
+              </FText>
+            </View>
             <View style={Styles.travelerDetailContainer}>
-              <View style={Styles.flexDirectionRow}>
-                <FText
-                  greyedOut={isGreyedOut}
-                  style={Styles.travelerDetailStyle}>
-                  {Strings.travelerDetails}
-                </FText>
-                <FText
-                  greyedOut={isGreyedOut}
-                  style={Styles.travelerDetailStyle}>
-                  {Strings.ticketNumber}
-                </FText>
-              </View>
-
-              {tripDetails.travelersInfo.map((item, index) => (
-                <View style={Styles.flexDirectionRow}>
-                  <View style={Styles.flexRow}>
-                    <Icon.Person />
+              {tripDetails.travelersInfo.map((item, index, arr) => (
+                <>
+                  <View style={Styles.flexDirectionRow}>
                     <FText
                       greyedOut={isGreyedOut}
                       key={index}
-                      style={Styles.travelerNameStyle}>
+                      style={Styles.travelerNameStyle}
+                      numberOfLines={1}>
                       {item.name}
                     </FText>
+                    <FText style={Styles.ticketStyle}>
+                      Ticket no {item.ticketNo}
+                    </FText>
                   </View>
-                  <FText
-                    greyedOut={isGreyedOut}
-                    style={Styles.travelerNameStyle}>
-                    {item.seat}
-                  </FText>
-                </View>
+                  <View>
+                    {item.addOnDetails.map((addOnDetail, i, addOnDetails) => {
+                      const stoppage = `${addOnDetail.origin} - ${addOnDetail.destination}`;
+                      const showInfo = `${addOnDetail.seat}, ${
+                        addOnDetail.isMealAdded && 'meal'
+                      }, ${addOnDetail.isBaggageAdded && 'baggage'}`;
+                      return (
+                        <View
+                          style={Styles.addOnDetailContaier(
+                            i !== addOnDetails.length - 1,
+                          )}>
+                          <View>
+                            <View style={Styles.radio} />
+                            {i !== addOnDetails.length - 1 && (
+                              <View style={Styles.dashLineStyle}>
+                                <DashedLine
+                                  dashColor={Color.DODGER_BLUE}
+                                  dashSize={DP._2}
+                                  dashWidth={DP._0_5}
+                                />
+                              </View>
+                            )}
+                          </View>
+                          <FText style={Styles.stoppageTextStyle} weight={400}>
+                            {stoppage}
+                          </FText>
+                          <FText style={Styles.addOnTextStyle}>
+                            {showInfo}
+                          </FText>
+                        </View>
+                      );
+                    })}
+                  </View>
+                  {index !== arr.length - 1 && (
+                    <Separator style={Styles.mv_12} />
+                  )}
+                </>
               ))}
             </View>
           </>
@@ -208,11 +238,14 @@ const FlightDetailCard = ({
         {supportAction && (
           <>
             <Separator style={Styles.actionsSeperator} />
-            <ContactSupport
-              onContactSupportPress={onContactSupportPress}
-              style={Styles.contactSupport}
-              isGreyedOut={isGreyedOut}
-            />
+            <View style={Styles.flexRowAndAlignCenter}>
+              <View style={Styles.headingNotch} />
+              <ContactSupport
+                onContactSupportPress={onContactSupportPress}
+                style={[Styles.contactSupport, Styles.flex]}
+                isGreyedOut={isGreyedOut}
+              />
+            </View>
           </>
         )}
         <ActionsInItinerary

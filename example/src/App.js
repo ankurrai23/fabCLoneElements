@@ -34,7 +34,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="SeatSelection"
+        initialRouteName="FlightDetailCard"
         drawerContent={props => <CustomDrawer {...props} />}
         screenOptions={{drawerStyle: {width: '70%'}}}
         detachInactiveScreens={true}>
