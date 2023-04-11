@@ -177,4 +177,17 @@ export default StyleSheet.create({
   lineHeight_16: {
     lineHeight: DP._16,
   },
+  headingNotch: {
+    width: DP._4,
+    backgroundColor: Color.TWILIGHT_BLUE,
+    height: DP._21,
+    marginRight: DP._12,
+    borderTopRightRadius: DP._4,
+    borderBottomRightRadius: DP._4,
+  },
+  journeyContainer: {paddingHorizontal: DP._16, paddingTop: DP._12},
+  paddingHorizontal_16: {
+    paddingHorizontal: DP._16,
+  },
+  marginTop_16: {marginTop: DP._16},
 });
