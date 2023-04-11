@@ -171,6 +171,8 @@ export default {
     paidAmount: 'Paid amount',
     included: '(included)',
     meals: 'Meals',
+    seats: 'Seats',
+    baggage: 'Baggage',
   },
   ok: 'Ok',
   leftToPayElseApprovalCancel: 'left to pay. Else approval shall be cancelled',

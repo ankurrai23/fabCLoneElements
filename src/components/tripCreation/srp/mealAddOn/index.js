@@ -4,7 +4,6 @@ import Styles from './Styles';
 import FText from '../../../../common/rn/FText';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import Icon from '../../../../assets/icons/Icon';
-import {Color} from '../../../../utils/color/index.travelPlus';
 import {formattedPrice} from '../../../../utils/Utils';
 import {Strings} from '../../../../utils/strings/index.travelPlus';
 import {MEAL_TYPE} from '../../../../utils/Constants';

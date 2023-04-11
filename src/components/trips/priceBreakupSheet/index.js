@@ -9,19 +9,20 @@ import {Strings} from '../../../utils/strings/index.travelPlus';
 import {formattedPrice} from '../../../utils/Utils';
 import Styles from './Styles';
 
+const FeeDetail = ({title, subtitle, cost, type, style}) => (
+  <FTouchableOpacity style={[Styles.feeContainer, style]}>
+    <View style={Styles.flexRow}>
+      <FText type={type}>{title}</FText>
+      {subtitle && <FText style={Styles.subTitle}>{subtitle}</FText>}
+    </View>
+    <FText type={type}>{formattedPrice(cost)}</FText>
+  </FTouchableOpacity>
+);
+
 const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
   if (!data) {
     return null;
   }
-  const FeeDetail = ({title, subtitle, cost, type, style}) => (
-    <FTouchableOpacity style={[Styles.feeContainer, style]}>
-      <View style={Styles.flexRow}>
-        <FText type={type}>{title}</FText>
-        {subtitle && <FText style={Styles.subTitle}>{subtitle}</FText>}
-      </View>
-      <FText type={type}>{formattedPrice(cost)}</FText>
-    </FTouchableOpacity>
-  );
 
   return (
     <View style={[Styles.container, containerStyle]}>
@@ -52,11 +53,25 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
                 cost={data.flightBreakup.mealCharges}
               />
             )}
+            {!!data.flightBreakup.seat?.seatCount && (
+              <FeeDetail
+                title={Strings.priceBreakup.seats}
+                subtitle={`X ${data.flightBreakup.seat.seatCount}`}
+                cost={data.flightBreakup.seat.seatCharges}
+              />
+            )}
             {!!data.flightBreakup.meal?.mealCount && (
               <FeeDetail
                 title={Strings.priceBreakup.meals}
                 subtitle={`X ${data.flightBreakup.meal.mealCount}`}
                 cost={data.flightBreakup.meal.mealCharges}
+              />
+            )}
+            {!!data.flightBreakup.baggage?.baggageCount && (
+              <FeeDetail
+                title={Strings.priceBreakup.baggage}
+                subtitle={`X ${data.flightBreakup.baggage.baggageCount}`}
+                cost={data.flightBreakup.baggage.baggageCharges}
               />
             )}
             {!!data.flightBreakup.convFeeWithGst && (
