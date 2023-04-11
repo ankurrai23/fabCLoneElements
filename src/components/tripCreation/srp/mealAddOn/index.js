@@ -12,21 +12,21 @@ import {MEAL_TYPE} from '../../../../utils/Constants';
 const SelectMeal = ({data, isLcc, onPress, isSelected}) => {
   const isMealFree = data.mealType === MEAL_TYPE.FREE || !isLcc;
   return (
-    <View style={Styles.container}>
-      <View style={Styles.infoContainer}>
-        <FText numberOfLines={2} style={Styles.mealDesc}>
-          {data.mealDescription ?? data.description}
-        </FText>
-        <FText style={Styles.mealPrice(!isMealFree)}>
-          {!isMealFree ? formattedPrice(data.price) : Strings.free}
-        </FText>
-      </View>
-      <View style={Styles.addRemoveButtonContainer}>
-        <FTouchableOpacity onPress={onPress}>
+    <FTouchableOpacity onPress={onPress}>
+      <View style={Styles.container}>
+        <View style={Styles.infoContainer}>
+          <FText numberOfLines={2} style={Styles.mealDesc}>
+            {data.mealDescription ?? data.description}
+          </FText>
+          <FText style={Styles.mealPrice(!isMealFree)}>
+            {!isMealFree ? formattedPrice(data.price) : Strings.free}
+          </FText>
+        </View>
+        <View style={Styles.addRemoveButtonContainer}>
           {isSelected ? <Icon.RadioActive /> : <Icon.RadioPassive />}
-        </FTouchableOpacity>
+        </View>
       </View>
-    </View>
+    </FTouchableOpacity>
   );
 };
 
