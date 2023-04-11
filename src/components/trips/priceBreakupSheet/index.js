@@ -47,10 +47,22 @@ const PriceBreakupSheet = ({data, containerStyle, onOkPress}) => {
                 cost={data.flightBreakup.flightCharge.price}
               />
             )}
+            {(data.flightBreakup?.seatCharges ?? -1) >= 0 && (
+              <FeeDetail
+                title={Strings.priceBreakup.seats}
+                cost={data.flightBreakup.seatCharges}
+              />
+            )}
             {(data.flightBreakup?.mealCharges ?? -1) >= 0 && (
               <FeeDetail
                 title={Strings.priceBreakup.meals}
                 cost={data.flightBreakup.mealCharges}
+              />
+            )}
+            {(data.flightBreakup?.baggageCharges ?? -1) >= 0 && (
+              <FeeDetail
+                title={Strings.priceBreakup.baggage}
+                cost={data.flightBreakup.baggageCharges}
               />
             )}
             {!!data.flightBreakup.seat?.seatCount && (
