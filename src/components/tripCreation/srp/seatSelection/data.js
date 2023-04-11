@@ -1,9 +1,11 @@
 const seatSelectionsProps = {
   onSeatPress: (seat) => {
     console.log('On seat select', seat);
+    return {id: 123, fullName: 'Ravi Kumar'};
   },
-  seatPassengerMap: {'1A': {id: 123, fullName: 'Ravi Kumar'}},
+  seatPassengerMap: {'1F': {id: 123, fullName: 'Ravi Kumar'}},
   activePassenger: {passengerId: 123, fullName: 'Ravi Kumar'},
+  listColumns: ['A', 'B', 'C', null, 'D', 'E', 'F'],
   data: [
     [
       {
@@ -40,14 +42,14 @@ const seatSelectionsProps = {
         code: '1A',
         type: 'SEAT',
         colorCode: '#F5F5F5',
-        isSeatAvailable: false,
+        isSeatAvailable: true,
       },
       {
         price: 999.0,
-        code: '1A',
+        code: '1F',
         type: 'SEAT',
         colorCode: '#F5F5F5',
-        isSeatAvailable: false,
+        isSeatAvailable: true,
       },
     ],
     [

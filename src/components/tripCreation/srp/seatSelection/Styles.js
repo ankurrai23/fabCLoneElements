@@ -67,9 +67,28 @@ export default StyleSheet.create({
   },
   text_Center: {
     textAlign: 'center',
+    color: Color.GREYISH_PURPLE,
   },
   backAisle: {
     paddingTop: DP._12,
     paddingBottom: DP._24,
+  },
+  columnHeading: (font) => ({
+    color: Color.GREY_PURPLE,
+    fontSize: font,
+    lineHeight: DP._18,
+  }),
+  columnHeaderContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  columnHeadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: DP._4,
+    marginRight: DP._4,
+    minWidth: DP._20,
+    marginBottom: DP._8,
   },
 });

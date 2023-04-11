@@ -24,7 +24,7 @@ const getTooltipPosition = (x, y, totalWidth, seatWidth) => {
   if (x < TOOLTIP_WIDTH / 2) {
     xPos = DP._4;
   } else if (totalWidth - x < TOOLTIP_WIDTH / 2) {
-    xPos = totalWidth - (TOOLTIP_WIDTH + DP._8);
+    xPos = totalWidth - (TOOLTIP_WIDTH + DP._4);
   }
   return {xPos, yPos};
 };
@@ -112,6 +112,7 @@ const SeatSelection = ({
   data,
   onSeatPress,
   seatPassengerMap,
+  listColumns,
   activePassenger,
 }) => {
   const rowPositionRef = useRef({});
@@ -210,6 +211,22 @@ const SeatSelection = ({
       }}>
       <View style={Styles.frontAisle}>
         <FText style={Styles.text_Center}>{Strings.front}</FText>
+      </View>
+      <View style={Styles.columnHeaderContainer}>
+        {listColumns.map((item, index) => (
+          <>
+            {item ? (
+              <View style={Styles.columnHeadingContainer}>
+                <FText
+                  style={Styles.columnHeading(getFontSize(listColumns.length))}>
+                  {item}
+                </FText>
+              </View>
+            ) : (
+              <View key={`${index}`} style={Styles.emptySpace} />
+            )}
+          </>
+        ))}
       </View>
       {data.map(renderSeatRow)}
       <ToolTip info={toolTipInfo} />
