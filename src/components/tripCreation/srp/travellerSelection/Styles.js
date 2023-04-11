@@ -4,7 +4,6 @@ import {DP} from '../../../../utils/Dimen';
 
 export default StyleSheet.create({
   container: {
-    paddingHorizontal: DP._16,
     paddingVertical: DP._8,
     borderTopWidth: DP._1,
     borderColor: 'rgba(217, 217, 217, 0.25)',
@@ -46,5 +45,8 @@ export default StyleSheet.create({
     marginBottom: DP._4,
     fontSize: DP._12,
     maxWidth: DP._100,
+  },
+  containerStyle: {
+    paddingHorizontal: DP._16,
   },
 });

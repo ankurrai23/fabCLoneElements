@@ -50,7 +50,7 @@ const TravellerSelection = ({
       <FTouchableOpacity
         style={Styles.travellerContainer(index === 0, item.isSelected)}
         onPress={() => {
-          onClick(index);
+          onClick(item.passengerId);
         }}>
         <View>
           <FText style={Styles.travellerName} numberOfLines={1}>
@@ -66,7 +66,7 @@ const TravellerSelection = ({
 
         <FTouchableOpacity
           style={Styles.removeIconContainer(info, item.isSelected)}
-          onPress={() => onClick(index, true)}>
+          onPress={() => onClick(item.passengerId, true)}>
           {!!info && <Icon.Trash width={DP._14} height={DP._14} />}
         </FTouchableOpacity>
       </FTouchableOpacity>
@@ -88,6 +88,7 @@ const TravellerSelection = ({
         data={travellersInfo}
         renderItem={renderTraveller}
         horizontal={true}
+        contentContainerStyle={Styles.containerStyle}
         showsHorizontalScrollIndicator={false}
         bounces={false}
         ref={flatListRef}
