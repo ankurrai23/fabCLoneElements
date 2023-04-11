@@ -192,7 +192,7 @@ const AddOns = ({mealCount, seatCount, baggageIncluded}) => {
       </FTouchableOpacity>
       {showAddOns && (
         <>
-          {mealCount && (
+          {!!mealCount && (
             <View style={Styles.addOnItemContainer}>
               <Icon.Meal />
               <FText style={Styles.addOnItemText}>
@@ -200,7 +200,7 @@ const AddOns = ({mealCount, seatCount, baggageIncluded}) => {
               </FText>
             </View>
           )}
-          {seatCount && (
+          {!!seatCount && (
             <View style={Styles.addOnItemContainer}>
               <Icon.Seat />
               <FText style={Styles.addOnItemText}>
