@@ -55,7 +55,7 @@ const busDetailCardProps = {
   onPhoneNumberClicked: () => console.log('phoneNumber clicked'),
   actionDisabled: false,
   notificationText: 'Some thing to notify',
-  reduceOpacity: true,
+  reduceOpacity: false,
 };
 
 export default busDetailCardProps;

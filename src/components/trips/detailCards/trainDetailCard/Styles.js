@@ -78,10 +78,6 @@ export default StyleSheet.create({
     color: Color.GREYISH_PURPLE,
   },
   baseline: {alignItems: 'center'},
-  card: {
-    paddingHorizontal: DP._16,
-    paddingVertical: DP._12,
-  },
   alignItem_flexEnd: {
     alignItems: 'flex-end',
   },
@@ -168,4 +164,20 @@ export default StyleSheet.create({
   lineHeight_16: {
     lineHeight: DP._16,
   },
+  headingNotch: {
+    width: DP._4,
+    backgroundColor: Color.TWILIGHT_BLUE,
+    height: DP._21,
+    marginRight: DP._12,
+    borderTopRightRadius: DP._4,
+    borderBottomRightRadius: DP._4,
+  },
+  passengerDetailsContainer: {paddingHorizontal: DP._16, paddingBottom: DP._12},
+  passengerDetailsHeadingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: DP._16,
+  },
+  paddingHorizontal_16: {paddingHorizontal: DP._16},
+  journeyDetailsContainer: {paddingHorizontal: DP._16, paddingTop: DP._12},
 });

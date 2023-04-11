@@ -24,7 +24,7 @@ const getTooltipPosition = (x, y, totalWidth, seatWidth) => {
   if (x < TOOLTIP_WIDTH / 2) {
     xPos = DP._4;
   } else if (totalWidth - x < TOOLTIP_WIDTH / 2) {
-    xPos = x - TOOLTIP_WIDTH / 2 - DP._8;
+    xPos = totalWidth - (TOOLTIP_WIDTH + DP._8);
   }
   return {xPos, yPos};
 };
@@ -72,7 +72,7 @@ const ToolTip = ({info}) => {
 const FlightSeat = ({
   seatString,
   seatColor,
-  ifBooked,
+  isAvailable,
   selected,
   onSeatPress,
   rowLength,
@@ -93,7 +93,7 @@ const FlightSeat = ({
       onLayout={onLayout}>
       {selected ? (
         <Icon.Check width={DP._16} height={DP._16} stroke={Color.WHITE} />
-      ) : ifBooked ? (
+      ) : !isAvailable ? (
         <Icon.Cross width={DP._16} height={DP._16} stroke={Color.GREY_5} />
       ) : (
         <FText
@@ -108,7 +108,12 @@ const FlightSeat = ({
   );
 };
 
-const SeatSelection = ({data, onSeatPress}) => {
+const SeatSelection = ({
+  data,
+  onSeatPress,
+  seatPassengerMap,
+  activePassenger,
+}) => {
   const rowPositionRef = useRef({});
   const scrollViewLayoutRef = useRef(null);
   const scrollViewRef = useRef(null);
@@ -125,8 +130,13 @@ const SeatSelection = ({data, onSeatPress}) => {
 
   const renderSeatRow = (item, index) => {
     const onFlightSeatPress = (seatData, position) => {
-      if (!seatData.passengerName) {
-        onSeatPress(seatData);
+      if (!seatData.isSeatAvailable) {
+        return;
+      }
+      let selectedPassenger = seatPassengerMap[seatData.code];
+      console.log('Selected passenger - ', selectedPassenger);
+      if (!selectedPassenger) {
+        selectedPassenger = onSeatPress(seatData);
       }
       scrollViewRef.current.scrollTo({
         y:
@@ -134,13 +144,13 @@ const SeatSelection = ({data, onSeatPress}) => {
           scrollViewLayoutRef.current.height * 0.45,
         animated: true,
       });
-      if (seatData.passengerName) {
+      if (selectedPassenger) {
         setToolTipInfo({
           x: position.x,
           seatWidth: position.width,
           y: rowPositionRef.current[index],
           totalWidth: scrollViewLayoutRef.current.width,
-          passengerName: seatData.passengerName,
+          passengerName: selectedPassenger.fullName,
           seatPrice: formattedPrice(seatData.price),
           seatCode: seatData.code,
         });
@@ -159,15 +169,12 @@ const SeatSelection = ({data, onSeatPress}) => {
           };
         }}>
         {item.map((seatData, seatIndex) => {
-          const {price, ifBooked, selected, type} = seatData;
+          const {price, isSeatAvailable, type} = seatData;
+          const selected = !!seatPassengerMap[seatData.code];
           seatData.rowIndex = index;
           seatData.columnIndex = seatIndex;
           const seatString = price === 0 ? 'Free' : getRepString(price);
-          const seatColor = selected
-            ? Color.DARK_SEA_FOAM
-            : ifBooked
-            ? Color.CULTURED
-            : seatData.colorCode;
+          const seatColor = selected ? Color.DARK_SEA_FOAM : seatData.colorCode;
           return type === ITEM_TYPE.AISLE ? (
             <View key={`${index}${seatIndex}`} style={Styles.emptySpace}>
               <FText
@@ -183,7 +190,7 @@ const SeatSelection = ({data, onSeatPress}) => {
               key={`${index}${seatIndex}`}
               seatColor={seatColor}
               seatString={seatString}
-              ifBooked={ifBooked}
+              isAvailable={isSeatAvailable}
               selected={selected}
               rowLength={item.length}
               onSeatPress={(position) => onFlightSeatPress(seatData, position)}
