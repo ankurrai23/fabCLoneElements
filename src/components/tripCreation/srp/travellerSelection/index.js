@@ -17,9 +17,11 @@ const getSelectedInfo = (activeStoppage, activeAddOnType, info) => {
         )}`
       : null;
   } else if (activeAddOnType === FLIGHT_ADD_ON_TYPES.MEAL) {
-    return selectedInfo ? Strings.mealAdded : null;
+    return selectedInfo?.mealInfos || selectedInfo?.nonLccMeals
+      ? Strings.mealAdded
+      : null;
   } else {
-    return selectedInfo ? Strings.baggageAdded : null;
+    return selectedInfo?.baggageInfos ? Strings.baggageAdded : null;
   }
 };
 
