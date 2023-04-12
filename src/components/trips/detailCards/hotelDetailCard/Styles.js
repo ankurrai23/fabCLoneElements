@@ -24,8 +24,7 @@ export default StyleSheet.create({
   },
   sectionTitle: {
     fontSize: DP._12,
-    color: Color.GREY_PURPLE,
-    marginBottom: DP._8,
+    lineHeight: DP._14,
   },
   cancel: {
     color: Color.PASTEL_RED,
@@ -196,5 +195,19 @@ export default StyleSheet.create({
     marginTop: DP._4,
     marginBottom: DP._16,
     borderRadius: DP._30,
+  },
+  paddingHorizontal_16: {
+    paddingHorizontal: DP._16,
+  },
+  paddingTop_16: {
+    paddingTop: DP._16,
+  },
+  headingNotch: {
+    width: DP._4,
+    backgroundColor: Color.TWILIGHT_BLUE,
+    height: DP._21,
+    marginRight: DP._12,
+    borderTopRightRadius: DP._4,
+    borderBottomRightRadius: DP._4,
   },
 });

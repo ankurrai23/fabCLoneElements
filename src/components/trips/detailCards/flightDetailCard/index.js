@@ -245,7 +245,6 @@ const FlightDetailCard = ({
           <>
             <Separator style={Styles.actionsSeperator} />
             <View style={Styles.flexRowAndAlignCenter}>
-              <View style={Styles.headingNotch} />
               <ContactSupport
                 onContactSupportPress={onContactSupportPress}
                 style={[Styles.contactSupport, Styles.flex]}
