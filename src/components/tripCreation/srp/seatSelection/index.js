@@ -121,11 +121,27 @@ const SeatSelection = ({
   const [toolTipInfo, setToolTipInfo] = useState(null);
 
   useEffect(() => {
+    let toolTip = activePassenger.seatDetails[0].seatInfo?.toolTip;
+    if (toolTip && scrollViewLayoutRef.current?.height) {
+      scrollViewRef.current.scrollTo({
+        y: toolTip.y - scrollViewLayoutRef.current?.height * 0.45,
+        animated: true,
+      });
+      setToolTipInfo(toolTip);
+    }
+  }, [activePassenger]);
+
+  useEffect(() => {
+    let timeout = null;
     if (toolTipInfo) {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         LayoutAnimation.easeInEaseOut();
         setToolTipInfo(null);
       }, 2000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   }, [toolTipInfo]);
 
@@ -135,9 +151,18 @@ const SeatSelection = ({
         return;
       }
       let selectedPassenger = seatPassengerMap[seatData.code];
+      const toolTip = {
+        x: position.x,
+        seatWidth: position.width,
+        y: rowPositionRef.current[index],
+        totalWidth: scrollViewLayoutRef.current.width,
+        passengerName: (selectedPassenger ?? activePassenger).fullName,
+        seatPrice: formattedPrice(seatData.price),
+        seatCode: seatData.code,
+      };
       console.log('Selected passenger - ', selectedPassenger);
       if (!selectedPassenger) {
-        selectedPassenger = onSeatPress(seatData);
+        selectedPassenger = onSeatPress({...seatData, toolTip});
       }
       scrollViewRef.current.scrollTo({
         y:
@@ -146,15 +171,7 @@ const SeatSelection = ({
         animated: true,
       });
       if (selectedPassenger) {
-        setToolTipInfo({
-          x: position.x,
-          seatWidth: position.width,
-          y: rowPositionRef.current[index],
-          totalWidth: scrollViewLayoutRef.current.width,
-          passengerName: selectedPassenger.fullName,
-          seatPrice: formattedPrice(seatData.price),
-          seatCode: seatData.code,
-        });
+        setToolTipInfo(toolTip);
       }
     };
 
