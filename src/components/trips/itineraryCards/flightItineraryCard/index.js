@@ -241,8 +241,11 @@ const FlightPostBookingCard = ({
 }) => {
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const viewRemarksAction = isActionEnabled(FlightSubTripActions.VIEW_REMARKS);
-  const addOnsIncluded =
-    uiData.mealCount || uiData.baggageIncluded || uiData.seatCount;
+  const addOnsIncluded = !!(
+    uiData.mealCount ||
+    uiData.baggageIncluded ||
+    uiData.seatCount
+  );
 
   const actionVisible =
     !actionDisabled &&

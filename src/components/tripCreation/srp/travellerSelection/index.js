@@ -65,6 +65,7 @@ const TravellerSelection = ({
         </View>
 
         <FTouchableOpacity
+          hitSlop={{top: DP._4, bottom: DP._4, left: DP._4, right: DP._4}}
           style={Styles.removeIconContainer(info, item.isSelected)}
           onPress={() => onClick(item.passengerId, true)}>
           {!!info && <Icon.Trash width={DP._14} height={DP._14} />}
