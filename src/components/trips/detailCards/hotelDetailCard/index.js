@@ -103,7 +103,7 @@ export default function HotelDetailCard({
 
   const CheckInInfo = ({title, date, time}) => (
     <View>
-      <FText style={Styles.sectionTitle}>{title}</FText>
+      <FText greyedOut={isGreyedOut} style={Styles.sectionTitle}>{title}</FText>
       <FText greyedOut={isGreyedOut} type={FONT_TYPE.MEDIUM}>
         {date}
       </FText>
@@ -168,7 +168,7 @@ export default function HotelDetailCard({
         <ModificationAlertBox msg={item.notificationText} />
       )}
       <View style={[Styles.container, style]}>
-        <View style={Styles.subContainer}>
+        <View style={[Styles.paddingHorizontal_16, Styles.paddingTop_16]}>
           <View style={Styles.hotelNameAndImageContainer}>
             {item.mainImage && (
               <FTouchableOpacity
@@ -240,9 +240,12 @@ export default function HotelDetailCard({
               </FTouchableOpacity>
             )}
           </View>
+
           <Separator style={Styles.separator} />
-          {expanded && (
-            <Animated.View style={{opacity: fadeIn}}>
+        </View>
+        {expanded && (
+          <Animated.View style={{opacity: fadeIn}}>
+            <View style={Styles.paddingHorizontal_16}>
               <View
                 style={[
                   Styles.flexRowWithSpaceBetween,
@@ -282,13 +285,25 @@ export default function HotelDetailCard({
                 </View>
               </View>
               <Separator style={Styles.separator} />
-              {!item.inclusions?.length ? null : (
-                <>
+            </View>
+            {!item.inclusions?.length ? null : (
+              <>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginTop: DP._16,
+                    marginBottom: DP._4,
+                  }}>
+                  <View style={Styles.headingNotch} />
                   <FText
                     greyedOut={isGreyedOut}
-                    style={[Styles.sectionTitle, {marginTop: DP._16}]}>
+                    style={Styles.sectionTitle}
+                    weight={500}>
                     {Strings.inclusions}
                   </FText>
+                </View>
+                <View style={Styles.paddingHorizontal_16}>
                   {item.inclusions?.map((entity, index) => {
                     if (index < 3)
                       return (
@@ -314,15 +329,28 @@ export default function HotelDetailCard({
                     </FTouchableOpacity>
                   )}
                   <Separator style={Styles.separator} />
-                </>
-              )}
-              {item?.coTravellers?.length > 0 && (
-                <>
+                </View>
+              </>
+            )}
+            {item?.coTravellers?.length > 0 && (
+              <>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginTop: DP._16,
+                    marginBottom: DP._4,
+                  }}>
+                  <View style={Styles.headingNotch} />
                   <FText
                     greyedOut={isGreyedOut}
-                    style={[Styles.sectionTitle, {marginTop: DP._16}]}>
+                    style={Styles.sectionTitle}
+                    weight={500}>
                     {Strings.travelerDetails}
                   </FText>
+                </View>
+
+                <View style={Styles.paddingHorizontal_16}>
                   {item.coTravellers.map((names, index) => (
                     <CoTraveller
                       name={names}
@@ -331,13 +359,25 @@ export default function HotelDetailCard({
                     />
                   ))}
                   <Separator style={Styles.separator} />
-                </>
-              )}
+                </View>
+              </>
+            )}
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: DP._16,
+                marginBottom: DP._4,
+              }}>
+              <View style={Styles.headingNotch} />
               <FText
                 greyedOut={isGreyedOut}
-                style={[Styles.sectionTitle, {marginTop: DP._8}]}>
+                style={Styles.sectionTitle}
+                weight={500}>
                 {Strings.paymentMode}
               </FText>
+            </View>
+            <View style={Styles.paddingHorizontal_16}>
               <View style={Styles.paymentModeContainer}>
                 <View
                   style={[
@@ -381,39 +421,43 @@ export default function HotelDetailCard({
                   {payNowAction.name}
                 </Button>
               )}
-              {supportAction && (
-                <>
+            </View>
+            {supportAction && (
+              <>
+                <View style={Styles.paddingHorizontal_16}>
                   <Separator style={Styles.separator} />
-                  <ContactSupport
-                    onContactSupportPress={onContactSupportPress}
-                    isGreyedOut={isGreyedOut}
-                    style={{marginVertical: DP._16}}
-                  />
-                </>
-              )}
-              {item.enableViewMoreButton && (
-                <Separator style={Styles.separator} />
-              )}
-            </Animated.View>
-          )}
-          {item.enableViewMoreButton && (
-            <FTouchableOpacity
-              hitSlop={Styles.viewDetailHitSlop}
-              onPress={onItemPress}
-              style={Styles.viewDetailView}>
-              <FText greyedOut={isGreyedOut} style={Styles.showMoreTxt}>
-                {Strings.viewDetails(expanded)}
-              </FText>
-              <Animated.View style={{transform: [{rotate: spin}]}}>
-                <Icon.ChevronDown
-                  width={DP._14}
-                  height={DP._14}
-                  stroke={Color.DODGER_BLUE}
+                </View>
+                <ContactSupport
+                  onContactSupportPress={onContactSupportPress}
+                  isGreyedOut={isGreyedOut}
+                  style={{marginVertical: DP._8, paddingRight: DP._16}}
                 />
-              </Animated.View>
-            </FTouchableOpacity>
-          )}
-        </View>
+              </>
+            )}
+            {item.enableViewMoreButton && (
+              <View style={Styles.paddingHorizontal_16}>
+                <Separator style={Styles.separator} />
+              </View>
+            )}
+          </Animated.View>
+        )}
+        {item.enableViewMoreButton && (
+          <FTouchableOpacity
+            hitSlop={Styles.viewDetailHitSlop}
+            onPress={onItemPress}
+            style={Styles.viewDetailView}>
+            <FText greyedOut={isGreyedOut} style={Styles.showMoreTxt}>
+              {Strings.viewDetails(expanded)}
+            </FText>
+            <Animated.View style={{transform: [{rotate: spin}]}}>
+              <Icon.ChevronDown
+                width={DP._14}
+                height={DP._14}
+                stroke={Color.DODGER_BLUE}
+              />
+            </Animated.View>
+          </FTouchableOpacity>
+        )}
         <ActionsInItinerary
           // hideSeperator={Boolean(showInfo)}
           actions={item.actions}
