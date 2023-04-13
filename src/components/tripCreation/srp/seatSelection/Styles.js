@@ -51,7 +51,7 @@ export default StyleSheet.create({
   toolTipSeatInfoContainer: {
     flexDirection: 'row',
     marginTop: DP._4,
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
   },
   toolTipSeatCode: {
     fontSize: DP._12,

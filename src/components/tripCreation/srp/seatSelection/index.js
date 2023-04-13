@@ -46,8 +46,16 @@ const ToolTip = ({info}) => {
   if (!info) {
     return null;
   }
-  const {x, y, totalWidth, seatWidth, passengerName, seatCode, seatPrice} =
-    info;
+  const {
+    x,
+    y,
+    totalWidth,
+    seatWidth,
+    passengerName,
+    seatCode,
+    seatPrice,
+    seatType,
+  } = info;
   return (
     <View
       style={Styles.toolTip(getTooltipPosition(x, y, totalWidth, seatWidth))}>
@@ -59,7 +67,7 @@ const ToolTip = ({info}) => {
       </FText>
       <View style={Styles.toolTipSeatInfoContainer}>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.toolTipSeatCode}>
-          {seatCode}
+          {`${seatCode} ${seatType.toLowerCase()} `}
         </FText>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.toolTipSeatPrice}>
           {formattedPrice(seatPrice)}
@@ -159,6 +167,7 @@ const SeatSelection = ({
         passengerName: (selectedPassenger ?? activePassenger).fullName,
         seatPrice: formattedPrice(seatData.price),
         seatCode: seatData.code,
+        seatType: seatData.seatTypeValue,
       };
       console.log('Selected passenger - ', selectedPassenger);
       if (!selectedPassenger) {
