@@ -4,10 +4,11 @@ import {cardStyleObj} from '../../../../../utils/Utils';
 import {Color} from '../../../../../utils/color/index.fabhotel';
 
 export default StyleSheet.create({
-  container: {
+  container: (isCorporateCodeFare) => ({
     paddingBottom: DP._18,
     ...cardStyleObj,
-  },
+    ...(isCorporateCodeFare ? {backgroundColor: Color.BLUE_1} : {}),
+  }),
   flex: {
     flex: 1,
   },

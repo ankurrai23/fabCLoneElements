@@ -15,9 +15,12 @@ const FlightFarePlanCard = ({
   planDetails,
   onPress,
   style,
+  isCorporateCodeFare,
 }) => {
   return (
-    <FTouchableOpacity onPress={onPress} style={[styles.container, style]}>
+    <FTouchableOpacity
+      onPress={onPress}
+      style={[styles.container(isCorporateCodeFare), style]}>
       <View style={styles.header}>
         <View>
           <FText style={styles.planTitle} numberOfLines={1}>
