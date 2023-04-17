@@ -6,6 +6,7 @@ const seatSelectionsProps = {
   seatPassengerMap: {'1F': {id: 123, fullName: 'Ravi Kumar'}},
   activePassenger: {passengerId: 123, fullName: 'Ravi Kumar'},
   listColumns: ['A', 'B', 'C', null, 'D', 'E', 'F'],
+  activeStoppage: 0,
   data: [
     [
       {
