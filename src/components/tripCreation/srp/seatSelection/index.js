@@ -79,7 +79,6 @@ const ToolTip = ({info}) => {
 
 const FlightSeat = React.memo(
   ({seatString, seatColor, isAvailable, selected, onSeatPress, rowLength}) => {
-    console.log('FlightSeat render');
     const positionRef = useRef();
     const onLayout = (event) => {
       const {x, width} = event.nativeEvent.layout;
@@ -113,7 +112,6 @@ const FlightSeat = React.memo(
 );
 
 const FlightSeatHeader = React.memo(({listColumns}) => {
-  console.log('FlightSeatHeader render');
   return (
     <>
       <View style={Styles.frontAisle}>
@@ -192,7 +190,6 @@ const SeatSelection = ({
   activePassenger,
   activeStoppage,
 }) => {
-  console.log('SeatSelection Rendered');
   const rowPositionRef = useRef({});
   const scrollViewLayoutRef = useRef(null);
   const scrollViewRef = useRef(null);
@@ -200,7 +197,8 @@ const SeatSelection = ({
 
   useEffect(() => {
     //toolTip info changes as passenger changes
-    let toolTip = activePassenger.seatDetails[activeStoppage].seatInfo?.toolTip;
+    let toolTip =
+      activePassenger.seatDetails[activeStoppage]?.seatInfo?.toolTip;
     if (toolTip && scrollViewLayoutRef.current?.height) {
       scrollViewRef.current.scrollTo({
         y: toolTip.y - scrollViewLayoutRef.current?.height * 0.45,
