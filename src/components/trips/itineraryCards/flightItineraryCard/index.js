@@ -174,7 +174,7 @@ const FlightPreBookingCard = ({
 };
 
 const AddOns = ({mealCount, seatCount, baggageIncluded}) => {
-  const [showAddOns, setShowAddOns] = useState(true);
+  const [showAddOns, setShowAddOns] = useState(false);
   return (
     <View style={Styles.addOnContainer}>
       <FTouchableOpacity
