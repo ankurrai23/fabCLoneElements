@@ -24,7 +24,7 @@ const getTooltipPosition = (x, y, totalWidth, seatWidth) => {
   if (x < TOOLTIP_WIDTH / 2) {
     xPos = DP._4;
   } else if (totalWidth - x < TOOLTIP_WIDTH / 2) {
-    xPos = totalWidth - (TOOLTIP_WIDTH + DP._4);
+    xPos = totalWidth - (TOOLTIP_WIDTH + DP._8);
   }
   return {xPos, yPos};
 };
@@ -67,7 +67,7 @@ const ToolTip = ({info}) => {
       </FText>
       <View style={Styles.toolTipSeatInfoContainer}>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.toolTipSeatCode}>
-          {`${seatCode}`}
+          {`${seatCode} `}
         </FText>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.toolTipSeatPrice}>
           {formattedPrice(seatPrice)}
