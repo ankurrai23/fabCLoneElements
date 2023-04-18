@@ -4,7 +4,7 @@ import Styles from './Styles';
 import Icon from '../../../../assets/icons/Icon';
 import {Color} from '../../../../utils/color/index.travelPlus';
 import {DP} from '../../../../utils/Dimen';
-import {ScrollView} from 'react-native-gesture-handler';
+import {FlatList} from 'react-native-gesture-handler';
 import FTouchableOpacity from '../../../../common/rn/FTouchableOpacity';
 import {formattedPrice, getRepString} from '../../../../utils/Utils';
 import FText, {FONT_TYPE} from '../../../../common/rn/FText';
@@ -43,6 +43,7 @@ const getFontSize = (rowLength) => {
 };
 
 const ToolTip = ({info}) => {
+  // console.log({info});
   if (!info) {
     return null;
   }
@@ -77,27 +78,36 @@ const ToolTip = ({info}) => {
   );
 };
 
+const UnAvailableSeat = React.memo(({seatColor}) => {
+  return (
+    <View style={Styles.seatStyle(seatColor)}>
+      <Icon.Cross width={DP._16} height={DP._16} stroke={Color.GREY_5} />
+    </View>
+  );
+});
+
 const FlightSeat = React.memo(
   ({seatString, seatColor, isAvailable, selected, onSeatPress, rowLength}) => {
-    // console.log('FlightSeat render');
+    // console.log("FlightSeat render");
     const positionRef = useRef();
     const onLayout = (event) => {
-      const {x, width} = event.nativeEvent.layout;
-      positionRef.current = {x: x, width: width};
+      const {x, width, height} = event.nativeEvent.layout;
+      console.log({height});
+      positionRef.current = {x: x, width: width, height};
     };
     const onPress = () => {
       onSeatPress(positionRef.current);
     };
 
-    return (
+    return !isAvailable ? (
+      <UnAvailableSeat seatColor={seatColor} />
+    ) : (
       <FTouchableOpacity
         style={Styles.seatStyle(seatColor)}
         onPress={onPress}
         onLayout={onLayout}>
         {selected ? (
           <Icon.Check width={DP._16} height={DP._16} stroke={Color.WHITE} />
-        ) : !isAvailable ? (
-          <Icon.Cross width={DP._16} height={DP._16} stroke={Color.GREY_5} />
         ) : (
           <FText
             style={{
@@ -113,7 +123,7 @@ const FlightSeat = React.memo(
 );
 
 const FlightSeatHeader = React.memo(({listColumns}) => {
-  // console.log('FlightSeatHeader render');
+  // console.log("FlightSeatHeader render");
   return (
     <>
       <View style={Styles.frontAisle}>
@@ -192,18 +202,23 @@ const SeatSelection = ({
   activePassenger,
   activeStoppage,
 }) => {
-  // console.log('SeatSelection Rendered');
+  // console.log("SeatSelection Rendered");
   const rowPositionRef = useRef({});
   const scrollViewLayoutRef = useRef(null);
   const scrollViewRef = useRef(null);
   const [toolTipInfo, setToolTipInfo] = useState(null);
 
   useEffect(() => {
+    setToolTipInfo(null);
+  }, [activeStoppage]);
+
+  useEffect(() => {
     //toolTip info changes as passenger changes
     let toolTip = activePassenger.seatDetails[activeStoppage].seatInfo?.toolTip;
     if (toolTip && scrollViewLayoutRef.current?.height) {
-      scrollViewRef.current.scrollTo({
-        y: toolTip.y - scrollViewLayoutRef.current?.height * 0.45,
+      scrollViewRef.current.scrollToIndex({
+        index: toolTip.index,
+        viewPosition: 0.5,
         animated: true,
       });
       setToolTipInfo(toolTip);
@@ -234,31 +249,35 @@ const SeatSelection = ({
       const toolTip = {
         x: position.x,
         seatWidth: position.width,
-        y: rowPositionRef.current[index],
+        y: -((position.height + DP._16) * (data.length - index - 2) + DP._18),
         totalWidth: scrollViewLayoutRef.current.width,
         passengerName: (selectedPassenger ?? activePassenger).fullName,
         seatPrice: formattedPrice(seatData.price),
         seatCode: seatData.code,
         seatType: seatData.seatTypeValue,
+        index,
       };
       // console.log('Selected passenger - ', selectedPassenger);
       if (!selectedPassenger) {
         selectedPassenger = onSeatPress({...seatData, toolTip});
       }
-      scrollViewRef.current.scrollTo({
-        y:
-          rowPositionRef.current[index] -
-          scrollViewLayoutRef.current.height * 0.45,
+      scrollViewRef.current.scrollToIndex({
+        index,
+        viewPosition: 0.5,
         animated: true,
       });
       if (selectedPassenger) {
         setToolTipInfo(toolTip);
       }
     },
-    [activePassenger, onSeatPress, seatPassengerMap],
+    [activePassenger, data.length, onSeatPress, seatPassengerMap],
   );
 
-  const renderSeatRow = (item, index) => {
+  const renderSeatRow = ({item, index}) => {
+    // console.log('rendering seat row');
+    if (!item) {
+      return <ToolTip info={toolTipInfo} />;
+    }
     return (
       <View
         style={Styles.seatRow}
@@ -279,6 +298,7 @@ const SeatSelection = ({
               seatIndex={seatIndex}
               item={item}
               onFlightSeatPress={onFlightSeatPress}
+              toolTipInfo={toolTipInfo}
             />
           );
         })}
@@ -287,17 +307,17 @@ const SeatSelection = ({
   };
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
+    <FlatList
+      ListHeaderComponent={<FlightSeatHeader listColumns={listColumns} />}
+      ListFooterComponent={<FlightSeatFooter />}
+      renderItem={renderSeatRow}
       ref={scrollViewRef}
+      data={data}
       onLayout={(e) => {
         scrollViewLayoutRef.current = e.nativeEvent.layout;
-      }}>
-      <FlightSeatHeader listColumns={listColumns} />
-      {data.map(renderSeatRow)}
-      <FlightSeatFooter />
-      <ToolTip info={toolTipInfo} />
-    </ScrollView>
+      }}
+      windowSize={10}
+    />
   );
 };
 

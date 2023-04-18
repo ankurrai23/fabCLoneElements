@@ -17,7 +17,6 @@ export default StyleSheet.create({
     top: pos.yPos,
     left: pos.xPos,
     padding: DP._8,
-    zIndex: 1000,
     ...shadowObj,
   }),
   emptySpace: {

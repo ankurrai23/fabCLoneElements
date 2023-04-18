@@ -79,6 +79,7 @@ const TravellerSelection = ({
       flatListRef?.current.scrollToIndex({
         animated: true,
         index: selectedIndex,
+        viewOffset: DP._16,
       }),
     );
   }
