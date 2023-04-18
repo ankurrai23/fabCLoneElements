@@ -67,7 +67,7 @@ const ToolTip = ({info}) => {
       </FText>
       <View style={Styles.toolTipSeatInfoContainer}>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.toolTipSeatCode}>
-          {`${seatCode} ${seatType ? seatType.toLowerCase() + ' ' : ''}`}
+          {`${seatCode}`}
         </FText>
         <FText type={FONT_TYPE.MEDIUM} style={Styles.toolTipSeatPrice}>
           {formattedPrice(seatPrice)}
