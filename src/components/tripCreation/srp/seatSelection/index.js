@@ -92,7 +92,6 @@ const FlightSeat = React.memo(
     const positionRef = useRef();
     const onLayout = (event) => {
       const {x, width, height} = event.nativeEvent.layout;
-      console.log({height});
       positionRef.current = {x: x, width: width, height};
     };
     const onPress = () => {
@@ -214,7 +213,8 @@ const SeatSelection = ({
 
   useEffect(() => {
     //toolTip info changes as passenger changes
-    let toolTip = activePassenger.seatDetails[activeStoppage].seatInfo?.toolTip;
+    let toolTip =
+      activePassenger.seatDetails[activeStoppage]?.seatInfo?.toolTip;
     if (toolTip && scrollViewLayoutRef.current?.height) {
       scrollViewRef.current.scrollToIndex({
         index: toolTip.index,
