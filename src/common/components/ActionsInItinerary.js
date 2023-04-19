@@ -83,7 +83,8 @@ const ActionsInItinerary = ({
   onActionPress,
 }) => {
   const actionsEnabled = actions
-    .reverse()
+    ?.slice()
+    ?.reverse()
     ?.map((action) => ActionsUI(action, onActionPress))
     ?.filter((element) => {
       return !!element;
