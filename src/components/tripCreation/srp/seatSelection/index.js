@@ -79,7 +79,6 @@ const ToolTip = ({info}) => {
 
 const FlightSeat = React.memo(
   ({seatString, seatColor, isAvailable, selected, onSeatPress, rowLength}) => {
-    // console.log('FlightSeat render');
     const positionRef = useRef();
     const onLayout = (event) => {
       const {x, width} = event.nativeEvent.layout;
@@ -149,30 +148,31 @@ const FlightSeatFooter = React.memo(() => {
 });
 
 const FlightSeatContainer = React.memo(
-  ({seatData, seatPassengerMap, index, seatIndex, item, onFlightSeatPress}) => {
+  ({seatData, selected, rowIndex, seatIndex, item, onFlightSeatPress}) => {
     const {price, isSeatAvailable, type} = seatData;
-    const selected = !!seatPassengerMap[seatData.code];
-    seatData.rowIndex = index;
+    seatData.rowIndex = rowIndex;
     seatData.columnIndex = seatIndex;
+
     const onSeatPress = useCallback(
-      (position) => onFlightSeatPress(seatData, position, index),
-      [index, onFlightSeatPress, seatData],
+      (position) => onFlightSeatPress(seatData, position, rowIndex, selected),
+      [onFlightSeatPress, seatData, rowIndex, selected],
     );
+
     const seatString = price === 0 ? 'Free' : getRepString(price);
     const seatColor = selected ? Color.DARK_SEA_FOAM : seatData.colorCode;
     return type === ITEM_TYPE.AISLE ? (
-      <View key={`${index}${seatIndex}`} style={Styles.emptySpace}>
+      <View key={`${rowIndex}${seatIndex}`} style={Styles.emptySpace}>
         <FText
           style={{
             fontSize: getFontSize(item.length),
             color: Color.GREY_PURPLE,
           }}>
-          {index + 1}
+          {rowIndex + 1}
         </FText>
       </View>
     ) : (
       <FlightSeat
-        key={`${index}${seatIndex}`}
+        key={`${rowIndex}${seatIndex}`}
         seatColor={seatColor}
         seatString={seatString}
         isAvailable={isSeatAvailable}
@@ -225,36 +225,32 @@ const SeatSelection = ({
   }, [toolTipInfo]);
 
   const onFlightSeatPress = useCallback(
-    (seatData, position, index) => {
+    (seatData, position, rowIndex, selected) => {
       if (!seatData.isSeatAvailable) {
         return;
       }
-      let selectedPassenger = seatPassengerMap[seatData.code];
       const toolTip = {
         x: position.x,
         seatWidth: position.width,
-        y: rowPositionRef.current[index],
+        y: rowPositionRef.current[rowIndex],
         totalWidth: scrollViewLayoutRef.current.width,
-        passengerName: (selectedPassenger ?? activePassenger).fullName,
         seatPrice: formattedPrice(seatData.price),
         seatCode: seatData.code,
         seatType: seatData.seatTypeValue,
       };
       // console.log('Selected passenger - ', selectedPassenger);
-      if (!selectedPassenger) {
-        selectedPassenger = onSeatPress({...seatData, toolTip});
-      }
       scrollViewRef.current.scrollTo({
         y:
-          rowPositionRef.current[index] -
+          rowPositionRef.current[rowIndex] -
           scrollViewLayoutRef.current.height * 0.45,
         animated: true,
       });
-      if (selectedPassenger) {
-        setToolTipInfo(toolTip);
+      if (!selected) {
+        onSeatPress({...seatData, toolTip});
       }
+      setToolTipInfo(toolTip);
     },
-    [activePassenger, onSeatPress, seatPassengerMap],
+    [onSeatPress],
   );
 
   const renderSeatRow = (item, index) => {
@@ -273,8 +269,8 @@ const SeatSelection = ({
           return (
             <FlightSeatContainer
               seatData={seatData}
-              seatPassengerMap={seatPassengerMap}
-              index={index}
+              selected={!!seatPassengerMap[seatData.code]}
+              rowIndex={index}
               seatIndex={seatIndex}
               item={item}
               onFlightSeatPress={onFlightSeatPress}
@@ -283,6 +279,14 @@ const SeatSelection = ({
         })}
       </View>
     );
+  };
+
+  const updateToolTipInfoName = (info) => {
+    if (!info) return null;
+    return {
+      ...info,
+      passengerName: seatPassengerMap?.[info?.seatCode]?.fullName,
+    };
   };
 
   return (
@@ -295,7 +299,7 @@ const SeatSelection = ({
       <FlightSeatHeader listColumns={listColumns} />
       {data.map(renderSeatRow)}
       <FlightSeatFooter />
-      <ToolTip info={toolTipInfo} />
+      {!!toolTipInfo && <ToolTip info={updateToolTipInfoName(toolTipInfo)} />}
     </ScrollView>
   );
 };
