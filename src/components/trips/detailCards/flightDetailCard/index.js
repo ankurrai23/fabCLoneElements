@@ -196,8 +196,8 @@ const FlightDetailCard = ({
                     {item.addOnDetails.map((addOnDetail, i, addOnDetails) => {
                       const stoppage = `${addOnDetail.origin} - ${addOnDetail.destination}`;
                       const showInfo = `${addOnDetail.seat}, ${
-                        addOnDetail.isMealAdded && 'meal'
-                      }, ${addOnDetail.isBaggageAdded && 'baggage'}`;
+                        addOnDetail.isMealAdded ? 'meal,' : ''
+                      } ${addOnDetail.isBaggageAdded ? 'baggage' : ''}`;
                       return (
                         <View
                           style={Styles.addOnDetailContaier(
