@@ -27,75 +27,28 @@ const flightDetailCardProps = {
       {
         name: 'Sahil Malhan',
         ticketNo: 'asd',
-        addOnDetails: [
-          {
-            origin: 'BOM',
-            destination: 'DEL',
-            seat: '2A',
-            isMealAdded: true,
-            isBaggageAdded: true,
-          },
-        ],
+        sourceDestinationWiseAddOns: {
+          'GOI - HYD': 'A, meal',
+          'HYD - BLR': 'Meal',
+          'DEL - BLR': 'Baggage',
+        },
       },
       {
         name: 'Vibhav Bhadauriya',
         ticketNo: 'asd',
-        addOnDetails: [
-          {
-            origin: 'BOM',
-            destination: 'DEL',
-            seat: '2A',
-            isMealAdded: true,
-            isBaggageAdded: true,
-          },
-        ],
+        sourceDestinationWiseAddOns: {
+          'GOI - HYD': 'A, meal',
+          'DEL - GOI': 'F, meal',
+        },
       },
       {
         name: 'Sahil Malhan lkdfjdlfkjdlfkjdlfkjdlfkdjdlfkjdlfkdjdlfkdjfldkjfdlfkjdlfkj',
         ticketNo: 'asd',
-        addOnDetails: [
-          {
-            origin: 'BOM',
-            destination: 'DEL',
-            seat: '2A',
-            isMealAdded: true,
-            isBaggageAdded: true,
-          },
-          {
-            origin: 'DEL',
-            destination: 'KOL',
-            seat: '2A',
-            isMealAdded: true,
-            isBaggageAdded: true,
-          },
-        ],
       },
       {
         name: 'Vibhav Bhadauriya',
         ticketNo: 'asd',
-        addOnDetails: [
-          {
-            origin: 'BOM',
-            destination: 'DEL',
-            seat: '2A',
-            isMealAdded: true,
-            isBaggageAdded: true,
-          },
-          {
-            origin: 'DEL',
-            destination: 'KOL',
-            seat: '2A',
-            isMealAdded: true,
-            isBaggageAdded: true,
-          },
-          {
-            origin: 'DEL',
-            destination: 'KOL',
-            seat: '2A',
-            isMealAdded: true,
-            isBaggageAdded: true,
-          },
-        ],
+        sourceDestinationWiseAddOns: null,
       },
     ],
     bookingId: 'ABDC1234',
