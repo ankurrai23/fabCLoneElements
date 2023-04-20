@@ -35,6 +35,13 @@ const FlightDetailCard = ({
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const supportAction = isActionEnabled(FlightSubTripActions.SUPPORT);
 
+  const showMealCount = !tripDetails?.travelersInfo?.reduce(
+    (prevValue, item) => {
+      return !!(item.addOnDetails?.length || prevValue);
+    },
+    false,
+  );
+
   if (!tripDetails) {
     return null;
   }
@@ -158,6 +165,14 @@ const FlightDetailCard = ({
               greyedOut={isGreyedOut}
               type={FONT_TYPE.MEDIUM}>{` ${tripDetails.pnr}`}</FText>
           </FText>
+          {!!(showMealCount && tripDetails.mealCount) && (
+            <View style={Styles.flexRowAndAlignCenter}>
+              <Icon.Meal />
+              <FText style={Styles.mealsAdded}>
+                {Strings.mealsAdded(tripDetails.mealCount)}
+              </FText>
+            </View>
+          )}
         </View>
         {!!tripDetails?.travelersInfo?.length && (
           <>
