@@ -136,14 +136,16 @@ const RichHotelView = ({offline, item, onTapToSetPreferences, onCardPress}) => (
         {item.hotelName}
       </FText>
       <FText style={Styles.hotelLocality}>{item.hotelAddress}</FText>
-      <View style={Styles.ratingsContainer}>
-        {ratingsArray(item.ratingScore).map((item, index) => (
-          <View style={Styles.ratingBarEmpty} key={`${index}`}>
-            <View style={Styles.ratingBarFill(item)} />
-          </View>
-        ))}
-        <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
-      </View>
+      {item.ratingScore <= 5 ? (
+        <View style={Styles.ratingsContainer}>
+          {ratingsArray(item.ratingScore).map((item, index) => (
+            <View style={Styles.ratingBarEmpty} key={`${index}`}>
+              <View style={Styles.ratingBarFill(item)} />
+            </View>
+          ))}
+          <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
+        </View>
+      ) : null}
       {!!item.colleaguesCount && (
         <FText style={Styles.ratingsText}>
           {Strings.your}
