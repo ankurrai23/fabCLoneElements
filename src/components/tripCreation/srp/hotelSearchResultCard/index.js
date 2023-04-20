@@ -95,16 +95,18 @@ export default function HotelSearchResultCard({onCardPress, item}) {
         </FText>
         {item.isSoldOut ? null : (
           <>
-            <View style={Styles.ratingsContainer}>
-              {ratingsArray(item.ratingScore).map((rating, index) => {
-                return (
-                  <View style={Styles.ratingBarEmpty} key={`${index}`}>
-                    <View style={Styles.ratingBarFill(rating)} />
-                  </View>
-                );
-              })}
-              <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
-            </View>
+            {item.ratingScore <= 5 ? (
+              <View style={Styles.ratingsContainer}>
+                {ratingsArray(item.ratingScore).map((rating, index) => {
+                  return (
+                    <View style={Styles.ratingBarEmpty} key={`${index}`}>
+                      <View style={Styles.ratingBarFill(rating)} />
+                    </View>
+                  );
+                })}
+                <FText style={Styles.reviewsText}>{item.reviewsCount}</FText>
+              </View>
+            ) : null}
             <FText style={Styles.ratingsText}>
               {!!item.colleaguesCount && (
                 <>
