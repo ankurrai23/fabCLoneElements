@@ -132,9 +132,9 @@ export default StyleSheet.create({
     backgroundColor: Color.LIGHT_PERIWINKLE,
   },
   travelerNameStyle: {
-    marginBottom: DP._12,
+    flex: 1,
     fontSize: DP._12,
-    maxWidth: '50%',
+    maxWidth: '70%',
   },
   contactSupport: {
     paddingRight: DP._16,
@@ -240,9 +240,10 @@ export default StyleSheet.create({
     top: '100%',
     left: '25%',
   },
-  addOnDetailContaier: (isLastIndex) => ({
+  addOnDetailContainer: (isFirstIndex, isLastIndex) => ({
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop: isFirstIndex ? DP._12 : 0,
     marginBottom: isLastIndex ? DP._16 : 0,
   }),
   stoppageTextStyle: {

@@ -19,6 +19,7 @@ import ActionsInItinerary from '../../../../common/components/ActionsInItinerary
 import {ColorMatrix} from 'react-native-color-matrix-image-filters';
 import {grayImageMatrix} from '../../../../utils/color/ColorMatrix';
 import DashedLine from '../../../../common/components/dashedLine';
+
 const FlightDetailCard = ({
   title,
   tripDetails,
@@ -35,11 +36,8 @@ const FlightDetailCard = ({
   const isActionEnabled = (type) => actions?.find((e) => e.type === type);
   const supportAction = isActionEnabled(FlightSubTripActions.SUPPORT);
 
-  const showMealCount = !tripDetails?.travelersInfo?.reduce(
-    (prevValue, item) => {
-      return !!(item.addOnDetails?.length || prevValue);
-    },
-    false,
+  const showMealCount = !tripDetails?.travelersInfo?.some(
+    (e) => e.sourceDestinationWiseAddOns,
   );
 
   if (!tripDetails) {
@@ -207,7 +205,7 @@ const FlightDetailCard = ({
                       </FText>
                     </View>
                   </View>
-                  <View>
+                  <>
                     {Object.entries(
                       item.sourceDestinationWiseAddOns ?? {},
                     )?.map((addOnDetail, i, addOnDetails) => {
@@ -215,7 +213,8 @@ const FlightDetailCard = ({
                       const showInfo = addOnDetail[1];
                       return (
                         <View
-                          style={Styles.addOnDetailContaier(
+                          style={Styles.addOnDetailContainer(
+                            i === 0,
                             i !== addOnDetails.length - 1,
                           )}>
                           <View>
@@ -239,7 +238,7 @@ const FlightDetailCard = ({
                         </View>
                       );
                     })}
-                  </View>
+                  </>
                   {index !== arr.length - 1 && (
                     <Separator style={Styles.mv_12} />
                   )}
